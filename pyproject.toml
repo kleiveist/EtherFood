@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "g2dtool"
+dynamic = ["version"]
+description = "Repository tooling for the Forge2D Template"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+Forge2D-Template = "g2dtool.cli:welcome"
+g2d = "g2dtool.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "tools/src" }
+
+[tool.setuptools.packages.find]
+where = ["tools/src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "g2dtool.__version__" }
