@@ -13,22 +13,22 @@ METADATA_PATH = REPOSITORY_ROOT / ".github" / "repository-metadata.json"
 GUIDE_PATH = (
     REPOSITORY_ROOT
     / "docs"
-    / "forge2d-template"
-    / "tooling"
-    / "repository-metadata.md"
+    / "developer"
+    / "project-identity.md"
 )
 EXPECTED_DESCRIPTION = (
-    "Minimal Godot 4 2D game template with repository-local Python tooling "
-    "for setup, checks, exports, and releases."
+    "A top-down action RPG about restoring a lost world, reviving "
+    "civilizations, and uncovering forgotten memories."
 )
 EXPECTED_TOPICS = (
     "2d-game",
+    "action-rpg",
     "game-development",
-    "game-template",
     "gdscript",
     "godot",
     "godot-4",
     "python",
+    "top-down",
 )
 TOPIC_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
@@ -47,12 +47,11 @@ class RepositoryMetadataTests(unittest.TestCase):
     def test_description_is_concise_and_matches_readme_identity(self) -> None:
         description = self.metadata["description"]
         readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
-        readme_phrase = EXPECTED_DESCRIPTION[0].lower() + EXPECTED_DESCRIPTION[1:]
 
         self.assertEqual(description, EXPECTED_DESCRIPTION)
         self.assertLessEqual(len(description), 160)
         self.assertNotIn("\n", description)
-        self.assertIn(readme_phrase, " ".join(readme.split()))
+        self.assertIn(EXPECTED_DESCRIPTION, " ".join(readme.split()))
 
     def test_topics_are_focused_unique_and_github_compatible(self) -> None:
         topics = self.metadata["topics"]
@@ -74,17 +73,18 @@ class RepositoryMetadataTests(unittest.TestCase):
         self.assertIn("There is no maintained canonical website", guide)
         self.assertIn("expected homepage value is `null`", guide)
 
-    def test_guide_documents_api_audit_and_template_customization(self) -> None:
+    def test_project_identity_documents_audit_and_template_origin(self) -> None:
         guide = GUIDE_PATH.read_text(encoding="utf-8")
         required_text = (
             ".github/repository-metadata.json",
             EXPECTED_DESCRIPTION,
-            "gh api --method PATCH",
-            "gh api --method PUT",
-            "--jq '{description, homepage, topics, is_template}'",
-            "Replace canonical owner/repository URLs",
-            "security/advisories/new",
-            "branch protection and private vulnerability reporting",
+            "gh api repos/kleiveist/ether-food",
+            "--jq '{description, homepage, topics}'",
+            "Forge2D Template",
+            'template_id = "forge2d-template"',
+            'repository_language = "en"',
+            "g2dtool",
+            "export artifact names",
         )
         for topic in EXPECTED_TOPICS:
             required_text += (f"`{topic}`",)
@@ -95,18 +95,13 @@ class RepositoryMetadataTests(unittest.TestCase):
 
     def test_documentation_entry_points_link_the_metadata_guide(self) -> None:
         entry_points = (
-            REPOSITORY_ROOT / "README.md",
-            REPOSITORY_ROOT / "docs" / "forge2d-template" / "index.md",
-            REPOSITORY_ROOT
-            / "docs"
-            / "forge2d-template"
-            / "tooling"
-            / "tooling.md",
+            REPOSITORY_ROOT / "docs" / "developer" / "index.md",
+            REPOSITORY_ROOT / "docs" / "developer" / "developer.md",
         )
         for path in entry_points:
             with self.subTest(path=path.relative_to(REPOSITORY_ROOT)):
                 self.assertIn(
-                    "repository-metadata.md",
+                    "project-identity.md",
                     path.read_text(encoding="utf-8"),
                 )
 

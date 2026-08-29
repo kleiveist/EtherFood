@@ -5,7 +5,7 @@ config_version=5
 
 [application]
 
-config/name="Forge2D Template"
+config/name="ether-food"
 config/version="0.1.0"
 run/main_scene="res://scenes/bootstrap.tscn"
 

@@ -1,10 +1,16 @@
 <!-- AUTO-GENERATED:backlink START -->
 [← Back](index.md)
 <!-- AUTO-GENERATED:backlink END -->
+
 # Documentation
 
-The authoritative documentation hub is [docs/index.md](index.md). Start there
-to choose between Forge2D Template and game-specific documentation.
+Start at the authoritative [documentation hub](index.md).
 
-Contributor and security workflows remain available through
+The [German game concept](de/index.md) is the content source of truth;
+[English documentation status](en/index.md) and
+[technical developer documentation](developer/index.md) have separate roles.
+The [Inherited Forge2D technical foundation](forge2d-template/index.md) remains a
+preserved technical reference, not the game concept.
+
+Repository-wide contribution and security workflows are available through
 [CONTRIBUTING.md](../CONTRIBUTING.md) and [SECURITY.md](../SECURITY.md).

@@ -1,12 +1,12 @@
 name: Bug report
-description: Report a reproducible Forge2D Template defect
+description: Report a reproducible ether-food defect
 title: "[Bug]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping improve Forge2D Template.
-        Do not report security vulnerabilities here. Use the [private security report](https://github.com/kleiveist/Forge2D-Template/security/advisories/new).
+        Thank you for helping improve ether-food.
+        Do not report security vulnerabilities here. Use the [private security report](https://github.com/kleiveist/ether-food/security/advisories/new).
   - type: dropdown
     id: area
     attributes:

@@ -1,12 +1,12 @@
 name: Feature request
-description: Propose a focused, reusable Forge2D Template improvement
+description: Propose a focused ether-food improvement
 title: "[Feature]: "
 body:
   - type: markdown
     attributes:
       value: |
         Describe the underlying problem before prescribing an implementation.
-        Forge2D Template favors small, cross-platform, dependency-conscious capabilities.
+        ether-food favors documented, focused, cross-platform, dependency-conscious capabilities.
   - type: dropdown
     id: area
     attributes:
@@ -33,7 +33,7 @@ body:
     id: proposal
     attributes:
       label: Proposed capability
-      description: Describe the smallest reusable outcome rather than a project-specific implementation.
+      description: Describe the smallest outcome that fits the documented project scope.
     validations:
       required: true
   - type: textarea
@@ -66,7 +66,7 @@ body:
       options:
         - label: I searched open and closed issues for this request.
           required: true
-        - label: The proposal is reusable and not specific to one downstream game.
+        - label: The proposal fits the documented ether-food scope and concept status.
           required: true
         - label: I described alternatives and an observable completion boundary.
           required: true

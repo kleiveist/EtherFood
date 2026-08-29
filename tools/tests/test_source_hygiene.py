@@ -28,6 +28,7 @@ DOCUMENTATION_ENTRY_POINTS = (
     REPOSITORY_ROOT / "README.md",
     REPOSITORY_ROOT / "AGENTS.md",
 )
+CONCEPT_STATUSES = {"idea", "draft", "testing", "approved", "superseded"}
 
 
 class SourceHygieneTests(unittest.TestCase):
@@ -142,6 +143,50 @@ class SourceHygieneTests(unittest.TestCase):
         required_paths = (
             "docs/index.md",
             "docs/README.md",
+            "docs/assets/README.md",
+            "docs/assets/diagrams/README.md",
+            "docs/assets/images/README.md",
+            "docs/assets/source/README.md",
+            "docs/assets/videos/README.md",
+            "docs/de/index.md",
+            "docs/de/00-overview/index.md",
+            "docs/de/00-overview/project-brief.md",
+            "docs/de/00-overview/design-pillars.md",
+            "docs/de/00-overview/core-loop.md",
+            "docs/de/00-overview/concept-roadmap.md",
+            "docs/de/01-baseline/index.md",
+            "docs/de/01-baseline/concept-baseline.md",
+            "docs/de/01-baseline/scope-and-non-goals.md",
+            "docs/de/01-baseline/documentation-governance.md",
+            "docs/de/01-baseline/language-policy.md",
+            "docs/de/01-baseline/terminology.md",
+            "docs/de/01-baseline/concept-status.md",
+            "docs/de/02-story-and-world/index.md",
+            "docs/de/02-story-and-world/story-and-world.md",
+            "docs/de/03-gameplay-and-progression/index.md",
+            "docs/de/03-gameplay-and-progression/gameplay-and-progression.md",
+            "docs/de/04-combat/index.md",
+            "docs/de/04-combat/combat-system.md",
+            "docs/de/05-machines/index.md",
+            "docs/de/05-machines/machine-system.md",
+            "docs/de/06-zuro-and-enemies/index.md",
+            "docs/de/06-zuro-and-enemies/zuro-system.md",
+            "docs/de/06-zuro-and-enemies/enemy-progression.md",
+            "docs/de/07-landscape-and-environment/index.md",
+            "docs/de/07-landscape-and-environment/landscape-system.md",
+            "docs/de/08-art-audio-and-ui/index.md",
+            "docs/de/08-art-audio-and-ui/presentation-direction.md",
+            "docs/de/09-prototypes-and-tests/index.md",
+            "docs/de/09-prototypes-and-tests/vertical-slice.md",
+            "docs/de/09-prototypes-and-tests/test-log.md",
+            "docs/de/10-decisions-and-archive/index.md",
+            "docs/de/10-decisions-and-archive/decision-log.md",
+            "docs/de/10-decisions-and-archive/archive-policy.md",
+            "docs/de/templates/system-design-template.md",
+            "docs/de/templates/decision-template.md",
+            "docs/de/templates/prototype-test-template.md",
+            "docs/de/templates/media-entry-template.md",
+            "docs/en/index.md",
             "docs/forge2d-template/index.md",
             "docs/forge2d-template/forge2d-template.md",
             "docs/forge2d-template/tooling/installation.md",
@@ -167,6 +212,9 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/forge2d-template/reports/M06_cross_platform_installer.md",
             "docs/developer/index.md",
             "docs/developer/developer.md",
+            "docs/developer/documentation-architecture.md",
+            "docs/developer/project-identity.md",
+            "docs/developer/plans/ether-food-documentation-restructure.md",
             "docs/developer/features/_feature-template.md",
             "docs/developer/decisions/_adr-template.md",
             "docs/developer/plans/_execplan-template.md",
@@ -201,10 +249,44 @@ class SourceHygieneTests(unittest.TestCase):
             "../forge2d-template/architecture/runtime-overview.md",
             developer_index.read_text(encoding="utf-8"),
         )
+        self.assertIn(
+            "Inherited Forge2D technical foundation",
+            developer_index.read_text(encoding="utf-8"),
+        )
 
         root_readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("- 📚 [Documentation hub](docs/index.md)", root_readme)
         self.assertNotIn("## 📁 Forge2D Template", root_readme)
+
+    def test_german_concept_frontmatter_and_translation_gate(self) -> None:
+        german_root = REPOSITORY_ROOT / "docs" / "de"
+        pages = sorted(german_root.rglob("*.md"))
+
+        self.assertGreater(len(pages), 1)
+        for path in pages:
+            with self.subTest(path=path.relative_to(REPOSITORY_ROOT)):
+                contents = path.read_text(encoding="utf-8")
+                self.assertTrue(contents.startswith("---\n"))
+                sections = contents.split("---", 2)
+                self.assertEqual(len(sections), 3)
+                frontmatter = sections[1]
+                self.assertIn("\nlanguage: de\n", frontmatter)
+                self.assertIn(
+                    "\ntranslation_status: blocked-until-concept-complete\n",
+                    frontmatter,
+                )
+                self.assertRegex(frontmatter, r'\nversion: "[0-9]+\.[0-9]+"\n')
+                status = re.search(r"\nstatus: ([a-z-]+)\n", frontmatter)
+                self.assertIsNotNone(status)
+                assert status is not None
+                self.assertIn(status.group(1), CONCEPT_STATUSES)
+                self.assertRegex(frontmatter, r"\nsource_of_truth: (?:true|false)\n")
+
+        english_pages = sorted(
+            path.relative_to(REPOSITORY_ROOT).as_posix()
+            for path in (REPOSITORY_ROOT / "docs" / "en").rglob("*.md")
+        )
+        self.assertEqual(english_pages, ["docs/en/index.md"])
 
     def test_installer_completion_report_is_indexed_and_traceable(self) -> None:
         reports_root = REPOSITORY_ROOT / "docs" / "forge2d-template" / "reports"

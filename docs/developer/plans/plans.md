@@ -7,5 +7,6 @@
 
 ## 📄 Pages
 - 📝 [<Milestone> ExecPlan](_execplan-template.md)
+- 📝 [ether-food Documentation Restructure ExecPlan](ether-food-documentation-restructure.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

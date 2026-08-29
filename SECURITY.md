@@ -10,15 +10,15 @@ Security fixes target the actively maintained repository state:
 | Latest published `0.1.x` release | Yes |
 | Older releases, commits, and downstream forks | No |
 
-Before the first release is published, protected `main` is the only supported
-ref. Downstream templates and games maintain their own security policies and
-private reporting routes.
+Before the first game release is published, protected `main` is the primary
+supported ref. Forks and downstream builds maintain their own security policies
+and private reporting routes.
 
 ## Report a Vulnerability Privately
 
 Do not disclose a suspected vulnerability in a public issue, pull request,
 discussion, commit, or log. Submit a
-[private GitHub vulnerability report](https://github.com/kleiveist/Forge2D-Template/security/advisories/new)
+[private GitHub vulnerability report](https://github.com/kleiveist/ether-food/security/advisories/new)
 instead. GitHub Security Advisories restrict the report and follow-up discussion
 to the reporter and authorized repository maintainers.
 
@@ -52,8 +52,8 @@ rejection or duplicate classification in the private advisory.
 ## Maintainers of Forks
 
 GitHub private vulnerability reporting is a repository setting and is not
-inherited automatically by every copy of this template. Fork and template
-owners must enable **Settings → Code security → Private vulnerability
+inherited automatically by every fork. Fork owners must enable
+**Settings → Code security → Private vulnerability
 reporting**, replace the canonical link above with their repository route, and
 verify it from a non-maintainer account. If they cannot enable that feature,
 they must publish an organization-managed private contact before claiming

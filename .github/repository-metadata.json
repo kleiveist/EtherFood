@@ -1,14 +1,15 @@
 {
   "schema_version": 1,
-  "description": "Minimal Godot 4 2D game template with repository-local Python tooling for setup, checks, exports, and releases.",
+  "description": "A top-down action RPG about restoring a lost world, reviving civilizations, and uncovering forgotten memories.",
   "homepage": null,
   "topics": [
     "2d-game",
+    "action-rpg",
     "game-development",
-    "game-template",
     "gdscript",
     "godot",
     "godot-4",
-    "python"
+    "python",
+    "top-down"
   ]
 }

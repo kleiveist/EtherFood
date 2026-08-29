@@ -25,7 +25,7 @@ class ProjectConfigTests(unittest.TestCase):
         config = load_project_config(REPOSITORY_ROOT / "config" / "project.toml")
         self.assertEqual(config.schema_version, 1)
         self.assertEqual(config.template_id, "forge2d-template")
-        self.assertEqual(config.display_name, "Forge2D Template")
+        self.assertEqual(config.display_name, "ether-food")
         self.assertEqual(config.version, "0.1.0")
         self.assertEqual(config.repository_language, "en")
         self.assertEqual(config.default_cli_name, "g2d")
@@ -46,7 +46,7 @@ class ProjectConfigTests(unittest.TestCase):
 
             [project]
             template_id = "forge2d-template"
-            display_name = "Forge2D Template"
+            display_name = "ether-food"
             version = "0.1.0"
             repository_language = "en"
             default_cli_name = "g2d"

@@ -11,7 +11,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 GITHUB_ROOT = REPOSITORY_ROOT / ".github"
 ISSUE_TEMPLATE_ROOT = GITHUB_ROOT / "ISSUE_TEMPLATE"
 SECURITY_REPORT_URL = (
-    "https://github.com/kleiveist/Forge2D-Template/security/advisories/new"
+    "https://github.com/kleiveist/ether-food/security/advisories/new"
 )
 FORM_EXPECTATIONS = {
     "bug_report.yml": {
@@ -117,7 +117,7 @@ class CommunityHealthTests(unittest.TestCase):
         self.assertIn("Alternatives considered", contents)
         self.assertIn("Acceptance criteria", contents)
         self.assertIn("Risks and dependencies", contents)
-        self.assertIn("not specific to one downstream game", contents)
+        self.assertIn("fits the documented ether-food scope", contents)
 
     def test_issue_chooser_deliberately_disables_blank_reports(self) -> None:
         config = self._read_issue_template("config.yml")
