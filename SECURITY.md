@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](README.md)
+<!-- AUTO-GENERATED:backlink END -->
 # Security Policy
 
 ## Supported Versions

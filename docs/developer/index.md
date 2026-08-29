@@ -23,7 +23,7 @@ game concept.
 
 ## Concept boundary
 
-The [authoritative German concept](../de/index.md) owns game-design decisions.
+The [authoritative German concept](../content/de/index.md) owns game-design decisions.
 Technical pages link to the approved source decision and describe implementation
 only.
 

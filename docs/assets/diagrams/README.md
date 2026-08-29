@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](diagrams.md)
+<!-- AUTO-GENERATED:backlink END -->
 [← Documentation media](../README.md)
 
 # Diagrams

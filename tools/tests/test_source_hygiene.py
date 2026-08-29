@@ -148,45 +148,48 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/assets/images/README.md",
             "docs/assets/source/README.md",
             "docs/assets/videos/README.md",
-            "docs/de/index.md",
-            "docs/de/00-overview/index.md",
-            "docs/de/00-overview/project-brief.md",
-            "docs/de/00-overview/design-pillars.md",
-            "docs/de/00-overview/core-loop.md",
-            "docs/de/00-overview/concept-roadmap.md",
-            "docs/de/01-baseline/index.md",
-            "docs/de/01-baseline/concept-baseline.md",
-            "docs/de/01-baseline/scope-and-non-goals.md",
-            "docs/de/01-baseline/documentation-governance.md",
-            "docs/de/01-baseline/language-policy.md",
-            "docs/de/01-baseline/terminology.md",
-            "docs/de/01-baseline/concept-status.md",
-            "docs/de/02-story-and-world/index.md",
-            "docs/de/02-story-and-world/story-and-world.md",
-            "docs/de/03-gameplay-and-progression/index.md",
-            "docs/de/03-gameplay-and-progression/gameplay-and-progression.md",
-            "docs/de/04-combat/index.md",
-            "docs/de/04-combat/combat-system.md",
-            "docs/de/05-machines/index.md",
-            "docs/de/05-machines/machine-system.md",
-            "docs/de/06-zuro-and-enemies/index.md",
-            "docs/de/06-zuro-and-enemies/zuro-system.md",
-            "docs/de/06-zuro-and-enemies/enemy-progression.md",
-            "docs/de/07-landscape-and-environment/index.md",
-            "docs/de/07-landscape-and-environment/landscape-system.md",
-            "docs/de/08-art-audio-and-ui/index.md",
-            "docs/de/08-art-audio-and-ui/presentation-direction.md",
-            "docs/de/09-prototypes-and-tests/index.md",
-            "docs/de/09-prototypes-and-tests/vertical-slice.md",
-            "docs/de/09-prototypes-and-tests/test-log.md",
-            "docs/de/10-decisions-and-archive/index.md",
-            "docs/de/10-decisions-and-archive/decision-log.md",
-            "docs/de/10-decisions-and-archive/archive-policy.md",
-            "docs/de/templates/system-design-template.md",
-            "docs/de/templates/decision-template.md",
-            "docs/de/templates/prototype-test-template.md",
-            "docs/de/templates/media-entry-template.md",
-            "docs/en/index.md",
+            "docs/content/content.md",
+            "docs/content/de/de.md",
+            "docs/content/de/index.md",
+            "docs/content/de/00-overview/index.md",
+            "docs/content/de/00-overview/project-brief.md",
+            "docs/content/de/00-overview/design-pillars.md",
+            "docs/content/de/00-overview/core-loop.md",
+            "docs/content/de/00-overview/concept-roadmap.md",
+            "docs/content/de/01-baseline/index.md",
+            "docs/content/de/01-baseline/concept-baseline.md",
+            "docs/content/de/01-baseline/scope-and-non-goals.md",
+            "docs/content/de/01-baseline/documentation-governance.md",
+            "docs/content/de/01-baseline/language-policy.md",
+            "docs/content/de/01-baseline/terminology.md",
+            "docs/content/de/01-baseline/concept-status.md",
+            "docs/content/de/02-story-and-world/index.md",
+            "docs/content/de/02-story-and-world/story-and-world.md",
+            "docs/content/de/03-gameplay-and-progression/index.md",
+            "docs/content/de/03-gameplay-and-progression/gameplay-and-progression.md",
+            "docs/content/de/04-combat/index.md",
+            "docs/content/de/04-combat/combat-system.md",
+            "docs/content/de/05-machines/index.md",
+            "docs/content/de/05-machines/machine-system.md",
+            "docs/content/de/06-zuro-and-enemies/index.md",
+            "docs/content/de/06-zuro-and-enemies/zuro-system.md",
+            "docs/content/de/06-zuro-and-enemies/enemy-progression.md",
+            "docs/content/de/07-landscape-and-environment/index.md",
+            "docs/content/de/07-landscape-and-environment/landscape-system.md",
+            "docs/content/de/08-art-audio-and-ui/index.md",
+            "docs/content/de/08-art-audio-and-ui/presentation-direction.md",
+            "docs/content/de/09-prototypes-and-tests/index.md",
+            "docs/content/de/09-prototypes-and-tests/vertical-slice.md",
+            "docs/content/de/09-prototypes-and-tests/test-log.md",
+            "docs/content/de/10-decisions-and-archive/index.md",
+            "docs/content/de/10-decisions-and-archive/decision-log.md",
+            "docs/content/de/10-decisions-and-archive/archive-policy.md",
+            "docs/content/de/templates/system-design-template.md",
+            "docs/content/de/templates/decision-template.md",
+            "docs/content/de/templates/prototype-test-template.md",
+            "docs/content/de/templates/media-entry-template.md",
+            "docs/content/en/en.md",
+            "docs/content/en/index.md",
             "docs/forge2d-template/index.md",
             "docs/forge2d-template/forge2d-template.md",
             "docs/forge2d-template/tooling/installation.md",
@@ -255,12 +258,51 @@ class SourceHygieneTests(unittest.TestCase):
         )
 
         root_readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("- 📚 [Documentation hub](docs/index.md)", root_readme)
+        self.assertIn("- 📚 [Docs Home](docs/index.md)", root_readme)
+        self.assertIn("## 📁 Game concept content", root_readme)
+        self.assertIn("[Overview](docs/content/content.md)", root_readme)
+        self.assertIn("## 📁 Inherited Forge2D technical foundation", root_readme)
         self.assertNotIn("## 📁 Forge2D Template", root_readme)
 
+        self.assertFalse((REPOSITORY_ROOT / "docs" / "de").exists())
+        self.assertFalse((REPOSITORY_ROOT / "docs" / "en").exists())
+
+    def test_content_directories_have_pygitindex_overviews(self) -> None:
+        content_root = REPOSITORY_ROOT / "docs" / "content"
+        directories = [content_root]
+        directories.extend(
+            sorted(path for path in content_root.rglob("*") if path.is_dir())
+        )
+
+        for directory in directories:
+            with self.subTest(directory=directory.relative_to(REPOSITORY_ROOT)):
+                overview = directory / f"{directory.name}.md"
+                self.assertTrue(overview.is_file())
+                contents = overview.read_text(encoding="utf-8")
+                self.assertEqual(
+                    contents.count("<!-- AUTO-GENERATED:docs-index START -->"),
+                    1,
+                )
+                self.assertEqual(
+                    contents.count("<!-- AUTO-GENERATED:docs-index END -->"),
+                    1,
+                )
+                self.assertEqual(
+                    contents.count("<!-- AUTO-GENERATED:backlink START -->"),
+                    1,
+                )
+                self.assertEqual(
+                    contents.count("<!-- AUTO-GENERATED:backlink END -->"),
+                    1,
+                )
+
     def test_german_concept_frontmatter_and_translation_gate(self) -> None:
-        german_root = REPOSITORY_ROOT / "docs" / "de"
-        pages = sorted(german_root.rglob("*.md"))
+        german_root = REPOSITORY_ROOT / "docs" / "content" / "de"
+        pages = sorted(
+            path
+            for path in german_root.rglob("*.md")
+            if path.name != f"{path.parent.name}.md"
+        )
 
         self.assertGreater(len(pages), 1)
         for path in pages:
@@ -284,9 +326,12 @@ class SourceHygieneTests(unittest.TestCase):
 
         english_pages = sorted(
             path.relative_to(REPOSITORY_ROOT).as_posix()
-            for path in (REPOSITORY_ROOT / "docs" / "en").rglob("*.md")
+            for path in (REPOSITORY_ROOT / "docs" / "content" / "en").rglob("*.md")
         )
-        self.assertEqual(english_pages, ["docs/en/index.md"])
+        self.assertEqual(
+            english_pages,
+            ["docs/content/en/en.md", "docs/content/en/index.md"],
+        )
 
     def test_installer_completion_report_is_indexed_and_traceable(self) -> None:
         reports_root = REPOSITORY_ROOT / "docs" / "forge2d-template" / "reports"

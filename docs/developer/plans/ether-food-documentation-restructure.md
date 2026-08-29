@@ -50,7 +50,8 @@ the inherited Forge2D documentation, and renaming the inherited `g2dtool`,
 
 1. Record the initial worktree state, documentation-generation finding, current
    identity contracts, relevant tests, and inherited documentation boundaries.
-2. Create the complete `docs/de/`, `docs/en/`, and `docs/assets/` structures
+2. Create the complete `docs/content/de/`, `docs/content/en/`, and
+   `docs/assets/` structures
    with governed frontmatter, substantive German concept drafts, explicit open
    questions, acceptance criteria, and relative navigation.
 3. Rewrite the root and documentation hubs, add the English developer pages,
@@ -86,15 +87,20 @@ the inherited Forge2D documentation, and renaming the inherited `g2dtool`,
 - [x] 2026-08-29: Completed the required command attempts,
   environment-aware equivalents, final content/scope audits, and validation
   record.
+- [x] 2026-08-29: Applied the requested follow-up layout by moving both language
+  trees below `docs/content/`, refreshing path contracts, and running the
+  session-provided `PyGitIndex.py` in dry-run and write modes.
 
 ## Surprises & Discoveries
 
 - 2026-08-29: Git requires a command-local `safe.directory=/workspace` override
   because of container ownership. Using `git -c safe.directory=/workspace ...`
   avoids changing global or repository Git configuration.
-- 2026-08-29: The documentation index generator is intentionally absent; M08
-  states that `PyGitIndex.py` was temporary and removed after generating the
-  inherited navigation blocks.
+- 2026-08-29: The documentation index generator is intentionally absent from
+  the repository; M08 states that `PyGitIndex.py` was temporary and removed
+  after generating the inherited navigation blocks. A maintained copy was
+  later found in the session-provided tooling and used without copying it into
+  the repository.
 - 2026-08-29: Godot has already rewritten `game/project.godot` locally. The
   identity update must be a one-line patch against that working copy.
 - 2026-08-29: The container has `/usr/bin/python3` but no `python` command,
@@ -109,12 +115,16 @@ the inherited Forge2D documentation, and renaming the inherited `g2dtool`,
 
 ## Decision Log
 
-- 2026-08-29: Treat German pages under `docs/de/` as the game-concept source of
+- 2026-08-29: Treat German pages under `docs/content/de/` as the game-concept source of
   truth; English remains the language for public overview and technical
   developer documentation.
-- 2026-08-29: Keep generated-marker comments where they already define managed
-  navigation, but refresh their contents manually and deterministically because
-  no supported generator exists in this checkout.
+- 2026-08-29: The initial restructure maintained generated-marker regions
+  manually because no generator existed inside the checkout. For the requested
+  follow-up, use the session-provided `PyGitIndex.py` and keep its generated
+  overview pages and backlinks tracked without adding the generator itself.
+- 2026-08-29: Group the German concept and English translation-status entry
+  under `docs/content/`, while retaining `docs/developer/` and the inherited
+  Forge2D foundation as separate documentation domains.
 - 2026-08-29: Keep Forge2D-specific history, tooling names, identifiers, export
   artifact names, and release internals unchanged. Full technical decoupling or
   renaming of remaining template internals is a separate follow-up project.
@@ -162,30 +172,47 @@ Validation results:
   inherited history, internal compatibility names, or the documented origin.
 - UTF-8 conversion validation passed for all new German, English-status, and
   media Markdown. Relative-link and Mermaid validation passed in the focused
-  test. `docs/en/` contains only `index.md`; `docs/assets/` contains no binary
+  test. `docs/content/en/` contains only its canonical status page and generated
+  navigation overview; `docs/assets/` contains no binary
   file; and no new documentation file exceeds 1 MiB.
 - Git scope review found no dependency-manifest change and no gameplay script or
   scene change. The only game-path file is the already-dirty
   `game/project.godot`; this task changes only its `config/name` line while
   preserving the prior editor reserialization.
+- Follow-up validation: the session-provided `PyGitIndex.py` completed both its
+  dry-run and write runs. The first clean write run processed 37 documentation
+  indices and 134 documentation backlinks, then regenerated the root README
+  navigation.
+- `python3 -m unittest tools.tests.test_source_hygiene` — passed, 14 tests,
+  including the relocated paths and a generated-overview contract for every
+  directory below `docs/content/`.
+- `python3 tools/control.py style` — passed for 44 Python/GDScript files.
+- `python3 -m unittest discover -s tools/tests -q` — passed, 174 tests.
+- `git -c safe.directory=/workspace diff --check` — passed.
+- Follow-up `python3 tools/control.py check` — ran but did not pass: Doctor
+  reported 9 passes, 2 warnings, and 1 failure because Godot 4 is unavailable;
+  the style stage passed for 44 files; Python tests could not start because
+  `pytest` is unavailable; and the Godot integration test could not start.
 
 ## Recovery / Idempotence
 
-All intended changes are versioned text except for no new artifacts; re-running
-the tests and audits is safe. Navigation is path-based and deterministically
-ordered. Recovery must use focused edits that retain the pre-existing
-`game/project.godot` work and all inherited Forge2D documents. Do not use a
-destructive Git reset or remove generated/user-owned files.
+All intended changes, including generated navigation pages, are versioned text;
+the external generator is not copied into the repository. Re-running the
+generator, tests, and audits is safe. Navigation is path-based and
+deterministically ordered. Recovery must use focused edits that retain the
+pre-existing `game/project.godot` work and all inherited Forge2D documents. Do
+not use a destructive Git reset or remove generated/user-owned files.
 
 ## Outcomes & Retrospective
 
 The repository now presents `ether-food` as its game and GitHub identity while
-retaining the operational Forge2D foundation. The documentation adds exactly 38
-German concept Markdown files across the required numbered areas and templates,
-five media-policy entry points, one English translation-status page, and two
-English developer foundation pages. Navigation, frontmatter, concept status,
-decision history, translation gating, and prototype evidence are linked and
-machine-checkable.
+retaining the operational Forge2D foundation. The documentation retains 38
+German concept-source Markdown files below `docs/content/de/`, one English
+translation-status source below `docs/content/en/`, five media-policy entry
+points, and two English developer foundation pages. PyGitIndex-generated
+overviews now connect every content directory. Navigation, frontmatter, concept
+status, decision history, translation gating, and prototype evidence are linked
+and machine-checkable.
 
 Approved baseline decisions cover the exact name, language split, genre,
 Top-down perspective, restoration sequence, Vertical Slice combat scope, and

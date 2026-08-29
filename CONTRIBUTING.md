@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](README.md)
+<!-- AUTO-GENERATED:backlink END -->
 # Contributing to ether-food
 
 Thank you for improving `ether-food`. Contributions should keep the game concept

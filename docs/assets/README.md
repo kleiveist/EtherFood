@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](assets.md)
+<!-- AUTO-GENERATED:backlink END -->
 [← Documentation hub](../index.md)
 
 # Documentation media
@@ -22,5 +25,5 @@ publishing-platform dependency.
   documentation restructure.
 
 Do not create binary placeholder files. Use the German
-[media entry template](../de/templates/media-entry-template.md) to record
+[media entry template](../content/de/templates/media-entry-template.md) to record
 purpose, provenance, license, and related documents.

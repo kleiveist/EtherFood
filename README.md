@@ -21,27 +21,51 @@ and uncovering forgotten memories.
   rather than implemented or approved rules
 
 The authoritative game concept is written in German under
-[`docs/de/`](docs/de/index.md). Detailed English translations will begin only
+[`docs/content/de/`](docs/content/de/index.md). Detailed English translations will begin only
 after the entire German concept is complete and each individual source document
-is approved. The English [documentation status](docs/en/index.md) explains this
+is approved. The English [documentation status](docs/content/en/index.md) explains this
 translation gate.
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## Documentation
+## 📄 Files
+- 📝 [ether-food Repository Rules](AGENTS.md)
+- 📝 [Changelog](CHANGELOG.md)
+- 📝 [Contributing to ether-food](CONTRIBUTING.md)
+- 📝 [Security Policy](SECURITY.md)
 
-- 📚 [Documentation hub](docs/index.md)
-- [Authoritative German game concept](docs/de/index.md)
-- [English documentation status](docs/en/index.md)
-- [Technical developer documentation](docs/developer/index.md)
-- [Inherited Forge2D technical foundation](docs/forge2d-template/index.md)
+# DOCS
+- 📚 [Docs Home](docs/index.md)
 
-## Repository files
+## 📁 Assets
+- 🗂️ [Overview](docs/assets/assets.md)
 
-- [Repository rules](AGENTS.md)
-- [Changelog](CHANGELOG.md)
-- [Contributing guide](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
+## 📁 Case studies
+- 🗂️ [Overview](docs/case-studies/case-studies.md)
+- 📝 [<Case-study title>](docs/case-studies/_case-study-template.md)
+
+## 📁 Game concept content
+- 🗂️ [Overview](docs/content/content.md)
+
+## 📁 Developer
+- 🗂️ [Overview](docs/developer/developer.md)
+- 📝 [Documentation architecture](docs/developer/documentation-architecture.md)
+- 📝 [Project identity](docs/developer/project-identity.md)
+
+## 📁 Inherited Forge2D technical foundation
+- 🗂️ [Overview](docs/forge2d-template/forge2d-template.md)
+
+## 📁 In-game help
+- 🗂️ [Overview](docs/in-game-help/in-game-help.md)
+- 📝 [<Help topic>](docs/in-game-help/_help-topic-template.md)
+
+## 📁 Player guide
+- 🗂️ [Overview](docs/player-guide/player-guide.md)
+- 📝 [<Player-guide topic>](docs/player-guide/_topic-template.md)
+
+## 📁 Release manual
+- 🗂️ [Overview](docs/release-manual/release-manual.md)
+- 📝 [Release <version>](docs/release-manual/_release-template.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 

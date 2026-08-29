@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](source.md)
+<!-- AUTO-GENERATED:backlink END -->
 [← Documentation media](../README.md)
 
 # Editable media sources

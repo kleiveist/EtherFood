@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED:backlink START -->
 [← Back](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Forge2D Template
+# Inherited Forge2D technical foundation
 
 <!-- AUTO-GENERATED:docs-index START -->
 

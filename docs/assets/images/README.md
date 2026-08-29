@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](images.md)
+<!-- AUTO-GENERATED:backlink END -->
 [← Documentation media](../README.md)
 
 # Exported images

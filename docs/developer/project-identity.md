@@ -1,3 +1,6 @@
+<!-- AUTO-GENERATED:backlink START -->
+[← Back](developer.md)
+<!-- AUTO-GENERATED:backlink END -->
 [← Developer documentation](index.md)
 
 # Project identity

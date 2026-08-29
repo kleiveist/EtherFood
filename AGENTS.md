@@ -4,10 +4,11 @@
 
 # ether-food Repository Rules
 
-Start at [docs/index.md](docs/index.md). The German concept under `docs/de/` is
+Start at [docs/index.md](docs/index.md). The German concept under
+`docs/content/de/` is
 the content source of truth; its detailed
-[governance](docs/de/01-baseline/documentation-governance.md) and
-[language policy](docs/de/01-baseline/language-policy.md) are binding. Technical
+[governance](docs/content/de/01-baseline/documentation-governance.md) and
+[language policy](docs/content/de/01-baseline/language-policy.md) are binding. Technical
 documentation under `docs/developer/`, code, and technical identifiers are
 English.
 
