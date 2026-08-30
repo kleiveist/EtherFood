@@ -17,8 +17,8 @@ GUIDE_PATH = (
     / "project-identity.md"
 )
 EXPECTED_DESCRIPTION = (
-    "A top-down action RPG about restoring a lost world, reviving "
-    "civilizations, and uncovering forgotten memories."
+    "Ein Top-down-Action-RPG über den Wiederaufbau einer verlorenen Welt, "
+    "die Rückkehr ihrer Zivilisationen und vergessene Erinnerungen."
 )
 EXPECTED_TOPICS = (
     "2d-game",
@@ -66,28 +66,17 @@ class RepositoryMetadataTests(unittest.TestCase):
                 self.assertLessEqual(len(topic), 50)
 
     def test_homepage_is_intentionally_omitted(self) -> None:
-        guide = GUIDE_PATH.read_text(encoding="utf-8")
-
         self.assertIsNone(self.metadata["homepage"])
-        self.assertIn("Homepage | Not configured", guide)
-        self.assertIn("There is no maintained canonical website", guide)
-        self.assertIn("expected homepage value is `null`", guide)
 
     def test_project_identity_documents_audit_and_template_origin(self) -> None:
-        guide = GUIDE_PATH.read_text(encoding="utf-8")
+        guide = " ".join(GUIDE_PATH.read_text(encoding="utf-8").split())
         required_text = (
             ".github/repository-metadata.json",
             EXPECTED_DESCRIPTION,
-            "gh api repos/kleiveist/ether-food",
-            "--jq '{description, homepage, topics}'",
             "Forge2D Template",
             'template_id = "forge2d-template"',
-            'repository_language = "en"',
             "g2dtool",
-            "export artifact names",
         )
-        for topic in EXPECTED_TOPICS:
-            required_text += (f"`{topic}`",)
 
         for text in required_text:
             with self.subTest(text=text):

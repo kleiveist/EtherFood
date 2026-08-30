@@ -4,7 +4,7 @@ status: accepted
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](concept.md)
+[← Zurück](concept.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Freigabe-Checkliste
 
@@ -31,9 +31,9 @@ Zuordnung.
 
 Alle zwölf Punkte sind abgeschlossen und in die deutsche Fachdokumentation
 übertragen. Die zusammenhängenden kosmologischen und erzählerischen Folgen sind
-in [ADR-0005 – Kanonfreigabe der Checkliste](game%28de%29/decisions/ADR-0005-kanonfreigabe-checkliste.md)
+in [ADR-0005 – Kanonfreigabe der Checkliste](entscheidungen/ADR-0005-kanonfreigabe-checkliste.md)
 dokumentiert. Die anschließend bestätigten Regeln zu
-[Gelehrtenüberlieferungen](game%28de%29/decisions/ADR-0006-gelehrtenueberlieferungen.md)
+[Gelehrtenüberlieferungen](entscheidungen/ADR-0006-gelehrtenueberlieferungen.md)
 und zum
-[lebensnotwendigen Seelenkreislauf](game%28de%29/decisions/ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md)
+[lebensnotwendigen Seelenkreislauf](entscheidungen/ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md)
 ergänzen diese Freigabe.

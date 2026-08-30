@@ -1,43 +1,43 @@
-## Summary
+## Zusammenfassung
 
-<!-- Describe the problem and the smallest complete solution. -->
+<!-- Beschreibe das Problem und die kleinste vollständige Lösung. -->
 
-## Related issue
+## Zugehöriges Issue
 
-<!-- Use a closing keyword only when this PR fully resolves the issue. -->
+<!-- Verwende ein schließendes Schlüsselwort nur bei vollständiger Lösung. -->
 
 Closes #
 
-## Behavior and compatibility
+## Verhalten und Kompatibilität
 
-<!-- Describe user-visible behavior, platforms, compatibility, and limitations. -->
+<!-- Beschreibe sichtbares Verhalten, Plattformen, Grenzen und Kompatibilität. -->
 
-## Validation
+## Prüfungen
 
-<!-- List exact commands and results. Explain any check that was not run. -->
+<!-- Liste die genauen Befehle und Ergebnisse auf. Begründe Auslassungen. -->
 
-- Focused checks:
+- Gezielte Prüfungen:
 - `python tools/control.py style`:
 - `python tools/control.py check`:
 
-## Documentation
+## Dokumentation
 
-<!-- List updated docs/changelog, or explain why no documentation changed. -->
+<!-- Nenne geänderte Dokumente oder begründe, warum keine nötig waren. -->
 
-## Risk and recovery
+## Risiko und Wiederherstellung
 
-<!-- Identify failure modes, security impact, rollout assumptions, and rollback. -->
+<!-- Nenne Fehlerfälle, Sicherheitsfolgen, Annahmen und Rückweg. -->
 
-Risk level: low / medium / high
+Risikostufe: niedrig / mittel / hoch
 
-Recovery:
+Wiederherstellung:
 
-## Checklist
+## Checkliste
 
-- [ ] The change is focused and contains no unrelated generated files or caches.
-- [ ] Tests cover changed behavior, or the validation section explains why not.
-- [ ] Documentation and `CHANGELOG.md` are updated, or the reason is documented.
-- [ ] `g2d check` passes, or every blocker is reported with a recovery step.
-- [ ] No secret, token, credential, personal data, or machine path is committed.
-- [ ] Every new dependency has a reviewed purpose, risk, license, and alternative.
-- [ ] User-visible risks, compatibility limits, and recovery are explicit.
+- [ ] Die Änderung ist begrenzt und enthält keine fremden Caches oder Generatdateien.
+- [ ] Tests decken geändertes Verhalten ab oder die fehlende Prüfung ist erklärt.
+- [ ] Dokumentation und `CHANGELOG.md` sind aktualisiert oder begründet unverändert.
+- [ ] `g2d check` besteht oder jeder Blocker besitzt einen Wiederherstellungsweg.
+- [ ] Es werden keine Geheimnisse, Token, Zugangsdaten, persönlichen Daten oder Rechnerpfade übernommen.
+- [ ] Zweck, Risiko, Lizenz und Alternative jeder neuen Abhängigkeit wurden geprüft.
+- [ ] Sichtbare Risiken, Kompatibilitätsgrenzen und Wiederherstellung sind eindeutig.

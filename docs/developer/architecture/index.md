@@ -1,8 +1,8 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](architecture.md)
+[← Zurück](architecture.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Game architecture
+# Spielarchitektur
 
-Add architecture that belongs to the concrete game here. Start from the
-[architecture template](_architecture-template.md) when a stable design needs to
-be recorded.
+Hier wird Architektur dokumentiert, die ausschließlich zum konkreten Spiel
+gehört. Verwende die [Architekturvorlage](_architecture-template.md), sobald
+ein Entwurf stabil genug für eine dauerhafte Beschreibung ist.

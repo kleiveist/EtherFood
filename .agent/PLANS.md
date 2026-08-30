@@ -1,22 +1,22 @@
-# ExecPlan Standard
+# Standard für Arbeitspläne
 
-ExecPlans are living documents for complex repository work. Keep them concise,
-current, and useful to someone resuming the task from only the worktree.
+Arbeitspläne sind fortlaufend gepflegte Dokumente für komplexe Änderungen am
+Repository. Sie sollen knapp, aktuell und für jemanden verständlich sein, der
+die Arbeit nur anhand des Arbeitsbaums übernimmt.
 
-Each template-work plan under `docs/forge2d-template/plans/` and each game-work
-plan under `docs/developer/plans/` should include:
+Jeder technische Plan unter `docs/developer/plans/` enthält sinngemäß:
 
-- Purpose / Big Picture
-- Current State
-- Scope and Non-Goals
-- Concrete Steps
-- Progress
-- Surprises & Discoveries
-- Decision Log
-- Validation
-- Recovery / Idempotence
-- Outcomes & Retrospective
+- Zweck und Gesamtbild
+- Ausgangslage
+- Umfang und Nicht-Ziele
+- konkrete Schritte
+- Fortschritt
+- Erkenntnisse und Überraschungen
+- Entscheidungen
+- Prüfungen
+- Wiederholbarkeit und Wiederherstellung
+- Ergebnis und Rückblick
 
-Update Progress and Validation while the work changes. Prefer dated entries when
-the sequence matters. Do not record secrets, local-only credentials, or generated
-cache contents.
+Aktualisiere Fortschritt und Prüfungen während der Arbeit. Verwende
+Datumsangaben, wenn die Reihenfolge wichtig ist. Halte Geheimnisse, nur lokal
+gültige Anmeldedaten und generierte Cache-Inhalte aus den Plänen heraus.

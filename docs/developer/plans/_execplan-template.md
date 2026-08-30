@@ -1,24 +1,24 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](plans.md)
+[← Zurück](plans.md)
 <!-- AUTO-GENERATED:backlink END -->
-# <Milestone> ExecPlan
+# Arbeitsplan: <Meilenstein>
 
-## Purpose / Big Picture
+## Zweck und Gesamtbild
 
-## Current State
+## Ausgangslage
 
-## Scope and Non-Goals
+## Umfang und Nicht-Ziele
 
-## Concrete Steps
+## Konkrete Schritte
 
-## Progress
+## Fortschritt
 
-## Surprises & Discoveries
+## Erkenntnisse und Überraschungen
 
-## Decision Log
+## Entscheidungen
 
-## Validation
+## Prüfungen
 
-## Recovery / Idempotence
+## Wiederholbarkeit und Wiederherstellung
 
-## Outcomes & Retrospective
+## Ergebnis und Rückblick

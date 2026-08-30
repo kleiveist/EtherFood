@@ -178,12 +178,22 @@ def validate_release_metadata(layout: RepositoryLayout) -> ReleaseMetadata:
             f"CHANGELOG.md has an invalid release date: {release_date}.",
             ("Use a real calendar date in YYYY-MM-DD format.",),
         ) from exc
-    notes_path = (
+    hidden_notes_path = (
+        layout.repository_root
+        / "docs"
+        / ".forge2d-template"
+        / "releases"
+        / f"v{version}.md"
+    )
+    legacy_notes_path = (
         layout.repository_root
         / "docs"
         / "forge2d-template"
         / "releases"
         / f"v{version}.md"
+    )
+    notes_path = (
+        hidden_notes_path if hidden_notes_path.exists() else legacy_notes_path
     )
     notes = _read_text(notes_path, "release notes")
     expected_title = f"# Forge2D Template v{version}"
@@ -417,7 +427,11 @@ def _write_assets_atomically(
 
 
 def _unreleased_has_entries(changelog: str) -> bool:
-    heading = re.search(r"^## Unreleased\s*$", changelog, re.MULTILINE)
+    heading = re.search(
+        r"^## (?:Unreleased|Unveröffentlicht)\s*$",
+        changelog,
+        re.MULTILINE,
+    )
     if heading is None:
         return True
     next_heading = re.search(r"^## ", changelog[heading.end() :], re.MULTILINE)

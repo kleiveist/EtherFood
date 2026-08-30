@@ -1,21 +1,22 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](architecture.md)
+[← Zurück](architecture.md)
 <!-- AUTO-GENERATED:backlink END -->
-# <Game area> architecture
+# Architektur: <Spielbereich>
 
-## Purpose
+## Zweck
 
-Describe the responsibility and user-facing outcome of this game-owned area.
+Beschreibe Verantwortung und sichtbares Ergebnis dieses Spielbereichs.
 
-## Boundaries
+## Grenzen
 
-State what this area owns, what it deliberately does not own, and its
-dependencies on other game areas or on the inherited template foundation.
+Halte fest, was der Bereich besitzt, bewusst nicht besitzt und von welchen
+anderen Spielbereichen oder Teilen der Forge2D-Grundlage er abhängt.
 
-## Design
+## Aufbau
 
-Document the relevant components, data, lifecycle, and integration points.
+Dokumentiere wichtige Komponenten, Daten, Lebenszyklen und
+Integrationspunkte.
 
-## Validation
+## Prüfung
 
-List the tests, checks, or playable evidence that validate this design.
+Nenne Tests, Prüfungen oder spielbare Nachweise für den Entwurf.

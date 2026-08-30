@@ -1,38 +1,45 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../README.md)
+[← Zurück](../README.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Documentation
-
-This is the authoritative documentation hub. It separates reusable Forge2D
-Template material from documentation owned by a concrete game.
+# Dokumentationsübersicht
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
+## 📄 Seiten
 - ⏭️ (keine Seiten)
 
-## 📁 Assets
-- 🗂️ [Overview](assets/assets.md)
+## 📁 Medien
+- 🗂️ [Übersicht](assets/assets.md)
 
-## 📁 Concept
-- 🗂️ [Overview](concept/concept.md)
+## 📁 Konzept
+- 🗂️ [Übersicht](concept/concept.md)
 - 📝 [Freigabe-Checkliste](concept/CHECKLIST-ZUR-FREIGABE.md)
 
-## 📁 Game concept content
-- 🗂️ [Overview](content/content.md)
+## 📁 Entwicklung
+- 🗂️ [Übersicht](developer/developer.md)
+- 📝 [Dokumentationsstruktur](developer/documentation-architecture.md)
+- 📝 [Projektidentität](developer/project-identity.md)
 
-## 📁 Developer
-- 🗂️ [Overview](developer/developer.md)
-- 📝 [Documentation architecture](developer/documentation-architecture.md)
-- 📝 [Project identity](developer/project-identity.md)
-
-## 📁 Player guide
-- 🗂️ [Overview](player-guide/player-guide.md)
-- 📝 [<Player-guide topic>](player-guide/_topic-template.md)
+## 📁 Spielerhandbuch
+- 🗂️ [Übersicht](player-guide/player-guide.md)
+- 📝 [<Thema des Spielerhandbuchs>](player-guide/_topic-template.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 
-Forge2D Template is licensed under the MIT License. See `../LICENSE`.
+Die Projektdokumentation ist nach ihrem Zweck gegliedert:
 
-Community workflows are repository-wide: see
-[CONTRIBUTING.md](../CONTRIBUTING.md) and [SECURITY.md](../SECURITY.md).
+| Bereich | Inhalt |
+|---|---|
+| [Konzept](concept/index.md) | Verbindlicher deutscher Kanon, Handlung, Welt und Spielmechanik |
+| [Entwicklung](developer/index.md) | Architektur, technische Entscheidungen, Funktionen und Arbeitspläne |
+| [Spielerhandbuch](player-guide/index.md) | Spätere öffentliche Hilfe für Spielerinnen und Spieler |
+| [Medien](assets/README.md) | Bilder, Diagramme, Karten, Videos und bearbeitbare Quellen |
+| [Forge2D-Grundlage](.forge2d-template/index.md) | Unveränderte englische Referenz der geerbten Vorlage |
+
+Es gibt keine zweite Content-Hierarchie und keinen englischen Konzeptspiegel.
+Neue Spielentscheidungen werden direkt in den passenden Konzeptseiten
+festgehalten.
+
+Das Repository steht unter der [MIT-Lizenz](../LICENSE). Hinweise zur Mitarbeit
+und Sicherheit stehen in [CONTRIBUTING.md](../CONTRIBUTING.md) und
+[SECURITY.md](../SECURITY.md).

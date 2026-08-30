@@ -1,23 +1,46 @@
 ---
-title: Blobbite – Konzeptdokumentation
-status: draft
+title: ether-food – Spielkonzept
+status: working-canon
 language: de
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](concept.md)
+[← Zurück](concept.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Blobbite – Konzeptdokumentation
+# ether-food – Spielkonzept
 
-Diese Dokumentation trennt die **objektive Wahrheit der Welt**, die **im Spiel erzählte Handlung**, die **Spielmechaniken** und die **Produktionsentscheidungen** voneinander.
+Hier liegt die einzige aktuelle Konzeptdokumentation des Spiels. Sie ist
+vollständig deutsch und soll Entscheidungen, offene Fragen und nächste Schritte
+direkt nachvollziehbar machen.
 
-## Navigation
+## Einstieg
 
-- [Deutsche Spieldokumentation](game%28de%29/index.md)
+1. [Spielvision](00-grundlagen/spielvision.md)
+2. [Begriffe und Namen](00-grundlagen/begriffe-und-namen.md)
+3. [Kanon und offene Fragen](00-grundlagen/kanon-und-offene-fragen.md)
+4. [Spielablauf und Abschnittsstruktur](20-handlung/spielablauf-und-abschnittsstruktur.md)
+
+## Bereiche
+
+- [Grundlagen](00-grundlagen/index.md)
+- [Welt und Kosmologie](10-welt/index.md)
+- [Handlung](20-handlung/index.md)
+- [Spielmechanik](30-spielmechanik/index.md)
+- [Weltsysteme](40-weltsysteme/index.md)
+- [Inhalte und Begegnungen](50-inhalte/index.md)
+- [Produktion](60-produktion/index.md)
+- [Entscheidungen](entscheidungen/index.md)
+
+## Ergänzende Dokumente
+
 - [Freigabe-Checkliste](CHECKLIST-ZUR-FREIGABE.md)
-- [Konzeptgrafiken](../assets/.concepts/index.md)
-- [Weltkarte des Ether](../assets/maps/index.md)
+- [Dokumentationsmedien](../assets/README.md)
+- [Entwicklungsdokumentation](../developer/index.md)
+- [Spielerhandbuch](../player-guide/index.md)
 
-## Grundregel
+## Einfache Arbeitsregel
 
-`10-world` beschreibt, wie die Welt tatsächlich funktioniert. `20-story` beschreibt, was der Held erlebt und wann der Spieler welche Wahrheit erfährt. `30-gameplay` und `40-world-systems` übersetzen diese Ideen in spielbare Regeln.
+Weltregeln stehen unter 10-welt, die erlebte Handlung unter 20-handlung
+und spielbare Regeln unter 30-spielmechanik beziehungsweise 40-weltsysteme.
+Neue Festlegungen werden in der passenden Fachseite ergänzt; größere
+Kanonänderungen erhalten zusätzlich einen kurzen Eintrag unter Entscheidungen.

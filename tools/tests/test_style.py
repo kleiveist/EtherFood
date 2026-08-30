@@ -141,7 +141,7 @@ class StyleTests(unittest.TestCase):
         self.assertIn("tools/tests/no_docstring.py:1:1 [PY003]", output.getvalue())
         self.assertIn("Fix:", output.getvalue())
         self.assertIn(
-            "docs/forge2d-template/tooling/python-style-guide.md",
+            "docs/.forge2d-template/tooling/python-style-guide.md",
             output.getvalue(),
         )
 

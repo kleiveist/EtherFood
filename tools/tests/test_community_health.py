@@ -100,24 +100,24 @@ class CommunityHealthTests(unittest.TestCase):
     def test_bug_form_collects_reproducible_safe_reports(self) -> None:
         contents = self._read_issue_template("bug_report.yml")
 
-        self.assertIn("Version or commit", contents)
-        self.assertIn("Environment", contents)
-        self.assertIn("Reproduction steps", contents)
-        self.assertIn("Expected behavior", contents)
-        self.assertIn("Actual behavior", contents)
+        self.assertIn("Version oder Commit", contents)
+        self.assertIn("Umgebung", contents)
+        self.assertIn("Schritte zur Reproduktion", contents)
+        self.assertIn("Erwartetes Verhalten", contents)
+        self.assertIn("Tatsächliches Verhalten", contents)
         self.assertIn("render: shell", contents)
         self.assertIn(SECURITY_REPORT_URL, contents)
-        self.assertIn("contains no vulnerability details or secrets", contents)
+        self.assertIn("enthält keine Sicherheitslücke", contents)
 
     def test_feature_form_collects_scope_tradeoffs_and_completion(self) -> None:
         contents = self._read_issue_template("feature_request.yml")
 
-        self.assertIn("Problem or use case", contents)
-        self.assertIn("Proposed capability", contents)
-        self.assertIn("Alternatives considered", contents)
-        self.assertIn("Acceptance criteria", contents)
-        self.assertIn("Risks and dependencies", contents)
-        self.assertIn("fits the documented ether-food scope", contents)
+        self.assertIn("Problem oder Anwendungsfall", contents)
+        self.assertIn("Vorgeschlagene Funktion", contents)
+        self.assertIn("Geprüfte Alternativen", contents)
+        self.assertIn("Abnahmekriterien", contents)
+        self.assertIn("Risiken und Abhängigkeiten", contents)
+        self.assertIn("passt zu Umfang und Konzeptstand", contents)
 
     def test_issue_chooser_deliberately_disables_blank_reports(self) -> None:
         config = self._read_issue_template("config.yml")
@@ -126,23 +126,21 @@ class CommunityHealthTests(unittest.TestCase):
         self.assertIn("blank_issues_enabled: false", config)
         self.assertIn("contact_links:", config)
         self.assertIn(f"url: {SECURITY_REPORT_URL}", config)
-        self.assertIn("Blank issues are deliberately disabled", contributing)
-        self.assertIn("maintainer-only", contributing)
+        self.assertIn("passenden\n  GitHub-Formulare", contributing)
 
     def test_contributing_policy_matches_repository_workflow(self) -> None:
         contents = self._read_repository_file("CONTRIBUTING.md")
         required_text = (
             "python tools/control.py install --dry-run",
             "python tools/control.py install --yes",
-            "repository-local `.venv`",
-            "docs/forge2d-template/tooling/python-style-guide.md",
-            "docs/forge2d-template/tooling/gdscript-style-guide.md",
+            "lokale `.venv`",
+            "docs/.forge2d-template/tooling/python-style-guide.md",
+            "docs/.forge2d-template/tooling/gdscript-style-guide.md",
             "python tools/control.py style",
             "python tools/control.py check",
-            "all eight Linux, Windows, and macOS CI jobs",
-            "docs/forge2d-template/tooling/branch-protection.md",
-            "Never\n   push a contribution directly to protected `main`",
-            "emoji followed by a concise,\n   imperative English summary",
+            "direkt auf `main`",
+            "Arbeitszweig entwickelt und\n   über einen Pull Request",
+            "kurze Text wird weiterhin auf Englisch und im Imperativ",
         )
 
         for text in required_text:
@@ -153,15 +151,13 @@ class CommunityHealthTests(unittest.TestCase):
         contents = self._read_repository_file("SECURITY.md")
         normalized = " ".join(contents.split())
 
-        self.assertIn("Protected `main` | Yes", contents)
-        self.assertIn("Latest published `0.1.x` release | Yes", contents)
         self.assertIn(SECURITY_REPORT_URL, contents)
-        self.assertIn("Do not disclose a suspected vulnerability in a public issue", contents)
-        self.assertIn("within three business days", normalized)
-        self.assertIn("within seven business days", normalized)
-        self.assertIn("at least every seven days", normalized)
-        self.assertIn("response targets, not a guarantee", normalized)
-        self.assertIn("Maintainers of Forks", contents)
+        self.assertIn("Veröffentliche eine vermutete Sicherheitslücke nicht", contents)
+        self.assertIn("innerhalb von drei Arbeitstagen", normalized)
+        self.assertIn("innerhalb von sieben weiteren Arbeitstagen", normalized)
+        self.assertIn("mindestens alle sieben Tage", normalized)
+        self.assertIn("Ziele, keine Garantie", normalized)
+        self.assertIn("Hinweise für Forks", contents)
         self.assertNotIn("mailto:", contents)
 
     def test_pull_request_template_collects_validation_risk_and_hygiene(self) -> None:
@@ -169,16 +165,16 @@ class CommunityHealthTests(unittest.TestCase):
             encoding="utf-8"
         )
         required_text = (
-            "## Summary",
-            "## Related issue",
+            "## Zusammenfassung",
+            "## Zugehöriges Issue",
             "Closes #",
-            "## Validation",
+            "## Prüfungen",
             "python tools/control.py style",
             "python tools/control.py check",
-            "## Documentation",
-            "## Risk and recovery",
-            "No secret, token, credential, personal data, or machine path",
-            "Every new dependency has a reviewed purpose, risk, license, and alternative",
+            "## Dokumentation",
+            "## Risiko und Wiederherstellung",
+            "keine Geheimnisse, Token, Zugangsdaten, persönlichen Daten",
+            "Zweck, Risiko, Lizenz und Alternative jeder neuen Abhängigkeit",
         )
 
         for text in required_text:

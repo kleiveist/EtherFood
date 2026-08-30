@@ -1,7 +1,8 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](case-studies.md)
+[← Zurück](case-studies.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Case studies
+# Fallstudien
 
-This area will capture technical and design learnings from a concrete game.
-Start a retrospective with the [case-study template](_case-study-template.md).
+Dieser Bereich sammelt technische und gestalterische Erkenntnisse aus der
+Spielentwicklung. Eine neue Rückschau beginnt mit der
+[Fallstudienvorlage](_case-study-template.md).

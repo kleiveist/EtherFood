@@ -1,12 +1,9 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](diagrams.md)
+[← Zurück](diagrams.md)
 <!-- AUTO-GENERATED:backlink END -->
-[← Documentation media](../README.md)
+# Diagramme
 
-# Diagrams
-
-Store diagram sources and reviewable SVG or PNG exports here using lowercase
-English kebab-case names. Prefer Mermaid embedded in Markdown for simple flows.
-When Excalidraw is appropriate, keep its editable source and export traceable to
-the same concept or build version. This directory currently contains no binary
-placeholder.
+Hier liegen bearbeitbare Diagrammquellen sowie prüfbare SVG- oder PNG-Exporte.
+Dateinamen verwenden englisches Kebab-Case. Für einfache Abläufe ist ein direkt
+eingebettetes Mermaid-Diagramm bevorzugt. Bei Excalidraw müssen Quelle und
+Export demselben Konzept- oder Spielstand zugeordnet werden können.

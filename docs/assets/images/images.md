@@ -1,15 +1,15 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../assets.md)
+[← Zurück](../assets.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Images
+# Bilder
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
+## 📄 Seiten
 - 📝 [Ratgeber: beibehaltener Pixel-Art-Entwurf](guide-companion-variants.md)
 - 📝 [Talisman: beibehaltener Pixel-Art-Entwurf](soul-talisman-variants.md)
 
 ## 📁 Inspiration
-- 🗂️ [Overview](inspiration/inspiration.md)
+- 🗂️ [Übersicht](inspiration/inspiration.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

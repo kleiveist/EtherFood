@@ -1,29 +1,25 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](assets.md)
+[← Zurück](assets.md)
 <!-- AUTO-GENERATED:backlink END -->
-[← Documentation hub](../index.md)
+# Dokumentationsmedien
 
-# Documentation media
+Dieser Bereich enthält Bilder, Karten, Diagramme, Videos und bearbeitbare
+Quellen für die Dokumentation. Er führt keine eigenen Spielregeln ein.
 
-This directory stores documentation media and editable sources without adding a
-publishing-platform dependency.
+## Regeln
 
-## Rules
+- Verwende relative Pfade für Bilder und Diagramme.
+- Dateinamen bleiben aus technischer Vereinheitlichung klein geschrieben und
+  verwenden englisches Kebab-Case.
+- Bearbeitbare Dateien liegen unter [`source/`](source/README.md), fertige
+  Bilder unter [`images/`](images/README.md) und Diagramme unter
+  [`diagrams/`](diagrams/README.md).
+- Einfache Abläufe dürfen direkt als Mermaid-Diagramm im Markdown stehen.
+- Eine Excalidraw-Quelle soll gemeinsam mit ihrem SVG- oder PNG-Export
+  nachvollziehbar bleiben.
+- Große Videos und neue Medienabhängigkeiten benötigen eine ausdrückliche
+  Entscheidung. Videohinweise stehen unter [`videos/`](videos/README.md).
+- Binäre Platzhalter und nicht benötigte Varianten werden nicht übernommen.
 
-- Embed images and diagrams through relative paths.
-- Use lowercase English filenames in kebab-case.
-- Store editable source files under [`source/`](source/README.md).
-- Store exported images under [`images/`](images/README.md).
-- Store diagram sources and exports under [`diagrams/`](diagrams/README.md).
-- Prefer Mermaid for simple system flows that remain readable in Markdown.
-- Excalidraw sources may be stored together with corresponding SVG or PNG
-  exports.
-- Do not commit large videos without an explicitly approved media strategy.
-- Every video must record at least its date, build or concept version, and a
-  description in [`videos/`](videos/README.md).
-- Do not add media dependencies or Git LFS configuration as part of the current
-  documentation restructure.
-
-Do not create binary placeholder files. Use the German
-[media entry template](../content/de/templates/media-entry-template.md) to record
-purpose, provenance, license, and related documents.
+Jeder Medieneintrag nennt mindestens Zweck, Herkunft, Erstellungsdatum,
+zugehörigen Konzeptstand und Urheber- beziehungsweise Lizenzstatus.

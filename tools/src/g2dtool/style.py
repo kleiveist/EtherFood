@@ -120,8 +120,8 @@ def run_style(*, start: Path | None = None) -> int:
     for violation in report.violations:
         error(violation.format())
     print_help_line(
-        "See docs/forge2d-template/tooling/python-style-guide.md and "
-        "docs/forge2d-template/tooling/gdscript-style-guide.md."
+        "See docs/.forge2d-template/tooling/python-style-guide.md and "
+        "docs/.forge2d-template/tooling/gdscript-style-guide.md."
     )
     return 1
 

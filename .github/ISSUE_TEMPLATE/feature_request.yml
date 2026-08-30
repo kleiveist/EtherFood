@@ -1,72 +1,72 @@
-name: Feature request
-description: Propose a focused ether-food improvement
-title: "[Feature]: "
+name: Funktion vorschlagen
+description: Eine klar begrenzte Verbesserung für ether-food vorschlagen
+title: "[Funktion]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Describe the underlying problem before prescribing an implementation.
-        ether-food favors documented, focused, cross-platform, dependency-conscious capabilities.
+        Beschreibe zuerst das zugrunde liegende Problem und danach eine mögliche Umsetzung.
+        ether-food bevorzugt nachvollziehbare, begrenzte, plattformübergreifende und abhängigkeitssparsame Lösungen.
   - type: dropdown
     id: area
     attributes:
-      label: Affected area
-      description: Select the area that would own the capability.
+      label: Betroffener Bereich
+      description: Wähle den Bereich, der die Funktion besitzen würde.
       options:
-        - Installer or Doctor
-        - Python tooling or checks
-        - Godot runtime or input
-        - Export or release tooling
+        - Installation oder Diagnose
+        - Python-Werkzeuge oder Prüfungen
+        - Godot-Laufzeit oder Eingabe
+        - Export- oder Veröffentlichungswerkzeuge
         - GitHub Actions
-        - Documentation
-        - Cross-cutting repository policy
+        - Dokumentation
+        - Bereichsübergreifende Repository-Regel
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: Problem or use case
-      description: Explain who is blocked, in what workflow, and why current behavior is insufficient.
+      label: Problem oder Anwendungsfall
+      description: Erkläre, wer in welchem Ablauf blockiert ist und warum der aktuelle Stand nicht genügt.
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed capability
-      description: Describe the smallest outcome that fits the documented project scope.
+      label: Vorgeschlagene Funktion
+      description: Beschreibe das kleinste Ergebnis, das zum dokumentierten Projektumfang passt.
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives considered
-      description: Describe workarounds, existing tools, or a no-change option and their tradeoffs.
+      label: Geprüfte Alternativen
+      description: Beschreibe Umgehungen, vorhandene Werkzeuge oder den Verzicht auf eine Änderung samt Nachteilen.
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
-      label: Acceptance criteria
-      description: List observable behavior, platforms, tests, and documentation that define completion.
+      label: Abnahmekriterien
+      description: Nenne sichtbares Verhalten, Plattformen, Tests und notwendige Dokumentation.
       placeholder: |
-        - [ ] Observable outcome one
-        - [ ] Linux, Windows, and macOS behavior considered
-        - [ ] Tests and documentation updated
+        - [ ] Sichtbares Ergebnis
+        - [ ] Verhalten unter Linux, Windows und macOS bedacht
+        - [ ] Tests und Dokumentation aktualisiert
     validations:
       required: true
   - type: textarea
     id: risk
     attributes:
-      label: Risks and dependencies
-      description: Note compatibility, security, maintenance, migration, or dependency concerns.
+      label: Risiken und Abhängigkeiten
+      description: Nenne Kompatibilität, Sicherheit, Wartung, Migration und neue Abhängigkeiten.
   - type: checkboxes
     id: readiness
     attributes:
-      label: Submission checks
+      label: Prüfung vor dem Absenden
       options:
-        - label: I searched open and closed issues for this request.
+        - label: Ich habe offene und geschlossene Issues nach diesem Vorschlag durchsucht.
           required: true
-        - label: The proposal fits the documented ether-food scope and concept status.
+        - label: Der Vorschlag passt zu Umfang und Konzeptstand von ether-food.
           required: true
-        - label: I described alternatives and an observable completion boundary.
+        - label: Ich habe Alternativen und eine sichtbare Abschlussgrenze beschrieben.
           required: true

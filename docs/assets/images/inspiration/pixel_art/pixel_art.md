@@ -1,11 +1,11 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../inspiration.md)
+[← Zurück](../inspiration.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Pixel art
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
+## 📄 Seiten
 - ⏭️ (keine Seiten)
 
 <!-- AUTO-GENERATED:docs-index END -->

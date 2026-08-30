@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](concepts.md)
+[← Zurück](concepts.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Konzeptgrafiken
 

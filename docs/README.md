@@ -1,16 +1,20 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](index.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
+# Dokumentation
 
-# Documentation
+Der Einstiegspunkt ist die [Dokumentationsübersicht](index.md).
 
-Start at the authoritative [documentation hub](index.md).
+Das [deutsche Spielkonzept](concept/index.md) ist die einzige aktuelle Quelle
+für Spielidee, Handlung, Welt und Spielmechanik. Technische Arbeit wird unter
+[`developer/`](developer/index.md), spätere Spielerhilfe unter
+[`player-guide/`](player-guide/index.md) und Medien unter
+[`assets/`](assets/README.md) dokumentiert.
 
-The [German game concept](content/de/index.md) is the content source of truth;
-[English documentation status](content/en/index.md) and
-[technical developer documentation](developer/index.md) have separate roles.
-The [Inherited Forge2D technical foundation](forge2d-template/index.md) remains a
-preserved technical reference, not the game concept.
+Die [geerbte Forge2D-Grundlage](.forge2d-template/index.md) bleibt als
+englische technische und historische Referenz erhalten. Sie ist nicht Teil des
+Spielkonzepts.
 
-Repository-wide contribution and security workflows are available through
-[CONTRIBUTING.md](../CONTRIBUTING.md) and [SECURITY.md](../SECURITY.md).
+Allgemeine Regeln stehen in [AGENTS.md](../AGENTS.md), Hinweise zur Mitarbeit
+in [CONTRIBUTING.md](../CONTRIBUTING.md) und der vertrauliche Meldeweg für
+Sicherheitsprobleme in [SECURITY.md](../SECURITY.md).

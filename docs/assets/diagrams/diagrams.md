@@ -1,11 +1,11 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../assets.md)
+[← Zurück](../assets.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Diagrams
+# Diagramme
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
+## 📄 Seiten
 - ⏭️ (keine Seiten)
 
 <!-- AUTO-GENERATED:docs-index END -->

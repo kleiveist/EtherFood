@@ -1,13 +1,15 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../index.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Player guide
+# Spielerhandbuch
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
-- 📝 [<Player-guide topic>](_topic-template.md)
+## 📄 Seiten
+- 📝 [<Thema des Spielerhandbuchs>](_topic-template.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 
-The canonical entry point for this area is [Player guide](index.md).
+Der Einstiegspunkt ist die [Übersicht des Spielerhandbuchs](index.md). Die
+[Themenvorlage](_topic-template.md) dient nur als Ausgangspunkt und ist noch
+kein veröffentlichter Spielinhalt.

@@ -41,7 +41,7 @@ class ReleaseRepositoryContractTests(unittest.TestCase):
             metadata.notes_path,
             REPOSITORY_ROOT
             / "docs"
-            / "forge2d-template"
+            / ".forge2d-template"
             / "releases"
             / "v0.1.0.md",
         )
@@ -50,7 +50,7 @@ class ReleaseRepositoryContractTests(unittest.TestCase):
         guide = (
             REPOSITORY_ROOT
             / "docs"
-            / "forge2d-template"
+            / ".forge2d-template"
             / "tooling"
             / "releasing.md"
         ).read_text(encoding="utf-8")
@@ -72,7 +72,7 @@ class ReleaseRepositoryContractTests(unittest.TestCase):
         notes = (
             REPOSITORY_ROOT
             / "docs"
-            / "forge2d-template"
+            / ".forge2d-template"
             / "releases"
             / "v0.1.0.md"
         ).read_text(encoding="utf-8")

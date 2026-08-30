@@ -1,87 +1,87 @@
-name: Bug report
-description: Report a reproducible ether-food defect
-title: "[Bug]: "
+name: Fehler melden
+description: Einen reproduzierbaren Fehler in ether-food melden
+title: "[Fehler]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping improve ether-food.
-        Do not report security vulnerabilities here. Use the [private security report](https://github.com/kleiveist/ether-food/security/advisories/new).
+        Danke, dass du hilfst, ether-food zu verbessern.
+        Melde Sicherheitslücken nicht hier, sondern über den [vertraulichen Sicherheitsbericht](https://github.com/kleiveist/ether-food/security/advisories/new).
   - type: dropdown
     id: area
     attributes:
-      label: Affected area
-      description: Select the component that best matches the defect.
+      label: Betroffener Bereich
+      description: Wähle die am besten passende Komponente.
       options:
-        - Installer or Doctor
-        - Python tooling or checks
-        - Godot runtime or input
-        - Export or release tooling
+        - Installation oder Diagnose
+        - Python-Werkzeuge oder Prüfungen
+        - Godot-Laufzeit oder Eingabe
+        - Export- oder Veröffentlichungswerkzeuge
         - GitHub Actions
-        - Documentation
-        - Other repository component
+        - Dokumentation
+        - Anderer Repository-Bereich
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Version or commit
-      description: Provide a release version or full commit SHA.
-      placeholder: v0.1.0 or 0123456789abcdef...
+      label: Version oder Commit
+      description: Nenne eine Veröffentlichung oder die vollständige Commit-SHA.
+      placeholder: v0.1.0 oder 0123456789abcdef...
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: Environment
-      description: Include OS, architecture, Python version, and Godot version when relevant.
+      label: Umgebung
+      description: Nenne bei Bedarf Betriebssystem, Architektur, Python- und Godot-Version.
       placeholder: Windows 11 x86-64, Python 3.11.9, Godot 4.7.2
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: Reproduction steps
-      description: Provide the smallest deterministic sequence and required fixture or project state.
+      label: Schritte zur Reproduktion
+      description: Beschreibe die kleinste eindeutige Folge und den nötigen Ausgangszustand.
       placeholder: |
-        1. Start from a clean checkout...
-        2. Run...
-        3. Observe...
+        1. Mit einem sauberen Checkout beginnen ...
+        2. ... ausführen.
+        3. ... beobachten.
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
-      description: Explain the result you expected and why.
+      label: Erwartetes Verhalten
+      description: Beschreibe das erwartete Ergebnis und warum.
     validations:
       required: true
   - type: textarea
     id: actual
     attributes:
-      label: Actual behavior
-      description: Explain what happened, including stable error text and exit code.
+      label: Tatsächliches Verhalten
+      description: Beschreibe das Ergebnis einschließlich stabiler Fehlermeldung und Rückgabecode.
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Relevant logs
-      description: Remove tokens, credentials, personal data, and unrelated secrets before pasting output.
+      label: Relevante Protokolle
+      description: Entferne Token, Zugangsdaten, persönliche Daten und fremde Geheimnisse.
       render: shell
   - type: textarea
     id: additional
     attributes:
-      label: Additional context
-      description: Add screenshots, suspected causes, workarounds, or regression details.
+      label: Zusätzlicher Zusammenhang
+      description: Ergänze Bilder, vermutete Ursachen, Umgehungen oder Regressionshinweise.
   - type: checkboxes
     id: readiness
     attributes:
-      label: Submission checks
+      label: Prüfung vor dem Absenden
       options:
-        - label: I searched open and closed issues for this defect.
+        - label: Ich habe offene und geschlossene Issues nach diesem Fehler durchsucht.
           required: true
-        - label: I can reproduce this from the version or commit listed above.
+        - label: Ich kann den Fehler mit der genannten Version oder dem Commit reproduzieren.
           required: true
-        - label: This public report contains no vulnerability details or secrets.
+        - label: Diese öffentliche Meldung enthält keine Sicherheitslücke und keine Geheimnisse.
           required: true

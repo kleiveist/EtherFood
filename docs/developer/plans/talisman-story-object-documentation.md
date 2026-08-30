@@ -1,91 +1,64 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](plans.md)
+[← Zurück](plans.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Talisman Story Object Documentation ExecPlan
+# Historischer Arbeitsplan: Talisman als Handlungsobjekt
 
-## Purpose / Big Picture
+Status: abgeschlossen; die aktuelle Fassung steht auf der
+[Talismanseite](../../concept/20-handlung/talisman.md).
 
-Consolidate the Talisman's established narrative role in the authoritative
-German concept, align the detailed German concept page, and provide five
-review-only pixel-art object directions without selecting a canonical design.
+## Zweck und Gesamtbild
 
-## Current State
+Am 30. August 2026 wurde die erzählerische Rolle des Talismans gebündelt und
+durch unverbindliche Pixel-Art-Entwürfe unterstützt.
 
-The Talisman's origin and three narrative functions are distributed across the
-story, terminology, canon, and endgame pages. The authoritative source has no
-dedicated Talisman page or governed image set. The worktree already contains
-uncommitted documentation work from the preceding game-flow task.
+## Ausgangslage
 
-## Scope and Non-Goals
+Ursprung, Funktionen und Grenzen waren über mehrere Seiten verteilt. Form,
+Material, Farbe und Trageweise waren und sind noch nicht festgelegt.
 
-In scope are German concept documentation, documentation media, navigation,
-generated documentation metadata, and five preliminary PNG concepts. Game
-code, English concept translations, production sprites, a final object design,
-new powers, and a new explanation of Zehsen's motivation are out of scope.
+## Umfang und Nicht-Ziele
 
-## Concrete Steps
+Der Plan umfasste deutschen Konzepttext, Navigation und fünf vorläufige
+Bildrichtungen. Spielcode, fertige Sprites, neue Kräfte und eine erfundene
+Motivation Zehsens waren ausgeschlossen.
 
-1. Consolidate only already established Talisman facts and explicit unknowns.
-2. Add an authoritative German source page and align affected overview pages.
-3. Generate, inspect, and document five visually distinct pixel-art variants.
-4. Regenerate navigation and summaries, then run focused consistency checks.
+## Konkrete Schritte
 
-## Progress
+1. bestätigte Funktionen und offene Gestaltung trennen;
+2. eine zentrale Talismanseite anlegen;
+3. fünf transparente Bildvarianten erzeugen und prüfen;
+4. Navigation, Links und Zusammenfassungen erneuern.
 
-- 2026-08-30: Read repository governance, language and media rules, relevant
-  Talisman pages, and the image-generation skill and prompting references.
-- 2026-08-30: Confirmed and preserved the existing dirty documentation tree.
-- 2026-08-30: Generated and inspected five separate pixel-art directions with
-  alpha transparency.
-- 2026-08-30: Added the authoritative Talisman page and governed media entry.
-- 2026-08-30: After visual review, retained the split-prism variant 2 and
-  removed the other four draft images from the documentation set.
+## Fortschritt
 
-## Surprises & Discoveries
+- 2026-08-30: Fünf Entwürfe erzeugt und geprüft.
+- 2026-08-30: Die geteilte Prisma-Variante 2 blieb als Arbeitsentwurf erhalten;
+  die übrigen vier wurden entfernt.
+- 2026-08-30: Zentrale Dokumentation und Medienverweis ergänzt.
 
-- The spoken object name is ambiguous. Existing canon consistently uses
-  `Talisman`, so the new page retains that term instead of introducing a new
-  proper name.
-- The possible spoken reading `Sense` can be explored safely as one visual
-  variant without making a scythe shape canonical.
+## Erkenntnisse und Überraschungen
 
-## Decision Log
+Eine gesprochene Deutung als „Sense“ war nicht eindeutig. Sie wurde deshalb
+nicht zu einem Namen oder einer festen Form des Objekts erhoben.
 
-- Treat shape, material, color, scale, and carrying method as open visual
-  design, while origin, story timing, functions, and metaphysical limits remain
-  established.
-- Keep the visible guide companion separate from the initially unnoticed
-  Talisman.
-- Use five individual transparent PNG concepts rather than a combined sheet so
-  variants can be reviewed or removed independently.
+## Entscheidungen
 
-## Validation
+Der sichtbare Ratgeber und der anfangs unbemerkte Talisman bleiben getrennte
+Objekte. Bilddetails sind nicht kanonisch; Ursprung, Handlungsschritte und die
+Aufnahme von Seelenmacht sind festgelegt.
 
-- Documentation-index generator dry run and write mode: passed; the new source,
-  media, and plan pages are present in generated navigation and have backlinks.
-- Detailed German summary generation: passed for 69 Markdown files; generated
-  roots were normalized to repository-relative form.
-- Focused relative-link audit: passed for 86 links with zero missing targets.
-- The retained Talisman PNG metadata and copy-integrity checks passed; it is
-  byte-identical to its generated source, uses RGBA, and contains transparency.
-- `git diff --check`: passed.
-- `python3 tools/control.py style`: passed for 44 Python and GDScript files.
-- `python3 tools/control.py check`: did not pass because this session has no
-  Godot 4 binary or pytest installation and no repository virtual environment;
-  source style passed within the gate.
-- Scope checks: no tracked diff exists in the English concept or outside
-  `docs/`, and generated summaries contain no machine-specific path.
+## Prüfungen
 
-## Recovery / Idempotence
+Generator, Linkprüfung, Transparenzprüfung, `git diff --check` und
+Stilprüfung bestanden. Der vollständige Lauf war ohne Godot 4 und `pytest`
+nicht möglich.
 
-All authored changes are normal files. The documentation generators may be
-rerun after structural edits. Unique image filenames avoid overwriting existing
-media; the original generated outputs remain outside the repository.
+## Wiederholbarkeit und Wiederherstellung
 
-## Outcomes & Retrospective
+Die Dokumentation kann erneut generiert werden. Der erhaltene Bildentwurf hat
+einen eindeutigen Dateinamen und überschreibt keine andere Datei.
 
-The Talisman now has one authoritative German source page that distinguishes
-its established origin, staged story functions, and soul-power boundary from
-its still-open visual and character design. The reviewed split-prism direction
-remains available without promoting generated detail to canon. No game code or
-English concept translation was changed.
+## Ergebnis und Rückblick
+
+Der Talisman besitzt eine zentrale, widerspruchsfreie Beschreibung; ein
+visueller Arbeitsentwurf bleibt ausdrücklich unverbindlich.

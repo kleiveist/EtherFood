@@ -1,30 +1,28 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](README.md)
+[← Zurück](README.md)
 <!-- AUTO-GENERATED:backlink END -->
+# Repository-Regeln für ether-food
 
-# ether-food Repository Rules
+Beginne bei der [Dokumentationsübersicht](docs/index.md).
 
-Start at [docs/index.md](docs/index.md). The German concept under
-`docs/content/de/` is
-the content source of truth; its detailed
-[governance](docs/content/de/01-baseline/documentation-governance.md) and
-[language policy](docs/content/de/01-baseline/language-policy.md) are binding. Technical
-documentation under `docs/developer/`, code, and technical identifiers are
-English.
-
-- Detailed English concept translations remain blocked until the overall
-  concept is complete and the individual German source is approved.
-- During the current concept phase, new gameplay systems may begin only as
-  explicitly documented risk prototypes. Prototype code is not automatically
-  production code.
-- Changes to approved concepts require a documented decision and new version.
-- Complex technical work uses living ExecPlans under `docs/developer/plans/`
-  and follows `.agent/PLANS.md`.
-- The [Inherited Forge2D technical foundation](docs/forge2d-template/index.md)
-  remains preserved as a technical and historical reference.
-- Update tests and relevant documentation when behavior changes. Follow the
-  inherited mandatory Python and GDScript style guides.
-- Never use destructive Git commands, commit secrets, or add an unreviewed
-  dependency. Keep generated caches, binaries, and machine paths out of Git.
-- Run the fastest relevant checks first; `g2d check` is the standard repository
-  gate. Report only checks actually executed.
+- Das deutsche Spielkonzept unter [`docs/concept/`](docs/concept/index.md) ist
+  die einzige aktuelle Quelle für Kanon, Handlung, Welt und Spielmechanik.
+- Die Projektdokumentation wird auf Deutsch geführt. Code, Befehle, Pfade und
+  technische Bezeichner dürfen Englisch bleiben.
+- Die geerbte
+  [Forge2D-Grundlage](docs/.forge2d-template/index.md) bleibt unverändert auf
+  Englisch und dient nur als technische und historische Referenz.
+- Halte die Dokumentation einfach, verständlich und nah an der tatsächlichen
+  Entwicklung. Führe keine zweite Konzeptfassung und keinen Sprachspiegel.
+- Änderungen an bereits angenommenem Kanon benötigen eine nachvollziehbare
+  Entscheidung unter `docs/concept/entscheidungen/`.
+- Komplexe technische Arbeiten verwenden fortlaufend gepflegte Pläne unter
+  `docs/developer/plans/` und folgen [`.agent/PLANS.md`](.agent/PLANS.md).
+- Aktualisiere Tests und passende Dokumentation, wenn sich Verhalten ändert.
+  Es gelten die geerbten Python- und GDScript-Stilregeln.
+- Verwende keine zerstörerischen Git-Befehle, übernimm keine Geheimnisse und
+  füge keine ungeprüften Abhängigkeiten hinzu. Generierte Caches, Binärdateien
+  und lokale Rechnerpfade gehören nicht ins Repository.
+- Führe zuerst die schnellsten passenden Prüfungen aus. Der vollständige
+  Standardlauf ist `python tools/control.py check`. Melde nur tatsächlich
+  ausgeführte Prüfungen.

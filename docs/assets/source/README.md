@@ -1,12 +1,10 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](source.md)
+[← Zurück](source.md)
 <!-- AUTO-GENERATED:backlink END -->
-[← Documentation media](../README.md)
+# Bearbeitbare Medienquellen
 
-# Editable media sources
-
-Store editable documentation source files here when they are suitable for Git.
-Use lowercase English kebab-case names and keep every source traceable to its
-export, author, license status, and concept or build version. Large or
-tool-specific assets require review before adoption; no new media dependency is
-introduced by this structure.
+Hier liegen bearbeitbare Quelldateien, sofern sie sinnvoll mit Git verwaltet
+werden können. Englische Kebab-Case-Dateinamen und klare Verweise auf Export,
+Urheberschaft, Lizenz und Konzept- oder Spielstand halten die Herkunft
+nachvollziehbar. Große oder werkzeugspezifische Dateien benötigen vorab eine
+Prüfung.

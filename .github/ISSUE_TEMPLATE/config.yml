@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Private security report
+  - name: Vertrauliche Sicherheitsmeldung
     url: https://github.com/kleiveist/ether-food/security/advisories/new
-    about: Report vulnerabilities privately through GitHub Security Advisories, never a public issue.
+    about: Melde Sicherheitslücken vertraulich über GitHub Security Advisories und niemals als öffentliches Issue.

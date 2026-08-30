@@ -1,7 +1,8 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](player-guide.md)
+[← Zurück](player-guide.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Player guide
+# Spielerhandbuch
 
-This area will contain public guidance for players of a concrete game. It has no
-game content yet; start a topic with the [player-guide template](_topic-template.md).
+Dieser Bereich enthält später öffentliche Hilfen für Spielerinnen und Spieler.
+Derzeit gibt es noch keine fertigen Themen. Eine neue Seite beginnt mit der
+[Themenvorlage](_topic-template.md).

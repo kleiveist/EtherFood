@@ -1,20 +1,20 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](case-studies.md)
+[← Zurück](case-studies.md)
 <!-- AUTO-GENERATED:backlink END -->
-# <Case-study title>
+# Fallstudie: <Titel>
 
-## Context
+## Ausgangslage
 
-Describe the problem, constraints, and intended outcome.
+Beschreibe Problem, Grenzen und gewünschtes Ergebnis.
 
-## Approach
+## Vorgehen
 
-Explain the technical or design approach that was taken.
+Erkläre den technischen oder gestalterischen Ansatz.
 
-## Evidence
+## Nachweise
 
-Record observable results, trade-offs, and validation.
+Halte beobachtbare Ergebnisse, Abwägungen und Prüfungen fest.
 
-## Lessons
+## Erkenntnisse
 
-Summarize what should be repeated, changed, or avoided.
+Fasse zusammen, was wiederholt, geändert oder vermieden werden sollte.

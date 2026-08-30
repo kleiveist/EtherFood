@@ -28,9 +28,6 @@ DOCUMENTATION_ENTRY_POINTS = (
     REPOSITORY_ROOT / "README.md",
     REPOSITORY_ROOT / "AGENTS.md",
 )
-CONCEPT_STATUSES = {"idea", "draft", "testing", "approved", "superseded"}
-
-
 class SourceHygieneTests(unittest.TestCase):
     def test_source_and_configuration_have_no_hard_coded_user_paths(self) -> None:
         violations: list[str] = []
@@ -125,7 +122,11 @@ class SourceHygieneTests(unittest.TestCase):
         violations: list[str] = []
         docs_root = REPOSITORY_ROOT / "docs"
         link_pattern = re.compile(r"(?<!!)\[[^]]+\]\(([^)]+)\)")
-        paths = sorted(docs_root.rglob("*.md")) + [
+        paths = sorted(
+            path
+            for path in docs_root.rglob("*.md")
+            if ".summary" not in path.parts
+        ) + [
             path for path in DOCUMENTATION_ENTRY_POINTS if path.exists()
         ]
         for path in paths:
@@ -139,7 +140,7 @@ class SourceHygieneTests(unittest.TestCase):
                     violations.append(f"{relative_path} -> {target}")
         self.assertEqual(violations, [])
 
-    def test_documentation_architecture_separates_template_and_game_areas(self) -> None:
+    def test_documentation_architecture_has_one_german_concept(self) -> None:
         required_paths = (
             "docs/index.md",
             "docs/README.md",
@@ -148,130 +149,63 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/assets/images/README.md",
             "docs/assets/source/README.md",
             "docs/assets/videos/README.md",
-            "docs/content/content.md",
-            "docs/content/de/de.md",
-            "docs/content/de/index.md",
-            "docs/content/de/00-overview/index.md",
-            "docs/content/de/00-overview/project-brief.md",
-            "docs/content/de/00-overview/design-pillars.md",
-            "docs/content/de/00-overview/core-loop.md",
-            "docs/content/de/00-overview/concept-roadmap.md",
-            "docs/content/de/01-baseline/index.md",
-            "docs/content/de/01-baseline/concept-baseline.md",
-            "docs/content/de/01-baseline/scope-and-non-goals.md",
-            "docs/content/de/01-baseline/documentation-governance.md",
-            "docs/content/de/01-baseline/language-policy.md",
-            "docs/content/de/01-baseline/terminology.md",
-            "docs/content/de/01-baseline/concept-status.md",
-            "docs/content/de/02-story-and-world/index.md",
-            "docs/content/de/02-story-and-world/story-and-world.md",
-            "docs/content/de/03-gameplay-and-progression/index.md",
-            "docs/content/de/03-gameplay-and-progression/gameplay-and-progression.md",
-            "docs/content/de/04-combat/index.md",
-            "docs/content/de/04-combat/combat-system.md",
-            "docs/content/de/05-machines/index.md",
-            "docs/content/de/05-machines/machine-system.md",
-            "docs/content/de/06-zuro-and-enemies/index.md",
-            "docs/content/de/06-zuro-and-enemies/zuro-system.md",
-            "docs/content/de/06-zuro-and-enemies/enemy-progression.md",
-            "docs/content/de/07-landscape-and-environment/index.md",
-            "docs/content/de/07-landscape-and-environment/landscape-system.md",
-            "docs/content/de/08-art-audio-and-ui/index.md",
-            "docs/content/de/08-art-audio-and-ui/presentation-direction.md",
-            "docs/content/de/09-prototypes-and-tests/index.md",
-            "docs/content/de/09-prototypes-and-tests/vertical-slice.md",
-            "docs/content/de/09-prototypes-and-tests/test-log.md",
-            "docs/content/de/10-decisions-and-archive/index.md",
-            "docs/content/de/10-decisions-and-archive/decision-log.md",
-            "docs/content/de/10-decisions-and-archive/archive-policy.md",
-            "docs/content/de/templates/system-design-template.md",
-            "docs/content/de/templates/decision-template.md",
-            "docs/content/de/templates/prototype-test-template.md",
-            "docs/content/de/templates/media-entry-template.md",
-            "docs/content/en/en.md",
-            "docs/content/en/index.md",
-            "docs/forge2d-template/index.md",
-            "docs/forge2d-template/forge2d-template.md",
-            "docs/forge2d-template/tooling/installation.md",
-            "docs/forge2d-template/tooling/branch-protection.md",
-            "docs/forge2d-template/tooling/exporting.md",
-            "docs/forge2d-template/tooling/gdscript-style-guide.md",
-            "docs/forge2d-template/tooling/input.md",
-            "docs/forge2d-template/tooling/python-style-guide.md",
-            "docs/forge2d-template/tooling/releasing.md",
-            "docs/forge2d-template/tooling/repository-metadata.md",
-            "docs/forge2d-template/architecture/runtime-overview.md",
-            "docs/forge2d-template/decisions/decisions.md",
-            "docs/forge2d-template/plans/plans.md",
-            "docs/forge2d-template/plans/M08_documentation_architecture.md",
-            "docs/forge2d-template/plans/M09_coding_standards.md",
-            "docs/forge2d-template/plans/M10_export_system.md",
-            "docs/forge2d-template/plans/M11_input_baseline.md",
-            "docs/forge2d-template/plans/M12_community_health.md",
-            "docs/forge2d-template/plans/M13_repository_metadata.md",
-            "docs/forge2d-template/releases/releases.md",
-            "docs/forge2d-template/releases/v0.1.0.md",
-            "docs/forge2d-template/reports/reports.md",
-            "docs/forge2d-template/reports/M06_cross_platform_installer.md",
+            "docs/concept/index.md",
+            "docs/concept/00-grundlagen/spielvision.md",
+            "docs/concept/10-welt/00-kosmologie/zeitrechnung-auf-era.md",
+            "docs/concept/20-handlung/ratgeber-im-heldenraum.md",
+            "docs/concept/20-handlung/talisman.md",
+            "docs/concept/20-handlung/spielablauf-und-abschnittsstruktur.md",
+            "docs/concept/entscheidungen/ADR-0008-achtteiliger-spielablauf.md",
+            "docs/.forge2d-template/index.md",
+            "docs/.forge2d-template/forge2d-template.md",
+            "docs/.forge2d-template/tooling/installation.md",
+            "docs/.forge2d-template/tooling/gdscript-style-guide.md",
+            "docs/.forge2d-template/tooling/python-style-guide.md",
+            "docs/.forge2d-template/architecture/runtime-overview.md",
             "docs/developer/index.md",
             "docs/developer/developer.md",
             "docs/developer/documentation-architecture.md",
             "docs/developer/project-identity.md",
-            "docs/developer/plans/ether-food-documentation-restructure.md",
+            "docs/developer/plans/dokumentationsvereinfachung.md",
             "docs/developer/features/_feature-template.md",
             "docs/developer/decisions/_adr-template.md",
             "docs/developer/plans/_execplan-template.md",
             "docs/player-guide/index.md",
             "docs/player-guide/player-guide.md",
             "docs/player-guide/_topic-template.md",
-            "docs/in-game-help/index.md",
-            "docs/in-game-help/in-game-help.md",
-            "docs/in-game-help/_help-topic-template.md",
-            "docs/case-studies/index.md",
-            "docs/case-studies/case-studies.md",
-            "docs/case-studies/_case-study-template.md",
-            "docs/release-manual/index.md",
-            "docs/release-manual/release-manual.md",
-            "docs/release-manual/_release-template.md",
         )
         missing = [
             path for path in required_paths if not (REPOSITORY_ROOT / path).is_file()
         ]
         self.assertEqual(missing, [])
 
-        root_docs = REPOSITORY_ROOT / "docs"
-        unexpected_root_pages = sorted(
-            path.name
-            for path in root_docs.glob("*.md")
-            if path.name not in {"README.md", "index.md"}
-        )
-        self.assertEqual(unexpected_root_pages, [])
-
         developer_index = (REPOSITORY_ROOT / "docs" / "developer" / "index.md")
         self.assertIn(
-            "../forge2d-template/architecture/runtime-overview.md",
+            "../.forge2d-template/index.md",
             developer_index.read_text(encoding="utf-8"),
         )
         self.assertIn(
-            "Inherited Forge2D technical foundation",
+            "Forge2D-Grundlage",
             developer_index.read_text(encoding="utf-8"),
         )
 
         root_readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("- 📚 [Docs Home](docs/index.md)", root_readme)
-        self.assertIn("## 📁 Game concept content", root_readme)
-        self.assertIn("[Overview](docs/content/content.md)", root_readme)
-        self.assertIn("## 📁 Inherited Forge2D technical foundation", root_readme)
-        self.assertNotIn("## 📁 Forge2D Template", root_readme)
+        self.assertIn("[Deutsches Spielkonzept](docs/concept/index.md)", root_readme)
+        self.assertIn("[Geerbte Forge2D-Grundlage]", root_readme)
 
-        self.assertFalse((REPOSITORY_ROOT / "docs" / "de").exists())
-        self.assertFalse((REPOSITORY_ROOT / "docs" / "en").exists())
+        self.assertFalse((REPOSITORY_ROOT / "docs" / "content").exists())
+        self.assertFalse((REPOSITORY_ROOT / "docs" / "concept" / "game(de)").exists())
+        self.assertFalse((REPOSITORY_ROOT / "docs" / "concept" / "game(en)").exists())
 
-    def test_content_directories_have_pygitindex_overviews(self) -> None:
-        content_root = REPOSITORY_ROOT / "docs" / "content"
-        directories = [content_root]
+    def test_concept_directories_have_pygitindex_overviews(self) -> None:
+        concept_root = REPOSITORY_ROOT / "docs" / "concept"
+        directories = [concept_root]
         directories.extend(
-            sorted(path for path in content_root.rglob("*") if path.is_dir())
+            sorted(
+                path
+                for path in concept_root.rglob("*")
+                if path.is_dir() and ".summary" not in path.parts
+            )
         )
 
         for directory in directories:
@@ -296,52 +230,28 @@ class SourceHygieneTests(unittest.TestCase):
                     1,
                 )
 
-    def test_german_concept_frontmatter_and_translation_gate(self) -> None:
-        german_root = REPOSITORY_ROOT / "docs" / "content" / "de"
-        pages = sorted(
-            path
-            for path in german_root.rglob("*.md")
-            if path.name != f"{path.parent.name}.md"
-        )
+    def test_concept_declares_single_german_source(self) -> None:
+        concept_index = (
+            REPOSITORY_ROOT / "docs" / "concept" / "index.md"
+        ).read_text(encoding="utf-8")
+        architecture = (
+            REPOSITORY_ROOT / "docs" / "developer" / "documentation-architecture.md"
+        ).read_text(encoding="utf-8")
 
-        self.assertGreater(len(pages), 1)
-        for path in pages:
-            with self.subTest(path=path.relative_to(REPOSITORY_ROOT)):
-                contents = path.read_text(encoding="utf-8")
-                self.assertTrue(contents.startswith("---\n"))
-                sections = contents.split("---", 2)
-                self.assertEqual(len(sections), 3)
-                frontmatter = sections[1]
-                self.assertIn("\nlanguage: de\n", frontmatter)
-                self.assertIn(
-                    "\ntranslation_status: blocked-until-concept-complete\n",
-                    frontmatter,
-                )
-                self.assertRegex(frontmatter, r'\nversion: "[0-9]+\.[0-9]+"\n')
-                status = re.search(r"\nstatus: ([a-z-]+)\n", frontmatter)
-                self.assertIsNotNone(status)
-                assert status is not None
-                self.assertIn(status.group(1), CONCEPT_STATUSES)
-                self.assertRegex(frontmatter, r"\nsource_of_truth: (?:true|false)\n")
-
-        english_pages = sorted(
-            path.relative_to(REPOSITORY_ROOT).as_posix()
-            for path in (REPOSITORY_ROOT / "docs" / "content" / "en").rglob("*.md")
-        )
-        self.assertEqual(
-            english_pages,
-            ["docs/content/en/en.md", "docs/content/en/index.md"],
-        )
+        self.assertIn("einzige aktuelle Konzeptdokumentation", concept_index)
+        self.assertIn("Alle aktive Projektdokumentation wird auf Deutsch", architecture)
+        self.assertNotIn("translation_status", concept_index)
+        self.assertFalse((REPOSITORY_ROOT / "docs" / "content").exists())
 
     def test_installer_completion_report_is_indexed_and_traceable(self) -> None:
-        reports_root = REPOSITORY_ROOT / "docs" / "forge2d-template" / "reports"
+        reports_root = REPOSITORY_ROOT / "docs" / ".forge2d-template" / "reports"
         report_path = reports_root / "M06_cross_platform_installer.md"
         report = report_path.read_text(encoding="utf-8")
         reports_index = (reports_root / "reports.md").read_text(encoding="utf-8")
         template_index = (
             REPOSITORY_ROOT
             / "docs"
-            / "forge2d-template"
+            / ".forge2d-template"
             / "forge2d-template.md"
         ).read_text(encoding="utf-8")
 

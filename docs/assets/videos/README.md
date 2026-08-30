@@ -1,12 +1,10 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](videos.md)
+[← Zurück](videos.md)
 <!-- AUTO-GENERATED:backlink END -->
-[← Documentation media](../README.md)
-
 # Videos
 
-Do not commit large videos without an approved media strategy. A referenced or
-stored video must have a lowercase English kebab-case name and documentation for
-its date, related build or concept version, description, purpose, author, and
-license status. Prefer an external reviewed location when repository size would
-be materially affected. No video or binary placeholder is included here.
+Große Videos werden nur mit einer festgelegten Medienstrategie übernommen.
+Jeder gespeicherte oder verlinkte Film benötigt einen englischen
+Kebab-Case-Namen sowie Datum, Beschreibung, Zweck, Konzept- oder Spielstand,
+Urheberschaft und Lizenzstatus. Wenn ein Video das Repository deutlich
+vergrößern würde, ist ein geprüfter externer Ablageort vorzuziehen.

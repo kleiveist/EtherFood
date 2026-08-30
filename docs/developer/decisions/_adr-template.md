@@ -1,19 +1,19 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](decisions.md)
+[← Zurück](decisions.md)
 <!-- AUTO-GENERATED:backlink END -->
-# ADR-<number>: <decision title>
+# ADR-<Nummer>: <Entscheidungstitel>
 
-- Status: Proposed
-- Date: YYYY-MM-DD
+- Status: vorgeschlagen
+- Datum: JJJJ-MM-TT
 
-## Context
+## Ausgangslage
 
-Describe the game-specific decision to make and its constraints.
+Beschreibe die technische Entscheidung und ihre Grenzen.
 
-## Decision
+## Entscheidung
 
-State the chosen approach.
+Halte den gewählten Weg eindeutig fest.
 
-## Consequences
+## Folgen
 
-Record the expected benefits, costs, and follow-up work.
+Nenne erwartete Vorteile, Kosten, Risiken und Folgearbeiten.

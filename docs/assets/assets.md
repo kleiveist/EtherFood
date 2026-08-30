@@ -1,31 +1,31 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../index.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Assets
+# Medien
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
+## 📄 Seiten
 - ⏭️ (keine Seiten)
 
-## 📁 Diagrams
-- 🗂️ [Overview](diagrams/diagrams.md)
+## 📁 Diagramme
+- 🗂️ [Übersicht](diagrams/diagrams.md)
 
-## 📁 Images
-- 🗂️ [Overview](images/images.md)
+## 📁 Bilder
+- 🗂️ [Übersicht](images/images.md)
 - 📝 [Ratgeber: beibehaltener Pixel-Art-Entwurf](images/guide-companion-variants.md)
 - 📝 [Talisman: beibehaltener Pixel-Art-Entwurf](images/soul-talisman-variants.md)
 
-## 📁 MAPS
-- 🗂️ [Overview](maps/maps.md)
+## 📁 Karten
+- 🗂️ [Übersicht](maps/maps.md)
 
-## 📁 Media
-- 🗂️ [Overview](media/media.md)
+## 📁 Medien
+- 🗂️ [Übersicht](media/media.md)
 
-## 📁 Source
-- 🗂️ [Overview](source/source.md)
+## 📁 Quellen
+- 🗂️ [Übersicht](source/source.md)
 
 ## 📁 Videos
-- 🗂️ [Overview](videos/videos.md)
+- 🗂️ [Übersicht](videos/videos.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

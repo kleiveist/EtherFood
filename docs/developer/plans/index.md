@@ -1,12 +1,19 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](plans.md)
+[← Zurück](plans.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Game ExecPlans
+# Arbeitspläne
 
-Living ExecPlans for concrete game work belong here. Use the
-[ExecPlan template](_execplan-template.md) and follow the repository-wide
-[ExecPlan standard](../../../.agent/PLANS.md).
+Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
+[Arbeitsplanvorlage](_execplan-template.md) und beachte den
+[allgemeinen Standard](../../../.agent/PLANS.md).
 
-## Active plan
+## Aktiver Plan
 
-- [ether-food documentation restructure](ether-food-documentation-restructure.md)
+- [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
+
+## Abgeschlossene historische Pläne
+
+- [Frühere Umstrukturierung der Dokumentation](ether-food-documentation-restructure.md)
+- [Dokumentation des Spielablaufs](game-flow-documentation.md)
+- [Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
+- [Dokumentation des Talismans](talisman-story-object-documentation.md)

@@ -1,63 +1,49 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](README.md)
+[← Zurück](README.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Security Policy
+# Sicherheitsrichtlinie
 
-## Supported Versions
+## Unterstützter Stand
 
-Security fixes target the actively maintained repository state:
+Sicherheitskorrekturen gelten für den aktiv gepflegten Stand von `main`.
+Ältere Veröffentlichungen, einzelne historische Commits und fremde Forks
+benötigen jeweils eine eigene Bewertung und Richtlinie.
 
-| Version or ref | Receives security fixes |
-| --- | --- |
-| Protected `main` | Yes |
-| Latest published `0.1.x` release | Yes |
-| Older releases, commits, and downstream forks | No |
+## Sicherheitslücke vertraulich melden
 
-Before the first game release is published, protected `main` is the primary
-supported ref. Forks and downstream builds maintain their own security policies
-and private reporting routes.
+Veröffentliche eine vermutete Sicherheitslücke nicht in einem Issue, Pull
+Request, einer Diskussion, einem Commit oder einem Protokoll. Verwende stattdessen
+den [privaten GitHub-Sicherheitsbericht](https://github.com/kleiveist/ether-food/security/advisories/new).
 
-## Report a Vulnerability Privately
+Eine hilfreiche Meldung enthält, soweit möglich:
 
-Do not disclose a suspected vulnerability in a public issue, pull request,
-discussion, commit, or log. Submit a
-[private GitHub vulnerability report](https://github.com/kleiveist/ether-food/security/advisories/new)
-instead. GitHub Security Advisories restrict the report and follow-up discussion
-to the reporter and authorized repository maintainers.
+- eine knappe Beschreibung und die erwarteten Auswirkungen;
+- betroffene Version, Commit, Plattform und Komponente;
+- reproduzierbare Schritte oder einen kleinen Machbarkeitsnachweis;
+- benötigte Rechte, Einstellungen und Angriffsbedingungen;
+- bereinigte Protokolle ohne Zugangsdaten, Token, persönliche Daten oder
+  fremde Geheimnisse;
+- bekannte Gegenmaßnahmen oder Einschränkungen der Offenlegung.
 
-Include, when available:
+Greife bei der Prüfung nicht auf Daten Dritter zu und verändere oder speichere
+sie nicht. Beende die Prüfung, sobald ein Dienst gestört oder fremde Daten
+sichtbar werden könnten.
 
-- a concise description and expected security impact;
-- the affected version, commit, platform, and component;
-- reproducible steps or a minimal proof of concept;
-- required privileges, configuration, and attack preconditions;
-- relevant logs with credentials, tokens, personal data, and unrelated secrets
-  removed; and
-- known mitigations, workarounds, or disclosure constraints.
+## Reaktion und Offenlegung
 
-Do not access, retain, or alter third-party data while researching a report.
-Stop testing if it could disrupt a service or expose another person's data.
+Die Projektpflege strebt eine Eingangsbestätigung innerhalb von drei
+Arbeitstagen, eine erste Einordnung innerhalb von sieben weiteren Arbeitstagen
+und bei laufender Behebung mindestens alle sieben Tage eine Rückmeldung an.
+Diese Zeiten sind Ziele, keine Garantie.
 
-## Response and Disclosure
+Der private Sicherheitshinweis hält Schweregrad, betroffene Stände,
+Korrekturplanung, Anerkennung und Offenlegungstermin fest. Details bleiben
+vertraulich, bis eine angemessene Gegenmaßnahme verfügbar ist oder alle
+Beteiligten einen anderen Termin vereinbart haben.
 
-Maintainers target an acknowledgement within three business days, initial
-triage within seven business days after acknowledgement, and a status update at
-least every seven days while coordinated remediation is active. These are
-response targets, not a guarantee; severity, reproducibility, upstream work,
-and release safety can change remediation time.
+## Hinweise für Forks
 
-The advisory is the source of truth for severity, affected versions, credit,
-patch coordination, and an agreed disclosure date. Please keep details private
-until maintainers confirm that affected users have a reasonable mitigation or
-the parties agree on another disclosure plan. Maintainers will explain a
-rejection or duplicate classification in the private advisory.
-
-## Maintainers of Forks
-
-GitHub private vulnerability reporting is a repository setting and is not
-inherited automatically by every fork. Fork owners must enable
-**Settings → Code security → Private vulnerability
-reporting**, replace the canonical link above with their repository route, and
-verify it from a non-maintainer account. If they cannot enable that feature,
-they must publish an organization-managed private contact before claiming
-security-report support; never commit a personal credential or access token.
+Private GitHub-Sicherheitsmeldungen werden nicht automatisch auf Forks
+übertragen. Betreiber eines Forks müssen diese Funktion selbst aktivieren,
+ihren eigenen Link eintragen und den Meldeweg prüfen. Zugangsdaten oder Token
+dürfen niemals als Kontaktweg im Repository abgelegt werden.

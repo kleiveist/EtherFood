@@ -1,16 +1,16 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](player-guide.md)
+[← Zurück](player-guide.md)
 <!-- AUTO-GENERATED:backlink END -->
-# <Player-guide topic>
+# <Thema des Spielerhandbuchs>
 
-## What players need to know
+## Was Spieler wissen müssen
 
-Explain the goal or concept in player-facing language.
+Erkläre Ziel oder Zusammenhang in verständlicher, spoilerarmer Sprache.
 
-## How to use it
+## Anwendung
 
-Provide the steps, controls, or choices players need.
+Beschreibe notwendige Schritte, Steuerung oder Entscheidungen.
 
-## Tips and troubleshooting
+## Tipps und Fehlerhilfe
 
-Add optional guidance, limits, and common questions.
+Ergänze freiwillige Hinweise, Grenzen und häufige Fragen.

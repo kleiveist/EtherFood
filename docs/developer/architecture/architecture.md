@@ -1,11 +1,14 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../developer.md)
+[← Zurück](../developer.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Architecture
+# Architektur
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
-- 📝 [<Game area> architecture](_architecture-template.md)
+## 📄 Seiten
+- 📝 [Architektur: <Spielbereich>](_architecture-template.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
+
+Der Einstiegspunkt ist die [Spielarchitektur](index.md). Neue stabile Entwürfe
+beginnen mit der [Architekturvorlage](_architecture-template.md).

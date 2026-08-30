@@ -1,11 +1,15 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../developer.md)
+[← Zurück](../developer.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Decisions
+# Technische Entscheidungen
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
-- 📝 [ADR-<number>: <decision title>](_adr-template.md)
+## 📄 Seiten
+- 📝 [ADR-<Nummer>: <Entscheidungstitel>](_adr-template.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
+
+Neue technische Entscheidungen beginnen mit der
+[ADR-Vorlage](_adr-template.md). Kanonentscheidungen gehören stattdessen nach
+[`docs/concept/entscheidungen/`](../../concept/entscheidungen/index.md).

@@ -1,20 +1,20 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](features.md)
+[← Zurück](features.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Feature: <name>
+# Funktion: <Name>
 
-## Goal
+## Ziel
 
-Describe the player or developer outcome.
+Beschreibe das Ergebnis für Spieler oder Entwicklung.
 
-## Scope
+## Umfang
 
-List included behavior, explicit exclusions, and dependencies.
+Nenne enthaltenes Verhalten, ausdrückliche Ausschlüsse und Abhängigkeiten.
 
-## Design notes
+## Entwurf
 
-Record interfaces, data contracts, and notable implementation choices.
+Halte Schnittstellen, Datenverträge und wichtige Umsetzungsentscheidungen fest.
 
-## Validation
+## Prüfung
 
-Record the tests and acceptance evidence for the feature.
+Dokumentiere Tests und Abnahmenachweise.

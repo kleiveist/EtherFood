@@ -1,38 +1,42 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Back](../index.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
-
-# Developer
+# Entwicklung
 
 <!-- AUTO-GENERATED:docs-index START -->
 
-## 📄 Pages
-- 📝 [Documentation architecture](documentation-architecture.md)
-- 📝 [Project identity](project-identity.md)
+## 📄 Seiten
+- 📝 [Dokumentationsstruktur](documentation-architecture.md)
+- 📝 [Projektidentität](project-identity.md)
 
-## 📁 Architecture
-- 🗂️ [Overview](architecture/architecture.md)
-- 📝 [<Game area> architecture](architecture/_architecture-template.md)
+## 📁 Architektur
+- 🗂️ [Übersicht](architecture/architecture.md)
+- 📝 [Architektur: <Spielbereich>](architecture/_architecture-template.md)
 
-## 📁 Decisions
-- 🗂️ [Overview](decisions/decisions.md)
-- 📝 [ADR-<number>: <decision title>](decisions/_adr-template.md)
+## 📁 Technische Entscheidungen
+- 🗂️ [Übersicht](decisions/decisions.md)
+- 📝 [ADR-<Nummer>: <Entscheidungstitel>](decisions/_adr-template.md)
 
-## 📁 Features
-- 🗂️ [Overview](features/features.md)
-- 📝 [Feature: <name>](features/_feature-template.md)
+## 📁 Funktionen
+- 🗂️ [Übersicht](features/features.md)
+- 📝 [Funktion: <Name>](features/_feature-template.md)
 
-## 📁 Plans
-- 🗂️ [Overview](plans/plans.md)
-- 📝 [<Milestone> ExecPlan](plans/_execplan-template.md)
-- 📝 [ether-food Documentation Restructure ExecPlan](plans/ether-food-documentation-restructure.md)
-- 📝 [Game Flow Documentation ExecPlan](plans/game-flow-documentation.md)
-- 📝 [German Canon Release Consolidation ExecPlan](plans/german-canon-release-consolidation.md)
-- 📝 [Talisman Story Object Documentation ExecPlan](plans/talisman-story-object-documentation.md)
+## 📁 Arbeitspläne
+- 🗂️ [Übersicht](plans/plans.md)
+- 📝 [Arbeitsplan: <Meilenstein>](plans/_execplan-template.md)
+- 📝 [Arbeitsplan zur Vereinfachung der Dokumentation](plans/dokumentationsvereinfachung.md)
+- 📝 [Historischer Arbeitsplan: erste Dokumentationsumstellung](plans/ether-food-documentation-restructure.md)
+- 📝 [Historischer Arbeitsplan: Dokumentation des Spielablaufs](plans/game-flow-documentation.md)
+- 📝 [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](plans/german-canon-release-consolidation.md)
+- 📝 [Historischer Arbeitsplan: Talisman als Handlungsobjekt](plans/talisman-story-object-documentation.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 
-The canonical entry point for this area is
-[Developer documentation](index.md). The
-[Inherited Forge2D technical foundation](../forge2d-template/index.md) remains
-separate from game-owned technical documentation.
+Der Einstiegspunkt ist die [Entwicklungsdokumentation](index.md).
+
+- [Architektur](architecture/index.md)
+- [Technische Entscheidungen](decisions/decisions.md)
+- [Funktionen](features/features.md)
+- [Arbeitspläne](plans/index.md)
+- [Dokumentationsstruktur](documentation-architecture.md)
+- [Projektidentität](project-identity.md)
