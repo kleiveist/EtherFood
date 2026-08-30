@@ -1,5 +1,5 @@
 Markdown-Scan – Root: .
-Erzeugt: 2026-08-30T15:49:41
+Erzeugt: 2026-08-30T15:52:21
 Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini, .md
 
 === Dateien ===
@@ -284,10 +284,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 zeitleiste.md
      Pfad: 📁 10-world / 📁 10-weltgeschichte / 📝 zeitleiste.md
-     Größe: 4.00 KB (4094 B)
-     Geändert: 2026-08-30T15:41:04
+     Größe: 7.00 KB (7164 B)
+     Geändert: 2026-08-30T15:52:16
      Titel: Chronologische Übersicht
-     Überschriften: 1, Zeilen: 35, Wörter: 520, Zeichen: 4023
+     Überschriften: 1, Zeilen: 35, Wörter: 520, Zeichen: 7093
      Gliederung:
        • # Chronologische Übersicht
      Inhalt (Auszug): title: Chronologische Übersicht status: draft spoiler_level: full updated: 2026-08-30
