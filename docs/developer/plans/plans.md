@@ -8,5 +8,6 @@
 ## 📄 Pages
 - 📝 [<Milestone> ExecPlan](_execplan-template.md)
 - 📝 [ether-food Documentation Restructure ExecPlan](ether-food-documentation-restructure.md)
+- 📝 [German Canon Release Consolidation ExecPlan](german-canon-release-consolidation.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

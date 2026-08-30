@@ -8,9 +8,6 @@
 ## 📄 Pages
 - 📝 [Freigabe-Checkliste](CHECKLIST-ZUR-FREIGABE.md)
 
-## 📁 Assets
-- 🗂️ [Overview](assets/assets.md)
-
 ## 📁 Game(de)
 - 🗂️ [Overview](game%28de%29/game%28de%29.md)
 

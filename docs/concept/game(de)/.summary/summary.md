@@ -1,5 +1,5 @@
-Markdown-Scan – Root: /home/kleif/Projects/Game/ether-food/docs/concept/game(de)
-Erzeugt: 2026-08-30T12:49:25
+Markdown-Scan – Root: .
+Erzeugt: 2026-08-30T15:49:41
 Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini, .md
 
 === Dateien ===
@@ -7,10 +7,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 📁 .
   📝 game(de).md
      Pfad: 📝 game(de).md
-     Größe: 3.04 KB (3115 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.38 KB (3457 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Game(de)
-     Überschriften: 10, Zeilen: 64, Wörter: 342, Zeichen: 2935
+     Überschriften: 10, Zeilen: 67, Wörter: 375, Zeichen: 3261
      Gliederung:
        • # Game(de)
        • ## 📄 Pages
@@ -27,7 +27,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📝 index.md
      Größe: 1.48 KB (1519 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Blobbite – Spieldokumentation
      Überschriften: 3, Zeilen: 29, Wörter: 184, Zeichen: 1501
      Gliederung:
@@ -41,7 +41,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 00-foundation.md
      Pfad: 📁 00-foundation / 📝 00-foundation.md
      Größe: 369 B (369 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 00 foundation
      Überschriften: 2, Zeilen: 13, Wörter: 45, Zeichen: 355
      Gliederung:
@@ -51,21 +51,21 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 begriffe-und-namen.md
      Pfad: 📁 00-foundation / 📝 begriffe-und-namen.md
-     Größe: 2.93 KB (3001 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 5.69 KB (5825 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Begriffe und Namen
-     Überschriften: 4, Zeilen: 43, Wörter: 335, Zeichen: 2953
+     Überschriften: 4, Zeilen: 65, Wörter: 659, Zeichen: 5743
      Gliederung:
        • # Begriffe und Namen
        • ## Kernbegriffe
-       • ## Arbeitsnormalisierung der Namen
+       • ## Alias-, Quellen- und Variantenübersicht
        • ## Schreibregel
-     Inhalt (Auszug): title: Begriffe und Namen status: working-glossary updated: 2026-08-30
+     Inhalt (Auszug): title: Begriffe und Namen status: accepted updated: 2026-08-30
 
   📝 index.md
      Pfad: 📁 00-foundation / 📝 index.md
      Größe: 333 B (333 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 00 – Foundation
      Überschriften: 1, Zeilen: 10, Wörter: 42, Zeichen: 328
      Gliederung:
@@ -74,23 +74,24 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 kanon-und-offene-fragen.md
      Pfad: 📁 00-foundation / 📝 kanon-und-offene-fragen.md
-     Größe: 2.45 KB (2508 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 6.24 KB (6386 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Kanon und offene Fragen
-     Überschriften: 4, Zeilen: 46, Wörter: 336, Zeichen: 2471
+     Überschriften: 5, Zeilen: 111, Wörter: 807, Zeichen: 6295
      Gliederung:
        • # Kanon und offene Fragen
        • ## Bereits klar festgelegt
+       • ## Gelehrtenüberlieferungen und kanonische Widersprüche
        • ## Noch zu entscheiden
        • ## Kanonstufen
-     Inhalt (Auszug): title: Kanon und offene Fragen status: review-required updated: 2026-08-30
+     Inhalt (Auszug): title: Kanon und offene Fragen status: accepted updated: 2026-08-30
 
   📝 spielvision.md
      Pfad: 📁 00-foundation / 📝 spielvision.md
-     Größe: 2.61 KB (2671 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.83 KB (2897 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Spielvision
-     Überschriften: 7, Zeilen: 44, Wörter: 327, Zeichen: 2635
+     Überschriften: 7, Zeilen: 52, Wörter: 362, Zeichen: 2857
      Gliederung:
        • # Spielvision
        • ## Elevator Pitch
@@ -105,10 +106,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 📁 10-world
   📝 10-world.md
      Pfad: 📁 10-world / 📝 10-world.md
-     Größe: 1.36 KB (1395 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.44 KB (1474 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: 10 world
-     Überschriften: 6, Zeilen: 33, Wörter: 175, Zeichen: 1318
+     Überschriften: 6, Zeilen: 34, Wörter: 182, Zeichen: 1394
      Gliederung:
        • # 10 world
        • ## 📄 Pages
@@ -120,10 +121,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 index.md
      Pfad: 📁 10-world / 📝 index.md
-     Größe: 1.01 KB (1039 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.09 KB (1113 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: 10 – Welt
-     Überschriften: 5, Zeilen: 28, Wörter: 139, Zeichen: 1029
+     Überschriften: 5, Zeilen: 29, Wörter: 146, Zeichen: 1103
      Gliederung:
        • # 10 – Welt
        • ## Kosmologie
@@ -136,10 +137,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 📁 10-world/00-kosmologie
   📝 00-kosmologie.md
      Pfad: 📁 10-world / 📁 00-kosmologie / 📝 00-kosmologie.md
-     Größe: 468 B (468 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 523 B (523 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: 00 kosmologie
-     Überschriften: 2, Zeilen: 14, Wörter: 62, Zeichen: 451
+     Überschriften: 2, Zeilen: 15, Wörter: 69, Zeichen: 503
      Gliederung:
        • # 00 kosmologie
        • ## 📄 Pages
@@ -147,10 +148,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 era-sol-und-yol.md
      Pfad: 📁 10-world / 📁 00-kosmologie / 📝 era-sol-und-yol.md
-     Größe: 2.01 KB (2055 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.37 KB (3453 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Era, Sol und Yol
-     Überschriften: 6, Zeilen: 54, Wörter: 275, Zeichen: 2017
+     Überschriften: 6, Zeilen: 87, Wörter: 461, Zeichen: 3396
      Gliederung:
        • # Era, Sol und Yol
        • ## Era
@@ -162,66 +163,94 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 ether-seelen-und-pakte.md
      Pfad: 📁 10-world / 📁 00-kosmologie / 📝 ether-seelen-und-pakte.md
-     Größe: 2.23 KB (2288 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 4.79 KB (4905 B)
+     Geändert: 2026-08-30T15:42:47
      Titel: Ether, Seelen und Pakte
-     Überschriften: 6, Zeilen: 46, Wörter: 297, Zeichen: 2246
+     Überschriften: 8, Zeilen: 97, Wörter: 653, Zeichen: 4818
      Gliederung:
        • # Ether, Seelen und Pakte
        • ## Der Ether
-       • ## Seelen als Nahrung, Kraft und Währung
+       • ## Seele, Seelenmacht und Seelenkreislauf
        • ## Mächtige Seelen
+       • ## Tators Machtbereich
        • ## Pakte
+       • ## Befreiung und Rückkehr
        • ## Grenzen der Entitäten
      Inhalt (Auszug): title: Ether, Seelen und Pakte status: draft-canon spoiler_level: full updated: 2026-08-30
 
   📝 hera-und-splitterwelten.md
      Pfad: 📁 10-world / 📁 00-kosmologie / 📝 hera-und-splitterwelten.md
-     Größe: 2.14 KB (2189 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.34 KB (3421 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Hera und die Splitterwelten
-     Überschriften: 6, Zeilen: 41, Wörter: 269, Zeichen: 2152
+     Überschriften: 7, Zeilen: 73, Wörter: 406, Zeichen: 3364
      Gliederung:
        • # Hera und die Splitterwelten
        • ## Hera
+       • ## Gelehrtenmodelle
        • ## Eigenschaften
        • ## Splitterwelten
-       • ## Machtbereiche
+       • ## Sphärenreiche und Machtbereiche
        • ## Verhältnis zur Spielwelt
      Inhalt (Auszug): title: Hera und die Splitterwelten status: working-canon spoiler_level: full updated: 2026-08-30
 
   📝 index.md
      Pfad: 📁 10-world / 📁 00-kosmologie / 📝 index.md
-     Größe: 499 B (499 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 549 B (549 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Kosmologie
-     Überschriften: 1, Zeilen: 11, Wörter: 69, Zeichen: 493
+     Überschriften: 1, Zeilen: 12, Wörter: 76, Zeichen: 543
      Gliederung:
        • # Kosmologie
      Inhalt (Auszug): <!-- AUTO-GENERATED:backlink START --> [← Back](00-kosmologie.md) <!-- AUTO-GENERATED:backlink END -->
 
-  📝 zeitzyklen-und-konvergenz.md
-     Pfad: 📁 10-world / 📁 00-kosmologie / 📝 zeitzyklen-und-konvergenz.md
-     Größe: 2.09 KB (2139 B)
-     Geändert: 2026-08-30T12:29:06
-     Titel: Zeitzyklen und Konvergenz von Sol und Yol
-     Überschriften: 5, Zeilen: 41, Wörter: 282, Zeichen: 2101
+  📝 zeitrechnung-auf-era.md
+     Pfad: 📁 10-world / 📁 00-kosmologie / 📝 zeitrechnung-auf-era.md
+     Größe: 4.26 KB (4360 B)
+     Geändert: 2026-08-30T15:41:04
+     Titel: Zeitrechnung auf Era
+     Überschriften: 9, Zeilen: 115, Wörter: 594, Zeichen: 4308
      Gliederung:
-       • # Zeitzyklen und Konvergenz von Sol und Yol
-       • ## Unregelmäßige Zyklen
-       • ## Die Konvergenz
-       • ## Offener Zeitraum
-       • ## Nach der Konvergenz
-     Inhalt (Auszug): title: Zeitzyklen und Konvergenz von Sol und Yol status: working-canon updated: 2026-08-30
+       • # Zeitrechnung auf Era
+       • ## 1. Grundprinzip der Zeitmessung
+       • ## 2. Zeiteinheiten
+       • ## 3. Umrechnung in irdische Maßstäbe
+       • ## 4. Theoretische In-Game-Umrechnung
+       • ## 5. Datums- und Uhrzeitnotation
+       • ## 6. ZEHS als Referenzpunkt
+       • ## 7. Verhältnis zur Konvektion
+       • ## 8. Abgrenzung zwischen Lore-Zeit und tatsächlicher Spielzeit
+     Inhalt (Auszug): title: Zeitrechnung auf Era status: accepted updated: 2026-08-30
+
+  📝 zeitzyklen-und-konvektion.md
+     Pfad: 📁 10-world / 📁 00-kosmologie / 📝 zeitzyklen-und-konvektion.md
+     Größe: 7.67 KB (7857 B)
+     Geändert: 2026-08-30T15:49:36
+     Titel: Zeitzyklen und Konvektion von Sol und Yol
+     Überschriften: 12, Zeilen: 160, Wörter: 998, Zeichen: 7708
+     Gliederung:
+       • # Zeitzyklen und Konvektion von Sol und Yol
+       • ## Astrologie der Zufälle
+       • ## ZEHS
+       • ## Konvektion
+       • ## Polare Besonderheiten
+       • ## Strahlungsintensität
+       • ## Sonnenläufe
+         • ### Synchrone Läufe
+         • ### Langsame Läufe
+         • ### Stehende Sonnen
+         • ### Asynchrone Läufe
+         • ### Wechselnde Phasen
+     Inhalt (Auszug): title: Zeitzyklen und Konvektion von Sol und Yol status: accepted updated: 2026-08-30
 
 
 📁 10-world/10-weltgeschichte
   📝 10-weltgeschichte.md
      Pfad: 📁 10-world / 📁 10-weltgeschichte / 📝 10-weltgeschichte.md
-     Größe: 335 B (335 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 363 B (363 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: 10 weltgeschichte
-     Überschriften: 2, Zeilen: 12, Wörter: 41, Zeichen: 323
+     Überschriften: 2, Zeilen: 12, Wörter: 43, Zeichen: 351
      Gliederung:
        • # 10 weltgeschichte
        • ## 📄 Pages
@@ -229,35 +258,36 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 index.md
      Pfad: 📁 10-world / 📁 10-weltgeschichte / 📝 index.md
-     Größe: 310 B (310 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 338 B (338 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Weltgeschichte
-     Überschriften: 1, Zeilen: 9, Wörter: 40, Zeichen: 307
+     Überschriften: 1, Zeilen: 9, Wörter: 42, Zeichen: 335
      Gliederung:
        • # Weltgeschichte
      Inhalt (Auszug): <!-- AUTO-GENERATED:backlink START --> [← Back](10-weltgeschichte.md) <!-- AUTO-GENERATED:backlink END -->
 
-  📝 pakt-von-jator-und-semm.md
-     Pfad: 📁 10-world / 📁 10-weltgeschichte / 📝 pakt-von-jator-und-semm.md
-     Größe: 2.24 KB (2294 B)
-     Geändert: 2026-08-30T12:29:06
-     Titel: Der Pakt von Jator und Semm
-     Überschriften: 6, Zeilen: 41, Wörter: 318, Zeichen: 2260
+  📝 tators-seelenplan-und-pakt-des-helden.md
+     Pfad: 📁 10-world / 📁 10-weltgeschichte / 📝 tators-seelenplan-und-pakt-des-helden.md
+     Größe: 3.42 KB (3507 B)
+     Geändert: 2026-08-30T15:41:04
+     Titel: Tators Seelenplan und der Pakt des Helden
+     Überschriften: 7, Zeilen: 82, Wörter: 475, Zeichen: 3459
      Gliederung:
-       • # Der Pakt von Jator und Semm
-       • ## Ausgangsproblem
-       • ## Die Idee
-       • ## Warum gute Taten Teil des Systems sind
-       • ## Der persönliche Pakt des Helden
-       • ## Der Fehler im System
-     Inhalt (Auszug): title: Der Pakt von Jator und Semm status: draft-canon spoiler_level: critical updated: 2026-08-30
+       • # Tators Seelenplan und der Pakt des Helden
+       • ## Tators kosmischer Machtbereich
+       • ## Vorgeschichte des Herrschers
+       • ## Warum Tator diesen Herrscher auswählte
+       • ## Das Heldensystem
+       • ## Zehsen und der Talisman
+       • ## Semm
+     Inhalt (Auszug): title: Tators Seelenplan und der Pakt des Helden status: accepted spoiler_level: critical updated: 2026-08-30
 
   📝 zeitleiste.md
      Pfad: 📁 10-world / 📁 10-weltgeschichte / 📝 zeitleiste.md
-     Größe: 2.47 KB (2532 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 4.00 KB (4094 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Chronologische Übersicht
-     Überschriften: 1, Zeilen: 31, Wörter: 316, Zeichen: 2485
+     Überschriften: 1, Zeilen: 35, Wörter: 520, Zeichen: 4023
      Gliederung:
        • # Chronologische Übersicht
      Inhalt (Auszug): title: Chronologische Übersicht status: draft spoiler_level: full updated: 2026-08-30
@@ -267,7 +297,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 20-geografie-und-sphaeren.md
      Pfad: 📁 10-world / 📁 20-geografie-und-sphaeren / 📝 20-geografie-und-sphaeren.md
      Größe: 361 B (361 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 20 geografie und sphaeren
      Überschriften: 2, Zeilen: 12, Wörter: 43, Zeichen: 347
      Gliederung:
@@ -278,7 +308,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 10-world / 📁 20-geografie-und-sphaeren / 📝 index.md
      Größe: 363 B (363 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Geografie und Sphären
      Überschriften: 1, Zeilen: 9, Wörter: 43, Zeichen: 354
      Gliederung:
@@ -287,14 +317,15 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 welten-und-sphaeren.md
      Pfad: 📁 10-world / 📁 20-geografie-und-sphaeren / 📝 welten-und-sphaeren.md
-     Größe: 1.92 KB (1971 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.79 KB (3886 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Welten und Sphären
-     Überschriften: 7, Zeilen: 38, Wörter: 253, Zeichen: 1938
+     Überschriften: 8, Zeilen: 83, Wörter: 477, Zeichen: 3818
      Gliederung:
        • # Welten und Sphären
        • ## Era
        • ## Hera
+       • ## Sphärenreiche
        • ## Tatok
        • ## Die Konstruktwelt
        • ## Weltpassagen
@@ -303,10 +334,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 weltenkarte-und-arbeitsnamen.md
      Pfad: 📁 10-world / 📁 20-geografie-und-sphaeren / 📝 weltenkarte-und-arbeitsnamen.md
-     Größe: 1.89 KB (1940 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.13 KB (2177 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Konzeptkarte – Die Welten des Ether
-     Überschriften: 4, Zeilen: 53, Wörter: 232, Zeichen: 1912
+     Überschriften: 4, Zeilen: 59, Wörter: 260, Zeichen: 2145
      Gliederung:
        • # Konzeptkarte – Die Welten des Ether
        • ## Sichtbare Beschriftungen
@@ -318,59 +349,61 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 📁 10-world/40-fraktionen
   📝 40-fraktionen.md
      Pfad: 📁 10-world / 📁 40-fraktionen / 📝 40-fraktionen.md
-     Größe: 348 B (348 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 330 B (330 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: 40 fraktionen
-     Überschriften: 2, Zeilen: 12, Wörter: 41, Zeichen: 335
+     Überschriften: 2, Zeilen: 12, Wörter: 37, Zeichen: 317
      Gliederung:
        • # 40 fraktionen
        • ## 📄 Pages
      Inhalt (Auszug): <!-- AUTO-GENERATED:backlink START --> [← Back](../10-world.md) <!-- AUTO-GENERATED:backlink END -->
 
-  📝 atea-und-weltenbewahrer.md
-     Pfad: 📁 10-world / 📁 40-fraktionen / 📝 atea-und-weltenbewahrer.md
-     Größe: 2.28 KB (2337 B)
-     Geändert: 2026-08-30T12:29:06
-     Titel: Atea und Weltenbewahrer
-     Überschriften: 5, Zeilen: 45, Wörter: 281, Zeichen: 2306
-     Gliederung:
-       • # Atea und Weltenbewahrer
-       • ## Grundidee
-       • ## Bekannte Atea
-       • ## Zehsens Eingriff
-       • ## Offene Fragen
-     Inhalt (Auszug): title: Atea und Weltenbewahrer status: working-canon updated: 2026-08-30
-
   📝 grosse-ether-entitaeten.md
      Pfad: 📁 10-world / 📁 40-fraktionen / 📝 grosse-ether-entitaeten.md
-     Größe: 2.48 KB (2543 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.28 KB (3360 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Die zehn großen Ether-Entitäten
-     Überschriften: 5, Zeilen: 44, Wörter: 309, Zeichen: 2481
+     Überschriften: 6, Zeilen: 64, Wörter: 406, Zeichen: 3283
      Gliederung:
        • # Die zehn großen Ether-Entitäten
        • ## Stellung
        • ## Bekannte Namen
        • ## Gemeinsame Eigenschaften
-       • ## Jator und Semm
+       • ## Tator
+       • ## Semm
      Inhalt (Auszug): title: Die zehn großen Ether-Entitäten status: working-canon spoiler_level: full updated: 2026-08-30
 
   📝 index.md
      Pfad: 📁 10-world / 📁 40-fraktionen / 📝 index.md
-     Größe: 261 B (261 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 243 B (243 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Fraktionen und übergeordnete Wesen
-     Überschriften: 1, Zeilen: 7, Wörter: 31, Zeichen: 256
+     Überschriften: 1, Zeilen: 7, Wörter: 27, Zeichen: 238
      Gliederung:
        • # Fraktionen und übergeordnete Wesen
      Inhalt (Auszug): <!-- AUTO-GENERATED:backlink START --> [← Back](40-fraktionen.md) <!-- AUTO-GENERATED:backlink END -->
+
+  📝 weltenbewahrer.md
+     Pfad: 📁 10-world / 📁 40-fraktionen / 📝 weltenbewahrer.md
+     Größe: 3.71 KB (3797 B)
+     Geändert: 2026-08-30T15:42:47
+     Titel: Weltenbewahrer
+     Überschriften: 6, Zeilen: 80, Wörter: 447, Zeichen: 3738
+     Gliederung:
+       • # Weltenbewahrer
+       • ## Grundidee und Bezeichnung
+       • ## Bekannte Weltenbewahrer
+       • ## Zehsen und der Talisman
+       • ## Überlieferte Varianten
+       • ## Fragen unter Gelehrten
+     Inhalt (Auszug): title: Weltenbewahrer status: working-canon updated: 2026-08-30
 
 
 📁 20-story
   📝 20-story.md
      Pfad: 📁 20-story / 📝 20-story.md
      Größe: 641 B (641 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 20 story
      Überschriften: 2, Zeilen: 17, Wörter: 65, Zeichen: 611
      Gliederung:
@@ -380,27 +413,28 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 enthuellungsstruktur.md
      Pfad: 📁 20-story / 📝 enthuellungsstruktur.md
-     Größe: 2.18 KB (2228 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.61 KB (3693 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Enthüllungs- und Spoilerstruktur
-     Überschriften: 8, Zeilen: 40, Wörter: 288, Zeichen: 2169
+     Überschriften: 9, Zeilen: 73, Wörter: 486, Zeichen: 3609
      Gliederung:
        • # Enthüllungs- und Spoilerstruktur
        • ## Stufe 1 – Verlorene Welt
        • ## Stufe 2 – Unvollständige Erinnerung
        • ## Stufe 3 – Künstliche Grenzen
        • ## Stufe 4 – Zweifel an der eigenen Identität
-       • ## Stufe 5 – Wahrheit über die Konstruktwelt
-       • ## Stufe 6 – Wahrheit als neue Handlungsfreiheit
+       • ## Stufe 5 – Vorgeschichte des Herrschers
+       • ## Stufe 6 – Wahrheit über die Konstruktwelt
+       • ## Stufe 7 – Wahrheit als neue Handlungsfreiheit
        • ## Erzählregel
      Inhalt (Auszug): title: Enthüllungs- und Spoilerstruktur status: proposal spoiler_level: critical updated: 2026-08-30
 
   📝 finale-und-erweiterung.md
      Pfad: 📁 20-story / 📝 finale-und-erweiterung.md
-     Größe: 2.07 KB (2119 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.28 KB (2335 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Finale des Basisspiels und Erweiterung
-     Überschriften: 4, Zeilen: 40, Wörter: 287, Zeichen: 2083
+     Überschriften: 4, Zeilen: 49, Wörter: 318, Zeichen: 2301
      Gliederung:
        • # Finale des Basisspiels und Erweiterung
        • ## Finale des Basisspiels
@@ -410,12 +444,13 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 handlungsverlauf.md
      Pfad: 📁 20-story / 📝 handlungsverlauf.md
-     Größe: 2.62 KB (2682 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.82 KB (3912 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Handlungsverlauf des Basisspiels
-     Überschriften: 10, Zeilen: 57, Wörter: 354, Zeichen: 2644
+     Überschriften: 12, Zeilen: 90, Wörter: 514, Zeichen: 3850
      Gliederung:
        • # Handlungsverlauf des Basisspiels
+       • ## Vorgeschichte – erst später vollständig enthüllt
        • ## 1. Erwachen
        • ## 2. Erste Befreiungen
        • ## 3. Wiederherstellung der Welt
@@ -424,29 +459,30 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
        • ## 6. Umkehr des Systems
        • ## 7. Flucht
        • ## 8. Weltpassagen
-       • ## 9. Jator und Semm
+       • ## 9. Tator und Semm
+       • ## 10. Rückkehr der Seelen
      Inhalt (Auszug): title: Handlungsverlauf des Basisspiels status: draft-canon spoiler_level: critical updated: 2026-08-30
 
   📝 heldenraum-und-talisman.md
      Pfad: 📁 20-story / 📝 heldenraum-und-talisman.md
-     Größe: 1.91 KB (1951 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.65 KB (2713 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Heldenraum und Talisman
-     Überschriften: 7, Zeilen: 44, Wörter: 252, Zeichen: 1929
+     Überschriften: 7, Zeilen: 61, Wörter: 353, Zeichen: 2678
      Gliederung:
        • # Heldenraum und Talisman
        • ## Der Heldenraum
        • ## Der Talisman
          • ### 1. Wegweiser
          • ### 2. Entschlüssler
-         • ### 3. Seelenspeicher
+         • ### 3. Speicher für Seelenmacht
        • ## Erzählerische Funktion
      Inhalt (Auszug): title: Heldenraum und Talisman status: working-canon spoiler_level: full updated: 2026-08-30
 
   📝 index.md
      Pfad: 📁 20-story / 📝 index.md
      Größe: 565 B (565 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 20 – Story
      Überschriften: 1, Zeilen: 14, Wörter: 58, Zeichen: 555
      Gliederung:
@@ -455,10 +491,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 kapitelstruktur-arbeitsfassung.md
      Pfad: 📁 20-story / 📝 kapitelstruktur-arbeitsfassung.md
-     Größe: 1.53 KB (1563 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.67 KB (1710 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Kapitelstruktur – Arbeitsfassung
-     Überschriften: 2, Zeilen: 30, Wörter: 177, Zeichen: 1541
+     Überschriften: 2, Zeilen: 30, Wörter: 197, Zeichen: 1686
      Gliederung:
        • # Kapitelstruktur – Arbeitsfassung
        • ## Noch auszuarbeiten
@@ -466,23 +502,24 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 praemisse.md
      Pfad: 📁 20-story / 📝 praemisse.md
-     Größe: 1.38 KB (1412 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.06 KB (2108 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Story-Prämisse
-     Überschriften: 1, Zeilen: 18, Wörter: 196, Zeichen: 1391
+     Überschriften: 1, Zeilen: 36, Wörter: 290, Zeichen: 2068
      Gliederung:
        • # Story-Prämisse
      Inhalt (Auszug): title: Story-Prämisse status: draft-canon spoiler_level: critical updated: 2026-08-30
 
   📝 protagonist.md
      Pfad: 📁 20-story / 📝 protagonist.md
-     Größe: 2.03 KB (2078 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.34 KB (3420 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Der Protagonist
-     Überschriften: 6, Zeilen: 48, Wörter: 272, Zeichen: 2051
+     Überschriften: 7, Zeilen: 73, Wörter: 462, Zeichen: 3371
      Gliederung:
        • # Der Protagonist
        • ## Ausgangszustand
+       • ## Früheres Leben und Pakt
        • ## Was er zu Beginn glaubt
        • ## Was tatsächlich stimmt
        • ## Charakterentwicklung
@@ -494,7 +531,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 30-gameplay.md
      Pfad: 📁 30-gameplay / 📝 30-gameplay.md
      Größe: 464 B (464 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 30 gameplay
      Überschriften: 2, Zeilen: 14, Wörter: 44, Zeichen: 445
      Gliederung:
@@ -505,7 +542,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 30-gameplay / 📝 index.md
      Größe: 348 B (348 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 30 – Gameplay
      Überschriften: 1, Zeilen: 9, Wörter: 32, Zeichen: 342
      Gliederung:
@@ -515,7 +552,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 kampfsystem-grundlage.md
      Pfad: 📁 30-gameplay / 📝 kampfsystem-grundlage.md
      Größe: 1.74 KB (1782 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Kampfsystem – Grundlage
      Überschriften: 6, Zeilen: 47, Wörter: 190, Zeichen: 1762
      Gliederung:
@@ -529,10 +566,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 kernspielschleife.md
      Pfad: 📁 30-gameplay / 📝 kernspielschleife.md
-     Größe: 1.75 KB (1792 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.05 KB (2103 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Kernspielschleife
-     Überschriften: 7, Zeilen: 42, Wörter: 216, Zeichen: 1762
+     Überschriften: 7, Zeilen: 48, Wörter: 262, Zeichen: 2068
      Gliederung:
        • # Kernspielschleife
        • ## Hauptschleife
@@ -545,22 +582,23 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 seelenenergie-im-endgame.md
      Pfad: 📁 30-gameplay / 📝 seelenenergie-im-endgame.md
-     Größe: 1.61 KB (1650 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.35 KB (2402 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Seelenenergie im Endgame
-     Überschriften: 5, Zeilen: 36, Wörter: 212, Zeichen: 1622
+     Überschriften: 6, Zeilen: 54, Wörter: 314, Zeichen: 2378
      Gliederung:
        • # Seelenenergie im Endgame
        • ## Freischaltung
+       • ## Verbindliche Begriffe
        • ## Spielablauf
-       • ## Wichtige Designbedingung
+       • ## Erhalt der Seelen
        • ## Endgame-Ziel
      Inhalt (Auszug): title: Seelenenergie im Endgame status: draft-canon spoiler_level: critical updated: 2026-08-30
 
   📝 wiederherstellungsfortschritt.md
      Pfad: 📁 30-gameplay / 📝 wiederherstellungsfortschritt.md
      Größe: 1.85 KB (1899 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Wiederherstellungsfortschritt
      Überschriften: 5, Zeilen: 39, Wörter: 214, Zeichen: 1850
      Gliederung:
@@ -576,7 +614,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 40-world-systems.md
      Pfad: 📁 40-world-systems / 📝 40-world-systems.md
      Größe: 575 B (575 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 40 world systems
      Überschriften: 2, Zeilen: 15, Wörter: 62, Zeichen: 553
      Gliederung:
@@ -587,7 +625,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ebenen-portale-und-weltpassagen.md
      Pfad: 📁 40-world-systems / 📝 ebenen-portale-und-weltpassagen.md
      Größe: 1.43 KB (1464 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Ebenen, Portale und Weltpassagen
      Überschriften: 5, Zeilen: 44, Wörter: 166, Zeichen: 1444
      Gliederung:
@@ -600,10 +638,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 erinnerungs-und-faehigkeitssystem.md
      Pfad: 📁 40-world-systems / 📝 erinnerungs-und-faehigkeitssystem.md
-     Größe: 1.89 KB (1931 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.07 KB (2119 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Erinnerungs- und Fähigkeitssystem
-     Überschriften: 6, Zeilen: 39, Wörter: 218, Zeichen: 1901
+     Überschriften: 6, Zeilen: 46, Wörter: 237, Zeichen: 2086
      Gliederung:
        • # Erinnerungs- und Fähigkeitssystem
        • ## Grundsatz
@@ -616,7 +654,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 40-world-systems / 📝 index.md
      Größe: 442 B (442 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 40 – Weltsysteme
      Überschriften: 1, Zeilen: 10, Wörter: 48, Zeichen: 436
      Gliederung:
@@ -626,7 +664,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 rekonstruktionssystem.md
      Pfad: 📁 40-world-systems / 📝 rekonstruktionssystem.md
      Größe: 1.66 KB (1697 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Rekonstruktionssystem
      Überschriften: 6, Zeilen: 49, Wörter: 188, Zeichen: 1669
      Gliederung:
@@ -640,30 +678,32 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 seelenoekonomie.md
      Pfad: 📁 40-world-systems / 📝 seelenoekonomie.md
-     Größe: 1.52 KB (1555 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 3.66 KB (3746 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Seelenökonomie
-     Überschriften: 5, Zeilen: 42, Wörter: 183, Zeichen: 1527
+     Überschriften: 7, Zeilen: 91, Wörter: 475, Zeichen: 3680
      Gliederung:
        • # Seelenökonomie
-       • ## Diegetische Bedeutung
+       • ## Grundbegriffe
+       • ## Lebensgrundlage Eras
        • ## Qualitätsunterschiede
-       • ## Einfluss auf Era
+       • ## Tators Eingriff in Eras Seelenkreislauf
+       • ## Tators geplante Ernte
        • ## Trennung von Lore und Spielerressource
      Inhalt (Auszug): title: Seelenökonomie status: draft-canon spoiler_level: full updated: 2026-08-30
 
   📝 sol-yol-zeit-und-jahreszeiten.md
      Pfad: 📁 40-world-systems / 📝 sol-yol-zeit-und-jahreszeiten.md
-     Größe: 1.58 KB (1623 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.57 KB (2634 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Sol, Yol, Zeit und Jahreszeiten als Weltsystem
-     Überschriften: 5, Zeilen: 31, Wörter: 205, Zeichen: 1596
+     Überschriften: 5, Zeilen: 57, Wörter: 320, Zeichen: 2596
      Gliederung:
        • # Sol, Yol, Zeit und Jahreszeiten als Weltsystem
-       • ## Weltregel
-       • ## Mögliche spielerische Auswirkungen
-       • ## Konvergenzereignis
-       • ## Produktionshinweis
+       • ## Kanonische Grundlagen
+       • ## Gameplay-relevante Weltzustände
+       • ## Regionale Darstellung
+       • ## Simulation und lange Zeiträume
      Inhalt (Auszug): title: Sol, Yol, Zeit und Jahreszeiten als Weltsystem status: proposal updated: 2026-08-30
 
 
@@ -671,7 +711,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 50-content.md
      Pfad: 📁 50-content / 📝 50-content.md
      Größe: 424 B (424 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 50 content
      Überschriften: 2, Zeilen: 13, Wörter: 49, Zeichen: 409
      Gliederung:
@@ -681,10 +721,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 boss-und-endgame-abfolge.md
      Pfad: 📁 50-content / 📝 boss-und-endgame-abfolge.md
-     Größe: 1.39 KB (1419 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.72 KB (1758 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Boss- und Endgame-Abfolge
-     Überschriften: 5, Zeilen: 40, Wörter: 182, Zeichen: 1392
+     Überschriften: 5, Zeilen: 48, Wörter: 226, Zeichen: 1728
      Gliederung:
        • # Boss- und Endgame-Abfolge
        • ## Regionale Bosse
@@ -696,7 +736,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 50-content / 📝 index.md
      Größe: 312 B (312 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 50 – Content
      Überschriften: 1, Zeilen: 8, Wörter: 37, Zeichen: 307
      Gliederung:
@@ -706,7 +746,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 monsterhoehlen-und-versiegelungen.md
      Pfad: 📁 50-content / 📝 monsterhoehlen-und-versiegelungen.md
      Größe: 1.37 KB (1401 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Monsterhöhlen und Versiegelungen
      Überschriften: 5, Zeilen: 46, Wörter: 162, Zeichen: 1379
      Gliederung:
@@ -720,7 +760,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 welt-und-ebenenstruktur.md
      Pfad: 📁 50-content / 📝 welt-und-ebenenstruktur.md
      Größe: 1.17 KB (1200 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: Welt- und Ebenenstruktur
      Überschriften: 4, Zeilen: 35, Wörter: 147, Zeichen: 1177
      Gliederung:
@@ -735,7 +775,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 60-production.md
      Pfad: 📁 60-production / 📝 60-production.md
      Größe: 433 B (433 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 60 production
      Überschriften: 2, Zeilen: 13, Wörter: 45, Zeichen: 416
      Gliederung:
@@ -746,7 +786,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 60-production / 📝 index.md
      Größe: 324 B (324 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: 60 – Produktion
      Überschriften: 1, Zeilen: 8, Wörter: 34, Zeichen: 319
      Gliederung:
@@ -755,25 +795,24 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 naechste-konzeptschritte.md
      Pfad: 📁 60-production / 📝 naechste-konzeptschritte.md
-     Größe: 1.54 KB (1574 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.58 KB (1622 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Nächste Konzeptschritte
-     Überschriften: 6, Zeilen: 48, Wörter: 179, Zeichen: 1540
+     Überschriften: 5, Zeilen: 45, Wörter: 186, Zeichen: 1592
      Gliederung:
        • # Nächste Konzeptschritte
-       • ## Priorität 1 – Kanon freigeben
-       • ## Priorität 2 – Protagonist definieren
-       • ## Priorität 3 – Vertical Slice festlegen
-       • ## Priorität 4 – Regionen und Kapitel
-       • ## Priorität 5 – Endgame-Ethik und Mechanik
+       • ## Priorität 1 – Verbleibende Figurenfragen
+       • ## Priorität 2 – Vertical Slice festlegen
+       • ## Priorität 3 – Regionen und Kapitel
+       • ## Priorität 4 – Endgame-Inszenierung und Mechanik
      Inhalt (Auszug): title: Nächste Konzeptschritte status: planning updated: 2026-08-30
 
   📝 narrative-umsetzungsregeln.md
      Pfad: 📁 60-production / 📝 narrative-umsetzungsregeln.md
-     Größe: 1.90 KB (1944 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 2.94 KB (3015 B)
+     Geändert: 2026-08-30T15:42:47
      Titel: Narrative Umsetzungsregeln
-     Überschriften: 8, Zeilen: 40, Wörter: 235, Zeichen: 1901
+     Überschriften: 9, Zeilen: 62, Wörter: 366, Zeichen: 2955
      Gliederung:
        • # Narrative Umsetzungsregeln
        • ## 1. Die erste Geschichte muss glaubwürdig sein
@@ -781,16 +820,17 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
        • ## 3. Jede große Enthüllung verändert Gameplay
        • ## 4. Begriffe werden gestaffelt eingeführt
        • ## 5. Der Talisman ist kein allwissender Erzähler
-       • ## 6. Das Endgame braucht neue Inhalte
-       • ## 7. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt
+       • ## 6. Gelehrte tragen überlieferte Mehrdeutigkeiten
+       • ## 7. Das Endgame braucht neue Inhalte
+       • ## 8. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt
      Inhalt (Auszug): title: Narrative Umsetzungsregeln status: draft-guideline updated: 2026-08-30
 
   📝 scope-basisspiel-und-erweiterung.md
      Pfad: 📁 60-production / 📝 scope-basisspiel-und-erweiterung.md
-     Größe: 1.58 KB (1614 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.77 KB (1813 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Scope – Basisspiel und Erweiterung
-     Überschriften: 5, Zeilen: 48, Wörter: 192, Zeichen: 1578
+     Überschriften: 5, Zeilen: 52, Wörter: 218, Zeichen: 1775
      Gliederung:
        • # Scope – Basisspiel und Erweiterung
        • ## Basisspiel
@@ -803,22 +843,23 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 📁 decisions
   📝 ADR-0001-namensnormalisierung.md
      Pfad: 📁 decisions / 📝 ADR-0001-namensnormalisierung.md
-     Größe: 1.08 KB (1101 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.79 KB (1835 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: ADR-0001 – Namensnormalisierung
-     Überschriften: 5, Zeilen: 29, Wörter: 125, Zeichen: 1089
+     Überschriften: 6, Zeilen: 44, Wörter: 206, Zeichen: 1804
      Gliederung:
        • # ADR-0001 – Namensnormalisierung
        • ## Kontext
-       • ## Vorgeschlagene Entscheidung
+       • ## Entscheidung
        • ## Begründung
+       • ## Verworfene ältere Entscheidung
        • ## Folgen
-     Inhalt (Auszug): title: ADR-0001 – Namensnormalisierung status: proposed updated: 2026-08-30
+     Inhalt (Auszug): title: ADR-0001 – Namensnormalisierung status: accepted updated: 2026-08-30
 
   📝 ADR-0002-wiederherstellungsreihenfolge.md
      Pfad: 📁 decisions / 📝 ADR-0002-wiederherstellungsreihenfolge.md
      Größe: 1.04 KB (1061 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: ADR-0002 – Wiederherstellungsreihenfolge
      Überschriften: 4, Zeilen: 31, Wörter: 118, Zeichen: 1043
      Gliederung:
@@ -830,10 +871,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 ADR-0003-verdeckte-wahrheit-der-spielwelt.md
      Pfad: 📁 decisions / 📝 ADR-0003-verdeckte-wahrheit-der-spielwelt.md
-     Größe: 1017 B (1017 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 1.05 KB (1072 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: ADR-0003 – Verdeckte Wahrheit der Spielwelt
-     Überschriften: 4, Zeilen: 24, Wörter: 131, Zeichen: 997
+     Überschriften: 4, Zeilen: 27, Wörter: 138, Zeichen: 1052
      Gliederung:
        • # ADR-0003 – Verdeckte Wahrheit der Spielwelt
        • ## Kontext
@@ -844,9 +885,9 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0004-basisspiel-und-erweiterung.md
      Pfad: 📁 decisions / 📝 ADR-0004-basisspiel-und-erweiterung.md
      Größe: 1.09 KB (1119 B)
-     Geändert: 2026-08-30T12:29:06
+     Geändert: 2026-08-30T15:41:04
      Titel: ADR-0004 – Trennung von Basisspiel und Erweiterung
-     Überschriften: 4, Zeilen: 26, Wörter: 136, Zeichen: 1095
+     Überschriften: 4, Zeilen: 27, Wörter: 136, Zeichen: 1095
      Gliederung:
        • # ADR-0004 – Trennung von Basisspiel und Erweiterung
        • ## Kontext
@@ -854,12 +895,51 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
        • ## Folgen
      Inhalt (Auszug): title: ADR-0004 – Trennung von Basisspiel und Erweiterung status: accepted updated: 2026-08-30
 
+  📝 ADR-0005-kanonfreigabe-checkliste.md
+     Pfad: 📁 decisions / 📝 ADR-0005-kanonfreigabe-checkliste.md
+     Größe: 3.38 KB (3460 B)
+     Geändert: 2026-08-30T15:41:04
+     Titel: ADR-0005 – Kanonfreigabe der Checkliste
+     Überschriften: 4, Zeilen: 66, Wörter: 421, Zeichen: 3409
+     Gliederung:
+       • # ADR-0005 – Kanonfreigabe der Checkliste
+       • ## Kontext
+       • ## Entscheidung
+       • ## Folgen
+     Inhalt (Auszug): title: ADR-0005 – Kanonfreigabe der Checkliste status: accepted updated: 2026-08-30
+
+  📝 ADR-0006-gelehrtenueberlieferungen.md
+     Pfad: 📁 decisions / 📝 ADR-0006-gelehrtenueberlieferungen.md
+     Größe: 1.94 KB (1988 B)
+     Geändert: 2026-08-30T15:42:47
+     Titel: ADR-0006 – Gelehrtenüberlieferungen
+     Überschriften: 4, Zeilen: 50, Wörter: 212, Zeichen: 1952
+     Gliederung:
+       • # ADR-0006 – Gelehrtenüberlieferungen
+       • ## Kontext
+       • ## Entscheidung
+       • ## Folgen
+     Inhalt (Auszug): title: ADR-0006 – Gelehrtenüberlieferungen status: accepted updated: 2026-08-30
+
+  📝 ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md
+     Pfad: 📁 decisions / 📝 ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md
+     Größe: 1.55 KB (1583 B)
+     Geändert: 2026-08-30T15:41:04
+     Titel: ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung
+     Überschriften: 4, Zeilen: 38, Wörter: 196, Zeichen: 1555
+     Gliederung:
+       • # ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung
+       • ## Kontext
+       • ## Entscheidung
+       • ## Folgen
+     Inhalt (Auszug): title: ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung status: accepted updated: 2026-08-30
+
   📝 decisions.md
      Pfad: 📁 decisions / 📝 decisions.md
-     Größe: 591 B (591 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 903 B (903 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Decisions
-     Überschriften: 2, Zeilen: 14, Wörter: 65, Zeichen: 566
+     Überschriften: 2, Zeilen: 17, Wörter: 95, Zeichen: 862
      Gliederung:
        • # Decisions
        • ## 📄 Pages
@@ -867,10 +947,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 index.md
      Pfad: 📁 decisions / 📝 index.md
-     Größe: 568 B (568 B)
-     Geändert: 2026-08-30T12:29:06
+     Größe: 901 B (901 B)
+     Geändert: 2026-08-30T15:41:04
      Titel: Entscheidungen
-     Überschriften: 1, Zeilen: 11, Wörter: 59, Zeichen: 566
+     Überschriften: 1, Zeilen: 14, Wörter: 92, Zeichen: 898
      Gliederung:
        • # Entscheidungen
      Inhalt (Auszug): <!-- AUTO-GENERATED:backlink START --> [← Back](decisions.md) <!-- AUTO-GENERATED:backlink END -->
@@ -880,6 +960,8 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
 📁 .
 ├── 📁 .summary
+│   ├── 📝 allsummary.md
+│   └── 📝 summary.md
 ├── 📁 00-foundation
 │   ├── 📝 00-foundation.md
 │   ├── 📝 begriffe-und-namen.md
@@ -893,11 +975,12 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 │   │   ├── 📝 ether-seelen-und-pakte.md
 │   │   ├── 📝 hera-und-splitterwelten.md
 │   │   ├── 📝 index.md
-│   │   └── 📝 zeitzyklen-und-konvergenz.md
+│   │   ├── 📝 zeitrechnung-auf-era.md
+│   │   └── 📝 zeitzyklen-und-konvektion.md
 │   ├── 📁 10-weltgeschichte
 │   │   ├── 📝 10-weltgeschichte.md
 │   │   ├── 📝 index.md
-│   │   ├── 📝 pakt-von-jator-und-semm.md
+│   │   ├── 📝 tators-seelenplan-und-pakt-des-helden.md
 │   │   └── 📝 zeitleiste.md
 │   ├── 📁 20-geografie-und-sphaeren
 │   │   ├── 📝 20-geografie-und-sphaeren.md
@@ -906,9 +989,9 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 │   │   └── 📝 weltenkarte-und-arbeitsnamen.md
 │   ├── 📁 40-fraktionen
 │   │   ├── 📝 40-fraktionen.md
-│   │   ├── 📝 atea-und-weltenbewahrer.md
 │   │   ├── 📝 grosse-ether-entitaeten.md
-│   │   └── 📝 index.md
+│   │   ├── 📝 index.md
+│   │   └── 📝 weltenbewahrer.md
 │   ├── 📝 10-world.md
 │   └── 📝 index.md
 ├── 📁 20-story
@@ -953,6 +1036,9 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 │   ├── 📝 ADR-0002-wiederherstellungsreihenfolge.md
 │   ├── 📝 ADR-0003-verdeckte-wahrheit-der-spielwelt.md
 │   ├── 📝 ADR-0004-basisspiel-und-erweiterung.md
+│   ├── 📝 ADR-0005-kanonfreigabe-checkliste.md
+│   ├── 📝 ADR-0006-gelehrtenueberlieferungen.md
+│   ├── 📝 ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md
 │   ├── 📝 decisions.md
 │   └── 📝 index.md
 ├── 📝 game(de).md
@@ -961,4 +1047,6 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 === Ordnerbaum (Ausgabeordner) ===
 
 📁 .
-└── 📝 index.json
+├── 📝 allsummary.md
+├── 📝 index.json
+└── 📝 summary.md

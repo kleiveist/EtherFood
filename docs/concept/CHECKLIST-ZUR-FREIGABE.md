@@ -1,6 +1,6 @@
 ---
 title: Freigabe-Checkliste für Kanon und Begriffe
-status: review-required
+status: accepted
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
@@ -8,23 +8,32 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink END -->
 # Freigabe-Checkliste
 
-Die folgenden Punkte sind im gesprochenen Entwurf oder zwischen Text und Konzeptgrafiken uneindeutig. Die Dokumente verwenden jeweils eine nachvollziehbare Arbeitsfassung, bis eine endgültige Freigabe erfolgt.
+Die zwölf zuvor offenen Punkte sind entschieden. Die folgende Tabelle ist eine
+Entscheidungsübersicht; ältere Schreibweisen erscheinen nur zur historischen
+Zuordnung.
 
-| Nr. | Frage | Verwendete Arbeitsfassung |
-|---:|---|---|
-| 1 | Heißt der große Gegenspieler `Tator` oder `Jator`? | **Jator**, entsprechend der Entitäten-Grafik. |
-| 2 | Heißt sein Verbündeter `Zen`, `Zem` oder `Semm`? | **Semm**, entsprechend der Entitäten-Grafik. |
-| 3 | Welcher Weltenbewahrer schleust den Talisman ein? | **Zehsen**, weil Zehsen in der Wächtergrafik erscheint und `Zem` an dieser Stelle vermutlich eine Diktatvariante ist. |
-| 4 | Heißt der kalte, magische Himmelskörper `Yonu`, `Jul` oder `Yol`? | **Yol**, entsprechend der Weltgrafik und der bisherigen Bildbeschreibung. |
-| 5 | Wie heißt Jators Sphäre? | **Tatok**, entsprechend der Weltgrafik. |
-| 6 | Ist `Hera` die Gesamtheit aller Splitterwelten, eine übergeordnete Sphäre oder eine einzelne Splitterwelt? | Hera wird als **übergeordnete, multidimensionale Splittersphäre** behandelt. |
-| 7 | Ist `The Meridian` auf der älteren Weltgrafik identisch mit Era? | Als wahrscheinlicher älterer Platzhalter markiert; noch nicht endgültig ersetzt. |
-| 8 | Wie oft findet die 24-stündige Konvergenz von Sol und Yol statt? | Ungefähr alle **20 bis 25 irdischen Jahre**; exakter Wert offen. |
-| 9 | Was geschieht beim Einsammeln der befreiten Seelenenergie mit den Seelen selbst? | Noch offen: Energieübertragung, freiwillige Gabe, temporäre Bindung oder vollständige Aufnahme. |
-| 10 | Was genau war der Pakt des Helden und wann führte er zu seinem Tod auf Era? | Grundfolge ist festgelegt, konkrete Umstände und Motivation sind offen. |
-| 11 | Ist `Atea` der offizielle Name der zehn Weltenbewahrer? | Als Arbeitsbezeichnung übernommen. |
-| 12 | Was bedeutet der im Diktat unklare Ausdruck `Fehrenreich`? | Nicht als Kanon übernommen; vorläufig durch **Machtbereich/Einflusssphäre** ersetzt. |
+| Nr. | Freigabepunkt | Status | Freigegebene Festlegung |
+|---:|---|---|---|
+| 1 | Name des großen Gegenspielers | ✅ freigegeben | **Tator** ist verbindlich; `Jator` ist eine verworfene ältere Schreibweise. |
+| 2 | Trennung von Semm und Zehsen | ✅ freigegeben | **Semm** ist ein weiterer Gegenspieler. Der gemeinte Verbündete Tators heißt **Zehsen**, nicht `Semm`, `Zen` oder `Zem`. |
+| 3 | Ursprung des Talismans | ✅ freigegeben | **Zehsen** bringt den Talisman in den Heldenraum beziehungsweise in Tators System. Gelehrte deuten seine genaue Absicht und Loyalität unterschiedlich; keine Deutung ist bestätigt. |
+| 4 | Name des kalten magischen Himmelskörpers | ✅ freigegeben | **Yol** ist verbindlich; `Yonu`, `Jul` und `Yohl` sind ältere Varianten. |
+| 5 | Name von Tators Sphärenreich | ✅ freigegeben | Tators Sphärenreich heißt **Tatok**. |
+| 6 | Bedeutung von Hera | ✅ freigegeben | **Hera** ist die übergeordnete, multidimensionale Splittersphäre. |
+| 7 | Bedeutung von `The Meridian` | ✅ freigegeben | Gelehrte mehrerer Kulturen verwenden **The Meridian** bewusst mehrdeutig für Era oder für das zentrale System aus Era, Sol und Yol. |
+| 8 | Zeitrechnung und Konvektion | ✅ freigegeben | Die **Konvektion** wiederholt sich nach 3500 Tan beziehungsweise 10 Mohn und dauert 20 Tan beziehungsweise 2 Dir. |
+| 9 | Seelenmacht und Rückkehr der Seelen | ✅ freigegeben | Der Talisman nimmt Seelenmacht, nicht die Seelen selbst, auf. Nach der zweiten Reise kehren die Seelen nach Era zurück, werden im lebensnotwendigen Seelenkreislauf wiedergeboren und tragen zum Fortbestand des Planeten bei. |
+| 10 | Tators Machtbereich und Pakt des Helden | ✅ freigegeben | Tator greift in die Seelenwanderung nach Hera ein. Der Pakt bringt die Frau des Helden zurück, bindet ihn und seine Untertanen und führt erst nach seinem natürlichen Tod zur Umleitung seiner Seele. |
+| 11 | Bezeichnung der zehn Weltenbewahrer | ✅ freigegeben | **Weltenbewahrer** ist der bevorzugte redaktionelle Sammelbegriff; Gelehrte überliefern `Atea`, `Athea` und `Are` als nicht vereinheitlichte Varianten. |
+| 12 | Redaktioneller Begriff für Sphärenreiche | ✅ freigegeben | **Sphärenreich** ist der bevorzugte redaktionelle Oberbegriff für die unterschiedlichen Begriffe der Gelehrten und Kulturen; `Fehrenreich` ist eine verworfene Diktatvariante. |
 
-## Empfohlene Freigabereihenfolge
+## Freigabestatus
 
-Zuerst sollten die Namen Jator, Semm, Zehsen, Yol und Tatok bestätigt werden. Danach folgen die genaue Natur Heras, der Konvergenzzyklus und die ethische Funktionsweise der Seelenenergie im Endgame.
+Alle zwölf Punkte sind abgeschlossen und in die deutsche Fachdokumentation
+übertragen. Die zusammenhängenden kosmologischen und erzählerischen Folgen sind
+in [ADR-0005 – Kanonfreigabe der Checkliste](game%28de%29/decisions/ADR-0005-kanonfreigabe-checkliste.md)
+dokumentiert. Die anschließend bestätigten Regeln zu
+[Gelehrtenüberlieferungen](game%28de%29/decisions/ADR-0006-gelehrtenueberlieferungen.md)
+und zum
+[lebensnotwendigen Seelenkreislauf](game%28de%29/decisions/ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md)
+ergänzen diese Freigabe.

@@ -8,4 +8,5 @@ Die Kosmologie erklärt das Verhältnis zwischen dem physischen Planeten Era, de
 - [Era, Sol und Yol](era-sol-und-yol.md)
 - [Hera und die Splitterwelten](hera-und-splitterwelten.md)
 - [Ether, Seelen und Pakte](ether-seelen-und-pakte.md)
-- [Zeitzyklen und Konvergenz](zeitzyklen-und-konvergenz.md)
+- [Zeitrechnung auf Era](zeitrechnung-auf-era.md)
+- [Zeitzyklen und Konvektion](zeitzyklen-und-konvektion.md)

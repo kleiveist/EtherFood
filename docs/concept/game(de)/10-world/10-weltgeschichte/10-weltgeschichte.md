@@ -6,7 +6,7 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Pages
-- 📝 [Der Pakt von Jator und Semm](pakt-von-jator-und-semm.md)
+- 📝 [Tators Seelenplan und der Pakt des Helden](tators-seelenplan-und-pakt-des-helden.md)
 - 📝 [Chronologische Übersicht](zeitleiste.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

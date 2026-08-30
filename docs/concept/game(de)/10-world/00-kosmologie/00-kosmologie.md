@@ -9,6 +9,7 @@
 - 📝 [Era, Sol und Yol](era-sol-und-yol.md)
 - 📝 [Ether, Seelen und Pakte](ether-seelen-und-pakte.md)
 - 📝 [Hera und die Splitterwelten](hera-und-splitterwelten.md)
-- 📝 [Zeitzyklen und Konvergenz von Sol und Yol](zeitzyklen-und-konvergenz.md)
+- 📝 [Zeitrechnung auf Era](zeitrechnung-auf-era.md)
+- 📝 [Zeitzyklen und Konvektion von Sol und Yol](zeitzyklen-und-konvektion.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

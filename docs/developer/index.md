@@ -27,6 +27,22 @@ The [authoritative German concept](../content/de/index.md) owns game-design deci
 Technical pages link to the approved source decision and describe implementation
 only.
 
+## Branch and CI workflow
+
+Canon and storytelling documentation is maintained directly on `main`. Keep
+those commits documentation-focused and run the relevant documentation checks
+before pushing.
+
+Future game implementation uses feature branches and pull requests into
+`main`. This includes gameplay code, Godot scenes and resources, GDScript,
+runtime architecture, and implementation tooling. Pull requests use CI and run
+the fastest relevant checks first, with `g2d check` as the standard repository
+gate. Add headless Godot checks and automated GDScript tests wherever the
+engine and test tooling support them. If a Godot or GDScript limitation makes
+a check unavailable, the pull request records that limitation, runs every
+available substitute, and reports any required manual validation instead of
+claiming the missing test passed.
+
 ## Inherited Forge2D technical foundation
 
 The reusable runtime and tooling are documented in the

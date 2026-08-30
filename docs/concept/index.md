@@ -13,10 +13,10 @@ Diese Dokumentation trennt die **objektive Wahrheit der Welt**, die **im Spiel e
 
 ## Navigation
 
-- [Deutsche Spieldokumentation](<game(de)/index.md>)
+- [Deutsche Spieldokumentation](game%28de%29/index.md)
 - [Freigabe-Checkliste](CHECKLIST-ZUR-FREIGABE.md)
-- [Konzeptgrafiken](assets/concepts/index.md)
-- [Weltkarte des Ether](assets/maps/index.md)
+- [Konzeptgrafiken](../assets/.concepts/index.md)
+- [Weltkarte des Ether](../assets/maps/index.md)
 
 ## Grundregel
 

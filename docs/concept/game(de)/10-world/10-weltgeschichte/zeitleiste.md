@@ -12,20 +12,24 @@ updated: 2026-08-30
 | Phase | Ereignis |
 |---|---|
 | Kosmische Frühzeit | Era existiert als physischer Mittelpunkt. Sol und Yol bilden als gegensätzliche, verbundene Wesen einen Schutz um den Planeten. |
-| Entstehung der Atea | Zehn Weltenbewahrer werden als Bestandteile und Aufseher Eras wirksam. Ihr genauer Ursprung ist noch offen. |
-| Ausformung Heras | In der multidimensionalen Splittersphäre entstehen unzählige Seelenräume, Entitäten und Machtbereiche. |
-| Aufstieg der großen Entitäten | Zehn besonders mächtige Ether-Entitäten prägen große Teile Heras. Jator kontrolliert die Domäne Tatok. |
-| Seelenhandel und indirekter Einfluss | Weil Sol und Yol direkten Zugriff verhindern, wirken Entitäten über Pakte, Händler, Korruption und Seelenumlenkung auf Era ein. |
-| Pakt von Jator und Semm | Jator und Semm entwickeln eine Konstruktwelt, die starke Heldenseelen hervorbringen soll. |
-| Eingriff Zehsens | Zehsen bringt einen Talisman in das System ein, ohne die Konstruktwelt offen anzugreifen. |
-| Leben des Helden auf Era | Der spätere Held lebt auf Era und schließt einen Pakt. Einzelheiten fehlen noch. |
-| Tod und Umleitung | Der Held stirbt; seine Seele gelangt nicht in den normalen Kreislauf, sondern nach Tatok. |
-| Beginn des Spiels | Der Held erwacht im Heldenraum, hält sich für lebendig und erhält Auftrag sowie Hilfsmittel. |
-| Wiederherstellungsreise | Gebiete, Natur, Seelen, Bewohner, Städte, Erinnerungen und Fähigkeiten kehren stufenweise zurück. |
-| Enthüllung | Der Talisman entschlüsselt, dass die gerettete Welt ein künstliches Seelenzucht-System ist. |
-| Endgame-Rückkehr | Der Held bereist die befreiten Welten erneut und sammelt Seelenenergie. |
-| Flucht aus der Konstruktwelt | Mit der gesammelten Kraft verlässt er den inneren Bereich Tatoks. |
-| Drei Weltpassagen | Drei feindbesetzte Übergangsräume führen zu Jator. |
-| Finale des Basisspiels | Jator wird besiegt. Ein offenes Portal führt zu Semm, der ebenfalls besiegt wird. Beide bleiben als Ether-Entitäten grundsätzlich existent. |
+| Seelenkreislauf Eras | Verstorbene Seelen werden im natürlichen Kreislauf wiedergeboren und erhalten Era am Leben. Neue Seelen entstehen; wie dies geschieht, ist den Gelehrten unbekannt. |
+| Wirken der Weltenbewahrer | Zehn Weltenbewahrer werden als Bestandteile und Aufseher Eras wirksam. Gelehrte können nicht klären, ob sie erschaffen wurden oder gemeinsam mit Era entstanden. |
+| Ausformung Heras | In der übergeordneten multidimensionalen Splittersphäre entstehen Splitterwelten, Sphärenreiche, Entitäten und konstruierte Wirklichkeitsräume. |
+| Aufstieg Tators | Tator prägt Tatok. Sein Machtbereich verbindet sich mit der Seelenwanderung von der physischen Wirklichkeit nach Hera und entzieht Eras natürlichem Seelenkreislauf fortlaufend Seelen. |
+| Leben des Helden als Herrscher | Der spätere Held herrscht über ein Reich auf Era. Tator hält ihn für grausam und selbstsüchtig und sieht ihn als vorgesehenen Helden seines Systems vor. |
+| Hinrichtung seiner Frau | Der Herrscher verdächtigt seine Frau der Untreue und lässt sie aufgrund dieses Verdachts enthaupten. |
+| Pakt mit Tator | Um seine Frau zurückzuholen, schließt der Herrscher einen Pakt mit Tator. |
+| Rückkehr und Bindung | Die Frau kehrt zurück. Der Preis bindet sowohl die Seele des Herrschers als auch die Seelen seiner Untertanen an die spätere Seelenwanderung. |
+| Vorbereitung des Reiches | Der Herrscher lebt weiter und bereitet sein Reich auf die spätere Wanderung der gebundenen Seelen nach Hera und Tatok vor. |
+| Natürlicher Tod | Erst nach einem weiteren Leben mit seiner zurückgekehrten Frau stirbt der Herrscher eines natürlichen Todes. Der Pakt verursacht seinen Tod nicht unmittelbar. |
+| Umleitung nach Tatok | Seine Seele wird aus Eras natürlichem Seelenkreislauf herausgelöst und über Hera in Tators Sphärenreich Tatok geführt. |
+| Zehsens Eingriff | Zehsen, Weltenbewahrer und Verbündeter Tators, bringt den Talisman in Tators System. Gelehrte deuten seine genaue Absicht und Loyalität unterschiedlich; keine Deutung ist bestätigt. |
+| Erwachen im Heldenraum | Der Held erwacht ohne vollständige Erinnerung, hält sich für lebendig und erhält Auftrag sowie Hilfsmittel. |
+| Erste Reise | Gebiete, Natur, Seelen, Bewohner, Städte, Erinnerungen und Fähigkeiten kehren stufenweise zurück. Zumindest ein Teil der befreiten Seelen stammt aus seiner früheren Gefolgschaft beziehungsweise Bevölkerung. |
+| Enthüllung | Der Talisman zeigt, dass die gerettete Welt Tators künstliches Heldensystem ist und dass Tator die erstarkte Seelenmacht des Helden ernten will. |
+| Zweite Reise | Der Held bereist die bereits befreiten Welten erneut. Der Talisman nimmt die nutzbare Macht der befreiten Seelen auf, nicht ihre Identität oder Seele. |
+| Flucht und Weltpassagen | Die gesammelte Seelenmacht ermöglicht den Ausbruch aus der Konstruktwelt und den Weg durch drei feindbesetzte Weltpassagen. |
+| Finale des Basisspiels | Tator wird besiegt. Ein offenes Portal führt zum eigenständigen weiteren Gegenspieler Semm, der ebenfalls besiegt wird. Beide bleiben als Ether-Entitäten grundsätzlich existent. |
+| Rückführung der Seelen | Nach der zweiten Reise und den durch ihre Macht ermöglichten Kämpfen werden die fortbestehenden Seelen nach Era zurückgebracht. Dort treten sie wieder in den natürlichen Seelenkreislauf ein, werden wiedergeboren und tragen zum Fortbestand Eras bei. |
 | Erweiterung | Der Held kämpft gegen die übrigen großen Entitäten und wird schließlich selbst zu einer Ether-Entität. |
 | Offenes Ende | Durch seine besondere Herkunft kann er physisch nach Era zurückkehren. Seine weitere Rolle bleibt unerzählt. |

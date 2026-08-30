@@ -17,8 +17,8 @@ Der Entwurf nennt sechs Kapitel beziehungsweise sechs große Abschnitte. Die fol
 | 2 | Länder und Natur | Mehrere Gebiete werden zugänglich; Rekonstruktion wird zur Hauptschleife. |
 | 3 | Seelen, Bewohner und Städte | Die Welt erhält Gesellschaft, Beziehungen, Aufgaben und sichtbare Zivilisation. |
 | 4 | Erinnerungen, Geschichte und Fähigkeiten | Charakterfortschritt und Weltwissen werden verbunden; erste starke Widersprüche erscheinen. |
-| 5 | Wahrheit und Rückkehrreise | Die Konstruktwelt wird enttarnt; der Held sammelt in den befreiten Ebenen Seelenenergie. |
-| 6 | Flucht, drei Weltpassagen, Jator und Semm | Kampforientiertes Endgame und Abschluss des Basisspiels. |
+| 5 | Wahrheit und zweite Reise | Die Konstruktwelt und die Vorgeschichte des Helden werden enttarnt; der Talisman nimmt in befreiten Ebenen Seelenmacht auf, ohne die Seelen zu verschlingen. |
+| 6 | Flucht, drei Weltpassagen, Tator und Semm | Kampforientiertes Endgame, Rückführung der Seelen nach Era, Wiedergeburt im natürlichen Seelenkreislauf und Abschluss des Basisspiels. |
 
 ## Noch auszuarbeiten
 

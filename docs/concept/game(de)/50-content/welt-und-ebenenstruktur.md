@@ -26,7 +26,7 @@ Nach der Konstruktwelt folgen:
 1. Weltpassage 1;
 2. Weltpassage 2;
 3. Weltpassage 3;
-4. Jators Machtzentrum;
+4. Tators Machtzentrum;
 5. Portal zu Semm;
 6. Semms Bereich.
 

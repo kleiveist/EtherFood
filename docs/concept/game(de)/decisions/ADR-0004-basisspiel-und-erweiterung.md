@@ -14,7 +14,8 @@ Die Gesamtkosmologie umfasst zehn große Ether-Entitäten und zahlreiche Sphäre
 
 ## Entscheidung
 
-Das Basisspiel konzentriert sich auf die Konstruktwelt, die Endgame-Rückkehr, drei Weltpassagen sowie die Kämpfe gegen Jator und Semm.
+Das Basisspiel konzentriert sich auf die Konstruktwelt, die Endgame-Rückkehr,
+drei Weltpassagen sowie die Kämpfe gegen Tator und Semm.
 
 Der Kampf gegen die übrigen großen Ether-Entitäten, die eigene Etherwerdung des Helden und seine physische Rückkehr nach Era gehören in eine Erweiterung.
 

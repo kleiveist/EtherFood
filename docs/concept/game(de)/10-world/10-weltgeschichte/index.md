@@ -5,5 +5,5 @@
 
 Dieser Abschnitt ordnet die kosmischen und historischen Ereignisse, die zum Spiel führten.
 
-- [Der Pakt von Jator und Semm](pakt-von-jator-und-semm.md)
+- [Tators Seelenplan und der Pakt des Helden](tators-seelenplan-und-pakt-des-helden.md)
 - [Zeitleiste](zeitleiste.md)

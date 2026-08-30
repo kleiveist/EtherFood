@@ -11,11 +11,26 @@ updated: 2026-08-30
 
 ## Era
 
-Era ist der zentrale physische Planet des Weltmodells. Auf Era existieren natürliche Landschaften, Kulturen, Körper und gewöhnliche Lebenszyklen. Der Held stammt ursprünglich von dort. Seine Reise im Basisspiel findet jedoch nicht auf Era statt, auch wenn er lange davon ausgeht.
+Era ist der zentrale physische Planet des Weltmodells. Auf Era existieren
+natürliche Landschaften, Kulturen, Körper und Lebenszyklen. Der Held stammt
+ursprünglich von dort. Seine Reise im Basisspiel findet jedoch nicht auf Era
+statt, auch wenn er lange davon ausgeht.
+
+Eras natürlicher Seelenkreislauf führt verstorbene Seelen zur Wiedergeburt und
+erhält den Planeten am Leben. Neue Seelen entstehen. Gelehrte wissen, dass
+dieser Vorgang stattfindet, können aber weder seine Funktionsweise noch seinen
+Ursprung erklären. Ohne die fortlaufende Entstehung neuer Seelen hätten
+Ether-Entitäten Eras Seelen längst aufgezehrt und Era wäre gestorben.
+
+Gelehrte können `The Meridian` nicht auf eine einzige Bedeutung festlegen. In
+den Schriften mehrerer Kulturen bezeichnet der Ausdruck teils verkürzt Era,
+teils das gesamte zentrale System aus Era, Sol und Yol. Diese mehrdeutige
+Verwendung ist in mehreren Kulturen gang und gäbe.
 
 ## Sol
 
-Sol ist der helle, lebensspendende Himmelskörper. Er erfüllt eine sonnenähnliche Funktion und gibt Era:
+Sol ist der helle, lebensspendende Himmelskörper. Er definiert grundsätzlich
+den Tag und gibt Era:
 
 - Wärme;
 - Lebensenergie;
@@ -26,12 +41,15 @@ Sol ist nicht bloß ein unbelebter Stern. Sol besitzt Bewusstsein beziehungsweis
 
 ## Yol
 
-Yol ist der dunkle, blau leuchtende Gegenpol zu Sol. Yol steht für:
+Yol ist der kalte, blau leuchtende und magische Gegenpol zu Sol. Yol definiert
+grundsätzlich die Nacht und steht für:
 
 - Kälte;
 - Magie;
-- Entzug oder Aufnahme gewöhnlicher Wärmeenergie;
-- Abgabe magischer Energie an Era.
+- ein eigenes Kälteempfinden, ohne Wasser durch seine Strahlung unmittelbar
+  gefrieren zu lassen;
+- Abgabe magischer Energie an Era;
+- eine eigene magisch geprägte Fauna.
 
 Yol ist nicht grundsätzlich böse. Sol und Yol bilden ein notwendiges Gegensatzpaar: Leben und Wärme auf der einen, Kälte und Magie auf der anderen Seite.
 
@@ -49,6 +67,21 @@ Die Entitäten können Era daher überwiegend nur indirekt beeinflussen, etwa du
 
 ## Der Tanz
 
-Sol und Yol bewegen sich nicht in einer gleichmäßigen, berechenbaren Umlaufbahn. Ihre Bewegung wird als Tanz um Era verstanden. Dieser Tanz verursacht extreme und unregelmäßige Licht-, Temperatur-, Magie- und Zeitverhältnisse.
+Sol und Yol bewegen sich auf stark elliptischen, unregelmäßigen Bahnen. Welche
+Stellung sie einnehmen und wie lange sie dort bleiben, ist nicht vollständig
+vorhersagbar. Gelehrte beschreiben dieselbe Bewegung je nach kultureller
+Tradition als Bahn, Umlauf oder Tanz um Era. Die unterschiedlichen Bilder
+beziehen sich auf dieselben beobachtbaren Läufe und begründen keine
+zusätzlichen Bewegungsregeln. Die Bewegung verursacht extreme Licht-,
+Temperatur-, Magie- und Zeitverhältnisse. Wechselnde Phasen sind der häufigste
+Gesamtzustand.
 
-Die genaue astronomische Erklärung muss nicht vollständig naturwissenschaftlich sein. In der Weltlogik sind Sol und Yol zugleich Himmelskörper, Schutzmächte und liebende Wesen.
+Nur der große Konvektionszyklus nach 3500 Tan wiederholt sich verlässlich. Auch
+Gelehrte legen für die unregelmäßigen Läufe kein überall einheitliches
+astronomisches Modell vor. In der Weltlogik sind Sol und Yol zugleich
+Himmelskörper, Schutzmächte und liebende Wesen.
+
+Die festen Einheiten stehen in der
+[Zeitrechnung auf Era](zeitrechnung-auf-era.md); Laufarten, polare
+Besonderheiten und Konvektion beschreibt
+[Zeitzyklen und Konvektion](zeitzyklen-und-konvektion.md).

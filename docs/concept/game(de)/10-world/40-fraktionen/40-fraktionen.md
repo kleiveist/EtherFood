@@ -6,7 +6,7 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Pages
-- 📝 [Atea und Weltenbewahrer](atea-und-weltenbewahrer.md)
 - 📝 [Die zehn großen Ether-Entitäten](grosse-ether-entitaeten.md)
+- 📝 [Weltenbewahrer](weltenbewahrer.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

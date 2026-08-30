@@ -8,22 +8,15 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink END -->
 # Nächste Konzeptschritte
 
-## Priorität 1 – Kanon freigeben
+## Priorität 1 – Verbleibende Figurenfragen
 
-- Namen Jator, Semm, Zehsen, Yol und Tatok bestätigen.
-- Verhältnis von Era, Hera und `The Meridian` klären.
-- offiziellen Sammelbegriff `Atea` bestätigen.
-- exakten Konvergenzzeitraum festlegen oder bewusst ungenau lassen.
-
-## Priorität 2 – Protagonist definieren
-
-- Leben auf Era;
-- Motivation für den Pakt;
-- Todesumstände;
+- Semms konkrete Rolle über den bestehenden Endgame-Auftritt hinaus;
+- Name und Kultur des früheren Herrschers sowie Gestalt seines Reiches;
+- Ursprung seines Untreueverdachts;
 - verdrängte oder manipulierte Erinnerungen;
-- persönlicher innerer Konflikt.
+- persönlicher innerer Konflikt während der Wiederherstellung.
 
-## Priorität 3 – Vertical Slice festlegen
+## Priorität 2 – Vertical Slice festlegen
 
 Ein erster Slice sollte enthalten:
 
@@ -36,13 +29,17 @@ Ein erster Slice sollte enthalten:
 - eine Erinnerung, die eine kleine Fähigkeitsverbesserung auslöst;
 - einen dezenten ersten Widerspruch in der Welt.
 
-## Priorität 4 – Regionen und Kapitel
+## Priorität 3 – Regionen und Kapitel
 
 - Zahl der Konstruktwelt-Ebenen bestimmen.
 - jeder Ebene ein Landschafts-, Kultur- und Erinnerungsthema geben.
 - Wiederherstellungsstufen auf Kapitel verteilen.
 - regionale Bosse und zentrale Figuren definieren.
 
-## Priorität 5 – Endgame-Ethik und Mechanik
+## Priorität 4 – Endgame-Inszenierung und Mechanik
 
-Vor der Detailproduktion muss geklärt werden, was das Sammeln von Seelenenergie für die geretteten Bewohner bedeutet. Diese Entscheidung beeinflusst Ton, Dialoge, Questdesign und das moralische Profil des Helden.
+Die metaphysische Wirkung ist freigegeben: Der Talisman nimmt Seelenmacht auf,
+die Seelen bleiben bestehen und kehren später in Eras Seelenkreislauf zurück.
+Dort werden sie wiedergeboren und tragen zum Fortbestand Eras bei.
+Auszuarbeiten sind die spielerische Ausgestaltung der zweiten Reise, die
+Reaktionen einzelner Bewohner und die sichtbare Rückführung nach Era.

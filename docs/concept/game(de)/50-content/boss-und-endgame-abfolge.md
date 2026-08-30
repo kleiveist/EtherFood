@@ -16,14 +16,19 @@ Die normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils 
 ## Endgame-Abfolge
 
 1. Vollständige oder nahezu vollständige Rekonstruktion.
-2. Enthüllung der Konstruktwelt.
-3. Rückkehr in frühere Ebenen und Sammlung von Seelenenergie.
-4. Durchbruch aus dem inneren Konstrukt.
-5. Drei Weltpassagen mit steigender Gegnerdichte.
-6. Kampf gegen Jator.
-7. Offenes Portal zu Semm.
-8. Kampf gegen Semm.
-9. Abschlusssequenz des Basisspiels.
+2. Enthüllung der Konstruktwelt, des Paktes und von Tators Plan.
+3. Zweite Reise durch bereits befreite Ebenen.
+4. Aufnahme der nutzbaren Seelenmacht durch den Talisman; Identität und Seele
+   der Befreiten bleiben bestehen.
+5. Durchbruch aus dem inneren Konstrukt.
+6. Drei Weltpassagen mit steigender Gegnerdichte.
+7. Kampf gegen Tator.
+8. Offenes Portal zum eigenständigen weiteren Gegenspieler Semm.
+9. Kampf gegen Semm.
+10. Rückführung der fortbestehenden Seelen nach Era und in den natürlichen
+    Seelenkreislauf; dort werden sie wiedergeboren und tragen zum Fortbestand
+    Eras bei.
+11. Abschlusssequenz des Basisspiels.
 
 ## Bossregel für Ether-Entitäten
 
@@ -37,4 +42,7 @@ Der Sieg muss deutlich sein, ohne einen endgültigen Tod zu behaupten. Geeignete
 
 ## Erweiterungsbosse
 
-Die übrigen großen Entitäten bilden den natürlichen Bossrahmen der Erweiterung. Ihre Reihenfolge und die Frage, ob alle zehn direkt bekämpft werden, sind noch offen. Jator und Semm können als geschwächte, veränderte oder indirekt wirksame Mächte fortbestehen.
+Die übrigen großen Entitäten bilden den natürlichen Bossrahmen der Erweiterung.
+Ihre Reihenfolge und die Frage, ob alle zehn direkt bekämpft werden, sind noch
+offen. Tator und Semm können als geschwächte, veränderte oder indirekt wirksame
+Mächte fortbestehen.

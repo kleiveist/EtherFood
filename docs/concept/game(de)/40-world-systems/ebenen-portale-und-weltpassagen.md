@@ -30,7 +30,7 @@ Weltpassagen sind größere Übergangsräume zwischen Machtbereichen. Im Endgame
 - keine umfassende Wiederherstellung;
 - hohe Gegnerdichte;
 - Prüfung bereits erworbener Fähigkeiten;
-- sichtbare Annäherung an Jators Machtzentrum;
+- sichtbare Annäherung an Tators Machtzentrum;
 - zunehmend instabile oder fremdartige Raumregeln.
 
 ## Drei Endgame-Passagen
@@ -39,6 +39,6 @@ Die genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht kanon
 
 1. Passage der gebundenen Seelen;
 2. Passage der zerfallenden Formen;
-3. Passage von Jators unmittelbarer Herrschaft.
+3. Passage von Tators unmittelbarer Herrschaft.
 
 Die Namen sind Platzhalter und dienen nur zur Funktionsbeschreibung.

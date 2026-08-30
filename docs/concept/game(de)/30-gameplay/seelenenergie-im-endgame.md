@@ -13,24 +13,42 @@ updated: 2026-08-30
 
 Die Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung vollständig aktiv. Dadurch wird aus einem Begleit- und Hinweissystem eine zentrale Endgame-Mechanik.
 
+## Verbindliche Begriffe
+
+- **Seele:** Identität und fortbestehende Existenz eines Wesens.
+- **Seelenmacht oder Seelenenergie:** nutzbare Kraft, die der Talisman aufnehmen
+  kann, ohne die Seele selbst zu verschlingen.
+- **Seelenkreislauf:** lebensnotwendiger natürlicher Weg der Seelen auf Era, in
+  dem jede nicht umgeleitete Seele wiedergeboren wird. Tator zieht daraus
+  durch die Seelenwanderung nach Hera fortlaufend Seelen ab.
+
 ## Spielablauf
 
 1. Die Konstruktwelt ist weitgehend oder vollständig befreit.
-2. Der Talisman zeigt neue Resonanzpunkte in bereits besuchten Ebenen.
-3. Der Held kehrt zu den geretteten Seelen und Orten zurück.
-4. Neue Prüfungen, Entscheidungen oder Verteidigungen ermöglichen die Übertragung von Seelenenergie.
-5. Die gesammelte Gesamtenergie öffnet die Grenze zur äußeren Tatok-Sphäre.
+2. Die Enthüllung ordnet den Helden, Tators System und zumindest einen Teil der
+   befreiten Seelen als seine frühere Gefolgschaft ein.
+3. Der Held beginnt eine zweite Reise durch die bereits befreiten Welten.
+4. Der Talisman zieht die nutzbare Macht beziehungsweise Seelenenergie der
+   befreiten Seelen an sich.
+5. Identität und eigentliche Seele bleiben bestehen; der Talisman verschlingt
+   sie nicht.
+6. Die gesammelte Macht öffnet die Grenze der Konstruktwelt und ermöglicht die
+   Weltpassagen sowie die Kämpfe gegen Tator und Semm.
+7. Anschließend werden die Seelen nach Era zurückgebracht, treten wieder in
+   den natürlichen Seelenkreislauf ein und werden dort wiedergeboren.
 
-## Wichtige Designbedingung
+## Erhalt der Seelen
 
-Das Einsammeln darf die vorherige Rettung nicht rückwirkend als bloße Ausbeutung darstellen, sofern der Held weiterhin als Gegenfigur zu Jator und Semm verstanden werden soll. Die genaue Lösung ist noch offen. Mögliche Modelle sind:
-
-- Bewohner geben freiwillig einen Teil ihrer Energie;
-- der Talisman sammelt nur überschüssige Resonanz, nicht die Seele selbst;
-- befreite Seelen schließen sich zeitweise dem Helden an;
-- Energie wird nach den Bosskämpfen zurückgegeben;
-- der Spieler muss zwischen schneller Macht und Schutz einzelner Seelen abwägen.
+Die Aufnahme der Macht macht die vorherige Rettung nicht zu einer dauerhaften
+Vernichtung. Die Seelen geben beziehungsweise verlieren ihre nutzbare Kraft,
+behalten aber Identität und Existenz. Ob und wie einzelne Figuren diese Abgabe
+bewerten, ist eine Frage ihrer Darstellung; die metaphysische Wirkung selbst
+ist nicht mehr offen.
 
 ## Endgame-Ziel
 
-Seelenenergie ist kein gewöhnliches Gold oder Erfahrungspunktesystem. Sie ist die konkrete Kraft, die die künstliche Grenze der Konstruktwelt aufbricht und die Kämpfe gegen Jator und Semm überhaupt ermöglicht.
+Seelenenergie ist kein gewöhnliches Gold oder Erfahrungspunktesystem. Sie ist
+die konkrete Kraft, die die künstliche Grenze der Konstruktwelt aufbricht und
+die Kämpfe gegen Tator und Semm überhaupt ermöglicht. Der Endzustand umfasst
+neben dem Sieg auch die Rückführung der fortbestehenden Seelen nach Era, ihre
+Wiedergeburt und ihren erneuten Beitrag zum Fortbestand des Planeten.

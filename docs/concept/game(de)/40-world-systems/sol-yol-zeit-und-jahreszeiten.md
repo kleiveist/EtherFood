@@ -8,24 +8,50 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink END -->
 # Sol, Yol, Zeit und Jahreszeiten als Weltsystem
 
-## Weltregel
+## Kanonische Grundlagen
 
-Licht, Temperatur und Magiedichte hängen von der aktuellen Stellung Sols und Yols ab. Die Zyklen können sehr lang oder extrem kurz sein und sind daher ein Teil der Weltidentität.
+Diese Seite übersetzt die Kosmologie in darstellbare Weltzustände, ohne sie zu
+duplizieren. Verbindliche Einzelheiten stehen in:
 
-## Mögliche spielerische Auswirkungen
+- [Zeitrechnung auf Era](../10-world/00-kosmologie/zeitrechnung-auf-era.md)
+- [Zeitzyklen und Konvektion](../10-world/00-kosmologie/zeitzyklen-und-konvektion.md)
 
-- Sol-Phasen verstärken Wachstum, Heilung, Feuer oder Lebensenergie.
-- Yol-Phasen verstärken Magie, Kälte, Geisterwahrnehmung oder bestimmte Portale.
-- Lange stationäre Phasen verändern ganze Regionen dauerhaft.
-- Schnelle Zyklen erzeugen Gebiete, in denen sich Licht und Gefahr innerhalb kurzer Spielzeit ändern.
-- Bestimmte Erinnerungen oder Monsterhöhlen sind nur in einer Konstellation erreichbar.
+## Gameplay-relevante Weltzustände
 
-Diese Auswirkungen sind Vorschläge und noch nicht als konkretes Balancing festgelegt.
+- **Sol-Phase:** Licht, Wärme, Wachstum und Lebensenergie prägen die Region.
+- **Yol-Phase:** blaues Licht, Kälteempfinden, Magie und Yols eigene magische
+  Fauna prägen die Region. Yols Strahlung lässt Wasser nicht unmittelbar
+  gefrieren.
+- **Wechselnde Phase:** Sol und Yol wechseln unregelmäßig zwischen synchronen,
+  langsamen, stehenden und asynchronen Läufen. Dieser Zustand ist am häufigsten.
+- **Lange oder stehende Phase:** Licht, Dunkelheit, Temperatur und regionale
+  Routinen können über einen langen Abschnitt stabil bleiben.
+- **Schneller Wechsel:** rasche Auf- und Untergänge verändern Sichtbarkeit,
+  Stimmung und regionale Gefahren in kurzer Folge.
+- **Konvektion:** Sol und Yol sind nicht sichtbar; 20 Tan lang herrscht bittere
+  Dunkelheit, äußere Magie wird besonders schwer und Era kann bis zur
+  vollständigen Vereisung abkühlen. Gleichzeitig sind Splitterwelten und
+  Sphärenreiche Heras am Himmel sichtbar.
 
-## Konvergenzereignis
+Welche Zustände konkrete Kampfwerte, Zugänge, Gegner oder Ressourcen verändern,
+bleibt eine Balancingentscheidung. Verbindlich sind zunächst ihre
+Weltwirkungen und erkennbare Darstellung.
 
-Die 24-stündige physische Begegnung von Sol und Yol kann als seltenes Weltereignis, historische Zäsur oder Hintergrund für eine spätere Geschichte dienen. Währenddessen ist der Schutz Eras geschwächt. Für das Basisspiel in Tatok muss noch entschieden werden, ob die Konvergenz zeitgleich stattfindet, nur in Erinnerungen erscheint oder erst für die Erweiterung relevant wird.
+## Regionale Darstellung
 
-## Produktionshinweis
+Regionen dürfen unterschiedlich auf denselben Himmelszustand reagieren. Polare
+Gebiete besitzen ewiges Eis und sehr flache sichtbare Bahnen; in Richtung
+Äquator stehen Sol und Yol höher am Himmel. Landschaft, Bewohner, Fauna,
+Sichtweite, Temperatur, Magiezugang und verfügbare Wege können den jeweiligen
+Zustand lesbar machen.
 
-Das System sollte nicht voraussetzen, dass jede Region eine vollständige astronomische Simulation besitzt. Für das Spiel reichen klar definierte Weltzustände, Übergänge und regionale Reaktionen.
+## Simulation und lange Zeiträume
+
+Nicht jede Himmelsbewegung muss physikalisch simuliert werden. Die sehr langen
+Kalenderwerte können durch klar definierte Zustände, Zeitsprünge,
+Storyereignisse und regionale Regeln dargestellt werden. Ein Zustandswechsel
+kann eine längere Lore-Phase zusammenfassen, solange die Erzählung diesen
+Zeitsprung kenntlich macht.
+
+Die theoretische Skalierung `1 Um = 1 reale Spielminute` dient nur der
+Umrechnung. Sie schreibt weder Echtzeitsimulation noch Gameplay-Balancing vor.

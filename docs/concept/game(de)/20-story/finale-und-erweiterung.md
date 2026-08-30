@@ -11,20 +11,29 @@ updated: 2026-08-30
 
 ## Finale des Basisspiels
 
-Nach der vollständigen Wiederherstellung der Konstruktwelt kehrt der Held in die bereits befreiten Ebenen zurück. Der Talisman sammelt die dort verfügbare Seelenenergie. Mit dieser Kraft verlässt der Held den inneren Bereich Tatoks.
+Nach der vollständigen Wiederherstellung der Konstruktwelt beginnt der Held
+eine zweite Reise durch die bereits befreiten Ebenen. Der Talisman nimmt dort
+die nutzbare Macht beziehungsweise Seelenenergie der befreiten Seelen auf. Er
+verschlingt nicht ihre Identität oder Seele; sie bestehen nach der Abgabe ihrer
+Macht fort. Mit der gesammelten Kraft verlässt der Held den inneren Bereich
+Tatoks.
 
-Drei feindbesetzte Weltpassagen führen zum Machtzentrum Jators. Dort findet der erste Endbosskampf statt. Jator wird besiegt, aber nicht endgültig vernichtet.
+Drei feindbesetzte Weltpassagen führen zum Machtzentrum Tators. Dort findet der
+erste Endbosskampf statt. Tator wird besiegt, aber nicht endgültig vernichtet.
 
-Ein Portal bleibt nach dem Kampf geöffnet. Es führt in Semms Bereich. Der Held durchquert es und besiegt auch Semm. Damit endet das Basisspiel und der sechste Abschnitt der ersten Heldengeschichte.
+Ein Portal bleibt nach dem Kampf geöffnet. Es führt in den Bereich des
+eigenständigen weiteren Gegenspielers Semm. Der Held durchquert es und besiegt
+auch Semm.
+
+Die fortbestehenden Seelen werden anschließend nach Era zurückgebracht. Dort
+treten sie wieder in den natürlichen Seelenkreislauf ein, werden
+wiedergeboren und tragen zum Fortbestand Eras bei. Damit endet das Basisspiel
+und der sechste Abschnitt der ersten Heldengeschichte.
 
 ## Warum das Portal offen bleibt
 
-Der konkrete Grund ist noch festzulegen. Mögliche, aber noch nicht kanonische Erklärungen sind:
-
-- Jators Niederlage destabilisiert die Grenze;
-- Semm öffnet das Portal aus Überheblichkeit oder Notwendigkeit;
-- der Talisman übernimmt einen Teil von Jators System;
-- Jator und Semm sind durch den ursprünglichen Pakt gekoppelt.
+Der konkrete Grund ist noch nicht festgelegt. Die Dokumentation leitet daraus
+keine zusätzliche Beziehung zwischen Tator, Semm oder Zehsen ab.
 
 ## Erweiterung
 

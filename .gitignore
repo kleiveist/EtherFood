@@ -32,6 +32,7 @@ htmlcov/
 # Editors and operating systems
 .idea/
 .vscode/
+.obsidian/
 *.swp
 .DS_Store
 Thumbs.db

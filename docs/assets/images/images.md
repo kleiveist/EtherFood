@@ -8,4 +8,7 @@
 ## 📄 Pages
 - ⏭️ (keine Seiten)
 
+## 📁 Inspiration
+- 🗂️ [Overview](inspiration/inspiration.md)
+
 <!-- AUTO-GENERATED:docs-index END -->

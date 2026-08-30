@@ -35,7 +35,13 @@ Der Spieler glaubt, eine echte Welt wiederherzustellen. Die Schleife vermittelt 
 
 ### Umkehrphase
 
-Nach der Enthüllung erhalten bekannte Orte neue Funktionen. Der Spieler kehrt zurück, sammelt Seelenenergie, entdeckt versteckte Systemschichten und bereitet die Flucht vor.
+Nach der Enthüllung erhalten bekannte Orte neue Funktionen. Auf einer zweiten
+Reise kehrt der Spieler zurück; der Talisman nimmt die nutzbare Macht der
+befreiten Seelen auf, ohne ihre Identität oder Seele zu verschlingen. Der Held
+entdeckt versteckte Systemschichten und bereitet die Flucht vor. Nach den durch
+die Seelenmacht ermöglichten Kämpfen kehren die Seelen nach Era zurück, werden
+im natürlichen Seelenkreislauf wiedergeboren und tragen zum Fortbestand des
+Planeten bei.
 
 ## Anti-Wiederholungsregel
 

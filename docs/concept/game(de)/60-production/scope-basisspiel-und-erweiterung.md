@@ -17,11 +17,15 @@ Das Basisspiel umfasst:
 - mehrere wiederherstellbare Ebenen;
 - komplette Progression von Landschaft bis Fähigkeiten;
 - Enthüllung der künstlichen Splitterwelt;
-- Endgame-Rückkehr und Sammlung von Seelenenergie;
+- zweite Reise und Sammlung von Seelenmacht, ohne die Seelen selbst zu
+  verschlingen;
 - Flucht aus der Konstruktwelt;
 - drei Weltpassagen;
-- Bosskampf gegen Jator;
+- Bosskampf gegen Tator;
 - anschließenden Bosskampf gegen Semm;
+- Rückführung der fortbestehenden Seelen nach Era und in den natürlichen
+  Seelenkreislauf, ihre Wiedergeburt und ihren erneuten Beitrag zum Fortbestand
+  Eras;
 - Abschluss des sechsten Kapitels beziehungsweise des ersten großen Heldenteils.
 
 ## Nicht Teil des Basisspiels

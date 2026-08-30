@@ -26,6 +26,7 @@
 - 🗂️ [Overview](plans/plans.md)
 - 📝 [<Milestone> ExecPlan](plans/_execplan-template.md)
 - 📝 [ether-food Documentation Restructure ExecPlan](plans/ether-food-documentation-restructure.md)
+- 📝 [German Canon Release Consolidation ExecPlan](plans/german-canon-release-consolidation.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 

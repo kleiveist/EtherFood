@@ -14,6 +14,12 @@
 ## 📁 Images
 - 🗂️ [Overview](images/images.md)
 
+## 📁 MAPS
+- 🗂️ [Overview](maps/maps.md)
+
+## 📁 Media
+- 🗂️ [Overview](media/media.md)
+
 ## 📁 Source
 - 🗂️ [Overview](source/source.md)
 

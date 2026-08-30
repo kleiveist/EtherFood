@@ -3,5 +3,5 @@
 <!-- AUTO-GENERATED:backlink END -->
 # Fraktionen und übergeordnete Wesen
 
-- [Atea und Weltenbewahrer](atea-und-weltenbewahrer.md)
+- [Weltenbewahrer](weltenbewahrer.md)
 - [Die großen Ether-Entitäten](grosse-ether-entitaeten.md)

@@ -60,5 +60,8 @@
 - 📝 [ADR-0002 – Wiederherstellungsreihenfolge](decisions/ADR-0002-wiederherstellungsreihenfolge.md)
 - 📝 [ADR-0003 – Verdeckte Wahrheit der Spielwelt](decisions/ADR-0003-verdeckte-wahrheit-der-spielwelt.md)
 - 📝 [ADR-0004 – Trennung von Basisspiel und Erweiterung](decisions/ADR-0004-basisspiel-und-erweiterung.md)
+- 📝 [ADR-0005 – Kanonfreigabe der Checkliste](decisions/ADR-0005-kanonfreigabe-checkliste.md)
+- 📝 [ADR-0006 – Gelehrtenüberlieferungen](decisions/ADR-0006-gelehrtenueberlieferungen.md)
+- 📝 [ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung](decisions/ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

@@ -32,8 +32,15 @@ Erinnerungen sind gleichzeitig Lore, Charakterentwicklung und Fortschrittsressou
 
 ## Gestaltungsregel
 
-Eine wichtige Fähigkeit sollte möglichst eine erzählerische Herkunft besitzen. Beispielsweise kann eine bessere Blocktechnik aus der Erinnerung eines früheren Beschützers entstehen, während eine Magieform aus der wiederhergestellten Verbindung zu einem Atea-Strom hervorgeht.
+Eine wichtige Fähigkeit sollte möglichst eine erzählerische Herkunft besitzen.
+Beispielsweise kann eine bessere Blocktechnik aus der Erinnerung eines
+früheren Beschützers entstehen, während eine Magieform aus der
+wiederhergestellten Verbindung zu einem Strom der Weltenbewahrer hervorgeht.
 
 ## Spoilerfunktion
 
-Frühe Erinnerungen stärken die angenommene Weltgeschichte. Mittlere Erinnerungen erzeugen Widersprüche. Späte Erinnerungen verbinden Era, den Pakt und die Konstruktwelt zu einem vollständigen Bild.
+Frühe Erinnerungen stärken die angenommene Weltgeschichte. Mittlere
+Erinnerungen und Aufzeichnungen von Gelehrten bewahren widersprüchliche
+Deutungen. Späte Erinnerungen verbinden Era, den Pakt und die Konstruktwelt zu
+einem vollständigen Bild. Die Überlieferungswidersprüche bereiten die Wahrheit
+vor, ohne festgelegte Ereignisse in beliebige Alternativen aufzulösen.

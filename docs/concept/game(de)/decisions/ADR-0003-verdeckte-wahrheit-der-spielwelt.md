@@ -14,7 +14,10 @@ Der Spieler erlebt die Welt zunächst als echte, zerstörte Heimat. Die spätere
 
 ## Entscheidung
 
-Die Spielfläche des Basisspiels ist eine von Jator und Semm geschaffene Konstruktwelt innerhalb Tatoks. Der Held ist eine verstorbene Seele aus Era und weiß dies zu Beginn nicht. Das Konstrukt dient der Züchtung einer besonders starken Heldenseele.
+Die Spielfläche des Basisspiels ist eine von Tator geschaffene Konstruktwelt
+innerhalb Tatoks. Der Held ist eine verstorbene Seele aus Era und weiß dies zu
+Beginn nicht. Das Konstrukt dient dazu, ihn durch Kampf, Verantwortung und
+Wiederherstellung zu stärken, bevor Tator seine Seelenmacht ernten will.
 
 ## Folgen
 
