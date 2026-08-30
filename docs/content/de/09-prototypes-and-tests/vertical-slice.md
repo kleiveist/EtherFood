@@ -2,7 +2,7 @@
 title: "Konzept-Vertical-Slice"
 language: de
 status: draft
-version: "0.1"
+version: "0.2"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -41,8 +41,10 @@ ausreichend definiert und als eigene Testziele begrenzt wurden.
 
 Ein kurzer, in sich geschlossener Ablauf soll Erkundung, einfache Gefahr,
 Kampf, Landschaftstransformation, Weltreaktion, Erinnerung und Fortschrittsfolge
-verbinden. Konkretes Gebiet, Gegnerdesign, Storyinhalt und Werte sind noch nicht
-entschieden.
+verbinden. Der Graslandeinstieg liefert dafür nun den bevorzugten
+Konzeptausschnitt: Heldenraum mit Ratgeber, Nebelerkundung, Leuchtpunkte, Turm
+mit leichtem Gegner und eine erste sichtbare Graslandrekonstruktion.
+Gegnerdesign und Werte sind noch nicht entschieden.
 
 ## Spielerperspektive und Spielerfantasie
 
@@ -53,14 +55,17 @@ beobachtet und darf nicht vorausgesetzt werden.
 
 ## Regeln und Ablauf
 
-1. Ein beschädigtes Gebiet wird aus Top-down-Perspektive erkundet.
-2. Mindestens ein einfacher Gegner stellt eine lesbare Gefahr dar.
-3. Die vier bestätigten Kampfhandlungen sind verfügbar und unterscheidbar.
-4. Eine noch zu definierende Handlung führt zur sichtbaren
+1. Der Held und der Hut-Ratgeber erwachen im Heldenraum.
+2. Der Spieler verlässt das verlassene Haus und folgt Leuchtpunkten durch den
+   Nebel zum Turm.
+3. Mindestens ein einfacher Gegner stellt im Turm eine lesbare Gefahr dar.
+4. Die vier bestätigten Kampfhandlungen sind verfügbar und unterscheidbar.
+5. Der Turmboss oder ein begrenzter Ersatzabschluss führt zur sichtbaren
    Landschaftswiederherstellung.
-5. Mindestens eine Weltkomponente kehrt zurück oder verändert sich.
-6. Ein Erinnerungs- oder Geschichtselement wird zugänglich.
-7. Eine sichtbare Fortschrittsfolge wird ausgelöst.
+6. Das erste Grasland wird auf der zuvor nebligen Karte sichtbar.
+7. Mindestens eine weitere Weltkomponente kehrt zurück oder verändert sich.
+8. Ein Erinnerungs- oder Geschichtselement wird zugänglich.
+9. Eine sichtbare Fortschrittsfolge wird ausgelöst.
 
 Die genaue Ursache zwischen den Schritten ist noch nicht entschieden und muss
 vor der Umsetzung beschrieben werden.
@@ -120,8 +125,10 @@ Gestaltung bleibt offen; Informationsverständlichkeit wird beobachtet.
 
 ## Offene Fragen
 
-- Welche konkrete Annahme verbindet Kampf mit Wiederherstellung?
-- Welche minimale Weltreaktion ist aussagekräftig?
+- Welche begrenzte Form des Turmbosses prüft Kampf und Wiederherstellung ohne
+  unnötigen Produktionsumfang?
+- Wie groß muss die erste Graslandreaktion sein, damit sie auf Karte und in der
+  Spielwelt verständlich wird?
 - Welches Erinnerungsformat prüft die Verbindung zu Fortschritt ohne Story
   vorwegzunehmen?
 - Welche Beobachtungsmethode und Testgruppe sind geeignet?

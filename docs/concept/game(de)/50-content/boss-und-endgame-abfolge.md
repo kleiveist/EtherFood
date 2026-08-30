@@ -11,7 +11,10 @@ updated: 2026-08-30
 
 ## Regionale Bosse
 
-Die normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils einen Teil der Rekonstruktionsleiter verkörpern. Namen und Zahl sind noch offen.
+Der erste Turm endet mit einem Turmboss beziehungsweise Miniboss. Das
+Lichterhaus endet nach der Befreiung der letzten Seele mit dem regionalen
+Endboss des Graslands. Bosse und Wächter von Wald, Hochland und Hauptstadt
+bleiben offen.
 
 ## Endgame-Abfolge
 
@@ -21,10 +24,11 @@ Die normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils 
 4. Aufnahme der nutzbaren Seelenmacht durch den Talisman; Identität und Seele
    der Befreiten bleiben bestehen.
 5. Durchbruch aus dem inneren Konstrukt.
-6. Drei Weltpassagen mit steigender Gegnerdichte.
-7. Kampf gegen Tator.
-8. Offenes Portal zum eigenständigen weiteren Gegenspieler Semm.
-9. Kampf gegen Semm.
+6. Drei aufeinanderfolgende Makroabschnitte in Tatok mit steigender
+   Gegnerdichte und ohne neue große Wiederherstellung.
+7. Kampf gegen Tator am Ende des dritten Tatok-Abschnitts.
+8. Offenes Portal zum eigenständigen Schlussabschnitt in Semms Bereich.
+9. Letzter Bosskampf gegen Semm.
 10. Rückführung der fortbestehenden Seelen nach Era und in den natürlichen
     Seelenkreislauf; dort werden sie wiedergeboren und tragen zum Fortbestand
     Eras bei.

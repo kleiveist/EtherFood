@@ -18,17 +18,18 @@ verschlingt nicht ihre Identität oder Seele; sie bestehen nach der Abgabe ihrer
 Macht fort. Mit der gesammelten Kraft verlässt der Held den inneren Bereich
 Tatoks.
 
-Drei feindbesetzte Weltpassagen führen zum Machtzentrum Tators. Dort findet der
-erste Endbosskampf statt. Tator wird besiegt, aber nicht endgültig vernichtet.
+Drei feindbesetzte Makroabschnitte in Tatok führen zum Machtzentrum Tators.
+Dort findet der vorletzte große Bosskampf statt. Tator wird besiegt, aber nicht
+endgültig vernichtet.
 
-Ein Portal bleibt nach dem Kampf geöffnet. Es führt in den Bereich des
-eigenständigen weiteren Gegenspielers Semm. Der Held durchquert es und besiegt
-auch Semm.
+Ein Portal bleibt nach dem Kampf geöffnet. Es führt in den achten und letzten
+Makroabschnitt, den Bereich des eigenständigen weiteren Gegenspielers Semm. Der
+Held durchquert Semms Landen und besiegt ihn im letzten Bosskampf.
 
 Die fortbestehenden Seelen werden anschließend nach Era zurückgebracht. Dort
 treten sie wieder in den natürlichen Seelenkreislauf ein, werden
 wiedergeboren und tragen zum Fortbestand Eras bei. Damit endet das Basisspiel
-und der sechste Abschnitt der ersten Heldengeschichte.
+und der achte Makroabschnitt der ersten Heldengeschichte.
 
 ## Warum das Portal offen bleibt
 

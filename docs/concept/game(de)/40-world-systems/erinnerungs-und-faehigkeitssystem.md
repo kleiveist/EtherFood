@@ -30,6 +30,20 @@ Erinnerungen sind gleichzeitig Lore, Charakterentwicklung und Fortschrittsressou
 4. Der Held interagiert mit der Erinnerung, statt sie nur einzusammeln.
 5. Eine neue Erkenntnis verändert Dialog, Weltzustand oder Fähigkeit.
 
+## Grasland: Lichterhaus und Dorfwissen
+
+Im Grasland bildet ein besonderes Haus den Erinnerungsdungeon. Leuchtende
+Lampen öffnen voneinander getrennte kurze Abschnitte mit Rätseln, Gegnern oder
+beidem. Jede abgeschlossene Einheit befreit eine Seele beziehungsweise
+Erinnerung. Ungefähr zwanzig Einheiten sind ein veränderbarer Arbeitswert, keine
+freigegebene Endzahl.
+
+Nach dem regionalen Boss bemerkt der Held den Talisman erstmals bewusst und
+erhält einen kleinen Ausschnitt seiner eigenen Vergangenheit. Anschließend
+entsteht Fähigkeitsfortschritt auch durch Gespräche und Gefallen im Dorf. Das
+erste Bauerndorf vermittelt vor allem Landwirtschaft, einfachen Bau und die
+Vorbereitung eines Übergangs; fortgeschrittene Kampftaktiken folgen später.
+
 ## Gestaltungsregel
 
 Eine wichtige Fähigkeit sollte möglichst eine erzählerische Herkunft besitzen.

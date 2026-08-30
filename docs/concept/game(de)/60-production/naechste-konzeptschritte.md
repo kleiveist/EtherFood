@@ -21,20 +21,22 @@ updated: 2026-08-30
 Ein erster Slice sollte enthalten:
 
 - Heldenraum;
-- eine kleine beschädigte Region;
-- eine Monsterhöhle;
+- den kleinen fliegenden Hut-Ratgeber;
+- verlassenes Haus, Nebel und Leuchtpunkte;
+- einen begrenzten Ausschnitt des Turms;
 - Angriff, Ausweichen, Block und Magie;
 - eine sichtbare Landschaftsrekonstruktion;
 - Rückkehr einer Seele oder Figur;
 - eine Erinnerung, die eine kleine Fähigkeitsverbesserung auslöst;
 - einen dezenten ersten Widerspruch in der Welt.
 
-## Priorität 3 – Regionen und Kapitel
+## Priorität 3 – Abschnitte 2 bis 8
 
-- Zahl der Konstruktwelt-Ebenen bestimmen.
-- jeder Ebene ein Landschafts-, Kultur- und Erinnerungsthema geben.
-- Wiederherstellungsstufen auf Kapitel verteilen.
-- regionale Bosse und zentrale Figuren definieren.
+- Wald, Hochland und Hauptstadt jeweils ein Landschafts-, Kultur- und
+  Erinnerungsthema geben.
+- regionale Bosse und zentrale Figuren dieser drei Abschnitte definieren.
+- die drei Tatok-Passagen als Anwendung des zuvor Gelernten unterscheiden.
+- Semms Landen und den letzten Bosskampf ausarbeiten.
 
 ## Priorität 4 – Endgame-Inszenierung und Mechanik
 

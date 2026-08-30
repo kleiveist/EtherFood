@@ -10,7 +10,8 @@ updated: 2026-08-30
 
 ## Ebenen der Konstruktwelt
 
-Die Konstruktwelt besteht aus mehreren wiederherstellbaren Ebenen. Jede Ebene benötigt:
+Die Konstruktwelt besteht aus vier wiederherstellbaren Makroabschnitten:
+Grasland, Wald, Hochland und Hauptstadt. Jeder Abschnitt benötigt:
 
 - ein eigenes Landschaftsthema;
 - einen regionalen Konflikt;
@@ -35,7 +36,9 @@ Weltpassagen sind größere Übergangsräume zwischen Machtbereichen. Im Endgame
 
 ## Drei Endgame-Passagen
 
-Die genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht kanonische Steigerung wäre:
+Die drei Passagen bilden die Makroabschnitte 5 bis 7 und liegen in Tatok. Die
+genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht
+kanonische Steigerung wäre:
 
 1. Passage der gebundenen Seelen;
 2. Passage der zerfallenden Formen;

@@ -26,7 +26,9 @@
 - 🗂️ [Overview](plans/plans.md)
 - 📝 [<Milestone> ExecPlan](plans/_execplan-template.md)
 - 📝 [ether-food Documentation Restructure ExecPlan](plans/ether-food-documentation-restructure.md)
+- 📝 [Game Flow Documentation ExecPlan](plans/game-flow-documentation.md)
 - 📝 [German Canon Release Consolidation ExecPlan](plans/german-canon-release-consolidation.md)
+- 📝 [Talisman Story Object Documentation ExecPlan](plans/talisman-story-object-documentation.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 

@@ -9,8 +9,8 @@
 - 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)
 - 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)
-- 📝 [Heldenraum und Talisman](heldenraum-und-talisman.md)
-- 📝 [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)
+- 📝 [Heldenraum, Ratgeber und Talisman](heldenraum-und-talisman.md)
+- 📝 [Achtteiliger Spielablauf](kapitelstruktur-arbeitsfassung.md)
 - 📝 [Story-Prämisse](praemisse.md)
 - 📝 [Der Protagonist](protagonist.md)
 

@@ -22,8 +22,8 @@
 - 📝 [Enthüllungs- und Spoilerstruktur](20-story/enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](20-story/finale-und-erweiterung.md)
 - 📝 [Handlungsverlauf des Basisspiels](20-story/handlungsverlauf.md)
-- 📝 [Heldenraum und Talisman](20-story/heldenraum-und-talisman.md)
-- 📝 [Kapitelstruktur – Arbeitsfassung](20-story/kapitelstruktur-arbeitsfassung.md)
+- 📝 [Heldenraum, Ratgeber und Talisman](20-story/heldenraum-und-talisman.md)
+- 📝 [Achtteiliger Spielablauf](20-story/kapitelstruktur-arbeitsfassung.md)
 - 📝 [Story-Prämisse](20-story/praemisse.md)
 - 📝 [Der Protagonist](20-story/protagonist.md)
 

@@ -14,5 +14,6 @@ translation_status: blocked-until-concept-complete
 # Entscheidungen und Archiv
 
 - [Entscheidungsprotokoll](decision-log.md)
+- [EF-DEC-007: Achtteiliger Spielablauf](ef-dec-007-eight-section-game-flow.md)
 - [Archivrichtlinie](archive-policy.md)
 - [Entscheidungsvorlage](../templates/decision-template.md)

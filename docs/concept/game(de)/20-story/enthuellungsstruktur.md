@@ -15,6 +15,9 @@ Die Wahrheit soll nicht als einzelner Infoblock am Schluss erscheinen. Sie wird 
 
 Der Spieler erhält eine klare, glaubhafte Ausgangserzählung: Monster haben die Welt zerstört oder versiegelt, und der Held kann sie zurückbringen. Alle frühen Systeme unterstützen diese Deutung.
 
+Der kleine Hut-Ratgeber führt durch Heldenraum, verlassenes Haus, Nebel und
+Turm. Er ist die sichtbare frühe Begleitfigur und nicht der Talisman.
+
 ## Stufe 2 – Unvollständige Erinnerung
 
 Einzelne Erinnerungen passen nicht vollständig zusammen. Bewohner und
@@ -22,6 +25,10 @@ Aufzeichnungen von Gelehrten können dieselbe Vergangenheit unterschiedlich
 beschreiben. Bestimmte Orte wirken älter oder neuer, als sie sein dürften. Die
 Widersprüche gehören zur erfahrbaren Konstruktwelt, ohne die tatsächliche
 Vorgeschichte des Helden aufzuheben.
+
+Nach dem Lichterhaus im Grasland bemerkt der Held erstmals bewusst den
+Talisman. Dessen erster persönlicher Erinnerungsimpuls ist klein genug, um die
+Vorgeschichte nicht vorzeitig aufzulösen.
 
 ## Stufe 3 – Künstliche Grenzen
 

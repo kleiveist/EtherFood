@@ -11,7 +11,11 @@ updated: 2026-08-30
 
 ## Freischaltung
 
-Die Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung vollständig aktiv. Dadurch wird aus einem Begleit- und Hinweissystem eine zentrale Endgame-Mechanik.
+Die Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung
+vollständig aktiv. Der Held bemerkt das zunächst verborgene Artefakt bereits
+nach dem Lichterhaus im Grasland; im Endgame wird aus dem Erinnerungs- und
+Entschlüsselungswerkzeug eine zentrale Mechanik. Der sichtbare Ratgeber am
+Spielanfang ist eine andere Figur.
 
 ## Verbindliche Begriffe
 

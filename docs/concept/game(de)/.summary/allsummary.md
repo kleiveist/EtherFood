@@ -50,8 +50,9 @@ updated: 2026-08-30
 | **Ether-Entität** | Seelenbasiertes Wesen Heras. Mächtige Vertreter können Seelenmacht nutzen, Pakte schließen und Sphärenreiche prägen oder erschaffen. |
 | **Weltenbewahrer** | Bevorzugter spieler- und dokumentationsseitiger Sammelbegriff für die zehn mit Era verbundenen Wächter. Gelehrte kennen mehrere überlieferte Gruppenbezeichnungen, aber keinen bestätigten gemeinsamen Eigennamen. |
 | **Gelehrtenüberlieferung** | Kanonisch bewahrte, kultur- oder quellenabhängige Deutung. Widersprechende Gelehrtenüberlieferungen dürfen nebeneinander bestehen, ohne festgelegte Tatsachen oder redaktionell offene Fragen zu ersetzen. |
-| **Heldenraum** | Startort des Spiels und zunächst einziger greifbarer Bezugspunkt des Helden. Enthält Artefakte, Auftrag und Talisman. |
-| **Talisman** | Von Zehsen in Tators System gebrachtes Hilfsartefakt. Es hilft dem Helden, erkennt verborgene Strukturen und nimmt im Endgame Seelenmacht auf. |
+| **Heldenraum** | Startort des Spiels. Dort erwachen der erinnerungslose Held und sein zunächst einziger sichtbarer Gefährte, der kleine Ratgeber. |
+| **Ratgeber** | Vorläufige Funktionsbezeichnung für den kleinen Gefährten im Heldenraum: ein großer Hut mit zwei Augen, ein fast vollständig verdeckter winziger Körper und ein Besen, auf dem er fliegt. Er ist nicht der Talisman. |
+| **Talisman** | Von Zehsen in Tators System gebrachtes Hilfsartefakt. Der Held trägt es zunächst unbemerkt und nimmt es erst nach dem Boss des Lichterhauses bewusst wahr. Es hilft ihm, erkennt verborgene Strukturen und nimmt im Endgame Seelenmacht auf. |
 | **Seele** | Identität eines Wesens, die Tod und Wiedergeburt überdauern kann. Eine Ether-Entität kann eine ganze Seele verschlingen; die Endgame-Aufnahme ihrer nutzbaren Macht durch den Talisman tut dies ausdrücklich nicht. |
 | **Seelenmacht / Seelenenergie** | Vom Talisman aufnehmbare Kraft einer Seele. Beide Begriffe bezeichnen dieselbe nutzbare Macht, nicht die Seele selbst. |
 | **Seelenkreislauf** | Lebensnotwendiger natürlicher Weg der Seelen auf Era. Im ungestörten Kreislauf wird jede Seele wiedergeboren. Tator und andere Ether-Entitäten entziehen ihm Seelen. |
@@ -133,11 +134,17 @@ updated: 2026-08-30
 - Zumindest ein Teil der Bewohner und Gefangenen sind Seelen aus der früheren
   Gefolgschaft beziehungsweise Bevölkerung des Helden.
 - Der Fortschritt verläuft über Gebiete und Natur, Bewohner und Seelen, Städte, Erinnerungen und schließlich Fähigkeiten.
+- Das Basisspiel besitzt acht Makroabschnitte: Grasland, Wald, Hochland,
+  Hauptstadt, drei Abschnitte in Tatok und Semms Schlussabschnitt.
+- Im Heldenraum erwacht mit dem Helden ein kleiner fliegender Ratgeber in Form
+  eines großen Hutes mit zwei Augen, fast verdecktem Körper und Besen. Er ist
+  nicht der Talisman.
 - Zehsen ist ein Weltenbewahrer, Verbündeter Tators und derjenige, der den
   Talisman in den Heldenraum beziehungsweise in Tators System bringt.
-- Der Talisman hilft dem Helden, entschlüsselt verborgene Strukturen und nimmt
-  auf der zweiten Reise die nutzbare Macht befreiter Seelen auf, nicht die
-  Seelen selbst.
+- Der Held trägt den Talisman zunächst unbemerkt und nimmt ihn erst nach dem
+  Boss des Grasland-Lichterhauses bewusst wahr. Der Talisman hilft dem Helden,
+  entschlüsselt verborgene Strukturen und nimmt auf der zweiten Reise die
+  nutzbare Macht befreiter Seelen auf, nicht die Seelen selbst.
 - Die Seelen behalten Identität und Existenz. Nach dem Ende der zweiten Reise
   werden sie nach Era zurückgebracht und treten wieder in den natürlichen
   Seelenkreislauf ein, in dem jede Seele wiedergeboren wird.
@@ -202,9 +209,12 @@ innerweltlichen Lehrmeinungen.
 
 1. Semms konkrete Rolle über die Stellung als weiterer Gegenspieler und den bestehenden Endgame-Auftritt hinaus.
 2. Genaue Zusammensetzung einzelner Splitterwelten und der übrigen Bewohner der Konstruktwelt; nur ein Teil ist verbindlich der früheren Bevölkerung des Helden zugeordnet.
-3. Persönlichkeit, Stimme und Grenzen des Talismans.
-4. Exakter Aufbau der sechs Kapitel.
-5. Zahl und Thema der normalen Spielebenen vor dem Endgame.
+3. Eigenname, Persönlichkeit, Herkunft, Stimme und spätere Rolle des kleinen
+   Ratgebers sowie eine mögliche Beziehung zum Talisman.
+4. Form, Material, Farbe, Größe, Trageweise, Persönlichkeit, Stimme und genaue
+   Grenzen des Talismans.
+5. Detaillierter Aufbau von Wald, Hochland, Hauptstadt, den drei
+   Tatok-Passagen und Semms Bereich.
 6. Ob der Held in der Erweiterung freiwillig, gezwungenermaßen oder als Folge seiner gesammelten Kraft zur Ether-Entität wird.
 7. Welche Regeln seine physische Rückkehr nach Era besitzt.
 
@@ -1480,8 +1490,8 @@ Dieser Bereich beschreibt die objektive Wahrheit hinter Era, Hera, den Splitterw
 - 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)
 - 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)
-- 📝 [Heldenraum und Talisman](heldenraum-und-talisman.md)
-- 📝 [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)
+- 📝 [Heldenraum, Ratgeber und Talisman](heldenraum-und-talisman.md)
+- 📝 [Achtteiliger Spielablauf](kapitelstruktur-arbeitsfassung.md)
 - 📝 [Story-Prämisse](praemisse.md)
 - 📝 [Der Protagonist](protagonist.md)
 
@@ -1508,6 +1518,9 @@ Die Wahrheit soll nicht als einzelner Infoblock am Schluss erscheinen. Sie wird 
 
 Der Spieler erhält eine klare, glaubhafte Ausgangserzählung: Monster haben die Welt zerstört oder versiegelt, und der Held kann sie zurückbringen. Alle frühen Systeme unterstützen diese Deutung.
 
+Der kleine Hut-Ratgeber führt durch Heldenraum, verlassenes Haus, Nebel und
+Turm. Er ist die sichtbare frühe Begleitfigur und nicht der Talisman.
+
 ## Stufe 2 – Unvollständige Erinnerung
 
 Einzelne Erinnerungen passen nicht vollständig zusammen. Bewohner und
@@ -1515,6 +1528,10 @@ Aufzeichnungen von Gelehrten können dieselbe Vergangenheit unterschiedlich
 beschreiben. Bestimmte Orte wirken älter oder neuer, als sie sein dürften. Die
 Widersprüche gehören zur erfahrbaren Konstruktwelt, ohne die tatsächliche
 Vorgeschichte des Helden aufzuheben.
+
+Nach dem Lichterhaus im Grasland bemerkt der Held erstmals bewusst den
+Talisman. Dessen erster persönlicher Erinnerungsimpuls ist klein genug, um die
+Vorgeschichte nicht vorzeitig aufzulösen.
 
 ## Stufe 3 – Künstliche Grenzen
 
@@ -1589,17 +1606,18 @@ verschlingt nicht ihre Identität oder Seele; sie bestehen nach der Abgabe ihrer
 Macht fort. Mit der gesammelten Kraft verlässt der Held den inneren Bereich
 Tatoks.
 
-Drei feindbesetzte Weltpassagen führen zum Machtzentrum Tators. Dort findet der
-erste Endbosskampf statt. Tator wird besiegt, aber nicht endgültig vernichtet.
+Drei feindbesetzte Makroabschnitte in Tatok führen zum Machtzentrum Tators.
+Dort findet der vorletzte große Bosskampf statt. Tator wird besiegt, aber nicht
+endgültig vernichtet.
 
-Ein Portal bleibt nach dem Kampf geöffnet. Es führt in den Bereich des
-eigenständigen weiteren Gegenspielers Semm. Der Held durchquert es und besiegt
-auch Semm.
+Ein Portal bleibt nach dem Kampf geöffnet. Es führt in den achten und letzten
+Makroabschnitt, den Bereich des eigenständigen weiteren Gegenspielers Semm. Der
+Held durchquert Semms Landen und besiegt ihn im letzten Bosskampf.
 
 Die fortbestehenden Seelen werden anschließend nach Era zurückgebracht. Dort
 treten sie wieder in den natürlichen Seelenkreislauf ein, werden
 wiedergeboren und tragen zum Fortbestand Eras bei. Damit endet das Basisspiel
-und der sechste Abschnitt der ersten Heldengeschichte.
+und der achte Makroabschnitt der ersten Heldengeschichte.
 
 ## Warum das Portal offen bleibt
 
@@ -1646,80 +1664,124 @@ Diese Vorgeschichte ist Dokumentationswissen. Der Spieler erhält sie nicht als
 vollständigen Infoblock am Anfang, sondern über spätere Erinnerungen und
 Enthüllungen.
 
-## 1. Erwachen
+## Auftakt von Abschnitt 1 – Heldenraum und Nebel
 
-Der Held erwacht im Heldenraum ohne vollständige Erinnerung. Artefakte und Talisman weisen ihm die Aufgabe zu, eine zerstörte Welt von Monstern zu befreien.
+Der Held erwacht im Heldenraum ohne Erinnerung. Der einzige sichtbar mit ihm
+erwachende Gefährte ist ein kleiner Ratgeber mit der Gestalt eines großen Hutes,
+zwei Augen, einem beinahe verdeckten Körper und einem fliegenden Besen. Der
+Talisman befindet sich bereits unbemerkt beim Helden, übernimmt aber nicht die
+erste Ratgeberfunktion.
 
-## 2. Erste Befreiungen
+Der Weg führt über ein verlassenes Haus in eine vom Nebel verdeckte Welt. Erst
+Leuchtpunkte geben eine Richtung vor und führen zum Turm.
 
-Der Held betritt die ersten Ebenen, besiegt Gegner und säubert beziehungsweise versiegelt Monsterhöhlen. Jede abgeschlossene Quelle der Verderbnis löst eine sichtbare Rekonstruktion aus.
+## Abschnitt 1 – Grasland
 
-## 3. Wiederherstellung der Welt
+### Turm und erstes Aufblühen
 
-Der Fortschritt entfaltet sich in einer festen dramaturgischen Reihenfolge:
+Der Turm ist der Einführungsdungeon. Leichte Gegner vermitteln die Grundlagen;
+ein Turmboss beziehungsweise Miniboss schließt ihn ab. Danach wird die Karte
+zum ersten Mal lesbar: Im umgebenden Nebel erscheint ein aufgeblühtes
+Graslandgebiet.
 
-1. Länder, Regionen und begehbare Gebiete;
-2. Natur wie Bäume, Wasserläufe und Lebensräume;
-3. Seelen und Bewohner;
-4. Siedlungen und Städte;
-5. Erinnerungen und Geschichte;
-6. daraus erwachsende Fähigkeiten des Helden.
+### Sägewerk und Gebäude
 
-Gebiete können einzelne Stufen zusammenfassen, aber die übergeordnete Reihenfolge bleibt erhalten.
+Der Spieler erkundet das Grasland frei und sucht den nächsten Zugang. Dieser
+Dungeon beginnt im Wald und führt in ein gigantisches industrielles Sägewerk.
+Jedes besiegte Monsternest stellt einen weiteren Gebäudeteil der Region wieder
+her. Freigegebene Gebäude sind begehbar und können früh auffindbare nützliche
+Inhalte enthalten.
 
-## 4. Wachsende Bindung
+### Wasserwerk und Menschenseelen
 
-Mit der Rückkehr der Bewohner wird die Welt nicht nur größer, sondern persönlicher. Der Held erlebt Folgen seiner Taten, erhält neue Aufgaben und erfährt Geschichte. Erinnerungen verstärken seine Fähigkeiten und zugleich seine emotionale Bindung an die Welt.
+Der folgende Dungeon verläuft an einem monumentalen Fluss und Wasserfall.
+Treppen, Wasserräder, Holzmühlen und mechanische Holzhämmer führen stufenweise
+hinab. Im Verlauf befreit der Held Menschenseelen. Die genaue Fallhöhe bleibt
+offen.
 
-## 5. Risse in der Fassade
+### Lichterhaus und Erinnerungen
 
-Der Talisman erkennt Unstimmigkeiten. Wiederholungen, künstliche Grenzen,
-widersprüchliche Erinnerungen und Aufzeichnungen von Gelehrten oder verborgene
-Systemräume lassen erkennen, dass die Welt konstruiert ist. Der Held erfährt,
-dass Tator ihn wegen seiner früheren Grausamkeit und Selbstsucht auswählte.
-Zumindest ein Teil der Bewohner und Gefangenen sind Seelen seiner eigenen
-früheren Gefolgschaft. Tator will den Helden erstarken lassen und anschließend
-dessen Seelenmacht ernten.
+Die zurückgekehrten Bewohner besitzen zunächst keine klare Erinnerung. Ein
+besonderes Haus bildet den Rahmen des Erinnerungsdungeons. Der Spieler sucht
+leuchtende Lampen, die jeweils einen kurzen Rätsel- oder Kampfabschnitt öffnen.
+Als noch veränderbarer Arbeitswert sind ungefähr zwanzig Abschnitte vorgesehen.
+Die letzte Seele führt zum regionalen Endboss.
 
-## 6. Umkehr des Systems
+Nach dessen Niederlage bemerkt der Held den Talisman erstmals bewusst. Er
+erhält durch ihn eine kleine Erinnerung an seine eigene Vergangenheit, aber
+noch nicht die vollständige Wahrheit.
+
+### Dorf und erworbenes Wissen
+
+Der letzte Teil des Graslands ist kein klassischer Dungeon. Durch Gespräche,
+Gefallen und das Kombinieren von Hinweisen findet der Spieler heraus, wie es
+weitergeht. Im Bauerndorf lernt er zunächst Landwirtschaft, einfachen Bau und
+die Vorbereitung einer Brücke oder eines vergleichbaren Übergangs.
+Fortgeschrittene Angriffstaktiken folgen erst in späteren Abschnitten.
+
+## Abschnitte 2 bis 4 – Weitere Wiederherstellung
+
+Auf das Grasland folgen in fester Reihenfolge:
+
+2. **Wald**;
+3. **Eis und Gebirge beziehungsweise Hochland**;
+4. **Hauptstadt**.
+
+Jeder Abschnitt variiert den Rhythmus aus regionalem Zugang, Landschaft,
+Gebäuden, Bewohnern, Erinnerungen und erlerntem Wissen. Die Hauptstadt ähnelt
+dem früheren Machtbereich des Helden und führt zur entscheidenden Erkenntnis
+über seine Vergangenheit und die Konstruktwelt. Die Dungeons, Bosse und
+konkreten Fähigkeiten dieser drei Abschnitte bleiben noch auszuarbeiten.
+
+## Enthüllung und zweite Reise
+
+Wiederholungen, künstliche Grenzen, widersprüchliche Erinnerungen,
+Aufzeichnungen von Gelehrten und verborgene Systemräume zeigen, dass die Welt
+konstruiert ist. Der Held erfährt, dass Tator ihn wegen seiner früheren
+Grausamkeit und Selbstsucht auswählte. Zumindest ein Teil der Bewohner und
+Gefangenen sind Seelen seiner eigenen früheren Gefolgschaft. Tator will den
+Helden erstarken lassen und anschließend dessen Seelenmacht ernten.
 
 Anstatt sich ernten zu lassen, beginnt der Held eine zweite Reise durch die
-bereits befreiten Welten. Der Talisman zieht die nutzbare Macht
+bereits befreiten Gebiete. Der Talisman zieht die nutzbare Macht
 beziehungsweise Seelenenergie der befreiten Seelen an sich. Er verschlingt
-nicht ihre Identität oder ihre eigentliche Seele. Die Seelen bestehen auch
-nach der Abgabe ihrer nutzbaren Macht fort.
+nicht ihre Identität oder eigentliche Seele. Diese Wiederbesuche verbinden den
+vierten mit dem fünften Makroabschnitt und bilden keinen eigenen neunten
+Abschnitt.
 
-## 7. Flucht
+## Abschnitte 5 bis 7 – Tatok
 
-Mit ausreichender Energie durchbricht der Held die Grenze der Konstruktwelt und verlässt den kontrollierten Entwicklungsraum innerhalb Tatoks.
+Mit ausreichender Energie durchbricht der Held die Grenze der Konstruktwelt.
+Drei feindbesetzte Passagen innerhalb Tatoks bilden den Endgame-Anstieg. Hier
+gibt es keine neue große Rekonstruktion. Kampf, Ausdauer und die Beherrschung
+des in den vier Gemeinschaften erworbenen Wissens stehen im Vordergrund. Der
+siebte Abschnitt führt zum Kampf gegen Tator. Tator wird besiegt, aber nicht
+endgültig getötet.
 
-## 8. Weltpassagen
+## Abschnitt 8 – Semms Bereich
 
-Drei feindbesetzte Passagen bilden den eigentlichen Endgame-Anstieg. Hier gibt
-es keine große Rekonstruktion mehr; der Schwerpunkt liegt auf Kampf, Ausdauer,
-Beherrschung der erworbenen Fähigkeiten und der Konfrontation mit Tators Macht.
+Nach Tator bleibt ein Portal zu Semms eigenständigem Bereich offen. Der achte
+Abschnitt konzentriert sich auf Semms Landen und den letzten Bosskampf gegen
+ihn. Semm wird besiegt, aber ebenfalls nicht endgültig getötet.
 
-## 9. Tator und Semm
-
-Der Held besiegt Tator. Nach dem Kampf bleibt ein Portal offen, das zum
-eigenständigen weiteren Gegenspieler Semm führt. Auch Semm wird besiegt. Beide
-können jedoch nicht endgültig getötet werden.
-
-## 10. Rückkehr der Seelen
+## Rückkehr der Seelen
 
 Die gesammelte Macht hat den Ausbruch und die folgenden Kämpfe ermöglicht.
 Anschließend werden die fortbestehenden Seelen nach Era zurückgeführt. Dort
 treten sie wieder in Eras natürlichen Seelenkreislauf ein, werden
-wiedergeboren und tragen zum Fortbestand des Planeten bei.
+wiedergeboren und tragen zum Fortbestand des Planeten bei. Damit endet der
+achte und letzte Makroabschnitt des Basisspiels.
 
-Damit endet der sechste und letzte Abschnitt dieses Teils der Heldengeschichte.
+Die verbindliche Ablaufentscheidung ist zusätzlich in
+[EF-DEC-007](../../../content/de/10-decisions-and-archive/ef-dec-007-eight-section-game-flow.md)
+festgehalten.
 
 ---
 
 ## 📝 heldenraum-und-talisman.md — ./20-story/heldenraum-und-talisman.md
 
 ---
-title: Heldenraum und Talisman
+title: Heldenraum, Ratgeber und Talisman
 status: working-canon
 spoiler_level: full
 updated: 2026-08-30
@@ -1727,39 +1789,58 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink START -->
 [← Back](20-story.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Heldenraum und Talisman
+# Heldenraum, Ratgeber und Talisman
 
 ## Der Heldenraum
 
-Das Spiel beginnt im Heldenraum. Er ist ein ruhiger, abgegrenzter Ausgangsort innerhalb der Konstruktwelt und bildet den ersten stabilen Bezugspunkt des Helden.
+Das Spiel beginnt im Heldenraum. Er ist ein ruhiger, abgegrenzter Ausgangsort
+innerhalb der Konstruktwelt und bildet den ersten stabilen Bezugspunkt des
+Helden. Beim Erwachen erkennt der Held dort außer sich nur den kleinen
+Ratgeber. Der Talisman befindet sich zwar bereits bei ihm, bleibt für ihn aber
+zunächst unbemerkt.
 
-Dort befinden sich:
+Vom Heldenraum führt der Einstieg zu einem verlassenen Haus und anschließend
+in den Nebel der Konstruktwelt. Weitere sichtbare Artefakte, Sockel oder
+Startfiguren sind nicht festgelegt.
 
-- mehrere Artefakte;
-- Hinweise auf die Aufgabe des Helden;
-- Zugänge oder Verbindungen zu den ersten Ebenen;
-- der Talisman beziehungsweise dessen erste Manifestation;
-- möglicherweise leere Sockel, versiegelte Erinnerungen oder später aktivierbare Funktionen.
+## Der kleine Ratgeber
 
-Die genaue visuelle Gestaltung des Raumes ist noch offen. Er gehört zu Tators
-System. Zehsen bringt den Talisman in diesen Raum; ob und wie Zehsen darüber
-hinaus den Heldenraum verändert, ist nicht festgelegt.
+Der Ratgeber erwacht zusammen mit dem Helden. Seine Gestalt wird von einem
+großen Hut mit zwei sichtbaren Augen bestimmt. Unter dem Hut befindet sich ein
+winziger Körper, der fast nicht zu sehen ist. Der Ratgeber fliegt auf einem
+Besen um den Helden und übernimmt die erste Orientierung.
+
+`Ratgeber` ist noch kein Eigenname. Herkunft, Motivation, Wissensgrenzen und
+späterer Handlungsbogen bleiben offen. Er ist nicht mit dem Talisman
+gleichzusetzen; auch eine mögliche Beziehung zwischen beiden ist nicht
+festgelegt. Ein vorläufiger
+[Pixel-Art-Entwurf](../../../assets/images/guide-companion-variants.md) wurde für
+die weitere visuelle Ausarbeitung beibehalten.
 
 ## Der Talisman
 
-Der Talisman wurde durch Zehsen in Tators System und in den Heldenraum
-gebracht. Zehsen ist zugleich ein Weltenbewahrer und ein Verbündeter Tators.
+Der Talisman ist ein zentrales Storyobjekt. Er verbindet Zehsens ungeklärten
+Eingriff, die verlorene Vergangenheit des Helden, die Entlarvung der
+Konstruktwelt und die Seelenmacht der zweiten Reise. Er wurde durch Zehsen in
+Tators System und in den Heldenraum gebracht. Zehsen ist zugleich ein
+Weltenbewahrer und ein Verbündeter Tators.
 Gelehrte deuten seine genaue Absicht und Loyalität unterschiedlich; keine
-Deutung ist bestätigt. Der Talisman erfüllt drei aufeinander aufbauende
-Funktionen.
+Deutung ist bestätigt. Der Held trägt das Artefakt bereits, erkennt es aber
+erst nach dem regionalen Boss des Lichterhauses bewusst. Der Talisman erfüllt
+drei aufeinander aufbauende Funktionen.
 
-### 1. Wegweiser
+### 1. Erinnerungsimpuls
 
-Zu Beginn gibt er praktische Hinweise, erklärt Ziele und hilft dem Spieler, die Grundregeln der Welt zu verstehen. Dadurch wirkt er wie ein gewöhnlicher Begleiter des vorgesehenen Heldenprogramms.
+Nach dem Erinnerungsdungeon des Graslands macht sich der Talisman erstmals
+bewusst bemerkbar und gibt dem Helden einen kleinen Ausschnitt seiner eigenen
+Vergangenheit zurück. Die praktische Orientierung am Spielanfang übernimmt
+dagegen der Ratgeber.
 
 ### 2. Entschlüssler
 
-Mit wachsendem Fortschritt erkennt oder öffnet der Talisman verborgene Ebenen, Fehler und Widersprüche der Konstruktwelt. Seine Hinweise werden von rein praktischen Tipps zu Fragen über die Natur der Welt.
+Mit wachsendem Fortschritt erkennt und deutet der Talisman verborgene Ebenen,
+Fehler und Widersprüche der Konstruktwelt. Seine Hinweise führen zu Fragen über
+die Natur der Welt.
 
 ### 3. Speicher für Seelenmacht
 
@@ -1773,12 +1854,24 @@ Dort werden sie wiedergeboren und tragen zum Fortbestand Eras bei.
 
 ## Erzählerische Funktion
 
-Der Talisman darf die Wahrheit nicht sofort erklären. Er soll den Spieler
-unterstützen, aber Erkenntnis durch Beobachtung, Erinnerungen und Widersprüche
-ermöglichen. Unklar bleibt zunächst, ob der Talisman selbst bewusst spricht,
-Zehsens Nachrichten überträgt oder nur auf bestimmte Resonanzen reagiert.
+Der Talisman darf die Wahrheit nicht sofort erklären. Er soll den Spieler nach
+seiner ersten bewussten Wahrnehmung unterstützen, aber Erkenntnis durch
+Beobachtung, Erinnerungen und Widersprüche ermöglichen. Unklar bleibt, ob der
+Talisman selbst bewusst spricht, Zehsens Nachrichten überträgt oder nur auf
+bestimmte Resonanzen reagiert.
 Seine hilfreiche Wirkung beweist weder eine gegen Tator gerichtete Absicht
 Zehsens noch eine abschließend geklärte Loyalität.
+
+## Visuelle Gestaltung
+
+Form, Material, Farbe, Größe, Trageweise und Oberflächenzeichen des Talismans
+sind nicht festgelegt. Ein vorläufiger
+[Pixel-Art-Entwurf](../../../assets/images/soul-talisman-variants.md) wurde für
+die weitere visuelle Ausarbeitung beibehalten. Er ist kein Kanon und legt die
+endgültige Objektform nicht fest.
+
+Die konsolidierte Quellenbeschreibung steht unter
+[Der Talisman](../../../content/de/02-story-and-world/soul-talisman.md).
 
 ---
 
@@ -1793,46 +1886,58 @@ Dieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er 
 
 - [Prämisse](praemisse.md)
 - [Der Protagonist](protagonist.md)
-- [Heldenraum und Talisman](heldenraum-und-talisman.md)
+- [Heldenraum, Ratgeber und Talisman](heldenraum-und-talisman.md)
 - [Handlungsverlauf](handlungsverlauf.md)
 - [Enthüllungsstruktur](enthuellungsstruktur.md)
 - [Finale und Erweiterung](finale-und-erweiterung.md)
-- [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)
+- [Achtteiliger Spielablauf](kapitelstruktur-arbeitsfassung.md)
 
 ---
 
 ## 📝 kapitelstruktur-arbeitsfassung.md — ./20-story/kapitelstruktur-arbeitsfassung.md
 
 ---
-title: Kapitelstruktur – Arbeitsfassung
-status: proposal
+title: Achtteiliger Spielablauf
+status: accepted-outline
 spoiler_level: critical
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
 [← Back](20-story.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Kapitelstruktur – Arbeitsfassung
+# Achtteiliger Spielablauf
 
-Der Entwurf nennt sechs Kapitel beziehungsweise sechs große Abschnitte. Die folgende Verteilung ist eine redaktionelle Arbeitsfassung und noch keine endgültige Szenenliste.
+Das Basisspiel besitzt acht Makroabschnitte. Die Gesamtzahl und Reihenfolge sind
+freigegeben; die Einzelszenen der Abschnitte 2 bis 8 bleiben weiter
+auszuarbeiten.
 
-| Kapitel | Schwerpunkt | Zentrale Veränderung |
+| Abschnitt | Schwerpunkt | Zentrale Veränderung |
 |---:|---|---|
-| 1 | Heldenraum und erste Ebene | Der Held akzeptiert Auftrag, Talisman und Grundkampf. Erste Landschaft kehrt zurück. |
-| 2 | Länder und Natur | Mehrere Gebiete werden zugänglich; Rekonstruktion wird zur Hauptschleife. |
-| 3 | Seelen, Bewohner und Städte | Die Welt erhält Gesellschaft, Beziehungen, Aufgaben und sichtbare Zivilisation. |
-| 4 | Erinnerungen, Geschichte und Fähigkeiten | Charakterfortschritt und Weltwissen werden verbunden; erste starke Widersprüche erscheinen. |
-| 5 | Wahrheit und zweite Reise | Die Konstruktwelt und die Vorgeschichte des Helden werden enttarnt; der Talisman nimmt in befreiten Ebenen Seelenmacht auf, ohne die Seelen zu verschlingen. |
-| 6 | Flucht, drei Weltpassagen, Tator und Semm | Kampforientiertes Endgame, Rückführung der Seelen nach Era, Wiedergeburt im natürlichen Seelenkreislauf und Abschluss des Basisspiels. |
+| 1 | Grasland | Erwachen mit dem Hut-Ratgeber; Nebel und Turm; Wiederherstellung von Landschaft, Gebäuden, Menschenseelen und Erinnerungen; Dorfwissen öffnet den nächsten Weg. |
+| 2 | Wald | Zweite Variation der vollständigen Wiederherstellungsschleife; Details offen. |
+| 3 | Eis, Gebirge und Hochland | Dritte Variation der Wiederherstellungsschleife; Details offen. |
+| 4 | Hauptstadt | Ähnelt dem früheren Machtbereich des Helden und führt zur entscheidenden Enthüllung. |
+| 5 | Tatok I | Anwendung des Erlernten ohne neue große Wiederherstellung. |
+| 6 | Tatok II | Steigende Kampf- und Beherrschungsanforderungen. |
+| 7 | Tatok III und Tator | Letzte Passage und Kampf gegen Tator. |
+| 8 | Semms Bereich | Eigenständiger Schlussabschnitt und letzter Bosskampf gegen Semm; danach Rückführung der Seelen nach Era. |
+
+Die zweite Reise durch die bereits befreiten Gebiete liegt zwischen Hauptstadt
+und Tatok I. Sie verbindet Enthüllung, Aufnahme der Seelenmacht und Ausbruch,
+ist aber kein zusätzlicher neunter Makroabschnitt.
 
 ## Noch auszuarbeiten
 
-- Anzahl der Ebenen pro Kapitel.
-- Hauptfiguren und emotionale Konflikte jeder Region.
-- Zeitpunkt einzelner Erinnerungsenthüllungen.
-- Boss oder Wächter pro Abschnitt.
-- Übergang von Kapitel 4 zur vollständigen Wahrheit in Kapitel 5.
+- Hauptfiguren, Dungeons und emotionale Konflikte in Wald, Hochland und
+  Hauptstadt.
+- Zeitpunkt einzelner Erinnerungsenthüllungen innerhalb der vier
+  Wiederherstellungsabschnitte.
+- Boss oder Wächter der noch nicht ausgearbeiteten Regionen.
+- Übergang von der Hauptstadt zur zweiten Reise und zu Tatok I.
 - Umfang des erneuten Bereisens, damit das Endgame keine bloße Wiederholung wird.
+- Aufbau der Tatok-Passagen und Semms Landen.
+
+Siehe [EF-DEC-007](../../../content/de/10-decisions-and-archive/ef-dec-007-eight-section-game-flow.md).
 
 ---
 
@@ -1849,9 +1954,21 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink END -->
 # Story-Prämisse
 
-Ein Held erwacht in einem rätselhaften Heldenraum. Er besitzt nur bruchstückhafte Erinnerung, findet mehrere Artefakte vor und erhält den Auftrag, eine zerstörte Welt zu befreien. Ein Talisman begleitet ihn als Helfer und Wegweiser.
+Ein Held erwacht ohne Erinnerung in einem rätselhaften Heldenraum. Sein einziger
+unmittelbar sichtbarer Gefährte ist ein kleiner Ratgeber: ein großer Hut mit
+zwei Augen, unter dem ein winziger Körper fast verschwindet, fliegend auf einem
+Besen. Der Ratgeber hilft ihm bei den ersten Schritten in eine vom Nebel
+verdeckte Welt.
 
-Der Held besiegt Monster, reinigt oder versiegelt Monsterhöhlen und bringt dadurch Schritt für Schritt verlorene Bestandteile der Welt zurück. Zuerst entstehen Gebiete und Natur, später kehren Seelen und Menschen, Städte, Erinnerungen und schließlich neue Fähigkeiten zurück.
+Der Held folgt Leuchtpunkten zu einem Turm, besiegt Monster und bringt dadurch
+das erste Grasland zurück. In weiteren Dungeons werden Gebäude, Menschenseelen
+und Erinnerungen befreit. Erst nach dem Erinnerungsdungeon bemerkt der Held den
+Talisman, den er bereits unbewusst bei sich trägt, und erhält einen kleinen
+Ausschnitt seiner Vergangenheit.
+
+Auf das Grasland folgen Wald, Eis und Gebirge beziehungsweise Hochland sowie
+die Hauptstadt. Danach führen drei kampforientierte Abschnitte durch Tatok zu
+Tator und ein letzter Abschnitt in Semms Bereich zum Abschluss des Basisspiels.
 
 Der Held hält diese Welt für seine wahre Heimat und versteht seine Aufgabe als
 Wiederaufbau nach einer Katastrophe. Tatsächlich war er ein Herrscher auf Era,
@@ -2063,6 +2180,23 @@ updated: 2026-08-30
 7. Der Spieler kehrt zu bekannten Orten zurück und erlebt deren Veränderung.
 8. Neue Wege, Aufgaben und der nächste Verdichtungspunkt öffnen sich.
 
+## Acht Makroabschnitte
+
+Die Hauptschleife trägt die ersten vier Abschnitte Grasland, Wald, Hochland und
+Hauptstadt. Danach folgen drei Tatok-Passagen ohne neue große Rekonstruktion und
+ein letzter Abschnitt in Semms Bereich.
+
+Das Grasland konkretisiert die Schleife erstmals vollständig:
+
+1. Ratgeber, verlassenes Haus, Nebel und Leuchtpunkte führen zum Turm.
+2. Der Turmboss macht das erste Grasland auf der Karte sichtbar.
+3. Monsternester im industriellen Sägewerk stellen Gebäude wieder her.
+4. Der Wasserwerkdungeon befreit Menschenseelen.
+5. Lampen im Lichterhaus öffnen kurze Rätsel- und Kampfabschnitte für
+   Erinnerungen.
+6. Das Bauerndorf vermittelt durch Gespräche und Gefallen Wissen für den
+   nächsten Abschnitt.
+
 ## Gefühl des Fortschritts
 
 Fortschritt soll nicht nur über Zahlen sichtbar sein. Jede größere Befreiung verändert mindestens zwei Ebenen:
@@ -2108,7 +2242,11 @@ updated: 2026-08-30
 
 ## Freischaltung
 
-Die Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung vollständig aktiv. Dadurch wird aus einem Begleit- und Hinweissystem eine zentrale Endgame-Mechanik.
+Die Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung
+vollständig aktiv. Der Held bemerkt das zunächst verborgene Artefakt bereits
+nach dem Lichterhaus im Grasland; im Endgame wird aus dem Erinnerungs- und
+Entschlüsselungswerkzeug eine zentrale Mechanik. Der sichtbare Ratgeber am
+Spielanfang ist eine andere Figur.
 
 ## Verbindliche Begriffe
 
@@ -2183,6 +2321,19 @@ Die Reihenfolge vermittelt, dass eine Welt zuerst Raum und Lebensgrundlage benö
 
 Nicht jede kleine Quest muss alle sechs Stufen abbilden. Eine Region kann beispielsweise zuerst Gelände und Bäume zurückbringen, später Bewohner und schließlich eine gemeinsame Erinnerung. Die globale Reihenfolge darf jedoch nicht umgedreht werden, solange keine bewusste Ausnahme erzählt wird.
 
+## Anwendung im Grasland
+
+- Der Turm macht das Grasland als Gebiet und Landschaft sichtbar.
+- Jedes abgeschlossene Monsternest im Sägewerk stellt einen weiteren
+  Gebäudefortschritt her.
+- Der Wasserwerkdungeon befreit Menschenseelen.
+- Das Lichterhaus gibt Seelen und Bewohnern Erinnerungen zurück.
+- Gespräche und Gefallen im Bauerndorf vermitteln anwendbares Wissen und
+  Fähigkeiten.
+
+Wald, Hochland und Hauptstadt folgen derselben übergeordneten Reihenfolge,
+dürfen sie aber mit anderen Orten, Rätseln und Übergängen ausformen.
+
 ## Rückkopplung
 
 Jede Stufe soll die vorherige neu nutzbar machen:
@@ -2230,7 +2381,8 @@ updated: 2026-08-30
 
 ## Ebenen der Konstruktwelt
 
-Die Konstruktwelt besteht aus mehreren wiederherstellbaren Ebenen. Jede Ebene benötigt:
+Die Konstruktwelt besteht aus vier wiederherstellbaren Makroabschnitten:
+Grasland, Wald, Hochland und Hauptstadt. Jeder Abschnitt benötigt:
 
 - ein eigenes Landschaftsthema;
 - einen regionalen Konflikt;
@@ -2255,7 +2407,9 @@ Weltpassagen sind größere Übergangsräume zwischen Machtbereichen. Im Endgame
 
 ## Drei Endgame-Passagen
 
-Die genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht kanonische Steigerung wäre:
+Die drei Passagen bilden die Makroabschnitte 5 bis 7 und liegen in Tatok. Die
+genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht
+kanonische Steigerung wäre:
 
 1. Passage der gebundenen Seelen;
 2. Passage der zerfallenden Formen;
@@ -2298,6 +2452,20 @@ Erinnerungen sind gleichzeitig Lore, Charakterentwicklung und Fortschrittsressou
 3. Beziehungen und Ereignisse erzeugen einen Erinnerungsknoten.
 4. Der Held interagiert mit der Erinnerung, statt sie nur einzusammeln.
 5. Eine neue Erkenntnis verändert Dialog, Weltzustand oder Fähigkeit.
+
+## Grasland: Lichterhaus und Dorfwissen
+
+Im Grasland bildet ein besonderes Haus den Erinnerungsdungeon. Leuchtende
+Lampen öffnen voneinander getrennte kurze Abschnitte mit Rätseln, Gegnern oder
+beidem. Jede abgeschlossene Einheit befreit eine Seele beziehungsweise
+Erinnerung. Ungefähr zwanzig Einheiten sind ein veränderbarer Arbeitswert, keine
+freigegebene Endzahl.
+
+Nach dem regionalen Boss bemerkt der Held den Talisman erstmals bewusst und
+erhält einen kleinen Ausschnitt seiner eigenen Vergangenheit. Anschließend
+entsteht Fähigkeitsfortschritt auch durch Gespräche und Gefallen im Dorf. Das
+erste Bauerndorf vermittelt vor allem Landwirtschaft, einfachen Bau und die
+Vorbereitung eines Übergangs; fortgeschrittene Kampftaktiken folgen später.
 
 ## Gestaltungsregel
 
@@ -2378,6 +2546,16 @@ Die Veränderung soll nach Möglichkeit direkt im Spielraum sichtbar werden. Gee
 - neue Wege wachsen oder werden freigelegt;
 - Bewohner erscheinen nicht abstrakt im Menü, sondern beziehen konkrete Orte;
 - eine Stadt entwickelt sich in mehreren erkennbaren Stufen.
+
+## Grasland als Referenz
+
+Im Grasland zeigt das System mehrere Granularitäten: Der Turmboss lässt ein
+gesamtes Gebiet auf Karte und in der Welt aufblühen. Im riesigen Sägewerk löst
+dagegen jedes besiegte Monsternest einen einzelnen Gebäudefortschritt aus.
+Später befreit der Wasserwerkdungeon Menschenseelen, während das Lichterhaus
+Erinnerungen in kurzen Lampenabschnitten zurückgibt. Diese Folge ist der
+Referenzablauf, aber keine Verpflichtung, alle späteren Regionen identisch zu
+bauen.
 
 ## Technische Konsequenz
 
@@ -2576,7 +2754,10 @@ updated: 2026-08-30
 
 ## Regionale Bosse
 
-Die normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils einen Teil der Rekonstruktionsleiter verkörpern. Namen und Zahl sind noch offen.
+Der erste Turm endet mit einem Turmboss beziehungsweise Miniboss. Das
+Lichterhaus endet nach der Befreiung der letzten Seele mit dem regionalen
+Endboss des Graslands. Bosse und Wächter von Wald, Hochland und Hauptstadt
+bleiben offen.
 
 ## Endgame-Abfolge
 
@@ -2586,10 +2767,11 @@ Die normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils 
 4. Aufnahme der nutzbaren Seelenmacht durch den Talisman; Identität und Seele
    der Befreiten bleiben bestehen.
 5. Durchbruch aus dem inneren Konstrukt.
-6. Drei Weltpassagen mit steigender Gegnerdichte.
-7. Kampf gegen Tator.
-8. Offenes Portal zum eigenständigen weiteren Gegenspieler Semm.
-9. Kampf gegen Semm.
+6. Drei aufeinanderfolgende Makroabschnitte in Tatok mit steigender
+   Gegnerdichte und ohne neue große Wiederherstellung.
+7. Kampf gegen Tator am Ende des dritten Tatok-Abschnitts.
+8. Offenes Portal zum eigenständigen Schlussabschnitt in Semms Bereich.
+9. Letzter Bosskampf gegen Semm.
 10. Rückführung der fortbestehenden Seelen nach Era und in den natürlichen
     Seelenkreislauf; dort werden sie wiedergeboren und tragen zum Fortbestand
     Eras bei.
@@ -2676,6 +2858,18 @@ Frühe Monsterhöhlen wirken wie natürliche Brutstätten des Bösen. Spätere Q
 - sichtbare Verbindung zur gebundenen Rekonstruktion;
 - Abschlussreaktion in der Welt.
 
+## Festgelegte Quellen im Grasland
+
+- **Turm:** erster Dungeon mit leichten Gegnern und Turmboss beziehungsweise
+  Miniboss; sein Abschluss macht das Grasland sichtbar.
+- **Industrielles Sägewerk:** beginnt im Wald; einzelne Monsternester stellen
+  schrittweise Gebäude wieder her.
+- **Wasserwerk:** folgt einem monumentalen Fluss und Wasserfall über Treppen,
+  Wasserräder, Holzmühlen und mechanische Holzhämmer; befreit Menschenseelen.
+- **Lichterhaus:** kein durchgehender Abstieg, sondern kurze über Lampen
+  erreichbare Rätsel- und Kampfabschnitte; gibt Erinnerungen zurück und endet
+  mit dem regionalen Boss.
+
 ---
 
 ## 📝 welt-und-ebenenstruktur.md — ./50-content/welt-und-ebenenstruktur.md
@@ -2692,25 +2886,34 @@ updated: 2026-08-30
 
 ## Basisspiel
 
-Das Basisspiel benötigt mehrere Ebenen innerhalb der Konstruktwelt. Ihre konkrete Zahl ist offen. Inhaltlich sollten sie gemeinsam die vollständige Wiederherstellungsleiter abdecken:
+Die Konstruktwelt besitzt vier Wiederherstellungsabschnitte in fester
+Reihenfolge:
 
-- frühe Ebene mit Gelände und Natur;
-- Ebene mit ersten Seelen und Bewohnern;
-- Ebene mit wachsender Siedlung oder Stadt;
-- Ebene mit starken Erinnerungs- und Geschichtssystemen;
-- späte Ebene mit sichtbaren Fehlern der Konstruktion;
-- Rückkehrfassungen der Ebenen für das Seelenenergie-Endgame.
+1. Grasland;
+2. Wald;
+3. Eis und Gebirge beziehungsweise Hochland;
+4. Hauptstadt.
+
+Jeder Abschnitt verbindet Landschaft, Gebäude, Bewohner, Erinnerungen und
+Fähigkeiten in einer eigenen Variation. Das Grasland dient mit Turm, Sägewerk,
+Wasserwerk, Lichterhaus und Bauerndorf als detaillierter Referenzablauf. Die
+Hauptstadt ähnelt dem früheren Machtbereich des Helden und führt zur
+entscheidenden Enthüllung. Für das Seelenenergie-Endgame werden die bereits
+befreiten Gebiete erneut besucht, ohne daraus einen zusätzlichen
+Makroabschnitt zu machen.
 
 ## Äußeres Endgame
 
-Nach der Konstruktwelt folgen:
+Nach den vier Wiederherstellungsabschnitten folgen vier weitere
+Makroabschnitte:
 
-1. Weltpassage 1;
-2. Weltpassage 2;
-3. Weltpassage 3;
-4. Tators Machtzentrum;
-5. Portal zu Semm;
-6. Semms Bereich.
+5. Tatok-Passage I;
+6. Tatok-Passage II;
+7. Tatok-Passage III mit dem Weg zu Tator und dem Kampf gegen ihn;
+8. Semms Bereich mit dem letzten Bosskampf.
+
+In den Tatok-Passagen gibt es keine neue große Wiederherstellung. Sie prüfen
+die Beherrschung der zuvor erworbenen Systeme und Fähigkeiten.
 
 ## Erweiterung
 
@@ -2774,20 +2977,22 @@ updated: 2026-08-30
 Ein erster Slice sollte enthalten:
 
 - Heldenraum;
-- eine kleine beschädigte Region;
-- eine Monsterhöhle;
+- den kleinen fliegenden Hut-Ratgeber;
+- verlassenes Haus, Nebel und Leuchtpunkte;
+- einen begrenzten Ausschnitt des Turms;
 - Angriff, Ausweichen, Block und Magie;
 - eine sichtbare Landschaftsrekonstruktion;
 - Rückkehr einer Seele oder Figur;
 - eine Erinnerung, die eine kleine Fähigkeitsverbesserung auslöst;
 - einen dezenten ersten Widerspruch in der Welt.
 
-## Priorität 3 – Regionen und Kapitel
+## Priorität 3 – Abschnitte 2 bis 8
 
-- Zahl der Konstruktwelt-Ebenen bestimmen.
-- jeder Ebene ein Landschafts-, Kultur- und Erinnerungsthema geben.
-- Wiederherstellungsstufen auf Kapitel verteilen.
-- regionale Bosse und zentrale Figuren definieren.
+- Wald, Hochland und Hauptstadt jeweils ein Landschafts-, Kultur- und
+  Erinnerungsthema geben.
+- regionale Bosse und zentrale Figuren dieser drei Abschnitte definieren.
+- die drei Tatok-Passagen als Anwendung des zuvor Gelernten unterscheiden.
+- Semms Landen und den letzten Bosskampf ausarbeiten.
 
 ## Priorität 4 – Endgame-Inszenierung und Mechanik
 
@@ -2833,11 +3038,18 @@ Tator/Semm sollten nicht gleichzeitig in einem frühen Dialog erklärt werden.
 Der Spieler lernt zunächst konkrete Erfahrungen und erst später die kosmische
 Einordnung.
 
-## 5. Der Talisman ist kein allwissender Erzähler
+## 5. Ratgeber und Talisman bleiben getrennt
+
+Der sichtbare Hut-Ratgeber erklärt den Einstieg. Der Held bemerkt den Talisman
+erst nach dem Lichterhaus im Grasland bewusst. Dialog und UI dürfen beide nicht
+als dieselbe Figur darstellen oder eine noch offene Beziehung zwischen ihnen
+behaupten.
+
+## 6. Der Talisman ist kein allwissender Erzähler
 
 Er unterstützt, entschlüsselt und warnt, besitzt aber Grenzen. Informationen sollen weiterhin über Umwelt, Erinnerungen, Figuren und Spielerbeobachtung entstehen.
 
-## 6. Gelehrte tragen überlieferte Mehrdeutigkeiten
+## 7. Gelehrte tragen überlieferte Mehrdeutigkeiten
 
 Kultur- oder quellenabhängige Aussagen werden Gelehrten und ihren Schriften
 zugeordnet. Wenn mehrere Gelehrtenüberlieferungen einander widersprechen, darf
@@ -2850,7 +3062,7 @@ die Deutung von Zehsens Handeln. Sie darf weder festgelegte Tatsachen
 relativieren noch redaktionell offene Gameplay- und Produktionsfragen als Lore
 ausgeben.
 
-## 7. Das Endgame braucht neue Inhalte
+## 8. Das Endgame braucht neue Inhalte
 
 Die Rückkehr in frühere Welten muss neue Wege, Gegner, Entscheidungen oder Erinnerungen bieten. Eine reine Sammelrunde würde die dramaturgische Umkehr schwächen.
 
@@ -2860,7 +3072,7 @@ natürlichen Seelenkreislauf zurückgeführt. Dort werden sie wiedergeboren und
 tragen zum Fortbestand Eras bei. Dialog und Inszenierung dürfen diese Regel
 nicht als dauerhafte Vernichtung der Geretteten missverständlich machen.
 
-## 8. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt
+## 9. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt
 
 Das Basisspiel soll nach Semm einen befriedigenden Abschluss besitzen. Hinweise auf weitere Entitäten dürfen Neugier wecken, aber die Hauptreise nicht wie ein unvollständiger Prolog erscheinen lassen.
 
@@ -2883,20 +3095,23 @@ updated: 2026-08-30
 Das Basisspiel umfasst:
 
 - Erwachen im Heldenraum;
-- Einführung des Talismans;
-- mehrere wiederherstellbare Ebenen;
+- Einführung des kleinen fliegenden Hut-Ratgebers;
+- zunächst unbemerkte Mitführung und spätere bewusste Wahrnehmung des
+  Talismans;
+- vier Wiederherstellungsabschnitte: Grasland, Wald, Hochland und Hauptstadt;
 - komplette Progression von Landschaft bis Fähigkeiten;
 - Enthüllung der künstlichen Splitterwelt;
 - zweite Reise und Sammlung von Seelenmacht, ohne die Seelen selbst zu
   verschlingen;
 - Flucht aus der Konstruktwelt;
-- drei Weltpassagen;
+- drei Makroabschnitte in Tatok;
 - Bosskampf gegen Tator;
 - anschließenden Bosskampf gegen Semm;
 - Rückführung der fortbestehenden Seelen nach Era und in den natürlichen
   Seelenkreislauf, ihre Wiedergeburt und ihren erneuten Beitrag zum Fortbestand
   Eras;
-- Abschluss des sechsten Kapitels beziehungsweise des ersten großen Heldenteils.
+- achten Schlussabschnitt in Semms Bereich und Abschluss des ersten großen
+  Heldenteils.
 
 ## Nicht Teil des Basisspiels
 
@@ -3308,8 +3523,8 @@ von Seelenmacht bleiben drei unterschiedliche Vorgänge.
 - 📝 [Enthüllungs- und Spoilerstruktur](20-story/enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](20-story/finale-und-erweiterung.md)
 - 📝 [Handlungsverlauf des Basisspiels](20-story/handlungsverlauf.md)
-- 📝 [Heldenraum und Talisman](20-story/heldenraum-und-talisman.md)
-- 📝 [Kapitelstruktur – Arbeitsfassung](20-story/kapitelstruktur-arbeitsfassung.md)
+- 📝 [Heldenraum, Ratgeber und Talisman](20-story/heldenraum-und-talisman.md)
+- 📝 [Achtteiliger Spielablauf](20-story/kapitelstruktur-arbeitsfassung.md)
 - 📝 [Story-Prämisse](20-story/praemisse.md)
 - 📝 [Der Protagonist](20-story/protagonist.md)
 

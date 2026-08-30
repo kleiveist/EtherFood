@@ -44,3 +44,15 @@ Frühe Monsterhöhlen wirken wie natürliche Brutstätten des Bösen. Spätere Q
 - ein lokales Rätsel, Hindernis oder Navigationsmerkmal;
 - sichtbare Verbindung zur gebundenen Rekonstruktion;
 - Abschlussreaktion in der Welt.
+
+## Festgelegte Quellen im Grasland
+
+- **Turm:** erster Dungeon mit leichten Gegnern und Turmboss beziehungsweise
+  Miniboss; sein Abschluss macht das Grasland sichtbar.
+- **Industrielles Sägewerk:** beginnt im Wald; einzelne Monsternester stellen
+  schrittweise Gebäude wieder her.
+- **Wasserwerk:** folgt einem monumentalen Fluss und Wasserfall über Treppen,
+  Wasserräder, Holzmühlen und mechanische Holzhämmer; befreit Menschenseelen.
+- **Lichterhaus:** kein durchgehender Abstieg, sondern kurze über Lampen
+  erreichbare Rätsel- und Kampfabschnitte; gibt Erinnerungen zurück und endet
+  mit dem regionalen Boss.

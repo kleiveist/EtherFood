@@ -8,5 +8,6 @@
 ## 📄 Pages
 - 📝 [Archivrichtlinie](archive-policy.md)
 - 📝 [Entscheidungsprotokoll](decision-log.md)
+- 📝 [EF-DEC-007: Achtteiliger Spielablauf](ef-dec-007-eight-section-game-flow.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

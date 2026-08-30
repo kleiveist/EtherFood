@@ -17,5 +17,7 @@ Der Bereich strukturiert die erzählerischen und weltbezogenen Entscheidungen,
 ohne fehlende Inhalte vorwegzunehmen.
 
 - [Handlung und Welt](story-and-world.md)
+- [Ratgeber im Heldenraum](guide-companion.md)
+- [Der Talisman](soul-talisman.md)
 - [Begriffe und Arbeitsbegriffe](../01-baseline/terminology.md)
 - [Entscheidungsprotokoll](../10-decisions-and-archive/decision-log.md)

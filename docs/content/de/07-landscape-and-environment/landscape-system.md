@@ -2,7 +2,7 @@
 title: "Landschaftssystem"
 language: de
 status: draft
-version: "0.1"
+version: "0.2"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -25,17 +25,21 @@ Natur und Landschaft werden als erster Schritt der Weltwiederherstellung
 wiederhergestellt. Erst danach kehren Bewohner zurück und werden Siedlungen oder
 Städte wiederhergestellt beziehungsweise neu belebt.
 
+Die vier Wiederherstellungsabschnitte sind Grasland, Wald, Eis und Gebirge
+beziehungsweise Hochland sowie Hauptstadt. Im Grasland macht der Sieg im Turm
+das erste zusammenhängende Gebiet in Welt und Karte sichtbar.
+
 ## Aktueller Arbeitsentwurf: offene Bereiche
 
 | Bereich | Offene Designfragen |
 | --- | --- |
-| Biome | Welche Biome benötigt das Spiel, und welche spielerische Funktion unterscheidet sie? |
+| Regionen | Grasland, Wald, Hochland und Hauptstadt bilden die bestätigte Folge; ihre genaue innere Gliederung und spielerische Unterscheidung wird weiter ausgearbeitet. |
 | Beschädigte und wiederhergestellte Zustände | Welche Zustände existieren, was verändert sie und wie werden Übergänge geprüft? |
 | Fortbewegung | Welche Wege, Hindernisse, Fähigkeiten und Zugangsregeln gelten? |
 | Geländeeigenschaften | Welche Eigenschaften beeinflussen Bewegung, Kampf, Sicht oder Interaktion? |
 | Ressourcen | Gibt es Umweltressourcen, und welchem bestätigten Systemzweck dienen sie? |
 | Umweltgefahren | Welche Gefahren sind lesbar, vermeidbar und mit Wiederherstellung vereinbar? |
-| Sichtbare Transformation | Welche Änderungen zeigen Ursache, Umfang und Ergebnis der Wiederherstellung? |
+| Sichtbare Transformation | Der Turmabschluss lässt das Grasland im Nebel aufblühen; spätere regionale Transformationen bleiben auszuarbeiten. |
 | Dauerhafte und temporäre Veränderungen | Was bleibt bestehen, was kehrt zurück und warum? |
 | Verbindung zu Bewohnern | Welche Landschaftsbedingungen ermöglichen Rückkehr, ohne Bewohner auf einen Schalter zu reduzieren? |
 | Verbindung zu Maschinen | Gibt es eine Wirkung in eine oder beide Richtungen? Noch nicht entschieden. |
@@ -46,8 +50,10 @@ Städte wiederhergestellt beziehungsweise neu belebt.
 ## Spielerperspektive und Spielerfantasie
 
 Der Spieler soll die Landschaft als veränderbaren Teil der Welt erleben und die
-Folgen der Wiederherstellung räumlich nachvollziehen. Ob er heilt, aktiviert,
-pflegt, gestaltet oder auf andere Weise handelt, ist noch nicht entschieden.
+Folgen der Wiederherstellung räumlich nachvollziehen. Im Grasland besiegt er
+den Turmboss und später einzelne Monsternester; diese Handlungen machen das
+Gebiet sichtbar und stellen Gebäude stufenweise wieder her. Regionale Varianten
+dieser Logik bleiben offen.
 
 ## Regeln und Ablauf
 
@@ -57,15 +63,17 @@ Priorität der Landschaft ist bestätigt; die konkrete Handlung ist offen.
 
 ## Eingaben
 
-Mögliche Eingaben sind Erkundung, Kampf, Interaktion, Erinnerungsfortschritt oder
-andere noch zu entscheidende Bedingungen. Ressourcen oder Maschinen sind keine
-bestätigten Eingaben.
+Bestätigte Eingaben im Grasland sind Erkundung, der Abschluss des Turms und das
+Besiegen einzelner Monsternester im Sägewerk. Interaktion und
+Erinnerungsfortschritt schließen den regionalen Ablauf an. Ressourcen oder
+Maschinen sind keine allgemein bestätigten Eingaben.
 
 ## Ausgaben
 
-Bestätigt ist ein wiederhergestellter Natur- oder Landschaftszustand, der den
-weiteren Wiederherstellungsfortschritt ermöglicht. Konkrete Bewohner-,
-Ressourcen-, Gegner- oder Fähigkeitsausgaben sind noch nicht entschieden.
+Bestätigte Ausgaben im Grasland sind ein sichtbar aufgeblühtes Gebiet,
+begehbare Landschaft und schrittweise wiederkehrende Gebäude. Bewohner,
+Erinnerungen und erlerntes Wissen folgen in eigenen Dungeons und im Dorf.
+Konkrete Ressourcen und Gegenstände sind noch nicht entschieden.
 
 ## Systemabhängigkeiten
 
@@ -99,7 +107,7 @@ erklären. Farbsehschwächen und Effektüberlastung sind zu berücksichtigen.
 
 ## Offene Fragen
 
-- Was tut der Spieler konkret, um Landschaft wiederherzustellen?
+- Welche regionalen Auslöser verwenden Wald, Hochland und Hauptstadt?
 - Welche Zustandsgranularität ist spielerisch lesbar und technisch tragfähig?
 - Wie bleibt die Welt nach Speichern, Laden und erneutem Betreten konsistent?
 - Welche Landschaftsänderung genügt, um den Vertical-Slice-Kern zu prüfen?
@@ -120,3 +128,4 @@ erklären. Farbsehschwächen und Effektüberlastung sind zu berücksichtigen.
 - [Handlung und Welt](../02-story-and-world/story-and-world.md)
 - [Maschinensystem](../05-machines/machine-system.md)
 - [Vertical Slice](../09-prototypes-and-tests/vertical-slice.md)
+- [Spielablauf und Abschnittsstruktur](../03-gameplay-and-progression/game-flow-and-section-structure.md)

@@ -2,7 +2,7 @@
 title: "Entscheidungsprotokoll"
 language: de
 status: approved
-version: "0.1"
+version: "0.2"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -30,6 +30,7 @@ verlinkt.
 | EF-DEC-004 | 2026-08-29 | `approved` | Wiederherstellungsfolge: Landschaft → Bewohner → Siedlungen/Städte → Erinnerungen/Geschichte → Fähigkeitserweiterung. | [Gameplay und Fortschritt](../03-gameplay-and-progression/gameplay-and-progression.md) | — |
 | EF-DEC-005 | 2026-08-29 | `approved` | Kampfumfang des ersten Vertical Slice: Angriff, Ausweichen, Blocken und Fernkampfmagie. | [Kampfsystem](../04-combat/combat-system.md) | — |
 | EF-DEC-006 | 2026-08-29 | `approved` | Maschinen und Zuro bleiben geplante, aber undefinierte Systeme; offene Regeln werden nicht erfunden. | [Maschinensystem](../05-machines/machine-system.md), [Zuro-System](../06-zuro-and-enemies/zuro-system.md) | — |
+| [EF-DEC-007](ef-dec-007-eight-section-game-flow.md) | 2026-08-30 | `approved` | Das Basisspiel gliedert sich in vier Wiederherstellungsabschnitte, drei Tatok-Passagen und einen Schlussabschnitt in Semms Bereich. Der Graslandablauf und die Trennung von Hut-Ratgeber und Talisman sind festgelegt. | [Spielablauf und Abschnittsstruktur](../03-gameplay-and-progression/game-flow-and-section-structure.md) | Nicht freigegebene Sechs-Kapitel-Arbeitsfassung |
 
 ## Änderungsregel
 

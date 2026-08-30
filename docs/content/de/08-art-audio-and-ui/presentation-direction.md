@@ -2,7 +2,7 @@
 title: "Präsentationsrichtung"
 language: de
 status: draft
-version: "0.1"
+version: "0.3"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -27,12 +27,20 @@ Assetliste und keine technische Produktionspipeline fest.
   für den Spieler verständlich werden.
 - Das Spiel entwickelt eine eigenständige Identität und kopiert keine konkreten
   geschützten Inhalte seiner internen Referenz.
+- Der erste Ratgeber besitzt eine bestätigte Grundsilhouette: großer Hut mit
+  zwei Augen, fast verdeckter winziger Körper und Flug auf einem Besen.
+- Der Talisman ist ein zentrales Storyobjekt mit bestätigten Funktionen, aber
+  noch ohne freigegebene Form, Material-, Farb- oder Trageentscheidung.
 
 ## Aktueller Arbeitsentwurf
 
 Präsentation soll Zustände, Handlungsfolgen und Gefahren mehrkanalig lesbar
 machen. Grafikstil, Farbwelt, Formensprache, Instrumentierung, Klangästhetik,
-UI-Layout und Typografie sind noch nicht entschieden.
+UI-Layout und Typografie sind noch nicht entschieden. Je ein
+[beibehaltener Pixel-Art-Entwurf des Ratgebers](../../../assets/images/guide-companion-variants.md)
+und des [Talismans](../../../assets/images/soul-talisman-variants.md) dient der
+weiteren visuellen Ausarbeitung. Die Auswahl legt noch keine
+Produktionsgestaltung fest.
 
 ## Spielerperspektive und Spielerfantasie
 
@@ -80,6 +88,7 @@ Zu entwerfen und zu testen sind mindestens:
 - Angriffs-, Ausweich-, Block- und Magiezustand,
 - Gegnertelegraphie, Treffer und Niederlage,
 - Erinnerungsfund und daraus entstehender Fortschritt,
+- Ratgeber gegenüber Leuchtpunkten, Gegnern und Talisman,
 - Ziel, nächster Schritt und relevante Systemgrenzen.
 
 ## Sonderfälle und Risiken
@@ -112,3 +121,5 @@ Zu entwerfen und zu testen sind mindestens:
 - [Kampfsystem](../04-combat/combat-system.md)
 - [Landschaftssystem](../07-landscape-and-environment/landscape-system.md)
 - [Vertical Slice](../09-prototypes-and-tests/vertical-slice.md)
+- [Ratgeber im Heldenraum](../02-story-and-world/guide-companion.md)
+- [Der Talisman](../02-story-and-world/soul-talisman.md)

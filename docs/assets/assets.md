@@ -13,6 +13,8 @@
 
 ## 📁 Images
 - 🗂️ [Overview](images/images.md)
+- 📝 [Ratgeber: beibehaltener Pixel-Art-Entwurf](images/guide-companion-variants.md)
+- 📝 [Talisman: beibehaltener Pixel-Art-Entwurf](images/soul-talisman-variants.md)
 
 ## 📁 MAPS
 - 🗂️ [Overview](maps/maps.md)

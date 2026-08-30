@@ -26,11 +26,17 @@ updated: 2026-08-30
 - Zumindest ein Teil der Bewohner und Gefangenen sind Seelen aus der früheren
   Gefolgschaft beziehungsweise Bevölkerung des Helden.
 - Der Fortschritt verläuft über Gebiete und Natur, Bewohner und Seelen, Städte, Erinnerungen und schließlich Fähigkeiten.
+- Das Basisspiel besitzt acht Makroabschnitte: Grasland, Wald, Hochland,
+  Hauptstadt, drei Abschnitte in Tatok und Semms Schlussabschnitt.
+- Im Heldenraum erwacht mit dem Helden ein kleiner fliegender Ratgeber in Form
+  eines großen Hutes mit zwei Augen, fast verdecktem Körper und Besen. Er ist
+  nicht der Talisman.
 - Zehsen ist ein Weltenbewahrer, Verbündeter Tators und derjenige, der den
   Talisman in den Heldenraum beziehungsweise in Tators System bringt.
-- Der Talisman hilft dem Helden, entschlüsselt verborgene Strukturen und nimmt
-  auf der zweiten Reise die nutzbare Macht befreiter Seelen auf, nicht die
-  Seelen selbst.
+- Der Held trägt den Talisman zunächst unbemerkt und nimmt ihn erst nach dem
+  Boss des Grasland-Lichterhauses bewusst wahr. Der Talisman hilft dem Helden,
+  entschlüsselt verborgene Strukturen und nimmt auf der zweiten Reise die
+  nutzbare Macht befreiter Seelen auf, nicht die Seelen selbst.
 - Die Seelen behalten Identität und Existenz. Nach dem Ende der zweiten Reise
   werden sie nach Era zurückgebracht und treten wieder in den natürlichen
   Seelenkreislauf ein, in dem jede Seele wiedergeboren wird.
@@ -95,9 +101,12 @@ innerweltlichen Lehrmeinungen.
 
 1. Semms konkrete Rolle über die Stellung als weiterer Gegenspieler und den bestehenden Endgame-Auftritt hinaus.
 2. Genaue Zusammensetzung einzelner Splitterwelten und der übrigen Bewohner der Konstruktwelt; nur ein Teil ist verbindlich der früheren Bevölkerung des Helden zugeordnet.
-3. Persönlichkeit, Stimme und Grenzen des Talismans.
-4. Exakter Aufbau der sechs Kapitel.
-5. Zahl und Thema der normalen Spielebenen vor dem Endgame.
+3. Eigenname, Persönlichkeit, Herkunft, Stimme und spätere Rolle des kleinen
+   Ratgebers sowie eine mögliche Beziehung zum Talisman.
+4. Form, Material, Farbe, Größe, Trageweise, Persönlichkeit, Stimme und genaue
+   Grenzen des Talismans.
+5. Detaillierter Aufbau von Wald, Hochland, Hauptstadt, den drei
+   Tatok-Passagen und Semms Bereich.
 6. Ob der Held in der Erweiterung freiwillig, gezwungenermaßen oder als Folge seiner gesammelten Kraft zur Ether-Entität wird.
 7. Welche Regeln seine physische Rückkehr nach Era besitzt.
 

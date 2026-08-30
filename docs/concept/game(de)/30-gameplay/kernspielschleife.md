@@ -19,6 +19,23 @@ updated: 2026-08-30
 7. Der Spieler kehrt zu bekannten Orten zurück und erlebt deren Veränderung.
 8. Neue Wege, Aufgaben und der nächste Verdichtungspunkt öffnen sich.
 
+## Acht Makroabschnitte
+
+Die Hauptschleife trägt die ersten vier Abschnitte Grasland, Wald, Hochland und
+Hauptstadt. Danach folgen drei Tatok-Passagen ohne neue große Rekonstruktion und
+ein letzter Abschnitt in Semms Bereich.
+
+Das Grasland konkretisiert die Schleife erstmals vollständig:
+
+1. Ratgeber, verlassenes Haus, Nebel und Leuchtpunkte führen zum Turm.
+2. Der Turmboss macht das erste Grasland auf der Karte sichtbar.
+3. Monsternester im industriellen Sägewerk stellen Gebäude wieder her.
+4. Der Wasserwerkdungeon befreit Menschenseelen.
+5. Lampen im Lichterhaus öffnen kurze Rätsel- und Kampfabschnitte für
+   Erinnerungen.
+6. Das Bauerndorf vermittelt durch Gespräche und Gefallen Wissen für den
+   nächsten Abschnitt.
+
 ## Gefühl des Fortschritts
 
 Fortschritt soll nicht nur über Zahlen sichtbar sein. Jede größere Befreiung verändert mindestens zwei Ebenen:

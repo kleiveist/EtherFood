@@ -2,7 +2,7 @@
 title: "Terminologie"
 language: de
 status: draft
-version: "0.1"
+version: "0.3"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -28,13 +28,26 @@ verhindert, dass ein Name versehentlich eine noch offene Regel vorgibt.
 | Vertical Slice | Begrenzter, überprüfbarer Konzeptausschnitt; kein zugesagter Produktionsumfang | bestätigt |
 | `approved` | Einziger verbindlicher Dokumentstatus | bestätigt |
 | Zuro | Projektspezifischer Arbeitsbegriff ohne freigegebene Bedeutung | Arbeitsbegriff |
+| Heldenraum | Startort, an dem der erinnerungslose Held und der kleine Ratgeber erwachen | bestätigt |
+| Ratgeber | Funktionsbezeichnung für den kleinen fliegenden Hut-Gefährten; noch kein Eigenname | Gestalt und Startfunktion bestätigt, weitere Figurendetails offen |
+| Talisman | Zentrales Storyobjekt aus Zehsens Eingriff: zunächst unbemerkt mitgeführt, nach dem Grasland-Erinnerungsdungeon bewusst wahrgenommen, später Entschlüssler verborgener Strukturen und Speicher für Seelenmacht | bestätigt; Form und Persönlichkeit offen |
+| Konstruktwelt | Künstliche Spielwelt innerhalb Tatoks, die der Held zunächst für seine tatsächliche Welt hält | bestätigt |
+| Tator | Herr von Tatok und vorletzter großer Gegner des Basisspiels | bestätigt |
+| Tatok | Tators Sphärenreich und Schauplatz der drei kampforientierten Abschnitte vor Tator | bestätigt |
+| Semm | Weiterer Gegenspieler; sein Bereich bildet den achten Makroabschnitt und enthält den letzten Bosskampf | bestätigt, weitere Rolle offen |
+| Zehsen | Weltenbewahrer und Ursprung des Talismans; nicht mit Semm oder dem Ratgeber gleichzusetzen | bestätigt, Motivation offen |
 
 ## Aktueller Arbeitsentwurf
 
 Weitere Begriffe werden erst aufgenommen, wenn eine eindeutige Definition,
 Quelle und Abgrenzung vorliegen. „Bewohner“, „Siedlung“, „Stadt“, „Erinnerung“
 und „Geschichte“ sind in der Grundfolge genannt, aber spielmechanisch noch nicht
-präzise definiert.
+vollständig präzisiert.
+
+## Abgrenzung von Diktatvarianten
+
+Die gesprochenen Varianten „Tatos Welt“ und „Zenz Welt“ begründen keine neuen
+kanonischen Namen; im aktuellen Ablauf gelten Tatok und Semm.
 
 ## Spielerperspektive und Regeln
 
@@ -84,4 +97,5 @@ späteren UI-/Lokalisierungstests geprüft werden.
 - [Sprachrichtlinie](language-policy.md)
 - [Zuro-System](../06-zuro-and-enemies/zuro-system.md)
 - [Handlung und Welt](../02-story-and-world/story-and-world.md)
+- [Der Talisman](../02-story-and-world/soul-talisman.md)
 - [Entscheidungsprotokoll](../10-decisions-and-archive/decision-log.md)

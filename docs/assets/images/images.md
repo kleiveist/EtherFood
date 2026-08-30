@@ -6,7 +6,8 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Pages
-- ⏭️ (keine Seiten)
+- 📝 [Ratgeber: beibehaltener Pixel-Art-Entwurf](guide-companion-variants.md)
+- 📝 [Talisman: beibehaltener Pixel-Art-Entwurf](soul-talisman-variants.md)
 
 ## 📁 Inspiration
 - 🗂️ [Overview](inspiration/inspiration.md)

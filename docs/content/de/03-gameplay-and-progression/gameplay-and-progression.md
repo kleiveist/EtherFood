@@ -2,7 +2,7 @@
 title: "Gameplay und Fortschritt"
 language: de
 status: draft
-version: "0.1"
+version: "0.2"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -29,14 +29,18 @@ Der Fortschrittsrahmen lautet:
 5. Fähigkeiten des Helden verbessern oder erweitern sich durch die Interaktion
    mit wiederhergestellten Erinnerungen und Geschichte.
 
-Die genaue spielerische Umsetzung ist noch nicht entschieden.
+Die achtteilige Makrostruktur und der konkrete Graslandablauf sind inzwischen
+festgelegt. Die genaue Ausgestaltung der späteren Regionen und ihre
+Balancingwerte bleiben offen.
 
 ## Aktueller Arbeitsentwurf
 
-Fortschritt soll Weltzustand, Erkenntnis und Handlungsmöglichkeiten verbinden.
-Noch offen ist, ob die Stufen streng linear, gebietsweise, verzweigt oder in
-Teilen parallel ablaufen. Ressourcen, Schwellen und Aufgabenformate sind nicht
-freigegeben.
+Fortschritt verbindet Weltzustand, Erkenntnis und Handlungsmöglichkeiten. Die
+ersten vier Makroabschnitte sind Grasland, Wald, Hochland und Hauptstadt. Danach
+folgen drei anwendungsorientierte Passagen in Tatok und ein Schlussabschnitt in
+Semms Bereich. Innerhalb einer Wiederherstellungsregion dürfen Erkundungswege
+verzweigen; die übergeordnete Reihenfolge bleibt erhalten. Ressourcen und
+Balancingwerte sind nicht freigegeben.
 
 ## Spielerperspektive und Spielerfantasie
 
@@ -46,10 +50,12 @@ Rückkehr in frühere Gebiete besitzt, ist eine offene Designfrage.
 
 ## Regeln und Ablauf
 
-Eine spätere Systembeschreibung muss für jede Stufe Auslöser, sichtbaren
-Zustandswechsel, Folgefreischaltung, Persistenz und mögliche Rückschritte
-definieren. Die Makroreihenfolge ist verbindlich; Regeln innerhalb einer Stufe
-benötigen Prototyp oder Review.
+Für jede Stufe sind Auslöser, sichtbarer Zustandswechsel, Folgefreischaltung,
+Persistenz und mögliche Rückschritte zu definieren. Der Graslandabschnitt
+ordnet diese Funktionen erstmals konkreten Orten zu: Turm, Sägewerk,
+Wasserwerk, Lichterhaus und Dorf. Die [Abschnittsstruktur](game-flow-and-section-structure.md)
+ist verbindlich; ihre offenen Mengen und Inhalte benötigen weitere Entscheidung
+oder Prototyp.
 
 ## Eingaben
 
@@ -95,8 +101,9 @@ und welche neue Möglichkeit entstand. Die genaue Darstellung ist noch offen.
 
 ## Offene Fragen
 
-- Welche Einheit wird wiederhergestellt: Ort, Region, Aufgabe oder etwas anderes?
-- Was löst Rückkehr und Wiederbelebung konkret aus?
+- Wie werden die festgelegten Wiederherstellungseinheiten technisch und im UI
+  abgebildet?
+- Welche konkreten Auslöser verwenden Wald, Hochland und Hauptstadt?
 - Wie werden Fähigkeiten aus Erinnerungen ausgewählt oder angewendet?
 - Sind Zustandsänderungen dauerhaft, reversibel oder teilweise variabel?
 - Wie werden Spielerziel und nächster Schritt kommuniziert?
@@ -112,6 +119,7 @@ und welche neue Möglichkeit entstand. Die genaue Darstellung ist noch offen.
 ## Verwandte Konzeptseiten
 
 - [Core Loop](../00-overview/core-loop.md)
+- [Spielablauf und Abschnittsstruktur](game-flow-and-section-structure.md)
 - [Handlung und Welt](../02-story-and-world/story-and-world.md)
 - [Landschaftssystem](../07-landscape-and-environment/landscape-system.md)
 - [Vertical Slice](../09-prototypes-and-tests/vertical-slice.md)

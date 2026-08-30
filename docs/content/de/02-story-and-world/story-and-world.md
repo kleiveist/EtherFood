@@ -2,7 +2,7 @@
 title: "Handlung und Welt"
 language: de
 status: draft
-version: "0.1"
+version: "0.3"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -21,13 +21,23 @@ Arbeitsannahmen und offene Fragen.
 
 ## Bestätigte Entscheidungen
 
-- Die Welt ist verloren beziehungsweise beschädigt und wird im Spiel
-  wiederhergestellt; die genaue Beschaffenheit dieses Zustands ist noch offen.
+- Die zunächst verloren oder beschädigt wirkende Spielwelt ist eine
+  Konstruktwelt in Tatok. Der Held kennt diese Wahrheit am Anfang nicht.
 - Natur und Landschaft werden vor Bewohnern, Siedlungen und Städten
   wiederhergestellt.
 - Erinnerungen und Geschichte der Welt werden aufgedeckt.
 - Die Interaktion mit wiederhergestellten Erinnerungen und Geschichte verbessert
   oder erweitert Fähigkeiten des Helden.
+- Der Held erwacht ohne Erinnerung im Heldenraum. Sein erster sichtbarer
+  Gefährte ist ein kleiner fliegender Hut-Ratgeber mit zwei Augen, einem fast
+  verdeckten Körper und einem Besen.
+- Der Ratgeber ist nicht der Talisman. Der Held bemerkt den bereits
+  mitgeführten Talisman erst nach dem Erinnerungsdungeon im Grasland bewusst.
+- Der Talisman ist ein zentrales Storyobjekt: Er gibt zunächst einen kleinen
+  persönlichen Erinnerungsimpuls, erkennt später verborgene Strukturen und
+  speichert auf der zweiten Reise Seelenmacht, ohne die Seelen zu vernichten.
+- Die Reise umfasst vier Wiederherstellungsabschnitte, drei Passagen in Tatok
+  und einen Schlussabschnitt in Semms Bereich.
 - Das Spiel entwickelt eine eigenständige Identität. Soul Blazer ist nur eine
   interne Referenz für Perspektive und abstraktes Wiederherstellungsprinzip.
 
@@ -35,19 +45,19 @@ Arbeitsannahmen und offene Fragen.
 
 | Feld | Bekannter Stand | Benötigte Entscheidung |
 | --- | --- | --- |
-| Ausgangszustand der Welt | Die Welt ist beschädigt oder verloren und enthält wiederherstellbare Natur, Zivilisation und Erinnerungen. | Sichtbare, soziale und metaphysische Merkmale des Zustands |
-| Ursache des Weltverlusts | Noch nicht entschieden | Ursache, Zeitpunkt, Verantwortlichkeit und Wissensstand der Figuren |
-| Rolle des Helden | Ein Held handelt und kann Fähigkeiten durch wiederhergestellte Geschichte erweitern. | Identität, Motivation, Herkunft, Grenzen und Beziehung zur Welt |
+| Ausgangszustand der Welt | Die Konstruktwelt ist im Nebel zunächst unlesbar und enthält gebundene Natur, Zivilisation und Erinnerungen. | Regionale sichtbare, soziale und metaphysische Merkmale dieses Zustands |
+| Ursache des Weltverlusts | Der sichtbare Verlust ist Teil von Tators künstlichem System; der Held hält die Monster zunächst für die eigentliche Ursache. | Regionale Fassadenerzählungen und Zeitpunkt einzelner Hinweise |
+| Rolle des Helden | Der erinnerungslose Held erwacht im Heldenraum und hält die Konstruktwelt zunächst für seine tatsächliche Welt. | Konkrete frühe Motivation, Reaktion auf den Ratgeber und regionale Beziehungen |
 | Bedeutung des Namens `ether-food` | Der Name ist verbindlich. | Bedeutung in Welt, Handlung oder Metapher; benötigt eine verbindliche Entscheidung |
-| Natur der Wiederherstellung | Eine geordnete Wiederherstellung findet statt. | Physischer, magischer, sozialer oder anderer Mechanismus; Umfang und Grenzen |
-| Bewohner und Zivilisationen | Bewohner kehren nach Natur und Landschaft zurück. | Wer zurückkehrt, aus welchem Zustand, mit welcher Erinnerung und Handlungsfähigkeit |
-| Siedlungen und Städte | Sie werden wiederhergestellt oder neu belebt. | Verhältnis von Rückkehr, Aufbau, Veränderung und Spielerentscheidung |
-| Erinnerungen und Weltgeschichte | Sie werden aufgedeckt und beeinflussen Heldenfähigkeiten. | Form, Zuverlässigkeit, Reihenfolge und konkrete Interaktion |
-| Erzählweise im Spiel | Noch nicht entschieden | Umwelt, Dialog, Erinnerung, Zwischensequenz oder andere Mittel und ihr Verhältnis |
-| Hauptkonflikt | Noch nicht entschieden | Gegenspiel, Dilemma, Eskalation und Zusammenhang mit Wiederherstellung |
+| Natur der Wiederherstellung | Regionale Dungeonabschlüsse und besiegte Monsternester geben gebundene Weltbestandteile frei. | Technische Zustände, regionale Varianten und Grenzen |
+| Bewohner und Zivilisationen | Bewohner kehren nach Natur und Gebäuden zurück; zumindest ein Teil sind Seelen aus der früheren Bevölkerung des Helden. | Zusammensetzung der übrigen Bewohner, regionale Agency und Beziehungen |
+| Siedlungen und Städte | Gebäude werden stufenweise wiederhergestellt und anschließend begehbar; das Sägewerk im Grasland ist die erste konkrete Umsetzung. | Spielerentscheidung und Varianten in späteren Regionen |
+| Erinnerungen und Weltgeschichte | Erinnerungen werden durch eigene Räume, Rätsel, Kämpfe und Bewohnerinteraktion zugänglich und beeinflussen Heldenfähigkeiten. | Zuverlässigkeit, optionale Anteile und konkrete Inhalte |
+| Erzählweise im Spiel | Ratgeber, sichtbare Weltveränderung, Bewohnerdialoge, Gefallen, Umwelträtsel und Erinnerungsräume tragen gemeinsam die Handlung. | Gewichtung, Inszenierung und optionale Anteile dieser Mittel |
+| Hauptkonflikt | Die Wiederherstellungsreise führt aus Tators Konstruktwelt durch Tatok zum Kampf gegen Tator und danach in Semms Bereich. | Regionale Konflikte und konkrete Inszenierung der späteren Abschnitte |
 | Mögliche Fraktionen | Noch nicht entschieden | Bedarf, Ziele, Beziehungen und spielmechanische Funktion |
 | Verhältnis zwischen Spielmechanik und Handlung | Wiederherstellung und Erinnerungen verbinden Handlung und Fortschritt. | Genaue Ursache-Wirkungs-Regeln und Umgang mit optionalen Inhalten |
-| Ende und langfristiges Ziel | Noch nicht entschieden | Abschlusszustand, Erfolg, mögliche Folgen und weiterer Spielraum |
+| Ende und langfristiges Ziel | Nach drei Tatok-Passagen besiegt der Held Tator und im achten Abschnitt Semm; die fortbestehenden Seelen kehren anschließend nach Era zurück. | Konkrete Inszenierung von Semms Bereich und der Rückführung |
 
 ## Spielerperspektive und Spielerfantasie
 
@@ -58,11 +68,11 @@ Designfrage.
 
 ## Regeln und Ablauf
 
-Die Erzählstruktur muss die bestätigte Wiederherstellungsreihenfolge respektieren.
-Noch nicht entschieden ist, ob Informationen linear, gebietsbezogen, optional,
-perspektivisch widersprüchlich oder dauerhaft verpassbar sind. Eine spätere
-Regel muss klar bestimmen, wie Weltzustand, Erinnerung und Fähigkeitserweiterung
-zusammenhängen.
+Die Erzählstruktur muss die bestätigte Wiederherstellungs- und
+[Abschnittsreihenfolge](../03-gameplay-and-progression/game-flow-and-section-structure.md)
+respektieren. Informationen entstehen gebietsbezogen aus Weltzustand,
+Ratgeberhinweisen, Bewohnern und Erinnerungsräumen. Noch zu entscheiden sind
+optionale, perspektivisch widersprüchliche oder dauerhaft verpassbare Inhalte.
 
 ## Eingaben und Ausgaben
 
@@ -82,8 +92,9 @@ als narrative Ursache oder Fraktionselement eingesetzt werden.
 ## Veränderbare und später zu balancierende Werte
 
 Noch offen sind Informationsdichte, Anzahl und Länge von Erinnerungen,
-Freischaltreihenfolge, optionale Anteile und Wiederholbarkeit. Es werden keine
-Mengen, Kapitelzahlen oder Zeitziele festgelegt.
+Freischaltreihenfolge innerhalb der Abschnitte, optionale Anteile und
+Wiederholbarkeit. Die Zahl von acht Makroabschnitten ist festgelegt;
+Szenenmengen, Abschnittsdauer und Zeitziele bleiben offen.
 
 ## Visuelles, akustisches und UI-Feedback
 
@@ -102,11 +113,9 @@ Mittel geschieht, benötigt eine Präsentationsentscheidung und Zugänglichkeits
 
 ## Offene Fragen
 
-- Was ging verloren, warum und für wen?
-- Wer ist der Held und warum kann er wiederherstellen?
+- Wie erlebt der Held den Ratgeber, bevor er den Talisman bewusst wahrnimmt?
 - Was bedeutet `ether-food` in der Welt?
 - Welche Erinnerungen verändern Fähigkeiten und warum?
-- Was ist der Hauptkonflikt und welcher Zustand beendet ihn?
 - Welche Agency besitzen zurückkehrende Bewohner und Zivilisationen?
 
 ## Abnahmekriterien
@@ -124,3 +133,6 @@ Mittel geschieht, benötigt eine Präsentationsentscheidung und Zugänglichkeits
 - [Gameplay und Fortschritt](../03-gameplay-and-progression/gameplay-and-progression.md)
 - [Landschaftssystem](../07-landscape-and-environment/landscape-system.md)
 - [Präsentationsrichtung](../08-art-audio-and-ui/presentation-direction.md)
+- [Ratgeber im Heldenraum](guide-companion.md)
+- [Der Talisman](soul-talisman.md)
+- [Spielablauf und Abschnittsstruktur](../03-gameplay-and-progression/game-flow-and-section-structure.md)

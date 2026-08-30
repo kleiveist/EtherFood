@@ -1,6 +1,6 @@
 {
   "scanned_root": ".",
-  "generated_at": "2026-08-30T15:52:21",
+  "generated_at": "2026-08-30T17:55:05",
   "count_files": 69,
   "content_mode": "snippet",
   "types": [
@@ -15,7 +15,7 @@
       "parent": "00-foundation",
       "size_bytes": 369,
       "size_human": "369 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "00 foundation",
       "headings": 2,
       "lines": 13,
@@ -38,14 +38,14 @@
       "rel_path": "00-foundation/begriffe-und-namen.md",
       "name": "begriffe-und-namen.md",
       "parent": "00-foundation",
-      "size_bytes": 5825,
-      "size_human": "5.69 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 6170,
+      "size_human": "6.03 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Begriffe und Namen",
       "headings": 4,
-      "lines": 65,
-      "words": 659,
-      "chars": 5743,
+      "lines": 66,
+      "words": 710,
+      "chars": 6080,
       "snippet": "title: Begriffe und Namen status: accepted updated: 2026-08-30",
       "toc": [
         [
@@ -65,7 +65,7 @@
           "Schreibregel"
         ]
       ],
-      "content": "---\ntitle: Begriffe und Namen\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Begriffe und Namen\n\n## Kernbegriffe\n\n| Begriff | Verbindliche Definition |\n|---|---|\n| **Era** | Zentraler physischer Planet und Heimatwelt des Helden. Sein natürlicher Seelenkreislauf erhält Era am Leben. |\n| **Sol** | Heller Himmelskörper; definiert grundsätzlich den Tag und bringt Wärme, Wachstum und Lebensenergie. |\n| **Yol** | Kalter, blau leuchtender und magischer Himmelskörper; definiert grundsätzlich die Nacht und bringt Kälteempfinden, Magie und eine eigene magische Fauna. |\n| **Hera** | Übergeordnete, multidimensionale Splittersphäre. Gelehrte beschreiben Splitterwelten, Sphärenreiche und konstruierte Wirklichkeitsräume je nach räumlichem Modell als innerhalb Heras liegend oder mit Hera verbunden. |\n| **The Meridian** | Unter Gelehrten bewusst mehrdeutige Bezeichnung: In den Schriften mehrerer Kulturen meint sie entweder das zentrale System aus Era, Sol und Yol oder verkürzt nur Era. |\n| **Splitterwelt** | Erschaffener, abgetrennter oder neu geformter Wirklichkeitsraum innerhalb Heras. |\n| **Sphärenreich** | Bevorzugter redaktioneller Oberbegriff für Sphären, Reiche und Machtbereiche in Hera. Gelehrte verwenden in ihren jeweiligen Traditionen auch andere Begriffe; keine Form ist eine überall verbindliche In-World-Bezeichnung. |\n| **Tator** | Große Ether-Entität und Hauptgegner. Sein Machtbereich ist mit der Seelenwanderung von der physischen Wirklichkeit nach Hera verbunden. |\n| **Tatok** | Tators Sphärenreich und große Domäne innerhalb Heras. |\n| **Semm** | Eigenständiger weiterer Gegenspieler und vorgesehener weiterer Endgegner. Seine genauere Rolle bleibt offen. |\n| **Zehsen** | Einer der Weltenbewahrer, Verbündeter Tators und Ursprung des Talismans im Heldenraum. Zehsen ist keine Ether-Entität; Gelehrte deuten seine Absicht und Loyalität unterschiedlich, ohne dass eine Deutung bestätigt ist. |\n| **Konstruktwelt** | Innerhalb Tatoks geschaffene Spielwelt, die der Held zunächst für seine wahre Welt hält. |\n| **Ether** | Kosmisches Medium beziehungsweise übergeordnete Kraft. Handelnde Wesen heißen zur Unterscheidung Ether-Entitäten. |\n| **Ether-Entität** | Seelenbasiertes Wesen Heras. Mächtige Vertreter können Seelenmacht nutzen, Pakte schließen und Sphärenreiche prägen oder erschaffen. |\n| **Weltenbewahrer** | Bevorzugter spieler- und dokumentationsseitiger Sammelbegriff für die zehn mit Era verbundenen Wächter. Gelehrte kennen mehrere überlieferte Gruppenbezeichnungen, aber keinen bestätigten gemeinsamen Eigennamen. |\n| **Gelehrtenüberlieferung** | Kanonisch bewahrte, kultur- oder quellenabhängige Deutung. Widersprechende Gelehrtenüberlieferungen dürfen nebeneinander bestehen, ohne festgelegte Tatsachen oder redaktionell offene Fragen zu ersetzen. |\n| **Heldenraum** | Startort des Spiels und zunächst einziger greifbarer Bezugspunkt des Helden. Enthält Artefakte, Auftrag und Talisman. |\n| **Talisman** | Von Zehsen in Tators System gebrachtes Hilfsartefakt. Es hilft dem Helden, erkennt verborgene Strukturen und nimmt im Endgame Seelenmacht auf. |\n| **Seele** | Identität eines Wesens, die Tod und Wiedergeburt überdauern kann. Eine Ether-Entität kann eine ganze Seele verschlingen; die Endgame-Aufnahme ihrer nutzbaren Macht durch den Talisman tut dies ausdrücklich nicht. |\n| **Seelenmacht / Seelenenergie** | Vom Talisman aufnehmbare Kraft einer Seele. Beide Begriffe bezeichnen dieselbe nutzbare Macht, nicht die Seele selbst. |\n| **Seelenkreislauf** | Lebensnotwendiger natürlicher Weg der Seelen auf Era. Im ungestörten Kreislauf wird jede Seele wiedergeboren. Tator und andere Ether-Entitäten entziehen ihm Seelen. |\n| **Seelenentstehung** | Neue Seelen entstehen und gleichen fortlaufende Verluste aus. Wie sie erschaffen werden, ist den Gelehrten unbekannt. |\n| **Um** | Kleinste hier dokumentierte feste Era-Zeiteinheit; 1 Um entspricht im irdischen Vergleich 1 Stunde. |\n| **Tan** | 20 Um. |\n| **Dir** | 10 Tan beziehungsweise 200 Um. |\n| **Mohn** | 35 Dir, 350 Tan beziehungsweise 7000 Um. |\n| **Konvektion** | Wiederkehrendes kosmisches Ereignis nach 10 Mohn beziehungsweise 3500 Tan; Dauer 2 Dir beziehungsweise 20 Tan. |\n| **S-Int** | Skala der sichtbaren Strahlungsintensität Sols oder Yols von 1 bis 10. |\n| **ZEHS** | Sehr heller, annähernd fester Referenzstern in ungefähr 40 AU Entfernung; sein Name steht in Verbindung mit Zehsen. |\n| **Weltpassage** | Übergangsraum zwischen Splittern, Ebenen oder Sphärenreichen. Im Endgame führen drei feindbesetzte Passagen zu Tator. |\n\nAusführliche Umrechnungen stehen in der\n[Zeitrechnung auf Era](../10-world/00-kosmologie/zeitrechnung-auf-era.md).\n\n## Alias-, Quellen- und Variantenübersicht\n\n| Ältere oder überlieferte Form | Aktuelle Einordnung |\n|---|---|\n| `Jator` | Verworfene ältere Schreibweise von **Tator**. |\n| `Zen` / `Zem` | Uneindeutige, verworfene Diktatvarianten. Der in der früheren Freigabefrage gemeinte Verbündete ist **Zehsen**; **Semm** ist eine andere Figur. |\n| `Yonu` / `Jul` / `Yohl` | Ältere Varianten von **Yol**. |\n| `Atea` / `Athea` / `Are` | Von Gelehrten in unterschiedlichen Überlieferungen vorgefundene mögliche Gruppenbezeichnungen der Weltenbewahrer; keine Form ist alleiniger Kanon. |\n| `Fehrenreich` | Verworfene Diktatnotiz; redaktionell wird **Sphärenreich** verwendet. |\n| `Konvergenz` | Ältere Dokumentationsbezeichnung für die **Konvektion**. |\n\n## Schreibregel\n\nKanonischer Fließtext verwendet Era, Hera, Sol, Yol, Tator, Tatok, Semm,\nZehsen, Weltenbewahrer, Sphärenreich und Konvektion. Ältere Formen erscheinen\nnur in ausdrücklich gekennzeichneten Alias-, Quellen- oder\nEntscheidungsabschnitten.\n"
+      "content": "---\ntitle: Begriffe und Namen\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Begriffe und Namen\n\n## Kernbegriffe\n\n| Begriff | Verbindliche Definition |\n|---|---|\n| **Era** | Zentraler physischer Planet und Heimatwelt des Helden. Sein natürlicher Seelenkreislauf erhält Era am Leben. |\n| **Sol** | Heller Himmelskörper; definiert grundsätzlich den Tag und bringt Wärme, Wachstum und Lebensenergie. |\n| **Yol** | Kalter, blau leuchtender und magischer Himmelskörper; definiert grundsätzlich die Nacht und bringt Kälteempfinden, Magie und eine eigene magische Fauna. |\n| **Hera** | Übergeordnete, multidimensionale Splittersphäre. Gelehrte beschreiben Splitterwelten, Sphärenreiche und konstruierte Wirklichkeitsräume je nach räumlichem Modell als innerhalb Heras liegend oder mit Hera verbunden. |\n| **The Meridian** | Unter Gelehrten bewusst mehrdeutige Bezeichnung: In den Schriften mehrerer Kulturen meint sie entweder das zentrale System aus Era, Sol und Yol oder verkürzt nur Era. |\n| **Splitterwelt** | Erschaffener, abgetrennter oder neu geformter Wirklichkeitsraum innerhalb Heras. |\n| **Sphärenreich** | Bevorzugter redaktioneller Oberbegriff für Sphären, Reiche und Machtbereiche in Hera. Gelehrte verwenden in ihren jeweiligen Traditionen auch andere Begriffe; keine Form ist eine überall verbindliche In-World-Bezeichnung. |\n| **Tator** | Große Ether-Entität und Hauptgegner. Sein Machtbereich ist mit der Seelenwanderung von der physischen Wirklichkeit nach Hera verbunden. |\n| **Tatok** | Tators Sphärenreich und große Domäne innerhalb Heras. |\n| **Semm** | Eigenständiger weiterer Gegenspieler und vorgesehener weiterer Endgegner. Seine genauere Rolle bleibt offen. |\n| **Zehsen** | Einer der Weltenbewahrer, Verbündeter Tators und Ursprung des Talismans im Heldenraum. Zehsen ist keine Ether-Entität; Gelehrte deuten seine Absicht und Loyalität unterschiedlich, ohne dass eine Deutung bestätigt ist. |\n| **Konstruktwelt** | Innerhalb Tatoks geschaffene Spielwelt, die der Held zunächst für seine wahre Welt hält. |\n| **Ether** | Kosmisches Medium beziehungsweise übergeordnete Kraft. Handelnde Wesen heißen zur Unterscheidung Ether-Entitäten. |\n| **Ether-Entität** | Seelenbasiertes Wesen Heras. Mächtige Vertreter können Seelenmacht nutzen, Pakte schließen und Sphärenreiche prägen oder erschaffen. |\n| **Weltenbewahrer** | Bevorzugter spieler- und dokumentationsseitiger Sammelbegriff für die zehn mit Era verbundenen Wächter. Gelehrte kennen mehrere überlieferte Gruppenbezeichnungen, aber keinen bestätigten gemeinsamen Eigennamen. |\n| **Gelehrtenüberlieferung** | Kanonisch bewahrte, kultur- oder quellenabhängige Deutung. Widersprechende Gelehrtenüberlieferungen dürfen nebeneinander bestehen, ohne festgelegte Tatsachen oder redaktionell offene Fragen zu ersetzen. |\n| **Heldenraum** | Startort des Spiels. Dort erwachen der erinnerungslose Held und sein zunächst einziger sichtbarer Gefährte, der kleine Ratgeber. |\n| **Ratgeber** | Vorläufige Funktionsbezeichnung für den kleinen Gefährten im Heldenraum: ein großer Hut mit zwei Augen, ein fast vollständig verdeckter winziger Körper und ein Besen, auf dem er fliegt. Er ist nicht der Talisman. |\n| **Talisman** | Von Zehsen in Tators System gebrachtes Hilfsartefakt. Der Held trägt es zunächst unbemerkt und nimmt es erst nach dem Boss des Lichterhauses bewusst wahr. Es hilft ihm, erkennt verborgene Strukturen und nimmt im Endgame Seelenmacht auf. |\n| **Seele** | Identität eines Wesens, die Tod und Wiedergeburt überdauern kann. Eine Ether-Entität kann eine ganze Seele verschlingen; die Endgame-Aufnahme ihrer nutzbaren Macht durch den Talisman tut dies ausdrücklich nicht. |\n| **Seelenmacht / Seelenenergie** | Vom Talisman aufnehmbare Kraft einer Seele. Beide Begriffe bezeichnen dieselbe nutzbare Macht, nicht die Seele selbst. |\n| **Seelenkreislauf** | Lebensnotwendiger natürlicher Weg der Seelen auf Era. Im ungestörten Kreislauf wird jede Seele wiedergeboren. Tator und andere Ether-Entitäten entziehen ihm Seelen. |\n| **Seelenentstehung** | Neue Seelen entstehen und gleichen fortlaufende Verluste aus. Wie sie erschaffen werden, ist den Gelehrten unbekannt. |\n| **Um** | Kleinste hier dokumentierte feste Era-Zeiteinheit; 1 Um entspricht im irdischen Vergleich 1 Stunde. |\n| **Tan** | 20 Um. |\n| **Dir** | 10 Tan beziehungsweise 200 Um. |\n| **Mohn** | 35 Dir, 350 Tan beziehungsweise 7000 Um. |\n| **Konvektion** | Wiederkehrendes kosmisches Ereignis nach 10 Mohn beziehungsweise 3500 Tan; Dauer 2 Dir beziehungsweise 20 Tan. |\n| **S-Int** | Skala der sichtbaren Strahlungsintensität Sols oder Yols von 1 bis 10. |\n| **ZEHS** | Sehr heller, annähernd fester Referenzstern in ungefähr 40 AU Entfernung; sein Name steht in Verbindung mit Zehsen. |\n| **Weltpassage** | Übergangsraum zwischen Splittern, Ebenen oder Sphärenreichen. Im Endgame führen drei feindbesetzte Passagen zu Tator. |\n\nAusführliche Umrechnungen stehen in der\n[Zeitrechnung auf Era](../10-world/00-kosmologie/zeitrechnung-auf-era.md).\n\n## Alias-, Quellen- und Variantenübersicht\n\n| Ältere oder überlieferte Form | Aktuelle Einordnung |\n|---|---|\n| `Jator` | Verworfene ältere Schreibweise von **Tator**. |\n| `Zen` / `Zem` | Uneindeutige, verworfene Diktatvarianten. Der in der früheren Freigabefrage gemeinte Verbündete ist **Zehsen**; **Semm** ist eine andere Figur. |\n| `Yonu` / `Jul` / `Yohl` | Ältere Varianten von **Yol**. |\n| `Atea` / `Athea` / `Are` | Von Gelehrten in unterschiedlichen Überlieferungen vorgefundene mögliche Gruppenbezeichnungen der Weltenbewahrer; keine Form ist alleiniger Kanon. |\n| `Fehrenreich` | Verworfene Diktatnotiz; redaktionell wird **Sphärenreich** verwendet. |\n| `Konvergenz` | Ältere Dokumentationsbezeichnung für die **Konvektion**. |\n\n## Schreibregel\n\nKanonischer Fließtext verwendet Era, Hera, Sol, Yol, Tator, Tatok, Semm,\nZehsen, Weltenbewahrer, Sphärenreich und Konvektion. Ältere Formen erscheinen\nnur in ausdrücklich gekennzeichneten Alias-, Quellen- oder\nEntscheidungsabschnitten.\n"
     },
     {
       "rel_path": "00-foundation/index.md",
@@ -73,7 +73,7 @@
       "parent": "00-foundation",
       "size_bytes": 333,
       "size_human": "333 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "00 – Foundation",
       "headings": 1,
       "lines": 10,
@@ -92,14 +92,14 @@
       "rel_path": "00-foundation/kanon-und-offene-fragen.md",
       "name": "kanon-und-offene-fragen.md",
       "parent": "00-foundation",
-      "size_bytes": 6386,
-      "size_human": "6.24 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 7028,
+      "size_human": "6.86 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Kanon und offene Fragen",
       "headings": 5,
-      "lines": 111,
-      "words": 807,
-      "chars": 6295,
+      "lines": 120,
+      "words": 891,
+      "chars": 6928,
       "snippet": "title: Kanon und offene Fragen status: accepted updated: 2026-08-30",
       "toc": [
         [
@@ -123,7 +123,7 @@
           "Kanonstufen"
         ]
       ],
-      "content": "---\ntitle: Kanon und offene Fragen\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kanon und offene Fragen\n\n## Bereits klar festgelegt\n\n- Der Held ist eine verstorbene Seele und weiß dies zu Spielbeginn nicht.\n- Er war auf Era ein Herrscher, ließ seine der Untreue verdächtigte Frau\n  enthaupten und schloss mit Tator einen Pakt, um sie zurückzuholen.\n- Der Pakt brachte seine Frau zurück und band sowohl seine eigene Seele als\n  auch die Seelen seiner Untertanen an die spätere Seelenwanderung nach Hera.\n- Der Held lebte nach dem Pakt bis zu seinem natürlichen Tod weiter und\n  bereitete sein Reich auf diese Seelenwanderung vor.\n- Erst nach seinem natürlichen Tod wurde seine Seele aus Eras natürlichem\n  Seelenkreislauf herausgelöst und nach Hera beziehungsweise Tatok umgeleitet.\n- Tator wählte ihn wegen seiner Grausamkeit und Selbstsucht für das\n  Heldensystem aus und erwartet, die später erstarkte Seelenmacht zu ernten.\n- Die scheinbar gerettete Welt ist eine künstliche Konstruktwelt innerhalb\n  Tatoks, Tators Sphärenreich in Hera.\n- Zumindest ein Teil der Bewohner und Gefangenen sind Seelen aus der früheren\n  Gefolgschaft beziehungsweise Bevölkerung des Helden.\n- Der Fortschritt verläuft über Gebiete und Natur, Bewohner und Seelen, Städte, Erinnerungen und schließlich Fähigkeiten.\n- Zehsen ist ein Weltenbewahrer, Verbündeter Tators und derjenige, der den\n  Talisman in den Heldenraum beziehungsweise in Tators System bringt.\n- Der Talisman hilft dem Helden, entschlüsselt verborgene Strukturen und nimmt\n  auf der zweiten Reise die nutzbare Macht befreiter Seelen auf, nicht die\n  Seelen selbst.\n- Die Seelen behalten Identität und Existenz. Nach dem Ende der zweiten Reise\n  werden sie nach Era zurückgebracht und treten wieder in den natürlichen\n  Seelenkreislauf ein, in dem jede Seele wiedergeboren wird.\n- Eras natürlicher Seelenkreislauf erhält das Leben des Planeten. Neue Seelen\n  entstehen, doch der Vorgang ihrer Entstehung ist auch den Gelehrten\n  unbekannt. Ohne diese fortlaufende Erneuerung hätten Ether-Entitäten Eras\n  Seelen längst aufgezehrt und Era wäre gestorben.\n- Das Basisspiel endet mit der Flucht aus der Konstruktwelt sowie den Kämpfen gegen Tator und Semm.\n- Ether-Entitäten können besiegt, aber nicht endgültig getötet werden.\n- Die Erweiterung führt zum Kampf gegen die übrigen Ether-Entitäten und zur Verwandlung des Helden in eine solche Entität.\n- Sol und Yol schützen Era vor dem direkten Zugriff der Ether-Entitäten.\n- Hera ist die übergeordnete multidimensionale Splittersphäre; einzelne\n  Splitterwelten, Sphärenreiche und Konstruktwelten befinden sich in ihr oder\n  sind mit ihr verbunden.\n- Gelehrte mehrerer Kulturen verwenden `The Meridian` bewusst mehrdeutig für\n  Era allein oder für das zentrale System aus Era, Sol und Yol.\n- Die Konvektion kehrt nach 3500 Tan beziehungsweise 10 Mohn wieder und dauert\n  20 Tan beziehungsweise 2 Dir.\n- Weltenbewahrer ist der bevorzugte redaktionelle Sammelbegriff. Gelehrte\n  überliefern `Atea`, `Athea` und `Are` als nicht vereinheitlichte Varianten.\n- Sphärenreich ist der bevorzugte redaktionelle Oberbegriff für die\n  unterschiedlichen Begriffe von Gelehrten, Kulturen und Quellen, aber keine\n  überall verbindliche In-World-Bezeichnung.\n\n## Gelehrtenüberlieferungen und kanonische Widersprüche\n\nGelehrte verschiedener Kulturen arbeiten mit Schriften, Karten, Erinnerungen\nund mündlichen Überlieferungen, die nicht immer dieselben Begriffe oder\nDeutungen bewahren. Wenn eine Abweichung ausdrücklich als\n**Gelehrtenüberlieferung** gekennzeichnet ist, gehört ihr Nebeneinander zum\nKanon. Der Widerspruch ist dann kein Dokumentationsfehler und muss nicht durch\neine allwissende Fassung aufgelöst werden.\n\nFolgende Unterschiede sind als Teil der Welt festgelegt:\n\n- `The Meridian` kann Era oder das zentrale System aus Era, Sol und Yol\n  bezeichnen.\n- Gelehrte beschreiben Räume je nach Modell als innerhalb Heras liegend oder\n  mit Hera verbunden. Beide Formulierungen nähern dieselbe multidimensionale\n  Beziehung an; sie behaupten keine zwei verschiedenen Heras.\n- Sols und Yols Bewegungen werden je nach Tradition als Bahn, Umlauf oder Tanz\n  beschrieben. Verbindlich bleiben die beobachtbaren Läufe und der feste\n  Konvektionszyklus, nicht ein überall einheitliches astronomisches Modell.\n- Sphäre, Reich, Machtbereich, Einflusssphäre, Splitterdomäne und\n  Herrschaftsraum bleiben nebeneinander gebräuchlich; redaktionell bündelt sie\n  der Ausdruck Sphärenreich.\n- `Atea`, `Athea` und `Are` bleiben verschiedene Überlieferungsformen ohne\n  bestätigten gemeinsamen Eigennamen der Weltenbewahrer.\n- Zehsens Handlung ist bekannt, seine Absicht und Loyalität werden von\n  Gelehrten jedoch unterschiedlich gedeutet. Keine dieser Deutungen ist\n  bestätigt.\n- Widersprüchliche Erinnerungen und Bewohnerberichte aus der Konstruktwelt\n  gehören zu Tators Verdeckung ihres Ursprungs. Sie ersetzen nicht die\n  festgelegte Vorgeschichte des Helden.\n\nRedaktionell offene Fragen zu Gameplay, Kapitelaufbau, Balancing oder noch\nnicht freigegebenen Figurenmerkmalen sind keine Gelehrtenüberlieferungen.\nEbenso werden verworfene Diktat- und Arbeitsvarianten nicht nachträglich zu\ninnerweltlichen Lehrmeinungen.\n\n## Noch zu entscheiden\n\n1. Semms konkrete Rolle über die Stellung als weiterer Gegenspieler und den bestehenden Endgame-Auftritt hinaus.\n2. Genaue Zusammensetzung einzelner Splitterwelten und der übrigen Bewohner der Konstruktwelt; nur ein Teil ist verbindlich der früheren Bevölkerung des Helden zugeordnet.\n3. Persönlichkeit, Stimme und Grenzen des Talismans.\n4. Exakter Aufbau der sechs Kapitel.\n5. Zahl und Thema der normalen Spielebenen vor dem Endgame.\n6. Ob der Held in der Erweiterung freiwillig, gezwungenermaßen oder als Folge seiner gesammelten Kraft zur Ether-Entität wird.\n7. Welche Regeln seine physische Rückkehr nach Era besitzt.\n\n## Kanonstufen\n\n| Stufe | Bedeutung |\n|---|---|\n| **draft-canon** | Inhalt ist als Projektgrundlage formuliert, kann aber noch redaktionell geschärft werden. |\n| **working** | Plausible Arbeitsfassung bei noch offenen Namen oder Details. |\n| **proposal** | Strukturvorschlag, der noch nicht als Handlungskanon gilt. |\n| **open** | Bewusst ungeklärt. |\n"
+      "content": "---\ntitle: Kanon und offene Fragen\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kanon und offene Fragen\n\n## Bereits klar festgelegt\n\n- Der Held ist eine verstorbene Seele und weiß dies zu Spielbeginn nicht.\n- Er war auf Era ein Herrscher, ließ seine der Untreue verdächtigte Frau\n  enthaupten und schloss mit Tator einen Pakt, um sie zurückzuholen.\n- Der Pakt brachte seine Frau zurück und band sowohl seine eigene Seele als\n  auch die Seelen seiner Untertanen an die spätere Seelenwanderung nach Hera.\n- Der Held lebte nach dem Pakt bis zu seinem natürlichen Tod weiter und\n  bereitete sein Reich auf diese Seelenwanderung vor.\n- Erst nach seinem natürlichen Tod wurde seine Seele aus Eras natürlichem\n  Seelenkreislauf herausgelöst und nach Hera beziehungsweise Tatok umgeleitet.\n- Tator wählte ihn wegen seiner Grausamkeit und Selbstsucht für das\n  Heldensystem aus und erwartet, die später erstarkte Seelenmacht zu ernten.\n- Die scheinbar gerettete Welt ist eine künstliche Konstruktwelt innerhalb\n  Tatoks, Tators Sphärenreich in Hera.\n- Zumindest ein Teil der Bewohner und Gefangenen sind Seelen aus der früheren\n  Gefolgschaft beziehungsweise Bevölkerung des Helden.\n- Der Fortschritt verläuft über Gebiete und Natur, Bewohner und Seelen, Städte, Erinnerungen und schließlich Fähigkeiten.\n- Das Basisspiel besitzt acht Makroabschnitte: Grasland, Wald, Hochland,\n  Hauptstadt, drei Abschnitte in Tatok und Semms Schlussabschnitt.\n- Im Heldenraum erwacht mit dem Helden ein kleiner fliegender Ratgeber in Form\n  eines großen Hutes mit zwei Augen, fast verdecktem Körper und Besen. Er ist\n  nicht der Talisman.\n- Zehsen ist ein Weltenbewahrer, Verbündeter Tators und derjenige, der den\n  Talisman in den Heldenraum beziehungsweise in Tators System bringt.\n- Der Held trägt den Talisman zunächst unbemerkt und nimmt ihn erst nach dem\n  Boss des Grasland-Lichterhauses bewusst wahr. Der Talisman hilft dem Helden,\n  entschlüsselt verborgene Strukturen und nimmt auf der zweiten Reise die\n  nutzbare Macht befreiter Seelen auf, nicht die Seelen selbst.\n- Die Seelen behalten Identität und Existenz. Nach dem Ende der zweiten Reise\n  werden sie nach Era zurückgebracht und treten wieder in den natürlichen\n  Seelenkreislauf ein, in dem jede Seele wiedergeboren wird.\n- Eras natürlicher Seelenkreislauf erhält das Leben des Planeten. Neue Seelen\n  entstehen, doch der Vorgang ihrer Entstehung ist auch den Gelehrten\n  unbekannt. Ohne diese fortlaufende Erneuerung hätten Ether-Entitäten Eras\n  Seelen längst aufgezehrt und Era wäre gestorben.\n- Das Basisspiel endet mit der Flucht aus der Konstruktwelt sowie den Kämpfen gegen Tator und Semm.\n- Ether-Entitäten können besiegt, aber nicht endgültig getötet werden.\n- Die Erweiterung führt zum Kampf gegen die übrigen Ether-Entitäten und zur Verwandlung des Helden in eine solche Entität.\n- Sol und Yol schützen Era vor dem direkten Zugriff der Ether-Entitäten.\n- Hera ist die übergeordnete multidimensionale Splittersphäre; einzelne\n  Splitterwelten, Sphärenreiche und Konstruktwelten befinden sich in ihr oder\n  sind mit ihr verbunden.\n- Gelehrte mehrerer Kulturen verwenden `The Meridian` bewusst mehrdeutig für\n  Era allein oder für das zentrale System aus Era, Sol und Yol.\n- Die Konvektion kehrt nach 3500 Tan beziehungsweise 10 Mohn wieder und dauert\n  20 Tan beziehungsweise 2 Dir.\n- Weltenbewahrer ist der bevorzugte redaktionelle Sammelbegriff. Gelehrte\n  überliefern `Atea`, `Athea` und `Are` als nicht vereinheitlichte Varianten.\n- Sphärenreich ist der bevorzugte redaktionelle Oberbegriff für die\n  unterschiedlichen Begriffe von Gelehrten, Kulturen und Quellen, aber keine\n  überall verbindliche In-World-Bezeichnung.\n\n## Gelehrtenüberlieferungen und kanonische Widersprüche\n\nGelehrte verschiedener Kulturen arbeiten mit Schriften, Karten, Erinnerungen\nund mündlichen Überlieferungen, die nicht immer dieselben Begriffe oder\nDeutungen bewahren. Wenn eine Abweichung ausdrücklich als\n**Gelehrtenüberlieferung** gekennzeichnet ist, gehört ihr Nebeneinander zum\nKanon. Der Widerspruch ist dann kein Dokumentationsfehler und muss nicht durch\neine allwissende Fassung aufgelöst werden.\n\nFolgende Unterschiede sind als Teil der Welt festgelegt:\n\n- `The Meridian` kann Era oder das zentrale System aus Era, Sol und Yol\n  bezeichnen.\n- Gelehrte beschreiben Räume je nach Modell als innerhalb Heras liegend oder\n  mit Hera verbunden. Beide Formulierungen nähern dieselbe multidimensionale\n  Beziehung an; sie behaupten keine zwei verschiedenen Heras.\n- Sols und Yols Bewegungen werden je nach Tradition als Bahn, Umlauf oder Tanz\n  beschrieben. Verbindlich bleiben die beobachtbaren Läufe und der feste\n  Konvektionszyklus, nicht ein überall einheitliches astronomisches Modell.\n- Sphäre, Reich, Machtbereich, Einflusssphäre, Splitterdomäne und\n  Herrschaftsraum bleiben nebeneinander gebräuchlich; redaktionell bündelt sie\n  der Ausdruck Sphärenreich.\n- `Atea`, `Athea` und `Are` bleiben verschiedene Überlieferungsformen ohne\n  bestätigten gemeinsamen Eigennamen der Weltenbewahrer.\n- Zehsens Handlung ist bekannt, seine Absicht und Loyalität werden von\n  Gelehrten jedoch unterschiedlich gedeutet. Keine dieser Deutungen ist\n  bestätigt.\n- Widersprüchliche Erinnerungen und Bewohnerberichte aus der Konstruktwelt\n  gehören zu Tators Verdeckung ihres Ursprungs. Sie ersetzen nicht die\n  festgelegte Vorgeschichte des Helden.\n\nRedaktionell offene Fragen zu Gameplay, Kapitelaufbau, Balancing oder noch\nnicht freigegebenen Figurenmerkmalen sind keine Gelehrtenüberlieferungen.\nEbenso werden verworfene Diktat- und Arbeitsvarianten nicht nachträglich zu\ninnerweltlichen Lehrmeinungen.\n\n## Noch zu entscheiden\n\n1. Semms konkrete Rolle über die Stellung als weiterer Gegenspieler und den bestehenden Endgame-Auftritt hinaus.\n2. Genaue Zusammensetzung einzelner Splitterwelten und der übrigen Bewohner der Konstruktwelt; nur ein Teil ist verbindlich der früheren Bevölkerung des Helden zugeordnet.\n3. Eigenname, Persönlichkeit, Herkunft, Stimme und spätere Rolle des kleinen\n   Ratgebers sowie eine mögliche Beziehung zum Talisman.\n4. Form, Material, Farbe, Größe, Trageweise, Persönlichkeit, Stimme und genaue\n   Grenzen des Talismans.\n5. Detaillierter Aufbau von Wald, Hochland, Hauptstadt, den drei\n   Tatok-Passagen und Semms Bereich.\n6. Ob der Held in der Erweiterung freiwillig, gezwungenermaßen oder als Folge seiner gesammelten Kraft zur Ether-Entität wird.\n7. Welche Regeln seine physische Rückkehr nach Era besitzt.\n\n## Kanonstufen\n\n| Stufe | Bedeutung |\n|---|---|\n| **draft-canon** | Inhalt ist als Projektgrundlage formuliert, kann aber noch redaktionell geschärft werden. |\n| **working** | Plausible Arbeitsfassung bei noch offenen Namen oder Details. |\n| **proposal** | Strukturvorschlag, der noch nicht als Handlungskanon gilt. |\n| **open** | Bewusst ungeklärt. |\n"
     },
     {
       "rel_path": "00-foundation/spielvision.md",
@@ -131,7 +131,7 @@
       "parent": "00-foundation",
       "size_bytes": 2897,
       "size_human": "2.83 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Spielvision",
       "headings": 7,
       "lines": 52,
@@ -176,7 +176,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 523,
       "size_human": "523 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "00 kosmologie",
       "headings": 2,
       "lines": 15,
@@ -201,7 +201,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 3453,
       "size_human": "3.37 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Era, Sol und Yol",
       "headings": 6,
       "lines": 87,
@@ -242,7 +242,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 4905,
       "size_human": "4.79 KB",
-      "mtime": "2026-08-30T15:42:47",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Ether, Seelen und Pakte",
       "headings": 8,
       "lines": 97,
@@ -291,7 +291,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 3421,
       "size_human": "3.34 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Hera und die Splitterwelten",
       "headings": 7,
       "lines": 73,
@@ -336,7 +336,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 549,
       "size_human": "549 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Kosmologie",
       "headings": 1,
       "lines": 12,
@@ -357,7 +357,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 4360,
       "size_human": "4.26 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Zeitrechnung auf Era",
       "headings": 9,
       "lines": 115,
@@ -410,7 +410,7 @@
       "parent": "10-world/00-kosmologie",
       "size_bytes": 7857,
       "size_human": "7.67 KB",
-      "mtime": "2026-08-30T15:49:36",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Zeitzyklen und Konvektion von Sol und Yol",
       "headings": 12,
       "lines": 160,
@@ -475,7 +475,7 @@
       "parent": "10-world/10-weltgeschichte",
       "size_bytes": 363,
       "size_human": "363 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "10 weltgeschichte",
       "headings": 2,
       "lines": 12,
@@ -500,7 +500,7 @@
       "parent": "10-world/10-weltgeschichte",
       "size_bytes": 338,
       "size_human": "338 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Weltgeschichte",
       "headings": 1,
       "lines": 9,
@@ -521,7 +521,7 @@
       "parent": "10-world/10-weltgeschichte",
       "size_bytes": 3507,
       "size_human": "3.42 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Tators Seelenplan und der Pakt des Helden",
       "headings": 7,
       "lines": 82,
@@ -566,7 +566,7 @@
       "parent": "10-world/10-weltgeschichte",
       "size_bytes": 7164,
       "size_human": "7.00 KB",
-      "mtime": "2026-08-30T15:52:16",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Chronologische Übersicht",
       "headings": 1,
       "lines": 35,
@@ -587,7 +587,7 @@
       "parent": "10-world",
       "size_bytes": 1474,
       "size_human": "1.44 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "10 world",
       "headings": 6,
       "lines": 34,
@@ -628,7 +628,7 @@
       "parent": "10-world/20-geografie-und-sphaeren",
       "size_bytes": 361,
       "size_human": "361 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "20 geografie und sphaeren",
       "headings": 2,
       "lines": 12,
@@ -653,7 +653,7 @@
       "parent": "10-world/20-geografie-und-sphaeren",
       "size_bytes": 363,
       "size_human": "363 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Geografie und Sphären",
       "headings": 1,
       "lines": 9,
@@ -674,7 +674,7 @@
       "parent": "10-world/20-geografie-und-sphaeren",
       "size_bytes": 3886,
       "size_human": "3.79 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Welten und Sphären",
       "headings": 8,
       "lines": 83,
@@ -723,7 +723,7 @@
       "parent": "10-world/20-geografie-und-sphaeren",
       "size_bytes": 2177,
       "size_human": "2.13 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Konzeptkarte – Die Welten des Ether",
       "headings": 4,
       "lines": 59,
@@ -756,7 +756,7 @@
       "parent": "10-world/40-fraktionen",
       "size_bytes": 330,
       "size_human": "330 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "40 fraktionen",
       "headings": 2,
       "lines": 12,
@@ -781,7 +781,7 @@
       "parent": "10-world/40-fraktionen",
       "size_bytes": 3360,
       "size_human": "3.28 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Die zehn großen Ether-Entitäten",
       "headings": 6,
       "lines": 64,
@@ -822,7 +822,7 @@
       "parent": "10-world/40-fraktionen",
       "size_bytes": 243,
       "size_human": "243 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Fraktionen und übergeordnete Wesen",
       "headings": 1,
       "lines": 7,
@@ -843,7 +843,7 @@
       "parent": "10-world/40-fraktionen",
       "size_bytes": 3797,
       "size_human": "3.71 KB",
-      "mtime": "2026-08-30T15:42:47",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Weltenbewahrer",
       "headings": 6,
       "lines": 80,
@@ -884,7 +884,7 @@
       "parent": "10-world",
       "size_bytes": 1113,
       "size_human": "1.09 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "10 – Welt",
       "headings": 5,
       "lines": 29,
@@ -921,12 +921,12 @@
       "parent": "20-story",
       "size_bytes": 641,
       "size_human": "641 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "20 story",
       "headings": 2,
       "lines": 17,
-      "words": 65,
-      "chars": 611,
+      "words": 66,
+      "chars": 613,
       "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
       "toc": [
         [
@@ -938,20 +938,20 @@
           "📄 Pages"
         ]
       ],
-      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 story\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)\n- 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)\n- 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)\n- 📝 [Heldenraum und Talisman](heldenraum-und-talisman.md)\n- 📝 [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)\n- 📝 [Story-Prämisse](praemisse.md)\n- 📝 [Der Protagonist](protagonist.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 story\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)\n- 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)\n- 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)\n- 📝 [Heldenraum, Ratgeber und Talisman](heldenraum-und-talisman.md)\n- 📝 [Achtteiliger Spielablauf](kapitelstruktur-arbeitsfassung.md)\n- 📝 [Story-Prämisse](praemisse.md)\n- 📝 [Der Protagonist](protagonist.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
     },
     {
       "rel_path": "20-story/enthuellungsstruktur.md",
       "name": "enthuellungsstruktur.md",
       "parent": "20-story",
-      "size_bytes": 3693,
-      "size_human": "3.61 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 4037,
+      "size_human": "3.94 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Enthüllungs- und Spoilerstruktur",
       "headings": 9,
-      "lines": 73,
-      "words": 486,
-      "chars": 3609,
+      "lines": 80,
+      "words": 533,
+      "chars": 3949,
       "snippet": "title: Enthüllungs- und Spoilerstruktur status: proposal spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
@@ -991,20 +991,20 @@
           "Erzählregel"
         ]
       ],
-      "content": "---\ntitle: Enthüllungs- und Spoilerstruktur\nstatus: proposal\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Enthüllungs- und Spoilerstruktur\n\nDie Wahrheit soll nicht als einzelner Infoblock am Schluss erscheinen. Sie wird in Stufen vorbereitet, ohne die zentrale Wendung vorzeitig eindeutig zu machen.\n\n## Stufe 1 – Verlorene Welt\n\nDer Spieler erhält eine klare, glaubhafte Ausgangserzählung: Monster haben die Welt zerstört oder versiegelt, und der Held kann sie zurückbringen. Alle frühen Systeme unterstützen diese Deutung.\n\n## Stufe 2 – Unvollständige Erinnerung\n\nEinzelne Erinnerungen passen nicht vollständig zusammen. Bewohner und\nAufzeichnungen von Gelehrten können dieselbe Vergangenheit unterschiedlich\nbeschreiben. Bestimmte Orte wirken älter oder neuer, als sie sein dürften. Die\nWidersprüche gehören zur erfahrbaren Konstruktwelt, ohne die tatsächliche\nVorgeschichte des Helden aufzuheben.\n\n## Stufe 3 – Künstliche Grenzen\n\nDer Spieler entdeckt wiederholte Strukturen, nicht erreichbare Ränder, Systemzeichen, identische Seelenmuster oder Räume hinter der sichtbaren Welt. Der Talisman beginnt diese Phänomene zu entschlüsseln.\n\n## Stufe 4 – Zweifel an der eigenen Identität\n\nErinnerungen des Helden zeigen Era, ohne Namen, Herrschaft, Pakt und Tod sofort\nvollständig zu erklären. Die Frage verschiebt sich von „Was ist mit der Welt\ngeschehen?“ zu „Gehöre ich überhaupt hierher?“\n\n## Stufe 5 – Vorgeschichte des Herrschers\n\nDie Erinnerungen fügen schrittweise zusammen, dass der Held auf Era herrschte,\nseine der Untreue verdächtigte Frau enthaupten ließ und mit Tator einen Pakt zu\nihrer Rückkehr schloss. Der Preis band seine Seele und die Seelen seiner\nUntertanen. Er lebte danach weiter, bereitete sein Reich auf die spätere\nSeelenwanderung vor und starb erst später eines natürlichen Todes.\n\n## Stufe 6 – Wahrheit über die Konstruktwelt\n\nDer Held erfährt, dass er eine Seele ist, die Welt in Tatok liegt und Tator ihn\nwegen seiner Grausamkeit und Selbstsucht als vorgesehenen Helden auswählte.\nZumindest ein Teil der Bewohner und Gefangenen besteht aus Seelen seiner\nfrüheren Gefolgschaft. Tator wollte sie weiter leiden, den Helden durch Kampf\nund Verantwortung mächtiger werden lassen und anschließend seine erstarkte\nSeelenmacht ernten.\n\nZugleich kann die Geschichte Zehsens doppelte Einordnung offenlegen: Zehsen ist\nWeltenbewahrer, Verbündeter Tators und Ursprung des Talismans. Gelehrte deuten\nden scheinbaren Widerspruch zwischen Bündnis und Hilfe unterschiedlich. Warum\ner den Talisman in das System brachte und wem seine Loyalität gilt, wird nicht\nabschließend erklärt.\n\nFrühere Erfolge werden dadurch nicht entwertet. Die Bindungen und Entscheidungen\ndes Helden waren echt, auch wenn der Raum künstlich war.\n\n## Stufe 7 – Wahrheit als neue Handlungsfreiheit\n\nDie Enthüllung führt unmittelbar zur zweiten Reise. Der Talisman nimmt die\nnutzbare Macht der befreiten Seelen auf, nicht ihre Identität oder Seele.\nBekannte Welten erhalten neue Ziele, und der Spieler handelt aktiv gegen\nTators vorgesehene Ernte. Die Macht ermöglicht Ausbruch und Kämpfe; danach\nkehren die Seelen nach Era und in den natürlichen Seelenkreislauf zurück, in\ndem sie wiedergeboren werden und Era mit am Leben erhalten.\n\n## Erzählregel\n\nDie Wendung darf nicht behaupten, „alles war bedeutungslos“. Die emotionale Realität der Bewohner, Erinnerungen und geretteten Orte muss bestehen bleiben. Die Täuschung betrifft Ursprung und Zweck der Welt, nicht automatisch den Wert der darin entstandenen Beziehungen.\n"
+      "content": "---\ntitle: Enthüllungs- und Spoilerstruktur\nstatus: proposal\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Enthüllungs- und Spoilerstruktur\n\nDie Wahrheit soll nicht als einzelner Infoblock am Schluss erscheinen. Sie wird in Stufen vorbereitet, ohne die zentrale Wendung vorzeitig eindeutig zu machen.\n\n## Stufe 1 – Verlorene Welt\n\nDer Spieler erhält eine klare, glaubhafte Ausgangserzählung: Monster haben die Welt zerstört oder versiegelt, und der Held kann sie zurückbringen. Alle frühen Systeme unterstützen diese Deutung.\n\nDer kleine Hut-Ratgeber führt durch Heldenraum, verlassenes Haus, Nebel und\nTurm. Er ist die sichtbare frühe Begleitfigur und nicht der Talisman.\n\n## Stufe 2 – Unvollständige Erinnerung\n\nEinzelne Erinnerungen passen nicht vollständig zusammen. Bewohner und\nAufzeichnungen von Gelehrten können dieselbe Vergangenheit unterschiedlich\nbeschreiben. Bestimmte Orte wirken älter oder neuer, als sie sein dürften. Die\nWidersprüche gehören zur erfahrbaren Konstruktwelt, ohne die tatsächliche\nVorgeschichte des Helden aufzuheben.\n\nNach dem Lichterhaus im Grasland bemerkt der Held erstmals bewusst den\nTalisman. Dessen erster persönlicher Erinnerungsimpuls ist klein genug, um die\nVorgeschichte nicht vorzeitig aufzulösen.\n\n## Stufe 3 – Künstliche Grenzen\n\nDer Spieler entdeckt wiederholte Strukturen, nicht erreichbare Ränder, Systemzeichen, identische Seelenmuster oder Räume hinter der sichtbaren Welt. Der Talisman beginnt diese Phänomene zu entschlüsseln.\n\n## Stufe 4 – Zweifel an der eigenen Identität\n\nErinnerungen des Helden zeigen Era, ohne Namen, Herrschaft, Pakt und Tod sofort\nvollständig zu erklären. Die Frage verschiebt sich von „Was ist mit der Welt\ngeschehen?“ zu „Gehöre ich überhaupt hierher?“\n\n## Stufe 5 – Vorgeschichte des Herrschers\n\nDie Erinnerungen fügen schrittweise zusammen, dass der Held auf Era herrschte,\nseine der Untreue verdächtigte Frau enthaupten ließ und mit Tator einen Pakt zu\nihrer Rückkehr schloss. Der Preis band seine Seele und die Seelen seiner\nUntertanen. Er lebte danach weiter, bereitete sein Reich auf die spätere\nSeelenwanderung vor und starb erst später eines natürlichen Todes.\n\n## Stufe 6 – Wahrheit über die Konstruktwelt\n\nDer Held erfährt, dass er eine Seele ist, die Welt in Tatok liegt und Tator ihn\nwegen seiner Grausamkeit und Selbstsucht als vorgesehenen Helden auswählte.\nZumindest ein Teil der Bewohner und Gefangenen besteht aus Seelen seiner\nfrüheren Gefolgschaft. Tator wollte sie weiter leiden, den Helden durch Kampf\nund Verantwortung mächtiger werden lassen und anschließend seine erstarkte\nSeelenmacht ernten.\n\nZugleich kann die Geschichte Zehsens doppelte Einordnung offenlegen: Zehsen ist\nWeltenbewahrer, Verbündeter Tators und Ursprung des Talismans. Gelehrte deuten\nden scheinbaren Widerspruch zwischen Bündnis und Hilfe unterschiedlich. Warum\ner den Talisman in das System brachte und wem seine Loyalität gilt, wird nicht\nabschließend erklärt.\n\nFrühere Erfolge werden dadurch nicht entwertet. Die Bindungen und Entscheidungen\ndes Helden waren echt, auch wenn der Raum künstlich war.\n\n## Stufe 7 – Wahrheit als neue Handlungsfreiheit\n\nDie Enthüllung führt unmittelbar zur zweiten Reise. Der Talisman nimmt die\nnutzbare Macht der befreiten Seelen auf, nicht ihre Identität oder Seele.\nBekannte Welten erhalten neue Ziele, und der Spieler handelt aktiv gegen\nTators vorgesehene Ernte. Die Macht ermöglicht Ausbruch und Kämpfe; danach\nkehren die Seelen nach Era und in den natürlichen Seelenkreislauf zurück, in\ndem sie wiedergeboren werden und Era mit am Leben erhalten.\n\n## Erzählregel\n\nDie Wendung darf nicht behaupten, „alles war bedeutungslos“. Die emotionale Realität der Bewohner, Erinnerungen und geretteten Orte muss bestehen bleiben. Die Täuschung betrifft Ursprung und Zweck der Welt, nicht automatisch den Wert der darin entstandenen Beziehungen.\n"
     },
     {
       "rel_path": "20-story/finale-und-erweiterung.md",
       "name": "finale-und-erweiterung.md",
       "parent": "20-story",
-      "size_bytes": 2335,
-      "size_human": "2.28 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2422,
+      "size_human": "2.37 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Finale des Basisspiels und Erweiterung",
       "headings": 4,
-      "lines": 49,
-      "words": 318,
-      "chars": 2301,
+      "lines": 50,
+      "words": 329,
+      "chars": 2387,
       "snippet": "title: Finale des Basisspiels und Erweiterung status: draft-canon spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
@@ -1024,20 +1024,20 @@
           "Erweiterung"
         ]
       ],
-      "content": "---\ntitle: Finale des Basisspiels und Erweiterung\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Finale des Basisspiels und Erweiterung\n\n## Finale des Basisspiels\n\nNach der vollständigen Wiederherstellung der Konstruktwelt beginnt der Held\neine zweite Reise durch die bereits befreiten Ebenen. Der Talisman nimmt dort\ndie nutzbare Macht beziehungsweise Seelenenergie der befreiten Seelen auf. Er\nverschlingt nicht ihre Identität oder Seele; sie bestehen nach der Abgabe ihrer\nMacht fort. Mit der gesammelten Kraft verlässt der Held den inneren Bereich\nTatoks.\n\nDrei feindbesetzte Weltpassagen führen zum Machtzentrum Tators. Dort findet der\nerste Endbosskampf statt. Tator wird besiegt, aber nicht endgültig vernichtet.\n\nEin Portal bleibt nach dem Kampf geöffnet. Es führt in den Bereich des\neigenständigen weiteren Gegenspielers Semm. Der Held durchquert es und besiegt\nauch Semm.\n\nDie fortbestehenden Seelen werden anschließend nach Era zurückgebracht. Dort\ntreten sie wieder in den natürlichen Seelenkreislauf ein, werden\nwiedergeboren und tragen zum Fortbestand Eras bei. Damit endet das Basisspiel\nund der sechste Abschnitt der ersten Heldengeschichte.\n\n## Warum das Portal offen bleibt\n\nDer konkrete Grund ist noch nicht festgelegt. Die Dokumentation leitet daraus\nkeine zusätzliche Beziehung zwischen Tator, Semm oder Zehsen ab.\n\n## Erweiterung\n\nDie Erweiterung vergrößert den Konflikt von zwei Gegnern auf die Gesamtheit der großen Ether-Entitäten. Der Held verfolgt, bekämpft oder durchkreuzt die übrigen Mächte Heras.\n\nIm Verlauf wird er selbst zu einer Ether-Entität. Diese Entwicklung ist zugleich Gefahr und Vorteil:\n\n- Er nähert sich den Wesen an, gegen die er kämpft.\n- Seine gesammelte Seelenenergie verändert seine Existenzform.\n- Er gewinnt Zugang zu Kräften und Räumen, die einer gewöhnlichen Seele verschlossen wären.\n- Anders als die bekannten Entitäten besitzt er weiterhin eine direkte Herkunft aus Era.\n\nAm Ende kann seine Seele beziehungsweise neue physische Form nach Era zurückkehren. Welche Rolle er dort einnimmt, ob er Wächter, Gefahr, Vermittler oder etwas völlig Neues wird, bleibt bewusst offen und wird in diesem Projektteil nicht weitergeführt.\n"
+      "content": "---\ntitle: Finale des Basisspiels und Erweiterung\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Finale des Basisspiels und Erweiterung\n\n## Finale des Basisspiels\n\nNach der vollständigen Wiederherstellung der Konstruktwelt beginnt der Held\neine zweite Reise durch die bereits befreiten Ebenen. Der Talisman nimmt dort\ndie nutzbare Macht beziehungsweise Seelenenergie der befreiten Seelen auf. Er\nverschlingt nicht ihre Identität oder Seele; sie bestehen nach der Abgabe ihrer\nMacht fort. Mit der gesammelten Kraft verlässt der Held den inneren Bereich\nTatoks.\n\nDrei feindbesetzte Makroabschnitte in Tatok führen zum Machtzentrum Tators.\nDort findet der vorletzte große Bosskampf statt. Tator wird besiegt, aber nicht\nendgültig vernichtet.\n\nEin Portal bleibt nach dem Kampf geöffnet. Es führt in den achten und letzten\nMakroabschnitt, den Bereich des eigenständigen weiteren Gegenspielers Semm. Der\nHeld durchquert Semms Landen und besiegt ihn im letzten Bosskampf.\n\nDie fortbestehenden Seelen werden anschließend nach Era zurückgebracht. Dort\ntreten sie wieder in den natürlichen Seelenkreislauf ein, werden\nwiedergeboren und tragen zum Fortbestand Eras bei. Damit endet das Basisspiel\nund der achte Makroabschnitt der ersten Heldengeschichte.\n\n## Warum das Portal offen bleibt\n\nDer konkrete Grund ist noch nicht festgelegt. Die Dokumentation leitet daraus\nkeine zusätzliche Beziehung zwischen Tator, Semm oder Zehsen ab.\n\n## Erweiterung\n\nDie Erweiterung vergrößert den Konflikt von zwei Gegnern auf die Gesamtheit der großen Ether-Entitäten. Der Held verfolgt, bekämpft oder durchkreuzt die übrigen Mächte Heras.\n\nIm Verlauf wird er selbst zu einer Ether-Entität. Diese Entwicklung ist zugleich Gefahr und Vorteil:\n\n- Er nähert sich den Wesen an, gegen die er kämpft.\n- Seine gesammelte Seelenenergie verändert seine Existenzform.\n- Er gewinnt Zugang zu Kräften und Räumen, die einer gewöhnlichen Seele verschlossen wären.\n- Anders als die bekannten Entitäten besitzt er weiterhin eine direkte Herkunft aus Era.\n\nAm Ende kann seine Seele beziehungsweise neue physische Form nach Era zurückkehren. Welche Rolle er dort einnimmt, ob er Wächter, Gefahr, Vermittler oder etwas völlig Neues wird, bleibt bewusst offen und wird in diesem Projektteil nicht weitergeführt.\n"
     },
     {
       "rel_path": "20-story/handlungsverlauf.md",
       "name": "handlungsverlauf.md",
       "parent": "20-story",
-      "size_bytes": 3912,
-      "size_human": "3.82 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 6018,
+      "size_human": "5.88 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Handlungsverlauf des Basisspiels",
-      "headings": 12,
-      "lines": 90,
-      "words": 514,
-      "chars": 3850,
+      "headings": 14,
+      "lines": 134,
+      "words": 787,
+      "chars": 5918,
       "snippet": "title: Handlungsverlauf des Basisspiels status: draft-canon spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
@@ -1050,64 +1050,72 @@
         ],
         [
           2,
-          "1. Erwachen"
+          "Auftakt von Abschnitt 1 – Heldenraum und Nebel"
         ],
         [
           2,
-          "2. Erste Befreiungen"
+          "Abschnitt 1 – Grasland"
+        ],
+        [
+          3,
+          "Turm und erstes Aufblühen"
+        ],
+        [
+          3,
+          "Sägewerk und Gebäude"
+        ],
+        [
+          3,
+          "Wasserwerk und Menschenseelen"
+        ],
+        [
+          3,
+          "Lichterhaus und Erinnerungen"
+        ],
+        [
+          3,
+          "Dorf und erworbenes Wissen"
         ],
         [
           2,
-          "3. Wiederherstellung der Welt"
+          "Abschnitte 2 bis 4 – Weitere Wiederherstellung"
         ],
         [
           2,
-          "4. Wachsende Bindung"
+          "Enthüllung und zweite Reise"
         ],
         [
           2,
-          "5. Risse in der Fassade"
+          "Abschnitte 5 bis 7 – Tatok"
         ],
         [
           2,
-          "6. Umkehr des Systems"
+          "Abschnitt 8 – Semms Bereich"
         ],
         [
           2,
-          "7. Flucht"
-        ],
-        [
-          2,
-          "8. Weltpassagen"
-        ],
-        [
-          2,
-          "9. Tator und Semm"
-        ],
-        [
-          2,
-          "10. Rückkehr der Seelen"
+          "Rückkehr der Seelen"
         ]
       ],
-      "content": "---\ntitle: Handlungsverlauf des Basisspiels\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Handlungsverlauf des Basisspiels\n\n## Vorgeschichte – erst später vollständig enthüllt\n\nDer Held war ein Herrscher auf Era. Er ließ seine der Untreue verdächtigte Frau\nenthaupten und schloss mit Tator einen Pakt, der sie zurückbrachte, aber seine\nSeele und die Seelen seiner Untertanen band. Er lebte danach weiter, bereitete\nsein Reich auf die spätere Seelenwanderung vor und starb eines natürlichen\nTodes. Erst dann wurde seine Seele nach Hera und Tatok umgeleitet.\n\nDiese Vorgeschichte ist Dokumentationswissen. Der Spieler erhält sie nicht als\nvollständigen Infoblock am Anfang, sondern über spätere Erinnerungen und\nEnthüllungen.\n\n## 1. Erwachen\n\nDer Held erwacht im Heldenraum ohne vollständige Erinnerung. Artefakte und Talisman weisen ihm die Aufgabe zu, eine zerstörte Welt von Monstern zu befreien.\n\n## 2. Erste Befreiungen\n\nDer Held betritt die ersten Ebenen, besiegt Gegner und säubert beziehungsweise versiegelt Monsterhöhlen. Jede abgeschlossene Quelle der Verderbnis löst eine sichtbare Rekonstruktion aus.\n\n## 3. Wiederherstellung der Welt\n\nDer Fortschritt entfaltet sich in einer festen dramaturgischen Reihenfolge:\n\n1. Länder, Regionen und begehbare Gebiete;\n2. Natur wie Bäume, Wasserläufe und Lebensräume;\n3. Seelen und Bewohner;\n4. Siedlungen und Städte;\n5. Erinnerungen und Geschichte;\n6. daraus erwachsende Fähigkeiten des Helden.\n\nGebiete können einzelne Stufen zusammenfassen, aber die übergeordnete Reihenfolge bleibt erhalten.\n\n## 4. Wachsende Bindung\n\nMit der Rückkehr der Bewohner wird die Welt nicht nur größer, sondern persönlicher. Der Held erlebt Folgen seiner Taten, erhält neue Aufgaben und erfährt Geschichte. Erinnerungen verstärken seine Fähigkeiten und zugleich seine emotionale Bindung an die Welt.\n\n## 5. Risse in der Fassade\n\nDer Talisman erkennt Unstimmigkeiten. Wiederholungen, künstliche Grenzen,\nwidersprüchliche Erinnerungen und Aufzeichnungen von Gelehrten oder verborgene\nSystemräume lassen erkennen, dass die Welt konstruiert ist. Der Held erfährt,\ndass Tator ihn wegen seiner früheren Grausamkeit und Selbstsucht auswählte.\nZumindest ein Teil der Bewohner und Gefangenen sind Seelen seiner eigenen\nfrüheren Gefolgschaft. Tator will den Helden erstarken lassen und anschließend\ndessen Seelenmacht ernten.\n\n## 6. Umkehr des Systems\n\nAnstatt sich ernten zu lassen, beginnt der Held eine zweite Reise durch die\nbereits befreiten Welten. Der Talisman zieht die nutzbare Macht\nbeziehungsweise Seelenenergie der befreiten Seelen an sich. Er verschlingt\nnicht ihre Identität oder ihre eigentliche Seele. Die Seelen bestehen auch\nnach der Abgabe ihrer nutzbaren Macht fort.\n\n## 7. Flucht\n\nMit ausreichender Energie durchbricht der Held die Grenze der Konstruktwelt und verlässt den kontrollierten Entwicklungsraum innerhalb Tatoks.\n\n## 8. Weltpassagen\n\nDrei feindbesetzte Passagen bilden den eigentlichen Endgame-Anstieg. Hier gibt\nes keine große Rekonstruktion mehr; der Schwerpunkt liegt auf Kampf, Ausdauer,\nBeherrschung der erworbenen Fähigkeiten und der Konfrontation mit Tators Macht.\n\n## 9. Tator und Semm\n\nDer Held besiegt Tator. Nach dem Kampf bleibt ein Portal offen, das zum\neigenständigen weiteren Gegenspieler Semm führt. Auch Semm wird besiegt. Beide\nkönnen jedoch nicht endgültig getötet werden.\n\n## 10. Rückkehr der Seelen\n\nDie gesammelte Macht hat den Ausbruch und die folgenden Kämpfe ermöglicht.\nAnschließend werden die fortbestehenden Seelen nach Era zurückgeführt. Dort\ntreten sie wieder in Eras natürlichen Seelenkreislauf ein, werden\nwiedergeboren und tragen zum Fortbestand des Planeten bei.\n\nDamit endet der sechste und letzte Abschnitt dieses Teils der Heldengeschichte.\n"
+      "content": "---\ntitle: Handlungsverlauf des Basisspiels\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Handlungsverlauf des Basisspiels\n\n## Vorgeschichte – erst später vollständig enthüllt\n\nDer Held war ein Herrscher auf Era. Er ließ seine der Untreue verdächtigte Frau\nenthaupten und schloss mit Tator einen Pakt, der sie zurückbrachte, aber seine\nSeele und die Seelen seiner Untertanen band. Er lebte danach weiter, bereitete\nsein Reich auf die spätere Seelenwanderung vor und starb eines natürlichen\nTodes. Erst dann wurde seine Seele nach Hera und Tatok umgeleitet.\n\nDiese Vorgeschichte ist Dokumentationswissen. Der Spieler erhält sie nicht als\nvollständigen Infoblock am Anfang, sondern über spätere Erinnerungen und\nEnthüllungen.\n\n## Auftakt von Abschnitt 1 – Heldenraum und Nebel\n\nDer Held erwacht im Heldenraum ohne Erinnerung. Der einzige sichtbar mit ihm\nerwachende Gefährte ist ein kleiner Ratgeber mit der Gestalt eines großen Hutes,\nzwei Augen, einem beinahe verdeckten Körper und einem fliegenden Besen. Der\nTalisman befindet sich bereits unbemerkt beim Helden, übernimmt aber nicht die\nerste Ratgeberfunktion.\n\nDer Weg führt über ein verlassenes Haus in eine vom Nebel verdeckte Welt. Erst\nLeuchtpunkte geben eine Richtung vor und führen zum Turm.\n\n## Abschnitt 1 – Grasland\n\n### Turm und erstes Aufblühen\n\nDer Turm ist der Einführungsdungeon. Leichte Gegner vermitteln die Grundlagen;\nein Turmboss beziehungsweise Miniboss schließt ihn ab. Danach wird die Karte\nzum ersten Mal lesbar: Im umgebenden Nebel erscheint ein aufgeblühtes\nGraslandgebiet.\n\n### Sägewerk und Gebäude\n\nDer Spieler erkundet das Grasland frei und sucht den nächsten Zugang. Dieser\nDungeon beginnt im Wald und führt in ein gigantisches industrielles Sägewerk.\nJedes besiegte Monsternest stellt einen weiteren Gebäudeteil der Region wieder\nher. Freigegebene Gebäude sind begehbar und können früh auffindbare nützliche\nInhalte enthalten.\n\n### Wasserwerk und Menschenseelen\n\nDer folgende Dungeon verläuft an einem monumentalen Fluss und Wasserfall.\nTreppen, Wasserräder, Holzmühlen und mechanische Holzhämmer führen stufenweise\nhinab. Im Verlauf befreit der Held Menschenseelen. Die genaue Fallhöhe bleibt\noffen.\n\n### Lichterhaus und Erinnerungen\n\nDie zurückgekehrten Bewohner besitzen zunächst keine klare Erinnerung. Ein\nbesonderes Haus bildet den Rahmen des Erinnerungsdungeons. Der Spieler sucht\nleuchtende Lampen, die jeweils einen kurzen Rätsel- oder Kampfabschnitt öffnen.\nAls noch veränderbarer Arbeitswert sind ungefähr zwanzig Abschnitte vorgesehen.\nDie letzte Seele führt zum regionalen Endboss.\n\nNach dessen Niederlage bemerkt der Held den Talisman erstmals bewusst. Er\nerhält durch ihn eine kleine Erinnerung an seine eigene Vergangenheit, aber\nnoch nicht die vollständige Wahrheit.\n\n### Dorf und erworbenes Wissen\n\nDer letzte Teil des Graslands ist kein klassischer Dungeon. Durch Gespräche,\nGefallen und das Kombinieren von Hinweisen findet der Spieler heraus, wie es\nweitergeht. Im Bauerndorf lernt er zunächst Landwirtschaft, einfachen Bau und\ndie Vorbereitung einer Brücke oder eines vergleichbaren Übergangs.\nFortgeschrittene Angriffstaktiken folgen erst in späteren Abschnitten.\n\n## Abschnitte 2 bis 4 – Weitere Wiederherstellung\n\nAuf das Grasland folgen in fester Reihenfolge:\n\n2. **Wald**;\n3. **Eis und Gebirge beziehungsweise Hochland**;\n4. **Hauptstadt**.\n\nJeder Abschnitt variiert den Rhythmus aus regionalem Zugang, Landschaft,\nGebäuden, Bewohnern, Erinnerungen und erlerntem Wissen. Die Hauptstadt ähnelt\ndem früheren Machtbereich des Helden und führt zur entscheidenden Erkenntnis\nüber seine Vergangenheit und die Konstruktwelt. Die Dungeons, Bosse und\nkonkreten Fähigkeiten dieser drei Abschnitte bleiben noch auszuarbeiten.\n\n## Enthüllung und zweite Reise\n\nWiederholungen, künstliche Grenzen, widersprüchliche Erinnerungen,\nAufzeichnungen von Gelehrten und verborgene Systemräume zeigen, dass die Welt\nkonstruiert ist. Der Held erfährt, dass Tator ihn wegen seiner früheren\nGrausamkeit und Selbstsucht auswählte. Zumindest ein Teil der Bewohner und\nGefangenen sind Seelen seiner eigenen früheren Gefolgschaft. Tator will den\nHelden erstarken lassen und anschließend dessen Seelenmacht ernten.\n\nAnstatt sich ernten zu lassen, beginnt der Held eine zweite Reise durch die\nbereits befreiten Gebiete. Der Talisman zieht die nutzbare Macht\nbeziehungsweise Seelenenergie der befreiten Seelen an sich. Er verschlingt\nnicht ihre Identität oder eigentliche Seele. Diese Wiederbesuche verbinden den\nvierten mit dem fünften Makroabschnitt und bilden keinen eigenen neunten\nAbschnitt.\n\n## Abschnitte 5 bis 7 – Tatok\n\nMit ausreichender Energie durchbricht der Held die Grenze der Konstruktwelt.\nDrei feindbesetzte Passagen innerhalb Tatoks bilden den Endgame-Anstieg. Hier\ngibt es keine neue große Rekonstruktion. Kampf, Ausdauer und die Beherrschung\ndes in den vier Gemeinschaften erworbenen Wissens stehen im Vordergrund. Der\nsiebte Abschnitt führt zum Kampf gegen Tator. Tator wird besiegt, aber nicht\nendgültig getötet.\n\n## Abschnitt 8 – Semms Bereich\n\nNach Tator bleibt ein Portal zu Semms eigenständigem Bereich offen. Der achte\nAbschnitt konzentriert sich auf Semms Landen und den letzten Bosskampf gegen\nihn. Semm wird besiegt, aber ebenfalls nicht endgültig getötet.\n\n## Rückkehr der Seelen\n\nDie gesammelte Macht hat den Ausbruch und die folgenden Kämpfe ermöglicht.\nAnschließend werden die fortbestehenden Seelen nach Era zurückgeführt. Dort\ntreten sie wieder in Eras natürlichen Seelenkreislauf ein, werden\nwiedergeboren und tragen zum Fortbestand des Planeten bei. Damit endet der\nachte und letzte Makroabschnitt des Basisspiels.\n\nDie verbindliche Ablaufentscheidung ist zusätzlich in\n[EF-DEC-007](../../../content/de/10-decisions-and-archive/ef-dec-007-eight-section-game-flow.md)\nfestgehalten.\n"
     },
     {
       "rel_path": "20-story/heldenraum-und-talisman.md",
       "name": "heldenraum-und-talisman.md",
       "parent": "20-story",
-      "size_bytes": 2713,
-      "size_human": "2.65 KB",
-      "mtime": "2026-08-30T15:41:04",
-      "title": "Heldenraum und Talisman",
-      "headings": 7,
-      "lines": 61,
-      "words": 353,
-      "chars": 2678,
-      "snippet": "title: Heldenraum und Talisman status: working-canon spoiler_level: full updated: 2026-08-30",
+      "size_bytes": 4110,
+      "size_human": "4.01 KB",
+      "mtime": "2026-08-30T17:55:05",
+      "title": "Heldenraum, Ratgeber und Talisman",
+      "headings": 9,
+      "lines": 92,
+      "words": 542,
+      "chars": 4062,
+      "snippet": "title: Heldenraum, Ratgeber und Talisman status: working-canon spoiler_level: full updated: 2026-08-30",
       "toc": [
         [
           1,
-          "Heldenraum und Talisman"
+          "Heldenraum, Ratgeber und Talisman"
         ],
         [
           2,
@@ -1115,11 +1123,15 @@
         ],
         [
           2,
+          "Der kleine Ratgeber"
+        ],
+        [
+          2,
           "Der Talisman"
         ],
         [
           3,
-          "1. Wegweiser"
+          "1. Erinnerungsimpuls"
         ],
         [
           3,
@@ -1132,9 +1144,13 @@
         [
           2,
           "Erzählerische Funktion"
+        ],
+        [
+          2,
+          "Visuelle Gestaltung"
         ]
       ],
-      "content": "---\ntitle: Heldenraum und Talisman\nstatus: working-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Heldenraum und Talisman\n\n## Der Heldenraum\n\nDas Spiel beginnt im Heldenraum. Er ist ein ruhiger, abgegrenzter Ausgangsort innerhalb der Konstruktwelt und bildet den ersten stabilen Bezugspunkt des Helden.\n\nDort befinden sich:\n\n- mehrere Artefakte;\n- Hinweise auf die Aufgabe des Helden;\n- Zugänge oder Verbindungen zu den ersten Ebenen;\n- der Talisman beziehungsweise dessen erste Manifestation;\n- möglicherweise leere Sockel, versiegelte Erinnerungen oder später aktivierbare Funktionen.\n\nDie genaue visuelle Gestaltung des Raumes ist noch offen. Er gehört zu Tators\nSystem. Zehsen bringt den Talisman in diesen Raum; ob und wie Zehsen darüber\nhinaus den Heldenraum verändert, ist nicht festgelegt.\n\n## Der Talisman\n\nDer Talisman wurde durch Zehsen in Tators System und in den Heldenraum\ngebracht. Zehsen ist zugleich ein Weltenbewahrer und ein Verbündeter Tators.\nGelehrte deuten seine genaue Absicht und Loyalität unterschiedlich; keine\nDeutung ist bestätigt. Der Talisman erfüllt drei aufeinander aufbauende\nFunktionen.\n\n### 1. Wegweiser\n\nZu Beginn gibt er praktische Hinweise, erklärt Ziele und hilft dem Spieler, die Grundregeln der Welt zu verstehen. Dadurch wirkt er wie ein gewöhnlicher Begleiter des vorgesehenen Heldenprogramms.\n\n### 2. Entschlüssler\n\nMit wachsendem Fortschritt erkennt oder öffnet der Talisman verborgene Ebenen, Fehler und Widersprüche der Konstruktwelt. Seine Hinweise werden von rein praktischen Tipps zu Fragen über die Natur der Welt.\n\n### 3. Speicher für Seelenmacht\n\nAuf der zweiten Reise kann der Talisman die nutzbare Macht beziehungsweise\nSeelenenergie befreiter Seelen aufnehmen. Er verschlingt nicht die Seelen\nselbst: Ihre Identität und fortbestehende Existenz bleiben erhalten. Die\ngesammelte Macht ermöglicht dem Helden, die Grenze der Konstruktwelt zu\ndurchbrechen und die folgenden Kämpfe zu bestehen. Danach werden die Seelen\nnach Era zurückgebracht und nehmen wieder am natürlichen Seelenkreislauf teil.\nDort werden sie wiedergeboren und tragen zum Fortbestand Eras bei.\n\n## Erzählerische Funktion\n\nDer Talisman darf die Wahrheit nicht sofort erklären. Er soll den Spieler\nunterstützen, aber Erkenntnis durch Beobachtung, Erinnerungen und Widersprüche\nermöglichen. Unklar bleibt zunächst, ob der Talisman selbst bewusst spricht,\nZehsens Nachrichten überträgt oder nur auf bestimmte Resonanzen reagiert.\nSeine hilfreiche Wirkung beweist weder eine gegen Tator gerichtete Absicht\nZehsens noch eine abschließend geklärte Loyalität.\n"
+      "content": "---\ntitle: Heldenraum, Ratgeber und Talisman\nstatus: working-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Heldenraum, Ratgeber und Talisman\n\n## Der Heldenraum\n\nDas Spiel beginnt im Heldenraum. Er ist ein ruhiger, abgegrenzter Ausgangsort\ninnerhalb der Konstruktwelt und bildet den ersten stabilen Bezugspunkt des\nHelden. Beim Erwachen erkennt der Held dort außer sich nur den kleinen\nRatgeber. Der Talisman befindet sich zwar bereits bei ihm, bleibt für ihn aber\nzunächst unbemerkt.\n\nVom Heldenraum führt der Einstieg zu einem verlassenen Haus und anschließend\nin den Nebel der Konstruktwelt. Weitere sichtbare Artefakte, Sockel oder\nStartfiguren sind nicht festgelegt.\n\n## Der kleine Ratgeber\n\nDer Ratgeber erwacht zusammen mit dem Helden. Seine Gestalt wird von einem\ngroßen Hut mit zwei sichtbaren Augen bestimmt. Unter dem Hut befindet sich ein\nwinziger Körper, der fast nicht zu sehen ist. Der Ratgeber fliegt auf einem\nBesen um den Helden und übernimmt die erste Orientierung.\n\n`Ratgeber` ist noch kein Eigenname. Herkunft, Motivation, Wissensgrenzen und\nspäterer Handlungsbogen bleiben offen. Er ist nicht mit dem Talisman\ngleichzusetzen; auch eine mögliche Beziehung zwischen beiden ist nicht\nfestgelegt. Ein vorläufiger\n[Pixel-Art-Entwurf](../../../assets/images/guide-companion-variants.md) wurde für\ndie weitere visuelle Ausarbeitung beibehalten.\n\n## Der Talisman\n\nDer Talisman ist ein zentrales Storyobjekt. Er verbindet Zehsens ungeklärten\nEingriff, die verlorene Vergangenheit des Helden, die Entlarvung der\nKonstruktwelt und die Seelenmacht der zweiten Reise. Er wurde durch Zehsen in\nTators System und in den Heldenraum gebracht. Zehsen ist zugleich ein\nWeltenbewahrer und ein Verbündeter Tators.\nGelehrte deuten seine genaue Absicht und Loyalität unterschiedlich; keine\nDeutung ist bestätigt. Der Held trägt das Artefakt bereits, erkennt es aber\nerst nach dem regionalen Boss des Lichterhauses bewusst. Der Talisman erfüllt\ndrei aufeinander aufbauende Funktionen.\n\n### 1. Erinnerungsimpuls\n\nNach dem Erinnerungsdungeon des Graslands macht sich der Talisman erstmals\nbewusst bemerkbar und gibt dem Helden einen kleinen Ausschnitt seiner eigenen\nVergangenheit zurück. Die praktische Orientierung am Spielanfang übernimmt\ndagegen der Ratgeber.\n\n### 2. Entschlüssler\n\nMit wachsendem Fortschritt erkennt und deutet der Talisman verborgene Ebenen,\nFehler und Widersprüche der Konstruktwelt. Seine Hinweise führen zu Fragen über\ndie Natur der Welt.\n\n### 3. Speicher für Seelenmacht\n\nAuf der zweiten Reise kann der Talisman die nutzbare Macht beziehungsweise\nSeelenenergie befreiter Seelen aufnehmen. Er verschlingt nicht die Seelen\nselbst: Ihre Identität und fortbestehende Existenz bleiben erhalten. Die\ngesammelte Macht ermöglicht dem Helden, die Grenze der Konstruktwelt zu\ndurchbrechen und die folgenden Kämpfe zu bestehen. Danach werden die Seelen\nnach Era zurückgebracht und nehmen wieder am natürlichen Seelenkreislauf teil.\nDort werden sie wiedergeboren und tragen zum Fortbestand Eras bei.\n\n## Erzählerische Funktion\n\nDer Talisman darf die Wahrheit nicht sofort erklären. Er soll den Spieler nach\nseiner ersten bewussten Wahrnehmung unterstützen, aber Erkenntnis durch\nBeobachtung, Erinnerungen und Widersprüche ermöglichen. Unklar bleibt, ob der\nTalisman selbst bewusst spricht, Zehsens Nachrichten überträgt oder nur auf\nbestimmte Resonanzen reagiert.\nSeine hilfreiche Wirkung beweist weder eine gegen Tator gerichtete Absicht\nZehsens noch eine abschließend geklärte Loyalität.\n\n## Visuelle Gestaltung\n\nForm, Material, Farbe, Größe, Trageweise und Oberflächenzeichen des Talismans\nsind nicht festgelegt. Ein vorläufiger\n[Pixel-Art-Entwurf](../../../assets/images/soul-talisman-variants.md) wurde für\ndie weitere visuelle Ausarbeitung beibehalten. Er ist kein Kanon und legt die\nendgültige Objektform nicht fest.\n\nDie konsolidierte Quellenbeschreibung steht unter\n[Der Talisman](../../../content/de/02-story-and-world/soul-talisman.md).\n"
     },
     {
       "rel_path": "20-story/index.md",
@@ -1142,12 +1158,12 @@
       "parent": "20-story",
       "size_bytes": 565,
       "size_human": "565 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "20 – Story",
       "headings": 1,
       "lines": 14,
-      "words": 58,
-      "chars": 555,
+      "words": 59,
+      "chars": 557,
       "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](20-story.md) <!-- AUTO-GENERATED:backlink END -->",
       "toc": [
         [
@@ -1155,45 +1171,45 @@
           "20 – Story"
         ]
       ],
-      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 – Story\n\nDieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er enthält kritische Spoiler.\n\n- [Prämisse](praemisse.md)\n- [Der Protagonist](protagonist.md)\n- [Heldenraum und Talisman](heldenraum-und-talisman.md)\n- [Handlungsverlauf](handlungsverlauf.md)\n- [Enthüllungsstruktur](enthuellungsstruktur.md)\n- [Finale und Erweiterung](finale-und-erweiterung.md)\n- [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)\n"
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 – Story\n\nDieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er enthält kritische Spoiler.\n\n- [Prämisse](praemisse.md)\n- [Der Protagonist](protagonist.md)\n- [Heldenraum, Ratgeber und Talisman](heldenraum-und-talisman.md)\n- [Handlungsverlauf](handlungsverlauf.md)\n- [Enthüllungsstruktur](enthuellungsstruktur.md)\n- [Finale und Erweiterung](finale-und-erweiterung.md)\n- [Achtteiliger Spielablauf](kapitelstruktur-arbeitsfassung.md)\n"
     },
     {
       "rel_path": "20-story/kapitelstruktur-arbeitsfassung.md",
       "name": "kapitelstruktur-arbeitsfassung.md",
       "parent": "20-story",
-      "size_bytes": 1710,
-      "size_human": "1.67 KB",
-      "mtime": "2026-08-30T15:41:04",
-      "title": "Kapitelstruktur – Arbeitsfassung",
+      "size_bytes": 2082,
+      "size_human": "2.03 KB",
+      "mtime": "2026-08-30T17:55:05",
+      "title": "Achtteiliger Spielablauf",
       "headings": 2,
-      "lines": 30,
-      "words": 197,
-      "chars": 1686,
-      "snippet": "title: Kapitelstruktur – Arbeitsfassung status: proposal spoiler_level: critical updated: 2026-08-30",
+      "lines": 42,
+      "words": 252,
+      "chars": 2061,
+      "snippet": "title: Achtteiliger Spielablauf status: accepted-outline spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
           1,
-          "Kapitelstruktur – Arbeitsfassung"
+          "Achtteiliger Spielablauf"
         ],
         [
           2,
           "Noch auszuarbeiten"
         ]
       ],
-      "content": "---\ntitle: Kapitelstruktur – Arbeitsfassung\nstatus: proposal\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kapitelstruktur – Arbeitsfassung\n\nDer Entwurf nennt sechs Kapitel beziehungsweise sechs große Abschnitte. Die folgende Verteilung ist eine redaktionelle Arbeitsfassung und noch keine endgültige Szenenliste.\n\n| Kapitel | Schwerpunkt | Zentrale Veränderung |\n|---:|---|---|\n| 1 | Heldenraum und erste Ebene | Der Held akzeptiert Auftrag, Talisman und Grundkampf. Erste Landschaft kehrt zurück. |\n| 2 | Länder und Natur | Mehrere Gebiete werden zugänglich; Rekonstruktion wird zur Hauptschleife. |\n| 3 | Seelen, Bewohner und Städte | Die Welt erhält Gesellschaft, Beziehungen, Aufgaben und sichtbare Zivilisation. |\n| 4 | Erinnerungen, Geschichte und Fähigkeiten | Charakterfortschritt und Weltwissen werden verbunden; erste starke Widersprüche erscheinen. |\n| 5 | Wahrheit und zweite Reise | Die Konstruktwelt und die Vorgeschichte des Helden werden enttarnt; der Talisman nimmt in befreiten Ebenen Seelenmacht auf, ohne die Seelen zu verschlingen. |\n| 6 | Flucht, drei Weltpassagen, Tator und Semm | Kampforientiertes Endgame, Rückführung der Seelen nach Era, Wiedergeburt im natürlichen Seelenkreislauf und Abschluss des Basisspiels. |\n\n## Noch auszuarbeiten\n\n- Anzahl der Ebenen pro Kapitel.\n- Hauptfiguren und emotionale Konflikte jeder Region.\n- Zeitpunkt einzelner Erinnerungsenthüllungen.\n- Boss oder Wächter pro Abschnitt.\n- Übergang von Kapitel 4 zur vollständigen Wahrheit in Kapitel 5.\n- Umfang des erneuten Bereisens, damit das Endgame keine bloße Wiederholung wird.\n"
+      "content": "---\ntitle: Achtteiliger Spielablauf\nstatus: accepted-outline\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Achtteiliger Spielablauf\n\nDas Basisspiel besitzt acht Makroabschnitte. Die Gesamtzahl und Reihenfolge sind\nfreigegeben; die Einzelszenen der Abschnitte 2 bis 8 bleiben weiter\nauszuarbeiten.\n\n| Abschnitt | Schwerpunkt | Zentrale Veränderung |\n|---:|---|---|\n| 1 | Grasland | Erwachen mit dem Hut-Ratgeber; Nebel und Turm; Wiederherstellung von Landschaft, Gebäuden, Menschenseelen und Erinnerungen; Dorfwissen öffnet den nächsten Weg. |\n| 2 | Wald | Zweite Variation der vollständigen Wiederherstellungsschleife; Details offen. |\n| 3 | Eis, Gebirge und Hochland | Dritte Variation der Wiederherstellungsschleife; Details offen. |\n| 4 | Hauptstadt | Ähnelt dem früheren Machtbereich des Helden und führt zur entscheidenden Enthüllung. |\n| 5 | Tatok I | Anwendung des Erlernten ohne neue große Wiederherstellung. |\n| 6 | Tatok II | Steigende Kampf- und Beherrschungsanforderungen. |\n| 7 | Tatok III und Tator | Letzte Passage und Kampf gegen Tator. |\n| 8 | Semms Bereich | Eigenständiger Schlussabschnitt und letzter Bosskampf gegen Semm; danach Rückführung der Seelen nach Era. |\n\nDie zweite Reise durch die bereits befreiten Gebiete liegt zwischen Hauptstadt\nund Tatok I. Sie verbindet Enthüllung, Aufnahme der Seelenmacht und Ausbruch,\nist aber kein zusätzlicher neunter Makroabschnitt.\n\n## Noch auszuarbeiten\n\n- Hauptfiguren, Dungeons und emotionale Konflikte in Wald, Hochland und\n  Hauptstadt.\n- Zeitpunkt einzelner Erinnerungsenthüllungen innerhalb der vier\n  Wiederherstellungsabschnitte.\n- Boss oder Wächter der noch nicht ausgearbeiteten Regionen.\n- Übergang von der Hauptstadt zur zweiten Reise und zu Tatok I.\n- Umfang des erneuten Bereisens, damit das Endgame keine bloße Wiederholung wird.\n- Aufbau der Tatok-Passagen und Semms Landen.\n\nSiehe [EF-DEC-007](../../../content/de/10-decisions-and-archive/ef-dec-007-eight-section-game-flow.md).\n"
     },
     {
       "rel_path": "20-story/praemisse.md",
       "name": "praemisse.md",
       "parent": "20-story",
-      "size_bytes": 2108,
-      "size_human": "2.06 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2506,
+      "size_human": "2.45 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Story-Prämisse",
       "headings": 1,
-      "lines": 36,
-      "words": 290,
-      "chars": 2068,
+      "lines": 48,
+      "words": 351,
+      "chars": 2469,
       "snippet": "title: Story-Prämisse status: draft-canon spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
@@ -1201,7 +1217,7 @@
           "Story-Prämisse"
         ]
       ],
-      "content": "---\ntitle: Story-Prämisse\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Story-Prämisse\n\nEin Held erwacht in einem rätselhaften Heldenraum. Er besitzt nur bruchstückhafte Erinnerung, findet mehrere Artefakte vor und erhält den Auftrag, eine zerstörte Welt zu befreien. Ein Talisman begleitet ihn als Helfer und Wegweiser.\n\nDer Held besiegt Monster, reinigt oder versiegelt Monsterhöhlen und bringt dadurch Schritt für Schritt verlorene Bestandteile der Welt zurück. Zuerst entstehen Gebiete und Natur, später kehren Seelen und Menschen, Städte, Erinnerungen und schließlich neue Fähigkeiten zurück.\n\nDer Held hält diese Welt für seine wahre Heimat und versteht seine Aufgabe als\nWiederaufbau nach einer Katastrophe. Tatsächlich war er ein Herrscher auf Era,\nließ seine der Untreue verdächtigte Frau enthaupten und schloss mit Tator einen\nPakt, der sie zurückbrachte und seine Seele sowie die Seelen seiner Untertanen\nband. Nach einem weiteren Leben bis zu seinem natürlichen Tod wurde seine\nSeele nach Tatok umgeleitet.\n\nTator hält den früheren Herrscher für grausam und selbstsüchtig. Seine\nKonstruktwelt soll ihn mit Seelen aus der eigenen früheren Gefolgschaft\nkonfrontieren, durch Kampf und Wiederherstellung stärken und schließlich eine\nbesonders mächtige Seelenkraft zur Ernte hervorbringen. Die Erwartung Tators\nlegt nicht fest, wie der Spieler tatsächlich handelt.\n\nZehsen, Weltenbewahrer und Verbündeter Tators, hat den Talisman in Tators\nSystem gebracht. Gelehrte deuten seine Absicht unterschiedlich, ohne eine\nDeutung belegen zu können. Der Talisman hilft beim Fortschritt, deckt\nschrittweise die künstliche Natur der Welt auf und nimmt auf der zweiten Reise\ndie nutzbare Macht der befreiten Seelen auf. Die Seelen selbst bleiben\nbestehen. Der Held nutzt ihre Macht zur Flucht und zu den Kämpfen gegen Tator\nund Semm; anschließend werden die Seelen nach Era und in den natürlichen\nSeelenkreislauf zurückgeführt und dort wiedergeboren.\n"
+      "content": "---\ntitle: Story-Prämisse\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Story-Prämisse\n\nEin Held erwacht ohne Erinnerung in einem rätselhaften Heldenraum. Sein einziger\nunmittelbar sichtbarer Gefährte ist ein kleiner Ratgeber: ein großer Hut mit\nzwei Augen, unter dem ein winziger Körper fast verschwindet, fliegend auf einem\nBesen. Der Ratgeber hilft ihm bei den ersten Schritten in eine vom Nebel\nverdeckte Welt.\n\nDer Held folgt Leuchtpunkten zu einem Turm, besiegt Monster und bringt dadurch\ndas erste Grasland zurück. In weiteren Dungeons werden Gebäude, Menschenseelen\nund Erinnerungen befreit. Erst nach dem Erinnerungsdungeon bemerkt der Held den\nTalisman, den er bereits unbewusst bei sich trägt, und erhält einen kleinen\nAusschnitt seiner Vergangenheit.\n\nAuf das Grasland folgen Wald, Eis und Gebirge beziehungsweise Hochland sowie\ndie Hauptstadt. Danach führen drei kampforientierte Abschnitte durch Tatok zu\nTator und ein letzter Abschnitt in Semms Bereich zum Abschluss des Basisspiels.\n\nDer Held hält diese Welt für seine wahre Heimat und versteht seine Aufgabe als\nWiederaufbau nach einer Katastrophe. Tatsächlich war er ein Herrscher auf Era,\nließ seine der Untreue verdächtigte Frau enthaupten und schloss mit Tator einen\nPakt, der sie zurückbrachte und seine Seele sowie die Seelen seiner Untertanen\nband. Nach einem weiteren Leben bis zu seinem natürlichen Tod wurde seine\nSeele nach Tatok umgeleitet.\n\nTator hält den früheren Herrscher für grausam und selbstsüchtig. Seine\nKonstruktwelt soll ihn mit Seelen aus der eigenen früheren Gefolgschaft\nkonfrontieren, durch Kampf und Wiederherstellung stärken und schließlich eine\nbesonders mächtige Seelenkraft zur Ernte hervorbringen. Die Erwartung Tators\nlegt nicht fest, wie der Spieler tatsächlich handelt.\n\nZehsen, Weltenbewahrer und Verbündeter Tators, hat den Talisman in Tators\nSystem gebracht. Gelehrte deuten seine Absicht unterschiedlich, ohne eine\nDeutung belegen zu können. Der Talisman hilft beim Fortschritt, deckt\nschrittweise die künstliche Natur der Welt auf und nimmt auf der zweiten Reise\ndie nutzbare Macht der befreiten Seelen auf. Die Seelen selbst bleiben\nbestehen. Der Held nutzt ihre Macht zur Flucht und zu den Kämpfen gegen Tator\nund Semm; anschließend werden die Seelen nach Era und in den natürlichen\nSeelenkreislauf zurückgeführt und dort wiedergeboren.\n"
     },
     {
       "rel_path": "20-story/protagonist.md",
@@ -1209,7 +1225,7 @@
       "parent": "20-story",
       "size_bytes": 3420,
       "size_human": "3.34 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Der Protagonist",
       "headings": 7,
       "lines": 73,
@@ -1254,7 +1270,7 @@
       "parent": "30-gameplay",
       "size_bytes": 464,
       "size_human": "464 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "30 gameplay",
       "headings": 2,
       "lines": 14,
@@ -1279,7 +1295,7 @@
       "parent": "30-gameplay",
       "size_bytes": 348,
       "size_human": "348 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "30 – Gameplay",
       "headings": 1,
       "lines": 9,
@@ -1300,7 +1316,7 @@
       "parent": "30-gameplay",
       "size_bytes": 1782,
       "size_human": "1.74 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Kampfsystem – Grundlage",
       "headings": 6,
       "lines": 47,
@@ -1339,14 +1355,14 @@
       "rel_path": "30-gameplay/kernspielschleife.md",
       "name": "kernspielschleife.md",
       "parent": "30-gameplay",
-      "size_bytes": 2103,
-      "size_human": "2.05 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2845,
+      "size_human": "2.78 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Kernspielschleife",
-      "headings": 7,
-      "lines": 48,
-      "words": 262,
-      "chars": 2068,
+      "headings": 8,
+      "lines": 65,
+      "words": 358,
+      "chars": 2798,
       "snippet": "title: Kernspielschleife status: draft-canon updated: 2026-08-30",
       "toc": [
         [
@@ -1356,6 +1372,10 @@
         [
           2,
           "Hauptschleife"
+        ],
+        [
+          2,
+          "Acht Makroabschnitte"
         ],
         [
           2,
@@ -1378,20 +1398,20 @@
           "Anti-Wiederholungsregel"
         ]
       ],
-      "content": "---\ntitle: Kernspielschleife\nstatus: draft-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kernspielschleife\n\n## Hauptschleife\n\n1. Der Held betritt eine beschädigte oder unvollständige Ebene.\n2. Er erkundet, kämpft, findet Zugänge und erkennt die lokale Ursache der Versiegelung.\n3. Er besiegt Monstergruppen und räumt eine Monsterhöhle oder einen vergleichbaren Verdichtungspunkt.\n4. Er versiegelt, reinigt oder schließt die Quelle.\n5. Ein Teil der Welt wird rekonstruiert.\n6. Neue Landschaft, Bewohner, Gebäude, Erinnerungen oder Fähigkeiten werden verfügbar.\n7. Der Spieler kehrt zu bekannten Orten zurück und erlebt deren Veränderung.\n8. Neue Wege, Aufgaben und der nächste Verdichtungspunkt öffnen sich.\n\n## Gefühl des Fortschritts\n\nFortschritt soll nicht nur über Zahlen sichtbar sein. Jede größere Befreiung verändert mindestens zwei Ebenen:\n\n- **räumlich:** neue Wege, Natur, Gebäude oder ganze Gebiete;\n- **sozial oder erzählerisch:** Bewohner, Dialoge, Erinnerungen oder historische Zusammenhänge;\n- **mechanisch:** neue Fähigkeit, Werkzeug, Magie oder Interaktion.\n\n## Zwei Phasen des Spiels\n\n### Aufbauphase\n\nDer Spieler glaubt, eine echte Welt wiederherzustellen. Die Schleife vermittelt Hoffnung, Wachstum und zunehmende Verbundenheit.\n\n### Umkehrphase\n\nNach der Enthüllung erhalten bekannte Orte neue Funktionen. Auf einer zweiten\nReise kehrt der Spieler zurück; der Talisman nimmt die nutzbare Macht der\nbefreiten Seelen auf, ohne ihre Identität oder Seele zu verschlingen. Der Held\nentdeckt versteckte Systemschichten und bereitet die Flucht vor. Nach den durch\ndie Seelenmacht ermöglichten Kämpfen kehren die Seelen nach Era zurück, werden\nim natürlichen Seelenkreislauf wiedergeboren und tragen zum Fortbestand des\nPlaneten bei.\n\n## Anti-Wiederholungsregel\n\nEine Rückkehr in ein früheres Gebiet muss mindestens eine neue Begegnung, Route, Gegnerkombination, Erinnerung, Entscheidung oder Systemebene bieten. Reines Ablaufen identischer Wege soll vermieden werden.\n"
+      "content": "---\ntitle: Kernspielschleife\nstatus: draft-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kernspielschleife\n\n## Hauptschleife\n\n1. Der Held betritt eine beschädigte oder unvollständige Ebene.\n2. Er erkundet, kämpft, findet Zugänge und erkennt die lokale Ursache der Versiegelung.\n3. Er besiegt Monstergruppen und räumt eine Monsterhöhle oder einen vergleichbaren Verdichtungspunkt.\n4. Er versiegelt, reinigt oder schließt die Quelle.\n5. Ein Teil der Welt wird rekonstruiert.\n6. Neue Landschaft, Bewohner, Gebäude, Erinnerungen oder Fähigkeiten werden verfügbar.\n7. Der Spieler kehrt zu bekannten Orten zurück und erlebt deren Veränderung.\n8. Neue Wege, Aufgaben und der nächste Verdichtungspunkt öffnen sich.\n\n## Acht Makroabschnitte\n\nDie Hauptschleife trägt die ersten vier Abschnitte Grasland, Wald, Hochland und\nHauptstadt. Danach folgen drei Tatok-Passagen ohne neue große Rekonstruktion und\nein letzter Abschnitt in Semms Bereich.\n\nDas Grasland konkretisiert die Schleife erstmals vollständig:\n\n1. Ratgeber, verlassenes Haus, Nebel und Leuchtpunkte führen zum Turm.\n2. Der Turmboss macht das erste Grasland auf der Karte sichtbar.\n3. Monsternester im industriellen Sägewerk stellen Gebäude wieder her.\n4. Der Wasserwerkdungeon befreit Menschenseelen.\n5. Lampen im Lichterhaus öffnen kurze Rätsel- und Kampfabschnitte für\n   Erinnerungen.\n6. Das Bauerndorf vermittelt durch Gespräche und Gefallen Wissen für den\n   nächsten Abschnitt.\n\n## Gefühl des Fortschritts\n\nFortschritt soll nicht nur über Zahlen sichtbar sein. Jede größere Befreiung verändert mindestens zwei Ebenen:\n\n- **räumlich:** neue Wege, Natur, Gebäude oder ganze Gebiete;\n- **sozial oder erzählerisch:** Bewohner, Dialoge, Erinnerungen oder historische Zusammenhänge;\n- **mechanisch:** neue Fähigkeit, Werkzeug, Magie oder Interaktion.\n\n## Zwei Phasen des Spiels\n\n### Aufbauphase\n\nDer Spieler glaubt, eine echte Welt wiederherzustellen. Die Schleife vermittelt Hoffnung, Wachstum und zunehmende Verbundenheit.\n\n### Umkehrphase\n\nNach der Enthüllung erhalten bekannte Orte neue Funktionen. Auf einer zweiten\nReise kehrt der Spieler zurück; der Talisman nimmt die nutzbare Macht der\nbefreiten Seelen auf, ohne ihre Identität oder Seele zu verschlingen. Der Held\nentdeckt versteckte Systemschichten und bereitet die Flucht vor. Nach den durch\ndie Seelenmacht ermöglichten Kämpfen kehren die Seelen nach Era zurück, werden\nim natürlichen Seelenkreislauf wiedergeboren und tragen zum Fortbestand des\nPlaneten bei.\n\n## Anti-Wiederholungsregel\n\nEine Rückkehr in ein früheres Gebiet muss mindestens eine neue Begegnung, Route, Gegnerkombination, Erinnerung, Entscheidung oder Systemebene bieten. Reines Ablaufen identischer Wege soll vermieden werden.\n"
     },
     {
       "rel_path": "30-gameplay/seelenenergie-im-endgame.md",
       "name": "seelenenergie-im-endgame.md",
       "parent": "30-gameplay",
-      "size_bytes": 2402,
-      "size_human": "2.35 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2565,
+      "size_human": "2.50 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Seelenenergie im Endgame",
       "headings": 6,
-      "lines": 54,
-      "words": 314,
-      "chars": 2378,
+      "lines": 58,
+      "words": 336,
+      "chars": 2539,
       "snippet": "title: Seelenenergie im Endgame status: draft-canon spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
@@ -1419,20 +1439,20 @@
           "Endgame-Ziel"
         ]
       ],
-      "content": "---\ntitle: Seelenenergie im Endgame\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Seelenenergie im Endgame\n\n## Freischaltung\n\nDie Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung vollständig aktiv. Dadurch wird aus einem Begleit- und Hinweissystem eine zentrale Endgame-Mechanik.\n\n## Verbindliche Begriffe\n\n- **Seele:** Identität und fortbestehende Existenz eines Wesens.\n- **Seelenmacht oder Seelenenergie:** nutzbare Kraft, die der Talisman aufnehmen\n  kann, ohne die Seele selbst zu verschlingen.\n- **Seelenkreislauf:** lebensnotwendiger natürlicher Weg der Seelen auf Era, in\n  dem jede nicht umgeleitete Seele wiedergeboren wird. Tator zieht daraus\n  durch die Seelenwanderung nach Hera fortlaufend Seelen ab.\n\n## Spielablauf\n\n1. Die Konstruktwelt ist weitgehend oder vollständig befreit.\n2. Die Enthüllung ordnet den Helden, Tators System und zumindest einen Teil der\n   befreiten Seelen als seine frühere Gefolgschaft ein.\n3. Der Held beginnt eine zweite Reise durch die bereits befreiten Welten.\n4. Der Talisman zieht die nutzbare Macht beziehungsweise Seelenenergie der\n   befreiten Seelen an sich.\n5. Identität und eigentliche Seele bleiben bestehen; der Talisman verschlingt\n   sie nicht.\n6. Die gesammelte Macht öffnet die Grenze der Konstruktwelt und ermöglicht die\n   Weltpassagen sowie die Kämpfe gegen Tator und Semm.\n7. Anschließend werden die Seelen nach Era zurückgebracht, treten wieder in\n   den natürlichen Seelenkreislauf ein und werden dort wiedergeboren.\n\n## Erhalt der Seelen\n\nDie Aufnahme der Macht macht die vorherige Rettung nicht zu einer dauerhaften\nVernichtung. Die Seelen geben beziehungsweise verlieren ihre nutzbare Kraft,\nbehalten aber Identität und Existenz. Ob und wie einzelne Figuren diese Abgabe\nbewerten, ist eine Frage ihrer Darstellung; die metaphysische Wirkung selbst\nist nicht mehr offen.\n\n## Endgame-Ziel\n\nSeelenenergie ist kein gewöhnliches Gold oder Erfahrungspunktesystem. Sie ist\ndie konkrete Kraft, die die künstliche Grenze der Konstruktwelt aufbricht und\ndie Kämpfe gegen Tator und Semm überhaupt ermöglicht. Der Endzustand umfasst\nneben dem Sieg auch die Rückführung der fortbestehenden Seelen nach Era, ihre\nWiedergeburt und ihren erneuten Beitrag zum Fortbestand des Planeten.\n"
+      "content": "---\ntitle: Seelenenergie im Endgame\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Seelenenergie im Endgame\n\n## Freischaltung\n\nDie Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung\nvollständig aktiv. Der Held bemerkt das zunächst verborgene Artefakt bereits\nnach dem Lichterhaus im Grasland; im Endgame wird aus dem Erinnerungs- und\nEntschlüsselungswerkzeug eine zentrale Mechanik. Der sichtbare Ratgeber am\nSpielanfang ist eine andere Figur.\n\n## Verbindliche Begriffe\n\n- **Seele:** Identität und fortbestehende Existenz eines Wesens.\n- **Seelenmacht oder Seelenenergie:** nutzbare Kraft, die der Talisman aufnehmen\n  kann, ohne die Seele selbst zu verschlingen.\n- **Seelenkreislauf:** lebensnotwendiger natürlicher Weg der Seelen auf Era, in\n  dem jede nicht umgeleitete Seele wiedergeboren wird. Tator zieht daraus\n  durch die Seelenwanderung nach Hera fortlaufend Seelen ab.\n\n## Spielablauf\n\n1. Die Konstruktwelt ist weitgehend oder vollständig befreit.\n2. Die Enthüllung ordnet den Helden, Tators System und zumindest einen Teil der\n   befreiten Seelen als seine frühere Gefolgschaft ein.\n3. Der Held beginnt eine zweite Reise durch die bereits befreiten Welten.\n4. Der Talisman zieht die nutzbare Macht beziehungsweise Seelenenergie der\n   befreiten Seelen an sich.\n5. Identität und eigentliche Seele bleiben bestehen; der Talisman verschlingt\n   sie nicht.\n6. Die gesammelte Macht öffnet die Grenze der Konstruktwelt und ermöglicht die\n   Weltpassagen sowie die Kämpfe gegen Tator und Semm.\n7. Anschließend werden die Seelen nach Era zurückgebracht, treten wieder in\n   den natürlichen Seelenkreislauf ein und werden dort wiedergeboren.\n\n## Erhalt der Seelen\n\nDie Aufnahme der Macht macht die vorherige Rettung nicht zu einer dauerhaften\nVernichtung. Die Seelen geben beziehungsweise verlieren ihre nutzbare Kraft,\nbehalten aber Identität und Existenz. Ob und wie einzelne Figuren diese Abgabe\nbewerten, ist eine Frage ihrer Darstellung; die metaphysische Wirkung selbst\nist nicht mehr offen.\n\n## Endgame-Ziel\n\nSeelenenergie ist kein gewöhnliches Gold oder Erfahrungspunktesystem. Sie ist\ndie konkrete Kraft, die die künstliche Grenze der Konstruktwelt aufbricht und\ndie Kämpfe gegen Tator und Semm überhaupt ermöglicht. Der Endzustand umfasst\nneben dem Sieg auch die Rückführung der fortbestehenden Seelen nach Era, ihre\nWiedergeburt und ihren erneuten Beitrag zum Fortbestand des Planeten.\n"
     },
     {
       "rel_path": "30-gameplay/wiederherstellungsfortschritt.md",
       "name": "wiederherstellungsfortschritt.md",
       "parent": "30-gameplay",
-      "size_bytes": 1899,
-      "size_human": "1.85 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2443,
+      "size_human": "2.39 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Wiederherstellungsfortschritt",
-      "headings": 5,
-      "lines": 39,
-      "words": 214,
-      "chars": 1850,
+      "headings": 6,
+      "lines": 52,
+      "words": 277,
+      "chars": 2384,
       "snippet": "title: Wiederherstellungsfortschritt status: accepted updated: 2026-08-30",
       "toc": [
         [
@@ -1453,10 +1473,14 @@
         ],
         [
           2,
+          "Anwendung im Grasland"
+        ],
+        [
+          2,
           "Rückkopplung"
         ]
       ],
-      "content": "---\ntitle: Wiederherstellungsfortschritt\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Wiederherstellungsfortschritt\n\n## Verbindliche Reihenfolge\n\nDie Welt wird nicht auf einmal wiederhergestellt. Der Fortschritt folgt einer lesbaren Hierarchie:\n\n1. **Länder und Gebiete** – Grundfläche, Wege, Höhenzüge, Küsten oder Ebenengrenzen.\n2. **Natur und Landschaft** – Bäume, Wasser, Pflanzen, Wettereffekte und Lebensräume.\n3. **Seelen und Bewohner** – einzelne Wesen, Gruppen und soziale Beziehungen.\n4. **Siedlungen und Städte** – Gebäude, Infrastruktur, Handwerk und gesellschaftliche Funktionen.\n5. **Erinnerungen und Geschichte** – persönliche Erinnerungen, Weltwissen, frühere Ereignisse und Identität.\n6. **Fähigkeiten des Helden** – Verbesserungen, die aus den wiedergewonnenen Erinnerungen und Geschichten entstehen.\n\n## Designabsicht\n\nDie Reihenfolge vermittelt, dass eine Welt zuerst Raum und Lebensgrundlage benötigt, bevor Gesellschaft, Geschichte und persönliche Macht zurückkehren können. Fähigkeiten sind damit das Ergebnis von Wiederherstellung und Verständnis, nicht bloß eine isolierte Belohnung.\n\n## Flexible Anwendung\n\nNicht jede kleine Quest muss alle sechs Stufen abbilden. Eine Region kann beispielsweise zuerst Gelände und Bäume zurückbringen, später Bewohner und schließlich eine gemeinsame Erinnerung. Die globale Reihenfolge darf jedoch nicht umgedreht werden, solange keine bewusste Ausnahme erzählt wird.\n\n## Rückkopplung\n\nJede Stufe soll die vorherige neu nutzbar machen:\n\n- Landschaft öffnet Wege.\n- Natur erzeugt Ressourcen und Atmosphäre.\n- Bewohner geben Aufgaben und Beziehungen.\n- Städte bündeln Dienste und Kultur.\n- Erinnerungen erklären Zusammenhänge.\n- Fähigkeiten erlauben neue Lösungen in alten und neuen Gebieten.\n"
+      "content": "---\ntitle: Wiederherstellungsfortschritt\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Wiederherstellungsfortschritt\n\n## Verbindliche Reihenfolge\n\nDie Welt wird nicht auf einmal wiederhergestellt. Der Fortschritt folgt einer lesbaren Hierarchie:\n\n1. **Länder und Gebiete** – Grundfläche, Wege, Höhenzüge, Küsten oder Ebenengrenzen.\n2. **Natur und Landschaft** – Bäume, Wasser, Pflanzen, Wettereffekte und Lebensräume.\n3. **Seelen und Bewohner** – einzelne Wesen, Gruppen und soziale Beziehungen.\n4. **Siedlungen und Städte** – Gebäude, Infrastruktur, Handwerk und gesellschaftliche Funktionen.\n5. **Erinnerungen und Geschichte** – persönliche Erinnerungen, Weltwissen, frühere Ereignisse und Identität.\n6. **Fähigkeiten des Helden** – Verbesserungen, die aus den wiedergewonnenen Erinnerungen und Geschichten entstehen.\n\n## Designabsicht\n\nDie Reihenfolge vermittelt, dass eine Welt zuerst Raum und Lebensgrundlage benötigt, bevor Gesellschaft, Geschichte und persönliche Macht zurückkehren können. Fähigkeiten sind damit das Ergebnis von Wiederherstellung und Verständnis, nicht bloß eine isolierte Belohnung.\n\n## Flexible Anwendung\n\nNicht jede kleine Quest muss alle sechs Stufen abbilden. Eine Region kann beispielsweise zuerst Gelände und Bäume zurückbringen, später Bewohner und schließlich eine gemeinsame Erinnerung. Die globale Reihenfolge darf jedoch nicht umgedreht werden, solange keine bewusste Ausnahme erzählt wird.\n\n## Anwendung im Grasland\n\n- Der Turm macht das Grasland als Gebiet und Landschaft sichtbar.\n- Jedes abgeschlossene Monsternest im Sägewerk stellt einen weiteren\n  Gebäudefortschritt her.\n- Der Wasserwerkdungeon befreit Menschenseelen.\n- Das Lichterhaus gibt Seelen und Bewohnern Erinnerungen zurück.\n- Gespräche und Gefallen im Bauerndorf vermitteln anwendbares Wissen und\n  Fähigkeiten.\n\nWald, Hochland und Hauptstadt folgen derselben übergeordneten Reihenfolge,\ndürfen sie aber mit anderen Orten, Rätseln und Übergängen ausformen.\n\n## Rückkopplung\n\nJede Stufe soll die vorherige neu nutzbar machen:\n\n- Landschaft öffnet Wege.\n- Natur erzeugt Ressourcen und Atmosphäre.\n- Bewohner geben Aufgaben und Beziehungen.\n- Städte bündeln Dienste und Kultur.\n- Erinnerungen erklären Zusammenhänge.\n- Fähigkeiten erlauben neue Lösungen in alten und neuen Gebieten.\n"
     },
     {
       "rel_path": "40-world-systems/40-world-systems.md",
@@ -1464,7 +1488,7 @@
       "parent": "40-world-systems",
       "size_bytes": 575,
       "size_human": "575 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "40 world systems",
       "headings": 2,
       "lines": 15,
@@ -1487,14 +1511,14 @@
       "rel_path": "40-world-systems/ebenen-portale-und-weltpassagen.md",
       "name": "ebenen-portale-und-weltpassagen.md",
       "parent": "40-world-systems",
-      "size_bytes": 1464,
-      "size_human": "1.43 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 1590,
+      "size_human": "1.55 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Ebenen, Portale und Weltpassagen",
       "headings": 5,
-      "lines": 44,
-      "words": 166,
-      "chars": 1444,
+      "lines": 47,
+      "words": 184,
+      "chars": 1570,
       "snippet": "title: Ebenen, Portale und Weltpassagen status: draft-design updated: 2026-08-30",
       "toc": [
         [
@@ -1518,20 +1542,20 @@
           "Drei Endgame-Passagen"
         ]
       ],
-      "content": "---\ntitle: Ebenen, Portale und Weltpassagen\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Ebenen, Portale und Weltpassagen\n\n## Ebenen der Konstruktwelt\n\nDie Konstruktwelt besteht aus mehreren wiederherstellbaren Ebenen. Jede Ebene benötigt:\n\n- ein eigenes Landschaftsthema;\n- einen regionalen Konflikt;\n- mehrere Monsterquellen oder Höhlen;\n- eine Rekonstruktionsfolge;\n- Bewohner und mindestens einen erinnerungsbasierten Handlungsbogen;\n- einen Abschluss, der den nächsten Bereich öffnet.\n\n## Portale\n\nPortale verbinden Räume, die innerhalb Heras nicht normal benachbart sein müssen. Sie können kontrolliert, beschädigt, verborgen oder an Seelenenergie gebunden sein.\n\n## Weltpassagen\n\nWeltpassagen sind größere Übergangsräume zwischen Machtbereichen. Im Endgame erfüllen sie eine andere Funktion als normale Ebenen:\n\n- keine umfassende Wiederherstellung;\n- hohe Gegnerdichte;\n- Prüfung bereits erworbener Fähigkeiten;\n- sichtbare Annäherung an Tators Machtzentrum;\n- zunehmend instabile oder fremdartige Raumregeln.\n\n## Drei Endgame-Passagen\n\nDie genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht kanonische Steigerung wäre:\n\n1. Passage der gebundenen Seelen;\n2. Passage der zerfallenden Formen;\n3. Passage von Tators unmittelbarer Herrschaft.\n\nDie Namen sind Platzhalter und dienen nur zur Funktionsbeschreibung.\n"
+      "content": "---\ntitle: Ebenen, Portale und Weltpassagen\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Ebenen, Portale und Weltpassagen\n\n## Ebenen der Konstruktwelt\n\nDie Konstruktwelt besteht aus vier wiederherstellbaren Makroabschnitten:\nGrasland, Wald, Hochland und Hauptstadt. Jeder Abschnitt benötigt:\n\n- ein eigenes Landschaftsthema;\n- einen regionalen Konflikt;\n- mehrere Monsterquellen oder Höhlen;\n- eine Rekonstruktionsfolge;\n- Bewohner und mindestens einen erinnerungsbasierten Handlungsbogen;\n- einen Abschluss, der den nächsten Bereich öffnet.\n\n## Portale\n\nPortale verbinden Räume, die innerhalb Heras nicht normal benachbart sein müssen. Sie können kontrolliert, beschädigt, verborgen oder an Seelenenergie gebunden sein.\n\n## Weltpassagen\n\nWeltpassagen sind größere Übergangsräume zwischen Machtbereichen. Im Endgame erfüllen sie eine andere Funktion als normale Ebenen:\n\n- keine umfassende Wiederherstellung;\n- hohe Gegnerdichte;\n- Prüfung bereits erworbener Fähigkeiten;\n- sichtbare Annäherung an Tators Machtzentrum;\n- zunehmend instabile oder fremdartige Raumregeln.\n\n## Drei Endgame-Passagen\n\nDie drei Passagen bilden die Makroabschnitte 5 bis 7 und liegen in Tatok. Die\ngenaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht\nkanonische Steigerung wäre:\n\n1. Passage der gebundenen Seelen;\n2. Passage der zerfallenden Formen;\n3. Passage von Tators unmittelbarer Herrschaft.\n\nDie Namen sind Platzhalter und dienen nur zur Funktionsbeschreibung.\n"
     },
     {
       "rel_path": "40-world-systems/erinnerungs-und-faehigkeitssystem.md",
       "name": "erinnerungs-und-faehigkeitssystem.md",
       "parent": "40-world-systems",
-      "size_bytes": 2119,
-      "size_human": "2.07 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2880,
+      "size_human": "2.81 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Erinnerungs- und Fähigkeitssystem",
-      "headings": 6,
-      "lines": 46,
-      "words": 237,
-      "chars": 2086,
+      "headings": 7,
+      "lines": 60,
+      "words": 326,
+      "chars": 2837,
       "snippet": "title: Erinnerungs- und Fähigkeitssystem status: draft-design updated: 2026-08-30",
       "toc": [
         [
@@ -1552,6 +1576,10 @@
         ],
         [
           2,
+          "Grasland: Lichterhaus und Dorfwissen"
+        ],
+        [
+          2,
           "Gestaltungsregel"
         ],
         [
@@ -1559,7 +1587,7 @@
           "Spoilerfunktion"
         ]
       ],
-      "content": "---\ntitle: Erinnerungs- und Fähigkeitssystem\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Erinnerungs- und Fähigkeitssystem\n\n## Grundsatz\n\nErinnerungen sind gleichzeitig Lore, Charakterentwicklung und Fortschrittsressource. Eine Fähigkeit verbessert sich nicht nur, weil ein abstrakter Wert steigt, sondern weil der Held eine Technik, Bindung oder Wahrheit wieder versteht.\n\n## Erinnerungstypen\n\n| Typ | Beispielhafte Funktion |\n|---|---|\n| Persönliche Erinnerung | Enthüllt Teile des früheren Lebens des Helden und kann eine individuelle Technik zurückbringen. |\n| Ortsgedächtnis | Zeigt, wie ein Gebiet vor seiner Zerstörung oder Konstruktion erlebt wurde. |\n| Kulturelle Erinnerung | Stellt Wissen, Handwerk, Sprache oder Rituale einer Gemeinschaft wieder her. |\n| Kampferinnerung | Schaltet Angriff, Blockreaktion, Magievariation oder passive Fähigkeit frei. |\n| Systemerinnerung | Enthüllt Fehler der Konstruktwelt und unterstützt den Talisman beim Entschlüsseln. |\n\n## Fortschrittslogik\n\n1. Ein Gebiet wird räumlich befreit.\n2. Bewohner oder Seelen kehren zurück.\n3. Beziehungen und Ereignisse erzeugen einen Erinnerungsknoten.\n4. Der Held interagiert mit der Erinnerung, statt sie nur einzusammeln.\n5. Eine neue Erkenntnis verändert Dialog, Weltzustand oder Fähigkeit.\n\n## Gestaltungsregel\n\nEine wichtige Fähigkeit sollte möglichst eine erzählerische Herkunft besitzen.\nBeispielsweise kann eine bessere Blocktechnik aus der Erinnerung eines\nfrüheren Beschützers entstehen, während eine Magieform aus der\nwiederhergestellten Verbindung zu einem Strom der Weltenbewahrer hervorgeht.\n\n## Spoilerfunktion\n\nFrühe Erinnerungen stärken die angenommene Weltgeschichte. Mittlere\nErinnerungen und Aufzeichnungen von Gelehrten bewahren widersprüchliche\nDeutungen. Späte Erinnerungen verbinden Era, den Pakt und die Konstruktwelt zu\neinem vollständigen Bild. Die Überlieferungswidersprüche bereiten die Wahrheit\nvor, ohne festgelegte Ereignisse in beliebige Alternativen aufzulösen.\n"
+      "content": "---\ntitle: Erinnerungs- und Fähigkeitssystem\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Erinnerungs- und Fähigkeitssystem\n\n## Grundsatz\n\nErinnerungen sind gleichzeitig Lore, Charakterentwicklung und Fortschrittsressource. Eine Fähigkeit verbessert sich nicht nur, weil ein abstrakter Wert steigt, sondern weil der Held eine Technik, Bindung oder Wahrheit wieder versteht.\n\n## Erinnerungstypen\n\n| Typ | Beispielhafte Funktion |\n|---|---|\n| Persönliche Erinnerung | Enthüllt Teile des früheren Lebens des Helden und kann eine individuelle Technik zurückbringen. |\n| Ortsgedächtnis | Zeigt, wie ein Gebiet vor seiner Zerstörung oder Konstruktion erlebt wurde. |\n| Kulturelle Erinnerung | Stellt Wissen, Handwerk, Sprache oder Rituale einer Gemeinschaft wieder her. |\n| Kampferinnerung | Schaltet Angriff, Blockreaktion, Magievariation oder passive Fähigkeit frei. |\n| Systemerinnerung | Enthüllt Fehler der Konstruktwelt und unterstützt den Talisman beim Entschlüsseln. |\n\n## Fortschrittslogik\n\n1. Ein Gebiet wird räumlich befreit.\n2. Bewohner oder Seelen kehren zurück.\n3. Beziehungen und Ereignisse erzeugen einen Erinnerungsknoten.\n4. Der Held interagiert mit der Erinnerung, statt sie nur einzusammeln.\n5. Eine neue Erkenntnis verändert Dialog, Weltzustand oder Fähigkeit.\n\n## Grasland: Lichterhaus und Dorfwissen\n\nIm Grasland bildet ein besonderes Haus den Erinnerungsdungeon. Leuchtende\nLampen öffnen voneinander getrennte kurze Abschnitte mit Rätseln, Gegnern oder\nbeidem. Jede abgeschlossene Einheit befreit eine Seele beziehungsweise\nErinnerung. Ungefähr zwanzig Einheiten sind ein veränderbarer Arbeitswert, keine\nfreigegebene Endzahl.\n\nNach dem regionalen Boss bemerkt der Held den Talisman erstmals bewusst und\nerhält einen kleinen Ausschnitt seiner eigenen Vergangenheit. Anschließend\nentsteht Fähigkeitsfortschritt auch durch Gespräche und Gefallen im Dorf. Das\nerste Bauerndorf vermittelt vor allem Landwirtschaft, einfachen Bau und die\nVorbereitung eines Übergangs; fortgeschrittene Kampftaktiken folgen später.\n\n## Gestaltungsregel\n\nEine wichtige Fähigkeit sollte möglichst eine erzählerische Herkunft besitzen.\nBeispielsweise kann eine bessere Blocktechnik aus der Erinnerung eines\nfrüheren Beschützers entstehen, während eine Magieform aus der\nwiederhergestellten Verbindung zu einem Strom der Weltenbewahrer hervorgeht.\n\n## Spoilerfunktion\n\nFrühe Erinnerungen stärken die angenommene Weltgeschichte. Mittlere\nErinnerungen und Aufzeichnungen von Gelehrten bewahren widersprüchliche\nDeutungen. Späte Erinnerungen verbinden Era, den Pakt und die Konstruktwelt zu\neinem vollständigen Bild. Die Überlieferungswidersprüche bereiten die Wahrheit\nvor, ohne festgelegte Ereignisse in beliebige Alternativen aufzulösen.\n"
     },
     {
       "rel_path": "40-world-systems/index.md",
@@ -1567,7 +1595,7 @@
       "parent": "40-world-systems",
       "size_bytes": 442,
       "size_human": "442 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "40 – Weltsysteme",
       "headings": 1,
       "lines": 10,
@@ -1586,14 +1614,14 @@
       "rel_path": "40-world-systems/rekonstruktionssystem.md",
       "name": "rekonstruktionssystem.md",
       "parent": "40-world-systems",
-      "size_bytes": 1697,
-      "size_human": "1.66 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2199,
+      "size_human": "2.15 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Rekonstruktionssystem",
-      "headings": 6,
-      "lines": 49,
-      "words": 188,
-      "chars": 1669,
+      "headings": 7,
+      "lines": 59,
+      "words": 250,
+      "chars": 2161,
       "snippet": "title: Rekonstruktionssystem status: draft-design updated: 2026-08-30",
       "toc": [
         [
@@ -1618,10 +1646,14 @@
         ],
         [
           2,
+          "Grasland als Referenz"
+        ],
+        [
+          2,
           "Technische Konsequenz"
         ]
       ],
-      "content": "---\ntitle: Rekonstruktionssystem\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Rekonstruktionssystem\n\n## Zweck\n\nDas Rekonstruktionssystem übersetzt das Befreien von Monsterhöhlen in sichtbare, spielbare Weltveränderung. Es ist die wichtigste Verbindung zwischen Kampf und Weltaufbau.\n\n## Rekonstruktionseinheiten\n\nJede Region kann in wiederherstellbare Einheiten gegliedert werden:\n\n- Geländeabschnitt;\n- Naturknoten;\n- Bewohner- oder Seelengruppe;\n- Gebäude oder Stadtfunktion;\n- Erinnerungsknoten;\n- Fähigkeit oder Fähigkeitsverbesserung.\n\n## Auslöser\n\nEine Rekonstruktion kann ausgelöst werden durch:\n\n- das Besiegen eines Höhlenkerns;\n- das Schließen eines Siegels;\n- das Reinigen mehrerer miteinander verbundener Monsterquellen;\n- das Lösen einer Erinnerungsaufgabe;\n- den Schutz einer zurückgekehrten Seele;\n- einen regionalen Bosskampf.\n\n## Darstellung\n\nDie Veränderung soll nach Möglichkeit direkt im Spielraum sichtbar werden. Geeignete Formen sind:\n\n- Landschaft baut sich vor den Augen des Spielers auf;\n- Farbe, Licht und Geräusche kehren zurück;\n- neue Wege wachsen oder werden freigelegt;\n- Bewohner erscheinen nicht abstrakt im Menü, sondern beziehen konkrete Orte;\n- eine Stadt entwickelt sich in mehreren erkennbaren Stufen.\n\n## Technische Konsequenz\n\nDie Welt benötigt persistente Zustände pro Rekonstruktionseinheit. Quests, Kollisionen, Gegner, Navigation, Dialoge und Musik müssen auf diese Zustände reagieren können. Das System sollte datengetrieben sein, damit Regionen nicht ausschließlich über individuelle Skripte gebaut werden müssen.\n"
+      "content": "---\ntitle: Rekonstruktionssystem\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Rekonstruktionssystem\n\n## Zweck\n\nDas Rekonstruktionssystem übersetzt das Befreien von Monsterhöhlen in sichtbare, spielbare Weltveränderung. Es ist die wichtigste Verbindung zwischen Kampf und Weltaufbau.\n\n## Rekonstruktionseinheiten\n\nJede Region kann in wiederherstellbare Einheiten gegliedert werden:\n\n- Geländeabschnitt;\n- Naturknoten;\n- Bewohner- oder Seelengruppe;\n- Gebäude oder Stadtfunktion;\n- Erinnerungsknoten;\n- Fähigkeit oder Fähigkeitsverbesserung.\n\n## Auslöser\n\nEine Rekonstruktion kann ausgelöst werden durch:\n\n- das Besiegen eines Höhlenkerns;\n- das Schließen eines Siegels;\n- das Reinigen mehrerer miteinander verbundener Monsterquellen;\n- das Lösen einer Erinnerungsaufgabe;\n- den Schutz einer zurückgekehrten Seele;\n- einen regionalen Bosskampf.\n\n## Darstellung\n\nDie Veränderung soll nach Möglichkeit direkt im Spielraum sichtbar werden. Geeignete Formen sind:\n\n- Landschaft baut sich vor den Augen des Spielers auf;\n- Farbe, Licht und Geräusche kehren zurück;\n- neue Wege wachsen oder werden freigelegt;\n- Bewohner erscheinen nicht abstrakt im Menü, sondern beziehen konkrete Orte;\n- eine Stadt entwickelt sich in mehreren erkennbaren Stufen.\n\n## Grasland als Referenz\n\nIm Grasland zeigt das System mehrere Granularitäten: Der Turmboss lässt ein\ngesamtes Gebiet auf Karte und in der Welt aufblühen. Im riesigen Sägewerk löst\ndagegen jedes besiegte Monsternest einen einzelnen Gebäudefortschritt aus.\nSpäter befreit der Wasserwerkdungeon Menschenseelen, während das Lichterhaus\nErinnerungen in kurzen Lampenabschnitten zurückgibt. Diese Folge ist der\nReferenzablauf, aber keine Verpflichtung, alle späteren Regionen identisch zu\nbauen.\n\n## Technische Konsequenz\n\nDie Welt benötigt persistente Zustände pro Rekonstruktionseinheit. Quests, Kollisionen, Gegner, Navigation, Dialoge und Musik müssen auf diese Zustände reagieren können. Das System sollte datengetrieben sein, damit Regionen nicht ausschließlich über individuelle Skripte gebaut werden müssen.\n"
     },
     {
       "rel_path": "40-world-systems/seelenoekonomie.md",
@@ -1629,7 +1661,7 @@
       "parent": "40-world-systems",
       "size_bytes": 3746,
       "size_human": "3.66 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Seelenökonomie",
       "headings": 7,
       "lines": 91,
@@ -1674,7 +1706,7 @@
       "parent": "40-world-systems",
       "size_bytes": 2634,
       "size_human": "2.57 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Sol, Yol, Zeit und Jahreszeiten als Weltsystem",
       "headings": 5,
       "lines": 57,
@@ -1711,7 +1743,7 @@
       "parent": "50-content",
       "size_bytes": 424,
       "size_human": "424 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "50 content",
       "headings": 2,
       "lines": 13,
@@ -1734,14 +1766,14 @@
       "rel_path": "50-content/boss-und-endgame-abfolge.md",
       "name": "boss-und-endgame-abfolge.md",
       "parent": "50-content",
-      "size_bytes": 1758,
-      "size_human": "1.72 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 1961,
+      "size_human": "1.92 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Boss- und Endgame-Abfolge",
       "headings": 5,
-      "lines": 48,
-      "words": 226,
-      "chars": 1728,
+      "lines": 52,
+      "words": 254,
+      "chars": 1931,
       "snippet": "title: Boss- und Endgame-Abfolge status: draft-outline spoiler_level: critical updated: 2026-08-30",
       "toc": [
         [
@@ -1765,7 +1797,7 @@
           "Erweiterungsbosse"
         ]
       ],
-      "content": "---\ntitle: Boss- und Endgame-Abfolge\nstatus: draft-outline\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Boss- und Endgame-Abfolge\n\n## Regionale Bosse\n\nDie normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils einen Teil der Rekonstruktionsleiter verkörpern. Namen und Zahl sind noch offen.\n\n## Endgame-Abfolge\n\n1. Vollständige oder nahezu vollständige Rekonstruktion.\n2. Enthüllung der Konstruktwelt, des Paktes und von Tators Plan.\n3. Zweite Reise durch bereits befreite Ebenen.\n4. Aufnahme der nutzbaren Seelenmacht durch den Talisman; Identität und Seele\n   der Befreiten bleiben bestehen.\n5. Durchbruch aus dem inneren Konstrukt.\n6. Drei Weltpassagen mit steigender Gegnerdichte.\n7. Kampf gegen Tator.\n8. Offenes Portal zum eigenständigen weiteren Gegenspieler Semm.\n9. Kampf gegen Semm.\n10. Rückführung der fortbestehenden Seelen nach Era und in den natürlichen\n    Seelenkreislauf; dort werden sie wiedergeboren und tragen zum Fortbestand\n    Eras bei.\n11. Abschlusssequenz des Basisspiels.\n\n## Bossregel für Ether-Entitäten\n\nDer Sieg muss deutlich sein, ohne einen endgültigen Tod zu behaupten. Geeignete Folgen sind:\n\n- Manifestation zerbricht;\n- Machtkern wird versiegelt;\n- Entität verliert Kontrolle über die aktuelle Sphäre;\n- Verbindung zur Konstruktwelt reißt ab;\n- Entität wird aus ihrer Form verdrängt.\n\n## Erweiterungsbosse\n\nDie übrigen großen Entitäten bilden den natürlichen Bossrahmen der Erweiterung.\nIhre Reihenfolge und die Frage, ob alle zehn direkt bekämpft werden, sind noch\noffen. Tator und Semm können als geschwächte, veränderte oder indirekt wirksame\nMächte fortbestehen.\n"
+      "content": "---\ntitle: Boss- und Endgame-Abfolge\nstatus: draft-outline\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Boss- und Endgame-Abfolge\n\n## Regionale Bosse\n\nDer erste Turm endet mit einem Turmboss beziehungsweise Miniboss. Das\nLichterhaus endet nach der Befreiung der letzten Seele mit dem regionalen\nEndboss des Graslands. Bosse und Wächter von Wald, Hochland und Hauptstadt\nbleiben offen.\n\n## Endgame-Abfolge\n\n1. Vollständige oder nahezu vollständige Rekonstruktion.\n2. Enthüllung der Konstruktwelt, des Paktes und von Tators Plan.\n3. Zweite Reise durch bereits befreite Ebenen.\n4. Aufnahme der nutzbaren Seelenmacht durch den Talisman; Identität und Seele\n   der Befreiten bleiben bestehen.\n5. Durchbruch aus dem inneren Konstrukt.\n6. Drei aufeinanderfolgende Makroabschnitte in Tatok mit steigender\n   Gegnerdichte und ohne neue große Wiederherstellung.\n7. Kampf gegen Tator am Ende des dritten Tatok-Abschnitts.\n8. Offenes Portal zum eigenständigen Schlussabschnitt in Semms Bereich.\n9. Letzter Bosskampf gegen Semm.\n10. Rückführung der fortbestehenden Seelen nach Era und in den natürlichen\n    Seelenkreislauf; dort werden sie wiedergeboren und tragen zum Fortbestand\n    Eras bei.\n11. Abschlusssequenz des Basisspiels.\n\n## Bossregel für Ether-Entitäten\n\nDer Sieg muss deutlich sein, ohne einen endgültigen Tod zu behaupten. Geeignete Folgen sind:\n\n- Manifestation zerbricht;\n- Machtkern wird versiegelt;\n- Entität verliert Kontrolle über die aktuelle Sphäre;\n- Verbindung zur Konstruktwelt reißt ab;\n- Entität wird aus ihrer Form verdrängt.\n\n## Erweiterungsbosse\n\nDie übrigen großen Entitäten bilden den natürlichen Bossrahmen der Erweiterung.\nIhre Reihenfolge und die Frage, ob alle zehn direkt bekämpft werden, sind noch\noffen. Tator und Semm können als geschwächte, veränderte oder indirekt wirksame\nMächte fortbestehen.\n"
     },
     {
       "rel_path": "50-content/index.md",
@@ -1773,7 +1805,7 @@
       "parent": "50-content",
       "size_bytes": 312,
       "size_human": "312 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "50 – Content",
       "headings": 1,
       "lines": 8,
@@ -1792,14 +1824,14 @@
       "rel_path": "50-content/monsterhoehlen-und-versiegelungen.md",
       "name": "monsterhoehlen-und-versiegelungen.md",
       "parent": "50-content",
-      "size_bytes": 1401,
-      "size_human": "1.37 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 2027,
+      "size_human": "1.98 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Monsterhöhlen und Versiegelungen",
-      "headings": 5,
-      "lines": 46,
-      "words": 162,
-      "chars": 1379,
+      "headings": 6,
+      "lines": 58,
+      "words": 231,
+      "chars": 1996,
       "snippet": "title: Monsterhöhlen und Versiegelungen status: content-outline updated: 2026-08-30",
       "toc": [
         [
@@ -1821,22 +1853,26 @@
         [
           2,
           "Mindestinhalt pro Quelle"
+        ],
+        [
+          2,
+          "Festgelegte Quellen im Grasland"
         ]
       ],
-      "content": "---\ntitle: Monsterhöhlen und Versiegelungen\nstatus: content-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Monsterhöhlen und Versiegelungen\n\n## Funktion\n\nMonsterhöhlen sind Verdichtungspunkte der Konstruktwelt. Sie halten Landschaft, Bewohner, Städte oder Erinnerungen gebunden und liefern dem Helden klare lokale Ziele.\n\nDer Begriff „Höhle“ ist funktional zu verstehen. Eine Monsterquelle kann auch sein:\n\n- ein unterirdischer Bau;\n- eine Ruine;\n- ein Turm;\n- ein Riss im Raum;\n- ein verseuchter Waldkern;\n- eine künstliche Systemkammer;\n- ein wanderndes Monstergebilde.\n\n## Abschlussformen\n\nJe nach Region kann der Held die Quelle:\n\n- reinigen;\n- versiegeln;\n- schließen;\n- zerstören;\n- von einer gebundenen Seele trennen;\n- gegen einen neuen Zweck umprogrammieren.\n\n## Verbindung zur Wahrheit\n\nFrühe Monsterhöhlen wirken wie natürliche Brutstätten des Bösen. Spätere Quellen sollen erkennen lassen, dass sie absichtlich platziert, wiederverwendet oder von einem System verwaltet werden. Dadurch bereitet der Content die Enthüllung spielerisch vor.\n\n## Mindestinhalt pro Quelle\n\n- eindeutiges visuelles Motiv;\n- mindestens ein eigener Gegnermix;\n- ein lokales Rätsel, Hindernis oder Navigationsmerkmal;\n- sichtbare Verbindung zur gebundenen Rekonstruktion;\n- Abschlussreaktion in der Welt.\n"
+      "content": "---\ntitle: Monsterhöhlen und Versiegelungen\nstatus: content-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Monsterhöhlen und Versiegelungen\n\n## Funktion\n\nMonsterhöhlen sind Verdichtungspunkte der Konstruktwelt. Sie halten Landschaft, Bewohner, Städte oder Erinnerungen gebunden und liefern dem Helden klare lokale Ziele.\n\nDer Begriff „Höhle“ ist funktional zu verstehen. Eine Monsterquelle kann auch sein:\n\n- ein unterirdischer Bau;\n- eine Ruine;\n- ein Turm;\n- ein Riss im Raum;\n- ein verseuchter Waldkern;\n- eine künstliche Systemkammer;\n- ein wanderndes Monstergebilde.\n\n## Abschlussformen\n\nJe nach Region kann der Held die Quelle:\n\n- reinigen;\n- versiegeln;\n- schließen;\n- zerstören;\n- von einer gebundenen Seele trennen;\n- gegen einen neuen Zweck umprogrammieren.\n\n## Verbindung zur Wahrheit\n\nFrühe Monsterhöhlen wirken wie natürliche Brutstätten des Bösen. Spätere Quellen sollen erkennen lassen, dass sie absichtlich platziert, wiederverwendet oder von einem System verwaltet werden. Dadurch bereitet der Content die Enthüllung spielerisch vor.\n\n## Mindestinhalt pro Quelle\n\n- eindeutiges visuelles Motiv;\n- mindestens ein eigener Gegnermix;\n- ein lokales Rätsel, Hindernis oder Navigationsmerkmal;\n- sichtbare Verbindung zur gebundenen Rekonstruktion;\n- Abschlussreaktion in der Welt.\n\n## Festgelegte Quellen im Grasland\n\n- **Turm:** erster Dungeon mit leichten Gegnern und Turmboss beziehungsweise\n  Miniboss; sein Abschluss macht das Grasland sichtbar.\n- **Industrielles Sägewerk:** beginnt im Wald; einzelne Monsternester stellen\n  schrittweise Gebäude wieder her.\n- **Wasserwerk:** folgt einem monumentalen Fluss und Wasserfall über Treppen,\n  Wasserräder, Holzmühlen und mechanische Holzhämmer; befreit Menschenseelen.\n- **Lichterhaus:** kein durchgehender Abstieg, sondern kurze über Lampen\n  erreichbare Rätsel- und Kampfabschnitte; gibt Erinnerungen zurück und endet\n  mit dem regionalen Boss.\n"
     },
     {
       "rel_path": "50-content/welt-und-ebenenstruktur.md",
       "name": "welt-und-ebenenstruktur.md",
       "parent": "50-content",
-      "size_bytes": 1200,
-      "size_human": "1.17 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 1586,
+      "size_human": "1.55 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Welt- und Ebenenstruktur",
       "headings": 4,
-      "lines": 35,
-      "words": 147,
-      "chars": 1177,
+      "lines": 44,
+      "words": 199,
+      "chars": 1558,
       "snippet": "title: Welt- und Ebenenstruktur status: content-outline updated: 2026-08-30",
       "toc": [
         [
@@ -1856,7 +1892,7 @@
           "Erweiterung"
         ]
       ],
-      "content": "---\ntitle: Welt- und Ebenenstruktur\nstatus: content-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Welt- und Ebenenstruktur\n\n## Basisspiel\n\nDas Basisspiel benötigt mehrere Ebenen innerhalb der Konstruktwelt. Ihre konkrete Zahl ist offen. Inhaltlich sollten sie gemeinsam die vollständige Wiederherstellungsleiter abdecken:\n\n- frühe Ebene mit Gelände und Natur;\n- Ebene mit ersten Seelen und Bewohnern;\n- Ebene mit wachsender Siedlung oder Stadt;\n- Ebene mit starken Erinnerungs- und Geschichtssystemen;\n- späte Ebene mit sichtbaren Fehlern der Konstruktion;\n- Rückkehrfassungen der Ebenen für das Seelenenergie-Endgame.\n\n## Äußeres Endgame\n\nNach der Konstruktwelt folgen:\n\n1. Weltpassage 1;\n2. Weltpassage 2;\n3. Weltpassage 3;\n4. Tators Machtzentrum;\n5. Portal zu Semm;\n6. Semms Bereich.\n\n## Erweiterung\n\nDie Erweiterung kann die auf der Entitäten- und Sphärenübersicht gezeigten Mächte als eigenständige Großräume nutzen. Dabei muss nicht jede Entität eine klassische Welt besitzen; einige können Schwärme, bewegliche Räume, lebende Sphären oder diffuse Wirklichkeitsfelder kontrollieren.\n"
+      "content": "---\ntitle: Welt- und Ebenenstruktur\nstatus: content-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Welt- und Ebenenstruktur\n\n## Basisspiel\n\nDie Konstruktwelt besitzt vier Wiederherstellungsabschnitte in fester\nReihenfolge:\n\n1. Grasland;\n2. Wald;\n3. Eis und Gebirge beziehungsweise Hochland;\n4. Hauptstadt.\n\nJeder Abschnitt verbindet Landschaft, Gebäude, Bewohner, Erinnerungen und\nFähigkeiten in einer eigenen Variation. Das Grasland dient mit Turm, Sägewerk,\nWasserwerk, Lichterhaus und Bauerndorf als detaillierter Referenzablauf. Die\nHauptstadt ähnelt dem früheren Machtbereich des Helden und führt zur\nentscheidenden Enthüllung. Für das Seelenenergie-Endgame werden die bereits\nbefreiten Gebiete erneut besucht, ohne daraus einen zusätzlichen\nMakroabschnitt zu machen.\n\n## Äußeres Endgame\n\nNach den vier Wiederherstellungsabschnitten folgen vier weitere\nMakroabschnitte:\n\n5. Tatok-Passage I;\n6. Tatok-Passage II;\n7. Tatok-Passage III mit dem Weg zu Tator und dem Kampf gegen ihn;\n8. Semms Bereich mit dem letzten Bosskampf.\n\nIn den Tatok-Passagen gibt es keine neue große Wiederherstellung. Sie prüfen\ndie Beherrschung der zuvor erworbenen Systeme und Fähigkeiten.\n\n## Erweiterung\n\nDie Erweiterung kann die auf der Entitäten- und Sphärenübersicht gezeigten Mächte als eigenständige Großräume nutzen. Dabei muss nicht jede Entität eine klassische Welt besitzen; einige können Schwärme, bewegliche Räume, lebende Sphären oder diffuse Wirklichkeitsfelder kontrollieren.\n"
     },
     {
       "rel_path": "60-production/60-production.md",
@@ -1864,7 +1900,7 @@
       "parent": "60-production",
       "size_bytes": 433,
       "size_human": "433 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "60 production",
       "headings": 2,
       "lines": 13,
@@ -1889,7 +1925,7 @@
       "parent": "60-production",
       "size_bytes": 324,
       "size_human": "324 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "60 – Produktion",
       "headings": 1,
       "lines": 8,
@@ -1908,14 +1944,14 @@
       "rel_path": "60-production/naechste-konzeptschritte.md",
       "name": "naechste-konzeptschritte.md",
       "parent": "60-production",
-      "size_bytes": 1622,
-      "size_human": "1.58 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 1774,
+      "size_human": "1.73 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Nächste Konzeptschritte",
       "headings": 5,
-      "lines": 45,
-      "words": 186,
-      "chars": 1592,
+      "lines": 47,
+      "words": 210,
+      "chars": 1746,
       "snippet": "title: Nächste Konzeptschritte status: planning updated: 2026-08-30",
       "toc": [
         [
@@ -1932,27 +1968,27 @@
         ],
         [
           2,
-          "Priorität 3 – Regionen und Kapitel"
+          "Priorität 3 – Abschnitte 2 bis 8"
         ],
         [
           2,
           "Priorität 4 – Endgame-Inszenierung und Mechanik"
         ]
       ],
-      "content": "---\ntitle: Nächste Konzeptschritte\nstatus: planning\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Nächste Konzeptschritte\n\n## Priorität 1 – Verbleibende Figurenfragen\n\n- Semms konkrete Rolle über den bestehenden Endgame-Auftritt hinaus;\n- Name und Kultur des früheren Herrschers sowie Gestalt seines Reiches;\n- Ursprung seines Untreueverdachts;\n- verdrängte oder manipulierte Erinnerungen;\n- persönlicher innerer Konflikt während der Wiederherstellung.\n\n## Priorität 2 – Vertical Slice festlegen\n\nEin erster Slice sollte enthalten:\n\n- Heldenraum;\n- eine kleine beschädigte Region;\n- eine Monsterhöhle;\n- Angriff, Ausweichen, Block und Magie;\n- eine sichtbare Landschaftsrekonstruktion;\n- Rückkehr einer Seele oder Figur;\n- eine Erinnerung, die eine kleine Fähigkeitsverbesserung auslöst;\n- einen dezenten ersten Widerspruch in der Welt.\n\n## Priorität 3 – Regionen und Kapitel\n\n- Zahl der Konstruktwelt-Ebenen bestimmen.\n- jeder Ebene ein Landschafts-, Kultur- und Erinnerungsthema geben.\n- Wiederherstellungsstufen auf Kapitel verteilen.\n- regionale Bosse und zentrale Figuren definieren.\n\n## Priorität 4 – Endgame-Inszenierung und Mechanik\n\nDie metaphysische Wirkung ist freigegeben: Der Talisman nimmt Seelenmacht auf,\ndie Seelen bleiben bestehen und kehren später in Eras Seelenkreislauf zurück.\nDort werden sie wiedergeboren und tragen zum Fortbestand Eras bei.\nAuszuarbeiten sind die spielerische Ausgestaltung der zweiten Reise, die\nReaktionen einzelner Bewohner und die sichtbare Rückführung nach Era.\n"
+      "content": "---\ntitle: Nächste Konzeptschritte\nstatus: planning\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Nächste Konzeptschritte\n\n## Priorität 1 – Verbleibende Figurenfragen\n\n- Semms konkrete Rolle über den bestehenden Endgame-Auftritt hinaus;\n- Name und Kultur des früheren Herrschers sowie Gestalt seines Reiches;\n- Ursprung seines Untreueverdachts;\n- verdrängte oder manipulierte Erinnerungen;\n- persönlicher innerer Konflikt während der Wiederherstellung.\n\n## Priorität 2 – Vertical Slice festlegen\n\nEin erster Slice sollte enthalten:\n\n- Heldenraum;\n- den kleinen fliegenden Hut-Ratgeber;\n- verlassenes Haus, Nebel und Leuchtpunkte;\n- einen begrenzten Ausschnitt des Turms;\n- Angriff, Ausweichen, Block und Magie;\n- eine sichtbare Landschaftsrekonstruktion;\n- Rückkehr einer Seele oder Figur;\n- eine Erinnerung, die eine kleine Fähigkeitsverbesserung auslöst;\n- einen dezenten ersten Widerspruch in der Welt.\n\n## Priorität 3 – Abschnitte 2 bis 8\n\n- Wald, Hochland und Hauptstadt jeweils ein Landschafts-, Kultur- und\n  Erinnerungsthema geben.\n- regionale Bosse und zentrale Figuren dieser drei Abschnitte definieren.\n- die drei Tatok-Passagen als Anwendung des zuvor Gelernten unterscheiden.\n- Semms Landen und den letzten Bosskampf ausarbeiten.\n\n## Priorität 4 – Endgame-Inszenierung und Mechanik\n\nDie metaphysische Wirkung ist freigegeben: Der Talisman nimmt Seelenmacht auf,\ndie Seelen bleiben bestehen und kehren später in Eras Seelenkreislauf zurück.\nDort werden sie wiedergeboren und tragen zum Fortbestand Eras bei.\nAuszuarbeiten sind die spielerische Ausgestaltung der zweiten Reise, die\nReaktionen einzelner Bewohner und die sichtbare Rückführung nach Era.\n"
     },
     {
       "rel_path": "60-production/narrative-umsetzungsregeln.md",
       "name": "narrative-umsetzungsregeln.md",
       "parent": "60-production",
-      "size_bytes": 3015,
-      "size_human": "2.94 KB",
-      "mtime": "2026-08-30T15:42:47",
+      "size_bytes": 3311,
+      "size_human": "3.23 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Narrative Umsetzungsregeln",
-      "headings": 9,
-      "lines": 62,
-      "words": 366,
-      "chars": 2955,
+      "headings": 10,
+      "lines": 69,
+      "words": 409,
+      "chars": 3249,
       "snippet": "title: Narrative Umsetzungsregeln status: draft-guideline updated: 2026-08-30",
       "toc": [
         [
@@ -1977,35 +2013,39 @@
         ],
         [
           2,
-          "5. Der Talisman ist kein allwissender Erzähler"
+          "5. Ratgeber und Talisman bleiben getrennt"
         ],
         [
           2,
-          "6. Gelehrte tragen überlieferte Mehrdeutigkeiten"
+          "6. Der Talisman ist kein allwissender Erzähler"
         ],
         [
           2,
-          "7. Das Endgame braucht neue Inhalte"
+          "7. Gelehrte tragen überlieferte Mehrdeutigkeiten"
         ],
         [
           2,
-          "8. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt"
+          "8. Das Endgame braucht neue Inhalte"
+        ],
+        [
+          2,
+          "9. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt"
         ]
       ],
-      "content": "---\ntitle: Narrative Umsetzungsregeln\nstatus: draft-guideline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Narrative Umsetzungsregeln\n\n## 1. Die erste Geschichte muss glaubwürdig sein\n\nDie Behauptung, der Held rette seine wirkliche Welt, darf nicht von Beginn an offensichtlich falsch wirken. Frühe Figuren, Quests und Rekonstruktionen müssen emotional funktionieren.\n\n## 2. Die Wendung darf Erfolge nicht entwerten\n\nDie Welt ist konstruiert, aber die Entscheidungen, Bindungen und Entwicklungen des Helden bleiben bedeutsam. Bewohner dürfen nicht nachträglich zu bedeutungslosen Dekorationen erklärt werden.\n\n## 3. Jede große Enthüllung verändert Gameplay\n\n- Wahrheit über Erinnerungen → neue Fähigkeit oder Zugang.\n- Wahrheit über die Konstruktwelt → neue Systemräume.\n- Wahrheit über Seele und Seelenmacht → zweite Reise und Rückkehr-Endgame.\n- Wahrheit über Tatok → Weltpassagen.\n\n## 4. Begriffe werden gestaffelt eingeführt\n\n`Era`, `Hera`, `Tatok`, `Weltenbewahrer`, `Ether-Entität` und die Namen\nTator/Semm sollten nicht gleichzeitig in einem frühen Dialog erklärt werden.\nDer Spieler lernt zunächst konkrete Erfahrungen und erst später die kosmische\nEinordnung.\n\n## 5. Der Talisman ist kein allwissender Erzähler\n\nEr unterstützt, entschlüsselt und warnt, besitzt aber Grenzen. Informationen sollen weiterhin über Umwelt, Erinnerungen, Figuren und Spielerbeobachtung entstehen.\n\n## 6. Gelehrte tragen überlieferte Mehrdeutigkeiten\n\nKultur- oder quellenabhängige Aussagen werden Gelehrten und ihren Schriften\nzugeordnet. Wenn mehrere Gelehrtenüberlieferungen einander widersprechen, darf\nihr Nebeneinander selbst zum Kanon gehören. Eine allwissende Erzählerstimme\nmuss sie nicht künstlich vereinheitlichen.\n\nDiese Regel gilt besonders für `The Meridian`, die räumlichen Modelle Heras,\ndie Begriffe für Sphärenreiche, die überlieferten Namen der Weltenbewahrer und\ndie Deutung von Zehsens Handeln. Sie darf weder festgelegte Tatsachen\nrelativieren noch redaktionell offene Gameplay- und Produktionsfragen als Lore\nausgeben.\n\n## 7. Das Endgame braucht neue Inhalte\n\nDie Rückkehr in frühere Welten muss neue Wege, Gegner, Entscheidungen oder Erinnerungen bieten. Eine reine Sammelrunde würde die dramaturgische Umkehr schwächen.\n\nDer Talisman nimmt dabei Seelenmacht auf, nicht die Seelen selbst. Die\nfortbestehenden Seelen werden nach den folgenden Kämpfen nach Era und in den\nnatürlichen Seelenkreislauf zurückgeführt. Dort werden sie wiedergeboren und\ntragen zum Fortbestand Eras bei. Dialog und Inszenierung dürfen diese Regel\nnicht als dauerhafte Vernichtung der Geretteten missverständlich machen.\n\n## 8. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt\n\nDas Basisspiel soll nach Semm einen befriedigenden Abschluss besitzen. Hinweise auf weitere Entitäten dürfen Neugier wecken, aber die Hauptreise nicht wie ein unvollständiger Prolog erscheinen lassen.\n"
+      "content": "---\ntitle: Narrative Umsetzungsregeln\nstatus: draft-guideline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Narrative Umsetzungsregeln\n\n## 1. Die erste Geschichte muss glaubwürdig sein\n\nDie Behauptung, der Held rette seine wirkliche Welt, darf nicht von Beginn an offensichtlich falsch wirken. Frühe Figuren, Quests und Rekonstruktionen müssen emotional funktionieren.\n\n## 2. Die Wendung darf Erfolge nicht entwerten\n\nDie Welt ist konstruiert, aber die Entscheidungen, Bindungen und Entwicklungen des Helden bleiben bedeutsam. Bewohner dürfen nicht nachträglich zu bedeutungslosen Dekorationen erklärt werden.\n\n## 3. Jede große Enthüllung verändert Gameplay\n\n- Wahrheit über Erinnerungen → neue Fähigkeit oder Zugang.\n- Wahrheit über die Konstruktwelt → neue Systemräume.\n- Wahrheit über Seele und Seelenmacht → zweite Reise und Rückkehr-Endgame.\n- Wahrheit über Tatok → Weltpassagen.\n\n## 4. Begriffe werden gestaffelt eingeführt\n\n`Era`, `Hera`, `Tatok`, `Weltenbewahrer`, `Ether-Entität` und die Namen\nTator/Semm sollten nicht gleichzeitig in einem frühen Dialog erklärt werden.\nDer Spieler lernt zunächst konkrete Erfahrungen und erst später die kosmische\nEinordnung.\n\n## 5. Ratgeber und Talisman bleiben getrennt\n\nDer sichtbare Hut-Ratgeber erklärt den Einstieg. Der Held bemerkt den Talisman\nerst nach dem Lichterhaus im Grasland bewusst. Dialog und UI dürfen beide nicht\nals dieselbe Figur darstellen oder eine noch offene Beziehung zwischen ihnen\nbehaupten.\n\n## 6. Der Talisman ist kein allwissender Erzähler\n\nEr unterstützt, entschlüsselt und warnt, besitzt aber Grenzen. Informationen sollen weiterhin über Umwelt, Erinnerungen, Figuren und Spielerbeobachtung entstehen.\n\n## 7. Gelehrte tragen überlieferte Mehrdeutigkeiten\n\nKultur- oder quellenabhängige Aussagen werden Gelehrten und ihren Schriften\nzugeordnet. Wenn mehrere Gelehrtenüberlieferungen einander widersprechen, darf\nihr Nebeneinander selbst zum Kanon gehören. Eine allwissende Erzählerstimme\nmuss sie nicht künstlich vereinheitlichen.\n\nDiese Regel gilt besonders für `The Meridian`, die räumlichen Modelle Heras,\ndie Begriffe für Sphärenreiche, die überlieferten Namen der Weltenbewahrer und\ndie Deutung von Zehsens Handeln. Sie darf weder festgelegte Tatsachen\nrelativieren noch redaktionell offene Gameplay- und Produktionsfragen als Lore\nausgeben.\n\n## 8. Das Endgame braucht neue Inhalte\n\nDie Rückkehr in frühere Welten muss neue Wege, Gegner, Entscheidungen oder Erinnerungen bieten. Eine reine Sammelrunde würde die dramaturgische Umkehr schwächen.\n\nDer Talisman nimmt dabei Seelenmacht auf, nicht die Seelen selbst. Die\nfortbestehenden Seelen werden nach den folgenden Kämpfen nach Era und in den\nnatürlichen Seelenkreislauf zurückgeführt. Dort werden sie wiedergeboren und\ntragen zum Fortbestand Eras bei. Dialog und Inszenierung dürfen diese Regel\nnicht als dauerhafte Vernichtung der Geretteten missverständlich machen.\n\n## 9. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt\n\nDas Basisspiel soll nach Semm einen befriedigenden Abschluss besitzen. Hinweise auf weitere Entitäten dürfen Neugier wecken, aber die Hauptreise nicht wie ein unvollständiger Prolog erscheinen lassen.\n"
     },
     {
       "rel_path": "60-production/scope-basisspiel-und-erweiterung.md",
       "name": "scope-basisspiel-und-erweiterung.md",
       "parent": "60-production",
-      "size_bytes": 1813,
-      "size_human": "1.77 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "size_bytes": 1984,
+      "size_human": "1.94 KB",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Scope – Basisspiel und Erweiterung",
       "headings": 5,
-      "lines": 52,
-      "words": 218,
-      "chars": 1775,
+      "lines": 55,
+      "words": 238,
+      "chars": 1943,
       "snippet": "title: Scope – Basisspiel und Erweiterung status: accepted-outline updated: 2026-08-30",
       "toc": [
         [
@@ -2029,7 +2069,7 @@
           "Scope-Risiko"
         ]
       ],
-      "content": "---\ntitle: Scope – Basisspiel und Erweiterung\nstatus: accepted-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Scope – Basisspiel und Erweiterung\n\n## Basisspiel\n\nDas Basisspiel umfasst:\n\n- Erwachen im Heldenraum;\n- Einführung des Talismans;\n- mehrere wiederherstellbare Ebenen;\n- komplette Progression von Landschaft bis Fähigkeiten;\n- Enthüllung der künstlichen Splitterwelt;\n- zweite Reise und Sammlung von Seelenmacht, ohne die Seelen selbst zu\n  verschlingen;\n- Flucht aus der Konstruktwelt;\n- drei Weltpassagen;\n- Bosskampf gegen Tator;\n- anschließenden Bosskampf gegen Semm;\n- Rückführung der fortbestehenden Seelen nach Era und in den natürlichen\n  Seelenkreislauf, ihre Wiedergeburt und ihren erneuten Beitrag zum Fortbestand\n  Eras;\n- Abschluss des sechsten Kapitels beziehungsweise des ersten großen Heldenteils.\n\n## Nicht Teil des Basisspiels\n\n- vollständiger Krieg gegen alle großen Ether-Entitäten;\n- endgültige Erklärung jeder Sphäre Heras;\n- Verwandlung des Helden in eine Ether-Entität;\n- physische Rückkehr des Helden nach Era;\n- Antwort auf seine spätere Rolle auf Era.\n\n## Erweiterung\n\nDie Erweiterung umfasst:\n\n- Konflikt mit den übrigen großen Ether-Entitäten;\n- Reise durch weitere Sphären Heras;\n- zunehmende Veränderung der Existenzform des Helden;\n- seine eigene Etherwerdung;\n- Möglichkeit der physischen Rückkehr nach Era;\n- bewusst offenes Ende.\n\n## Scope-Risiko\n\nDie Weltkonzeption ist deutlich größer als ein einzelnes Spiel. Für die Produktion muss das Basisspiel daher nur so viele Ebenen enthalten, wie nötig sind, um Wiederherstellung, Bindung, Enthüllung und Umkehr überzeugend zu tragen. Die gesamte Kosmologie muss nicht vollständig bereist werden.\n"
+      "content": "---\ntitle: Scope – Basisspiel und Erweiterung\nstatus: accepted-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Scope – Basisspiel und Erweiterung\n\n## Basisspiel\n\nDas Basisspiel umfasst:\n\n- Erwachen im Heldenraum;\n- Einführung des kleinen fliegenden Hut-Ratgebers;\n- zunächst unbemerkte Mitführung und spätere bewusste Wahrnehmung des\n  Talismans;\n- vier Wiederherstellungsabschnitte: Grasland, Wald, Hochland und Hauptstadt;\n- komplette Progression von Landschaft bis Fähigkeiten;\n- Enthüllung der künstlichen Splitterwelt;\n- zweite Reise und Sammlung von Seelenmacht, ohne die Seelen selbst zu\n  verschlingen;\n- Flucht aus der Konstruktwelt;\n- drei Makroabschnitte in Tatok;\n- Bosskampf gegen Tator;\n- anschließenden Bosskampf gegen Semm;\n- Rückführung der fortbestehenden Seelen nach Era und in den natürlichen\n  Seelenkreislauf, ihre Wiedergeburt und ihren erneuten Beitrag zum Fortbestand\n  Eras;\n- achten Schlussabschnitt in Semms Bereich und Abschluss des ersten großen\n  Heldenteils.\n\n## Nicht Teil des Basisspiels\n\n- vollständiger Krieg gegen alle großen Ether-Entitäten;\n- endgültige Erklärung jeder Sphäre Heras;\n- Verwandlung des Helden in eine Ether-Entität;\n- physische Rückkehr des Helden nach Era;\n- Antwort auf seine spätere Rolle auf Era.\n\n## Erweiterung\n\nDie Erweiterung umfasst:\n\n- Konflikt mit den übrigen großen Ether-Entitäten;\n- Reise durch weitere Sphären Heras;\n- zunehmende Veränderung der Existenzform des Helden;\n- seine eigene Etherwerdung;\n- Möglichkeit der physischen Rückkehr nach Era;\n- bewusst offenes Ende.\n\n## Scope-Risiko\n\nDie Weltkonzeption ist deutlich größer als ein einzelnes Spiel. Für die Produktion muss das Basisspiel daher nur so viele Ebenen enthalten, wie nötig sind, um Wiederherstellung, Bindung, Enthüllung und Umkehr überzeugend zu tragen. Die gesamte Kosmologie muss nicht vollständig bereist werden.\n"
     },
     {
       "rel_path": "decisions/ADR-0001-namensnormalisierung.md",
@@ -2037,7 +2077,7 @@
       "parent": "decisions",
       "size_bytes": 1835,
       "size_human": "1.79 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0001 – Namensnormalisierung",
       "headings": 6,
       "lines": 44,
@@ -2078,7 +2118,7 @@
       "parent": "decisions",
       "size_bytes": 1061,
       "size_human": "1.04 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0002 – Wiederherstellungsreihenfolge",
       "headings": 4,
       "lines": 31,
@@ -2111,7 +2151,7 @@
       "parent": "decisions",
       "size_bytes": 1072,
       "size_human": "1.05 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0003 – Verdeckte Wahrheit der Spielwelt",
       "headings": 4,
       "lines": 27,
@@ -2144,7 +2184,7 @@
       "parent": "decisions",
       "size_bytes": 1119,
       "size_human": "1.09 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0004 – Trennung von Basisspiel und Erweiterung",
       "headings": 4,
       "lines": 27,
@@ -2177,7 +2217,7 @@
       "parent": "decisions",
       "size_bytes": 3460,
       "size_human": "3.38 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0005 – Kanonfreigabe der Checkliste",
       "headings": 4,
       "lines": 66,
@@ -2210,7 +2250,7 @@
       "parent": "decisions",
       "size_bytes": 1988,
       "size_human": "1.94 KB",
-      "mtime": "2026-08-30T15:42:47",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0006 – Gelehrtenüberlieferungen",
       "headings": 4,
       "lines": 50,
@@ -2243,7 +2283,7 @@
       "parent": "decisions",
       "size_bytes": 1583,
       "size_human": "1.55 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung",
       "headings": 4,
       "lines": 38,
@@ -2276,7 +2316,7 @@
       "parent": "decisions",
       "size_bytes": 903,
       "size_human": "903 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Decisions",
       "headings": 2,
       "lines": 17,
@@ -2301,7 +2341,7 @@
       "parent": "decisions",
       "size_bytes": 901,
       "size_human": "901 B",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Entscheidungen",
       "headings": 1,
       "lines": 14,
@@ -2322,12 +2362,12 @@
       "parent": "",
       "size_bytes": 3457,
       "size_human": "3.38 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Game(de)",
       "headings": 10,
       "lines": 67,
-      "words": 375,
-      "chars": 3261,
+      "words": 376,
+      "chars": 3263,
       "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../concept.md) <!-- AUTO-GENERATED:backlink END -->",
       "toc": [
         [
@@ -2371,7 +2411,7 @@
           "📁 Decisions"
         ]
       ],
-      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../concept.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Game(de)\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- ⏭️ (keine Seiten)\n\n## 📁 00 foundation\n- 🗂️ [Overview](00-foundation/00-foundation.md)\n- 📝 [Begriffe und Namen](00-foundation/begriffe-und-namen.md)\n- 📝 [Kanon und offene Fragen](00-foundation/kanon-und-offene-fragen.md)\n- 📝 [Spielvision](00-foundation/spielvision.md)\n\n## 📁 10 world\n- 🗂️ [Overview](10-world/10-world.md)\n\n## 📁 20 story\n- 🗂️ [Overview](20-story/20-story.md)\n- 📝 [Enthüllungs- und Spoilerstruktur](20-story/enthuellungsstruktur.md)\n- 📝 [Finale des Basisspiels und Erweiterung](20-story/finale-und-erweiterung.md)\n- 📝 [Handlungsverlauf des Basisspiels](20-story/handlungsverlauf.md)\n- 📝 [Heldenraum und Talisman](20-story/heldenraum-und-talisman.md)\n- 📝 [Kapitelstruktur – Arbeitsfassung](20-story/kapitelstruktur-arbeitsfassung.md)\n- 📝 [Story-Prämisse](20-story/praemisse.md)\n- 📝 [Der Protagonist](20-story/protagonist.md)\n\n## 📁 30 gameplay\n- 🗂️ [Overview](30-gameplay/30-gameplay.md)\n- 📝 [Kampfsystem – Grundlage](30-gameplay/kampfsystem-grundlage.md)\n- 📝 [Kernspielschleife](30-gameplay/kernspielschleife.md)\n- 📝 [Seelenenergie im Endgame](30-gameplay/seelenenergie-im-endgame.md)\n- 📝 [Wiederherstellungsfortschritt](30-gameplay/wiederherstellungsfortschritt.md)\n\n## 📁 40 world systems\n- 🗂️ [Overview](40-world-systems/40-world-systems.md)\n- 📝 [Ebenen, Portale und Weltpassagen](40-world-systems/ebenen-portale-und-weltpassagen.md)\n- 📝 [Erinnerungs- und Fähigkeitssystem](40-world-systems/erinnerungs-und-faehigkeitssystem.md)\n- 📝 [Rekonstruktionssystem](40-world-systems/rekonstruktionssystem.md)\n- 📝 [Seelenökonomie](40-world-systems/seelenoekonomie.md)\n- 📝 [Sol, Yol, Zeit und Jahreszeiten als Weltsystem](40-world-systems/sol-yol-zeit-und-jahreszeiten.md)\n\n## 📁 50 content\n- 🗂️ [Overview](50-content/50-content.md)\n- 📝 [Boss- und Endgame-Abfolge](50-content/boss-und-endgame-abfolge.md)\n- 📝 [Monsterhöhlen und Versiegelungen](50-content/monsterhoehlen-und-versiegelungen.md)\n- 📝 [Welt- und Ebenenstruktur](50-content/welt-und-ebenenstruktur.md)\n\n## 📁 60 production\n- 🗂️ [Overview](60-production/60-production.md)\n- 📝 [Nächste Konzeptschritte](60-production/naechste-konzeptschritte.md)\n- 📝 [Narrative Umsetzungsregeln](60-production/narrative-umsetzungsregeln.md)\n- 📝 [Scope – Basisspiel und Erweiterung](60-production/scope-basisspiel-und-erweiterung.md)\n\n## 📁 Decisions\n- 🗂️ [Overview](decisions/decisions.md)\n- 📝 [ADR-0001 – Namensnormalisierung](decisions/ADR-0001-namensnormalisierung.md)\n- 📝 [ADR-0002 – Wiederherstellungsreihenfolge](decisions/ADR-0002-wiederherstellungsreihenfolge.md)\n- 📝 [ADR-0003 – Verdeckte Wahrheit der Spielwelt](decisions/ADR-0003-verdeckte-wahrheit-der-spielwelt.md)\n- 📝 [ADR-0004 – Trennung von Basisspiel und Erweiterung](decisions/ADR-0004-basisspiel-und-erweiterung.md)\n- 📝 [ADR-0005 – Kanonfreigabe der Checkliste](decisions/ADR-0005-kanonfreigabe-checkliste.md)\n- 📝 [ADR-0006 – Gelehrtenüberlieferungen](decisions/ADR-0006-gelehrtenueberlieferungen.md)\n- 📝 [ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung](decisions/ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../concept.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Game(de)\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- ⏭️ (keine Seiten)\n\n## 📁 00 foundation\n- 🗂️ [Overview](00-foundation/00-foundation.md)\n- 📝 [Begriffe und Namen](00-foundation/begriffe-und-namen.md)\n- 📝 [Kanon und offene Fragen](00-foundation/kanon-und-offene-fragen.md)\n- 📝 [Spielvision](00-foundation/spielvision.md)\n\n## 📁 10 world\n- 🗂️ [Overview](10-world/10-world.md)\n\n## 📁 20 story\n- 🗂️ [Overview](20-story/20-story.md)\n- 📝 [Enthüllungs- und Spoilerstruktur](20-story/enthuellungsstruktur.md)\n- 📝 [Finale des Basisspiels und Erweiterung](20-story/finale-und-erweiterung.md)\n- 📝 [Handlungsverlauf des Basisspiels](20-story/handlungsverlauf.md)\n- 📝 [Heldenraum, Ratgeber und Talisman](20-story/heldenraum-und-talisman.md)\n- 📝 [Achtteiliger Spielablauf](20-story/kapitelstruktur-arbeitsfassung.md)\n- 📝 [Story-Prämisse](20-story/praemisse.md)\n- 📝 [Der Protagonist](20-story/protagonist.md)\n\n## 📁 30 gameplay\n- 🗂️ [Overview](30-gameplay/30-gameplay.md)\n- 📝 [Kampfsystem – Grundlage](30-gameplay/kampfsystem-grundlage.md)\n- 📝 [Kernspielschleife](30-gameplay/kernspielschleife.md)\n- 📝 [Seelenenergie im Endgame](30-gameplay/seelenenergie-im-endgame.md)\n- 📝 [Wiederherstellungsfortschritt](30-gameplay/wiederherstellungsfortschritt.md)\n\n## 📁 40 world systems\n- 🗂️ [Overview](40-world-systems/40-world-systems.md)\n- 📝 [Ebenen, Portale und Weltpassagen](40-world-systems/ebenen-portale-und-weltpassagen.md)\n- 📝 [Erinnerungs- und Fähigkeitssystem](40-world-systems/erinnerungs-und-faehigkeitssystem.md)\n- 📝 [Rekonstruktionssystem](40-world-systems/rekonstruktionssystem.md)\n- 📝 [Seelenökonomie](40-world-systems/seelenoekonomie.md)\n- 📝 [Sol, Yol, Zeit und Jahreszeiten als Weltsystem](40-world-systems/sol-yol-zeit-und-jahreszeiten.md)\n\n## 📁 50 content\n- 🗂️ [Overview](50-content/50-content.md)\n- 📝 [Boss- und Endgame-Abfolge](50-content/boss-und-endgame-abfolge.md)\n- 📝 [Monsterhöhlen und Versiegelungen](50-content/monsterhoehlen-und-versiegelungen.md)\n- 📝 [Welt- und Ebenenstruktur](50-content/welt-und-ebenenstruktur.md)\n\n## 📁 60 production\n- 🗂️ [Overview](60-production/60-production.md)\n- 📝 [Nächste Konzeptschritte](60-production/naechste-konzeptschritte.md)\n- 📝 [Narrative Umsetzungsregeln](60-production/narrative-umsetzungsregeln.md)\n- 📝 [Scope – Basisspiel und Erweiterung](60-production/scope-basisspiel-und-erweiterung.md)\n\n## 📁 Decisions\n- 🗂️ [Overview](decisions/decisions.md)\n- 📝 [ADR-0001 – Namensnormalisierung](decisions/ADR-0001-namensnormalisierung.md)\n- 📝 [ADR-0002 – Wiederherstellungsreihenfolge](decisions/ADR-0002-wiederherstellungsreihenfolge.md)\n- 📝 [ADR-0003 – Verdeckte Wahrheit der Spielwelt](decisions/ADR-0003-verdeckte-wahrheit-der-spielwelt.md)\n- 📝 [ADR-0004 – Trennung von Basisspiel und Erweiterung](decisions/ADR-0004-basisspiel-und-erweiterung.md)\n- 📝 [ADR-0005 – Kanonfreigabe der Checkliste](decisions/ADR-0005-kanonfreigabe-checkliste.md)\n- 📝 [ADR-0006 – Gelehrtenüberlieferungen](decisions/ADR-0006-gelehrtenueberlieferungen.md)\n- 📝 [ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung](decisions/ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
     },
     {
       "rel_path": "index.md",
@@ -2379,7 +2419,7 @@
       "parent": "",
       "size_bytes": 1519,
       "size_human": "1.48 KB",
-      "mtime": "2026-08-30T15:41:04",
+      "mtime": "2026-08-30T17:55:05",
       "title": "Blobbite – Spieldokumentation",
       "headings": 3,
       "lines": 29,

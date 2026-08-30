@@ -28,8 +28,9 @@ updated: 2026-08-30
 | **Ether-Entität** | Seelenbasiertes Wesen Heras. Mächtige Vertreter können Seelenmacht nutzen, Pakte schließen und Sphärenreiche prägen oder erschaffen. |
 | **Weltenbewahrer** | Bevorzugter spieler- und dokumentationsseitiger Sammelbegriff für die zehn mit Era verbundenen Wächter. Gelehrte kennen mehrere überlieferte Gruppenbezeichnungen, aber keinen bestätigten gemeinsamen Eigennamen. |
 | **Gelehrtenüberlieferung** | Kanonisch bewahrte, kultur- oder quellenabhängige Deutung. Widersprechende Gelehrtenüberlieferungen dürfen nebeneinander bestehen, ohne festgelegte Tatsachen oder redaktionell offene Fragen zu ersetzen. |
-| **Heldenraum** | Startort des Spiels und zunächst einziger greifbarer Bezugspunkt des Helden. Enthält Artefakte, Auftrag und Talisman. |
-| **Talisman** | Von Zehsen in Tators System gebrachtes Hilfsartefakt. Es hilft dem Helden, erkennt verborgene Strukturen und nimmt im Endgame Seelenmacht auf. |
+| **Heldenraum** | Startort des Spiels. Dort erwachen der erinnerungslose Held und sein zunächst einziger sichtbarer Gefährte, der kleine Ratgeber. |
+| **Ratgeber** | Vorläufige Funktionsbezeichnung für den kleinen Gefährten im Heldenraum: ein großer Hut mit zwei Augen, ein fast vollständig verdeckter winziger Körper und ein Besen, auf dem er fliegt. Er ist nicht der Talisman. |
+| **Talisman** | Von Zehsen in Tators System gebrachtes Hilfsartefakt. Der Held trägt es zunächst unbemerkt und nimmt es erst nach dem Boss des Lichterhauses bewusst wahr. Es hilft ihm, erkennt verborgene Strukturen und nimmt im Endgame Seelenmacht auf. |
 | **Seele** | Identität eines Wesens, die Tod und Wiedergeburt überdauern kann. Eine Ether-Entität kann eine ganze Seele verschlingen; die Endgame-Aufnahme ihrer nutzbaren Macht durch den Talisman tut dies ausdrücklich nicht. |
 | **Seelenmacht / Seelenenergie** | Vom Talisman aufnehmbare Kraft einer Seele. Beide Begriffe bezeichnen dieselbe nutzbare Macht, nicht die Seele selbst. |
 | **Seelenkreislauf** | Lebensnotwendiger natürlicher Weg der Seelen auf Era. Im ungestörten Kreislauf wird jede Seele wiedergeboren. Tator und andere Ether-Entitäten entziehen ihm Seelen. |

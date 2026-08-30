@@ -2,7 +2,7 @@
 title: "Core Loop"
 language: de
 status: draft
-version: "0.1"
+version: "0.2"
 source_of_truth: true
 translation_status: blocked-until-concept-complete
 ---
@@ -26,21 +26,22 @@ und Gegnern sowie die Reihenfolge von Landschaftswiederherstellung über die
 Rückkehr von Bewohnern und Siedlungen bis zu Erinnerungen und erweiterten
 Heldenfähigkeiten.
 
-## Aktueller Arbeitsentwurf
+## Wiederkehrender Gebietsloop
 
 ```mermaid
 flowchart TD
-    A["Beschädigte Welt erkunden"] --> B["Gefahren und Gegner überwinden"]
-    B --> C["Natur und Landschaft wiederherstellen"]
-    C --> D["Bewohner und Siedlungen zurückbringen"]
-    D --> E["Erinnerungen und Geschichte aufdecken"]
-    E --> F["Fähigkeiten des Helden erweitern"]
-    F --> G["Weitere Wiederherstellungsaufgaben erreichen"]
-    G --> A
+    A["Unlesbares oder versperrtes Gebiet erkunden"] --> B["Regionalen Zugangsdungeon bewältigen"]
+    B --> C["Landschaft und Wege sichtbar machen"]
+    C --> D["Weitere Quellen und Monsternester finden"]
+    D --> E["Gebäude und Bewohner zurückbringen"]
+    E --> F["Erinnerungen durch Kampf und Rätsel befreien"]
+    F --> G["Von der Gemeinschaft Wissen und Fähigkeiten erwerben"]
+    G --> H["Nächsten Abschnitt erreichen"]
 ```
 
-Maschinen und Zuro sind nicht als Schritte eingetragen, weil ihre Bedeutung und
-ihr Einfluss noch nicht entschieden sind.
+Der Loop gilt als Rhythmus der ersten vier Abschnitte und darf regional anders
+inszeniert werden. Maschinen und Zuro sind nicht als allgemeine Schritte
+eingetragen, weil ihre übergreifende Bedeutung weiterhin nicht entschieden ist.
 
 ## Spielerperspektive und Spielerfantasie
 
@@ -50,10 +51,10 @@ welcher Anteil der Spielzeit auf jeden Teil entfällt.
 
 ## Regeln und Ablauf
 
-Das Diagramm beschreibt eine Makrofolge. Es entscheidet weder, ob einzelne
-Schritte pro Gebiet wiederholt werden, noch ob Rücksprünge, optionale Aufgaben
-oder parallele Ziele möglich sind. Diese Punkte müssen durch einen Prototyp
-geprüft werden.
+Das Diagramm beschreibt die freigegebene Makrofolge. Der Graslandabschnitt
+setzt sie mit Turm, Sägewerk, Wasserwerk, Lichterhaus und Dorf erstmals konkret
+um. Rücksprünge, optionale Aufgaben und parallele Ziele innerhalb eines
+Abschnitts bleiben durch Prototypen zu prüfen.
 
 ## Eingaben und Ausgaben
 
@@ -93,7 +94,7 @@ müssen die Weltveränderung ergänzen, nicht ersetzen.
 
 - Was gilt spielerisch als abgeschlossene Wiederherstellung eines Gebiets?
 - Wie werden neue Aufgaben entdeckt oder freigeschaltet?
-- Welche Schritte sind wiederholbar, optional oder unumkehrbar?
+- Welche Nebenwege und Aufgaben sind optional oder unumkehrbar?
 - Wie verbindet sich der Moment-zu-Moment-Kampf mit dem Makrofortschritt?
 
 ## Abnahmekriterien
@@ -107,6 +108,7 @@ müssen die Weltveränderung ergänzen, nicht ersetzen.
 ## Verwandte Konzeptseiten
 
 - [Gameplay und Fortschritt](../03-gameplay-and-progression/gameplay-and-progression.md)
+- [Spielablauf und Abschnittsstruktur](../03-gameplay-and-progression/game-flow-and-section-structure.md)
 - [Landschaftssystem](../07-landscape-and-environment/landscape-system.md)
 - [Vertical Slice](../09-prototypes-and-tests/vertical-slice.md)
 - [Designprinzipien](design-pillars.md)

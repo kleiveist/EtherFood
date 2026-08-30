@@ -26,10 +26,13 @@
 
 ## 📁 02 story and world
 - 🗂️ [Overview](02-story-and-world/02-story-and-world.md)
+- 📝 [Ratgeber im Heldenraum](02-story-and-world/guide-companion.md)
+- 📝 [Der Talisman](02-story-and-world/soul-talisman.md)
 - 📝 [Handlung und Welt](02-story-and-world/story-and-world.md)
 
 ## 📁 03 gameplay and progression
 - 🗂️ [Overview](03-gameplay-and-progression/03-gameplay-and-progression.md)
+- 📝 [Spielablauf und Abschnittsstruktur](03-gameplay-and-progression/game-flow-and-section-structure.md)
 - 📝 [Gameplay und Fortschritt](03-gameplay-and-progression/gameplay-and-progression.md)
 
 ## 📁 04 combat
@@ -62,6 +65,7 @@
 - 🗂️ [Overview](10-decisions-and-archive/10-decisions-and-archive.md)
 - 📝 [Archivrichtlinie](10-decisions-and-archive/archive-policy.md)
 - 📝 [Entscheidungsprotokoll](10-decisions-and-archive/decision-log.md)
+- 📝 [EF-DEC-007: Achtteiliger Spielablauf](10-decisions-and-archive/ef-dec-007-eight-section-game-flow.md)
 
 ## 📁 Templates
 - 🗂️ [Overview](templates/templates.md)

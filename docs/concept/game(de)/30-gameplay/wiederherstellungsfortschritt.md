@@ -27,6 +27,19 @@ Die Reihenfolge vermittelt, dass eine Welt zuerst Raum und Lebensgrundlage benö
 
 Nicht jede kleine Quest muss alle sechs Stufen abbilden. Eine Region kann beispielsweise zuerst Gelände und Bäume zurückbringen, später Bewohner und schließlich eine gemeinsame Erinnerung. Die globale Reihenfolge darf jedoch nicht umgedreht werden, solange keine bewusste Ausnahme erzählt wird.
 
+## Anwendung im Grasland
+
+- Der Turm macht das Grasland als Gebiet und Landschaft sichtbar.
+- Jedes abgeschlossene Monsternest im Sägewerk stellt einen weiteren
+  Gebäudefortschritt her.
+- Der Wasserwerkdungeon befreit Menschenseelen.
+- Das Lichterhaus gibt Seelen und Bewohnern Erinnerungen zurück.
+- Gespräche und Gefallen im Bauerndorf vermitteln anwendbares Wissen und
+  Fähigkeiten.
+
+Wald, Hochland und Hauptstadt folgen derselben übergeordneten Reihenfolge,
+dürfen sie aber mit anderen Orten, Rätseln und Übergängen ausformen.
+
 ## Rückkopplung
 
 Jede Stufe soll die vorherige neu nutzbar machen:

@@ -7,8 +7,8 @@ Dieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er 
 
 - [Prämisse](praemisse.md)
 - [Der Protagonist](protagonist.md)
-- [Heldenraum und Talisman](heldenraum-und-talisman.md)
+- [Heldenraum, Ratgeber und Talisman](heldenraum-und-talisman.md)
 - [Handlungsverlauf](handlungsverlauf.md)
 - [Enthüllungsstruktur](enthuellungsstruktur.md)
 - [Finale und Erweiterung](finale-und-erweiterung.md)
-- [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)
+- [Achtteiliger Spielablauf](kapitelstruktur-arbeitsfassung.md)

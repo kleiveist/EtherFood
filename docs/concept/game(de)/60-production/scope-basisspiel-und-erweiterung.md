@@ -13,20 +13,23 @@ updated: 2026-08-30
 Das Basisspiel umfasst:
 
 - Erwachen im Heldenraum;
-- Einführung des Talismans;
-- mehrere wiederherstellbare Ebenen;
+- Einführung des kleinen fliegenden Hut-Ratgebers;
+- zunächst unbemerkte Mitführung und spätere bewusste Wahrnehmung des
+  Talismans;
+- vier Wiederherstellungsabschnitte: Grasland, Wald, Hochland und Hauptstadt;
 - komplette Progression von Landschaft bis Fähigkeiten;
 - Enthüllung der künstlichen Splitterwelt;
 - zweite Reise und Sammlung von Seelenmacht, ohne die Seelen selbst zu
   verschlingen;
 - Flucht aus der Konstruktwelt;
-- drei Weltpassagen;
+- drei Makroabschnitte in Tatok;
 - Bosskampf gegen Tator;
 - anschließenden Bosskampf gegen Semm;
 - Rückführung der fortbestehenden Seelen nach Era und in den natürlichen
   Seelenkreislauf, ihre Wiedergeburt und ihren erneuten Beitrag zum Fortbestand
   Eras;
-- Abschluss des sechsten Kapitels beziehungsweise des ersten großen Heldenteils.
+- achten Schlussabschnitt in Semms Bereich und Abschluss des ersten großen
+  Heldenteils.
 
 ## Nicht Teil des Basisspiels
 

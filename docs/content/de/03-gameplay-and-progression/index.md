@@ -14,5 +14,6 @@ translation_status: blocked-until-concept-complete
 # Gameplay und Fortschritt
 
 - [Gameplay- und Fortschrittssystem](gameplay-and-progression.md)
+- [Spielablauf und Abschnittsstruktur](game-flow-and-section-structure.md)
 - [Core Loop](../00-overview/core-loop.md)
 - [Konzept-Vertical-Slice](../09-prototypes-and-tests/vertical-slice.md)

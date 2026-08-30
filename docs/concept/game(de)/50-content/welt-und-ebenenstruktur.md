@@ -10,25 +10,34 @@ updated: 2026-08-30
 
 ## Basisspiel
 
-Das Basisspiel benötigt mehrere Ebenen innerhalb der Konstruktwelt. Ihre konkrete Zahl ist offen. Inhaltlich sollten sie gemeinsam die vollständige Wiederherstellungsleiter abdecken:
+Die Konstruktwelt besitzt vier Wiederherstellungsabschnitte in fester
+Reihenfolge:
 
-- frühe Ebene mit Gelände und Natur;
-- Ebene mit ersten Seelen und Bewohnern;
-- Ebene mit wachsender Siedlung oder Stadt;
-- Ebene mit starken Erinnerungs- und Geschichtssystemen;
-- späte Ebene mit sichtbaren Fehlern der Konstruktion;
-- Rückkehrfassungen der Ebenen für das Seelenenergie-Endgame.
+1. Grasland;
+2. Wald;
+3. Eis und Gebirge beziehungsweise Hochland;
+4. Hauptstadt.
+
+Jeder Abschnitt verbindet Landschaft, Gebäude, Bewohner, Erinnerungen und
+Fähigkeiten in einer eigenen Variation. Das Grasland dient mit Turm, Sägewerk,
+Wasserwerk, Lichterhaus und Bauerndorf als detaillierter Referenzablauf. Die
+Hauptstadt ähnelt dem früheren Machtbereich des Helden und führt zur
+entscheidenden Enthüllung. Für das Seelenenergie-Endgame werden die bereits
+befreiten Gebiete erneut besucht, ohne daraus einen zusätzlichen
+Makroabschnitt zu machen.
 
 ## Äußeres Endgame
 
-Nach der Konstruktwelt folgen:
+Nach den vier Wiederherstellungsabschnitten folgen vier weitere
+Makroabschnitte:
 
-1. Weltpassage 1;
-2. Weltpassage 2;
-3. Weltpassage 3;
-4. Tators Machtzentrum;
-5. Portal zu Semm;
-6. Semms Bereich.
+5. Tatok-Passage I;
+6. Tatok-Passage II;
+7. Tatok-Passage III mit dem Weg zu Tator und dem Kampf gegen ihn;
+8. Semms Bereich mit dem letzten Bosskampf.
+
+In den Tatok-Passagen gibt es keine neue große Wiederherstellung. Sie prüfen
+die Beherrschung der zuvor erworbenen Systeme und Fähigkeiten.
 
 ## Erweiterung
 
