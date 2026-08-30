@@ -6,6 +6,7 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Seiten
+- 📝 [Erster spielbarer Abschnitt](erster-spielbarer-abschnitt.md)
 - 📝 [Nächste Konzeptschritte](naechste-konzeptschritte.md)
 - 📝 [Narrative Umsetzungsregeln](narrative-umsetzungsregeln.md)
 - 📝 [Umfang – Basisspiel und Erweiterung](scope-basisspiel-und-erweiterung.md)

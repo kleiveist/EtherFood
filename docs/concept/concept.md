@@ -52,6 +52,7 @@
 
 ## 📁 60 – Produktion
 - 🗂️ [Übersicht](60-produktion/60-produktion.md)
+- 📝 [Erster spielbarer Abschnitt](60-produktion/erster-spielbarer-abschnitt.md)
 - 📝 [Nächste Konzeptschritte](60-produktion/naechste-konzeptschritte.md)
 - 📝 [Narrative Umsetzungsregeln](60-produktion/narrative-umsetzungsregeln.md)
 - 📝 [Umfang – Basisspiel und Erweiterung](60-produktion/scope-basisspiel-und-erweiterung.md)
