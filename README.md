@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Files
-- 📝 [Forge2D Template Repository Rules](AGENTS.md)
+- 📝 [ether-food Repository Rules](AGENTS.md)
 - 📝 [Changelog](CHANGELOG.md)
 - 📝 [Contributing to Forge2D Template](CONTRIBUTING.md)
 - 📝 [Security Policy](SECURITY.md)
@@ -9,12 +9,20 @@
 # DOCS
 - 📚 [Docs Home](docs/index.md)
 
+## 📁 Assets
+- 🗂️ [Overview](docs/assets/assets.md)
+
 ## 📁 Concept
 - 🗂️ [Overview](docs/concept/concept.md)
 - 📝 [Freigabe-Checkliste](docs/concept/CHECKLIST-ZUR-FREIGABE.md)
 
+## 📁 Game concept content
+- 🗂️ [Overview](docs/content/content.md)
+
 ## 📁 Developer
 - 🗂️ [Overview](docs/developer/developer.md)
+- 📝 [Documentation architecture](docs/developer/documentation-architecture.md)
+- 📝 [Project identity](docs/developer/project-identity.md)
 
 ## 📁 Player guide
 - 🗂️ [Overview](docs/player-guide/player-guide.md)

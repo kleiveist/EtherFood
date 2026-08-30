@@ -11,12 +11,20 @@ Template material from documentation owned by a concrete game.
 ## 📄 Pages
 - ⏭️ (keine Seiten)
 
+## 📁 Assets
+- 🗂️ [Overview](assets/assets.md)
+
 ## 📁 Concept
 - 🗂️ [Overview](concept/concept.md)
 - 📝 [Freigabe-Checkliste](concept/CHECKLIST-ZUR-FREIGABE.md)
 
+## 📁 Game concept content
+- 🗂️ [Overview](content/content.md)
+
 ## 📁 Developer
 - 🗂️ [Overview](developer/developer.md)
+- 📝 [Documentation architecture](developer/documentation-architecture.md)
+- 📝 [Project identity](developer/project-identity.md)
 
 ## 📁 Player guide
 - 🗂️ [Overview](player-guide/player-guide.md)

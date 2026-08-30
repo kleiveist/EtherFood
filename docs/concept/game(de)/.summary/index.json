@@ -1,0 +1,2162 @@
+{
+  "scanned_root": "/home/kleif/Projects/Game/ether-food/docs/concept/game(de)",
+  "generated_at": "2026-08-30T12:49:25",
+  "count_files": 65,
+  "content_mode": "snippet",
+  "types": [
+    ".py",
+    ".ini",
+    ".md"
+  ],
+  "items": [
+    {
+      "rel_path": "00-foundation/00-foundation.md",
+      "name": "00-foundation.md",
+      "parent": "00-foundation",
+      "size_bytes": 369,
+      "size_human": "369 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "00 foundation",
+      "headings": 2,
+      "lines": 13,
+      "words": 45,
+      "chars": 355,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "00 foundation"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 00 foundation\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Begriffe und Namen](begriffe-und-namen.md)\n- 📝 [Kanon und offene Fragen](kanon-und-offene-fragen.md)\n- 📝 [Spielvision](spielvision.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "00-foundation/begriffe-und-namen.md",
+      "name": "begriffe-und-namen.md",
+      "parent": "00-foundation",
+      "size_bytes": 3001,
+      "size_human": "2.93 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Begriffe und Namen",
+      "headings": 4,
+      "lines": 43,
+      "words": 335,
+      "chars": 2953,
+      "snippet": "title: Begriffe und Namen status: working-glossary updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Begriffe und Namen"
+        ],
+        [
+          2,
+          "Kernbegriffe"
+        ],
+        [
+          2,
+          "Arbeitsnormalisierung der Namen"
+        ],
+        [
+          2,
+          "Schreibregel"
+        ]
+      ],
+      "content": "---\ntitle: Begriffe und Namen\nstatus: working-glossary\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Begriffe und Namen\n\n## Kernbegriffe\n\n| Begriff | Arbeitsdefinition |\n|---|---|\n| **Era** | Der zentrale, physische Planet und die ursprüngliche Heimatwelt des Helden. |\n| **Sol** | Heller, lebensspendender Himmelskörper; Quelle von Wärme und gewöhnlicher Energie. |\n| **Yol** | Dunkelblauer, magischer Himmelskörper; entzieht Era Wärme beziehungsweise gewöhnliche Energie und gibt Magie ab. |\n| **Hera** | Übergeordnete, multidimensionale Splittersphäre, die nicht stabil nach normalen physischen Regeln funktioniert. |\n| **Splitterwelt** | Ein erschaffener, abgetrennter oder neu geformter Teil Heras. Kann stabil, vorübergehend oder diffus sein. |\n| **Tatok** | Arbeitsname für Jators große Splitterdomäne beziehungsweise Welt. |\n| **Konstruktwelt** | Die innerhalb Tatoks geschaffene Spielwelt, die der Held irrtümlich für seine wahre Welt hält. |\n| **Ether** | Kosmisches Medium beziehungsweise übergeordnete Kraft. Der Begriff wurde im Entwurf zugleich für Wesen verwendet; zur Klarheit heißen diese hier Ether-Entitäten. |\n| **Ether-Entität** | Seelenbasiertes Wesen Heras. Mächtige Vertreter nähren sich von Seelen, handeln mit ihnen und können eigene Sphären erschaffen. |\n| **Atea** | Arbeitsbezeichnung für die zehn Weltenbewahrer Eras. Sie sind zugleich Bestandteile, Geister und Aufseher der Welt. |\n| **Heldenraum** | Startort des Spiels und der einzige zunächst greifbare Bezugspunkt des Helden. Enthält Artefakte, Auftrag und den Talisman. |\n| **Talisman** | Von Zehsen eingeschleustes Hilfsartefakt. Gibt Hinweise, entschlüsselt die Fassade und sammelt später Seelenenergie. |\n| **Seelenenergie** | Nutzbare Kraft einer Seele. Besonders starke, handelnde und heroische Seelen sind für Ether-Entitäten wertvoller. |\n| **Weltpassage** | Übergangsraum zwischen Splittern, Ebenen oder Machtbereichen. Im Endgame führen drei feindbesetzte Passagen zu Jator. |\n\n## Arbeitsnormalisierung der Namen\n\n| Gesprochene oder ältere Variante | Verwendete Form | Begründung |\n|---|---|---|\n| Tator | **Jator** | So beschriftet die Entitäten-Grafik den Gegenspieler. |\n| Zen / Zem als Gegenspieler | **Semm** | So beschriftet die Entitäten-Grafik den zweiten Endgegner. |\n| Zem als Weltenbewahrer | **Zehsen** | Zehsen ist einer der zehn Weltenbewahrer und passt zur beschriebenen Funktion. |\n| Yonu / Jul | **Yol** | So beschriftet die Sphärenkarte den kalten, magischen Himmelskörper. |\n| Tators Welt | **Tatok** | So beschriftet die Sphärenkarte die dunkle Splitterdomäne. |\n| The Meridian | **Era?** | Vermutlich älterer Kartenname oder Platzhalter; noch nicht endgültig bestätigt. |\n\n## Schreibregel\n\nBis zur Freigabe werden die normalisierten Formen in Fließtext verwendet. Abweichungen bleiben in dieser Datei und in den Entscheidungsprotokollen nachvollziehbar.\n"
+    },
+    {
+      "rel_path": "00-foundation/index.md",
+      "name": "index.md",
+      "parent": "00-foundation",
+      "size_bytes": 333,
+      "size_human": "333 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "00 – Foundation",
+      "headings": 1,
+      "lines": 10,
+      "words": 42,
+      "chars": 328,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](00-foundation.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "00 – Foundation"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 00 – Foundation\n\nDieser Bereich enthält die kurze, verbindliche Grundlage des Projekts.\n\n- [Spielvision](spielvision.md)\n- [Begriffe und Namen](begriffe-und-namen.md)\n- [Kanon und offene Fragen](kanon-und-offene-fragen.md)\n"
+    },
+    {
+      "rel_path": "00-foundation/kanon-und-offene-fragen.md",
+      "name": "kanon-und-offene-fragen.md",
+      "parent": "00-foundation",
+      "size_bytes": 2508,
+      "size_human": "2.45 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Kanon und offene Fragen",
+      "headings": 4,
+      "lines": 46,
+      "words": 336,
+      "chars": 2471,
+      "snippet": "title: Kanon und offene Fragen status: review-required updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Kanon und offene Fragen"
+        ],
+        [
+          2,
+          "Bereits klar festgelegt"
+        ],
+        [
+          2,
+          "Noch zu entscheiden"
+        ],
+        [
+          2,
+          "Kanonstufen"
+        ]
+      ],
+      "content": "---\ntitle: Kanon und offene Fragen\nstatus: review-required\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kanon und offene Fragen\n\n## Bereits klar festgelegt\n\n- Der Held ist eine verstorbene Seele und weiß dies zu Spielbeginn nicht.\n- Er stammt von Era und gelangt infolge eines Paktes in den Einflussbereich der Ether-Entitäten.\n- Die scheinbar gerettete Welt ist eine künstliche Konstruktwelt innerhalb einer Splitterdomäne.\n- Jator und Semm erschufen das System, um besonders starke Heldenseelen heranzuzüchten.\n- Der Fortschritt verläuft über Gebiete und Natur, Bewohner und Seelen, Städte, Erinnerungen und schließlich Fähigkeiten.\n- Zehsens Talisman hilft dem Helden, die Fassade zu entschlüsseln und Seelenenergie zu sammeln.\n- Das Basisspiel endet mit der Flucht aus der Konstruktwelt sowie den Kämpfen gegen Jator und Semm.\n- Ether-Entitäten können besiegt, aber nicht endgültig getötet werden.\n- Die Erweiterung führt zum Kampf gegen die übrigen Ether-Entitäten und zur Verwandlung des Helden in eine solche Entität.\n- Sol und Yol schützen Era vor dem direkten Zugriff der Ether-Entitäten.\n\n## Noch zu entscheiden\n\n1. Exakte Umstände des Todes und des persönlichen Paktes des Helden.\n2. Motivation des Helden vor seinem Tod auf Era.\n3. Ob Jator und Semm bewusst Tugend fördern oder lediglich erfolgreiche Heldenläufe belohnen.\n4. Ob die Bewohner der Konstruktwelt echte gefangene Seelen, erzeugte Persönlichkeiten oder Mischformen sind.\n5. Was das Einsammeln der Seelenenergie für die freigelassenen Seelen bedeutet.\n6. Persönlichkeit, Stimme und Grenzen des Talismans.\n7. Exakter Aufbau der sechs Kapitel.\n8. Zahl und Thema der normalen Spielebenen vor dem Endgame.\n9. Exakter Zeitraum zwischen zwei Konvergenzen von Sol und Yol.\n10. Beziehung zwischen Hera, den einzelnen Splitterwelten und den auf der Konzeptkarte benannten Sphären.\n11. Ob der Held in der Erweiterung freiwillig, gezwungenermaßen oder als Folge seiner gesammelten Kraft zur Ether-Entität wird.\n12. Welche Regeln seine physische Rückkehr nach Era besitzt.\n\n## Kanonstufen\n\n| Stufe | Bedeutung |\n|---|---|\n| **draft-canon** | Inhalt ist als Projektgrundlage formuliert, kann aber noch redaktionell geschärft werden. |\n| **working** | Plausible Arbeitsfassung bei noch offenen Namen oder Details. |\n| **proposal** | Strukturvorschlag, der noch nicht als Handlungskanon gilt. |\n| **open** | Bewusst ungeklärt. |\n"
+    },
+    {
+      "rel_path": "00-foundation/spielvision.md",
+      "name": "spielvision.md",
+      "parent": "00-foundation",
+      "size_bytes": 2671,
+      "size_human": "2.61 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Spielvision",
+      "headings": 7,
+      "lines": 44,
+      "words": 327,
+      "chars": 2635,
+      "snippet": "title: Spielvision status: draft-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Spielvision"
+        ],
+        [
+          2,
+          "Elevator Pitch"
+        ],
+        [
+          2,
+          "Spielerfantasie"
+        ],
+        [
+          2,
+          "Verbindliche Säulen"
+        ],
+        [
+          2,
+          "Perspektive und Kampfgrundlage"
+        ],
+        [
+          2,
+          "Abschluss des Basisspiels"
+        ],
+        [
+          2,
+          "Erweiterung"
+        ]
+      ],
+      "content": "---\ntitle: Spielvision\nstatus: draft-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-foundation.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Spielvision\n\n## Elevator Pitch\n\nBlobbite ist ein **Top-down-Action-RPG mit Wiederherstellungsfortschritt**. Der Spieler erwacht als scheinbar lebender Held in einem rätselhaften Heldenraum, befreit Gebiete von Monstern und stellt schrittweise Natur, Bewohner, Städte, Erinnerungen und Fähigkeiten wieder her. Erst gegen Ende wird deutlich, dass der Held eine verstorbene Seele ist und die gerettete Welt als künstliches Konstrukt zur Züchtung besonders wertvoller Heldenseelen erschaffen wurde.\n\n## Spielerfantasie\n\nDer Spieler soll sich zuerst als Retter einer sterbenden Welt fühlen. Mit jedem befreiten Gebiet wird die Welt sichtbarer, lebendiger und bedeutungsvoller. Später kippt diese Fantasie: Der Held erkennt, dass seine Taten Teil eines Systems waren, und nutzt genau die dadurch gewonnene Stärke, um gegen dessen Erbauer vorzugehen.\n\n## Verbindliche Säulen\n\n1. **Welt sichtbar wiederherstellen:** Fortschritt verändert Landschaft, Bevölkerung, Architektur und Erzählwissen.\n2. **Handeln statt nur erzählen:** Monsterhöhlen, Siegel, Rückkehrwege und Erinnerungsorte verbinden Handlung und Spielmechanik.\n3. **Fähigkeiten aus Geschichte gewinnen:** Der Held verbessert sich nicht nur durch Zahlenwerte, sondern durch wiedergewonnene Erinnerungen und historische Zusammenhänge.\n4. **Späte Umdeutung der gesamten Reise:** Die gerettete Welt ist eine Splitterkonstruktion in Jators Machtbereich.\n5. **Endgame als bewusster Systembruch:** Der Talisman verwandelt die zuvor befreite Seelenenergie in eine Möglichkeit, die Konstruktwelt zu verlassen.\n\n## Perspektive und Kampfgrundlage\n\n- Top-down-Perspektive, orientiert am direkten Lesefluss klassischer Action-RPGs.\n- Nahkampfangriff.\n- Ausweichen.\n- Blocken.\n- Magie als Fernkampf beziehungsweise Distanzoption.\n\nDie endgültige Taktung, Ressourcensysteme und Eingabebelegung sind noch nicht festgelegt.\n\n## Abschluss des Basisspiels\n\nDas Basisspiel endet nach der Befreiung der Konstruktwelt, dem erneuten Durchqueren der Welten zur Sammlung von Seelenenergie, drei feindbesetzten Weltpassagen und den Kämpfen gegen Jator und Semm. Ether-Entitäten werden dabei besiegt, aber nicht endgültig getötet.\n\n## Erweiterung\n\nIn der Erweiterung richtet sich der Konflikt gegen die übrigen großen Ether-Entitäten. Der Held wird schließlich selbst zu einer Ether-Entität und erhält die ungewöhnliche Möglichkeit, physisch nach Era zurückzukehren. Seine spätere Rolle auf Era bleibt bewusst offen.\n"
+    },
+    {
+      "rel_path": "10-world/00-kosmologie/00-kosmologie.md",
+      "name": "00-kosmologie.md",
+      "parent": "10-world/00-kosmologie",
+      "size_bytes": 468,
+      "size_human": "468 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "00 kosmologie",
+      "headings": 2,
+      "lines": 14,
+      "words": 62,
+      "chars": 451,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../10-world.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "00 kosmologie"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../10-world.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 00 kosmologie\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Era, Sol und Yol](era-sol-und-yol.md)\n- 📝 [Ether, Seelen und Pakte](ether-seelen-und-pakte.md)\n- 📝 [Hera und die Splitterwelten](hera-und-splitterwelten.md)\n- 📝 [Zeitzyklen und Konvergenz von Sol und Yol](zeitzyklen-und-konvergenz.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "10-world/00-kosmologie/era-sol-und-yol.md",
+      "name": "era-sol-und-yol.md",
+      "parent": "10-world/00-kosmologie",
+      "size_bytes": 2055,
+      "size_human": "2.01 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Era, Sol und Yol",
+      "headings": 6,
+      "lines": 54,
+      "words": 275,
+      "chars": 2017,
+      "snippet": "title: Era, Sol und Yol status: draft-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Era, Sol und Yol"
+        ],
+        [
+          2,
+          "Era"
+        ],
+        [
+          2,
+          "Sol"
+        ],
+        [
+          2,
+          "Yol"
+        ],
+        [
+          2,
+          "Der Schutz Eras"
+        ],
+        [
+          2,
+          "Der Tanz"
+        ]
+      ],
+      "content": "---\ntitle: Era, Sol und Yol\nstatus: draft-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-kosmologie.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Era, Sol und Yol\n\n## Era\n\nEra ist der zentrale physische Planet des Weltmodells. Auf Era existieren natürliche Landschaften, Kulturen, Körper und gewöhnliche Lebenszyklen. Der Held stammt ursprünglich von dort. Seine Reise im Basisspiel findet jedoch nicht auf Era statt, auch wenn er lange davon ausgeht.\n\n## Sol\n\nSol ist der helle, lebensspendende Himmelskörper. Er erfüllt eine sonnenähnliche Funktion und gibt Era:\n\n- Wärme;\n- Lebensenergie;\n- Licht;\n- gewöhnliche, aufbauende Energie.\n\nSol ist nicht bloß ein unbelebter Stern. Sol besitzt Bewusstsein beziehungsweise eine wesensartige Existenz und steht in einer tiefen Bindung zu Yol.\n\n## Yol\n\nYol ist der dunkle, blau leuchtende Gegenpol zu Sol. Yol steht für:\n\n- Kälte;\n- Magie;\n- Entzug oder Aufnahme gewöhnlicher Wärmeenergie;\n- Abgabe magischer Energie an Era.\n\nYol ist nicht grundsätzlich böse. Sol und Yol bilden ein notwendiges Gegensatzpaar: Leben und Wärme auf der einen, Kälte und Magie auf der anderen Seite.\n\n## Der Schutz Eras\n\nGemeinsam erzeugen Sol und Yol eine Schutzwirkung um Era. Diese Barriere hält die wesentlich mächtigeren Ether-Entitäten davon ab, Era direkt zu betreten und dort ihre volle Macht auszuüben.\n\nDie Entitäten können Era daher überwiegend nur indirekt beeinflussen, etwa durch:\n\n- Korruption;\n- Pakte;\n- Händler und Mittelsleute;\n- Verlockungen und Tauschgeschäfte;\n- das Abfangen oder Umlenken von Seelen.\n\n## Der Tanz\n\nSol und Yol bewegen sich nicht in einer gleichmäßigen, berechenbaren Umlaufbahn. Ihre Bewegung wird als Tanz um Era verstanden. Dieser Tanz verursacht extreme und unregelmäßige Licht-, Temperatur-, Magie- und Zeitverhältnisse.\n\nDie genaue astronomische Erklärung muss nicht vollständig naturwissenschaftlich sein. In der Weltlogik sind Sol und Yol zugleich Himmelskörper, Schutzmächte und liebende Wesen.\n"
+    },
+    {
+      "rel_path": "10-world/00-kosmologie/ether-seelen-und-pakte.md",
+      "name": "ether-seelen-und-pakte.md",
+      "parent": "10-world/00-kosmologie",
+      "size_bytes": 2288,
+      "size_human": "2.23 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Ether, Seelen und Pakte",
+      "headings": 6,
+      "lines": 46,
+      "words": 297,
+      "chars": 2246,
+      "snippet": "title: Ether, Seelen und Pakte status: draft-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Ether, Seelen und Pakte"
+        ],
+        [
+          2,
+          "Der Ether"
+        ],
+        [
+          2,
+          "Seelen als Nahrung, Kraft und Währung"
+        ],
+        [
+          2,
+          "Mächtige Seelen"
+        ],
+        [
+          2,
+          "Pakte"
+        ],
+        [
+          2,
+          "Grenzen der Entitäten"
+        ]
+      ],
+      "content": "---\ntitle: Ether, Seelen und Pakte\nstatus: draft-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-kosmologie.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Ether, Seelen und Pakte\n\n## Der Ether\n\nDer Ether ist eine kosmische Kraft und ein verbindendes Medium zwischen Welt, Magie, Seelen und Splittersphären. Der Begriff wurde im frühen Entwurf zugleich für die Bewohner Heras verwendet. Diese Dokumentation unterscheidet deshalb zwischen **Ether** als Medium und **Ether-Entitäten** als handelnden Wesen.\n\n## Seelen als Nahrung, Kraft und Währung\n\nEther-Entitäten ernähren sich hauptsächlich von Seelen beziehungsweise deren Energie. Seelen besitzen jedoch nicht alle denselben Wert. Besonders mächtig sind Seelen, deren Träger:\n\n- große Stärke entwickelt haben;\n- schwierige Prüfungen bestanden haben;\n- andere gerettet oder bedeutende gute Taten vollbracht haben;\n- sich zu Heldenfiguren entwickelt haben;\n- starke Erinnerungen, Bindungen und einen ausgeprägten Willen besitzen.\n\nFür die Entitäten sind solche Seelen zugleich Nahrung, Machtquelle, Handelsgut und Währung.\n\n## Mächtige Seelen\n\nEine gewöhnliche Seele kann sich in Hera verändern und an Macht gewinnen. Unter außergewöhnlichen Bedingungen kann eine Seele selbst zu einer Ether-Entität werden. Die Erweiterung greift genau diese Möglichkeit beim Helden auf.\n\n## Pakte\n\nPakte ermöglichen Ether-Entitäten Einfluss auf Menschen Eras, obwohl Sol und Yol den direkten Eintritt verhindern. Ein Pakt kann:\n\n- eine Seele an eine Entität binden;\n- den Weg der Seele nach dem Tod verändern;\n- Kraft, Wissen oder Vorteile versprechen;\n- verborgene Bedingungen enthalten;\n- als Einfallstor für Korruption dienen.\n\nDer Held schloss vor seinem Tod einen solchen Pakt. Dadurch wurde seine Seele aus dem normalen Zusammenhang Eras herausgelöst und in den Einflussbereich Heras beziehungsweise Tatoks geleitet. Die exakten Motive, Versprechen und Umstände bleiben noch auszuarbeiten.\n\n## Grenzen der Entitäten\n\nEther-Entitäten können im Spiel besiegt, geschwächt, vertrieben oder ihrer aktuellen Form beraubt werden. Sie können jedoch nicht endgültig getötet werden. Diese Regel erhält die übergeordnete Bedrohung auch nach einem Bosskampf aufrecht.\n"
+    },
+    {
+      "rel_path": "10-world/00-kosmologie/hera-und-splitterwelten.md",
+      "name": "hera-und-splitterwelten.md",
+      "parent": "10-world/00-kosmologie",
+      "size_bytes": 2189,
+      "size_human": "2.14 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Hera und die Splitterwelten",
+      "headings": 6,
+      "lines": 41,
+      "words": 269,
+      "chars": 2152,
+      "snippet": "title: Hera und die Splitterwelten status: working-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Hera und die Splitterwelten"
+        ],
+        [
+          2,
+          "Hera"
+        ],
+        [
+          2,
+          "Eigenschaften"
+        ],
+        [
+          2,
+          "Splitterwelten"
+        ],
+        [
+          2,
+          "Machtbereiche"
+        ],
+        [
+          2,
+          "Verhältnis zur Spielwelt"
+        ]
+      ],
+      "content": "---\ntitle: Hera und die Splitterwelten\nstatus: working-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-kosmologie.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Hera und die Splitterwelten\n\n## Hera\n\nHera ist die übergeordnete Splittersphäre um beziehungsweise neben der physischen Wirklichkeit Eras. Räumliche Begriffe wie „um Era herum“ sind dabei nur Annäherungen. Hera ist multidimensional, instabil und nicht vollständig mit normaler Geografie beschreibbar.\n\n## Eigenschaften\n\nIn Hera können Welten und Sphären:\n\n- neu erschaffen werden;\n- zerstört werden;\n- geteilt oder zusammengefügt werden;\n- zeitweise feste, reale Formen annehmen;\n- in diffuse, kaum erklärbare Zustände übergehen;\n- von einer Entität geprägt werden, ohne physisch abgeschlossen zu sein.\n\nEine neue Ether-Entität muss nicht zwingend eine bestehende Welt erobern. Sie kann unter bestimmten Bedingungen einen eigenen Splitter oder Machtbereich hervorbringen.\n\n## Splitterwelten\n\nEine Splitterwelt ist ein lokaler Wirklichkeitsraum innerhalb Heras. Sie kann aus echter Materie, gespeicherten Erinnerungen, gebundenen Seelen, Etherenergie oder einer Mischung daraus bestehen. Deshalb kann etwas in einer Splitterwelt für ihre Bewohner vollkommen real erscheinen, obwohl es außerhalb des Splitters keinen stabilen Bestand besitzt.\n\n## Machtbereiche\n\nDie mächtigsten bekannten Ether-Entitäten haben große Teile Heras unter sich aufgeteilt. Diese Aufteilung ist keine saubere politische Landkarte, sondern ein Geflecht aus Einfluss, erschaffenen Räumen, Seelenströmen, Portalen und Herrschaftszonen.\n\nJators Domäne wird in der Konzeptkarte als **Tatok** bezeichnet. Innerhalb Tatoks liegt die Konstruktwelt des Basisspiels nur als vergleichsweise kleiner Bereich eines viel größeren Machtzentrums.\n\n## Verhältnis zur Spielwelt\n\nDie Spielwelt wird vom Helden als seine echte, verlorene Heimat interpretiert. Tatsächlich ist sie ein von Jator und Semm errichteter Entwicklungsraum für Heldenseelen. Ihre Landschaften, Städte und Bewohner können emotional und funktional real sein, obwohl die Welt als Ganzes künstlich geschaffen wurde.\n"
+    },
+    {
+      "rel_path": "10-world/00-kosmologie/index.md",
+      "name": "index.md",
+      "parent": "10-world/00-kosmologie",
+      "size_bytes": 499,
+      "size_human": "499 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Kosmologie",
+      "headings": 1,
+      "lines": 11,
+      "words": 69,
+      "chars": 493,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](00-kosmologie.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Kosmologie"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-kosmologie.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kosmologie\n\nDie Kosmologie erklärt das Verhältnis zwischen dem physischen Planeten Era, den Himmelskörpern Sol und Yol, der Splittersphäre Hera, dem Ether und den Seelen.\n\n- [Era, Sol und Yol](era-sol-und-yol.md)\n- [Hera und die Splitterwelten](hera-und-splitterwelten.md)\n- [Ether, Seelen und Pakte](ether-seelen-und-pakte.md)\n- [Zeitzyklen und Konvergenz](zeitzyklen-und-konvergenz.md)\n"
+    },
+    {
+      "rel_path": "10-world/00-kosmologie/zeitzyklen-und-konvergenz.md",
+      "name": "zeitzyklen-und-konvergenz.md",
+      "parent": "10-world/00-kosmologie",
+      "size_bytes": 2139,
+      "size_human": "2.09 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Zeitzyklen und Konvergenz von Sol und Yol",
+      "headings": 5,
+      "lines": 41,
+      "words": 282,
+      "chars": 2101,
+      "snippet": "title: Zeitzyklen und Konvergenz von Sol und Yol status: working-canon updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Zeitzyklen und Konvergenz von Sol und Yol"
+        ],
+        [
+          2,
+          "Unregelmäßige Zyklen"
+        ],
+        [
+          2,
+          "Die Konvergenz"
+        ],
+        [
+          2,
+          "Offener Zeitraum"
+        ],
+        [
+          2,
+          "Nach der Konvergenz"
+        ]
+      ],
+      "content": "---\ntitle: Zeitzyklen und Konvergenz von Sol und Yol\nstatus: working-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](00-kosmologie.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Zeitzyklen und Konvergenz von Sol und Yol\n\n## Unregelmäßige Zyklen\n\nDer Tanz von Sol und Yol erzeugt keine gleichmäßigen Tage und Jahreszeiten. Abhängig von ihrer Stellung können auf Era sehr unterschiedliche Zustände entstehen:\n\n- Sol kann eine Region über lange Zeit stark erhellen und erwärmen.\n- Yol kann eine andere Region in Kälte und intensive Magie tauchen.\n- Bestimmte Konstellationen können über Jahrzehnte nahezu unverändert bestehen.\n- In anderen Phasen kann ein vollständiger Licht- und Dunkelzyklus nur ungefähr eine Stunde dauern.\n\nDadurch besitzen Kulturen auf Era vermutlich regionale Kalender, flexible Jahresbegriffe und besondere Überlebensstrategien. Diese kulturellen Folgen sind noch gesondert auszuarbeiten.\n\n## Die Konvergenz\n\nIn großen Abständen erhalten Sol und Yol für ungefähr 24 Stunden eine physische, wesensartige Gestalt. In dieser Zeit können sie sich erstmals unmittelbar berühren und umarmen. Ihre Liebe ist damit nicht nur Mythos, sondern Teil der kosmischen Wirklichkeit.\n\nWährend dieser 24 Stunden ist die gemeinsame Schutzschicht um Era geschwächt oder zeitweise offen. Das führt gleichzeitig zu:\n\n- erhöhter Gefahr durch Einflüsse aus Hera;\n- ungewöhnlichen magischen Ereignissen;\n- gesellschaftlichem Unheil und Machtkämpfen;\n- seltenen Wundern, Begegnungen und Festen.\n\nDie Konvergenz markiert den Beginn eines neuen großen Jahres beziehungsweise Weltjahres.\n\n## Offener Zeitraum\n\nDer gesprochene Entwurf nennt ungefähr 20, 21 oder 25 irdische Jahre zwischen zwei Konvergenzen. Bis zur Festlegung wird mit einem Bereich von **20 bis 25 irdischen Jahren** gearbeitet. Der Kalender Eras kann davon abweichend zählen, weil normale Tage und Jahreszeiten nicht konstant sind.\n\n## Nach der Konvergenz\n\nNach 24 Stunden kehren Sol und Yol in ihre Himmelskörperform zurück. Die Schutzwirkung entsteht erneut, und ihr unregelmäßiger Tanz um Era beginnt von Neuem.\n"
+    },
+    {
+      "rel_path": "10-world/10-weltgeschichte/10-weltgeschichte.md",
+      "name": "10-weltgeschichte.md",
+      "parent": "10-world/10-weltgeschichte",
+      "size_bytes": 335,
+      "size_human": "335 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "10 weltgeschichte",
+      "headings": 2,
+      "lines": 12,
+      "words": 41,
+      "chars": 323,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../10-world.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "10 weltgeschichte"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../10-world.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 10 weltgeschichte\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Der Pakt von Jator und Semm](pakt-von-jator-und-semm.md)\n- 📝 [Chronologische Übersicht](zeitleiste.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "10-world/10-weltgeschichte/index.md",
+      "name": "index.md",
+      "parent": "10-world/10-weltgeschichte",
+      "size_bytes": 310,
+      "size_human": "310 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Weltgeschichte",
+      "headings": 1,
+      "lines": 9,
+      "words": 40,
+      "chars": 307,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](10-weltgeschichte.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Weltgeschichte"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](10-weltgeschichte.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Weltgeschichte\n\nDieser Abschnitt ordnet die kosmischen und historischen Ereignisse, die zum Spiel führten.\n\n- [Der Pakt von Jator und Semm](pakt-von-jator-und-semm.md)\n- [Zeitleiste](zeitleiste.md)\n"
+    },
+    {
+      "rel_path": "10-world/10-weltgeschichte/pakt-von-jator-und-semm.md",
+      "name": "pakt-von-jator-und-semm.md",
+      "parent": "10-world/10-weltgeschichte",
+      "size_bytes": 2294,
+      "size_human": "2.24 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Der Pakt von Jator und Semm",
+      "headings": 6,
+      "lines": 41,
+      "words": 318,
+      "chars": 2260,
+      "snippet": "title: Der Pakt von Jator und Semm status: draft-canon spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Der Pakt von Jator und Semm"
+        ],
+        [
+          2,
+          "Ausgangsproblem"
+        ],
+        [
+          2,
+          "Die Idee"
+        ],
+        [
+          2,
+          "Warum gute Taten Teil des Systems sind"
+        ],
+        [
+          2,
+          "Der persönliche Pakt des Helden"
+        ],
+        [
+          2,
+          "Der Fehler im System"
+        ]
+      ],
+      "content": "---\ntitle: Der Pakt von Jator und Semm\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](10-weltgeschichte.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Der Pakt von Jator und Semm\n\n## Ausgangsproblem\n\nJator und Semm benötigen Seelen, um ihre Macht zu erhalten und zu vergrößern. Gewöhnliche Seelen reichen dafür zwar aus, doch starke Heldenseelen liefern wesentlich mehr Energie und Wert.\n\n## Die Idee\n\nAnstatt ausschließlich darauf zu warten, dass auf Era zufällig große Helden entstehen, entwickeln Jator und Semm ein System zur gezielten Heranzüchtung mächtiger Seelen. Dieses System besteht aus einer künstlichen Spielwelt innerhalb von Jators Splitterdomäne Tatok.\n\nDie Konstruktwelt wird so aufgebaut, dass eine ausgewählte Seele:\n\n1. ohne vollständiges Wissen über ihren Tod erwacht;\n2. eine scheinbar bedrohte Welt vorfindet;\n3. durch Rettung, Wiederherstellung und Kampf immer stärker wird;\n4. starke Bindungen an Bewohner, Orte und Erinnerungen entwickelt;\n5. sich selbst als Held begreift;\n6. am Ende eine besonders energiereiche Seele bildet.\n\n## Warum gute Taten Teil des Systems sind\n\nGute Taten, Rettung und Selbstüberwindung sind aus Sicht der Entitäten nicht bloß moralische Ereignisse. Sie verdichten Erinnerung, Willen, Bindung und Bedeutung. Genau dadurch wird eine Seele wertvoller.\n\nJator und Semm instrumentalisieren damit das Prinzip des Heldentums: Sie erschaffen Leid und Verlust, damit die ausgewählte Seele durch deren Überwindung reift.\n\n## Der persönliche Pakt des Helden\n\nVor seinem Tod auf Era schließt der spätere Held einen Pakt, der seine Seele nach Hera umleitet. Ob dieser Pakt direkt mit Jator, Semm, einem Mittelsmann oder einer anderen Ether-Entität geschlossen wurde, ist noch offen. Fest steht, dass er die Voraussetzung dafür schafft, den Helden in das Zuchtsystem einzusetzen.\n\n## Der Fehler im System\n\nZehsen, einer der Atea, schleust einen Talisman in den Heldenraum ein. Dieses Artefakt erfüllt zunächst scheinbar nur eine hilfreiche Funktion, kann jedoch verborgene Strukturen erkennen und später Seelenenergie sammeln. Dadurch erhält der Held die Möglichkeit, seine vorgesehene Rolle zu überschreiten und das System gegen seine Erbauer zu wenden.\n"
+    },
+    {
+      "rel_path": "10-world/10-weltgeschichte/zeitleiste.md",
+      "name": "zeitleiste.md",
+      "parent": "10-world/10-weltgeschichte",
+      "size_bytes": 2532,
+      "size_human": "2.47 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Chronologische Übersicht",
+      "headings": 1,
+      "lines": 31,
+      "words": 316,
+      "chars": 2485,
+      "snippet": "title: Chronologische Übersicht status: draft spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Chronologische Übersicht"
+        ]
+      ],
+      "content": "---\ntitle: Chronologische Übersicht\nstatus: draft\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](10-weltgeschichte.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Chronologische Übersicht\n\n| Phase | Ereignis |\n|---|---|\n| Kosmische Frühzeit | Era existiert als physischer Mittelpunkt. Sol und Yol bilden als gegensätzliche, verbundene Wesen einen Schutz um den Planeten. |\n| Entstehung der Atea | Zehn Weltenbewahrer werden als Bestandteile und Aufseher Eras wirksam. Ihr genauer Ursprung ist noch offen. |\n| Ausformung Heras | In der multidimensionalen Splittersphäre entstehen unzählige Seelenräume, Entitäten und Machtbereiche. |\n| Aufstieg der großen Entitäten | Zehn besonders mächtige Ether-Entitäten prägen große Teile Heras. Jator kontrolliert die Domäne Tatok. |\n| Seelenhandel und indirekter Einfluss | Weil Sol und Yol direkten Zugriff verhindern, wirken Entitäten über Pakte, Händler, Korruption und Seelenumlenkung auf Era ein. |\n| Pakt von Jator und Semm | Jator und Semm entwickeln eine Konstruktwelt, die starke Heldenseelen hervorbringen soll. |\n| Eingriff Zehsens | Zehsen bringt einen Talisman in das System ein, ohne die Konstruktwelt offen anzugreifen. |\n| Leben des Helden auf Era | Der spätere Held lebt auf Era und schließt einen Pakt. Einzelheiten fehlen noch. |\n| Tod und Umleitung | Der Held stirbt; seine Seele gelangt nicht in den normalen Kreislauf, sondern nach Tatok. |\n| Beginn des Spiels | Der Held erwacht im Heldenraum, hält sich für lebendig und erhält Auftrag sowie Hilfsmittel. |\n| Wiederherstellungsreise | Gebiete, Natur, Seelen, Bewohner, Städte, Erinnerungen und Fähigkeiten kehren stufenweise zurück. |\n| Enthüllung | Der Talisman entschlüsselt, dass die gerettete Welt ein künstliches Seelenzucht-System ist. |\n| Endgame-Rückkehr | Der Held bereist die befreiten Welten erneut und sammelt Seelenenergie. |\n| Flucht aus der Konstruktwelt | Mit der gesammelten Kraft verlässt er den inneren Bereich Tatoks. |\n| Drei Weltpassagen | Drei feindbesetzte Übergangsräume führen zu Jator. |\n| Finale des Basisspiels | Jator wird besiegt. Ein offenes Portal führt zu Semm, der ebenfalls besiegt wird. Beide bleiben als Ether-Entitäten grundsätzlich existent. |\n| Erweiterung | Der Held kämpft gegen die übrigen großen Entitäten und wird schließlich selbst zu einer Ether-Entität. |\n| Offenes Ende | Durch seine besondere Herkunft kann er physisch nach Era zurückkehren. Seine weitere Rolle bleibt unerzählt. |\n"
+    },
+    {
+      "rel_path": "10-world/10-world.md",
+      "name": "10-world.md",
+      "parent": "10-world",
+      "size_bytes": 1395,
+      "size_human": "1.36 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "10 world",
+      "headings": 6,
+      "lines": 33,
+      "words": 175,
+      "chars": 1318,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "10 world"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ],
+        [
+          2,
+          "📁 00 kosmologie"
+        ],
+        [
+          2,
+          "📁 10 weltgeschichte"
+        ],
+        [
+          2,
+          "📁 20 geografie und sphaeren"
+        ],
+        [
+          2,
+          "📁 40 fraktionen"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 10 world\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- ⏭️ (keine Seiten)\n\n## 📁 00 kosmologie\n- 🗂️ [Overview](00-kosmologie/00-kosmologie.md)\n- 📝 [Era, Sol und Yol](00-kosmologie/era-sol-und-yol.md)\n- 📝 [Ether, Seelen und Pakte](00-kosmologie/ether-seelen-und-pakte.md)\n- 📝 [Hera und die Splitterwelten](00-kosmologie/hera-und-splitterwelten.md)\n- 📝 [Zeitzyklen und Konvergenz von Sol und Yol](00-kosmologie/zeitzyklen-und-konvergenz.md)\n\n## 📁 10 weltgeschichte\n- 🗂️ [Overview](10-weltgeschichte/10-weltgeschichte.md)\n- 📝 [Der Pakt von Jator und Semm](10-weltgeschichte/pakt-von-jator-und-semm.md)\n- 📝 [Chronologische Übersicht](10-weltgeschichte/zeitleiste.md)\n\n## 📁 20 geografie und sphaeren\n- 🗂️ [Overview](20-geografie-und-sphaeren/20-geografie-und-sphaeren.md)\n- 📝 [Welten und Sphären](20-geografie-und-sphaeren/welten-und-sphaeren.md)\n- 📝 [Konzeptkarte – Die Welten des Ether](20-geografie-und-sphaeren/weltenkarte-und-arbeitsnamen.md)\n\n## 📁 40 fraktionen\n- 🗂️ [Overview](40-fraktionen/40-fraktionen.md)\n- 📝 [Atea und Weltenbewahrer](40-fraktionen/atea-und-weltenbewahrer.md)\n- 📝 [Die zehn großen Ether-Entitäten](40-fraktionen/grosse-ether-entitaeten.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "10-world/20-geografie-und-sphaeren/20-geografie-und-sphaeren.md",
+      "name": "20-geografie-und-sphaeren.md",
+      "parent": "10-world/20-geografie-und-sphaeren",
+      "size_bytes": 361,
+      "size_human": "361 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "20 geografie und sphaeren",
+      "headings": 2,
+      "lines": 12,
+      "words": 43,
+      "chars": 347,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../10-world.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "20 geografie und sphaeren"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../10-world.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 geografie und sphaeren\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Welten und Sphären](welten-und-sphaeren.md)\n- 📝 [Konzeptkarte – Die Welten des Ether](weltenkarte-und-arbeitsnamen.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "10-world/20-geografie-und-sphaeren/index.md",
+      "name": "index.md",
+      "parent": "10-world/20-geografie-und-sphaeren",
+      "size_bytes": 363,
+      "size_human": "363 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Geografie und Sphären",
+      "headings": 1,
+      "lines": 9,
+      "words": 43,
+      "chars": 354,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](20-geografie-und-sphaeren.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Geografie und Sphären"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-geografie-und-sphaeren.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Geografie und Sphären\n\nDie „Geografie“ Heras beschreibt nicht nur Orte, sondern stabile und instabile Wirklichkeitsräume.\n\n- [Welten und Sphären](welten-und-sphaeren.md)\n- [Konzeptkarte und Arbeitsnamen](weltenkarte-und-arbeitsnamen.md)\n"
+    },
+    {
+      "rel_path": "10-world/20-geografie-und-sphaeren/welten-und-sphaeren.md",
+      "name": "welten-und-sphaeren.md",
+      "parent": "10-world/20-geografie-und-sphaeren",
+      "size_bytes": 1971,
+      "size_human": "1.92 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Welten und Sphären",
+      "headings": 7,
+      "lines": 38,
+      "words": 253,
+      "chars": 1938,
+      "snippet": "title: Welten und Sphären status: working-canon updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Welten und Sphären"
+        ],
+        [
+          2,
+          "Era"
+        ],
+        [
+          2,
+          "Hera"
+        ],
+        [
+          2,
+          "Tatok"
+        ],
+        [
+          2,
+          "Die Konstruktwelt"
+        ],
+        [
+          2,
+          "Weltpassagen"
+        ],
+        [
+          2,
+          "Weitere Entitätssphären"
+        ]
+      ],
+      "content": "---\ntitle: Welten und Sphären\nstatus: working-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-geografie-und-sphaeren.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Welten und Sphären\n\n## Era\n\nEra ist die physische Ursprungswelt. Hier gelten stabile Körperlichkeit, Geburt, Leben und Tod. Die Atea sind mit Era verbunden. Sol und Yol umkreisen beziehungsweise umtanzen den Planeten und schützen ihn.\n\n## Hera\n\nHera ist die nicht eindeutig greifbare Gesamtsphäre der Splitterwelten. Begriffe wie Entfernung, Richtung und Grenze gelten dort nur eingeschränkt. Ein Ort kann über Portale benachbart sein, obwohl er nach äußerer Darstellung weit entfernt liegt.\n\n## Tatok\n\nTatok ist Jators große Splitterdomäne. Sie erscheint auf der Konzeptkarte als dunkles, befestigtes Machtgebilde. Die Domäne ist wesentlich größer als die eigentliche Spielwelt des Basisspiels.\n\n## Die Konstruktwelt\n\nDie vom Helden wiederhergestellte Welt liegt in einem kleinen, kontrollierten Teil Tatoks. Sie besteht aus mehreren Ebenen oder Teilwelten. Ihre genaue Anzahl, Themen und geografischen Übergänge sind noch nicht definiert.\n\nDie Konstruktwelt muss gleichzeitig zwei Wahrheiten tragen:\n\n- Für den Helden und ihre Bewohner ist sie zunächst die einzige erfahrbare Wirklichkeit.\n- Für Jator und Semm ist sie ein kontrolliertes Entwicklungs- und Erntesystem.\n\n## Weltpassagen\n\nWeltpassagen verbinden größere Bereiche Heras. Im Basisspiel werden nach der Flucht aus der Konstruktwelt drei Passagen durchquert. Sie sind nicht mehr auf Wiederherstellung ausgelegt, sondern als feindbesetzte Prüfstrecken vor Jators Machtzentrum.\n\n## Weitere Entitätssphären\n\nDie Konzeptgrafik zeigt zahlreiche eigenständige Räume, Fragmente und Welten. Ihre genaue Zuordnung zu den zehn großen Entitäten ist noch nicht vollständig festgelegt. Einige Namen entsprechen direkt einer Entität, andere scheinen Orte, Kolonien oder Bruchstücke zu bezeichnen.\n"
+    },
+    {
+      "rel_path": "10-world/20-geografie-und-sphaeren/weltenkarte-und-arbeitsnamen.md",
+      "name": "weltenkarte-und-arbeitsnamen.md",
+      "parent": "10-world/20-geografie-und-sphaeren",
+      "size_bytes": 1940,
+      "size_human": "1.89 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Konzeptkarte – Die Welten des Ether",
+      "headings": 4,
+      "lines": 53,
+      "words": 232,
+      "chars": 1912,
+      "snippet": "title: Konzeptkarte – Die Welten des Ether status: visual-reference updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Konzeptkarte – Die Welten des Ether"
+        ],
+        [
+          2,
+          "Sichtbare Beschriftungen"
+        ],
+        [
+          2,
+          "Aktuelle Auswertung"
+        ],
+        [
+          2,
+          "Kanonregel für die Grafik"
+        ]
+      ],
+      "content": "---\ntitle: Konzeptkarte – Die Welten des Ether\nstatus: visual-reference\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-geografie-und-sphaeren.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Konzeptkarte – Die Welten des Ether\n\n![Konzeptkarte der Welten des Ether](../../../assets/maps/die-welten-des-ether.png)\n\n## Sichtbare Beschriftungen\n\nDie Grafik enthält folgende Namen:\n\n- Xexis\n- Tenteros\n- Zulie's Star\n- Ithos\n- Telz\n- Sen\n- Loop Hive 42\n- Sol\n- The Meridian\n- Yol\n- Kor\n- Kraa\n- Kor's Shard\n- Splinterwelten\n- Schuk\n- Tatok\n\n## Aktuelle Auswertung\n\n| Karteneintrag | Arbeitsdeutung | Status |\n|---|---|---|\n| Sol | Lebens- und Wärmequelle Eras | bestätigt |\n| Yol | Kälte- und Magiepol Eras | bestätigt |\n| The Meridian | Vermutlich Era oder ein älterer Name für den zentralen Planeten | offen |\n| Tatok | Jators Splitterdomäne | sehr wahrscheinlich |\n| Splinterwelten | Gruppe frei treibender oder zerbrochener Wirklichkeitsfragmente | Arbeitsfassung |\n| Xexis | Sphäre oder Manifestation der Entität Xexis | wahrscheinlich |\n| Tenteros | Sphäre oder Manifestation der Entität Tenteros | wahrscheinlich |\n| Loop Hive 42 | Bereich, Kolonie oder Produktionssphäre von Loop | wahrscheinlich |\n| Schuk | Große befestigte Splitterstadt oder Domäne; Beziehung zu Schuy offen | offen |\n| Kor / Kor's Shard | Welt und abgetrennter Splitter; zugehörige Entität nicht auf der aktuellen Zehnerliste | offen |\n| Ithos, Telz, Sen, Kraa | Weitere Splitterräume oder Machtzentren | offen |\n| Zulie's Star | Sternartiger Orientierungspunkt oder eigenständiges Wesen | offen |\n\n## Kanonregel für die Grafik\n\nDie Karte ist eine starke visuelle Grundlage, aber ihre Beschriftungen gelten erst dann als verbindlich, wenn sie in den Textdokumenten bestätigt werden. Besonders `The Meridian`, `Kor`, `Schuk`, `Ithos`, `Telz`, `Sen`, `Kraa` und `Zulie's Star` benötigen noch eine eindeutige Funktion.\n"
+    },
+    {
+      "rel_path": "10-world/40-fraktionen/40-fraktionen.md",
+      "name": "40-fraktionen.md",
+      "parent": "10-world/40-fraktionen",
+      "size_bytes": 348,
+      "size_human": "348 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "40 fraktionen",
+      "headings": 2,
+      "lines": 12,
+      "words": 41,
+      "chars": 335,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../10-world.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "40 fraktionen"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../10-world.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 40 fraktionen\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Atea und Weltenbewahrer](atea-und-weltenbewahrer.md)\n- 📝 [Die zehn großen Ether-Entitäten](grosse-ether-entitaeten.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "10-world/40-fraktionen/atea-und-weltenbewahrer.md",
+      "name": "atea-und-weltenbewahrer.md",
+      "parent": "10-world/40-fraktionen",
+      "size_bytes": 2337,
+      "size_human": "2.28 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Atea und Weltenbewahrer",
+      "headings": 5,
+      "lines": 45,
+      "words": 281,
+      "chars": 2306,
+      "snippet": "title: Atea und Weltenbewahrer status: working-canon updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Atea und Weltenbewahrer"
+        ],
+        [
+          2,
+          "Grundidee"
+        ],
+        [
+          2,
+          "Bekannte Atea"
+        ],
+        [
+          2,
+          "Zehsens Eingriff"
+        ],
+        [
+          2,
+          "Offene Fragen"
+        ]
+      ],
+      "content": "---\ntitle: Atea und Weltenbewahrer\nstatus: working-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-fraktionen.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Atea und Weltenbewahrer\n\n![Die zehn Weltenbewahrer](../../../assets/concepts/die-weltenbewahrer.png)\n\n## Grundidee\n\nDie Atea sind zehn Geister und Wächter des Ether, die mit Era selbst verbunden sind. Sie sind nicht bloß externe Herrscher, sondern Verkörperungen von Kräften, Strömen und Bestandteilen der Welt. Gleichzeitig überwachen und schützen sie Era.\n\nIm direkten Machtvergleich sind die großen Ether-Entitäten stärker. Der Schutz Eras beruht deshalb nicht allein auf den Atea, sondern wesentlich auf Sol und Yol.\n\n## Bekannte Atea\n\n| Name | Bisher festgelegte Funktion oder Darstellung | Status |\n|---|---|---|\n| **Flur** | Luftgeist; wolken- und windartige Gestalt | bestätigt |\n| **Mitska** | Steingeist in Form einer gewaltigen Steinschlange, so groß wie ein Gebirge; Bergrücken wirken wie Schuppen | bestätigt |\n| **Schieso** | Helle, drachenartige Wächtergestalt; genaue Zuständigkeit offen | offen |\n| **Zehsen** | Monumentaler, heller und marmorartig wirkender Wächter; schleust den Talisman in Jators System ein | Arbeitskanon |\n| **Eves** | Lebensstrom; grün-goldene, pflanzliche Energie | bestätigt |\n| **Seves** | Manastrom; blau-violette, magische Energie | bestätigt |\n| **Aquars** | Wassergeist | bestätigt |\n| **Infa** | Feuergeist | bestätigt |\n| **Endir** | Gruppe kleiner Fels- und Steingeister | bestätigt |\n| **Isander** | Organisch-pflanzliche oder seelenartige Wächterform; genaue Funktion offen | offen |\n\n## Zehsens Eingriff\n\nZehsen erkennt oder vermutet den Zweck der Konstruktwelt. Da ein offener Angriff auf Tatok nicht möglich oder nicht erfolgversprechend ist, bringt Zehsen einen Talisman in den Heldenraum ein. Der Talisman dient als verdeckter Gegenmechanismus innerhalb des von Jator und Semm geschaffenen Systems.\n\n## Offene Fragen\n\n- Sind die Atea erschaffen worden oder gemeinsam mit Era entstanden?\n- Können sie Era verlassen?\n- Wie kommunizieren sie mit Sterblichen und untereinander?\n- Warum handelt Zehsen allein oder verdeckt?\n- Welche Kräfte vertreten Schieso und Isander genau?\n- Sind Eves und Seves eigenständige Personen, Ströme mit Bewusstsein oder beides zugleich?\n"
+    },
+    {
+      "rel_path": "10-world/40-fraktionen/grosse-ether-entitaeten.md",
+      "name": "grosse-ether-entitaeten.md",
+      "parent": "10-world/40-fraktionen",
+      "size_bytes": 2543,
+      "size_human": "2.48 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Die zehn großen Ether-Entitäten",
+      "headings": 5,
+      "lines": 44,
+      "words": 309,
+      "chars": 2481,
+      "snippet": "title: Die zehn großen Ether-Entitäten status: working-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Die zehn großen Ether-Entitäten"
+        ],
+        [
+          2,
+          "Stellung"
+        ],
+        [
+          2,
+          "Bekannte Namen"
+        ],
+        [
+          2,
+          "Gemeinsame Eigenschaften"
+        ],
+        [
+          2,
+          "Jator und Semm"
+        ]
+      ],
+      "content": "---\ntitle: Die zehn großen Ether-Entitäten\nstatus: working-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-fraktionen.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Die zehn großen Ether-Entitäten\n\n![Die zehn großen Ether-Entitäten](../../../assets/concepts/die-grossen-ether-entitaeten.png)\n\n## Stellung\n\nIn Hera existieren unzählige Seelenwesen und Entitäten. Die folgende Zehnergruppe umfasst die mächtigsten bekannten Gegenspieler. Sie haben große Teile der Splittersphäre geprägt oder unter sich aufgeteilt. Die Liste bedeutet nicht, dass keine weiteren Entitäten existieren oder entstehen können.\n\n## Bekannte Namen\n\n| Name | Bisherige Rolle | Status |\n|---|---|---|\n| **Kha** | Große Entität; Funktion und Sphäre offen | Name bestätigt |\n| **Tenteros** | Große Entität; auf der Sphärenkarte ebenfalls als Raum benannt | Name bestätigt |\n| **Xexis** | Große Entität; auf der Sphärenkarte als riesige violette Sphäre dargestellt | Name bestätigt |\n| **Jete** | Große Entität; Funktion offen | Name bestätigt |\n| **Mes** | Große Entität; zentrale, kristallin gepanzerte Gestalt | Name bestätigt |\n| **Loop** | Große Entität; vermutlich mit `Loop Hive 42` verbunden | Name bestätigt, Beziehung wahrscheinlich |\n| **Jator** | Erbauer und Herr der Domäne Tatok; einer der beiden Hauptgegner des Basisspiels | Arbeitskanon |\n| **Kooy** | Große, gerüstete Entität; Funktion offen | Name bestätigt |\n| **Schuy** | Monumentale Entität; mögliche Beziehung zu `Schuk` offen | Name bestätigt |\n| **Semm** | Mitverschwörer Jators und zweiter Endgegner des Basisspiels | Arbeitskanon |\n\n## Gemeinsame Eigenschaften\n\n- Sie gewinnen Macht aus Seelen und Seelenenergie.\n- Sie können Pakte schließen und Seelenwege beeinflussen.\n- Sie wirken auf Era vor allem indirekt, weil Sol und Yol den direkten Zugang blockieren.\n- Ihre Körperdarstellungen sind Manifestationen und müssen nicht ihre einzige Form sein.\n- Sie können besiegt, aber nicht endgültig getötet werden.\n- Sie können bestehende Splitter beherrschen oder neue Wirklichkeitsräume erschaffen.\n\n## Jator und Semm\n\nJator stellt die Konstruktwelt in seiner Domäne Tatok bereit. Semm wirkt am Plan zur Züchtung von Heldenseelen mit. Die genaue Arbeitsteilung ist noch offen. Als plausible Trennung bietet sich an, Jator stärker mit Raum, Gefängnis und Systemarchitektur zu verbinden und Semm stärker mit Seelenformung, Beobachtung oder Ernte; dies ist jedoch noch kein bestätigter Kanon.\n"
+    },
+    {
+      "rel_path": "10-world/40-fraktionen/index.md",
+      "name": "index.md",
+      "parent": "10-world/40-fraktionen",
+      "size_bytes": 261,
+      "size_human": "261 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Fraktionen und übergeordnete Wesen",
+      "headings": 1,
+      "lines": 7,
+      "words": 31,
+      "chars": 256,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](40-fraktionen.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Fraktionen und übergeordnete Wesen"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-fraktionen.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Fraktionen und übergeordnete Wesen\n\n- [Atea und Weltenbewahrer](atea-und-weltenbewahrer.md)\n- [Die großen Ether-Entitäten](grosse-ether-entitaeten.md)\n"
+    },
+    {
+      "rel_path": "10-world/index.md",
+      "name": "index.md",
+      "parent": "10-world",
+      "size_bytes": 1039,
+      "size_human": "1.01 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "10 – Welt",
+      "headings": 5,
+      "lines": 28,
+      "words": 139,
+      "chars": 1029,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](10-world.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "10 – Welt"
+        ],
+        [
+          2,
+          "Kosmologie"
+        ],
+        [
+          2,
+          "Weltgeschichte"
+        ],
+        [
+          2,
+          "Sphären und Orte"
+        ],
+        [
+          2,
+          "Fraktionen und Wesen"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](10-world.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 10 – Welt\n\nDieser Bereich beschreibt die objektive Wahrheit hinter Era, Hera, den Splitterwelten und den beteiligten Mächten.\n\n## Kosmologie\n\n- [Era, Sol und Yol](00-kosmologie/era-sol-und-yol.md)\n- [Hera und die Splitterwelten](00-kosmologie/hera-und-splitterwelten.md)\n- [Ether, Seelen und Pakte](00-kosmologie/ether-seelen-und-pakte.md)\n- [Zeitzyklen und Konvergenz](00-kosmologie/zeitzyklen-und-konvergenz.md)\n\n## Weltgeschichte\n\n- [Der Pakt von Jator und Semm](10-weltgeschichte/pakt-von-jator-und-semm.md)\n- [Chronologische Übersicht](10-weltgeschichte/zeitleiste.md)\n\n## Sphären und Orte\n\n- [Welten und Sphären](20-geografie-und-sphaeren/welten-und-sphaeren.md)\n- [Auswertung der Konzeptkarte](20-geografie-und-sphaeren/weltenkarte-und-arbeitsnamen.md)\n\n## Fraktionen und Wesen\n\n- [Atea und Weltenbewahrer](40-fraktionen/atea-und-weltenbewahrer.md)\n- [Die großen Ether-Entitäten](40-fraktionen/grosse-ether-entitaeten.md)\n"
+    },
+    {
+      "rel_path": "20-story/20-story.md",
+      "name": "20-story.md",
+      "parent": "20-story",
+      "size_bytes": 641,
+      "size_human": "641 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "20 story",
+      "headings": 2,
+      "lines": 17,
+      "words": 65,
+      "chars": 611,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "20 story"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 story\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)\n- 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)\n- 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)\n- 📝 [Heldenraum und Talisman](heldenraum-und-talisman.md)\n- 📝 [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)\n- 📝 [Story-Prämisse](praemisse.md)\n- 📝 [Der Protagonist](protagonist.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "20-story/enthuellungsstruktur.md",
+      "name": "enthuellungsstruktur.md",
+      "parent": "20-story",
+      "size_bytes": 2228,
+      "size_human": "2.18 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Enthüllungs- und Spoilerstruktur",
+      "headings": 8,
+      "lines": 40,
+      "words": 288,
+      "chars": 2169,
+      "snippet": "title: Enthüllungs- und Spoilerstruktur status: proposal spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Enthüllungs- und Spoilerstruktur"
+        ],
+        [
+          2,
+          "Stufe 1 – Verlorene Welt"
+        ],
+        [
+          2,
+          "Stufe 2 – Unvollständige Erinnerung"
+        ],
+        [
+          2,
+          "Stufe 3 – Künstliche Grenzen"
+        ],
+        [
+          2,
+          "Stufe 4 – Zweifel an der eigenen Identität"
+        ],
+        [
+          2,
+          "Stufe 5 – Wahrheit über die Konstruktwelt"
+        ],
+        [
+          2,
+          "Stufe 6 – Wahrheit als neue Handlungsfreiheit"
+        ],
+        [
+          2,
+          "Erzählregel"
+        ]
+      ],
+      "content": "---\ntitle: Enthüllungs- und Spoilerstruktur\nstatus: proposal\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Enthüllungs- und Spoilerstruktur\n\nDie Wahrheit soll nicht als einzelner Infoblock am Schluss erscheinen. Sie wird in Stufen vorbereitet, ohne die zentrale Wendung vorzeitig eindeutig zu machen.\n\n## Stufe 1 – Verlorene Welt\n\nDer Spieler erhält eine klare, glaubhafte Ausgangserzählung: Monster haben die Welt zerstört oder versiegelt, und der Held kann sie zurückbringen. Alle frühen Systeme unterstützen diese Deutung.\n\n## Stufe 2 – Unvollständige Erinnerung\n\nEinzelne Erinnerungen passen nicht vollständig zusammen. Bewohner können dieselbe Vergangenheit unterschiedlich beschreiben. Bestimmte Orte wirken älter oder neuer, als sie sein dürften.\n\n## Stufe 3 – Künstliche Grenzen\n\nDer Spieler entdeckt wiederholte Strukturen, nicht erreichbare Ränder, Systemzeichen, identische Seelenmuster oder Räume hinter der sichtbaren Welt. Der Talisman beginnt diese Phänomene zu entschlüsseln.\n\n## Stufe 4 – Zweifel an der eigenen Identität\n\nErinnerungen des Helden zeigen Era, ohne den Namen oder den Tod sofort vollständig zu erklären. Die Frage verschiebt sich von „Was ist mit der Welt geschehen?“ zu „Gehöre ich überhaupt hierher?“\n\n## Stufe 5 – Wahrheit über die Konstruktwelt\n\nDer Held erfährt, dass er eine Seele ist, die Welt in Tatok liegt und Jator sowie Semm Heldenseelen züchten. Frühere Erfolge werden dadurch nicht entwertet: Die Bindungen und Entscheidungen des Helden waren echt, auch wenn der Raum künstlich war.\n\n## Stufe 6 – Wahrheit als neue Handlungsfreiheit\n\nDie Enthüllung führt unmittelbar zu einer neuen Mechanik. Der Talisman kann Seelenenergie sammeln, alte Welten erhalten neue Ziele, und der Spieler entscheidet sich aktiv gegen die vorgesehene Ernte.\n\n## Erzählregel\n\nDie Wendung darf nicht behaupten, „alles war bedeutungslos“. Die emotionale Realität der Bewohner, Erinnerungen und geretteten Orte muss bestehen bleiben. Die Täuschung betrifft Ursprung und Zweck der Welt, nicht automatisch den Wert der darin entstandenen Beziehungen.\n"
+    },
+    {
+      "rel_path": "20-story/finale-und-erweiterung.md",
+      "name": "finale-und-erweiterung.md",
+      "parent": "20-story",
+      "size_bytes": 2119,
+      "size_human": "2.07 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Finale des Basisspiels und Erweiterung",
+      "headings": 4,
+      "lines": 40,
+      "words": 287,
+      "chars": 2083,
+      "snippet": "title: Finale des Basisspiels und Erweiterung status: draft-canon spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Finale des Basisspiels und Erweiterung"
+        ],
+        [
+          2,
+          "Finale des Basisspiels"
+        ],
+        [
+          2,
+          "Warum das Portal offen bleibt"
+        ],
+        [
+          2,
+          "Erweiterung"
+        ]
+      ],
+      "content": "---\ntitle: Finale des Basisspiels und Erweiterung\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Finale des Basisspiels und Erweiterung\n\n## Finale des Basisspiels\n\nNach der vollständigen Wiederherstellung der Konstruktwelt kehrt der Held in die bereits befreiten Ebenen zurück. Der Talisman sammelt die dort verfügbare Seelenenergie. Mit dieser Kraft verlässt der Held den inneren Bereich Tatoks.\n\nDrei feindbesetzte Weltpassagen führen zum Machtzentrum Jators. Dort findet der erste Endbosskampf statt. Jator wird besiegt, aber nicht endgültig vernichtet.\n\nEin Portal bleibt nach dem Kampf geöffnet. Es führt in Semms Bereich. Der Held durchquert es und besiegt auch Semm. Damit endet das Basisspiel und der sechste Abschnitt der ersten Heldengeschichte.\n\n## Warum das Portal offen bleibt\n\nDer konkrete Grund ist noch festzulegen. Mögliche, aber noch nicht kanonische Erklärungen sind:\n\n- Jators Niederlage destabilisiert die Grenze;\n- Semm öffnet das Portal aus Überheblichkeit oder Notwendigkeit;\n- der Talisman übernimmt einen Teil von Jators System;\n- Jator und Semm sind durch den ursprünglichen Pakt gekoppelt.\n\n## Erweiterung\n\nDie Erweiterung vergrößert den Konflikt von zwei Gegnern auf die Gesamtheit der großen Ether-Entitäten. Der Held verfolgt, bekämpft oder durchkreuzt die übrigen Mächte Heras.\n\nIm Verlauf wird er selbst zu einer Ether-Entität. Diese Entwicklung ist zugleich Gefahr und Vorteil:\n\n- Er nähert sich den Wesen an, gegen die er kämpft.\n- Seine gesammelte Seelenenergie verändert seine Existenzform.\n- Er gewinnt Zugang zu Kräften und Räumen, die einer gewöhnlichen Seele verschlossen wären.\n- Anders als die bekannten Entitäten besitzt er weiterhin eine direkte Herkunft aus Era.\n\nAm Ende kann seine Seele beziehungsweise neue physische Form nach Era zurückkehren. Welche Rolle er dort einnimmt, ob er Wächter, Gefahr, Vermittler oder etwas völlig Neues wird, bleibt bewusst offen und wird in diesem Projektteil nicht weitergeführt.\n"
+    },
+    {
+      "rel_path": "20-story/handlungsverlauf.md",
+      "name": "handlungsverlauf.md",
+      "parent": "20-story",
+      "size_bytes": 2682,
+      "size_human": "2.62 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Handlungsverlauf des Basisspiels",
+      "headings": 10,
+      "lines": 57,
+      "words": 354,
+      "chars": 2644,
+      "snippet": "title: Handlungsverlauf des Basisspiels status: draft-canon spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Handlungsverlauf des Basisspiels"
+        ],
+        [
+          2,
+          "1. Erwachen"
+        ],
+        [
+          2,
+          "2. Erste Befreiungen"
+        ],
+        [
+          2,
+          "3. Wiederherstellung der Welt"
+        ],
+        [
+          2,
+          "4. Wachsende Bindung"
+        ],
+        [
+          2,
+          "5. Risse in der Fassade"
+        ],
+        [
+          2,
+          "6. Umkehr des Systems"
+        ],
+        [
+          2,
+          "7. Flucht"
+        ],
+        [
+          2,
+          "8. Weltpassagen"
+        ],
+        [
+          2,
+          "9. Jator und Semm"
+        ]
+      ],
+      "content": "---\ntitle: Handlungsverlauf des Basisspiels\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Handlungsverlauf des Basisspiels\n\n## 1. Erwachen\n\nDer Held erwacht im Heldenraum ohne vollständige Erinnerung. Artefakte und Talisman weisen ihm die Aufgabe zu, eine zerstörte Welt von Monstern zu befreien.\n\n## 2. Erste Befreiungen\n\nDer Held betritt die ersten Ebenen, besiegt Gegner und säubert beziehungsweise versiegelt Monsterhöhlen. Jede abgeschlossene Quelle der Verderbnis löst eine sichtbare Rekonstruktion aus.\n\n## 3. Wiederherstellung der Welt\n\nDer Fortschritt entfaltet sich in einer festen dramaturgischen Reihenfolge:\n\n1. Länder, Regionen und begehbare Gebiete;\n2. Natur wie Bäume, Wasserläufe und Lebensräume;\n3. Seelen und Bewohner;\n4. Siedlungen und Städte;\n5. Erinnerungen und Geschichte;\n6. daraus erwachsende Fähigkeiten des Helden.\n\nGebiete können einzelne Stufen zusammenfassen, aber die übergeordnete Reihenfolge bleibt erhalten.\n\n## 4. Wachsende Bindung\n\nMit der Rückkehr der Bewohner wird die Welt nicht nur größer, sondern persönlicher. Der Held erlebt Folgen seiner Taten, erhält neue Aufgaben und erfährt Geschichte. Erinnerungen verstärken seine Fähigkeiten und zugleich seine emotionale Bindung an die Welt.\n\n## 5. Risse in der Fassade\n\nDer Talisman erkennt Unstimmigkeiten. Wiederholungen, künstliche Grenzen, widersprüchliche Erinnerungen oder verborgene Systemräume lassen erkennen, dass die Welt konstruiert ist. Der Held erfährt, dass er eine Seele ist und seine Reise Jator und Semm stärken sollte.\n\n## 6. Umkehr des Systems\n\nAnstatt sich ernten zu lassen, nutzt der Held die vom Talisman eröffnete Endgame-Funktion. Er kehrt in alle befreiten Welten zurück und sammelt dort Seelenenergie. Die genaue Form dieser Übergabe muss noch so festgelegt werden, dass die zuvor geretteten Bewohner nicht bedeutungslos werden.\n\n## 7. Flucht\n\nMit ausreichender Energie durchbricht der Held die Grenze der Konstruktwelt und verlässt den kontrollierten Entwicklungsraum innerhalb Tatoks.\n\n## 8. Weltpassagen\n\nDrei feindbesetzte Passagen bilden den eigentlichen Endgame-Anstieg. Hier gibt es keine große Rekonstruktion mehr; der Schwerpunkt liegt auf Kampf, Ausdauer, Beherrschung der erworbenen Fähigkeiten und der Konfrontation mit Jators Macht.\n\n## 9. Jator und Semm\n\nDer Held besiegt Jator. Nach dem Kampf bleibt ein Portal offen, das zu Semm führt. Auch Semm wird besiegt. Beide können jedoch nicht endgültig getötet werden.\n\nDamit endet der sechste und letzte Abschnitt dieses Teils der Heldengeschichte.\n"
+    },
+    {
+      "rel_path": "20-story/heldenraum-und-talisman.md",
+      "name": "heldenraum-und-talisman.md",
+      "parent": "20-story",
+      "size_bytes": 1951,
+      "size_human": "1.91 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Heldenraum und Talisman",
+      "headings": 7,
+      "lines": 44,
+      "words": 252,
+      "chars": 1929,
+      "snippet": "title: Heldenraum und Talisman status: working-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Heldenraum und Talisman"
+        ],
+        [
+          2,
+          "Der Heldenraum"
+        ],
+        [
+          2,
+          "Der Talisman"
+        ],
+        [
+          3,
+          "1. Wegweiser"
+        ],
+        [
+          3,
+          "2. Entschlüssler"
+        ],
+        [
+          3,
+          "3. Seelenspeicher"
+        ],
+        [
+          2,
+          "Erzählerische Funktion"
+        ]
+      ],
+      "content": "---\ntitle: Heldenraum und Talisman\nstatus: working-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Heldenraum und Talisman\n\n## Der Heldenraum\n\nDas Spiel beginnt im Heldenraum. Er ist ein ruhiger, abgegrenzter Ausgangsort innerhalb der Konstruktwelt und bildet den ersten stabilen Bezugspunkt des Helden.\n\nDort befinden sich:\n\n- mehrere Artefakte;\n- Hinweise auf die Aufgabe des Helden;\n- Zugänge oder Verbindungen zu den ersten Ebenen;\n- der Talisman beziehungsweise dessen erste Manifestation;\n- möglicherweise leere Sockel, versiegelte Erinnerungen oder später aktivierbare Funktionen.\n\nDie genaue visuelle Gestaltung und Herkunft des Raumes sind noch offen. Er kann zugleich Teil von Jators System und durch Zehsens Eingriff verändert worden sein.\n\n## Der Talisman\n\nDer Talisman wurde durch Zehsen in das System eingeschleust. Er erfüllt drei aufeinander aufbauende Funktionen.\n\n### 1. Wegweiser\n\nZu Beginn gibt er praktische Hinweise, erklärt Ziele und hilft dem Spieler, die Grundregeln der Welt zu verstehen. Dadurch wirkt er wie ein gewöhnlicher Begleiter des vorgesehenen Heldenprogramms.\n\n### 2. Entschlüssler\n\nMit wachsendem Fortschritt erkennt oder öffnet der Talisman verborgene Ebenen, Fehler und Widersprüche der Konstruktwelt. Seine Hinweise werden von rein praktischen Tipps zu Fragen über die Natur der Welt.\n\n### 3. Seelenspeicher\n\nIm Endgame kann der Talisman Seelenenergie aufnehmen. Erst dadurch erhält der Held genug Kraft, um die Grenze der Konstruktwelt zu durchbrechen.\n\n## Erzählerische Funktion\n\nDer Talisman darf die Wahrheit nicht sofort erklären. Er soll den Spieler unterstützen, aber Erkenntnis durch Beobachtung, Erinnerungen und Widersprüche ermöglichen. Unklar bleibt zunächst, ob der Talisman selbst bewusst spricht, Zehsens Nachrichten überträgt oder nur auf bestimmte Resonanzen reagiert.\n"
+    },
+    {
+      "rel_path": "20-story/index.md",
+      "name": "index.md",
+      "parent": "20-story",
+      "size_bytes": 565,
+      "size_human": "565 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "20 – Story",
+      "headings": 1,
+      "lines": 14,
+      "words": 58,
+      "chars": 555,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](20-story.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "20 – Story"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 20 – Story\n\nDieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er enthält kritische Spoiler.\n\n- [Prämisse](praemisse.md)\n- [Der Protagonist](protagonist.md)\n- [Heldenraum und Talisman](heldenraum-und-talisman.md)\n- [Handlungsverlauf](handlungsverlauf.md)\n- [Enthüllungsstruktur](enthuellungsstruktur.md)\n- [Finale und Erweiterung](finale-und-erweiterung.md)\n- [Kapitelstruktur – Arbeitsfassung](kapitelstruktur-arbeitsfassung.md)\n"
+    },
+    {
+      "rel_path": "20-story/kapitelstruktur-arbeitsfassung.md",
+      "name": "kapitelstruktur-arbeitsfassung.md",
+      "parent": "20-story",
+      "size_bytes": 1563,
+      "size_human": "1.53 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Kapitelstruktur – Arbeitsfassung",
+      "headings": 2,
+      "lines": 30,
+      "words": 177,
+      "chars": 1541,
+      "snippet": "title: Kapitelstruktur – Arbeitsfassung status: proposal spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Kapitelstruktur – Arbeitsfassung"
+        ],
+        [
+          2,
+          "Noch auszuarbeiten"
+        ]
+      ],
+      "content": "---\ntitle: Kapitelstruktur – Arbeitsfassung\nstatus: proposal\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kapitelstruktur – Arbeitsfassung\n\nDer Entwurf nennt sechs Kapitel beziehungsweise sechs große Abschnitte. Die folgende Verteilung ist eine redaktionelle Arbeitsfassung und noch keine endgültige Szenenliste.\n\n| Kapitel | Schwerpunkt | Zentrale Veränderung |\n|---:|---|---|\n| 1 | Heldenraum und erste Ebene | Der Held akzeptiert Auftrag, Talisman und Grundkampf. Erste Landschaft kehrt zurück. |\n| 2 | Länder und Natur | Mehrere Gebiete werden zugänglich; Rekonstruktion wird zur Hauptschleife. |\n| 3 | Seelen, Bewohner und Städte | Die Welt erhält Gesellschaft, Beziehungen, Aufgaben und sichtbare Zivilisation. |\n| 4 | Erinnerungen, Geschichte und Fähigkeiten | Charakterfortschritt und Weltwissen werden verbunden; erste starke Widersprüche erscheinen. |\n| 5 | Wahrheit und Rückkehrreise | Die Konstruktwelt wird enttarnt; der Held sammelt in den befreiten Ebenen Seelenenergie. |\n| 6 | Flucht, drei Weltpassagen, Jator und Semm | Kampforientiertes Endgame und Abschluss des Basisspiels. |\n\n## Noch auszuarbeiten\n\n- Anzahl der Ebenen pro Kapitel.\n- Hauptfiguren und emotionale Konflikte jeder Region.\n- Zeitpunkt einzelner Erinnerungsenthüllungen.\n- Boss oder Wächter pro Abschnitt.\n- Übergang von Kapitel 4 zur vollständigen Wahrheit in Kapitel 5.\n- Umfang des erneuten Bereisens, damit das Endgame keine bloße Wiederholung wird.\n"
+    },
+    {
+      "rel_path": "20-story/praemisse.md",
+      "name": "praemisse.md",
+      "parent": "20-story",
+      "size_bytes": 1412,
+      "size_human": "1.38 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Story-Prämisse",
+      "headings": 1,
+      "lines": 18,
+      "words": 196,
+      "chars": 1391,
+      "snippet": "title: Story-Prämisse status: draft-canon spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Story-Prämisse"
+        ]
+      ],
+      "content": "---\ntitle: Story-Prämisse\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Story-Prämisse\n\nEin Held erwacht in einem rätselhaften Heldenraum. Er besitzt nur bruchstückhafte Erinnerung, findet mehrere Artefakte vor und erhält den Auftrag, eine zerstörte Welt zu befreien. Ein Talisman begleitet ihn als Helfer und Wegweiser.\n\nDer Held besiegt Monster, reinigt oder versiegelt Monsterhöhlen und bringt dadurch Schritt für Schritt verlorene Bestandteile der Welt zurück. Zuerst entstehen Gebiete und Natur, später kehren Seelen und Menschen, Städte, Erinnerungen und schließlich neue Fähigkeiten zurück.\n\nDer Held hält diese Welt für seine wahre Heimat und versteht seine Aufgabe als Wiederaufbau nach einer Katastrophe. Tatsächlich ist er bereits auf Era gestorben. Er ist eine Seele in einer von Jator und Semm geschaffenen Splitterwelt. Das scheinbare Rettungswerk soll seine Seele durch Kampf, Verantwortung, Bindung und Heldentaten immer wertvoller machen.\n\nZehsens Talisman verändert den vorgesehenen Ablauf. Er hilft nicht nur beim Fortschritt, sondern deckt nach und nach die künstliche Natur der Welt auf. Im Endgame kann er die Energie der befreiten Seelen sammeln. Der Held nutzt diese Kraft, um die Konstruktwelt zu verlassen und gegen Jator und Semm anzutreten.\n"
+    },
+    {
+      "rel_path": "20-story/protagonist.md",
+      "name": "protagonist.md",
+      "parent": "20-story",
+      "size_bytes": 2078,
+      "size_human": "2.03 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Der Protagonist",
+      "headings": 6,
+      "lines": 48,
+      "words": 272,
+      "chars": 2051,
+      "snippet": "title: Der Protagonist status: draft-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Der Protagonist"
+        ],
+        [
+          2,
+          "Ausgangszustand"
+        ],
+        [
+          2,
+          "Was er zu Beginn glaubt"
+        ],
+        [
+          2,
+          "Was tatsächlich stimmt"
+        ],
+        [
+          2,
+          "Charakterentwicklung"
+        ],
+        [
+          2,
+          "Noch offene Charakterfragen"
+        ]
+      ],
+      "content": "---\ntitle: Der Protagonist\nstatus: draft-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](20-story.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Der Protagonist\n\n## Ausgangszustand\n\nDer Protagonist erscheint als klassischer Held, ist in Wahrheit jedoch eine vom Körper getrennte Seele. Er weiß nicht, dass er gestorben ist. Seine Erinnerung an Era, sein früheres Leben und seinen Pakt ist zu Beginn blockiert, beschädigt oder absichtlich verborgen.\n\n## Was er zu Beginn glaubt\n\n- Er ist am Leben.\n- Der Heldenraum ist ein realer Zufluchts- oder Ausgangsort.\n- Die zerstörte Spielwelt ist seine tatsächliche Welt.\n- Die Monster sind die Ursache des Untergangs.\n- Wiederherstellung bedeutet endgültige Rettung.\n\n## Was tatsächlich stimmt\n\n- Er starb auf Era.\n- Ein Pakt leitete seine Seele in Jators Einflussbereich.\n- Die Spielwelt ist ein künstlicher Entwicklungsraum.\n- Monster, Verlust und Wiederherstellung sind Teil eines Systems zur Stärkung seiner Seele.\n- Der Talisman stammt nicht von den Erbauern des Systems, sondern wurde durch Zehsen eingeschleust.\n\n## Charakterentwicklung\n\nDie Entwicklung des Helden verläuft in fünf Schritten:\n\n1. **Orientierung:** Er akzeptiert die Aufgabe, weil sie ihm Sinn und Richtung gibt.\n2. **Verantwortung:** Er baut Bindungen zu Orten, Bewohnern und geretteten Seelen auf.\n3. **Identität:** Erinnerungen und Geschichte verändern sein Verständnis von sich selbst.\n4. **Misstrauen:** Widersprüche zeigen, dass die Welt nicht so funktioniert, wie sie behauptet.\n5. **Selbstbestimmung:** Er entscheidet, die erworbene Stärke nicht an Jator und Semm abzugeben, sondern gegen das System einzusetzen.\n\n## Noch offene Charakterfragen\n\n- Name, Herkunft, Kultur und früherer Beruf auf Era.\n- Grund für den ursprünglichen Pakt.\n- Persönlicher Fehler oder Wunsch, den die Entitäten ausnutzen konnten.\n- Verhältnis zu Gewalt, Verantwortung und den im Endgame gesammelten Seelen.\n- Ob seine Heldentaten aus echter Güte, Schuld, Pflichtgefühl oder wachsender Bindung entstehen.\n"
+    },
+    {
+      "rel_path": "30-gameplay/30-gameplay.md",
+      "name": "30-gameplay.md",
+      "parent": "30-gameplay",
+      "size_bytes": 464,
+      "size_human": "464 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "30 gameplay",
+      "headings": 2,
+      "lines": 14,
+      "words": 44,
+      "chars": 445,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "30 gameplay"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 30 gameplay\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Kampfsystem – Grundlage](kampfsystem-grundlage.md)\n- 📝 [Kernspielschleife](kernspielschleife.md)\n- 📝 [Seelenenergie im Endgame](seelenenergie-im-endgame.md)\n- 📝 [Wiederherstellungsfortschritt](wiederherstellungsfortschritt.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "30-gameplay/index.md",
+      "name": "index.md",
+      "parent": "30-gameplay",
+      "size_bytes": 348,
+      "size_human": "348 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "30 – Gameplay",
+      "headings": 1,
+      "lines": 9,
+      "words": 32,
+      "chars": 342,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](30-gameplay.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "30 – Gameplay"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 30 – Gameplay\n\n- [Kernspielschleife](kernspielschleife.md)\n- [Wiederherstellungsfortschritt](wiederherstellungsfortschritt.md)\n- [Kampfsystem – Grundlage](kampfsystem-grundlage.md)\n- [Seelenenergie im Endgame](seelenenergie-im-endgame.md)\n"
+    },
+    {
+      "rel_path": "30-gameplay/kampfsystem-grundlage.md",
+      "name": "kampfsystem-grundlage.md",
+      "parent": "30-gameplay",
+      "size_bytes": 1782,
+      "size_human": "1.74 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Kampfsystem – Grundlage",
+      "headings": 6,
+      "lines": 47,
+      "words": 190,
+      "chars": 1762,
+      "snippet": "title: Kampfsystem – Grundlage status: draft-canon updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Kampfsystem – Grundlage"
+        ],
+        [
+          2,
+          "Perspektive"
+        ],
+        [
+          2,
+          "Grundaktionen"
+        ],
+        [
+          2,
+          "Verbindung zur Story"
+        ],
+        [
+          2,
+          "Ziel für einen ersten Vertical Slice"
+        ],
+        [
+          2,
+          "Offene Systemfragen"
+        ]
+      ],
+      "content": "---\ntitle: Kampfsystem – Grundlage\nstatus: draft-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kampfsystem – Grundlage\n\n## Perspektive\n\nDas Kampfsystem ist für eine Top-down-Ansicht ausgelegt. Gegnerangriffe, Gefahrenzonen und Bewegungswege müssen aus dieser Perspektive klar lesbar sein.\n\n## Grundaktionen\n\n| Aktion | Zweck |\n|---|---|\n| **Angriff** | Direkter Nahkampfschaden und Hauptmittel gegen normale Gegner. |\n| **Ausweichen** | Aktive Positionsänderung, um Angriffen und Gefahrenzonen zu entkommen. |\n| **Blocken** | Defensive Antwort auf lesbare Angriffe; genaue Kosten und Parierfenster sind offen. |\n| **Magie/Fernkampf** | Distanzoption, Elementinteraktion und Werkzeug gegen schwer erreichbare Gegner. |\n\n## Verbindung zur Story\n\nNeue Kampfoptionen und Verbesserungen sollen bevorzugt aus Erinnerungen, historischen Erkenntnissen oder wiederhergestellten Beziehungen entstehen. Der Held lernt dadurch nicht nur „mehr Schaden“, sondern gewinnt verlorene Techniken, Haltungen oder magische Zusammenhänge zurück.\n\n## Ziel für einen ersten Vertical Slice\n\nDer erste spielbare Abschnitt benötigt mindestens:\n\n- einen zuverlässigen Grundangriff;\n- eine Ausweichbewegung;\n- eine Blockfunktion;\n- eine einfache magische Distanzaktion;\n- zwei normale Gegnertypen mit unterschiedlichen Angriffsmustern;\n- einen kleineren Elitegegner oder Höhlenwächter;\n- eine sichtbare Weltrekonstruktion als Abschluss.\n\n## Offene Systemfragen\n\n- Ausdauerleiste oder Abklingzeiten.\n- Leichtes und schweres Angriffssystem.\n- Parade als Teil des Blocks.\n- Zielerfassung oder freies Zielen.\n- Manaquelle und Regeneration.\n- Elementbeziehungen zu Flur, Aquars, Infa, Mitska, Eves und Seves.\n"
+    },
+    {
+      "rel_path": "30-gameplay/kernspielschleife.md",
+      "name": "kernspielschleife.md",
+      "parent": "30-gameplay",
+      "size_bytes": 1792,
+      "size_human": "1.75 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Kernspielschleife",
+      "headings": 7,
+      "lines": 42,
+      "words": 216,
+      "chars": 1762,
+      "snippet": "title: Kernspielschleife status: draft-canon updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Kernspielschleife"
+        ],
+        [
+          2,
+          "Hauptschleife"
+        ],
+        [
+          2,
+          "Gefühl des Fortschritts"
+        ],
+        [
+          2,
+          "Zwei Phasen des Spiels"
+        ],
+        [
+          3,
+          "Aufbauphase"
+        ],
+        [
+          3,
+          "Umkehrphase"
+        ],
+        [
+          2,
+          "Anti-Wiederholungsregel"
+        ]
+      ],
+      "content": "---\ntitle: Kernspielschleife\nstatus: draft-canon\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Kernspielschleife\n\n## Hauptschleife\n\n1. Der Held betritt eine beschädigte oder unvollständige Ebene.\n2. Er erkundet, kämpft, findet Zugänge und erkennt die lokale Ursache der Versiegelung.\n3. Er besiegt Monstergruppen und räumt eine Monsterhöhle oder einen vergleichbaren Verdichtungspunkt.\n4. Er versiegelt, reinigt oder schließt die Quelle.\n5. Ein Teil der Welt wird rekonstruiert.\n6. Neue Landschaft, Bewohner, Gebäude, Erinnerungen oder Fähigkeiten werden verfügbar.\n7. Der Spieler kehrt zu bekannten Orten zurück und erlebt deren Veränderung.\n8. Neue Wege, Aufgaben und der nächste Verdichtungspunkt öffnen sich.\n\n## Gefühl des Fortschritts\n\nFortschritt soll nicht nur über Zahlen sichtbar sein. Jede größere Befreiung verändert mindestens zwei Ebenen:\n\n- **räumlich:** neue Wege, Natur, Gebäude oder ganze Gebiete;\n- **sozial oder erzählerisch:** Bewohner, Dialoge, Erinnerungen oder historische Zusammenhänge;\n- **mechanisch:** neue Fähigkeit, Werkzeug, Magie oder Interaktion.\n\n## Zwei Phasen des Spiels\n\n### Aufbauphase\n\nDer Spieler glaubt, eine echte Welt wiederherzustellen. Die Schleife vermittelt Hoffnung, Wachstum und zunehmende Verbundenheit.\n\n### Umkehrphase\n\nNach der Enthüllung erhalten bekannte Orte neue Funktionen. Der Spieler kehrt zurück, sammelt Seelenenergie, entdeckt versteckte Systemschichten und bereitet die Flucht vor.\n\n## Anti-Wiederholungsregel\n\nEine Rückkehr in ein früheres Gebiet muss mindestens eine neue Begegnung, Route, Gegnerkombination, Erinnerung, Entscheidung oder Systemebene bieten. Reines Ablaufen identischer Wege soll vermieden werden.\n"
+    },
+    {
+      "rel_path": "30-gameplay/seelenenergie-im-endgame.md",
+      "name": "seelenenergie-im-endgame.md",
+      "parent": "30-gameplay",
+      "size_bytes": 1650,
+      "size_human": "1.61 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Seelenenergie im Endgame",
+      "headings": 5,
+      "lines": 36,
+      "words": 212,
+      "chars": 1622,
+      "snippet": "title: Seelenenergie im Endgame status: draft-canon spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Seelenenergie im Endgame"
+        ],
+        [
+          2,
+          "Freischaltung"
+        ],
+        [
+          2,
+          "Spielablauf"
+        ],
+        [
+          2,
+          "Wichtige Designbedingung"
+        ],
+        [
+          2,
+          "Endgame-Ziel"
+        ]
+      ],
+      "content": "---\ntitle: Seelenenergie im Endgame\nstatus: draft-canon\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Seelenenergie im Endgame\n\n## Freischaltung\n\nDie Seelenenergie-Funktion des Talismans wird erst nach der Enthüllung vollständig aktiv. Dadurch wird aus einem Begleit- und Hinweissystem eine zentrale Endgame-Mechanik.\n\n## Spielablauf\n\n1. Die Konstruktwelt ist weitgehend oder vollständig befreit.\n2. Der Talisman zeigt neue Resonanzpunkte in bereits besuchten Ebenen.\n3. Der Held kehrt zu den geretteten Seelen und Orten zurück.\n4. Neue Prüfungen, Entscheidungen oder Verteidigungen ermöglichen die Übertragung von Seelenenergie.\n5. Die gesammelte Gesamtenergie öffnet die Grenze zur äußeren Tatok-Sphäre.\n\n## Wichtige Designbedingung\n\nDas Einsammeln darf die vorherige Rettung nicht rückwirkend als bloße Ausbeutung darstellen, sofern der Held weiterhin als Gegenfigur zu Jator und Semm verstanden werden soll. Die genaue Lösung ist noch offen. Mögliche Modelle sind:\n\n- Bewohner geben freiwillig einen Teil ihrer Energie;\n- der Talisman sammelt nur überschüssige Resonanz, nicht die Seele selbst;\n- befreite Seelen schließen sich zeitweise dem Helden an;\n- Energie wird nach den Bosskämpfen zurückgegeben;\n- der Spieler muss zwischen schneller Macht und Schutz einzelner Seelen abwägen.\n\n## Endgame-Ziel\n\nSeelenenergie ist kein gewöhnliches Gold oder Erfahrungspunktesystem. Sie ist die konkrete Kraft, die die künstliche Grenze der Konstruktwelt aufbricht und die Kämpfe gegen Jator und Semm überhaupt ermöglicht.\n"
+    },
+    {
+      "rel_path": "30-gameplay/wiederherstellungsfortschritt.md",
+      "name": "wiederherstellungsfortschritt.md",
+      "parent": "30-gameplay",
+      "size_bytes": 1899,
+      "size_human": "1.85 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Wiederherstellungsfortschritt",
+      "headings": 5,
+      "lines": 39,
+      "words": 214,
+      "chars": 1850,
+      "snippet": "title: Wiederherstellungsfortschritt status: accepted updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Wiederherstellungsfortschritt"
+        ],
+        [
+          2,
+          "Verbindliche Reihenfolge"
+        ],
+        [
+          2,
+          "Designabsicht"
+        ],
+        [
+          2,
+          "Flexible Anwendung"
+        ],
+        [
+          2,
+          "Rückkopplung"
+        ]
+      ],
+      "content": "---\ntitle: Wiederherstellungsfortschritt\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](30-gameplay.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Wiederherstellungsfortschritt\n\n## Verbindliche Reihenfolge\n\nDie Welt wird nicht auf einmal wiederhergestellt. Der Fortschritt folgt einer lesbaren Hierarchie:\n\n1. **Länder und Gebiete** – Grundfläche, Wege, Höhenzüge, Küsten oder Ebenengrenzen.\n2. **Natur und Landschaft** – Bäume, Wasser, Pflanzen, Wettereffekte und Lebensräume.\n3. **Seelen und Bewohner** – einzelne Wesen, Gruppen und soziale Beziehungen.\n4. **Siedlungen und Städte** – Gebäude, Infrastruktur, Handwerk und gesellschaftliche Funktionen.\n5. **Erinnerungen und Geschichte** – persönliche Erinnerungen, Weltwissen, frühere Ereignisse und Identität.\n6. **Fähigkeiten des Helden** – Verbesserungen, die aus den wiedergewonnenen Erinnerungen und Geschichten entstehen.\n\n## Designabsicht\n\nDie Reihenfolge vermittelt, dass eine Welt zuerst Raum und Lebensgrundlage benötigt, bevor Gesellschaft, Geschichte und persönliche Macht zurückkehren können. Fähigkeiten sind damit das Ergebnis von Wiederherstellung und Verständnis, nicht bloß eine isolierte Belohnung.\n\n## Flexible Anwendung\n\nNicht jede kleine Quest muss alle sechs Stufen abbilden. Eine Region kann beispielsweise zuerst Gelände und Bäume zurückbringen, später Bewohner und schließlich eine gemeinsame Erinnerung. Die globale Reihenfolge darf jedoch nicht umgedreht werden, solange keine bewusste Ausnahme erzählt wird.\n\n## Rückkopplung\n\nJede Stufe soll die vorherige neu nutzbar machen:\n\n- Landschaft öffnet Wege.\n- Natur erzeugt Ressourcen und Atmosphäre.\n- Bewohner geben Aufgaben und Beziehungen.\n- Städte bündeln Dienste und Kultur.\n- Erinnerungen erklären Zusammenhänge.\n- Fähigkeiten erlauben neue Lösungen in alten und neuen Gebieten.\n"
+    },
+    {
+      "rel_path": "40-world-systems/40-world-systems.md",
+      "name": "40-world-systems.md",
+      "parent": "40-world-systems",
+      "size_bytes": 575,
+      "size_human": "575 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "40 world systems",
+      "headings": 2,
+      "lines": 15,
+      "words": 62,
+      "chars": 553,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "40 world systems"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 40 world systems\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Ebenen, Portale und Weltpassagen](ebenen-portale-und-weltpassagen.md)\n- 📝 [Erinnerungs- und Fähigkeitssystem](erinnerungs-und-faehigkeitssystem.md)\n- 📝 [Rekonstruktionssystem](rekonstruktionssystem.md)\n- 📝 [Seelenökonomie](seelenoekonomie.md)\n- 📝 [Sol, Yol, Zeit und Jahreszeiten als Weltsystem](sol-yol-zeit-und-jahreszeiten.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "40-world-systems/ebenen-portale-und-weltpassagen.md",
+      "name": "ebenen-portale-und-weltpassagen.md",
+      "parent": "40-world-systems",
+      "size_bytes": 1464,
+      "size_human": "1.43 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Ebenen, Portale und Weltpassagen",
+      "headings": 5,
+      "lines": 44,
+      "words": 166,
+      "chars": 1444,
+      "snippet": "title: Ebenen, Portale und Weltpassagen status: draft-design updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Ebenen, Portale und Weltpassagen"
+        ],
+        [
+          2,
+          "Ebenen der Konstruktwelt"
+        ],
+        [
+          2,
+          "Portale"
+        ],
+        [
+          2,
+          "Weltpassagen"
+        ],
+        [
+          2,
+          "Drei Endgame-Passagen"
+        ]
+      ],
+      "content": "---\ntitle: Ebenen, Portale und Weltpassagen\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Ebenen, Portale und Weltpassagen\n\n## Ebenen der Konstruktwelt\n\nDie Konstruktwelt besteht aus mehreren wiederherstellbaren Ebenen. Jede Ebene benötigt:\n\n- ein eigenes Landschaftsthema;\n- einen regionalen Konflikt;\n- mehrere Monsterquellen oder Höhlen;\n- eine Rekonstruktionsfolge;\n- Bewohner und mindestens einen erinnerungsbasierten Handlungsbogen;\n- einen Abschluss, der den nächsten Bereich öffnet.\n\n## Portale\n\nPortale verbinden Räume, die innerhalb Heras nicht normal benachbart sein müssen. Sie können kontrolliert, beschädigt, verborgen oder an Seelenenergie gebunden sein.\n\n## Weltpassagen\n\nWeltpassagen sind größere Übergangsräume zwischen Machtbereichen. Im Endgame erfüllen sie eine andere Funktion als normale Ebenen:\n\n- keine umfassende Wiederherstellung;\n- hohe Gegnerdichte;\n- Prüfung bereits erworbener Fähigkeiten;\n- sichtbare Annäherung an Jators Machtzentrum;\n- zunehmend instabile oder fremdartige Raumregeln.\n\n## Drei Endgame-Passagen\n\nDie genaue thematische Ausgestaltung ist offen. Eine mögliche, noch nicht kanonische Steigerung wäre:\n\n1. Passage der gebundenen Seelen;\n2. Passage der zerfallenden Formen;\n3. Passage von Jators unmittelbarer Herrschaft.\n\nDie Namen sind Platzhalter und dienen nur zur Funktionsbeschreibung.\n"
+    },
+    {
+      "rel_path": "40-world-systems/erinnerungs-und-faehigkeitssystem.md",
+      "name": "erinnerungs-und-faehigkeitssystem.md",
+      "parent": "40-world-systems",
+      "size_bytes": 1931,
+      "size_human": "1.89 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Erinnerungs- und Fähigkeitssystem",
+      "headings": 6,
+      "lines": 39,
+      "words": 218,
+      "chars": 1901,
+      "snippet": "title: Erinnerungs- und Fähigkeitssystem status: draft-design updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Erinnerungs- und Fähigkeitssystem"
+        ],
+        [
+          2,
+          "Grundsatz"
+        ],
+        [
+          2,
+          "Erinnerungstypen"
+        ],
+        [
+          2,
+          "Fortschrittslogik"
+        ],
+        [
+          2,
+          "Gestaltungsregel"
+        ],
+        [
+          2,
+          "Spoilerfunktion"
+        ]
+      ],
+      "content": "---\ntitle: Erinnerungs- und Fähigkeitssystem\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Erinnerungs- und Fähigkeitssystem\n\n## Grundsatz\n\nErinnerungen sind gleichzeitig Lore, Charakterentwicklung und Fortschrittsressource. Eine Fähigkeit verbessert sich nicht nur, weil ein abstrakter Wert steigt, sondern weil der Held eine Technik, Bindung oder Wahrheit wieder versteht.\n\n## Erinnerungstypen\n\n| Typ | Beispielhafte Funktion |\n|---|---|\n| Persönliche Erinnerung | Enthüllt Teile des früheren Lebens des Helden und kann eine individuelle Technik zurückbringen. |\n| Ortsgedächtnis | Zeigt, wie ein Gebiet vor seiner Zerstörung oder Konstruktion erlebt wurde. |\n| Kulturelle Erinnerung | Stellt Wissen, Handwerk, Sprache oder Rituale einer Gemeinschaft wieder her. |\n| Kampferinnerung | Schaltet Angriff, Blockreaktion, Magievariation oder passive Fähigkeit frei. |\n| Systemerinnerung | Enthüllt Fehler der Konstruktwelt und unterstützt den Talisman beim Entschlüsseln. |\n\n## Fortschrittslogik\n\n1. Ein Gebiet wird räumlich befreit.\n2. Bewohner oder Seelen kehren zurück.\n3. Beziehungen und Ereignisse erzeugen einen Erinnerungsknoten.\n4. Der Held interagiert mit der Erinnerung, statt sie nur einzusammeln.\n5. Eine neue Erkenntnis verändert Dialog, Weltzustand oder Fähigkeit.\n\n## Gestaltungsregel\n\nEine wichtige Fähigkeit sollte möglichst eine erzählerische Herkunft besitzen. Beispielsweise kann eine bessere Blocktechnik aus der Erinnerung eines früheren Beschützers entstehen, während eine Magieform aus der wiederhergestellten Verbindung zu einem Atea-Strom hervorgeht.\n\n## Spoilerfunktion\n\nFrühe Erinnerungen stärken die angenommene Weltgeschichte. Mittlere Erinnerungen erzeugen Widersprüche. Späte Erinnerungen verbinden Era, den Pakt und die Konstruktwelt zu einem vollständigen Bild.\n"
+    },
+    {
+      "rel_path": "40-world-systems/index.md",
+      "name": "index.md",
+      "parent": "40-world-systems",
+      "size_bytes": 442,
+      "size_human": "442 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "40 – Weltsysteme",
+      "headings": 1,
+      "lines": 10,
+      "words": 48,
+      "chars": 436,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](40-world-systems.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "40 – Weltsysteme"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 40 – Weltsysteme\n\n- [Rekonstruktionssystem](rekonstruktionssystem.md)\n- [Erinnerungs- und Fähigkeitssystem](erinnerungs-und-faehigkeitssystem.md)\n- [Seelenökonomie](seelenoekonomie.md)\n- [Sol, Yol, Zeit und Jahreszeiten](sol-yol-zeit-und-jahreszeiten.md)\n- [Ebenen, Portale und Weltpassagen](ebenen-portale-und-weltpassagen.md)\n"
+    },
+    {
+      "rel_path": "40-world-systems/rekonstruktionssystem.md",
+      "name": "rekonstruktionssystem.md",
+      "parent": "40-world-systems",
+      "size_bytes": 1697,
+      "size_human": "1.66 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Rekonstruktionssystem",
+      "headings": 6,
+      "lines": 49,
+      "words": 188,
+      "chars": 1669,
+      "snippet": "title: Rekonstruktionssystem status: draft-design updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Rekonstruktionssystem"
+        ],
+        [
+          2,
+          "Zweck"
+        ],
+        [
+          2,
+          "Rekonstruktionseinheiten"
+        ],
+        [
+          2,
+          "Auslöser"
+        ],
+        [
+          2,
+          "Darstellung"
+        ],
+        [
+          2,
+          "Technische Konsequenz"
+        ]
+      ],
+      "content": "---\ntitle: Rekonstruktionssystem\nstatus: draft-design\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Rekonstruktionssystem\n\n## Zweck\n\nDas Rekonstruktionssystem übersetzt das Befreien von Monsterhöhlen in sichtbare, spielbare Weltveränderung. Es ist die wichtigste Verbindung zwischen Kampf und Weltaufbau.\n\n## Rekonstruktionseinheiten\n\nJede Region kann in wiederherstellbare Einheiten gegliedert werden:\n\n- Geländeabschnitt;\n- Naturknoten;\n- Bewohner- oder Seelengruppe;\n- Gebäude oder Stadtfunktion;\n- Erinnerungsknoten;\n- Fähigkeit oder Fähigkeitsverbesserung.\n\n## Auslöser\n\nEine Rekonstruktion kann ausgelöst werden durch:\n\n- das Besiegen eines Höhlenkerns;\n- das Schließen eines Siegels;\n- das Reinigen mehrerer miteinander verbundener Monsterquellen;\n- das Lösen einer Erinnerungsaufgabe;\n- den Schutz einer zurückgekehrten Seele;\n- einen regionalen Bosskampf.\n\n## Darstellung\n\nDie Veränderung soll nach Möglichkeit direkt im Spielraum sichtbar werden. Geeignete Formen sind:\n\n- Landschaft baut sich vor den Augen des Spielers auf;\n- Farbe, Licht und Geräusche kehren zurück;\n- neue Wege wachsen oder werden freigelegt;\n- Bewohner erscheinen nicht abstrakt im Menü, sondern beziehen konkrete Orte;\n- eine Stadt entwickelt sich in mehreren erkennbaren Stufen.\n\n## Technische Konsequenz\n\nDie Welt benötigt persistente Zustände pro Rekonstruktionseinheit. Quests, Kollisionen, Gegner, Navigation, Dialoge und Musik müssen auf diese Zustände reagieren können. Das System sollte datengetrieben sein, damit Regionen nicht ausschließlich über individuelle Skripte gebaut werden müssen.\n"
+    },
+    {
+      "rel_path": "40-world-systems/seelenoekonomie.md",
+      "name": "seelenoekonomie.md",
+      "parent": "40-world-systems",
+      "size_bytes": 1555,
+      "size_human": "1.52 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Seelenökonomie",
+      "headings": 5,
+      "lines": 42,
+      "words": 183,
+      "chars": 1527,
+      "snippet": "title: Seelenökonomie status: draft-canon spoiler_level: full updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Seelenökonomie"
+        ],
+        [
+          2,
+          "Diegetische Bedeutung"
+        ],
+        [
+          2,
+          "Qualitätsunterschiede"
+        ],
+        [
+          2,
+          "Einfluss auf Era"
+        ],
+        [
+          2,
+          "Trennung von Lore und Spielerressource"
+        ]
+      ],
+      "content": "---\ntitle: Seelenökonomie\nstatus: draft-canon\nspoiler_level: full\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Seelenökonomie\n\n## Diegetische Bedeutung\n\nIn Hera sind Seelen nicht nur Bewohner oder Verstorbene. Für Ether-Entitäten besitzen sie ökonomischen und energetischen Wert. Seelen können Nahrung, Machtquelle, Tauschmittel, Pfand oder Bestandteil eines Paktes sein.\n\n## Qualitätsunterschiede\n\nDer Wert einer Seele steigt durch:\n\n- Stärke und entwickelte Fähigkeiten;\n- außergewöhnliche Erfahrungen;\n- starke Bindungen und Erinnerungen;\n- überwundene Prüfungen;\n- heroische oder folgenreiche Taten;\n- ausgeprägten eigenen Willen.\n\nDamit erklärt das System, warum Jator und Semm keine beliebige Seele ernten, sondern gezielt eine Heldenlaufbahn konstruieren.\n\n## Einfluss auf Era\n\nDa Entitäten Era nicht direkt betreten können, entsteht ein indirekter Markt aus:\n\n- Händlern und Vermittlern;\n- Versprechen und Pakten;\n- korrumpierten Personen oder Institutionen;\n- verborgenen Kulten;\n- Gegenständen, die Seelen binden oder umleiten;\n- Angeboten von Kraft gegen spätere Ansprüche auf die Seele.\n\n## Trennung von Lore und Spielerressource\n\nDie Seelenökonomie darf nicht automatisch bedeuten, dass der Spieler Seelen wie gewöhnliche Münzen behandelt. Im Basisspiel wird nur der Talisman zur kontrollierten Sammlung von Seelenenergie befähigt. Die moralische und metaphysische Bedeutung dieser Handlung muss erzählerisch sichtbar bleiben.\n"
+    },
+    {
+      "rel_path": "40-world-systems/sol-yol-zeit-und-jahreszeiten.md",
+      "name": "sol-yol-zeit-und-jahreszeiten.md",
+      "parent": "40-world-systems",
+      "size_bytes": 1623,
+      "size_human": "1.58 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Sol, Yol, Zeit und Jahreszeiten als Weltsystem",
+      "headings": 5,
+      "lines": 31,
+      "words": 205,
+      "chars": 1596,
+      "snippet": "title: Sol, Yol, Zeit und Jahreszeiten als Weltsystem status: proposal updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Sol, Yol, Zeit und Jahreszeiten als Weltsystem"
+        ],
+        [
+          2,
+          "Weltregel"
+        ],
+        [
+          2,
+          "Mögliche spielerische Auswirkungen"
+        ],
+        [
+          2,
+          "Konvergenzereignis"
+        ],
+        [
+          2,
+          "Produktionshinweis"
+        ]
+      ],
+      "content": "---\ntitle: Sol, Yol, Zeit und Jahreszeiten als Weltsystem\nstatus: proposal\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](40-world-systems.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Sol, Yol, Zeit und Jahreszeiten als Weltsystem\n\n## Weltregel\n\nLicht, Temperatur und Magiedichte hängen von der aktuellen Stellung Sols und Yols ab. Die Zyklen können sehr lang oder extrem kurz sein und sind daher ein Teil der Weltidentität.\n\n## Mögliche spielerische Auswirkungen\n\n- Sol-Phasen verstärken Wachstum, Heilung, Feuer oder Lebensenergie.\n- Yol-Phasen verstärken Magie, Kälte, Geisterwahrnehmung oder bestimmte Portale.\n- Lange stationäre Phasen verändern ganze Regionen dauerhaft.\n- Schnelle Zyklen erzeugen Gebiete, in denen sich Licht und Gefahr innerhalb kurzer Spielzeit ändern.\n- Bestimmte Erinnerungen oder Monsterhöhlen sind nur in einer Konstellation erreichbar.\n\nDiese Auswirkungen sind Vorschläge und noch nicht als konkretes Balancing festgelegt.\n\n## Konvergenzereignis\n\nDie 24-stündige physische Begegnung von Sol und Yol kann als seltenes Weltereignis, historische Zäsur oder Hintergrund für eine spätere Geschichte dienen. Währenddessen ist der Schutz Eras geschwächt. Für das Basisspiel in Tatok muss noch entschieden werden, ob die Konvergenz zeitgleich stattfindet, nur in Erinnerungen erscheint oder erst für die Erweiterung relevant wird.\n\n## Produktionshinweis\n\nDas System sollte nicht voraussetzen, dass jede Region eine vollständige astronomische Simulation besitzt. Für das Spiel reichen klar definierte Weltzustände, Übergänge und regionale Reaktionen.\n"
+    },
+    {
+      "rel_path": "50-content/50-content.md",
+      "name": "50-content.md",
+      "parent": "50-content",
+      "size_bytes": 424,
+      "size_human": "424 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "50 content",
+      "headings": 2,
+      "lines": 13,
+      "words": 49,
+      "chars": 409,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "50 content"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 50 content\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Boss- und Endgame-Abfolge](boss-und-endgame-abfolge.md)\n- 📝 [Monsterhöhlen und Versiegelungen](monsterhoehlen-und-versiegelungen.md)\n- 📝 [Welt- und Ebenenstruktur](welt-und-ebenenstruktur.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "50-content/boss-und-endgame-abfolge.md",
+      "name": "boss-und-endgame-abfolge.md",
+      "parent": "50-content",
+      "size_bytes": 1419,
+      "size_human": "1.39 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Boss- und Endgame-Abfolge",
+      "headings": 5,
+      "lines": 40,
+      "words": 182,
+      "chars": 1392,
+      "snippet": "title: Boss- und Endgame-Abfolge status: draft-outline spoiler_level: critical updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Boss- und Endgame-Abfolge"
+        ],
+        [
+          2,
+          "Regionale Bosse"
+        ],
+        [
+          2,
+          "Endgame-Abfolge"
+        ],
+        [
+          2,
+          "Bossregel für Ether-Entitäten"
+        ],
+        [
+          2,
+          "Erweiterungsbosse"
+        ]
+      ],
+      "content": "---\ntitle: Boss- und Endgame-Abfolge\nstatus: draft-outline\nspoiler_level: critical\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Boss- und Endgame-Abfolge\n\n## Regionale Bosse\n\nDie normalen Ebenen sollten Wächter oder regionale Bosse besitzen, die jeweils einen Teil der Rekonstruktionsleiter verkörpern. Namen und Zahl sind noch offen.\n\n## Endgame-Abfolge\n\n1. Vollständige oder nahezu vollständige Rekonstruktion.\n2. Enthüllung der Konstruktwelt.\n3. Rückkehr in frühere Ebenen und Sammlung von Seelenenergie.\n4. Durchbruch aus dem inneren Konstrukt.\n5. Drei Weltpassagen mit steigender Gegnerdichte.\n6. Kampf gegen Jator.\n7. Offenes Portal zu Semm.\n8. Kampf gegen Semm.\n9. Abschlusssequenz des Basisspiels.\n\n## Bossregel für Ether-Entitäten\n\nDer Sieg muss deutlich sein, ohne einen endgültigen Tod zu behaupten. Geeignete Folgen sind:\n\n- Manifestation zerbricht;\n- Machtkern wird versiegelt;\n- Entität verliert Kontrolle über die aktuelle Sphäre;\n- Verbindung zur Konstruktwelt reißt ab;\n- Entität wird aus ihrer Form verdrängt.\n\n## Erweiterungsbosse\n\nDie übrigen großen Entitäten bilden den natürlichen Bossrahmen der Erweiterung. Ihre Reihenfolge und die Frage, ob alle zehn direkt bekämpft werden, sind noch offen. Jator und Semm können als geschwächte, veränderte oder indirekt wirksame Mächte fortbestehen.\n"
+    },
+    {
+      "rel_path": "50-content/index.md",
+      "name": "index.md",
+      "parent": "50-content",
+      "size_bytes": 312,
+      "size_human": "312 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "50 – Content",
+      "headings": 1,
+      "lines": 8,
+      "words": 37,
+      "chars": 307,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](50-content.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "50 – Content"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 50 – Content\n\n- [Welt- und Ebenenstruktur](welt-und-ebenenstruktur.md)\n- [Monsterhöhlen und Versiegelungen](monsterhoehlen-und-versiegelungen.md)\n- [Boss- und Endgame-Abfolge](boss-und-endgame-abfolge.md)\n"
+    },
+    {
+      "rel_path": "50-content/monsterhoehlen-und-versiegelungen.md",
+      "name": "monsterhoehlen-und-versiegelungen.md",
+      "parent": "50-content",
+      "size_bytes": 1401,
+      "size_human": "1.37 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Monsterhöhlen und Versiegelungen",
+      "headings": 5,
+      "lines": 46,
+      "words": 162,
+      "chars": 1379,
+      "snippet": "title: Monsterhöhlen und Versiegelungen status: content-outline updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Monsterhöhlen und Versiegelungen"
+        ],
+        [
+          2,
+          "Funktion"
+        ],
+        [
+          2,
+          "Abschlussformen"
+        ],
+        [
+          2,
+          "Verbindung zur Wahrheit"
+        ],
+        [
+          2,
+          "Mindestinhalt pro Quelle"
+        ]
+      ],
+      "content": "---\ntitle: Monsterhöhlen und Versiegelungen\nstatus: content-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Monsterhöhlen und Versiegelungen\n\n## Funktion\n\nMonsterhöhlen sind Verdichtungspunkte der Konstruktwelt. Sie halten Landschaft, Bewohner, Städte oder Erinnerungen gebunden und liefern dem Helden klare lokale Ziele.\n\nDer Begriff „Höhle“ ist funktional zu verstehen. Eine Monsterquelle kann auch sein:\n\n- ein unterirdischer Bau;\n- eine Ruine;\n- ein Turm;\n- ein Riss im Raum;\n- ein verseuchter Waldkern;\n- eine künstliche Systemkammer;\n- ein wanderndes Monstergebilde.\n\n## Abschlussformen\n\nJe nach Region kann der Held die Quelle:\n\n- reinigen;\n- versiegeln;\n- schließen;\n- zerstören;\n- von einer gebundenen Seele trennen;\n- gegen einen neuen Zweck umprogrammieren.\n\n## Verbindung zur Wahrheit\n\nFrühe Monsterhöhlen wirken wie natürliche Brutstätten des Bösen. Spätere Quellen sollen erkennen lassen, dass sie absichtlich platziert, wiederverwendet oder von einem System verwaltet werden. Dadurch bereitet der Content die Enthüllung spielerisch vor.\n\n## Mindestinhalt pro Quelle\n\n- eindeutiges visuelles Motiv;\n- mindestens ein eigener Gegnermix;\n- ein lokales Rätsel, Hindernis oder Navigationsmerkmal;\n- sichtbare Verbindung zur gebundenen Rekonstruktion;\n- Abschlussreaktion in der Welt.\n"
+    },
+    {
+      "rel_path": "50-content/welt-und-ebenenstruktur.md",
+      "name": "welt-und-ebenenstruktur.md",
+      "parent": "50-content",
+      "size_bytes": 1200,
+      "size_human": "1.17 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Welt- und Ebenenstruktur",
+      "headings": 4,
+      "lines": 35,
+      "words": 147,
+      "chars": 1177,
+      "snippet": "title: Welt- und Ebenenstruktur status: content-outline updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Welt- und Ebenenstruktur"
+        ],
+        [
+          2,
+          "Basisspiel"
+        ],
+        [
+          2,
+          "Äußeres Endgame"
+        ],
+        [
+          2,
+          "Erweiterung"
+        ]
+      ],
+      "content": "---\ntitle: Welt- und Ebenenstruktur\nstatus: content-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](50-content.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Welt- und Ebenenstruktur\n\n## Basisspiel\n\nDas Basisspiel benötigt mehrere Ebenen innerhalb der Konstruktwelt. Ihre konkrete Zahl ist offen. Inhaltlich sollten sie gemeinsam die vollständige Wiederherstellungsleiter abdecken:\n\n- frühe Ebene mit Gelände und Natur;\n- Ebene mit ersten Seelen und Bewohnern;\n- Ebene mit wachsender Siedlung oder Stadt;\n- Ebene mit starken Erinnerungs- und Geschichtssystemen;\n- späte Ebene mit sichtbaren Fehlern der Konstruktion;\n- Rückkehrfassungen der Ebenen für das Seelenenergie-Endgame.\n\n## Äußeres Endgame\n\nNach der Konstruktwelt folgen:\n\n1. Weltpassage 1;\n2. Weltpassage 2;\n3. Weltpassage 3;\n4. Jators Machtzentrum;\n5. Portal zu Semm;\n6. Semms Bereich.\n\n## Erweiterung\n\nDie Erweiterung kann die auf der Entitäten- und Sphärenübersicht gezeigten Mächte als eigenständige Großräume nutzen. Dabei muss nicht jede Entität eine klassische Welt besitzen; einige können Schwärme, bewegliche Räume, lebende Sphären oder diffuse Wirklichkeitsfelder kontrollieren.\n"
+    },
+    {
+      "rel_path": "60-production/60-production.md",
+      "name": "60-production.md",
+      "parent": "60-production",
+      "size_bytes": 433,
+      "size_human": "433 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "60 production",
+      "headings": 2,
+      "lines": 13,
+      "words": 45,
+      "chars": 416,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "60 production"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 60 production\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [Nächste Konzeptschritte](naechste-konzeptschritte.md)\n- 📝 [Narrative Umsetzungsregeln](narrative-umsetzungsregeln.md)\n- 📝 [Scope – Basisspiel und Erweiterung](scope-basisspiel-und-erweiterung.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "60-production/index.md",
+      "name": "index.md",
+      "parent": "60-production",
+      "size_bytes": 324,
+      "size_human": "324 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "60 – Produktion",
+      "headings": 1,
+      "lines": 8,
+      "words": 34,
+      "chars": 319,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](60-production.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "60 – Produktion"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# 60 – Produktion\n\n- [Scope von Basisspiel und Erweiterung](scope-basisspiel-und-erweiterung.md)\n- [Narrative Umsetzungsregeln](narrative-umsetzungsregeln.md)\n- [Nächste Konzeptschritte](naechste-konzeptschritte.md)\n"
+    },
+    {
+      "rel_path": "60-production/naechste-konzeptschritte.md",
+      "name": "naechste-konzeptschritte.md",
+      "parent": "60-production",
+      "size_bytes": 1574,
+      "size_human": "1.54 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Nächste Konzeptschritte",
+      "headings": 6,
+      "lines": 48,
+      "words": 179,
+      "chars": 1540,
+      "snippet": "title: Nächste Konzeptschritte status: planning updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Nächste Konzeptschritte"
+        ],
+        [
+          2,
+          "Priorität 1 – Kanon freigeben"
+        ],
+        [
+          2,
+          "Priorität 2 – Protagonist definieren"
+        ],
+        [
+          2,
+          "Priorität 3 – Vertical Slice festlegen"
+        ],
+        [
+          2,
+          "Priorität 4 – Regionen und Kapitel"
+        ],
+        [
+          2,
+          "Priorität 5 – Endgame-Ethik und Mechanik"
+        ]
+      ],
+      "content": "---\ntitle: Nächste Konzeptschritte\nstatus: planning\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Nächste Konzeptschritte\n\n## Priorität 1 – Kanon freigeben\n\n- Namen Jator, Semm, Zehsen, Yol und Tatok bestätigen.\n- Verhältnis von Era, Hera und `The Meridian` klären.\n- offiziellen Sammelbegriff `Atea` bestätigen.\n- exakten Konvergenzzeitraum festlegen oder bewusst ungenau lassen.\n\n## Priorität 2 – Protagonist definieren\n\n- Leben auf Era;\n- Motivation für den Pakt;\n- Todesumstände;\n- verdrängte oder manipulierte Erinnerungen;\n- persönlicher innerer Konflikt.\n\n## Priorität 3 – Vertical Slice festlegen\n\nEin erster Slice sollte enthalten:\n\n- Heldenraum;\n- eine kleine beschädigte Region;\n- eine Monsterhöhle;\n- Angriff, Ausweichen, Block und Magie;\n- eine sichtbare Landschaftsrekonstruktion;\n- Rückkehr einer Seele oder Figur;\n- eine Erinnerung, die eine kleine Fähigkeitsverbesserung auslöst;\n- einen dezenten ersten Widerspruch in der Welt.\n\n## Priorität 4 – Regionen und Kapitel\n\n- Zahl der Konstruktwelt-Ebenen bestimmen.\n- jeder Ebene ein Landschafts-, Kultur- und Erinnerungsthema geben.\n- Wiederherstellungsstufen auf Kapitel verteilen.\n- regionale Bosse und zentrale Figuren definieren.\n\n## Priorität 5 – Endgame-Ethik und Mechanik\n\nVor der Detailproduktion muss geklärt werden, was das Sammeln von Seelenenergie für die geretteten Bewohner bedeutet. Diese Entscheidung beeinflusst Ton, Dialoge, Questdesign und das moralische Profil des Helden.\n"
+    },
+    {
+      "rel_path": "60-production/narrative-umsetzungsregeln.md",
+      "name": "narrative-umsetzungsregeln.md",
+      "parent": "60-production",
+      "size_bytes": 1944,
+      "size_human": "1.90 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Narrative Umsetzungsregeln",
+      "headings": 8,
+      "lines": 40,
+      "words": 235,
+      "chars": 1901,
+      "snippet": "title: Narrative Umsetzungsregeln status: draft-guideline updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Narrative Umsetzungsregeln"
+        ],
+        [
+          2,
+          "1. Die erste Geschichte muss glaubwürdig sein"
+        ],
+        [
+          2,
+          "2. Die Wendung darf Erfolge nicht entwerten"
+        ],
+        [
+          2,
+          "3. Jede große Enthüllung verändert Gameplay"
+        ],
+        [
+          2,
+          "4. Begriffe werden gestaffelt eingeführt"
+        ],
+        [
+          2,
+          "5. Der Talisman ist kein allwissender Erzähler"
+        ],
+        [
+          2,
+          "6. Das Endgame braucht neue Inhalte"
+        ],
+        [
+          2,
+          "7. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt"
+        ]
+      ],
+      "content": "---\ntitle: Narrative Umsetzungsregeln\nstatus: draft-guideline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Narrative Umsetzungsregeln\n\n## 1. Die erste Geschichte muss glaubwürdig sein\n\nDie Behauptung, der Held rette seine wirkliche Welt, darf nicht von Beginn an offensichtlich falsch wirken. Frühe Figuren, Quests und Rekonstruktionen müssen emotional funktionieren.\n\n## 2. Die Wendung darf Erfolge nicht entwerten\n\nDie Welt ist konstruiert, aber die Entscheidungen, Bindungen und Entwicklungen des Helden bleiben bedeutsam. Bewohner dürfen nicht nachträglich zu bedeutungslosen Dekorationen erklärt werden.\n\n## 3. Jede große Enthüllung verändert Gameplay\n\n- Wahrheit über Erinnerungen → neue Fähigkeit oder Zugang.\n- Wahrheit über die Konstruktwelt → neue Systemräume.\n- Wahrheit über Seelenenergie → Rückkehr-Endgame.\n- Wahrheit über Tatok → Weltpassagen.\n\n## 4. Begriffe werden gestaffelt eingeführt\n\n`Era`, `Hera`, `Tatok`, `Atea`, `Ether-Entität` und die Namen Jator/Semm sollten nicht gleichzeitig in einem frühen Dialog erklärt werden. Der Spieler lernt zunächst konkrete Erfahrungen und erst später die kosmische Einordnung.\n\n## 5. Der Talisman ist kein allwissender Erzähler\n\nEr unterstützt, entschlüsselt und warnt, besitzt aber Grenzen. Informationen sollen weiterhin über Umwelt, Erinnerungen, Figuren und Spielerbeobachtung entstehen.\n\n## 6. Das Endgame braucht neue Inhalte\n\nDie Rückkehr in frühere Welten muss neue Wege, Gegner, Entscheidungen oder Erinnerungen bieten. Eine reine Sammelrunde würde die dramaturgische Umkehr schwächen.\n\n## 7. Die Erweiterung bleibt vorbereitet, nicht vorausgesetzt\n\nDas Basisspiel soll nach Semm einen befriedigenden Abschluss besitzen. Hinweise auf weitere Entitäten dürfen Neugier wecken, aber die Hauptreise nicht wie ein unvollständiger Prolog erscheinen lassen.\n"
+    },
+    {
+      "rel_path": "60-production/scope-basisspiel-und-erweiterung.md",
+      "name": "scope-basisspiel-und-erweiterung.md",
+      "parent": "60-production",
+      "size_bytes": 1614,
+      "size_human": "1.58 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Scope – Basisspiel und Erweiterung",
+      "headings": 5,
+      "lines": 48,
+      "words": 192,
+      "chars": 1578,
+      "snippet": "title: Scope – Basisspiel und Erweiterung status: accepted-outline updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Scope – Basisspiel und Erweiterung"
+        ],
+        [
+          2,
+          "Basisspiel"
+        ],
+        [
+          2,
+          "Nicht Teil des Basisspiels"
+        ],
+        [
+          2,
+          "Erweiterung"
+        ],
+        [
+          2,
+          "Scope-Risiko"
+        ]
+      ],
+      "content": "---\ntitle: Scope – Basisspiel und Erweiterung\nstatus: accepted-outline\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](60-production.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Scope – Basisspiel und Erweiterung\n\n## Basisspiel\n\nDas Basisspiel umfasst:\n\n- Erwachen im Heldenraum;\n- Einführung des Talismans;\n- mehrere wiederherstellbare Ebenen;\n- komplette Progression von Landschaft bis Fähigkeiten;\n- Enthüllung der künstlichen Splitterwelt;\n- Endgame-Rückkehr und Sammlung von Seelenenergie;\n- Flucht aus der Konstruktwelt;\n- drei Weltpassagen;\n- Bosskampf gegen Jator;\n- anschließenden Bosskampf gegen Semm;\n- Abschluss des sechsten Kapitels beziehungsweise des ersten großen Heldenteils.\n\n## Nicht Teil des Basisspiels\n\n- vollständiger Krieg gegen alle großen Ether-Entitäten;\n- endgültige Erklärung jeder Sphäre Heras;\n- Verwandlung des Helden in eine Ether-Entität;\n- physische Rückkehr des Helden nach Era;\n- Antwort auf seine spätere Rolle auf Era.\n\n## Erweiterung\n\nDie Erweiterung umfasst:\n\n- Konflikt mit den übrigen großen Ether-Entitäten;\n- Reise durch weitere Sphären Heras;\n- zunehmende Veränderung der Existenzform des Helden;\n- seine eigene Etherwerdung;\n- Möglichkeit der physischen Rückkehr nach Era;\n- bewusst offenes Ende.\n\n## Scope-Risiko\n\nDie Weltkonzeption ist deutlich größer als ein einzelnes Spiel. Für die Produktion muss das Basisspiel daher nur so viele Ebenen enthalten, wie nötig sind, um Wiederherstellung, Bindung, Enthüllung und Umkehr überzeugend zu tragen. Die gesamte Kosmologie muss nicht vollständig bereist werden.\n"
+    },
+    {
+      "rel_path": "decisions/ADR-0001-namensnormalisierung.md",
+      "name": "ADR-0001-namensnormalisierung.md",
+      "parent": "decisions",
+      "size_bytes": 1101,
+      "size_human": "1.08 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "ADR-0001 – Namensnormalisierung",
+      "headings": 5,
+      "lines": 29,
+      "words": 125,
+      "chars": 1089,
+      "snippet": "title: ADR-0001 – Namensnormalisierung status: proposed updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "ADR-0001 – Namensnormalisierung"
+        ],
+        [
+          2,
+          "Kontext"
+        ],
+        [
+          2,
+          "Vorgeschlagene Entscheidung"
+        ],
+        [
+          2,
+          "Begründung"
+        ],
+        [
+          2,
+          "Folgen"
+        ]
+      ],
+      "content": "---\ntitle: ADR-0001 – Namensnormalisierung\nstatus: proposed\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](decisions.md)\n<!-- AUTO-GENERATED:backlink END -->\n# ADR-0001 – Namensnormalisierung\n\n## Kontext\n\nIm gesprochenen Entwurf und in den Konzeptgrafiken erscheinen mehrere ähnliche oder abweichende Namen. Ohne Normalisierung würden dieselben Figuren in verschiedenen Dokumenten unterschiedlich bezeichnet.\n\n## Vorgeschlagene Entscheidung\n\n- `Tator` wird als **Jator** geschrieben.\n- `Zen/Zem` als Gegenspieler wird als **Semm** geschrieben.\n- `Zem` als Weltenbewahrer und Ursprung des Talismans wird als **Zehsen** interpretiert.\n- `Yonu/Jul` wird als **Yol** geschrieben.\n- Jators Welt beziehungsweise Domäne wird **Tatok** genannt.\n\n## Begründung\n\nDiese Formen entsprechen den Beschriftungen der bereitgestellten Konzeptgrafiken und trennen drei sonst leicht verwechselte Figuren: Jator, Semm und Zehsen.\n\n## Folgen\n\nAlle neuen Dokumente verwenden die normalisierten Formen. Die Entscheidung bleibt vorgeschlagen, bis die Namen ausdrücklich bestätigt wurden.\n"
+    },
+    {
+      "rel_path": "decisions/ADR-0002-wiederherstellungsreihenfolge.md",
+      "name": "ADR-0002-wiederherstellungsreihenfolge.md",
+      "parent": "decisions",
+      "size_bytes": 1061,
+      "size_human": "1.04 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "ADR-0002 – Wiederherstellungsreihenfolge",
+      "headings": 4,
+      "lines": 31,
+      "words": 118,
+      "chars": 1043,
+      "snippet": "title: ADR-0002 – Wiederherstellungsreihenfolge status: accepted updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "ADR-0002 – Wiederherstellungsreihenfolge"
+        ],
+        [
+          2,
+          "Kontext"
+        ],
+        [
+          2,
+          "Entscheidung"
+        ],
+        [
+          2,
+          "Folgen"
+        ]
+      ],
+      "content": "---\ntitle: ADR-0002 – Wiederherstellungsreihenfolge\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](decisions.md)\n<!-- AUTO-GENERATED:backlink END -->\n# ADR-0002 – Wiederherstellungsreihenfolge\n\n## Kontext\n\nDie Wiederherstellung ist der Kern von Handlung, Weltentwicklung und Charakterfortschritt. Ohne feste Hierarchie könnten Gebiete beliebig wirken und Fähigkeiten von der Weltgeschichte getrennt werden.\n\n## Entscheidung\n\nDie übergeordnete Reihenfolge lautet:\n\n1. Länder und Gebiete;\n2. Natur und Landschaft;\n3. Seelen und Bewohner;\n4. Städte und Siedlungen;\n5. Erinnerungen und Geschichte;\n6. Fähigkeiten des Helden.\n\n## Folgen\n\n- Fähigkeiten werden bevorzugt aus Erinnerungen oder Geschichte abgeleitet.\n- Weltzustände müssen diese Stufen persistent abbilden.\n- Regionen dürfen Stufen zusammenfassen, aber die globale Dramaturgie nicht ohne Begründung umkehren.\n- Der Vertical Slice zeigt mindestens Landschaftsrekonstruktion, eine zurückkehrende Seele und eine erinnerungsbasierte Verbesserung.\n"
+    },
+    {
+      "rel_path": "decisions/ADR-0003-verdeckte-wahrheit-der-spielwelt.md",
+      "name": "ADR-0003-verdeckte-wahrheit-der-spielwelt.md",
+      "parent": "decisions",
+      "size_bytes": 1017,
+      "size_human": "1017 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "ADR-0003 – Verdeckte Wahrheit der Spielwelt",
+      "headings": 4,
+      "lines": 24,
+      "words": 131,
+      "chars": 997,
+      "snippet": "title: ADR-0003 – Verdeckte Wahrheit der Spielwelt status: accepted updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "ADR-0003 – Verdeckte Wahrheit der Spielwelt"
+        ],
+        [
+          2,
+          "Kontext"
+        ],
+        [
+          2,
+          "Entscheidung"
+        ],
+        [
+          2,
+          "Folgen"
+        ]
+      ],
+      "content": "---\ntitle: ADR-0003 – Verdeckte Wahrheit der Spielwelt\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](decisions.md)\n<!-- AUTO-GENERATED:backlink END -->\n# ADR-0003 – Verdeckte Wahrheit der Spielwelt\n\n## Kontext\n\nDer Spieler erlebt die Welt zunächst als echte, zerstörte Heimat. Die spätere Erkenntnis soll die gesamte Reise neu einordnen und das Endgame auslösen.\n\n## Entscheidung\n\nDie Spielfläche des Basisspiels ist eine von Jator und Semm geschaffene Konstruktwelt innerhalb Tatoks. Der Held ist eine verstorbene Seele aus Era und weiß dies zu Beginn nicht. Das Konstrukt dient der Züchtung einer besonders starken Heldenseele.\n\n## Folgen\n\n- Frühere Inhalte dürfen die Wahrheit andeuten, aber nicht zu früh eindeutig beweisen.\n- Der Talisman entschlüsselt die Fassade schrittweise.\n- Die Enthüllung schaltet die Seelenenergie- und Rückkehrphase frei.\n- Die emotionale Bedeutung geretteter Bewohner und Orte bleibt trotz künstlichen Ursprungs bestehen.\n"
+    },
+    {
+      "rel_path": "decisions/ADR-0004-basisspiel-und-erweiterung.md",
+      "name": "ADR-0004-basisspiel-und-erweiterung.md",
+      "parent": "decisions",
+      "size_bytes": 1119,
+      "size_human": "1.09 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "ADR-0004 – Trennung von Basisspiel und Erweiterung",
+      "headings": 4,
+      "lines": 26,
+      "words": 136,
+      "chars": 1095,
+      "snippet": "title: ADR-0004 – Trennung von Basisspiel und Erweiterung status: accepted updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "ADR-0004 – Trennung von Basisspiel und Erweiterung"
+        ],
+        [
+          2,
+          "Kontext"
+        ],
+        [
+          2,
+          "Entscheidung"
+        ],
+        [
+          2,
+          "Folgen"
+        ]
+      ],
+      "content": "---\ntitle: ADR-0004 – Trennung von Basisspiel und Erweiterung\nstatus: accepted\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](decisions.md)\n<!-- AUTO-GENERATED:backlink END -->\n# ADR-0004 – Trennung von Basisspiel und Erweiterung\n\n## Kontext\n\nDie Gesamtkosmologie umfasst zehn große Ether-Entitäten und zahlreiche Sphären. Dieser Umfang übersteigt den notwendigen Rahmen der ersten abgeschlossenen Spielerfahrung.\n\n## Entscheidung\n\nDas Basisspiel konzentriert sich auf die Konstruktwelt, die Endgame-Rückkehr, drei Weltpassagen sowie die Kämpfe gegen Jator und Semm.\n\nDer Kampf gegen die übrigen großen Ether-Entitäten, die eigene Etherwerdung des Helden und seine physische Rückkehr nach Era gehören in eine Erweiterung.\n\n## Folgen\n\n- Das Basisspiel benötigt einen eigenständigen, befriedigenden Abschluss nach Semm.\n- Weitere Entitäten werden vorbereitet, aber nicht zwingend vollständig erklärt.\n- Produktionsplanung und Content-Budget können auf die Kernreise begrenzt werden.\n- Das offene Ende der Erweiterung wird nicht innerhalb desselben Projekts weitererzählt.\n"
+    },
+    {
+      "rel_path": "decisions/decisions.md",
+      "name": "decisions.md",
+      "parent": "decisions",
+      "size_bytes": 591,
+      "size_human": "591 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Decisions",
+      "headings": 2,
+      "lines": 14,
+      "words": 65,
+      "chars": 566,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../game%28de%29.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Decisions"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Decisions\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- 📝 [ADR-0001 – Namensnormalisierung](ADR-0001-namensnormalisierung.md)\n- 📝 [ADR-0002 – Wiederherstellungsreihenfolge](ADR-0002-wiederherstellungsreihenfolge.md)\n- 📝 [ADR-0003 – Verdeckte Wahrheit der Spielwelt](ADR-0003-verdeckte-wahrheit-der-spielwelt.md)\n- 📝 [ADR-0004 – Trennung von Basisspiel und Erweiterung](ADR-0004-basisspiel-und-erweiterung.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "decisions/index.md",
+      "name": "index.md",
+      "parent": "decisions",
+      "size_bytes": 568,
+      "size_human": "568 B",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Entscheidungen",
+      "headings": 1,
+      "lines": 11,
+      "words": 59,
+      "chars": 566,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](decisions.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Entscheidungen"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](decisions.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Entscheidungen\n\n| ADR | Thema | Status |\n|---|---|---|\n| [ADR-0001](ADR-0001-namensnormalisierung.md) | Namensnormalisierung | vorgeschlagen |\n| [ADR-0002](ADR-0002-wiederherstellungsreihenfolge.md) | Wiederherstellungsreihenfolge | angenommen |\n| [ADR-0003](ADR-0003-verdeckte-wahrheit-der-spielwelt.md) | Verdeckte Wahrheit der Spielwelt | angenommen |\n| [ADR-0004](ADR-0004-basisspiel-und-erweiterung.md) | Trennung von Basisspiel und Erweiterung | angenommen |\n"
+    },
+    {
+      "rel_path": "game(de).md",
+      "name": "game(de).md",
+      "parent": "",
+      "size_bytes": 3115,
+      "size_human": "3.04 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Game(de)",
+      "headings": 10,
+      "lines": 64,
+      "words": 342,
+      "chars": 2935,
+      "snippet": "<!-- AUTO-GENERATED:backlink START --> [← Back](../concept.md) <!-- AUTO-GENERATED:backlink END -->",
+      "toc": [
+        [
+          1,
+          "Game(de)"
+        ],
+        [
+          2,
+          "📄 Pages"
+        ],
+        [
+          2,
+          "📁 00 foundation"
+        ],
+        [
+          2,
+          "📁 10 world"
+        ],
+        [
+          2,
+          "📁 20 story"
+        ],
+        [
+          2,
+          "📁 30 gameplay"
+        ],
+        [
+          2,
+          "📁 40 world systems"
+        ],
+        [
+          2,
+          "📁 50 content"
+        ],
+        [
+          2,
+          "📁 60 production"
+        ],
+        [
+          2,
+          "📁 Decisions"
+        ]
+      ],
+      "content": "<!-- AUTO-GENERATED:backlink START -->\n[← Back](../concept.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Game(de)\n\n<!-- AUTO-GENERATED:docs-index START -->\n\n## 📄 Pages\n- ⏭️ (keine Seiten)\n\n## 📁 00 foundation\n- 🗂️ [Overview](00-foundation/00-foundation.md)\n- 📝 [Begriffe und Namen](00-foundation/begriffe-und-namen.md)\n- 📝 [Kanon und offene Fragen](00-foundation/kanon-und-offene-fragen.md)\n- 📝 [Spielvision](00-foundation/spielvision.md)\n\n## 📁 10 world\n- 🗂️ [Overview](10-world/10-world.md)\n\n## 📁 20 story\n- 🗂️ [Overview](20-story/20-story.md)\n- 📝 [Enthüllungs- und Spoilerstruktur](20-story/enthuellungsstruktur.md)\n- 📝 [Finale des Basisspiels und Erweiterung](20-story/finale-und-erweiterung.md)\n- 📝 [Handlungsverlauf des Basisspiels](20-story/handlungsverlauf.md)\n- 📝 [Heldenraum und Talisman](20-story/heldenraum-und-talisman.md)\n- 📝 [Kapitelstruktur – Arbeitsfassung](20-story/kapitelstruktur-arbeitsfassung.md)\n- 📝 [Story-Prämisse](20-story/praemisse.md)\n- 📝 [Der Protagonist](20-story/protagonist.md)\n\n## 📁 30 gameplay\n- 🗂️ [Overview](30-gameplay/30-gameplay.md)\n- 📝 [Kampfsystem – Grundlage](30-gameplay/kampfsystem-grundlage.md)\n- 📝 [Kernspielschleife](30-gameplay/kernspielschleife.md)\n- 📝 [Seelenenergie im Endgame](30-gameplay/seelenenergie-im-endgame.md)\n- 📝 [Wiederherstellungsfortschritt](30-gameplay/wiederherstellungsfortschritt.md)\n\n## 📁 40 world systems\n- 🗂️ [Overview](40-world-systems/40-world-systems.md)\n- 📝 [Ebenen, Portale und Weltpassagen](40-world-systems/ebenen-portale-und-weltpassagen.md)\n- 📝 [Erinnerungs- und Fähigkeitssystem](40-world-systems/erinnerungs-und-faehigkeitssystem.md)\n- 📝 [Rekonstruktionssystem](40-world-systems/rekonstruktionssystem.md)\n- 📝 [Seelenökonomie](40-world-systems/seelenoekonomie.md)\n- 📝 [Sol, Yol, Zeit und Jahreszeiten als Weltsystem](40-world-systems/sol-yol-zeit-und-jahreszeiten.md)\n\n## 📁 50 content\n- 🗂️ [Overview](50-content/50-content.md)\n- 📝 [Boss- und Endgame-Abfolge](50-content/boss-und-endgame-abfolge.md)\n- 📝 [Monsterhöhlen und Versiegelungen](50-content/monsterhoehlen-und-versiegelungen.md)\n- 📝 [Welt- und Ebenenstruktur](50-content/welt-und-ebenenstruktur.md)\n\n## 📁 60 production\n- 🗂️ [Overview](60-production/60-production.md)\n- 📝 [Nächste Konzeptschritte](60-production/naechste-konzeptschritte.md)\n- 📝 [Narrative Umsetzungsregeln](60-production/narrative-umsetzungsregeln.md)\n- 📝 [Scope – Basisspiel und Erweiterung](60-production/scope-basisspiel-und-erweiterung.md)\n\n## 📁 Decisions\n- 🗂️ [Overview](decisions/decisions.md)\n- 📝 [ADR-0001 – Namensnormalisierung](decisions/ADR-0001-namensnormalisierung.md)\n- 📝 [ADR-0002 – Wiederherstellungsreihenfolge](decisions/ADR-0002-wiederherstellungsreihenfolge.md)\n- 📝 [ADR-0003 – Verdeckte Wahrheit der Spielwelt](decisions/ADR-0003-verdeckte-wahrheit-der-spielwelt.md)\n- 📝 [ADR-0004 – Trennung von Basisspiel und Erweiterung](decisions/ADR-0004-basisspiel-und-erweiterung.md)\n\n<!-- AUTO-GENERATED:docs-index END -->\n"
+    },
+    {
+      "rel_path": "index.md",
+      "name": "index.md",
+      "parent": "",
+      "size_bytes": 1519,
+      "size_human": "1.48 KB",
+      "mtime": "2026-08-30T12:29:06",
+      "title": "Blobbite – Spieldokumentation",
+      "headings": 3,
+      "lines": 29,
+      "words": 184,
+      "chars": 1501,
+      "snippet": "title: Blobbite – Spieldokumentation status: draft language: de updated: 2026-08-30",
+      "toc": [
+        [
+          1,
+          "Blobbite – Spieldokumentation"
+        ],
+        [
+          2,
+          "Bereiche"
+        ],
+        [
+          2,
+          "Zentrale Trennung"
+        ]
+      ],
+      "content": "---\ntitle: Blobbite – Spieldokumentation\nstatus: draft\nlanguage: de\nupdated: 2026-08-30\n---\n<!-- AUTO-GENERATED:backlink START -->\n[← Back](game%28de%29.md)\n<!-- AUTO-GENERATED:backlink END -->\n# Blobbite – Spieldokumentation\n\nBlobbite ist ein Top-down-Action-RPG über eine verlorene Seele, die eine vermeintlich zerstörte Welt wiederherstellt und erst spät erkennt, dass diese Welt ein künstliches Seelenzucht-System innerhalb einer Splittersphäre ist.\n\n## Bereiche\n\n| Bereich | Zweck |\n|---|---|\n| [00-foundation](00-foundation/index.md) | Verbindliche Spielvision, Begriffe und Kanonstatus |\n| [10-world](10-world/index.md) | Kosmologie, Weltgeschichte, Sphären und Fraktionen |\n| [20-story](20-story/index.md) | Protagonist, Handlung, Enthüllungen und Finale |\n| [30-gameplay](30-gameplay/index.md) | Kernspielschleife, Kampf und Fortschritt |\n| [40-world-systems](40-world-systems/index.md) | Regelwerke hinter Rekonstruktion, Erinnerungen, Zeit und Seelen |\n| [50-content](50-content/index.md) | Ebenen, Monsterhöhlen, Gegner- und Bossstruktur |\n| [60-production](60-production/index.md) | Umfang, Erzählregeln und nächste Konzeptschritte |\n| [decisions](decisions/index.md) | Nachvollziehbare Projektentscheidungen |\n\n## Zentrale Trennung\n\nDie Weltdateien enthalten die **Wahrheit hinter der Fassade**. Die Storydateien legen fest, wann der Spieler diese Wahrheit erkennen darf. Produktions- und Gameplaydateien dürfen Spoiler daher nur dort verwenden, wo sie für die Umsetzung notwendig sind.\n"
+    }
+  ]
+}
