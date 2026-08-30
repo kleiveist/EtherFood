@@ -6,8 +6,9 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Pages
-- 📝 [GDR 001 perspective](GDR-001-perspective.md)
-- 📝 [GDR 002 restoration order](GDR-002-restoration-order.md)
-- 📝 [GDR 003 enemy scaling](GDR-003-enemy-scaling.md)
+- 📝 [ADR-0001 – Name Normalization](ADR-0001-name-normalization.md)
+- 📝 [ADR-0002 – Restoration Order](ADR-0002-restoration-order.md)
+- 📝 [ADR-0003 – Hidden Truth of the Game World](ADR-0003-hidden-truth-of-the-game-world.md)
+- 📝 [ADR-0004 – Separation of Base Game and Expansion](ADR-0004-base-game-and-expansion.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
