@@ -1,11 +1,10 @@
 <!-- AUTO-GENERATED:backlink START -->
 [← Back](README.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Contributing to ether-food
+# Contributing to Forge2D Template
 
-Thank you for improving `ether-food`. Contributions should keep the game concept
-coherent, the inherited technical foundation functional, and repository work
-focused, cross-platform, and safe.
+Thank you for improving Forge2D Template. Contributions should keep the template
+small, reusable, cross-platform, and safe for downstream projects.
 
 ## Choose the Right Route
 
@@ -24,7 +23,7 @@ work.
 
 ## Prepare the Checkout Safely
 
-`ether-food` requires Python 3.11 or newer and is currently tested with Godot 4.7.2.
+Forge2D Template requires Python 3.11 or newer and is tested with Godot 4.7.2.
 Inspect setup before allowing changes:
 
 ```text
