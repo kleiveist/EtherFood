@@ -1,12 +1,12 @@
 name: Fehler melden
-description: Einen reproduzierbaren Fehler in ether-food melden
+description: Einen reproduzierbaren Fehler in EtherFood melden
 title: "[Fehler]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Danke, dass du hilfst, ether-food zu verbessern.
-        Melde Sicherheitslücken nicht hier, sondern über den [vertraulichen Sicherheitsbericht](https://github.com/kleiveist/ether-food/security/advisories/new).
+        Danke, dass du hilfst, EtherFood zu verbessern.
+        Melde Sicherheitslücken nicht hier, sondern über den [vertraulichen Sicherheitsbericht](https://github.com/kleiveist/EtherFood/security/advisories/new).
   - type: dropdown
     id: area
     attributes:

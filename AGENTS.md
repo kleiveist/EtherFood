@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](README.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Repository-Regeln für ether-food
+# Repository-Regeln für EtherFood
 
 Beginne bei der [Dokumentationsübersicht](docs/index.md).
 

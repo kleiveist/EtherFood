@@ -11,7 +11,7 @@ updated: 2026-08-30
 
 ## Elevator Pitch
 
-Ether Food ist ein **Top-down-Action-RPG mit Wiederherstellungsfortschritt**. Der Spieler erwacht als scheinbar lebender Held in einem rätselhaften Heldenraum, befreit Gebiete von Monstern und stellt schrittweise Natur, Bewohner, Städte, Erinnerungen und Fähigkeiten wieder her. Erst gegen Ende wird deutlich, dass der Held eine verstorbene Seele ist und die gerettete Welt als künstliches Konstrukt zur Züchtung besonders wertvoller Heldenseelen erschaffen wurde.
+EtherFood ist ein **Top-down-Action-RPG mit Wiederherstellungsfortschritt**. Der Spieler erwacht als scheinbar lebender Held in einem rätselhaften Heldenraum, befreit Gebiete von Monstern und stellt schrittweise Natur, Bewohner, Städte, Erinnerungen und Fähigkeiten wieder her. Erst gegen Ende wird deutlich, dass der Held eine verstorbene Seele ist und die gerettete Welt als künstliches Konstrukt zur Züchtung besonders wertvoller Heldenseelen erschaffen wurde.
 
 ## Spielerfantasie
 

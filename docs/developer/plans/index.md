@@ -13,7 +13,7 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 
 ## Abgeschlossene historische Pläne
 
-- [Frühere Umstrukturierung der Dokumentation](ether-food-documentation-restructure.md)
+- [Frühere Umstrukturierung der Dokumentation](etherfood-documentation-restructure.md)
 - [Dokumentation des Spielablaufs](game-flow-documentation.md)
 - [Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
 - [Dokumentation des Talismans](talisman-story-object-documentation.md)

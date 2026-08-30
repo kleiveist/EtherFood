@@ -1,5 +1,5 @@
 ---
-title: ether-food – Spielkonzept
+title: EtherFood – Spielkonzept
 status: working-canon
 language: de
 updated: 2026-08-30
@@ -7,7 +7,7 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](concept.md)
 <!-- AUTO-GENERATED:backlink END -->
-# ether-food – Spielkonzept
+# EtherFood – Spielkonzept
 
 Hier liegt die einzige aktuelle Konzeptdokumentation des Spiels. Sie ist
 vollständig deutsch und soll Entscheidungen, offene Fragen und nächste Schritte

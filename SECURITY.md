@@ -13,7 +13,7 @@ benötigen jeweils eine eigene Bewertung und Richtlinie.
 
 Veröffentliche eine vermutete Sicherheitslücke nicht in einem Issue, Pull
 Request, einer Diskussion, einem Commit oder einem Protokoll. Verwende stattdessen
-den [privaten GitHub-Sicherheitsbericht](https://github.com/kleiveist/ether-food/security/advisories/new).
+den [privaten GitHub-Sicherheitsbericht](https://github.com/kleiveist/EtherFood/security/advisories/new).
 
 Eine hilfreiche Meldung enthält, soweit möglich:
 

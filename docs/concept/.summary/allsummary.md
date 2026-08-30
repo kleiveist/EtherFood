@@ -244,7 +244,7 @@ updated: 2026-08-30
 
 ## Elevator Pitch
 
-Ether Food ist ein **Top-down-Action-RPG mit Wiederherstellungsfortschritt**. Der Spieler erwacht als scheinbar lebender Held in einem rätselhaften Heldenraum, befreit Gebiete von Monstern und stellt schrittweise Natur, Bewohner, Städte, Erinnerungen und Fähigkeiten wieder her. Erst gegen Ende wird deutlich, dass der Held eine verstorbene Seele ist und die gerettete Welt als künstliches Konstrukt zur Züchtung besonders wertvoller Heldenseelen erschaffen wurde.
+EtherFood ist ein **Top-down-Action-RPG mit Wiederherstellungsfortschritt**. Der Spieler erwacht als scheinbar lebender Held in einem rätselhaften Heldenraum, befreit Gebiete von Monstern und stellt schrittweise Natur, Bewohner, Städte, Erinnerungen und Fähigkeiten wieder her. Erst gegen Ende wird deutlich, dass der Held eine verstorbene Seele ist und die gerettete Welt als künstliches Konstrukt zur Züchtung besonders wertvoller Heldenseelen erschaffen wurde.
 
 ## Spielerfantasie
 
@@ -1489,7 +1489,7 @@ Dieser Bereich beschreibt die objektive Wahrheit hinter Era, Hera, den Splitterw
 ## 📄 Seiten
 - 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)
-- 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)
+- 📝 [⭐ Handlungsverlauf des Basisspiels](handlungsverlauf.md)
 - 📝 [Heldenraum](heldenraum.md)
 - 📝 [Handlungsprämisse](praemisse.md)
 - 📝 [Der Protagonist](protagonist.md)
@@ -1644,7 +1644,7 @@ Am Ende kann seine Seele beziehungsweise neue physische Form nach Era zurückkeh
 ## 📝 handlungsverlauf.md — ./20-handlung/handlungsverlauf.md
 
 ---
-title: Handlungsverlauf des Basisspiels
+title: ⭐ Handlungsverlauf des Basisspiels
 status: draft-canon
 spoiler_level: critical
 updated: 2026-08-30
@@ -1652,7 +1652,7 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](20-handlung.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Handlungsverlauf des Basisspiels
+# ⭐ Handlungsverlauf des Basisspiels
 
 ## Vorgeschichte – erst später vollständig enthüllt
 
@@ -1821,7 +1821,7 @@ Dieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er 
 - [Prämisse](praemisse.md)
 - [Der Protagonist](protagonist.md)
 - [Heldenraum, Ratgeber und Talisman](heldenraum.md)
-- [Handlungsverlauf](handlungsverlauf.md)
+- [⭐ Handlungsverlauf](handlungsverlauf.md)
 - [Enthüllungsstruktur](enthuellungsstruktur.md)
 - [Finale und Erweiterung](finale-und-erweiterung.md)
 - [Achtteiliger Spielablauf](spielablauf-und-abschnittsstruktur.md)
@@ -3370,7 +3370,7 @@ ergänzen diese Freigabe.
 - 🗂️ [Übersicht](20-handlung/20-handlung.md)
 - 📝 [Enthüllungs- und Spoilerstruktur](20-handlung/enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](20-handlung/finale-und-erweiterung.md)
-- 📝 [Handlungsverlauf des Basisspiels](20-handlung/handlungsverlauf.md)
+- 📝 [⭐ Handlungsverlauf des Basisspiels](20-handlung/handlungsverlauf.md)
 - 📝 [Heldenraum](20-handlung/heldenraum.md)
 - 📝 [Handlungsprämisse](20-handlung/praemisse.md)
 - 📝 [Der Protagonist](20-handlung/protagonist.md)
@@ -3850,7 +3850,7 @@ Der ausführliche Ablauf steht unter
 ## 📝 index.md — ./index.md
 
 ---
-title: ether-food – Spielkonzept
+title: EtherFood – Spielkonzept
 status: working-canon
 language: de
 updated: 2026-08-30
@@ -3858,7 +3858,7 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](concept.md)
 <!-- AUTO-GENERATED:backlink END -->
-# ether-food – Spielkonzept
+# EtherFood – Spielkonzept
 
 Hier liegt die einzige aktuelle Konzeptdokumentation des Spiels. Sie ist
 vollständig deutsch und soll Entscheidungen, offene Fragen und nächste Schritte

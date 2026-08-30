@@ -5,8 +5,8 @@
 
 ## Aktueller Stand
 
-Repository und Spiel heißen verbindlich `ether-food`. Das maßgebliche
-Repository ist `kleiveist/ether-food`. Das Projekt befindet sich in der
+Repository und Spiel heißen verbindlich `EtherFood`. Das maßgebliche
+Repository ist `kleiveist/EtherFood`. Das Projekt befindet sich in der
 Konzept- und Vorproduktionsphase; der deutsche Kanon liegt unter
 [`docs/concept/`](../concept/index.md).
 
@@ -20,15 +20,15 @@ Eine Änderung der Datei verändert die GitHub-Einstellungen nicht automatisch.
 
 ## Lokale technische Identität
 
-- `config/project.toml` verwendet `display_name = "ether-food"` und behält
+- `config/project.toml` verwendet `display_name = "EtherFood"` und behält
   die Herkunft `template_id = "forge2d-template"`.
-- `game/project.godot` verwendet `config/name="ether-food"`.
+- `game/project.godot` verwendet `config/name="EtherFood"`.
 - Interne Namen wie `g2dtool`, `g2d` und bestehende
   Bootstrap-Klassen bleiben aus Kompatibilitätsgründen erhalten.
 
 ## Herkunft
 
-`ether-food` entstand aus Forge2D Template. Dessen Laufzeit, Werkzeuge und
+`EtherFood` entstand aus Forge2D Template. Dessen Laufzeit, Werkzeuge und
 historische Dokumentation bleiben in der
 [englischen Forge2D-Referenz](../.forge2d-template/index.md) unverändert
 erhalten. Eine spätere Umbenennung geerbter technischer Bezeichner ist eine

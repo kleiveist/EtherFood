@@ -8,7 +8,7 @@
 ## 📄 Seiten
 - 📝 [Arbeitsplan: <Meilenstein>](_execplan-template.md)
 - 📝 [Arbeitsplan zur Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
-- 📝 [Historischer Arbeitsplan: erste Dokumentationsumstellung](ether-food-documentation-restructure.md)
+- 📝 [Historischer Arbeitsplan: erste Dokumentationsumstellung](etherfood-documentation-restructure.md)
 - 📝 [Historischer Arbeitsplan: Dokumentation des Spielablaufs](game-flow-documentation.md)
 - 📝 [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
 - 📝 [Historischer Arbeitsplan: Talisman als Handlungsobjekt](talisman-story-object-documentation.md)

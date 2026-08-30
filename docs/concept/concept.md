@@ -21,7 +21,7 @@
 - 🗂️ [Übersicht](20-handlung/20-handlung.md)
 - 📝 [Enthüllungs- und Spoilerstruktur](20-handlung/enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](20-handlung/finale-und-erweiterung.md)
-- 📝 [Handlungsverlauf des Basisspiels](20-handlung/handlungsverlauf.md)
+- 📝 [⭐ Handlungsverlauf des Basisspiels](20-handlung/handlungsverlauf.md)
 - 📝 [Heldenraum](20-handlung/heldenraum.md)
 - 📝 [Handlungsprämisse](20-handlung/praemisse.md)
 - 📝 [Der Protagonist](20-handlung/protagonist.md)

@@ -1,12 +1,12 @@
 name: Funktion vorschlagen
-description: Eine klar begrenzte Verbesserung für ether-food vorschlagen
+description: Eine klar begrenzte Verbesserung für EtherFood vorschlagen
 title: "[Funktion]: "
 body:
   - type: markdown
     attributes:
       value: |
         Beschreibe zuerst das zugrunde liegende Problem und danach eine mögliche Umsetzung.
-        ether-food bevorzugt nachvollziehbare, begrenzte, plattformübergreifende und abhängigkeitssparsame Lösungen.
+        EtherFood bevorzugt nachvollziehbare, begrenzte, plattformübergreifende und abhängigkeitssparsame Lösungen.
   - type: dropdown
     id: area
     attributes:
@@ -66,7 +66,7 @@ body:
       options:
         - label: Ich habe offene und geschlossene Issues nach diesem Vorschlag durchsucht.
           required: true
-        - label: Der Vorschlag passt zu Umfang und Konzeptstand von ether-food.
+        - label: Der Vorschlag passt zu Umfang und Konzeptstand von EtherFood.
           required: true
         - label: Ich habe Alternativen und eine sichtbare Abschlussgrenze beschrieben.
           required: true

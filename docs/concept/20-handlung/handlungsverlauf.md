@@ -1,5 +1,5 @@
 ---
-title: Handlungsverlauf des Basisspiels
+title: ⭐ Handlungsverlauf des Basisspiels
 status: draft-canon
 spoiler_level: critical
 updated: 2026-08-30
@@ -7,7 +7,7 @@ updated: 2026-08-30
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](20-handlung.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Handlungsverlauf des Basisspiels
+# ⭐ Handlungsverlauf des Basisspiels
 
 ## Vorgeschichte – erst später vollständig enthüllt
 

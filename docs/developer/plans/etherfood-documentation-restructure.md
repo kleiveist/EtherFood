@@ -9,7 +9,7 @@ Status: abgeschlossen und durch die spätere
 ## Zweck und Gesamtbild
 
 Am 29. August 2026 wurde das aus Forge2D entstandene Repository erstmals
-sichtbar auf `ether-food` ausgerichtet. Dabei entstanden die ursprünglichen
+sichtbar auf `EtherFood` ausgerichtet. Dabei entstanden die ursprünglichen
 Konzept-, Medien- und Entwicklungsbereiche.
 
 ## Ausgangslage

@@ -25,7 +25,7 @@
 - 🗂️ [Übersicht](plans/plans.md)
 - 📝 [Arbeitsplan: <Meilenstein>](plans/_execplan-template.md)
 - 📝 [Arbeitsplan zur Vereinfachung der Dokumentation](plans/dokumentationsvereinfachung.md)
-- 📝 [Historischer Arbeitsplan: erste Dokumentationsumstellung](plans/ether-food-documentation-restructure.md)
+- 📝 [Historischer Arbeitsplan: erste Dokumentationsumstellung](plans/etherfood-documentation-restructure.md)
 - 📝 [Historischer Arbeitsplan: Dokumentation des Spielablaufs](plans/game-flow-documentation.md)
 - 📝 [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](plans/german-canon-release-consolidation.md)
 - 📝 [Historischer Arbeitsplan: Talisman als Handlungsobjekt](plans/talisman-story-object-documentation.md)

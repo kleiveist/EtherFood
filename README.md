@@ -1,7 +1,7 @@
-# ether-food
+# EtherFood
 
 Ein Top-down-Action-RPG über den Wiederaufbau einer verlorenen Welt, die
-Rückkehr ihrer Zivilisationen und vergessene Erinnerungen. `ether-food`
+Rückkehr ihrer Zivilisationen und vergessene Erinnerungen. `EtherFood`
 befindet sich in der Konzept- und Vorproduktionsphase.
 
 ## Dokumentation

@@ -1,9 +1,9 @@
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](README.md)
 <!-- AUTO-GENERATED:backlink END -->
-# Mitarbeit an ether-food
+# Mitarbeit an EtherFood
 
-Danke, dass du `ether-food` verbesserst. Änderungen sollen nachvollziehbar,
+Danke, dass du `EtherFood` verbesserst. Änderungen sollen nachvollziehbar,
 überschaubar und sicher bleiben.
 
 ## Passenden Arbeitsweg wählen

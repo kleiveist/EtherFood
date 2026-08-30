@@ -1,5 +1,5 @@
 Markdown-Scan – Root: .
-Erzeugt: 2026-08-30T19:30:54
+Erzeugt: 2026-08-30T19:42:25
 Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini, .md
 
 === Dateien ===
@@ -8,7 +8,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 CHECKLIST-ZUR-FREIGABE.md
      Pfad: 📝 CHECKLIST-ZUR-FREIGABE.md
      Größe: 3.25 KB (3326 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Freigabe-Checkliste
      Überschriften: 2, Zeilen: 39, Wörter: 386, Zeichen: 3260
      Gliederung:
@@ -18,10 +18,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 concept.md
      Pfad: 📝 concept.md
-     Größe: 3.74 KB (3830 B)
-     Geändert: 2026-08-30T19:24:39
+     Größe: 3.74 KB (3834 B)
+     Geändert: 2026-08-30T19:42:25
      Titel: Konzept
-     Überschriften: 10, Zeilen: 70, Wörter: 392, Zeichen: 3603
+     Überschriften: 10, Zeilen: 70, Wörter: 392, Zeichen: 3605
      Gliederung:
        • # Konzept
        • ## 📄 Seiten
@@ -37,24 +37,24 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 index.md
      Pfad: 📝 index.md
-     Größe: 1.56 KB (1600 B)
-     Geändert: 2026-08-30T19:24:39
-     Titel: ether-food – Spielkonzept
-     Überschriften: 5, Zeilen: 46, Wörter: 193, Zeichen: 1585
+     Größe: 1.56 KB (1598 B)
+     Geändert: 2026-08-30T19:42:25
+     Titel: EtherFood – Spielkonzept
+     Überschriften: 5, Zeilen: 46, Wörter: 191, Zeichen: 1583
      Gliederung:
-       • # ether-food – Spielkonzept
+       • # EtherFood – Spielkonzept
        • ## Einstieg
        • ## Bereiche
        • ## Ergänzende Dokumente
        • ## Einfache Arbeitsregel
-     Inhalt (Auszug): title: ether-food – Spielkonzept status: working-canon language: de updated: 2026-08-30
+     Inhalt (Auszug): title: EtherFood – Spielkonzept status: working-canon language: de updated: 2026-08-30
 
 
 📁 00-grundlagen
   📝 00-grundlagen.md
      Pfad: 📁 00-grundlagen / 📝 00-grundlagen.md
      Größe: 372 B (372 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 00 – Grundlagen
      Überschriften: 2, Zeilen: 13, Wörter: 43, Zeichen: 355
      Gliederung:
@@ -65,7 +65,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 begriffe-und-namen.md
      Pfad: 📁 00-grundlagen / 📝 begriffe-und-namen.md
      Größe: 6.03 KB (6172 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Begriffe und Namen
      Überschriften: 4, Zeilen: 66, Wörter: 710, Zeichen: 6081
      Gliederung:
@@ -78,7 +78,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 00-grundlagen / 📝 index.md
      Größe: 336 B (336 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 00 – Grundlagen
      Überschriften: 1, Zeilen: 10, Wörter: 42, Zeichen: 330
      Gliederung:
@@ -88,7 +88,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 kanon-und-offene-fragen.md
      Pfad: 📁 00-grundlagen / 📝 kanon-und-offene-fragen.md
      Größe: 6.87 KB (7031 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Kanon und offene Fragen
      Überschriften: 5, Zeilen: 120, Wörter: 891, Zeichen: 6930
      Gliederung:
@@ -101,10 +101,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 spielvision.md
      Pfad: 📁 00-grundlagen / 📝 spielvision.md
-     Größe: 2.83 KB (2900 B)
-     Geändert: 2026-08-30T19:24:39
+     Größe: 2.83 KB (2899 B)
+     Geändert: 2026-08-30T19:42:25
      Titel: Spielvision
-     Überschriften: 7, Zeilen: 52, Wörter: 362, Zeichen: 2859
+     Überschriften: 7, Zeilen: 52, Wörter: 361, Zeichen: 2858
      Gliederung:
        • # Spielvision
        • ## Elevator Pitch
@@ -120,7 +120,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 10-welt.md
      Pfad: 📁 10-welt / 📝 10-welt.md
      Größe: 1.46 KB (1500 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 10 – Welt
      Überschriften: 6, Zeilen: 34, Wörter: 180, Zeichen: 1404
      Gliederung:
@@ -135,7 +135,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 10-welt / 📝 index.md
      Größe: 1.09 KB (1115 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 10 – Welt
      Überschriften: 5, Zeilen: 29, Wörter: 146, Zeichen: 1104
      Gliederung:
@@ -151,7 +151,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 00-kosmologie.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 00-kosmologie.md
      Größe: 530 B (530 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 00 – Kosmologie
      Überschriften: 2, Zeilen: 15, Wörter: 69, Zeichen: 507
      Gliederung:
@@ -162,7 +162,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 era-sol-und-yol.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 era-sol-und-yol.md
      Größe: 3.38 KB (3456 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Era, Sol und Yol
      Überschriften: 6, Zeilen: 87, Wörter: 461, Zeichen: 3398
      Gliederung:
@@ -177,7 +177,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ether-seelen-und-pakte.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 ether-seelen-und-pakte.md
      Größe: 4.79 KB (4908 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Ether, Seelen und Pakte
      Überschriften: 8, Zeilen: 97, Wörter: 653, Zeichen: 4820
      Gliederung:
@@ -194,7 +194,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 hera-und-splitterwelten.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 hera-und-splitterwelten.md
      Größe: 3.34 KB (3424 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Hera und die Splitterwelten
      Überschriften: 7, Zeilen: 73, Wörter: 406, Zeichen: 3366
      Gliederung:
@@ -210,7 +210,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 index.md
      Größe: 552 B (552 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Kosmologie
      Überschriften: 1, Zeilen: 12, Wörter: 76, Zeichen: 545
      Gliederung:
@@ -220,7 +220,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 zeitrechnung-auf-era.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 zeitrechnung-auf-era.md
      Größe: 4.26 KB (4363 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Zeitrechnung auf Era
      Überschriften: 9, Zeilen: 115, Wörter: 594, Zeichen: 4310
      Gliederung:
@@ -238,7 +238,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 zeitzyklen-und-konvektion.md
      Pfad: 📁 10-welt / 📁 00-kosmologie / 📝 zeitzyklen-und-konvektion.md
      Größe: 7.68 KB (7860 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Zeitzyklen und Konvektion von Sol und Yol
      Überschriften: 12, Zeilen: 160, Wörter: 998, Zeichen: 7710
      Gliederung:
@@ -261,7 +261,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 10-weltgeschichte.md
      Pfad: 📁 10-welt / 📁 10-weltgeschichte / 📝 10-weltgeschichte.md
      Größe: 370 B (370 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 10 – Weltgeschichte
      Überschriften: 2, Zeilen: 12, Wörter: 43, Zeichen: 355
      Gliederung:
@@ -272,7 +272,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 10-welt / 📁 10-weltgeschichte / 📝 index.md
      Größe: 341 B (341 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Weltgeschichte
      Überschriften: 1, Zeilen: 9, Wörter: 42, Zeichen: 337
      Gliederung:
@@ -282,7 +282,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 tators-seelenplan-und-pakt-des-helden.md
      Pfad: 📁 10-welt / 📁 10-weltgeschichte / 📝 tators-seelenplan-und-pakt-des-helden.md
      Größe: 3.43 KB (3510 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Tators Seelenplan und der Pakt des Helden
      Überschriften: 7, Zeilen: 82, Wörter: 475, Zeichen: 3461
      Gliederung:
@@ -298,7 +298,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 zeitleiste.md
      Pfad: 📁 10-welt / 📁 10-weltgeschichte / 📝 zeitleiste.md
      Größe: 7.00 KB (7167 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Chronologische Übersicht
      Überschriften: 1, Zeilen: 35, Wörter: 520, Zeichen: 7095
      Gliederung:
@@ -310,7 +310,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 20-geografie-und-sphaeren.md
      Pfad: 📁 10-welt / 📁 20-geografie-und-sphaeren / 📝 20-geografie-und-sphaeren.md
      Größe: 368 B (368 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 20 – Geografie und Sphären
      Überschriften: 2, Zeilen: 12, Wörter: 43, Zeichen: 350
      Gliederung:
@@ -321,7 +321,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 10-welt / 📁 20-geografie-und-sphaeren / 📝 index.md
      Größe: 366 B (366 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Geografie und Sphären
      Überschriften: 1, Zeilen: 9, Wörter: 43, Zeichen: 356
      Gliederung:
@@ -331,7 +331,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 welten-und-sphaeren.md
      Pfad: 📁 10-welt / 📁 20-geografie-und-sphaeren / 📝 welten-und-sphaeren.md
      Größe: 3.80 KB (3889 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Welten und Sphären
      Überschriften: 8, Zeilen: 83, Wörter: 477, Zeichen: 3820
      Gliederung:
@@ -348,7 +348,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 weltenkarte-und-arbeitsnamen.md
      Pfad: 📁 10-welt / 📁 20-geografie-und-sphaeren / 📝 weltenkarte-und-arbeitsnamen.md
      Größe: 2.13 KB (2180 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Konzeptkarte – Die Welten des Ether
      Überschriften: 4, Zeilen: 59, Wörter: 260, Zeichen: 2147
      Gliederung:
@@ -363,7 +363,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 40-fraktionen.md
      Pfad: 📁 10-welt / 📁 40-fraktionen / 📝 40-fraktionen.md
      Größe: 337 B (337 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 40 – Fraktionen
      Überschriften: 2, Zeilen: 12, Wörter: 37, Zeichen: 321
      Gliederung:
@@ -374,7 +374,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 grosse-ether-entitaeten.md
      Pfad: 📁 10-welt / 📁 40-fraktionen / 📝 grosse-ether-entitaeten.md
      Größe: 3.28 KB (3363 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Die zehn großen Ether-Entitäten
      Überschriften: 6, Zeilen: 64, Wörter: 406, Zeichen: 3285
      Gliederung:
@@ -389,7 +389,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 10-welt / 📁 40-fraktionen / 📝 index.md
      Größe: 246 B (246 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Fraktionen und übergeordnete Wesen
      Überschriften: 1, Zeilen: 7, Wörter: 27, Zeichen: 240
      Gliederung:
@@ -399,7 +399,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 weltenbewahrer.md
      Pfad: 📁 10-welt / 📁 40-fraktionen / 📝 weltenbewahrer.md
      Größe: 3.71 KB (3800 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Weltenbewahrer
      Überschriften: 6, Zeilen: 80, Wörter: 447, Zeichen: 3740
      Gliederung:
@@ -415,10 +415,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 📁 20-handlung
   📝 20-handlung.md
      Pfad: 📁 20-handlung / 📝 20-handlung.md
-     Größe: 722 B (722 B)
-     Geändert: 2026-08-30T19:24:39
+     Größe: 726 B (726 B)
+     Geändert: 2026-08-30T19:42:25
      Titel: 20 – Handlung
-     Überschriften: 2, Zeilen: 19, Wörter: 71, Zeichen: 685
+     Überschriften: 2, Zeilen: 19, Wörter: 71, Zeichen: 687
      Gliederung:
        • # 20 – Handlung
        • ## 📄 Seiten
@@ -427,7 +427,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 enthuellungsstruktur.md
      Pfad: 📁 20-handlung / 📝 enthuellungsstruktur.md
      Größe: 3.95 KB (4043 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Enthüllungs- und Spoilerstruktur
      Überschriften: 9, Zeilen: 80, Wörter: 533, Zeichen: 3954
      Gliederung:
@@ -445,7 +445,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 finale-und-erweiterung.md
      Pfad: 📁 20-handlung / 📝 finale-und-erweiterung.md
      Größe: 2.37 KB (2428 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Finale des Basisspiels und Erweiterung
      Überschriften: 4, Zeilen: 50, Wörter: 329, Zeichen: 2392
      Gliederung:
@@ -457,12 +457,12 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 handlungsverlauf.md
      Pfad: 📁 20-handlung / 📝 handlungsverlauf.md
-     Größe: 5.86 KB (5996 B)
-     Geändert: 2026-08-30T19:24:39
-     Titel: Handlungsverlauf des Basisspiels
-     Überschriften: 14, Zeilen: 134, Wörter: 779, Zeichen: 5895
+     Größe: 5.86 KB (6004 B)
+     Geändert: 2026-08-30T19:42:25
+     Titel: ⭐ Handlungsverlauf des Basisspiels
+     Überschriften: 14, Zeilen: 134, Wörter: 779, Zeichen: 5899
      Gliederung:
-       • # Handlungsverlauf des Basisspiels
+       • # ⭐ Handlungsverlauf des Basisspiels
        • ## Vorgeschichte – erst später vollständig enthüllt
        • ## Auftakt von Abschnitt 1 – Heldenraum und Nebel
        • ## Abschnitt 1 – Grasland
@@ -476,12 +476,12 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
        • ## Abschnitte 5 bis 7 – Tatok
        • ## Abschnitt 8 – Semms Bereich
        • ## Rückkehr der Seelen
-     Inhalt (Auszug): title: Handlungsverlauf des Basisspiels status: draft-canon spoiler_level: critical updated: 2026-08-30
+     Inhalt (Auszug): title: ⭐ Handlungsverlauf des Basisspiels status: draft-canon spoiler_level: critical updated: 2026-08-30
 
   📝 heldenraum.md
      Pfad: 📁 20-handlung / 📝 heldenraum.md
      Größe: 912 B (912 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Heldenraum
      Überschriften: 1, Zeilen: 24, Wörter: 117, Zeichen: 903
      Gliederung:
@@ -490,10 +490,10 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
 
   📝 index.md
      Pfad: 📁 20-handlung / 📝 index.md
-     Größe: 565 B (565 B)
-     Geändert: 2026-08-30T19:24:39
+     Größe: 569 B (569 B)
+     Geändert: 2026-08-30T19:42:25
      Titel: 20 – Handlung
-     Überschriften: 1, Zeilen: 14, Wörter: 58, Zeichen: 556
+     Überschriften: 1, Zeilen: 14, Wörter: 58, Zeichen: 558
      Gliederung:
        • # 20 – Handlung
      Inhalt (Auszug): <!-- AUTO-GENERATED:backlink START --> [← Zurück](20-handlung.md) <!-- AUTO-GENERATED:backlink END -->
@@ -501,7 +501,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 praemisse.md
      Pfad: 📁 20-handlung / 📝 praemisse.md
      Größe: 2.46 KB (2518 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Handlungsprämisse
      Überschriften: 1, Zeilen: 48, Wörter: 349, Zeichen: 2480
      Gliederung:
@@ -511,7 +511,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 protagonist.md
      Pfad: 📁 20-handlung / 📝 protagonist.md
      Größe: 3.35 KB (3426 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Der Protagonist
      Überschriften: 7, Zeilen: 73, Wörter: 462, Zeichen: 3376
      Gliederung:
@@ -527,7 +527,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ratgeber-im-heldenraum.md
      Pfad: 📁 20-handlung / 📝 ratgeber-im-heldenraum.md
      Größe: 1.76 KB (1798 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Ratgeber im Heldenraum
      Überschriften: 5, Zeilen: 47, Wörter: 240, Zeichen: 1781
      Gliederung:
@@ -541,7 +541,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 spielablauf-und-abschnittsstruktur.md
      Pfad: 📁 20-handlung / 📝 spielablauf-und-abschnittsstruktur.md
      Größe: 6.48 KB (6631 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Spielablauf und Abschnittsstruktur
      Überschriften: 14, Zeilen: 149, Wörter: 824, Zeichen: 6534
      Gliederung:
@@ -564,7 +564,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 talisman.md
      Pfad: 📁 20-handlung / 📝 talisman.md
      Größe: 3.20 KB (3272 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Der Talisman
      Überschriften: 6, Zeilen: 65, Wörter: 425, Zeichen: 3230
      Gliederung:
@@ -581,7 +581,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 30-spielmechanik.md
      Pfad: 📁 30-spielmechanik / 📝 30-spielmechanik.md
      Größe: 472 B (472 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 30 – Spielmechanik
      Überschriften: 2, Zeilen: 14, Wörter: 42, Zeichen: 450
      Gliederung:
@@ -592,7 +592,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 30-spielmechanik / 📝 index.md
      Größe: 361 B (361 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 30 – Spielmechanik
      Überschriften: 1, Zeilen: 9, Wörter: 32, Zeichen: 354
      Gliederung:
@@ -602,7 +602,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 kampfsystem-grundlage.md
      Pfad: 📁 30-spielmechanik / 📝 kampfsystem-grundlage.md
      Größe: 1.75 KB (1793 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Kampfsystem – Grundlage
      Überschriften: 6, Zeilen: 47, Wörter: 190, Zeichen: 1772
      Gliederung:
@@ -617,7 +617,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 kernspielschleife.md
      Pfad: 📁 30-spielmechanik / 📝 kernspielschleife.md
      Größe: 2.79 KB (2853 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Kernspielschleife
      Überschriften: 8, Zeilen: 65, Wörter: 358, Zeichen: 2805
      Gliederung:
@@ -634,7 +634,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 seelenenergie-im-endgame.md
      Pfad: 📁 30-spielmechanik / 📝 seelenenergie-im-endgame.md
      Größe: 2.51 KB (2573 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Seelenenergie im Endgame
      Überschriften: 6, Zeilen: 58, Wörter: 336, Zeichen: 2546
      Gliederung:
@@ -649,7 +649,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 wiederherstellungsfortschritt.md
      Pfad: 📁 30-spielmechanik / 📝 wiederherstellungsfortschritt.md
      Größe: 2.39 KB (2451 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Wiederherstellungsfortschritt
      Überschriften: 6, Zeilen: 52, Wörter: 277, Zeichen: 2391
      Gliederung:
@@ -666,7 +666,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 40-weltsysteme.md
      Pfad: 📁 40-weltsysteme / 📝 40-weltsysteme.md
      Größe: 576 B (576 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 40 – Weltsysteme
      Überschriften: 2, Zeilen: 15, Wörter: 59, Zeichen: 551
      Gliederung:
@@ -677,7 +677,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ebenen-portale-und-weltpassagen.md
      Pfad: 📁 40-weltsysteme / 📝 ebenen-portale-und-weltpassagen.md
      Größe: 1.55 KB (1591 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Ebenen, Portale und Weltpassagen
      Überschriften: 5, Zeilen: 47, Wörter: 183, Zeichen: 1570
      Gliederung:
@@ -691,7 +691,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 erinnerungs-und-faehigkeitssystem.md
      Pfad: 📁 40-weltsysteme / 📝 erinnerungs-und-faehigkeitssystem.md
      Größe: 2.81 KB (2881 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Erinnerungs- und Fähigkeitssystem
      Überschriften: 7, Zeilen: 60, Wörter: 325, Zeichen: 2837
      Gliederung:
@@ -707,7 +707,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 40-weltsysteme / 📝 index.md
      Größe: 443 B (443 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 40 – Weltsysteme
      Überschriften: 1, Zeilen: 10, Wörter: 47, Zeichen: 436
      Gliederung:
@@ -717,7 +717,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 rekonstruktionssystem.md
      Pfad: 📁 40-weltsysteme / 📝 rekonstruktionssystem.md
      Größe: 2.15 KB (2200 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Rekonstruktionssystem
      Überschriften: 7, Zeilen: 59, Wörter: 249, Zeichen: 2161
      Gliederung:
@@ -733,7 +733,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 seelenoekonomie.md
      Pfad: 📁 40-weltsysteme / 📝 seelenoekonomie.md
      Größe: 3.66 KB (3747 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Seelenökonomie
      Überschriften: 7, Zeilen: 91, Wörter: 474, Zeichen: 3680
      Gliederung:
@@ -749,7 +749,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 sol-yol-zeit-und-jahreszeiten.md
      Pfad: 📁 40-weltsysteme / 📝 sol-yol-zeit-und-jahreszeiten.md
      Größe: 2.58 KB (2646 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Sol, Yol, Zeit und Jahreszeiten als Weltsystem
      Überschriften: 5, Zeilen: 57, Wörter: 321, Zeichen: 2606
      Gliederung:
@@ -765,7 +765,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 50-inhalte.md
      Pfad: 📁 50-inhalte / 📝 50-inhalte.md
      Größe: 427 B (427 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 50 – Inhalte
      Überschriften: 2, Zeilen: 13, Wörter: 47, Zeichen: 409
      Gliederung:
@@ -776,7 +776,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 boss-und-endgame-abfolge.md
      Pfad: 📁 50-inhalte / 📝 boss-und-endgame-abfolge.md
      Größe: 1.92 KB (1964 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Boss- und Endgame-Abfolge
      Überschriften: 5, Zeilen: 52, Wörter: 254, Zeichen: 1933
      Gliederung:
@@ -790,7 +790,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 50-inhalte / 📝 index.md
      Größe: 315 B (315 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 50 – Inhalte
      Überschriften: 1, Zeilen: 8, Wörter: 37, Zeichen: 309
      Gliederung:
@@ -800,7 +800,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 monsterhoehlen-und-versiegelungen.md
      Pfad: 📁 50-inhalte / 📝 monsterhoehlen-und-versiegelungen.md
      Größe: 1.98 KB (2030 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Monsterhöhlen und Versiegelungen
      Überschriften: 6, Zeilen: 58, Wörter: 231, Zeichen: 1998
      Gliederung:
@@ -815,7 +815,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 welt-und-ebenenstruktur.md
      Pfad: 📁 50-inhalte / 📝 welt-und-ebenenstruktur.md
      Größe: 1.55 KB (1589 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Welt- und Ebenenstruktur
      Überschriften: 4, Zeilen: 44, Wörter: 199, Zeichen: 1560
      Gliederung:
@@ -830,7 +830,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 60-produktion.md
      Pfad: 📁 60-produktion / 📝 60-produktion.md
      Größe: 437 B (437 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 60 – Produktion
      Überschriften: 2, Zeilen: 13, Wörter: 43, Zeichen: 417
      Gliederung:
@@ -841,7 +841,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 60-produktion / 📝 index.md
      Größe: 327 B (327 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: 60 – Produktion
      Überschriften: 1, Zeilen: 8, Wörter: 34, Zeichen: 321
      Gliederung:
@@ -851,7 +851,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 naechste-konzeptschritte.md
      Pfad: 📁 60-produktion / 📝 naechste-konzeptschritte.md
      Größe: 1.74 KB (1777 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Nächste Konzeptschritte
      Überschriften: 5, Zeilen: 47, Wörter: 210, Zeichen: 1748
      Gliederung:
@@ -865,7 +865,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 narrative-umsetzungsregeln.md
      Pfad: 📁 60-produktion / 📝 narrative-umsetzungsregeln.md
      Größe: 3.25 KB (3323 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Narrative Umsetzungsregeln
      Überschriften: 10, Zeilen: 69, Wörter: 410, Zeichen: 3260
      Gliederung:
@@ -884,7 +884,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 scope-basisspiel-und-erweiterung.md
      Pfad: 📁 60-produktion / 📝 scope-basisspiel-und-erweiterung.md
      Größe: 1.94 KB (1989 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Umfang – Basisspiel und Erweiterung
      Überschriften: 5, Zeilen: 55, Wörter: 237, Zeichen: 1947
      Gliederung:
@@ -900,7 +900,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0001-namensnormalisierung.md
      Pfad: 📁 entscheidungen / 📝 ADR-0001-namensnormalisierung.md
      Größe: 1.80 KB (1843 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0001 – Namensnormalisierung
      Überschriften: 6, Zeilen: 44, Wörter: 206, Zeichen: 1811
      Gliederung:
@@ -915,7 +915,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0002-wiederherstellungsreihenfolge.md
      Pfad: 📁 entscheidungen / 📝 ADR-0002-wiederherstellungsreihenfolge.md
      Größe: 1.04 KB (1069 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0002 – Wiederherstellungsreihenfolge
      Überschriften: 4, Zeilen: 31, Wörter: 118, Zeichen: 1050
      Gliederung:
@@ -928,7 +928,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0003-verdeckte-wahrheit-der-spielwelt.md
      Pfad: 📁 entscheidungen / 📝 ADR-0003-verdeckte-wahrheit-der-spielwelt.md
      Größe: 1.05 KB (1080 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0003 – Verdeckte Wahrheit der Spielwelt
      Überschriften: 4, Zeilen: 27, Wörter: 138, Zeichen: 1059
      Gliederung:
@@ -941,7 +941,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0004-basisspiel-und-erweiterung.md
      Pfad: 📁 entscheidungen / 📝 ADR-0004-basisspiel-und-erweiterung.md
      Größe: 1.10 KB (1127 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0004 – Trennung von Basisspiel und Erweiterung
      Überschriften: 4, Zeilen: 27, Wörter: 136, Zeichen: 1102
      Gliederung:
@@ -954,7 +954,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0005-kanonfreigabe-checkliste.md
      Pfad: 📁 entscheidungen / 📝 ADR-0005-kanonfreigabe-checkliste.md
      Größe: 3.38 KB (3465 B)
-     Geändert: 2026-08-30T19:25:46
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0005 – Kanonfreigabe der Checkliste
      Überschriften: 4, Zeilen: 66, Wörter: 421, Zeichen: 3413
      Gliederung:
@@ -967,7 +967,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0006-gelehrtenueberlieferungen.md
      Pfad: 📁 entscheidungen / 📝 ADR-0006-gelehrtenueberlieferungen.md
      Größe: 1.95 KB (1996 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0006 – Gelehrtenüberlieferungen
      Überschriften: 4, Zeilen: 50, Wörter: 212, Zeichen: 1959
      Gliederung:
@@ -980,7 +980,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md
      Pfad: 📁 entscheidungen / 📝 ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md
      Größe: 1.55 KB (1591 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung
      Überschriften: 4, Zeilen: 38, Wörter: 196, Zeichen: 1562
      Gliederung:
@@ -993,7 +993,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 ADR-0008-achtteiliger-spielablauf.md
      Pfad: 📁 entscheidungen / 📝 ADR-0008-achtteiliger-spielablauf.md
      Größe: 2.13 KB (2180 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: ADR-0008 – Achtteiliger Spielablauf
      Überschriften: 4, Zeilen: 61, Wörter: 269, Zeichen: 2144
      Gliederung:
@@ -1006,7 +1006,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 entscheidungen.md
      Pfad: 📁 entscheidungen / 📝 entscheidungen.md
      Größe: 992 B (992 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Entscheidungen
      Überschriften: 2, Zeilen: 18, Wörter: 102, Zeichen: 945
      Gliederung:
@@ -1017,7 +1017,7 @@ Einstellungen: content=snippet, snippet_chars=800, toc_depth=3, types=.py, .ini,
   📝 index.md
      Pfad: 📁 entscheidungen / 📝 index.md
      Größe: 1002 B (1002 B)
-     Geändert: 2026-08-30T19:24:39
+     Geändert: 2026-08-30T19:42:25
      Titel: Entscheidungen
      Überschriften: 1, Zeilen: 15, Wörter: 102, Zeichen: 998
      Gliederung:

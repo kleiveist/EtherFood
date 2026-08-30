@@ -3,7 +3,7 @@
 <!-- AUTO-GENERATED:backlink END -->
 # Entwicklungsdokumentation
 
-Dieser Bereich beschreibt die technische Arbeit an `ether-food`. Er erklärt
+Dieser Bereich beschreibt die technische Arbeit an `EtherFood`. Er erklärt
 Architektur und Umsetzung, ohne den Spielkanon neu auszulegen.
 
 ## Bereiche
@@ -35,4 +35,4 @@ Grenzen und manuelle Ersatzprüfungen müssen im Pull Request stehen.
 Die unveränderte englische
 [Forge2D-Grundlage](../.forge2d-template/index.md) beschreibt Laufzeit,
 Werkzeuge und deren Geschichte. Hier werden nur Ergänzungen und bewusste
-Abweichungen für `ether-food` dokumentiert.
+Abweichungen für `EtherFood` dokumentiert.

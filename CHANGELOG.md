@@ -30,4 +30,4 @@ Noch keine Veröffentlichung vorbereitet.
 - Trockenläufe verändern das System nicht; `--yes` ermöglicht bestätigte
   unbeaufsichtigte Schritte.
 - Die ursprüngliche Forge2D-Identität wurde als technische Herkunft bewahrt,
-  während das aktive Projekt `ether-food` heißt.
+  während das aktive Projekt `EtherFood` heißt.

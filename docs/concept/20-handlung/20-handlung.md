@@ -8,7 +8,7 @@
 ## 📄 Seiten
 - 📝 [Enthüllungs- und Spoilerstruktur](enthuellungsstruktur.md)
 - 📝 [Finale des Basisspiels und Erweiterung](finale-und-erweiterung.md)
-- 📝 [Handlungsverlauf des Basisspiels](handlungsverlauf.md)
+- 📝 [⭐ Handlungsverlauf des Basisspiels](handlungsverlauf.md)
 - 📝 [Heldenraum](heldenraum.md)
 - 📝 [Handlungsprämisse](praemisse.md)
 - 📝 [Der Protagonist](protagonist.md)
