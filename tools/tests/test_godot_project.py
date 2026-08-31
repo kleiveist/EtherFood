@@ -215,8 +215,10 @@ class GodotProjectTests(unittest.TestCase):
         self.assertEqual(scene_text.count('[node name="RouteHost"'), 1)
         self.assertEqual(scene_text.count('[node name="PersistentUI"'), 1)
         self.assertEqual(scene_text.count('[node name="TransitionLayer"'), 1)
-        self.assertIn('initial_route_id = &"template_home"', scene_text)
-        self.assertIn('path="res://scenes/app/template_home.tscn"', scene_text)
+        self.assertIn('initial_route_id = &"title"', scene_text)
+        self.assertIn('path="res://scenes/menu/title_screen.tscn"', scene_text)
+        self.assertIn('path="res://scenes/menu/main_menu.tscn"', scene_text)
+        self.assertNotIn("template_home", scene_text)
 
     def test_scene_router_is_the_only_autoload(self) -> None:
         project_text = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
@@ -237,15 +239,20 @@ class GodotProjectTests(unittest.TestCase):
         )
         self.assertTrue((GODOT_ROOT / "services" / "scene_router.gd").is_file())
 
-    def test_route_resources_and_neutral_route_exist(self) -> None:
+    def test_route_resources_and_initial_menu_routes_exist(self) -> None:
         required = (
             GODOT_ROOT / "shared" / "resources" / "route_entry.gd",
             GODOT_ROOT / "shared" / "resources" / "route_table.gd",
-            GODOT_ROOT / "scenes" / "app" / "template_home.tscn",
+            GODOT_ROOT / "scenes" / "menu" / "title_screen.gd",
+            GODOT_ROOT / "scenes" / "menu" / "title_screen.tscn",
+            GODOT_ROOT / "scenes" / "menu" / "main_menu.tscn",
         )
         for path in required:
             with self.subTest(path=path):
                 self.assertTrue(path.is_file())
+        self.assertFalse(
+            (GODOT_ROOT / "scenes" / "app" / "template_home.tscn").exists()
+        )
 
     def test_bootstrap_scene_uses_the_production_bootstrap_script(self) -> None:
         script_text = (GODOT_ROOT / "src" / "bootstrap.gd").read_text(
@@ -271,7 +278,8 @@ class GodotProjectTests(unittest.TestCase):
         self.assertIn("res://tests/runtime/application_root_test.gd", runner_text)
         self.assertIn("res://tests/runtime/input_map_test.gd", runner_text)
         self.assertIn("res://tests/runtime/touch_action_adapter_test.gd", runner_text)
-        self.assertIn("ApplicationRoot/RouteHost/TemplateHome", runner_text)
+        self.assertIn("ApplicationRoot/RouteHost/TitleScreen", runner_text)
+        self.assertIn('scene_router.get_current_route_id() == &"main_menu"', runner_text)
         self.assertIn("Forge2D bootstrap integration test: passed", runner_text)
         self.assertIn("quit(1)", runner_text)
 

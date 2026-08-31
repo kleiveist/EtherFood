@@ -1,23 +1,29 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scenes/app/application_root.gd" id="1_application"]
 [ext_resource type="Script" path="res://shared/resources/route_entry.gd" id="2_entry"]
 [ext_resource type="Script" path="res://shared/resources/route_table.gd" id="3_table"]
-[ext_resource type="PackedScene" path="res://scenes/app/template_home.tscn" id="4_home"]
+[ext_resource type="PackedScene" path="res://scenes/menu/title_screen.tscn" id="4_title"]
+[ext_resource type="PackedScene" path="res://scenes/menu/main_menu.tscn" id="5_main_menu"]
 
-[sub_resource type="Resource" id="RouteEntry_home"]
+[sub_resource type="Resource" id="RouteEntry_title"]
 script = ExtResource("2_entry")
-route_id = &"template_home"
-scene = ExtResource("4_home")
+route_id = &"title"
+scene = ExtResource("4_title")
+
+[sub_resource type="Resource" id="RouteEntry_main_menu"]
+script = ExtResource("2_entry")
+route_id = &"main_menu"
+scene = ExtResource("5_main_menu")
 
 [sub_resource type="Resource" id="RouteTable_application"]
 script = ExtResource("3_table")
-entries = Array[ExtResource("2_entry")]([SubResource("RouteEntry_home")])
+entries = Array[ExtResource("2_entry")]([SubResource("RouteEntry_title"), SubResource("RouteEntry_main_menu")])
 
 [node name="ApplicationRoot" type="Node"]
 script = ExtResource("1_application")
 route_table = SubResource("RouteTable_application")
-initial_route_id = &"template_home"
+initial_route_id = &"title"
 
 [node name="RouteHost" type="Node" parent="."]
 

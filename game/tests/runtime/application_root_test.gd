@@ -27,8 +27,8 @@ func _test_successful_startup_and_shutdown(tree: SceneTree) -> void:
 
 	_expect(application_root.is_started(), "ApplicationRoot reports successful startup")
 	_expect(
-		started_ids == [&"template_home"],
-		"ApplicationRoot reports its neutral initial route",
+		started_ids == [&"title"],
+		"ApplicationRoot reports the title route as its initial route",
 	)
 	var route_host := application_root.get_node_or_null("RouteHost")
 	_expect(route_host != null, "ApplicationRoot owns RouteHost")
@@ -43,13 +43,13 @@ func _test_successful_startup_and_shutdown(tree: SceneTree) -> void:
 	if route_host != null:
 		_expect(route_host.get_child_count() == 1, "ApplicationRoot starts one route")
 		var initial_route := route_host.get_child(0) if route_host.get_child_count() == 1 else null
-		_expect(initial_route is Control, "neutral initial route is Control-based")
+		_expect(initial_route is Control, "title route is Control-based")
 		if initial_route != null:
-			_expect(initial_route.name == "TemplateHome", "neutral initial route is active")
+			_expect(initial_route.name == "TitleScreen", "title route is active")
 	_expect(scene_router.get_route_host() == route_host, "SceneRouter uses application RouteHost")
 	_expect(
-		scene_router.get_current_route_id() == &"template_home",
-		"SceneRouter tracks the neutral route ID",
+		scene_router.get_current_route_id() == &"title",
+		"SceneRouter tracks the title route ID",
 	)
 
 	application_root.queue_free()
