@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
-size = Vector2(32, 306)
+size = Vector2(32, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal_bound"]
-size = Vector2(864, 32)
+size = Vector2(1920, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obstacle"]
 size = Vector2(150, 80)
@@ -21,8 +21,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_visual_lab")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -10
+follow_viewport_enabled = false
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,37 +38,54 @@ color = Color(0.043, 0.055, 0.071, 1)
 [node name="TestWorld" type="Node2D" parent="."]
 
 [node name="Floor" type="Polygon2D" parent="TestWorld"]
-polygon = PackedVector2Array(48, 112, 912, 112, 912, 508, 48, 508)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
 color = Color(0.17, 0.24, 0.24, 1)
 
 [node name="ArenaBounds" type="Node2D" parent="TestWorld"]
 
 [node name="LeftWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(64, 363)
+position = Vector2(0, 540)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/LeftWall"]
 shape = SubResource("RectangleShape2D_vertical_bound")
 
 [node name="RightWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(896, 363)
+position = Vector2(1920, 540)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/RightWall"]
 shape = SubResource("RectangleShape2D_vertical_bound")
 
 [node name="TopWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(480, 226)
+position = Vector2(960, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/TopWall"]
 shape = SubResource("RectangleShape2D_horizontal_bound")
 
 [node name="BottomWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(480, 500)
+position = Vector2(960, 1080)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/BottomWall"]
 shape = SubResource("RectangleShape2D_horizontal_bound")
 
+[node name="OrientationMarkers" type="Node2D" parent="TestWorld"]
+
+[node name="NorthWestMarker" type="Polygon2D" parent="TestWorld/OrientationMarkers"]
+position = Vector2(240, 220)
+polygon = PackedVector2Array(0, -42, 42, 0, 0, 42, -42, 0)
+color = Color(0.72, 0.34, 0.27, 1)
+
+[node name="NorthEastMarker" type="Polygon2D" parent="TestWorld/OrientationMarkers"]
+position = Vector2(1680, 220)
+polygon = PackedVector2Array(0, -48, 46, 36, -46, 36)
+color = Color(0.78, 0.63, 0.22, 1)
+
+[node name="SouthWestMarker" type="Polygon2D" parent="TestWorld/OrientationMarkers"]
+position = Vector2(260, 850)
+polygon = PackedVector2Array(-42, -28, 0, -48, 42, -28, 42, 28, 0, 48, -42, 28)
+color = Color(0.29, 0.53, 0.63, 1)
+
 [node name="TestObstacle" type="StaticBody2D" parent="TestWorld"]
-position = Vector2(540, 360)
+position = Vector2(1180, 540)
 
 [node name="Visual" type="Polygon2D" parent="TestWorld/TestObstacle"]
 polygon = PackedVector2Array(-75, -40, 75, -40, 75, 40, -75, 40)
@@ -74,10 +95,14 @@ color = Color(0.47, 0.29, 0.22, 1)
 shape = SubResource("RectangleShape2D_obstacle")
 
 [node name="HeroCharacter" parent="TestWorld" instance=ExtResource("2_hero")]
-position = Vector2(240, 360)
+position = Vector2(960, 540)
 
-[node name="Interface" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+layer = 10
+follow_viewport_enabled = false
+
+[node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,40 +114,40 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 24
 
-[node name="Text" type="VBoxContainer" parent="Interface"]
+[node name="Text" type="VBoxContainer" parent="InterfaceLayer/Interface"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Title" type="Label" parent="Interface/Text"]
+[node name="Title" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.9, 0.82, 1)
 theme_override_font_sizes/font_size = 32
 text = "VISUELLES TESTLABOR"
 
-[node name="MovementHeading" type="Label" parent="Interface/Text"]
+[node name="MovementHeading" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.75, 0.77, 1)
 theme_override_font_sizes/font_size = 18
 text = "Bewegen:"
 
-[node name="MovementHint" type="Label" parent="Interface/Text"]
+[node name="MovementHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.67, 0.69, 0.72, 1)
 theme_override_font_sizes/font_size = 18
 text = "WASD / Pfeiltasten / linker Stick"
 
-[node name="Spacer" type="Control" parent="Interface/Text"]
+[node name="Spacer" type="Control" parent="InterfaceLayer/Interface/Text"]
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="BackHeading" type="Label" parent="Interface/Text"]
+[node name="BackHeading" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.75, 0.77, 1)
 theme_override_font_sizes/font_size = 18
 text = "Zurück:"
 
-[node name="BackHint" type="Label" parent="Interface/Text"]
+[node name="BackHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.68, 0.78, 1)
 theme_override_font_sizes/font_size = 18

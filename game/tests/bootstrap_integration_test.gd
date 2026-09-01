@@ -18,6 +18,7 @@ const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
 const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
 const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
+const EXPECTED_VISUAL_LAB_WORLD_BOUNDS := Rect2(0.0, 0.0, 1920.0, 1080.0)
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
 	"res://tests/runtime/scene_router_test.gd",
@@ -250,6 +251,7 @@ func _test_bootstrap_contract() -> void:
 			scene_router.get_current_route_id() == &"visual_lab",
 			"VisualLabButton opens the visual_lab route",
 		)
+		await process_frame
 		if route_host != null:
 			_expect(
 				route_host.get_child_count() == 1,
@@ -257,8 +259,34 @@ func _test_bootstrap_contract() -> void:
 			)
 		var visual_lab := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab"
-		)
+		) as Control
 		_expect(visual_lab is Control, "visual_lab route loads the VisualLab scene")
+		var configured_viewport_size := Vector2(
+			float(ProjectSettings.get_setting("display/window/size/viewport_width", 0)),
+			float(ProjectSettings.get_setting("display/window/size/viewport_height", 0)),
+		)
+		var background_layer := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/BackgroundLayer"
+		) as CanvasLayer
+		_expect(background_layer != null, "VisualLab has a background CanvasLayer")
+		if background_layer != null:
+			_expect(background_layer.layer == -10, "VisualLab background layer is behind world")
+			_expect(
+				not background_layer.follow_viewport_enabled,
+				"VisualLab background does not follow the viewport transform",
+			)
+		var background := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/BackgroundLayer/Background"
+		) as ColorRect
+		_expect(
+			background != null and background.get_parent() == background_layer,
+			"VisualLab background belongs to its CanvasLayer",
+		)
+		if background != null:
+			_expect(
+				background.size == configured_viewport_size,
+				"VisualLab background covers the configured viewport",
+			)
 		var test_world := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab/TestWorld"
 		) as Node2D
@@ -267,23 +295,62 @@ func _test_bootstrap_contract() -> void:
 			"ApplicationRoot/RouteHost/VisualLab/TestWorld/Floor"
 		) as Polygon2D
 		_expect(floor != null and floor.visible, "VisualLab contains a visible floor")
+		if floor != null:
+			var floor_bounds := _polygon_bounds(floor.polygon)
+			_expect(
+				floor_bounds == EXPECTED_VISUAL_LAB_WORLD_BOUNDS,
+				"VisualLab floor covers the 1920 by 1080 test world",
+			)
+			_expect(
+				floor_bounds.size.x > configured_viewport_size.x
+				and floor_bounds.size.y > configured_viewport_size.y,
+				"VisualLab test world is larger than the viewport",
+			)
 		var arena_bounds := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab/TestWorld/ArenaBounds"
 		) as Node2D
 		_expect(arena_bounds != null, "VisualLab contains arena bounds")
 		if arena_bounds != null:
 			_expect(arena_bounds.get_child_count() == 4, "VisualLab has four arena walls")
-			for wall_name in ["LeftWall", "RightWall", "TopWall", "BottomWall"]:
-				var wall := arena_bounds.get_node_or_null(wall_name)
-				_expect(wall is StaticBody2D, "arena wall %s is a StaticBody2D" % wall_name)
-				if wall != null:
-					var wall_collision := wall.get_node_or_null(
-						"CollisionShape2D"
-					) as CollisionShape2D
-					_expect(
-						wall_collision != null and wall_collision.shape != null,
-						"arena wall %s has a collision shape" % wall_name,
-					)
+			_expect_arena_wall(
+				arena_bounds,
+				&"LeftWall",
+				Vector2(0, 540),
+				Vector2(32, 1080),
+			)
+			_expect_arena_wall(
+				arena_bounds,
+				&"RightWall",
+				Vector2(1920, 540),
+				Vector2(32, 1080),
+			)
+			_expect_arena_wall(
+				arena_bounds,
+				&"TopWall",
+				Vector2(960, 0),
+				Vector2(1920, 32),
+			)
+			_expect_arena_wall(
+				arena_bounds,
+				&"BottomWall",
+				Vector2(960, 1080),
+				Vector2(1920, 32),
+			)
+		var orientation_markers := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld/OrientationMarkers"
+		) as Node2D
+		_expect(orientation_markers != null, "VisualLab has orientation markers")
+		if orientation_markers != null:
+			_expect(
+				orientation_markers.get_child_count() == 3,
+				"VisualLab has three orientation markers",
+			)
+			for marker_node in orientation_markers.get_children():
+				var marker := marker_node as Polygon2D
+				_expect(
+					marker != null and marker.visible,
+					"VisualLab orientation markers are visible Polygon2D nodes",
+				)
 		var test_obstacle := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab/TestWorld/TestObstacle"
 		) as StaticBody2D
@@ -300,10 +367,58 @@ func _test_bootstrap_contract() -> void:
 				obstacle_collision != null and obstacle_collision.shape != null,
 				"VisualLab test obstacle has a collision shape",
 			)
+		var interface_layer := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer"
+		) as CanvasLayer
+		_expect(interface_layer != null, "VisualLab has an interface CanvasLayer")
+		if interface_layer != null:
+			_expect(interface_layer.layer == 10, "VisualLab interface layer is above world")
+			_expect(
+				not interface_layer.follow_viewport_enabled,
+				"VisualLab interface does not follow the viewport transform",
+			)
+		var interface := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface"
+		) as MarginContainer
+		_expect(
+			interface != null and interface.get_parent() == interface_layer,
+			"VisualLab interface belongs to its CanvasLayer",
+		)
+		if interface != null:
+			_expect(
+				interface.size == configured_viewport_size,
+				"VisualLab interface covers the configured viewport",
+			)
 		var hero_character := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab/TestWorld/HeroCharacter"
 		) as CharacterBody2D
 		_expect(hero_character != null, "VisualLab contains HeroCharacter")
+		var player_camera := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld/HeroCharacter/PlayerCamera"
+		) as Camera2D
+		_expect(player_camera != null, "VisualLab contains PlayerCamera")
+		if player_camera != null:
+			_expect(player_camera.enabled, "VisualLab activates PlayerCamera")
+			_expect(player_camera.is_current(), "VisualLab makes PlayerCamera current")
+			_expect(
+				player_camera.get_viewport().get_camera_2d() == player_camera,
+				"VisualLab viewport uses PlayerCamera",
+			)
+			_expect(player_camera.limit_left == 0, "PlayerCamera has the left world limit")
+			_expect(player_camera.limit_top == 0, "PlayerCamera has the top world limit")
+			_expect(
+				player_camera.limit_right == 1920,
+				"PlayerCamera has the right world limit",
+			)
+			_expect(
+				player_camera.limit_bottom == 1080,
+				"PlayerCamera has the bottom world limit",
+			)
+			_expect(player_camera.zoom == Vector2.ONE, "PlayerCamera uses neutral zoom")
+			_expect(
+				not player_camera.position_smoothing_enabled,
+				"PlayerCamera follows without position smoothing",
+			)
 		if hero_character != null:
 			var hero_collision := hero_character.get_node_or_null(
 				"CollisionShape2D"
@@ -312,38 +427,94 @@ func _test_bootstrap_contract() -> void:
 				hero_collision != null and hero_collision.shape != null,
 				"VisualLab HeroCharacter has a collision shape",
 			)
-			hero_character.position = Vector2(448, 360)
+			var hero_start_position := hero_character.global_position
+			var camera_start_position := Vector2.ZERO
+			if player_camera != null:
+				camera_start_position = player_camera.global_position
+			var interface_screen_position := Vector2.ZERO
+			if interface != null:
+				interface_screen_position = interface.get_screen_transform().origin
+			var background_screen_position := Vector2.ZERO
+			if background != null:
+				background_screen_position = background.get_screen_transform().origin
+			await _hold_action_for_physics_frames(&"gameplay_move_right", 4)
+			var hero_movement := hero_character.global_position - hero_start_position
+			_expect(hero_movement.x > 0.0, "VisualLab HeroCharacter moves through the world")
+			if player_camera != null:
+				var camera_movement := (
+					player_camera.global_position - camera_start_position
+				)
+				_expect(
+					camera_movement.is_equal_approx(hero_movement),
+					"PlayerCamera moves together with HeroCharacter",
+				)
+			if interface != null:
+				_expect(
+					interface.get_screen_transform().origin.is_equal_approx(
+						interface_screen_position,
+					),
+					"VisualLab interface stays fixed while the hero moves",
+				)
+			if background != null:
+				_expect(
+					background.get_screen_transform().origin.is_equal_approx(
+						background_screen_position,
+					),
+					"VisualLab background stays fixed while the hero moves",
+				)
+
+			hero_character.position = Vector2(1088, 540)
 			await _hold_action_for_physics_frames(&"gameplay_move_right", 4)
 			_expect(
-				hero_character.position.x <= 451.5,
+				hero_character.position.x <= 1091.5,
 				"VisualLab obstacle stops HeroCharacter",
 			)
-			hero_character.position = Vector2(95, 360)
+			hero_character.position = Vector2(31, 540)
 			await _hold_action_for_physics_frames(&"gameplay_move_left", 4)
 			_expect(
-				hero_character.position.x >= 93.5,
+				hero_character.position.x >= 29.5,
 				"VisualLab left wall stops HeroCharacter",
 			)
-			hero_character.position = Vector2(865, 360)
+			hero_character.position = Vector2(1889, 540)
 			await _hold_action_for_physics_frames(&"gameplay_move_right", 4)
 			_expect(
-				hero_character.position.x <= 866.5,
+				hero_character.position.x <= 1890.5,
 				"VisualLab right wall stops HeroCharacter",
 			)
-			hero_character.position = Vector2(240, 250)
+			hero_character.position = Vector2(960, 22)
 			await _hold_action_for_physics_frames(&"gameplay_move_up", 4)
 			_expect(
-				hero_character.position.y >= 246.5,
+				hero_character.position.y >= 20.5,
 				"VisualLab top wall stops HeroCharacter",
 			)
-			hero_character.position = Vector2(240, 470)
+			hero_character.position = Vector2(960, 1052)
 			await _hold_action_for_physics_frames(&"gameplay_move_down", 4)
 			_expect(
-				hero_character.position.y <= 473.5,
+				hero_character.position.y <= 1053.5,
 				"VisualLab bottom wall stops HeroCharacter",
 			)
+			if player_camera != null:
+				var viewport_half_size := configured_viewport_size * 0.5
+				hero_character.position = Vector2(30, 21)
+				await physics_frame
+				player_camera.force_update_scroll()
+				_expect(
+					player_camera.get_screen_center_position().is_equal_approx(
+						viewport_half_size,
+					),
+					"PlayerCamera stops at the top and left world limits",
+				)
+				hero_character.position = Vector2(1890, 1053)
+				await physics_frame
+				player_camera.force_update_scroll()
+				_expect(
+					player_camera.get_screen_center_position().is_equal_approx(
+						EXPECTED_VISUAL_LAB_WORLD_BOUNDS.end - viewport_half_size,
+					),
+					"PlayerCamera stops at the right and bottom world limits",
+				)
 		var visual_lab_title := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/Title"
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/Title"
 		) as Label
 		_expect(visual_lab_title != null, "VisualLab has a title Label")
 		if visual_lab_title != null:
@@ -352,7 +523,10 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab displays its title",
 			)
 		var visual_lab_movement_heading := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/MovementHeading"
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+				+ "MovementHeading"
+			)
 		) as Label
 		_expect(
 			visual_lab_movement_heading != null,
@@ -364,7 +538,10 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab displays its movement heading",
 			)
 		var visual_lab_movement_hint := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/MovementHint"
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+				+ "MovementHint"
+			)
 		) as Label
 		_expect(visual_lab_movement_hint != null, "VisualLab has a movement-hint Label")
 		if visual_lab_movement_hint != null:
@@ -373,7 +550,10 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab displays its movement hint",
 			)
 		var visual_lab_back_heading := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/BackHeading"
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+				+ "BackHeading"
+			)
 		) as Label
 		_expect(visual_lab_back_heading != null, "VisualLab has a back-heading Label")
 		if visual_lab_back_heading != null:
@@ -382,7 +562,7 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab displays its back heading",
 			)
 		var visual_lab_back_hint := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/BackHint"
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/BackHint"
 		) as Label
 		_expect(visual_lab_back_hint != null, "VisualLab has a back-hint Label")
 		if visual_lab_back_hint != null:
@@ -502,6 +682,43 @@ func _test_bootstrap_contract() -> void:
 	if scene_router != null:
 		_expect(not scene_router.is_configured(), "Bootstrap shutdown clears SceneRouter")
 		_expect(scene_router.get_current_route() == null, "shutdown releases route reference")
+
+
+func _polygon_bounds(points: PackedVector2Array) -> Rect2:
+	if points.is_empty():
+		return Rect2()
+	var minimum := points[0]
+	var maximum := points[0]
+	for point in points:
+		minimum.x = minf(minimum.x, point.x)
+		minimum.y = minf(minimum.y, point.y)
+		maximum.x = maxf(maximum.x, point.x)
+		maximum.y = maxf(maximum.y, point.y)
+	return Rect2(minimum, maximum - minimum)
+
+
+func _expect_arena_wall(
+		arena_bounds: Node2D,
+		wall_name: StringName,
+		expected_position: Vector2,
+		expected_size: Vector2,
+) -> void:
+	var wall := arena_bounds.get_node_or_null(NodePath(str(wall_name))) as StaticBody2D
+	_expect(wall != null, "arena wall %s is a StaticBody2D" % wall_name)
+	if wall == null:
+		return
+	_expect(wall.position == expected_position, "arena wall %s is at world edge" % wall_name)
+	var wall_collision := wall.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	_expect(
+		wall_collision != null and wall_collision.shape != null,
+		"arena wall %s has a collision shape" % wall_name,
+	)
+	if wall_collision == null:
+		return
+	var rectangle := wall_collision.shape as RectangleShape2D
+	_expect(rectangle != null, "arena wall %s uses a rectangle shape" % wall_name)
+	if rectangle != null:
+		_expect(rectangle.size == expected_size, "arena wall %s spans world edge" % wall_name)
 
 
 func _hold_action_for_physics_frames(action: StringName, frame_count: int) -> void:

@@ -38,6 +38,20 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(collision_shape != null, "HeroCharacter has a CollisionShape2D")
 	if collision_shape != null:
 		_expect(collision_shape.shape != null, "HeroCharacter collision has a shape")
+	var player_camera := hero.get_node_or_null("PlayerCamera") as Camera2D
+	_expect(player_camera != null, "HeroCharacter has a PlayerCamera")
+	if player_camera != null:
+		_expect(player_camera.get_parent() == hero, "PlayerCamera is a direct child")
+		_expect(not player_camera.enabled, "PlayerCamera is disabled by default")
+		_expect(player_camera.zoom == Vector2.ONE, "PlayerCamera uses neutral zoom")
+		_expect(
+			not player_camera.position_smoothing_enabled,
+			"PlayerCamera has position smoothing disabled",
+		)
+		_expect(
+			player_camera.process_callback == Camera2D.CAMERA2D_PROCESS_PHYSICS,
+			"PlayerCamera updates during physics frames",
+		)
 	_expect(hero.get_node_or_null("Visual/Shadow") is Polygon2D, "HeroCharacter has a shadow")
 	_expect(hero.get_node_or_null("Visual/Body") is Polygon2D, "HeroCharacter has a body")
 	_expect(hero.get_node_or_null("Visual/Head") is Polygon2D, "HeroCharacter has a head")

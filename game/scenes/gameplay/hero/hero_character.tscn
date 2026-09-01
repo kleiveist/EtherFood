@@ -30,3 +30,9 @@ color = Color(1, 0.82, 0.24, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_feet")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+process_callback = 0
+enabled = false
+position_smoothing_enabled = false
+zoom = Vector2(1, 1)
