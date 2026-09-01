@@ -2,7 +2,7 @@
 title: Die zehn großen Ether-Entitäten
 status: working-canon
 spoiler_level: full
-updated: 2026-08-30
+updated: 2026-09-01
 ---
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](index.md)
@@ -29,6 +29,20 @@ In Hera existieren unzählige Seelenwesen und Entitäten. Die folgende Zehnergru
 | **Kooy** | Große, gerüstete Entität; Funktion offen | Name bestätigt |
 | **Schuy** | Monumentale Entität; mögliche Beziehung zu `Schuk` offen | Name bestätigt |
 | **Semm** | Eigenständiger weiterer Gegenspieler und vorgesehener weiterer Endgegner des Basisspiels | bestätigt; genaue Rolle offen |
+
+## Kor
+
+Kor ist eine bestätigte Ether-Entität, die in der bisher festgelegten
+Zehnerliste nicht aufgeführt ist. Kor ist die Entität des Krieges, des Blutes
+und des Mordes. Die beiden geborstenen Welten
+[Kor und Kor’s Shard](../00-kosmologie/kor-und-kors-shard.md)
+gehören zu ihrem Machtbereich und tragen Kors Einfluss auf ihren polaxialen
+Läufen an Era heran.
+
+Die größere Welt und die Entität tragen denselben Namen. Ob Kor der bekannten
+Zehnergruppe dennoch zuzurechnen ist oder außerhalb dieser Gruppe steht, ist
+nicht festgelegt. Die Bestätigung Kors verändert daher nicht ohne weitere
+Entscheidung die Zusammensetzung der Zehnerliste.
 
 ## Gemeinsame Eigenschaften
 

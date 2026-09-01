@@ -8,6 +8,7 @@ Dieser Bereich beschreibt die objektive Wahrheit hinter Era, Hera, den Splitterw
 ## Kosmologie
 
 - [Era, Sol und Yol](00-kosmologie/era-sol-und-yol.md)
+- [Kor und Kor’s Shard – die Welten der Ether-Entität Kor](00-kosmologie/kor-und-kors-shard.md)
 - [Hera und die Splitterwelten](00-kosmologie/hera-und-splitterwelten.md)
 - [Ether, Seelen und Pakte](00-kosmologie/ether-seelen-und-pakte.md)
 

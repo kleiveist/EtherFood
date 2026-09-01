@@ -1,7 +1,7 @@
 ---
 title: Kanon und offene Fragen
 status: accepted
-updated: 2026-08-30
+updated: 2026-09-01
 ---
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](index.md)
@@ -46,6 +46,10 @@ updated: 2026-08-30
   Seelen längst aufgezehrt und Era wäre gestorben.
 - Das Basisspiel endet mit der Flucht aus der Konstruktwelt sowie den Kämpfen gegen Tator und Semm.
 - Ether-Entitäten können besiegt, aber nicht endgültig getötet werden.
+- Kor ist die Ether-Entität des Krieges, des Blutes und des Mordes. Die
+  geborstenen Welten Kor und Kor’s Shard gehören zu ihrem Machtbereich und
+  folgen getrennten polaxialen Läufen um Era. Die Entität und die größere Welt
+  tragen denselben Namen.
 - Die Erweiterung führt zum Kampf gegen die übrigen Ether-Entitäten und zur Verwandlung des Helden in eine solche Entität.
 - Sol und Yol schützen Era vor dem direkten Zugriff der Ether-Entitäten.
 - Hera ist die übergeordnete multidimensionale Splittersphäre; einzelne

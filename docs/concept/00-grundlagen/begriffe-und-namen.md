@@ -1,7 +1,7 @@
 ---
 title: Begriffe und Namen
 status: accepted
-updated: 2026-08-30
+updated: 2026-09-01
 ---
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](index.md)
@@ -21,6 +21,9 @@ updated: 2026-08-30
 | **Sphärenreich** | Bevorzugter redaktioneller Oberbegriff für Sphären, Reiche und Machtbereiche in Hera. Gelehrte verwenden in ihren jeweiligen Traditionen auch andere Begriffe; keine Form ist eine überall verbindliche In-World-Bezeichnung. |
 | **Tator** | Große Ether-Entität und Hauptgegner. Sein Machtbereich ist mit der Seelenwanderung von der physischen Wirklichkeit nach Hera verbunden. |
 | **Tatok** | Tators Sphärenreich und große Domäne innerhalb Heras. |
+| **Kor (Ether-Entität)** | Ether-Entität des Krieges, des Blutes und des Mordes. Die Welten Kor und Kor’s Shard gehören zu ihrem Machtbereich. |
+| **Kor (Welt)** | Größere der beiden geborstenen Welten der Ether-Entität Kor. Die Welt trägt denselben Namen wie die Entität und folgt einem eigenen polaxialen Lauf um Era. |
+| **Kor’s Shard** | Kleinere geborstene Welt der Ether-Entität Kor mit eigenständigem polaxialem Lauf. Ob sie aus der Welt Kor herausbrach oder schon zuvor eine eigene Welt war, bleibt offen. |
 | **Semm** | Eigenständiger weiterer Gegenspieler und vorgesehener weiterer Endgegner. Seine genauere Rolle bleibt offen. |
 | **Zehsen** | Einer der Weltenbewahrer, Verbündeter Tators und Ursprung des Talismans im Heldenraum. Zehsen ist keine Ether-Entität; Gelehrte deuten seine Absicht und Loyalität unterschiedlich, ohne dass eine Deutung bestätigt ist. |
 | **Konstruktwelt** | Innerhalb Tatoks geschaffene Spielwelt, die der Held zunächst für seine wahre Welt hält. |
@@ -60,7 +63,8 @@ Ausführliche Umrechnungen stehen in der
 
 ## Schreibregel
 
-Kanonischer Fließtext verwendet Era, Hera, Sol, Yol, Tator, Tatok, Semm,
-Zehsen, Weltenbewahrer, Sphärenreich und Konvektion. Ältere Formen erscheinen
-nur in ausdrücklich gekennzeichneten Alias-, Quellen- oder
-Entscheidungsabschnitten.
+Kanonischer Fließtext verwendet Era, Hera, Sol, Yol, Tator, Tatok, Kor, Kor’s
+Shard, Semm, Zehsen, Weltenbewahrer, Sphärenreich und Konvektion. Wenn Kor als
+Welt oder als Ether-Entität nicht aus dem Zusammenhang hervorgeht, wird die
+jeweilige Bedeutung ausdrücklich genannt. Ältere Formen erscheinen nur in
+gekennzeichneten Alias-, Quellen- oder Entscheidungsabschnitten.
