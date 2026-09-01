@@ -175,3 +175,26 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "+ / rechte Schultertaste: näher"
+
+[node name="HeroSizeSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HeroSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.82, 0.55, 1)
+theme_override_font_sizes/font_size = 18
+text = "Figur: Mittel · 80 Weltpixel"
+
+[node name="HeroSizeDecreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "R / Controller links: kleiner"
+
+[node name="HeroSizeIncreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "F / Controller oben: größer"

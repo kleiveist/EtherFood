@@ -15,11 +15,16 @@ script = ExtResource("1_hero")
 polygon = PackedVector2Array(-24, 8, -18, 2, 0, 0, 18, 2, 24, 8, 18, 14, 0, 16, -18, 14)
 color = Color(0.039, 0.047, 0.055, 0.65)
 
-[node name="Body" type="Polygon2D" parent="Visual"]
+[node name="Appearance" type="Node2D" parent="Visual"]
+position = Vector2(0, 10)
+
+[node name="Body" type="Polygon2D" parent="Visual/Appearance"]
+position = Vector2(0, -10)
 polygon = PackedVector2Array(-17, -38, 17, -38, 22, 5, 14, 10, -14, 10, -22, 5)
 color = Color(0.22, 0.48, 0.62, 1)
 
-[node name="Head" type="Polygon2D" parent="Visual"]
+[node name="Head" type="Polygon2D" parent="Visual/Appearance"]
+position = Vector2(0, -10)
 polygon = PackedVector2Array(-10, -66, 10, -66, 18, -58, 18, -40, 10, -30, -10, -30, -18, -40, -18, -58)
 color = Color(0.78, 0.67, 0.49, 1)
 

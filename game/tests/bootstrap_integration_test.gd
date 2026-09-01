@@ -21,6 +21,9 @@ const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
 const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Mittel · 1,00×"
 const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "- / linke Schultertaste: weiter"
 const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "+ / rechte Schultertaste: näher"
+const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
+const EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT := "R / Controller links: kleiner"
+const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
 const EXPECTED_VISUAL_LAB_WORLD_BOUNDS := Rect2(0.0, 0.0, 1920.0, 1080.0)
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
@@ -29,6 +32,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/input_map_test.gd",
 	"res://tests/runtime/hero_character_test.gd",
 	"res://tests/runtime/visual_lab_zoom_test.gd",
+	"res://tests/runtime/visual_lab_hero_size_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -609,6 +613,54 @@ func _test_bootstrap_contract() -> void:
 			_expect(
 				visual_lab_zoom_in_hint.text == EXPECTED_VISUAL_LAB_ZOOM_IN_HINT,
 				"VisualLab displays its zoom-in controls",
+			)
+		var visual_lab_hero_size_status := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "HeroSizeStatus"
+			)
+		) as Label
+		_expect(visual_lab_hero_size_status != null, "VisualLab has a hero-size Label")
+		if visual_lab_hero_size_status != null:
+			_expect(
+				visual_lab_hero_size_status.text == EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS,
+				"VisualLab displays its initial hero size",
+			)
+		var visual_lab_size_decrease_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "HeroSizeDecreaseHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_size_decrease_hint != null,
+			"VisualLab has a size-decrease hint Label",
+		)
+		if visual_lab_size_decrease_hint != null:
+			_expect(
+				(
+					visual_lab_size_decrease_hint.text
+					== EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT
+				),
+				"VisualLab displays its size-decrease controls",
+			)
+		var visual_lab_size_increase_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "HeroSizeIncreaseHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_size_increase_hint != null,
+			"VisualLab has a size-increase hint Label",
+		)
+		if visual_lab_size_increase_hint != null:
+			_expect(
+				(
+					visual_lab_size_increase_hint.text
+					== EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT
+				),
+				"VisualLab displays its size-increase controls",
 			)
 
 		if visual_lab != null:

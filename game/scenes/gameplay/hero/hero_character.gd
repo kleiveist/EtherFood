@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
+const APPEARANCE_REFERENCE_HEIGHT := 76.0
+
 @export_range(50.0, 1000.0, 10.0)
 var move_speed: float = 220.0
 
 var facing_direction: Vector2 = Vector2.DOWN
 
+@onready var appearance: Node2D = $Visual/Appearance
 @onready var facing_marker: Polygon2D = $Visual/FacingMarker
 
 
@@ -23,6 +26,15 @@ func _physics_process(_delta: float) -> void:
 	if not direction.is_zero_approx():
 		_update_facing_direction(direction)
 	move_and_slide()
+
+
+func set_appearance_height(target_height: float) -> void:
+	var uniform_scale := target_height / APPEARANCE_REFERENCE_HEIGHT
+	appearance.scale = Vector2(uniform_scale, uniform_scale)
+
+
+func get_appearance_height() -> float:
+	return APPEARANCE_REFERENCE_HEIGHT * appearance.scale.y
 
 
 func _update_facing_direction(direction: Vector2) -> void:

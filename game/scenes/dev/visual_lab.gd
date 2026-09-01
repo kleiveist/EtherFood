@@ -6,21 +6,35 @@ enum CameraZoomPreset {
 	NEAR,
 }
 
+enum HeroSizePreset {
+	SMALL,
+	MEDIUM,
+	LARGE,
+}
+
+const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const MAIN_MENU_ROUTE := &"main_menu"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
 const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
+const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
+const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
 const WORLD_RIGHT := 1920
 const WORLD_BOTTOM := 1080
 const CAMERA_ZOOM_NAMES: Array[String] = ["Weit", "Mittel", "Nah"]
 const CAMERA_ZOOM_VALUES: Array[float] = [0.75, 1.0, 1.5]
+const HERO_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
+const HERO_SIZE_VALUES: Array[float] = [64.0, 80.0, 96.0]
 
 @onready var player_camera: Camera2D = $TestWorld/HeroCharacter/PlayerCamera
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
+@onready var hero_character: HERO_SCRIPT = $TestWorld/HeroCharacter
+@onready var hero_size_status: Label = $InterfaceLayer/Interface/Text/HeroSizeStatus
 
 var _navigation_requested := false
 var _selected_camera_zoom: int = CameraZoomPreset.MEDIUM
+var _selected_hero_size: int = HeroSizePreset.MEDIUM
 
 
 func _ready() -> void:
@@ -33,6 +47,7 @@ func _ready() -> void:
 	player_camera.make_current()
 	resized.connect(_on_visual_lab_resized)
 	_apply_camera_zoom()
+	_apply_hero_size()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -43,6 +58,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(ZOOM_IN_ACTION):
 		get_viewport().set_input_as_handled()
 		_change_camera_zoom(1)
+		return
+	if event.is_action_pressed(HERO_SIZE_DECREASE_ACTION):
+		get_viewport().set_input_as_handled()
+		_change_hero_size(-1)
+		return
+	if event.is_action_pressed(HERO_SIZE_INCREASE_ACTION):
+		get_viewport().set_input_as_handled()
+		_change_hero_size(1)
 		return
 	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
 		return
@@ -83,6 +106,27 @@ func _apply_camera_zoom() -> void:
 		CAMERA_ZOOM_NAMES[_selected_camera_zoom],
 		_format_camera_zoom(effective_zoom),
 		limited_suffix,
+	]
+
+
+func _change_hero_size(direction: int) -> void:
+	var next_size := clampi(
+		_selected_hero_size + direction,
+		HeroSizePreset.SMALL,
+		HeroSizePreset.LARGE,
+	)
+	if next_size == _selected_hero_size:
+		return
+	_selected_hero_size = next_size
+	_apply_hero_size()
+
+
+func _apply_hero_size() -> void:
+	var selected_height := HERO_SIZE_VALUES[_selected_hero_size]
+	hero_character.set_appearance_height(selected_height)
+	hero_size_status.text = "Figur: %s · %d Weltpixel" % [
+		HERO_SIZE_NAMES[_selected_hero_size],
+		roundi(hero_character.get_appearance_height()),
 	]
 
 
