@@ -8,10 +8,14 @@ const EXPECTED_MAIN_MENU_BUTTONS := [
 	"Neues Spiel",
 	"Einstellungen",
 	"Mitwirkende",
+	"Visuelles Testlabor",
 	"Spiel beenden",
 ]
 const EXPECTED_HERO_ROOM_TITLE := "HELDENRAUM"
 const EXPECTED_HERO_ROOM_PLACEHOLDER := "Spielbarer Raum folgt"
+const EXPECTED_VISUAL_LAB_TITLE := "VISUELLES TESTLABOR"
+const EXPECTED_VISUAL_LAB_DESCRIPTION := "Interner Entwicklungsbereich\nGrafiktests folgen"
+const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B: Zurück"
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
 	"res://tests/runtime/scene_router_test.gd",
@@ -177,7 +181,7 @@ func _test_bootstrap_contract() -> void:
 		if buttons != null:
 			_expect(
 				buttons.get_child_count() == EXPECTED_MAIN_MENU_BUTTONS.size(),
-				"MainMenu has exactly five buttons",
+				"MainMenu has exactly six buttons in a debug build",
 			)
 			var inspected_button_count := mini(
 				buttons.get_child_count(),
@@ -208,6 +212,9 @@ func _test_bootstrap_contract() -> void:
 		var credits_button := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/CreditsButton"
 		) as Button
+		var visual_lab_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/VisualLabButton"
+		) as Button
 		var quit_button := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/QuitButton"
 		) as Button
@@ -219,7 +226,91 @@ func _test_bootstrap_contract() -> void:
 		if new_game_button != null:
 			_expect(not new_game_button.disabled, "Neues Spiel is enabled")
 			_expect(new_game_button.has_focus(), "Neues Spiel receives initial focus")
-			new_game_button.pressed.emit()
+		_expect(visual_lab_button != null, "MainMenu has the visual laboratory button")
+		if visual_lab_button != null:
+			_expect(
+				visual_lab_button.is_visible_in_tree(),
+				"VisualLabButton is visible in a debug build",
+			)
+			_expect(not visual_lab_button.disabled, "VisualLabButton is enabled")
+			_expect(
+				visual_lab_button.focus_mode == Control.FOCUS_ALL,
+				"VisualLabButton participates in debug-build focus navigation",
+			)
+			_expect(
+				not visual_lab_button.has_focus(),
+				"Neues Spiel keeps focus when VisualLabButton is available",
+			)
+			visual_lab_button.pressed.emit()
+
+		_expect(
+			scene_router.get_current_route_id() == &"visual_lab",
+			"VisualLabButton opens the visual_lab route",
+		)
+		if route_host != null:
+			_expect(
+				route_host.get_child_count() == 1,
+				"RouteHost owns one route after opening the visual laboratory",
+			)
+		var visual_lab := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab"
+		)
+		_expect(visual_lab is Control, "visual_lab route loads the VisualLab scene")
+		var visual_lab_title := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/Content/Text/Title"
+		) as Label
+		_expect(visual_lab_title != null, "VisualLab has a title Label")
+		if visual_lab_title != null:
+			_expect(
+				visual_lab_title.text == EXPECTED_VISUAL_LAB_TITLE,
+				"VisualLab displays its title",
+			)
+		var visual_lab_description := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/Content/Text/Description"
+		) as Label
+		_expect(visual_lab_description != null, "VisualLab has a description Label")
+		if visual_lab_description != null:
+			_expect(
+				visual_lab_description.text == EXPECTED_VISUAL_LAB_DESCRIPTION,
+				"VisualLab displays its placeholder description",
+			)
+		var visual_lab_back_hint := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/Content/Text/BackHint"
+		) as Label
+		_expect(visual_lab_back_hint != null, "VisualLab has a back-hint Label")
+		if visual_lab_back_hint != null:
+			_expect(
+				visual_lab_back_hint.text == EXPECTED_VISUAL_LAB_BACK_HINT,
+				"VisualLab displays its back hint",
+			)
+
+		if visual_lab != null:
+			visual_lab._unhandled_input(_pressed_action(&"ui_cancel"))
+		_expect(
+			scene_router.get_current_route_id() == &"main_menu",
+			"ui_cancel returns from the visual laboratory to the main menu",
+		)
+		if route_host != null:
+			_expect(
+				route_host.get_child_count() == 1,
+				"RouteHost owns one route after leaving the visual laboratory",
+			)
+		var main_menu_after_visual_lab := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu"
+		)
+		_expect(
+			main_menu_after_visual_lab is Control,
+			"returning from the visual laboratory loads a fresh MainMenu scene",
+		)
+		var new_game_after_visual_lab := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/NewGameButton"
+		) as Button
+		_expect(
+			new_game_after_visual_lab != null and new_game_after_visual_lab.has_focus(),
+			"Neues Spiel regains focus after returning from the visual laboratory",
+		)
+		if new_game_after_visual_lab != null:
+			new_game_after_visual_lab.pressed.emit()
 
 		_expect(
 			scene_router.get_current_route_id() == &"hero_room",
@@ -264,20 +355,23 @@ func _test_bootstrap_contract() -> void:
 				route_host.get_child_count() == 1,
 				"RouteHost owns one route after returning to the main menu",
 			)
-		var returned_main_menu := bootstrap.get_node_or_null(
+		var main_menu_after_hero_room := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/MainMenu"
 		)
-		_expect(returned_main_menu is Control, "returning loads a fresh MainMenu scene")
-		var returned_new_game_button := bootstrap.get_node_or_null(
+		_expect(
+			main_menu_after_hero_room is Control,
+			"returning from the hero room loads a fresh MainMenu scene",
+		)
+		var new_game_after_hero_room := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/NewGameButton"
 		) as Button
 		_expect(
-			returned_new_game_button != null and returned_new_game_button.has_focus(),
+			new_game_after_hero_room != null and new_game_after_hero_room.has_focus(),
 			"Neues Spiel regains focus after returning from the hero room",
 		)
 
-		if returned_main_menu != null:
-			returned_main_menu._unhandled_input(_pressed_action(&"ui_cancel"))
+		if main_menu_after_hero_room != null:
+			main_menu_after_hero_room._unhandled_input(_pressed_action(&"ui_cancel"))
 		_expect(
 			scene_router.get_current_route_id() == &"title",
 			"ui_cancel returns from the main menu to the title route",

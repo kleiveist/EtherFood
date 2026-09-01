@@ -78,6 +78,14 @@ focus_mode = 0
 disabled = true
 text = "Mitwirkende"
 
+[node name="VisualLabButton" type="Button" parent="Content/Text/Buttons"]
+visible = false
+custom_minimum_size = Vector2(280, 44)
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Visuelles Testlabor"
+
 [node name="QuitButton" type="Button" parent="Content/Text/Buttons"]
 custom_minimum_size = Vector2(280, 44)
 layout_mode = 2
@@ -86,3 +94,4 @@ disabled = true
 text = "Spiel beenden"
 
 [connection signal="pressed" from="Content/Text/Buttons/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Content/Text/Buttons/VisualLabButton" to="." method="_on_visual_lab_button_pressed"]

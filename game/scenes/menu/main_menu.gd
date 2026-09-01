@@ -2,13 +2,21 @@ extends Control
 
 const TITLE_ROUTE := &"title"
 const HERO_ROOM_ROUTE := &"hero_room"
+const VISUAL_LAB_ROUTE := &"visual_lab"
 
 @onready var new_game_button: Button = $Content/Text/Buttons/NewGameButton
+@onready var visual_lab_button: Button = $Content/Text/Buttons/VisualLabButton
 
 var _navigation_requested := false
 
 
 func _ready() -> void:
+	var development_build := OS.is_debug_build()
+	visual_lab_button.visible = development_build
+	visual_lab_button.disabled = not development_build
+	visual_lab_button.focus_mode = (
+		Control.FOCUS_ALL if development_build else Control.FOCUS_NONE
+	)
 	new_game_button.grab_focus()
 
 
@@ -22,6 +30,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_new_game_button_pressed() -> void:
 	_navigate(HERO_ROOM_ROUTE)
+
+
+func _on_visual_lab_button_pressed() -> void:
+	_navigate(VISUAL_LAB_ROUTE)
 
 
 func _navigate(route_id: StringName) -> void:

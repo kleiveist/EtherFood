@@ -31,15 +31,27 @@ func is_valid() -> bool:
 
 
 func scene_for(route_id: StringName) -> PackedScene:
+	return scene_for_build(route_id, OS.is_debug_build())
+
+
+func scene_for_build(route_id: StringName, debug_build: bool) -> PackedScene:
 	for entry in entries:
-		if entry != null and entry.route_id == route_id:
+		if (
+			entry != null
+			and entry.route_id == route_id
+			and entry.is_available(debug_build)
+		):
 			return entry.scene
 	return null
 
 
 func route_ids() -> Array[StringName]:
+	return route_ids_for_build(OS.is_debug_build())
+
+
+func route_ids_for_build(debug_build: bool) -> Array[StringName]:
 	var ids: Array[StringName] = []
 	for entry in entries:
-		if entry != null:
+		if entry != null and entry.is_available(debug_build):
 			ids.append(entry.route_id)
 	return ids

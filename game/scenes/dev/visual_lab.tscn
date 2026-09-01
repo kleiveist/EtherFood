@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/dev/visual_lab.gd" id="1_visual_lab"]
+
+[node name="VisualLab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_visual_lab")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.043, 0.055, 0.071, 1)
+
+[node name="Content" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="Content/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.9, 0.82, 1)
+theme_override_font_sizes/font_size = 42
+text = "VISUELLES TESTLABOR"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Content/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.67, 0.69, 0.72, 1)
+theme_override_font_sizes/font_size = 20
+text = "Interner Entwicklungsbereich\nGrafiktests folgen"
+horizontal_alignment = 1
+
+[node name="BackHint" type="Label" parent="Content/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.78, 1)
+theme_override_font_sizes/font_size = 18
+text = "Esc / B: Zurück"
+horizontal_alignment = 1

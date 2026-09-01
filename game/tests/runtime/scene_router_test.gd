@@ -47,6 +47,48 @@ func _test_route_table_validation() -> void:
 		"RouteTable lookup data is not exposed through route_ids",
 	)
 
+	var build_filtered_table := ROUTE_TABLE_SCRIPT.new()
+	var public_entry := ROUTE_ENTRY_SCRIPT.new(&"public", NODE_ROUTE)
+	var development_entry := ROUTE_ENTRY_SCRIPT.new(&"visual_lab", CONTROL_ROUTE, true)
+	build_filtered_table.entries.append(public_entry)
+	build_filtered_table.entries.append(development_entry)
+	_expect(
+		not public_entry.development_only,
+		"RouteEntry keeps existing constructor calls public",
+	)
+	_expect(
+		development_entry.development_only,
+		"RouteEntry constructor marks development-only routes",
+	)
+	_expect(
+		development_entry.is_available(true),
+		"development-only routes are available in debug builds",
+	)
+	_expect(
+		not development_entry.is_available(false),
+		"development-only routes are unavailable in release builds",
+	)
+	_expect(
+		build_filtered_table.scene_for_build(&"visual_lab", true) == CONTROL_ROUTE,
+		"RouteTable returns visual_lab for debug builds",
+	)
+	_expect(
+		build_filtered_table.scene_for_build(&"visual_lab", false) == null,
+		"RouteTable hides visual_lab from release builds",
+	)
+	_expect(
+		build_filtered_table.scene_for_build(&"public", false) == NODE_ROUTE,
+		"RouteTable keeps normal routes available in release builds",
+	)
+	_expect(
+		build_filtered_table.route_ids_for_build(true) == [&"public", &"visual_lab"],
+		"RouteTable lists development-only routes for debug builds",
+	)
+	_expect(
+		build_filtered_table.route_ids_for_build(false) == [&"public"],
+		"RouteTable omits development-only routes from release builds",
+	)
+
 
 func _test_navigation_contract(tree: SceneTree) -> void:
 	var router := ROUTER_SCRIPT.new()
