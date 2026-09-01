@@ -20,8 +20,8 @@ const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
 const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
-const WORLD_RIGHT := 1920
-const WORLD_BOTTOM := 1080
+const WORLD_RIGHT := 3840
+const WORLD_BOTTOM := 2160
 const CAMERA_ZOOM_NAMES: Array[String] = ["Weit", "Mittel", "Nah"]
 const CAMERA_ZOOM_VALUES: Array[float] = [0.75, 1.0, 1.5]
 const HERO_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
@@ -31,6 +31,7 @@ const HERO_SIZE_VALUES: Array[float] = [64.0, 80.0, 96.0]
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
 @onready var hero_character: HERO_SCRIPT = $TestWorld/HeroCharacter
 @onready var hero_size_status: Label = $InterfaceLayer/Interface/Text/HeroSizeStatus
+@onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 
 var _navigation_requested := false
 var _selected_camera_zoom: int = CameraZoomPreset.MEDIUM
@@ -46,8 +47,10 @@ func _ready() -> void:
 	player_camera.enabled = true
 	player_camera.make_current()
 	resized.connect(_on_visual_lab_resized)
+	get_window().size_changed.connect(_on_main_window_size_changed)
 	_apply_camera_zoom()
 	_apply_hero_size()
+	_update_window_size_status()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -146,5 +149,14 @@ func _format_camera_zoom(zoom_value: float) -> String:
 	return ("%.2f" % zoom_value).replace(".", ",")
 
 
+func _update_window_size_status() -> void:
+	var window_size := get_window().size
+	window_size_status.text = "Fenster: %d × %d" % [window_size.x, window_size.y]
+
+
 func _on_visual_lab_resized() -> void:
 	_apply_camera_zoom()
+
+
+func _on_main_window_size_changed() -> void:
+	_update_window_size_status()

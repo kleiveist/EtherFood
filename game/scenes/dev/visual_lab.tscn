@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
-size = Vector2(32, 1080)
+size = Vector2(32, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal_bound"]
-size = Vector2(1920, 32)
+size = Vector2(3840, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obstacle"]
 size = Vector2(150, 80)
@@ -38,31 +38,31 @@ color = Color(0.043, 0.055, 0.071, 1)
 [node name="TestWorld" type="Node2D" parent="."]
 
 [node name="Floor" type="Polygon2D" parent="TestWorld"]
-polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
+polygon = PackedVector2Array(0, 0, 3840, 0, 3840, 2160, 0, 2160)
 color = Color(0.17, 0.24, 0.24, 1)
 
 [node name="ArenaBounds" type="Node2D" parent="TestWorld"]
 
 [node name="LeftWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(0, 540)
+position = Vector2(0, 1080)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/LeftWall"]
 shape = SubResource("RectangleShape2D_vertical_bound")
 
 [node name="RightWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(1920, 540)
+position = Vector2(3840, 1080)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/RightWall"]
 shape = SubResource("RectangleShape2D_vertical_bound")
 
 [node name="TopWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(960, 0)
+position = Vector2(1920, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/TopWall"]
 shape = SubResource("RectangleShape2D_horizontal_bound")
 
 [node name="BottomWall" type="StaticBody2D" parent="TestWorld/ArenaBounds"]
-position = Vector2(960, 1080)
+position = Vector2(1920, 2160)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/ArenaBounds/BottomWall"]
 shape = SubResource("RectangleShape2D_horizontal_bound")
@@ -70,22 +70,22 @@ shape = SubResource("RectangleShape2D_horizontal_bound")
 [node name="OrientationMarkers" type="Node2D" parent="TestWorld"]
 
 [node name="NorthWestMarker" type="Polygon2D" parent="TestWorld/OrientationMarkers"]
-position = Vector2(240, 220)
+position = Vector2(480, 440)
 polygon = PackedVector2Array(0, -42, 42, 0, 0, 42, -42, 0)
 color = Color(0.72, 0.34, 0.27, 1)
 
 [node name="NorthEastMarker" type="Polygon2D" parent="TestWorld/OrientationMarkers"]
-position = Vector2(1680, 220)
+position = Vector2(3360, 440)
 polygon = PackedVector2Array(0, -48, 46, 36, -46, 36)
 color = Color(0.78, 0.63, 0.22, 1)
 
 [node name="SouthWestMarker" type="Polygon2D" parent="TestWorld/OrientationMarkers"]
-position = Vector2(260, 850)
+position = Vector2(520, 1700)
 polygon = PackedVector2Array(-42, -28, 0, -48, 42, -28, 42, 28, 0, 48, -42, 28)
 color = Color(0.29, 0.53, 0.63, 1)
 
 [node name="TestObstacle" type="StaticBody2D" parent="TestWorld"]
-position = Vector2(1180, 540)
+position = Vector2(2360, 1080)
 
 [node name="Visual" type="Polygon2D" parent="TestWorld/TestObstacle"]
 polygon = PackedVector2Array(-75, -40, 75, -40, 75, 40, -75, 40)
@@ -95,7 +95,7 @@ color = Color(0.47, 0.29, 0.22, 1)
 shape = SubResource("RectangleShape2D_obstacle")
 
 [node name="HeroCharacter" parent="TestWorld" instance=ExtResource("2_hero")]
-position = Vector2(960, 540)
+position = Vector2(1920, 1080)
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -123,6 +123,23 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.9, 0.82, 1)
 theme_override_font_sizes/font_size = 32
 text = "VISUELLES TESTLABOR"
+
+[node name="DisplaySpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ReferenceStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "Referenz: 1920 × 1080 · 16:9"
+
+[node name="WindowSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "Fenster: 1280 × 720"
 
 [node name="MovementHeading" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2

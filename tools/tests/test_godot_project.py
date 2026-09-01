@@ -10,6 +10,23 @@ GODOT_ROOT = REPOSITORY_ROOT / "game"
 
 
 class GodotProjectTests(unittest.TestCase):
+    def test_display_uses_reviewed_16_9_reference_contract(self) -> None:
+        project = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
+        expected_settings = (
+            "window/size/viewport_width=1920",
+            "window/size/viewport_height=1080",
+            "window/size/window_width_override=1280",
+            "window/size/window_height_override=720",
+            "window/size/resizable=true",
+            'window/stretch/mode="canvas_items"',
+            'window/stretch/aspect="keep"',
+        )
+
+        self.assertIn("\n[display]\n", project)
+        for setting in expected_settings:
+            with self.subTest(setting=setting):
+                self.assertIn(setting, project)
+
     def test_input_map_defines_semantic_actions_and_reviewed_deadzones(self) -> None:
         project = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
         actions = {

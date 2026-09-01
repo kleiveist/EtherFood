@@ -12,7 +12,7 @@ const MEDIUM_STATUS := "Kamera: Mittel · 1,00×"
 const NEAR_STATUS := "Kamera: Nah · 1,50×"
 const LIMITED_WIDE_STATUS := "Kamera: Weit · 1,25× · durch Weltgröße begrenzt"
 const LIMITED_MEDIUM_STATUS := "Kamera: Mittel · 1,25× · durch Weltgröße begrenzt"
-const WORLD_SIZE := Vector2(1920, 1080)
+const WORLD_SIZE := Vector2(3840, 2160)
 
 var failures: PackedStringArray = []
 
@@ -197,7 +197,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_LEFT_SHOULDER))
 		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_LEFT_SHOULDER))
-		visual_lab.size = Vector2(2400, 1350)
+		visual_lab.size = Vector2(4800, 2700)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -224,8 +224,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 		_expect(player_camera.limit_left == 0, "zoom keeps the left camera limit")
 		_expect(player_camera.limit_top == 0, "zoom keeps the top camera limit")
-		_expect(player_camera.limit_right == 1920, "zoom keeps the right camera limit")
-		_expect(player_camera.limit_bottom == 1080, "zoom keeps the bottom camera limit")
+		_expect(player_camera.limit_right == 3840, "zoom keeps the right camera limit")
+		_expect(player_camera.limit_bottom == 2160, "zoom keeps the bottom camera limit")
 		_expect(
 			camera_status.get_screen_transform().origin.is_equal_approx(
 				status_screen_position,
@@ -354,7 +354,7 @@ func _expect_camera_limits(
 		camera.get_screen_center_position().is_equal_approx(visible_half_size),
 		"%s stops at top-left world limits" % description,
 	)
-	hero.position = Vector2(1890, 1053)
+	hero.position = Vector2(3810, 2133)
 	await tree.physics_frame
 	camera.force_update_scroll()
 	_expect(
