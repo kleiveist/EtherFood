@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scenes/dev/visual_lab.gd" id="1_visual_lab"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
 [ext_resource type="Script" path="res://scenes/dev/tile_grid_preview.gd" id="3_tile_grid"]
+[ext_resource type="PackedScene" path="res://scenes/dev/world_state_preview.tscn" id="4_world_state"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
 size = Vector2(32, 2160)
@@ -100,6 +101,9 @@ theme_override_colors/font_color = Color(0.88, 0.79, 0.52, 1)
 theme_override_font_sizes/font_size = 20
 text = "Tilegrößenvergleich · feste Fläche 768 × 384"
 horizontal_alignment = 1
+
+[node name="WorldStatePreview" parent="TestWorld" instance=ExtResource("4_world_state")]
+position = Vector2(2920, 820)
 
 [node name="ScaleComparison" type="Node2D" parent="TestWorld"]
 position = Vector2(700, 1760)
@@ -399,6 +403,23 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "G / rechter Stick-Klick: größer"
+
+[node name="WorldStateSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WorldStateStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Weltzustand: Beschädigt"
+
+[node name="WorldStateToggleHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "V / Controller-A: Zustand wechseln"
 
 [node name="SettingsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
 custom_minimum_size = Vector2(0, 6)

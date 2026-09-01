@@ -28,6 +28,8 @@ const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
 const EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS := "Tiles: Klein · 32 × 32 Weltpixel"
 const EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT := "T / linker Stick-Klick: kleiner"
 const EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT := "G / rechter Stick-Klick: größer"
+const EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS := "Weltzustand: Beschädigt"
+const EXPECTED_VISUAL_LAB_WORLD_STATE_HINT := "V / Controller-A: Zustand wechseln"
 const EXPECTED_VISUAL_LAB_SETTINGS_STATUS := "Testwerte werden automatisch gespeichert"
 const EXPECTED_REFERENCE_STATUS := "Referenz: 1920 × 1080 · 16:9"
 const EXPECTED_REFERENCE_VIEWPORT_SIZE := Vector2(1920, 1080)
@@ -48,6 +50,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_hero_size_test.gd",
 	"res://tests/runtime/visual_lab_scale_reference_test.gd",
 	"res://tests/runtime/visual_lab_tile_size_test.gd",
+	"res://tests/runtime/visual_lab_world_state_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
@@ -900,6 +903,39 @@ func _test_bootstrap_contract() -> void:
 				),
 				"VisualLab displays its tile-size-increase controls",
 			)
+		var visual_lab_world_state_status := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "WorldStateStatus"
+			)
+		) as Label
+		_expect(
+			visual_lab_world_state_status != null,
+			"VisualLab has a world-state status Label",
+		)
+		if visual_lab_world_state_status != null:
+			_expect(
+				(
+					visual_lab_world_state_status.text
+					== EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS
+				),
+				"VisualLab displays its initial damaged world state",
+			)
+		var visual_lab_world_state_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "WorldStateToggleHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_world_state_hint != null,
+			"VisualLab has a world-state toggle hint Label",
+		)
+		if visual_lab_world_state_hint != null:
+			_expect(
+				visual_lab_world_state_hint.text == EXPECTED_VISUAL_LAB_WORLD_STATE_HINT,
+				"VisualLab displays its world-state toggle controls",
+			)
 		var visual_lab_settings_status := bootstrap.get_node_or_null(
 			(
 				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
@@ -922,7 +958,7 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab removes the old centered placeholder",
 			)
 			visual_lab._unhandled_input(_pressed_action(&"ui_cancel"))
-			_expect_saved_visual_lab_settings("near", "small", "small")
+			_expect_saved_visual_lab_settings("near", "small", "small", "damaged")
 		_expect(
 			scene_router.get_current_route_id() == &"main_menu",
 			"ui_cancel returns from the visual laboratory to the main menu",
@@ -1065,6 +1101,7 @@ func _expect_saved_visual_lab_settings(
 	camera_zoom_id: String,
 	hero_size_id: String,
 	tile_size_id: String,
+	world_state_id: String,
 ) -> void:
 	var settings := ConfigFile.new()
 	_expect(
@@ -1086,6 +1123,10 @@ func _expect_saved_visual_lab_settings(
 	_expect(
 		settings.get_value("visual_lab", "tile_size", "") == tile_size_id,
 		"saved VisualLab settings use the expected tile-size ID",
+	)
+	_expect(
+		settings.get_value("visual_lab", "world_state", "") == world_state_id,
+		"saved VisualLab settings use the expected world-state ID",
 	)
 
 

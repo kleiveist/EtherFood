@@ -18,8 +18,14 @@ enum TileSizePreset {
 	LARGE,
 }
 
+enum WorldStatePreset {
+	DAMAGED,
+	RESTORED,
+}
+
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
+const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
 const MAIN_MENU_ROUTE := &"main_menu"
 const SETTINGS_VERSION := 1
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
@@ -32,6 +38,7 @@ const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
 const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
 const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
+const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
 const WORLD_RIGHT := 3840
@@ -45,6 +52,8 @@ const HERO_SIZE_IDS: Array[String] = ["small", "medium", "large"]
 const TILE_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
 const TILE_SIZE_IDS: Array[String] = ["small", "medium", "large"]
+const WORLD_STATE_NAMES: Array[String] = ["Beschädigt", "Wiederhergestellt"]
+const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 
 @onready var player_camera: Camera2D = $TestWorld/HeroCharacter/PlayerCamera
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
@@ -54,12 +63,15 @@ const TILE_SIZE_IDS: Array[String] = ["small", "medium", "large"]
 	$TestWorld/TileComparison/TileGridPreview
 )
 @onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
+@onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
+@onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
 @onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 
 var _navigation_requested := false
 var _selected_camera_zoom: int = CameraZoomPreset.NEAR
 var _selected_hero_size: int = HeroSizePreset.SMALL
 var _selected_tile_size: int = TileSizePreset.SMALL
+var _selected_world_state: int = WorldStatePreset.DAMAGED
 
 
 func _ready() -> void:
@@ -76,6 +88,7 @@ func _ready() -> void:
 	_apply_camera_zoom()
 	_apply_hero_size()
 	_apply_tile_size()
+	_apply_world_state()
 	_update_window_size_status()
 
 
@@ -103,6 +116,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(TILE_SIZE_INCREASE_ACTION):
 		get_viewport().set_input_as_handled()
 		_change_tile_size(1)
+		return
+	if event.is_action_pressed(WORLD_STATE_TOGGLE_ACTION):
+		get_viewport().set_input_as_handled()
+		_toggle_world_state()
 		return
 	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
 		return
@@ -193,10 +210,25 @@ func _apply_tile_size() -> void:
 	]
 
 
+func _toggle_world_state() -> void:
+	if _selected_world_state == WorldStatePreset.DAMAGED:
+		_selected_world_state = WorldStatePreset.RESTORED
+	else:
+		_selected_world_state = WorldStatePreset.DAMAGED
+	_apply_world_state()
+	_save_settings()
+
+
+func _apply_world_state() -> void:
+	world_state_preview.set_world_state(_selected_world_state)
+	world_state_status.text = "Weltzustand: %s" % WORLD_STATE_NAMES[_selected_world_state]
+
+
 func _load_settings() -> void:
 	_selected_camera_zoom = CameraZoomPreset.NEAR
 	_selected_hero_size = HeroSizePreset.SMALL
 	_selected_tile_size = TileSizePreset.SMALL
+	_selected_world_state = WorldStatePreset.DAMAGED
 
 	var settings := ConfigFile.new()
 	var load_error := settings.load(_settings_path())
@@ -227,6 +259,12 @@ func _load_settings() -> void:
 		TILE_SIZE_IDS,
 		TileSizePreset.SMALL,
 	)
+	_selected_world_state = _read_preset_index(
+		settings,
+		"world_state",
+		WORLD_STATE_IDS,
+		WorldStatePreset.DAMAGED,
+	)
 
 
 func _save_settings() -> void:
@@ -246,6 +284,11 @@ func _save_settings() -> void:
 		SETTINGS_SECTION,
 		"tile_size",
 		TILE_SIZE_IDS[_selected_tile_size],
+	)
+	settings.set_value(
+		SETTINGS_SECTION,
+		"world_state",
+		WORLD_STATE_IDS[_selected_world_state],
 	)
 	var save_error := settings.save(_settings_path())
 	if save_error != OK:

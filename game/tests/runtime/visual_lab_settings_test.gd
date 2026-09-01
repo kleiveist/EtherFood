@@ -3,6 +3,7 @@ extends RefCounted
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
+const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_settings_test.cfg"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
@@ -14,6 +15,7 @@ const SMALL_HERO_STATUS := "Figur: Klein · 64 Weltpixel"
 const MEDIUM_HERO_STATUS := "Figur: Mittel · 80 Weltpixel"
 const SMALL_TILE_STATUS := "Tiles: Klein · 32 × 32 Weltpixel"
 const MEDIUM_TILE_STATUS := "Tiles: Mittel · 48 × 48 Weltpixel"
+const DAMAGED_WORLD_STATUS := "Weltzustand: Beschädigt"
 
 var failures: PackedStringArray = []
 var _had_settings_path_override := false
@@ -47,7 +49,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 		NEAR_STATUS,
 		SMALL_HERO_STATUS,
 		SMALL_TILE_STATUS,
-		"missing file uses near, small, and small defaults",
+		false,
+		DAMAGED_WORLD_STATUS,
+		"missing file uses near, small, small, and damaged defaults",
 	)
 
 	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
@@ -55,6 +59,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"medium",
 		"small",
 		"small",
+		"damaged",
 		"camera change saves immediately",
 	)
 	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_INCREASE_ACTION))
@@ -62,6 +67,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"medium",
 		"medium",
 		"small",
+		"damaged",
 		"hero-size change saves immediately",
 	)
 	visual_lab._unhandled_input(_pressed_action(TILE_SIZE_INCREASE_ACTION))
@@ -69,6 +75,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"medium",
 		"medium",
 		"medium",
+		"damaged",
 		"tile-size change saves immediately",
 	)
 	_expect_visual_lab_state(
@@ -79,6 +86,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 		MEDIUM_ZOOM_STATUS,
 		MEDIUM_HERO_STATUS,
 		MEDIUM_TILE_STATUS,
+		false,
+		DAMAGED_WORLD_STATUS,
 		"changed instance displays all medium presets",
 	)
 	await _close_visual_lab(tree, visual_lab)
@@ -93,11 +102,30 @@ func run(tree: SceneTree) -> PackedStringArray:
 			MEDIUM_ZOOM_STATUS,
 			MEDIUM_HERO_STATUS,
 			MEDIUM_TILE_STATUS,
+			false,
+			DAMAGED_WORLD_STATUS,
 			"new instance loads all saved presets and status texts",
 		)
 		await _close_visual_lab(tree, reopened_visual_lab)
 
-	_write_settings(1, "invalid-camera", 12, "invalid-tiles")
+	_write_settings(1, "medium", "medium", "medium")
+	var legacy_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
+	if legacy_visual_lab != null:
+		_expect_visual_lab_state(
+			legacy_visual_lab,
+			Vector2.ONE,
+			80.0,
+			48,
+			MEDIUM_ZOOM_STATUS,
+			MEDIUM_HERO_STATUS,
+			MEDIUM_TILE_STATUS,
+			false,
+			DAMAGED_WORLD_STATUS,
+			"version 1 settings without world_state remain valid",
+		)
+		await _close_visual_lab(tree, legacy_visual_lab)
+
+	_write_settings(1, "invalid-camera", 12, "invalid-tiles", "invalid-world")
 	var invalid_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
 	if invalid_visual_lab != null:
 		_expect_visual_lab_state(
@@ -108,11 +136,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 			NEAR_STATUS,
 			SMALL_HERO_STATUS,
 			SMALL_TILE_STATUS,
+			false,
+			DAMAGED_WORLD_STATUS,
 			"invalid preset values fall back to safe defaults",
 		)
 		await _close_visual_lab(tree, invalid_visual_lab)
 
-	_write_settings(2, "wide", "large", "large")
+	_write_settings(2, "wide", "large", "large", "restored")
 	var future_version_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
 	if future_version_visual_lab != null:
 		_expect_visual_lab_state(
@@ -123,6 +153,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 			NEAR_STATUS,
 			SMALL_HERO_STATUS,
 			SMALL_TILE_STATUS,
+			false,
+			DAMAGED_WORLD_STATUS,
 			"unsupported settings version uses safe defaults",
 		)
 		await _close_visual_lab(tree, future_version_visual_lab)
@@ -139,6 +171,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 			NEAR_STATUS,
 			SMALL_HERO_STATUS,
 			SMALL_TILE_STATUS,
+			false,
+			DAMAGED_WORLD_STATUS,
 			"corrupted settings use safe defaults without crashing",
 		)
 		await _close_visual_lab(tree, corrupted_visual_lab)
@@ -173,6 +207,8 @@ func _expect_visual_lab_state(
 	expected_camera_status: String,
 	expected_hero_status: String,
 	expected_tile_status: String,
+	expected_restored: bool,
+	expected_world_status: String,
 	description: String,
 ) -> void:
 	var player_camera := visual_lab.get_node_or_null(
@@ -184,6 +220,9 @@ func _expect_visual_lab_state(
 	var tile_grid_preview: TILE_GRID_PREVIEW_SCRIPT = visual_lab.get_node_or_null(
 		"TestWorld/TileComparison/TileGridPreview"
 	) as TILE_GRID_PREVIEW_SCRIPT
+	var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = visual_lab.get_node_or_null(
+		"TestWorld/WorldStatePreview"
+	) as WORLD_STATE_PREVIEW_SCRIPT
 	var camera_status := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/CameraStatus"
 	) as Label
@@ -193,20 +232,27 @@ func _expect_visual_lab_state(
 	var tile_status := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/TileSizeStatus"
 	) as Label
+	var world_status := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/WorldStateStatus"
+	) as Label
 
 	_expect(player_camera != null, "%s: PlayerCamera exists" % description)
 	_expect(hero != null, "%s: HeroCharacter exists" % description)
 	_expect(tile_grid_preview != null, "%s: TileGridPreview exists" % description)
+	_expect(world_state_preview != null, "%s: WorldStatePreview exists" % description)
 	_expect(camera_status != null, "%s: camera status exists" % description)
 	_expect(hero_status != null, "%s: hero status exists" % description)
 	_expect(tile_status != null, "%s: tile status exists" % description)
+	_expect(world_status != null, "%s: world-state status exists" % description)
 	if (
 		player_camera == null
 		or hero == null
 		or tile_grid_preview == null
+		or world_state_preview == null
 		or camera_status == null
 		or hero_status == null
 		or tile_status == null
+		or world_status == null
 	):
 		return
 
@@ -234,12 +280,21 @@ func _expect_visual_lab_state(
 		tile_status.text == expected_tile_status,
 		"%s: tile status text" % description,
 	)
+	_expect(
+		world_state_preview.is_restored() == expected_restored,
+		"%s: world-state preview" % description,
+	)
+	_expect(
+		world_status.text == expected_world_status,
+		"%s: world-state status text" % description,
+	)
 
 
 func _expect_saved_settings(
 	expected_camera_id: String,
 	expected_hero_id: String,
 	expected_tile_id: String,
+	expected_world_state_id: String,
 	description: String,
 ) -> void:
 	var settings := ConfigFile.new()
@@ -260,6 +315,10 @@ func _expect_saved_settings(
 		settings.get_value("visual_lab", "tile_size", "") == expected_tile_id,
 		"%s: tile-size ID" % description,
 	)
+	_expect(
+		settings.get_value("visual_lab", "world_state", "") == expected_world_state_id,
+		"%s: world-state ID" % description,
+	)
 
 
 func _write_settings(
@@ -267,12 +326,15 @@ func _write_settings(
 	camera_zoom: Variant,
 	hero_size: Variant,
 	tile_size: Variant,
+	world_state: Variant = null,
 ) -> void:
 	var settings := ConfigFile.new()
 	settings.set_value("meta", "version", version)
 	settings.set_value("visual_lab", "camera_zoom", camera_zoom)
 	settings.set_value("visual_lab", "hero_size", hero_size)
 	settings.set_value("visual_lab", "tile_size", tile_size)
+	if world_state != null:
+		settings.set_value("visual_lab", "world_state", world_state)
 	_expect(settings.save(SETTINGS_TEST_PATH) == OK, "test settings can be written")
 
 

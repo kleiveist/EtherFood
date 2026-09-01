@@ -1,0 +1,140 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/dev/world_state_preview.gd" id="1_world_state"]
+
+[node name="WorldStatePreview" type="Node2D"]
+script = ExtResource("1_world_state")
+
+[node name="DamagedState" type="Node2D" parent="."]
+
+[node name="Ground" type="Polygon2D" parent="DamagedState"]
+polygon = PackedVector2Array(0, 0, 720, 0, 720, 420, 0, 420)
+color = Color(0.25, 0.27, 0.27, 1)
+
+[node name="BrokenBuilding" type="Node2D" parent="DamagedState"]
+position = Vector2(70, 120)
+
+[node name="Wall" type="Polygon2D" parent="DamagedState/BrokenBuilding"]
+polygon = PackedVector2Array(0, 230, 0, 70, 52, 76, 96, 42, 142, 74, 196, 55, 238, 82, 280, 66, 280, 230)
+color = Color(0.33, 0.31, 0.3, 1)
+
+[node name="RoofFragments" type="Line2D" parent="DamagedState/BrokenBuilding"]
+points = PackedVector2Array(-10, 76, 48, 35, 94, 54, 142, 20, 192, 48, 244, 32, 290, 70)
+width = 12.0
+default_color = Color(0.2, 0.19, 0.2, 1)
+
+[node name="CrackLeft" type="Line2D" parent="DamagedState/BrokenBuilding"]
+points = PackedVector2Array(64, 82, 82, 112, 68, 142, 92, 174)
+width = 4.0
+default_color = Color(0.13, 0.14, 0.15, 1)
+
+[node name="CrackRight" type="Line2D" parent="DamagedState/BrokenBuilding"]
+points = PackedVector2Array(218, 74, 205, 110, 224, 142, 208, 190)
+width = 4.0
+default_color = Color(0.13, 0.14, 0.15, 1)
+
+[node name="DeadPlants" type="Node2D" parent="DamagedState"]
+
+[node name="PlantLeft" type="Line2D" parent="DamagedState/DeadPlants"]
+points = PackedVector2Array(420, 360, 418, 310, 398, 286, 418, 310, 438, 282)
+width = 6.0
+default_color = Color(0.3, 0.25, 0.2, 1)
+
+[node name="PlantMiddle" type="Line2D" parent="DamagedState/DeadPlants"]
+points = PackedVector2Array(520, 370, 516, 318, 490, 300, 516, 318, 540, 292)
+width = 6.0
+default_color = Color(0.29, 0.24, 0.2, 1)
+
+[node name="PlantRight" type="Line2D" parent="DamagedState/DeadPlants"]
+points = PackedVector2Array(620, 360, 622, 306, 600, 278, 622, 306, 650, 286)
+width = 6.0
+default_color = Color(0.28, 0.24, 0.2, 1)
+
+[node name="Fog" type="Node2D" parent="DamagedState"]
+
+[node name="FogBandTop" type="Polygon2D" parent="DamagedState/Fog"]
+polygon = PackedVector2Array(20, 48, 680, 28, 700, 102, 40, 132)
+color = Color(0.62, 0.66, 0.69, 0.36)
+
+[node name="FogBandBottom" type="Polygon2D" parent="DamagedState/Fog"]
+polygon = PackedVector2Array(0, 244, 720, 210, 720, 304, 0, 338)
+color = Color(0.57, 0.62, 0.65, 0.3)
+
+[node name="ColdLight" type="Polygon2D" parent="DamagedState"]
+z_index = 5
+polygon = PackedVector2Array(0, 0, 720, 0, 720, 420, 0, 420)
+color = Color(0.34, 0.48, 0.66, 0.16)
+
+[node name="RestoredState" type="Node2D" parent="."]
+visible = false
+
+[node name="Ground" type="Polygon2D" parent="RestoredState"]
+polygon = PackedVector2Array(0, 0, 720, 0, 720, 420, 0, 420)
+color = Color(0.18, 0.42, 0.27, 1)
+
+[node name="RepairedBuilding" type="Node2D" parent="RestoredState"]
+position = Vector2(70, 120)
+
+[node name="Wall" type="Polygon2D" parent="RestoredState/RepairedBuilding"]
+polygon = PackedVector2Array(0, 230, 0, 64, 280, 64, 280, 230)
+color = Color(0.65, 0.5, 0.32, 1)
+
+[node name="Roof" type="Polygon2D" parent="RestoredState/RepairedBuilding"]
+polygon = PackedVector2Array(-16, 66, 140, -18, 296, 66)
+color = Color(0.44, 0.23, 0.16, 1)
+
+[node name="Door" type="Polygon2D" parent="RestoredState/RepairedBuilding"]
+polygon = PackedVector2Array(112, 230, 112, 134, 168, 134, 168, 230)
+color = Color(0.35, 0.2, 0.12, 1)
+
+[node name="Window" type="Polygon2D" parent="RestoredState/RepairedBuilding"]
+polygon = PackedVector2Array(34, 116, 82, 116, 82, 160, 34, 160)
+color = Color(0.66, 0.85, 0.86, 1)
+
+[node name="LivingPlants" type="Node2D" parent="RestoredState"]
+
+[node name="PlantLeft" type="Line2D" parent="RestoredState/LivingPlants"]
+points = PackedVector2Array(420, 370, 420, 294)
+width = 7.0
+default_color = Color(0.12, 0.38, 0.18, 1)
+
+[node name="LeavesLeft" type="Polygon2D" parent="RestoredState/LivingPlants"]
+polygon = PackedVector2Array(420, 300, 382, 278, 388, 322, 420, 340, 452, 316, 456, 274)
+color = Color(0.24, 0.65, 0.27, 1)
+
+[node name="PlantMiddle" type="Line2D" parent="RestoredState/LivingPlants"]
+points = PackedVector2Array(520, 374, 520, 282)
+width = 7.0
+default_color = Color(0.1, 0.36, 0.17, 1)
+
+[node name="LeavesMiddle" type="Polygon2D" parent="RestoredState/LivingPlants"]
+polygon = PackedVector2Array(520, 292, 480, 266, 490, 314, 520, 334, 552, 308, 560, 258)
+color = Color(0.3, 0.72, 0.31, 1)
+
+[node name="PlantRight" type="Line2D" parent="RestoredState/LivingPlants"]
+points = PackedVector2Array(622, 370, 622, 292)
+width = 7.0
+default_color = Color(0.11, 0.37, 0.17, 1)
+
+[node name="LeavesRight" type="Polygon2D" parent="RestoredState/LivingPlants"]
+polygon = PackedVector2Array(622, 302, 584, 280, 592, 324, 622, 340, 654, 316, 660, 270)
+color = Color(0.27, 0.68, 0.29, 1)
+
+[node name="ClearAir" type="Polygon2D" parent="RestoredState"]
+polygon = PackedVector2Array(0, 0, 720, 0, 720, 420, 0, 420)
+color = Color(0.64, 0.84, 0.8, 0.05)
+
+[node name="WarmLight" type="Polygon2D" parent="RestoredState"]
+z_index = 5
+polygon = PackedVector2Array(0, 0, 720, 0, 720, 420, 0, 420)
+color = Color(1, 0.72, 0.3, 0.14)
+
+[node name="Title" type="Label" parent="."]
+offset_top = -42.0
+offset_right = 720.0
+offset_bottom = -10.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.86, 0.83, 0.68, 1)
+theme_override_font_sizes/font_size = 20
+text = "Weltzustand · Beschädigt ↔ Wiederhergestellt"
+horizontal_alignment = 1
