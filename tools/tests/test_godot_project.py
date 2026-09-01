@@ -280,7 +280,7 @@ class GodotProjectTests(unittest.TestCase):
         self.assertIn("res://tests/runtime/touch_action_adapter_test.gd", runner_text)
         self.assertIn("ApplicationRoot/RouteHost/TitleScreen", runner_text)
         self.assertIn('scene_router.get_current_route_id() == &"main_menu"', runner_text)
-        self.assertIn("Forge2D bootstrap integration test: passed", runner_text)
+        self.assertIn("EtherFood bootstrap integration test: passed", runner_text)
         self.assertIn("quit(1)", runner_text)
 
     def _input_action(self, project: str, action: str) -> str:

@@ -3,6 +3,15 @@ extends SceneTree
 const EXPECTED_TITLE := "ETHERFOOD"
 const EXPECTED_PROMPT := "Drücke eine Taste"
 const EXPECTED_MAIN_MENU_HEADING := "Hauptmenü"
+const EXPECTED_MAIN_MENU_BUTTONS := [
+	"Fortsetzen",
+	"Neues Spiel",
+	"Einstellungen",
+	"Mitwirkende",
+	"Spiel beenden",
+]
+const EXPECTED_HERO_ROOM_TITLE := "HELDENRAUM"
+const EXPECTED_HERO_ROOM_PLACEHOLDER := "Spielbarer Raum folgt"
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
 	"res://tests/runtime/scene_router_test.gd",
@@ -132,10 +141,7 @@ func _test_bootstrap_contract() -> void:
 	)
 
 	if title_screen != null and scene_router != null:
-		var accept_event := InputEventAction.new()
-		accept_event.action = &"ui_accept"
-		accept_event.pressed = true
-		title_screen._unhandled_input(accept_event)
+		title_screen._unhandled_input(_pressed_action(&"ui_accept"))
 		_expect(
 			scene_router.get_current_route_id() == &"main_menu",
 			"ui_accept opens the main menu route",
@@ -162,8 +168,129 @@ func _test_bootstrap_contract() -> void:
 		if main_menu_heading != null:
 			_expect(
 				main_menu_heading.text == EXPECTED_MAIN_MENU_HEADING,
-				"MainMenu displays its placeholder heading",
+				"MainMenu displays its heading",
 			)
+		var buttons := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons"
+		) as VBoxContainer
+		_expect(buttons != null, "MainMenu has a button list")
+		if buttons != null:
+			_expect(
+				buttons.get_child_count() == EXPECTED_MAIN_MENU_BUTTONS.size(),
+				"MainMenu has exactly five buttons",
+			)
+			var inspected_button_count := mini(
+				buttons.get_child_count(),
+				EXPECTED_MAIN_MENU_BUTTONS.size(),
+			)
+			for index in range(inspected_button_count):
+				var button := buttons.get_child(index) as Button
+				_expect(button != null, "MainMenu child %d is a Button" % index)
+				if button != null:
+					_expect(
+						button.text == EXPECTED_MAIN_MENU_BUTTONS[index],
+						"MainMenu button %d has the expected text" % index,
+					)
+					_expect(
+						button.is_visible_in_tree(),
+						"MainMenu button '%s' is visible" % button.text,
+					)
+
+		var continue_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/ContinueButton"
+		) as Button
+		var new_game_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/NewGameButton"
+		) as Button
+		var settings_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/SettingsButton"
+		) as Button
+		var credits_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/CreditsButton"
+		) as Button
+		var quit_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/QuitButton"
+		) as Button
+		_expect_disabled_menu_button(continue_button, "Fortsetzen")
+		_expect_disabled_menu_button(settings_button, "Einstellungen")
+		_expect_disabled_menu_button(credits_button, "Mitwirkende")
+		_expect_disabled_menu_button(quit_button, "Spiel beenden")
+		_expect(new_game_button != null, "MainMenu has the Neues Spiel button")
+		if new_game_button != null:
+			_expect(not new_game_button.disabled, "Neues Spiel is enabled")
+			_expect(new_game_button.has_focus(), "Neues Spiel receives initial focus")
+			new_game_button.pressed.emit()
+
+		_expect(
+			scene_router.get_current_route_id() == &"hero_room",
+			"Neues Spiel opens the hero_room route",
+		)
+		if route_host != null:
+			_expect(
+				route_host.get_child_count() == 1,
+				"RouteHost owns one route after opening the hero room",
+			)
+		var hero_room := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom"
+		)
+		_expect(hero_room is Control, "hero_room route loads the HeroRoom scene")
+		var hero_room_title := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/Content/Text/Title"
+		) as Label
+		_expect(hero_room_title != null, "HeroRoom has a title Label")
+		if hero_room_title != null:
+			_expect(
+				hero_room_title.text == EXPECTED_HERO_ROOM_TITLE,
+				"HeroRoom displays its title",
+			)
+		var hero_room_placeholder := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/Content/Text/Placeholder"
+		) as Label
+		_expect(hero_room_placeholder != null, "HeroRoom has a placeholder Label")
+		if hero_room_placeholder != null:
+			_expect(
+				hero_room_placeholder.text == EXPECTED_HERO_ROOM_PLACEHOLDER,
+				"HeroRoom displays its placeholder",
+			)
+
+		if hero_room != null:
+			hero_room._unhandled_input(_pressed_action(&"ui_cancel"))
+		_expect(
+			scene_router.get_current_route_id() == &"main_menu",
+			"ui_cancel returns from the hero room to the main menu",
+		)
+		if route_host != null:
+			_expect(
+				route_host.get_child_count() == 1,
+				"RouteHost owns one route after returning to the main menu",
+			)
+		var returned_main_menu := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu"
+		)
+		_expect(returned_main_menu is Control, "returning loads a fresh MainMenu scene")
+		var returned_new_game_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/MainMenu/Content/Text/Buttons/NewGameButton"
+		) as Button
+		_expect(
+			returned_new_game_button != null and returned_new_game_button.has_focus(),
+			"Neues Spiel regains focus after returning from the hero room",
+		)
+
+		if returned_main_menu != null:
+			returned_main_menu._unhandled_input(_pressed_action(&"ui_cancel"))
+		_expect(
+			scene_router.get_current_route_id() == &"title",
+			"ui_cancel returns from the main menu to the title route",
+		)
+		if route_host != null:
+			_expect(
+				route_host.get_child_count() == 1,
+				"RouteHost owns one route after returning to the title",
+			)
+		_expect(
+			bootstrap.get_node_or_null("ApplicationRoot/RouteHost/TitleScreen") is Control,
+			"returning loads a fresh TitleScreen scene",
+		)
 
 	bootstrap.queue_free()
 	await process_frame
@@ -181,6 +308,25 @@ func _contains_label_text(root_node: Node, expected_text: String) -> bool:
 	return false
 
 
+func _pressed_action(action: StringName) -> InputEventAction:
+	var event := InputEventAction.new()
+	event.action = action
+	event.pressed = true
+	return event
+
+
+func _expect_disabled_menu_button(button: Button, button_text: String) -> void:
+	_expect(button != null, "MainMenu has the %s button" % button_text)
+	if button == null:
+		return
+	_expect(button.disabled, "%s is disabled" % button_text)
+	_expect(
+		button.focus_mode == Control.FOCUS_NONE,
+		"%s cannot receive focus" % button_text,
+	)
+	_expect(not button.has_focus(), "%s is not selected" % button_text)
+
+
 func _expect(condition: bool, description: String) -> void:
 	if not condition:
 		failures.append(description)
@@ -188,7 +334,7 @@ func _expect(condition: bool, description: String) -> void:
 
 func _finish() -> void:
 	if failures.is_empty():
-		print("Forge2D bootstrap integration test: passed")
+		print("EtherFood bootstrap integration test: passed")
 		quit(0)
 		return
 

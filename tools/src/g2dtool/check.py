@@ -22,7 +22,7 @@ from g2dtool.style import run_style
 
 
 ProcessRunner = Callable[[Sequence[str], Path], int]
-GODOT_TEST_SUCCESS_MARKER = "Forge2D bootstrap integration test: passed"
+GODOT_TEST_SUCCESS_MARKER = "EtherFood bootstrap integration test: passed"
 
 
 @dataclass(frozen=True, slots=True)
