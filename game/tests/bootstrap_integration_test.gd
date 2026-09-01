@@ -22,6 +22,7 @@ const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Mittel · 1,00×"
 const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "- / linke Schultertaste: weiter"
 const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "+ / rechte Schultertaste: näher"
 const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
+const EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
 const EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT := "R / Controller links: kleiner"
 const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
 const EXPECTED_REFERENCE_STATUS := "Referenz: 1920 × 1080 · 16:9"
@@ -37,6 +38,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/hero_character_test.gd",
 	"res://tests/runtime/visual_lab_zoom_test.gd",
 	"res://tests/runtime/visual_lab_hero_size_test.gd",
+	"res://tests/runtime/visual_lab_scale_reference_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -762,6 +764,24 @@ func _test_bootstrap_contract() -> void:
 			_expect(
 				visual_lab_hero_size_status.text == EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS,
 				"VisualLab displays its initial hero size",
+			)
+		var visual_lab_scale_reference_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "ScaleReferenceHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_scale_reference_hint != null,
+			"VisualLab has a scale-reference hint Label",
+		)
+		if visual_lab_scale_reference_hint != null:
+			_expect(
+				(
+					visual_lab_scale_reference_hint.text
+					== EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT
+				),
+				"VisualLab identifies the reference objects as provisional",
 			)
 		var visual_lab_size_decrease_hint := bootstrap.get_node_or_null(
 			(
