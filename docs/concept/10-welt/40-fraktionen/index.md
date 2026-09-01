@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](40-fraktionen.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Fraktionen und übergeordnete Wesen
 

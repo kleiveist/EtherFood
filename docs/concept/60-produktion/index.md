@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](60-produktion.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # 60 – Produktion
 

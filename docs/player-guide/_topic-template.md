@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](player-guide.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # <Thema des Spielerhandbuchs>
 

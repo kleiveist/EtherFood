@@ -4,7 +4,7 @@ status: working-canon
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](40-fraktionen.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Weltenbewahrer
 

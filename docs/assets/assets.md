@@ -17,7 +17,7 @@
 - 📝 [Talisman: beibehaltener Pixel-Art-Entwurf](images/soul-talisman-variants.md)
 
 ## 📁 Karten
-- 🗂️ [Übersicht](maps/maps.md)
+- 🗂️ [Übersicht](maps/index.md)
 
 ## 📁 Medien
 - 🗂️ [Übersicht](media/media.md)

@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](maps.md)
+[← Zurück](../assets.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Karten und Sphärenübersichten
 

@@ -12,16 +12,16 @@
 - 🗂️ [Übersicht](assets/assets.md)
 
 ## 📁 Konzept
-- 🗂️ [Übersicht](concept/concept.md)
+- 🗂️ [Übersicht](concept/index.md)
 - 📝 [Freigabe-Checkliste](concept/CHECKLIST-ZUR-FREIGABE.md)
 
 ## 📁 Entwicklung
-- 🗂️ [Übersicht](developer/developer.md)
+- 🗂️ [Übersicht](developer/index.md)
 - 📝 [Dokumentationsstruktur](developer/documentation-architecture.md)
 - 📝 [Projektidentität](developer/project-identity.md)
 
 ## 📁 Spielerhandbuch
-- 🗂️ [Übersicht](player-guide/player-guide.md)
+- 🗂️ [Übersicht](player-guide/index.md)
 - 📝 [<Thema des Spielerhandbuchs>](player-guide/_topic-template.md)
 
 <!-- AUTO-GENERATED:docs-index END -->

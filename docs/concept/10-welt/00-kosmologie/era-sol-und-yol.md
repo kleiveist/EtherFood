@@ -5,7 +5,7 @@ spoiler_level: full
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](00-kosmologie.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Era, Sol und Yol
 
@@ -82,6 +82,6 @@ astronomisches Modell vor. In der Weltlogik sind Sol und Yol zugleich
 Himmelskörper, Schutzmächte und liebende Wesen.
 
 Die festen Einheiten stehen in der
-[Zeitrechnung auf Era](zeitrechnung-auf-era.md); Laufarten, polare
+[Zeitrechnung auf Era](../00-zeitdarstellung/zeitrechnung-auf-era.md); Laufarten, polare
 Besonderheiten und Konvektion beschreibt
-[Zeitzyklen und Konvektion](zeitzyklen-und-konvektion.md).
+[Zeitzyklen und Konvektion](../00-zeitdarstellung/zeitzyklen-und-konvektion.md).

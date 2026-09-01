@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](20-handlung.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # 20 – Handlung
 
@@ -7,7 +7,9 @@ Dieser Bereich beschreibt die Spielerfahrung in erzählerischer Reihenfolge. Er 
 
 - [Prämisse](praemisse.md)
 - [Der Protagonist](protagonist.md)
-- [Heldenraum, Ratgeber und Talisman](heldenraum.md)
+- [Heldenraum](heldenraum.md)
+- [Ratgeber im Heldenraum](ratgeber-im-heldenraum.md)
+- [Talisman](talisman.md)
 - [⭐ Handlungsverlauf](handlungsverlauf.md)
 - [Enthüllungsstruktur](enthuellungsstruktur.md)
 - [Finale und Erweiterung](finale-und-erweiterung.md)

@@ -5,7 +5,7 @@ spoiler_level: critical
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](20-handlung.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Handlungsprämisse
 

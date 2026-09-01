@@ -4,7 +4,7 @@ status: accepted
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](entscheidungen.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # ADR-0001 – Namensnormalisierung
 

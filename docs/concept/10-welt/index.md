@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](10-welt.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # 10 – Welt
 
@@ -10,8 +10,13 @@ Dieser Bereich beschreibt die objektive Wahrheit hinter Era, Hera, den Splitterw
 - [Era, Sol und Yol](00-kosmologie/era-sol-und-yol.md)
 - [Hera und die Splitterwelten](00-kosmologie/hera-und-splitterwelten.md)
 - [Ether, Seelen und Pakte](00-kosmologie/ether-seelen-und-pakte.md)
-- [Zeitrechnung auf Era](00-kosmologie/zeitrechnung-auf-era.md)
-- [Zeitzyklen und Konvektion](00-kosmologie/zeitzyklen-und-konvektion.md)
+
+## Zeitdarstellung
+
+- [Übersicht](00-zeitdarstellung/index.md)
+- [Zeitrechnung auf Era](00-zeitdarstellung/zeitrechnung-auf-era.md)
+- [Zeitzyklen und Konvektion](00-zeitdarstellung/zeitzyklen-und-konvektion.md)
+- [Zeitdarstellung im Spiel](00-zeitdarstellung/zeitdarstellung-im-spiel.md)
 
 ## Weltgeschichte
 

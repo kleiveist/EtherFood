@@ -4,7 +4,7 @@ status: draft-canon
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](30-spielmechanik.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Kernspielschleife
 

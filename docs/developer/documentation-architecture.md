@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](developer.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Dokumentationsstruktur
 
@@ -33,8 +33,13 @@ Konzeptspiegel.
   `docs/developer/plans/`.
 - Relative Markdown-Links halten die Dokumentation auf GitHub und lokal
   navigierbar.
-- Die mit `AUTO-GENERATED` markierten Navigationsteile werden vom vorhandenen
-  Dokumentationsgenerator erneuert und nicht von Hand gepflegt.
+- Besitzt ein Ordner eine gepflegte `index.md`, ist sie sein einziger
+  Einstiegspunkt. Eine zusätzlich nach dem Ordner benannte Übersichtsdatei
+  wird dort nicht geführt.
+- Die vorhandenen `AUTO-GENERATED`-Markierungen stammen aus früheren
+  PyGitIndex-Läufen. PyGitIndex wird für die aktive Projektdokumentation nicht
+  erneut ausgeführt, solange es zusätzliche Übersichten nach dem Muster
+  `<ordner>/<ordner>.md` erzeugt.
 
 ## Medien
 

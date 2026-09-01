@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](plans.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Historischer Arbeitsplan: Dokumentation des Spielablaufs
 

@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](10-weltgeschichte.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Weltgeschichte
 

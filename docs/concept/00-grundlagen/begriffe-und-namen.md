@@ -4,7 +4,7 @@ status: accepted
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](00-grundlagen.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Begriffe und Namen
 
@@ -45,7 +45,7 @@ updated: 2026-08-30
 | **Weltpassage** | Übergangsraum zwischen Splittern, Ebenen oder Sphärenreichen. Im Endgame führen drei feindbesetzte Passagen zu Tator. |
 
 Ausführliche Umrechnungen stehen in der
-[Zeitrechnung auf Era](../10-welt/00-kosmologie/zeitrechnung-auf-era.md).
+[Zeitrechnung auf Era](../10-welt/00-zeitdarstellung/zeitrechnung-auf-era.md).
 
 ## Alias-, Quellen- und Variantenübersicht
 

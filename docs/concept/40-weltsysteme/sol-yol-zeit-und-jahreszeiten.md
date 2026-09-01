@@ -4,7 +4,7 @@ status: proposal
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](40-weltsysteme.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Sol, Yol, Zeit und Jahreszeiten als Weltsystem
 
@@ -13,8 +13,8 @@ updated: 2026-08-30
 Diese Seite übersetzt die Kosmologie in darstellbare Weltzustände, ohne sie zu
 duplizieren. Verbindliche Einzelheiten stehen in:
 
-- [Zeitrechnung auf Era](../10-welt/00-kosmologie/zeitrechnung-auf-era.md)
-- [Zeitzyklen und Konvektion](../10-welt/00-kosmologie/zeitzyklen-und-konvektion.md)
+- [Zeitrechnung auf Era](../10-welt/00-zeitdarstellung/zeitrechnung-auf-era.md)
+- [Zeitzyklen und Konvektion](../10-welt/00-zeitdarstellung/zeitzyklen-und-konvektion.md)
 
 ## Für die Spielmechanik wichtige Weltzustände
 

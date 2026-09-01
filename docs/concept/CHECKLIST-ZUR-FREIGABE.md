@@ -4,7 +4,7 @@ status: accepted
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](concept.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Freigabe-Checkliste
 

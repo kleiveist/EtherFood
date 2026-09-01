@@ -4,7 +4,7 @@ status: draft-design
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](40-weltsysteme.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Erinnerungs- und Fähigkeitssystem
 

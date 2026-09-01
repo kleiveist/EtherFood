@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](case-studies.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Fallstudie: <Titel>
 

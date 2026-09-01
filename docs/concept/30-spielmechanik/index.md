@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](30-spielmechanik.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # 30 – Spielmechanik
 

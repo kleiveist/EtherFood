@@ -4,7 +4,7 @@ status: visual-reference
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](20-geografie-und-sphaeren.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Konzeptkarte – Die Welten des Ether
 

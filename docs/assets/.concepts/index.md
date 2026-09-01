@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](concepts.md)
+[← Zurück](../assets.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Konzeptgrafiken
 

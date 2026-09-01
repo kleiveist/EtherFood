@@ -4,7 +4,7 @@ status: working-canon
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](20-geografie-und-sphaeren.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Welten und Sphären
 

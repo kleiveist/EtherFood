@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](50-inhalte.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # 50 – Inhalte
 

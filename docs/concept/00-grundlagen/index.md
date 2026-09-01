@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](00-grundlagen.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # 00 – Grundlagen
 

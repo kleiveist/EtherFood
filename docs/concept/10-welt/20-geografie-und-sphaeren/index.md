@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](20-geografie-und-sphaeren.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Geografie und Sphären
 

@@ -5,7 +5,7 @@ spoiler_level: full
 updated: 2026-08-30
 ---
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](00-grundlagen.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Spielvision
 

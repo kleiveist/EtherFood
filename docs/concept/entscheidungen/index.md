@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](entscheidungen.md)
+[← Zurück](../index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Entscheidungen
 

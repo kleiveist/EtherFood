@@ -1,5 +1,5 @@
 <!-- AUTO-GENERATED:backlink START -->
-[← Zurück](plans.md)
+[← Zurück](index.md)
 <!-- AUTO-GENERATED:backlink END -->
 # Arbeitsplan zur Vereinfachung der Dokumentation
 
