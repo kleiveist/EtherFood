@@ -18,6 +18,9 @@ const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
 const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
 const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
+const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Mittel · 1,00×"
+const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "Q / linke Schultertaste: weiter"
+const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "E / rechte Schultertaste: näher"
 const EXPECTED_VISUAL_LAB_WORLD_BOUNDS := Rect2(0.0, 0.0, 1920.0, 1080.0)
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
@@ -25,6 +28,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/application_root_test.gd",
 	"res://tests/runtime/input_map_test.gd",
 	"res://tests/runtime/hero_character_test.gd",
+	"res://tests/runtime/visual_lab_zoom_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -569,6 +573,42 @@ func _test_bootstrap_contract() -> void:
 			_expect(
 				visual_lab_back_hint.text == EXPECTED_VISUAL_LAB_BACK_HINT,
 				"VisualLab displays its back hint",
+			)
+		var visual_lab_camera_status := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+				+ "CameraStatus"
+			)
+		) as Label
+		_expect(visual_lab_camera_status != null, "VisualLab has a camera-status Label")
+		if visual_lab_camera_status != null:
+			_expect(
+				visual_lab_camera_status.text == EXPECTED_VISUAL_LAB_CAMERA_STATUS,
+				"VisualLab displays its initial camera zoom",
+			)
+		var visual_lab_zoom_out_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+				+ "CameraZoomOutHint"
+			)
+		) as Label
+		_expect(visual_lab_zoom_out_hint != null, "VisualLab has a zoom-out hint Label")
+		if visual_lab_zoom_out_hint != null:
+			_expect(
+				visual_lab_zoom_out_hint.text == EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT,
+				"VisualLab displays its zoom-out controls",
+			)
+		var visual_lab_zoom_in_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+				+ "CameraZoomInHint"
+			)
+		) as Label
+		_expect(visual_lab_zoom_in_hint != null, "VisualLab has a zoom-in hint Label")
+		if visual_lab_zoom_in_hint != null:
+			_expect(
+				visual_lab_zoom_in_hint.text == EXPECTED_VISUAL_LAB_ZOOM_IN_HINT,
+				"VisualLab displays its zoom-in controls",
 			)
 
 		if visual_lab != null:
