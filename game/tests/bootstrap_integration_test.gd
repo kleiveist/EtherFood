@@ -25,6 +25,9 @@ const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
 const EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
 const EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT := "R / Controller links: kleiner"
 const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
+const EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS := "Tiles: Mittel · 48 × 48 Weltpixel"
+const EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT := "T / linker Stick-Klick: kleiner"
+const EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT := "G / rechter Stick-Klick: größer"
 const EXPECTED_REFERENCE_STATUS := "Referenz: 1920 × 1080 · 16:9"
 const EXPECTED_REFERENCE_VIEWPORT_SIZE := Vector2(1920, 1080)
 const EXPECTED_START_WINDOW_SIZE := Vector2(1280, 720)
@@ -39,6 +42,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_zoom_test.gd",
 	"res://tests/runtime/visual_lab_hero_size_test.gd",
 	"res://tests/runtime/visual_lab_scale_reference_test.gd",
+	"res://tests/runtime/visual_lab_tile_size_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -818,6 +822,57 @@ func _test_bootstrap_contract() -> void:
 					== EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT
 				),
 				"VisualLab displays its size-increase controls",
+			)
+		var visual_lab_tile_size_status := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "TileSizeStatus"
+			)
+		) as Label
+		_expect(
+			visual_lab_tile_size_status != null,
+			"VisualLab has a tile-size Label",
+		)
+		if visual_lab_tile_size_status != null:
+			_expect(
+				visual_lab_tile_size_status.text == EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS,
+				"VisualLab displays its initial tile size",
+			)
+		var visual_lab_tile_decrease_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "TileSizeDecreaseHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_tile_decrease_hint != null,
+			"VisualLab has a tile-size-decrease hint Label",
+		)
+		if visual_lab_tile_decrease_hint != null:
+			_expect(
+				(
+					visual_lab_tile_decrease_hint.text
+					== EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT
+				),
+				"VisualLab displays its tile-size-decrease controls",
+			)
+		var visual_lab_tile_increase_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "TileSizeIncreaseHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_tile_increase_hint != null,
+			"VisualLab has a tile-size-increase hint Label",
+		)
+		if visual_lab_tile_increase_hint != null:
+			_expect(
+				(
+					visual_lab_tile_increase_hint.text
+					== EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT
+				),
+				"VisualLab displays its tile-size-increase controls",
 			)
 
 		if visual_lab != null:

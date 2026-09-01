@@ -12,12 +12,21 @@ enum HeroSizePreset {
 	LARGE,
 }
 
+enum TileSizePreset {
+	SMALL,
+	MEDIUM,
+	LARGE,
+}
+
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
+const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
 const MAIN_MENU_ROUTE := &"main_menu"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
 const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
 const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
 const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
+const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
+const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
 const WORLD_RIGHT := 3840
@@ -26,16 +35,23 @@ const CAMERA_ZOOM_NAMES: Array[String] = ["Weit", "Mittel", "Nah"]
 const CAMERA_ZOOM_VALUES: Array[float] = [0.75, 1.0, 1.5]
 const HERO_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const HERO_SIZE_VALUES: Array[float] = [64.0, 80.0, 96.0]
+const TILE_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
+const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
 
 @onready var player_camera: Camera2D = $TestWorld/HeroCharacter/PlayerCamera
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
 @onready var hero_character: HERO_SCRIPT = $TestWorld/HeroCharacter
 @onready var hero_size_status: Label = $InterfaceLayer/Interface/Text/HeroSizeStatus
+@onready var tile_grid_preview: TILE_GRID_PREVIEW_SCRIPT = (
+	$TestWorld/TileComparison/TileGridPreview
+)
+@onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
 @onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 
 var _navigation_requested := false
 var _selected_camera_zoom: int = CameraZoomPreset.MEDIUM
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
+var _selected_tile_size: int = TileSizePreset.MEDIUM
 
 
 func _ready() -> void:
@@ -50,6 +66,7 @@ func _ready() -> void:
 	get_window().size_changed.connect(_on_main_window_size_changed)
 	_apply_camera_zoom()
 	_apply_hero_size()
+	_apply_tile_size()
 	_update_window_size_status()
 
 
@@ -69,6 +86,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(HERO_SIZE_INCREASE_ACTION):
 		get_viewport().set_input_as_handled()
 		_change_hero_size(1)
+		return
+	if event.is_action_pressed(TILE_SIZE_DECREASE_ACTION):
+		get_viewport().set_input_as_handled()
+		_change_tile_size(-1)
+		return
+	if event.is_action_pressed(TILE_SIZE_INCREASE_ACTION):
+		get_viewport().set_input_as_handled()
+		_change_tile_size(1)
 		return
 	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
 		return
@@ -130,6 +155,28 @@ func _apply_hero_size() -> void:
 	hero_size_status.text = "Figur: %s · %d Weltpixel" % [
 		HERO_SIZE_NAMES[_selected_hero_size],
 		roundi(hero_character.get_appearance_height()),
+	]
+
+
+func _change_tile_size(direction: int) -> void:
+	var next_size := clampi(
+		_selected_tile_size + direction,
+		TileSizePreset.SMALL,
+		TileSizePreset.LARGE,
+	)
+	if next_size == _selected_tile_size:
+		return
+	_selected_tile_size = next_size
+	_apply_tile_size()
+
+
+func _apply_tile_size() -> void:
+	var selected_size := TILE_SIZE_VALUES[_selected_tile_size]
+	tile_grid_preview.set_tile_size(selected_size)
+	tile_size_status.text = "Tiles: %s · %d × %d Weltpixel" % [
+		TILE_SIZE_NAMES[_selected_tile_size],
+		selected_size,
+		selected_size,
 	]
 
 

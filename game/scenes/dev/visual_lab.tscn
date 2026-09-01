@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scenes/dev/visual_lab.gd" id="1_visual_lab"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
+[ext_resource type="Script" path="res://scenes/dev/tile_grid_preview.gd" id="3_tile_grid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
 size = Vector2(32, 2160)
@@ -83,6 +84,22 @@ color = Color(0.78, 0.63, 0.22, 1)
 position = Vector2(520, 1700)
 polygon = PackedVector2Array(-42, -28, 0, -48, 42, -28, 42, 28, 0, 48, -42, 28)
 color = Color(0.29, 0.53, 0.63, 1)
+
+[node name="TileComparison" type="Node2D" parent="TestWorld"]
+position = Vector2(1536, 220)
+
+[node name="TileGridPreview" type="Node2D" parent="TestWorld/TileComparison"]
+script = ExtResource("3_tile_grid")
+
+[node name="Title" type="Label" parent="TestWorld/TileComparison"]
+offset_top = -42.0
+offset_right = 768.0
+offset_bottom = -10.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.88, 0.79, 0.52, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tilegrößenvergleich · feste Fläche 768 × 384"
+horizontal_alignment = 1
 
 [node name="ScaleComparison" type="Node2D" parent="TestWorld"]
 position = Vector2(700, 1760)
@@ -359,3 +376,26 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "F / Controller oben: größer"
+
+[node name="TileSizeSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TileSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.78, 0.76, 1)
+theme_override_font_sizes/font_size = 18
+text = "Tiles: Mittel · 48 × 48 Weltpixel"
+
+[node name="TileSizeDecreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "T / linker Stick-Klick: kleiner"
+
+[node name="TileSizeIncreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "G / rechter Stick-Klick: größer"
