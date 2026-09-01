@@ -14,13 +14,16 @@ const EXPECTED_MAIN_MENU_BUTTONS := [
 const EXPECTED_HERO_ROOM_TITLE := "HELDENRAUM"
 const EXPECTED_HERO_ROOM_PLACEHOLDER := "Spielbarer Raum folgt"
 const EXPECTED_VISUAL_LAB_TITLE := "VISUELLES TESTLABOR"
-const EXPECTED_VISUAL_LAB_DESCRIPTION := "Interner Entwicklungsbereich\nGrafiktests folgen"
-const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B: Zurück"
+const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
+const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
+const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
+const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
 	"res://tests/runtime/scene_router_test.gd",
 	"res://tests/runtime/application_root_test.gd",
 	"res://tests/runtime/input_map_test.gd",
+	"res://tests/runtime/hero_character_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -256,8 +259,91 @@ func _test_bootstrap_contract() -> void:
 			"ApplicationRoot/RouteHost/VisualLab"
 		)
 		_expect(visual_lab is Control, "visual_lab route loads the VisualLab scene")
+		var test_world := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld"
+		) as Node2D
+		_expect(test_world != null, "VisualLab contains the test world")
+		var floor := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld/Floor"
+		) as Polygon2D
+		_expect(floor != null and floor.visible, "VisualLab contains a visible floor")
+		var arena_bounds := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld/ArenaBounds"
+		) as Node2D
+		_expect(arena_bounds != null, "VisualLab contains arena bounds")
+		if arena_bounds != null:
+			_expect(arena_bounds.get_child_count() == 4, "VisualLab has four arena walls")
+			for wall_name in ["LeftWall", "RightWall", "TopWall", "BottomWall"]:
+				var wall := arena_bounds.get_node_or_null(wall_name)
+				_expect(wall is StaticBody2D, "arena wall %s is a StaticBody2D" % wall_name)
+				if wall != null:
+					var wall_collision := wall.get_node_or_null(
+						"CollisionShape2D"
+					) as CollisionShape2D
+					_expect(
+						wall_collision != null and wall_collision.shape != null,
+						"arena wall %s has a collision shape" % wall_name,
+					)
+		var test_obstacle := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld/TestObstacle"
+		) as StaticBody2D
+		_expect(test_obstacle != null, "VisualLab contains a test obstacle")
+		if test_obstacle != null:
+			_expect(
+				test_obstacle.get_node_or_null("Visual") is Polygon2D,
+				"VisualLab test obstacle is visible",
+			)
+			var obstacle_collision := test_obstacle.get_node_or_null(
+				"CollisionShape2D"
+			) as CollisionShape2D
+			_expect(
+				obstacle_collision != null and obstacle_collision.shape != null,
+				"VisualLab test obstacle has a collision shape",
+			)
+		var hero_character := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/TestWorld/HeroCharacter"
+		) as CharacterBody2D
+		_expect(hero_character != null, "VisualLab contains HeroCharacter")
+		if hero_character != null:
+			var hero_collision := hero_character.get_node_or_null(
+				"CollisionShape2D"
+			) as CollisionShape2D
+			_expect(
+				hero_collision != null and hero_collision.shape != null,
+				"VisualLab HeroCharacter has a collision shape",
+			)
+			hero_character.position = Vector2(448, 360)
+			await _hold_action_for_physics_frames(&"gameplay_move_right", 4)
+			_expect(
+				hero_character.position.x <= 451.5,
+				"VisualLab obstacle stops HeroCharacter",
+			)
+			hero_character.position = Vector2(95, 360)
+			await _hold_action_for_physics_frames(&"gameplay_move_left", 4)
+			_expect(
+				hero_character.position.x >= 93.5,
+				"VisualLab left wall stops HeroCharacter",
+			)
+			hero_character.position = Vector2(865, 360)
+			await _hold_action_for_physics_frames(&"gameplay_move_right", 4)
+			_expect(
+				hero_character.position.x <= 866.5,
+				"VisualLab right wall stops HeroCharacter",
+			)
+			hero_character.position = Vector2(240, 250)
+			await _hold_action_for_physics_frames(&"gameplay_move_up", 4)
+			_expect(
+				hero_character.position.y >= 246.5,
+				"VisualLab top wall stops HeroCharacter",
+			)
+			hero_character.position = Vector2(240, 470)
+			await _hold_action_for_physics_frames(&"gameplay_move_down", 4)
+			_expect(
+				hero_character.position.y <= 473.5,
+				"VisualLab bottom wall stops HeroCharacter",
+			)
 		var visual_lab_title := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Content/Text/Title"
+			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/Title"
 		) as Label
 		_expect(visual_lab_title != null, "VisualLab has a title Label")
 		if visual_lab_title != null:
@@ -265,17 +351,38 @@ func _test_bootstrap_contract() -> void:
 				visual_lab_title.text == EXPECTED_VISUAL_LAB_TITLE,
 				"VisualLab displays its title",
 			)
-		var visual_lab_description := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Content/Text/Description"
+		var visual_lab_movement_heading := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/MovementHeading"
 		) as Label
-		_expect(visual_lab_description != null, "VisualLab has a description Label")
-		if visual_lab_description != null:
+		_expect(
+			visual_lab_movement_heading != null,
+			"VisualLab has a movement-heading Label",
+		)
+		if visual_lab_movement_heading != null:
 			_expect(
-				visual_lab_description.text == EXPECTED_VISUAL_LAB_DESCRIPTION,
-				"VisualLab displays its placeholder description",
+				visual_lab_movement_heading.text == EXPECTED_VISUAL_LAB_MOVEMENT_HEADING,
+				"VisualLab displays its movement heading",
+			)
+		var visual_lab_movement_hint := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/MovementHint"
+		) as Label
+		_expect(visual_lab_movement_hint != null, "VisualLab has a movement-hint Label")
+		if visual_lab_movement_hint != null:
+			_expect(
+				visual_lab_movement_hint.text == EXPECTED_VISUAL_LAB_MOVEMENT_HINT,
+				"VisualLab displays its movement hint",
+			)
+		var visual_lab_back_heading := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/BackHeading"
+		) as Label
+		_expect(visual_lab_back_heading != null, "VisualLab has a back-heading Label")
+		if visual_lab_back_heading != null:
+			_expect(
+				visual_lab_back_heading.text == EXPECTED_VISUAL_LAB_BACK_HEADING,
+				"VisualLab displays its back heading",
 			)
 		var visual_lab_back_hint := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/Content/Text/BackHint"
+			"ApplicationRoot/RouteHost/VisualLab/Interface/Text/BackHint"
 		) as Label
 		_expect(visual_lab_back_hint != null, "VisualLab has a back-hint Label")
 		if visual_lab_back_hint != null:
@@ -285,6 +392,10 @@ func _test_bootstrap_contract() -> void:
 			)
 
 		if visual_lab != null:
+			_expect(
+				not _contains_label_text(visual_lab, "Grafiktests folgen"),
+				"VisualLab removes the old centered placeholder",
+			)
 			visual_lab._unhandled_input(_pressed_action(&"ui_cancel"))
 		_expect(
 			scene_router.get_current_route_id() == &"main_menu",
@@ -391,6 +502,14 @@ func _test_bootstrap_contract() -> void:
 	if scene_router != null:
 		_expect(not scene_router.is_configured(), "Bootstrap shutdown clears SceneRouter")
 		_expect(scene_router.get_current_route() == null, "shutdown releases route reference")
+
+
+func _hold_action_for_physics_frames(action: StringName, frame_count: int) -> void:
+	Input.action_press(action)
+	for _frame in range(frame_count):
+		await physics_frame
+	Input.action_release(action)
+	await physics_frame
 
 
 func _contains_label_text(root_node: Node, expected_text: String) -> bool:
