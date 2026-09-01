@@ -228,15 +228,19 @@ func _expect_hero_sizes_still_work(visual_lab: Control) -> void:
 	if body == null or head == null:
 		return
 	_expect(
-		is_equal_approx(_hero_appearance_height(body, head), 80.0),
-		"hero still starts at 80 world pixels",
+		is_equal_approx(_hero_appearance_height(body, head), 64.0),
+		"hero still starts at 64 world pixels",
 	)
 	visual_lab._unhandled_input(_pressed_action(SIZE_DECREASE_ACTION))
 	_expect(
 		is_equal_approx(_hero_appearance_height(body, head), 64.0),
-		"hero still reaches 64 world pixels",
+		"hero size still stops at 64 world pixels",
 	)
 	visual_lab._unhandled_input(_pressed_action(SIZE_INCREASE_ACTION))
+	_expect(
+		is_equal_approx(_hero_appearance_height(body, head), 80.0),
+		"hero still reaches 80 world pixels",
+	)
 	visual_lab._unhandled_input(_pressed_action(SIZE_INCREASE_ACTION))
 	_expect(
 		is_equal_approx(_hero_appearance_height(body, head), 96.0),

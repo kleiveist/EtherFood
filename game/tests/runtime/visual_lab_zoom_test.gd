@@ -82,20 +82,28 @@ func run(tree: SceneTree) -> PackedStringArray:
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
-			MEDIUM_ZOOM,
-			MEDIUM_STATUS,
-			"VisualLab starts at medium zoom",
+			NEAR_ZOOM,
+			NEAR_STATUS,
+			"VisualLab starts at the near default zoom",
 		)
 
 		visual_lab._unhandled_input(_pressed_key(KEY_PLUS, true))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
-			MEDIUM_ZOOM,
-			MEDIUM_STATUS,
+			NEAR_ZOOM,
+			NEAR_STATUS,
 			"held zoom input does not repeat",
 		)
 
+		visual_lab._unhandled_input(_pressed_key(KEY_MINUS))
+		_expect_zoom_state(
+			player_camera,
+			camera_status,
+			MEDIUM_ZOOM,
+			MEDIUM_STATUS,
+			"minus changes near zoom to medium",
+		)
 		visual_lab._unhandled_input(_pressed_key(KEY_MINUS))
 		_expect_zoom_state(
 			player_camera,
@@ -263,9 +271,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 			_expect_zoom_state(
 				reopened_camera,
 				reopened_status,
-				MEDIUM_ZOOM,
-				MEDIUM_STATUS,
-				"reopened VisualLab resets to medium zoom",
+				NEAR_ZOOM,
+				NEAR_STATUS,
+				"reopened VisualLab loads the saved near zoom",
 			)
 		reopened_visual_lab.queue_free()
 		await tree.process_frame

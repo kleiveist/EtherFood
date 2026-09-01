@@ -136,9 +136,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 		body,
 		head,
 		size_status,
-		MEDIUM_HEIGHT,
-		MEDIUM_STATUS,
-		"VisualLab starts at medium hero size",
+		SMALL_HEIGHT,
+		SMALL_STATUS,
+		"VisualLab starts at the small hero-size default",
 	)
 
 	visual_lab._unhandled_input(_pressed_key(KEY_F, true))
@@ -147,21 +147,11 @@ func run(tree: SceneTree) -> PackedStringArray:
 		body,
 		head,
 		size_status,
-		MEDIUM_HEIGHT,
-		MEDIUM_STATUS,
+		SMALL_HEIGHT,
+		SMALL_STATUS,
 		"held size input does not repeat",
 	)
 
-	visual_lab._unhandled_input(_pressed_key(KEY_R))
-	_expect_size_state(
-		appearance,
-		body,
-		head,
-		size_status,
-		SMALL_HEIGHT,
-		SMALL_STATUS,
-		"R changes medium hero size to small",
-	)
 	visual_lab._unhandled_input(_pressed_key(KEY_R))
 	_expect_size_state(
 		appearance,
@@ -273,8 +263,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"hero-size changes keep camera zoom unchanged",
 	)
 
-	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
-	_expect(player_camera.zoom == Vector2(1.5, 1.5), "zoom can change independently")
+	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+	_expect(player_camera.zoom == Vector2.ONE, "zoom can change independently")
 	_expect_size_state(
 		appearance,
 		body,
@@ -285,7 +275,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"zoom changes keep hero size unchanged",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_F))
-	_expect(player_camera.zoom == Vector2(1.5, 1.5), "size can change without camera zoom")
+	_expect(player_camera.zoom == Vector2.ONE, "size can change without camera zoom")
 	_expect_size_state(
 		appearance,
 		body,
@@ -293,12 +283,12 @@ func run(tree: SceneTree) -> PackedStringArray:
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
-		"hero size remains independent at near zoom",
+		"hero size remains independent at medium zoom",
 	)
-	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
 	_expect(
 		player_camera.zoom.is_equal_approx(original_camera_zoom),
-		"zoom returns independently to medium",
+		"zoom returns independently to near",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_R))
 
@@ -376,7 +366,7 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 			reopened_status,
 			MEDIUM_HEIGHT,
 			MEDIUM_STATUS,
-			"reopened VisualLab resets to medium hero size",
+			"reopened VisualLab loads the saved medium hero size",
 		)
 	reopened_visual_lab.queue_free()
 	await tree.process_frame

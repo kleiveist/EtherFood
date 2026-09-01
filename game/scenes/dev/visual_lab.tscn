@@ -334,7 +334,7 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
 theme_override_font_sizes/font_size = 18
-text = "Kamera: Mittel · 1,00×"
+text = "Kamera: Nah · 1,50×"
 
 [node name="CameraZoomOutHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
@@ -357,7 +357,7 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.66, 0.82, 0.55, 1)
 theme_override_font_sizes/font_size = 18
-text = "Figur: Mittel · 80 Weltpixel"
+text = "Figur: Klein · 64 Weltpixel"
 
 [node name="ScaleReferenceHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
@@ -386,7 +386,7 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.78, 0.76, 1)
 theme_override_font_sizes/font_size = 18
-text = "Tiles: Mittel · 48 × 48 Weltpixel"
+text = "Tiles: Klein · 32 × 32 Weltpixel"
 
 [node name="TileSizeDecreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
@@ -399,3 +399,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "G / rechter Stick-Klick: größer"
+
+[node name="SettingsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SettingsStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.56, 0.7, 0.82, 1)
+theme_override_font_sizes/font_size = 16
+text = "Testwerte werden automatisch gespeichert"

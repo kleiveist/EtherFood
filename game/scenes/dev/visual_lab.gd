@@ -21,6 +21,11 @@ enum TileSizePreset {
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
 const MAIN_MENU_ROUTE := &"main_menu"
+const SETTINGS_VERSION := 1
+const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
+const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
+const SETTINGS_META_SECTION := "meta"
+const SETTINGS_SECTION := "visual_lab"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
 const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
 const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
@@ -33,10 +38,13 @@ const WORLD_RIGHT := 3840
 const WORLD_BOTTOM := 2160
 const CAMERA_ZOOM_NAMES: Array[String] = ["Weit", "Mittel", "Nah"]
 const CAMERA_ZOOM_VALUES: Array[float] = [0.75, 1.0, 1.5]
+const CAMERA_ZOOM_IDS: Array[String] = ["wide", "medium", "near"]
 const HERO_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const HERO_SIZE_VALUES: Array[float] = [64.0, 80.0, 96.0]
+const HERO_SIZE_IDS: Array[String] = ["small", "medium", "large"]
 const TILE_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
+const TILE_SIZE_IDS: Array[String] = ["small", "medium", "large"]
 
 @onready var player_camera: Camera2D = $TestWorld/HeroCharacter/PlayerCamera
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
@@ -49,9 +57,9 @@ const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
 @onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 
 var _navigation_requested := false
-var _selected_camera_zoom: int = CameraZoomPreset.MEDIUM
-var _selected_hero_size: int = HeroSizePreset.MEDIUM
-var _selected_tile_size: int = TileSizePreset.MEDIUM
+var _selected_camera_zoom: int = CameraZoomPreset.NEAR
+var _selected_hero_size: int = HeroSizePreset.SMALL
+var _selected_tile_size: int = TileSizePreset.SMALL
 
 
 func _ready() -> void:
@@ -64,6 +72,7 @@ func _ready() -> void:
 	player_camera.make_current()
 	resized.connect(_on_visual_lab_resized)
 	get_window().size_changed.connect(_on_main_window_size_changed)
+	_load_settings()
 	_apply_camera_zoom()
 	_apply_hero_size()
 	_apply_tile_size()
@@ -100,6 +109,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	get_viewport().set_input_as_handled()
 	_navigation_requested = true
+	_save_settings()
 	var navigation_error := SceneRouter.navigate(MAIN_MENU_ROUTE)
 	if navigation_error == OK:
 		return
@@ -121,6 +131,7 @@ func _change_camera_zoom(direction: int) -> void:
 		return
 	_selected_camera_zoom = next_zoom
 	_apply_camera_zoom()
+	_save_settings()
 
 
 func _apply_camera_zoom() -> void:
@@ -147,6 +158,7 @@ func _change_hero_size(direction: int) -> void:
 		return
 	_selected_hero_size = next_size
 	_apply_hero_size()
+	_save_settings()
 
 
 func _apply_hero_size() -> void:
@@ -168,6 +180,7 @@ func _change_tile_size(direction: int) -> void:
 		return
 	_selected_tile_size = next_size
 	_apply_tile_size()
+	_save_settings()
 
 
 func _apply_tile_size() -> void:
@@ -178,6 +191,87 @@ func _apply_tile_size() -> void:
 		selected_size,
 		selected_size,
 	]
+
+
+func _load_settings() -> void:
+	_selected_camera_zoom = CameraZoomPreset.NEAR
+	_selected_hero_size = HeroSizePreset.SMALL
+	_selected_tile_size = TileSizePreset.SMALL
+
+	var settings := ConfigFile.new()
+	var load_error := settings.load(_settings_path())
+	if load_error == ERR_FILE_NOT_FOUND:
+		return
+	if load_error != OK:
+		push_warning("VisualLab could not load its settings (error %d)." % load_error)
+		return
+	var stored_version: Variant = settings.get_value(SETTINGS_META_SECTION, "version", 0)
+	if not stored_version is int or stored_version != SETTINGS_VERSION:
+		return
+
+	_selected_camera_zoom = _read_preset_index(
+		settings,
+		"camera_zoom",
+		CAMERA_ZOOM_IDS,
+		CameraZoomPreset.NEAR,
+	)
+	_selected_hero_size = _read_preset_index(
+		settings,
+		"hero_size",
+		HERO_SIZE_IDS,
+		HeroSizePreset.SMALL,
+	)
+	_selected_tile_size = _read_preset_index(
+		settings,
+		"tile_size",
+		TILE_SIZE_IDS,
+		TileSizePreset.SMALL,
+	)
+
+
+func _save_settings() -> void:
+	var settings := ConfigFile.new()
+	settings.set_value(SETTINGS_META_SECTION, "version", SETTINGS_VERSION)
+	settings.set_value(
+		SETTINGS_SECTION,
+		"camera_zoom",
+		CAMERA_ZOOM_IDS[_selected_camera_zoom],
+	)
+	settings.set_value(
+		SETTINGS_SECTION,
+		"hero_size",
+		HERO_SIZE_IDS[_selected_hero_size],
+	)
+	settings.set_value(
+		SETTINGS_SECTION,
+		"tile_size",
+		TILE_SIZE_IDS[_selected_tile_size],
+	)
+	var save_error := settings.save(_settings_path())
+	if save_error != OK:
+		push_warning("VisualLab could not save its settings (error %d)." % save_error)
+
+
+func _read_preset_index(
+	settings: ConfigFile,
+	setting_key: String,
+	preset_ids: Array[String],
+	default_index: int,
+) -> int:
+	var stored_id: Variant = settings.get_value(SETTINGS_SECTION, setting_key, "")
+	if not stored_id is String:
+		return default_index
+	var preset_index := preset_ids.find(str(stored_id))
+	return preset_index if preset_index >= 0 else default_index
+
+
+func _settings_path() -> String:
+	return str(
+		ProjectSettings.get_setting(
+			SETTINGS_PATH_PROJECT_KEY,
+			DEFAULT_SETTINGS_PATH,
+		)
+	)
 
 
 func _minimum_camera_zoom() -> float:

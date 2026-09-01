@@ -18,21 +18,26 @@ const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
 const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
 const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
-const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Mittel · 1,00×"
+const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Nah · 1,50×"
 const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "- / linke Schultertaste: weiter"
 const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "+ / rechte Schultertaste: näher"
-const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
+const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Klein · 64 Weltpixel"
 const EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
 const EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT := "R / Controller links: kleiner"
 const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
-const EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS := "Tiles: Mittel · 48 × 48 Weltpixel"
+const EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS := "Tiles: Klein · 32 × 32 Weltpixel"
 const EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT := "T / linker Stick-Klick: kleiner"
 const EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT := "G / rechter Stick-Klick: größer"
+const EXPECTED_VISUAL_LAB_SETTINGS_STATUS := "Testwerte werden automatisch gespeichert"
 const EXPECTED_REFERENCE_STATUS := "Referenz: 1920 × 1080 · 16:9"
 const EXPECTED_REFERENCE_VIEWPORT_SIZE := Vector2(1920, 1080)
 const EXPECTED_START_WINDOW_SIZE := Vector2(1280, 720)
 const EXPECTED_SQUARE_WINDOW_SIZE := Vector2i(1000, 1000)
 const EXPECTED_VISUAL_LAB_WORLD_BOUNDS := Rect2(0.0, 0.0, 3840.0, 2160.0)
+const VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY := (
+	"etherfood/development/visual_lab_settings_path"
+)
+const VISUAL_LAB_SETTINGS_TEST_PATH := "user://visual_lab_settings_test.cfg"
 const FORGE2D_PLACEHOLDER := "Forge2D"
 const TEST_SUITES := [
 	"res://tests/runtime/scene_router_test.gd",
@@ -43,21 +48,39 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_hero_size_test.gd",
 	"res://tests/runtime/visual_lab_scale_reference_test.gd",
 	"res://tests/runtime/visual_lab_tile_size_test.gd",
+	"res://tests/runtime/visual_lab_settings_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
 var failures: PackedStringArray = []
+var _had_settings_path_override := false
+var _original_settings_path: Variant = null
 
 
 func _init() -> void:
+	_had_settings_path_override = ProjectSettings.has_setting(
+		VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY
+	)
+	if _had_settings_path_override:
+		_original_settings_path = ProjectSettings.get_setting(
+			VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY
+		)
+	ProjectSettings.set_setting(
+		VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY,
+		VISUAL_LAB_SETTINGS_TEST_PATH,
+	)
 	call_deferred("_run")
 
 
 func _run() -> void:
 	await process_frame
 	for suite_path in TEST_SUITES:
+		_remove_visual_lab_test_settings()
 		await _run_suite(suite_path)
+	_remove_visual_lab_test_settings()
 	await _test_bootstrap_contract()
+	_remove_visual_lab_test_settings()
+	_restore_visual_lab_settings_path()
 	_finish()
 
 
@@ -561,7 +584,10 @@ func _test_bootstrap_contract() -> void:
 				player_camera.limit_bottom == 2160,
 				"PlayerCamera has the bottom world limit",
 			)
-			_expect(player_camera.zoom == Vector2.ONE, "PlayerCamera uses neutral zoom")
+			_expect(
+				player_camera.zoom == Vector2(1.5, 1.5),
+				"PlayerCamera uses the saved-test default near zoom",
+			)
 			_expect(
 				not player_camera.position_smoothing_enabled,
 				"PlayerCamera follows without position smoothing",
@@ -645,7 +671,7 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab bottom wall stops HeroCharacter",
 			)
 			if player_camera != null:
-				var viewport_half_size := configured_viewport_size * 0.5
+				var viewport_half_size := configured_viewport_size / player_camera.zoom * 0.5
 				hero_character.position = Vector2(30, 21)
 				await physics_frame
 				player_camera.force_update_scroll()
@@ -874,6 +900,21 @@ func _test_bootstrap_contract() -> void:
 				),
 				"VisualLab displays its tile-size-increase controls",
 			)
+		var visual_lab_settings_status := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "SettingsStatus"
+			)
+		) as Label
+		_expect(
+			visual_lab_settings_status != null,
+			"VisualLab has an automatic-settings status Label",
+		)
+		if visual_lab_settings_status != null:
+			_expect(
+				visual_lab_settings_status.text == EXPECTED_VISUAL_LAB_SETTINGS_STATUS,
+				"VisualLab explains that test values are saved automatically",
+			)
 
 		if visual_lab != null:
 			_expect(
@@ -881,6 +922,7 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab removes the old centered placeholder",
 			)
 			visual_lab._unhandled_input(_pressed_action(&"ui_cancel"))
+			_expect_saved_visual_lab_settings("near", "small", "small")
 		_expect(
 			scene_router.get_current_route_id() == &"main_menu",
 			"ui_cancel returns from the visual laboratory to the main menu",
@@ -1017,6 +1059,53 @@ func _expect_centered_content(
 
 func _expected_window_size_status(window_size: Vector2i) -> String:
 	return "Fenster: %d × %d" % [window_size.x, window_size.y]
+
+
+func _expect_saved_visual_lab_settings(
+	camera_zoom_id: String,
+	hero_size_id: String,
+	tile_size_id: String,
+) -> void:
+	var settings := ConfigFile.new()
+	_expect(
+		settings.load(VISUAL_LAB_SETTINGS_TEST_PATH) == OK,
+		"leaving VisualLab saves its settings to the isolated test path",
+	)
+	_expect(
+		settings.get_value("meta", "version", 0) == 1,
+		"saved VisualLab settings use version 1",
+	)
+	_expect(
+		settings.get_value("visual_lab", "camera_zoom", "") == camera_zoom_id,
+		"saved VisualLab settings use the expected camera ID",
+	)
+	_expect(
+		settings.get_value("visual_lab", "hero_size", "") == hero_size_id,
+		"saved VisualLab settings use the expected hero-size ID",
+	)
+	_expect(
+		settings.get_value("visual_lab", "tile_size", "") == tile_size_id,
+		"saved VisualLab settings use the expected tile-size ID",
+	)
+
+
+func _remove_visual_lab_test_settings() -> void:
+	if not FileAccess.file_exists(VISUAL_LAB_SETTINGS_TEST_PATH):
+		return
+	var remove_error := DirAccess.remove_absolute(
+		ProjectSettings.globalize_path(VISUAL_LAB_SETTINGS_TEST_PATH)
+	)
+	_expect(remove_error == OK, "isolated VisualLab test settings can be removed")
+
+
+func _restore_visual_lab_settings_path() -> void:
+	if _had_settings_path_override:
+		ProjectSettings.set_setting(
+			VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY,
+			_original_settings_path,
+		)
+		return
+	ProjectSettings.set_setting(VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY, null)
 
 
 func _polygon_bounds(points: PackedVector2Array) -> Rect2:

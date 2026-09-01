@@ -5,7 +5,7 @@ const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
 const SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
 const SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
-const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
+const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
 const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const PREVIEW_SIZE := Vector2(768.0, 384.0)
 const SMALL_TILE_SIZE := 32
@@ -123,11 +123,11 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
-		MEDIUM_TILE_SIZE,
-		16,
-		8,
-		MEDIUM_STATUS,
-		"VisualLab starts at medium tile size",
+		SMALL_TILE_SIZE,
+		24,
+		12,
+		SMALL_STATUS,
+		"VisualLab starts at the small tile-size default",
 	)
 
 	var original_camera_zoom := player_camera.zoom
@@ -148,23 +148,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
-		MEDIUM_TILE_SIZE,
-		16,
-		8,
-		MEDIUM_STATUS,
-		"held tile-size input does not repeat",
-	)
-
-	visual_lab._unhandled_input(_pressed_key(KEY_T))
-	_expect_tile_state(
-		tile_grid_preview,
-		tile_size_status,
 		SMALL_TILE_SIZE,
 		24,
 		12,
 		SMALL_STATUS,
-		"T changes medium tiles to small",
+		"held tile-size input does not repeat",
 	)
+
 	visual_lab._unhandled_input(_pressed_key(KEY_T))
 	_expect_tile_state(
 		tile_grid_preview,
@@ -271,30 +261,30 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"tile-size presets keep the enlarged TestWorld unchanged",
 		)
 
-	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
-	_expect(player_camera.zoom == Vector2(1.5, 1.5), "camera zoom changes independently")
+	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+	_expect(player_camera.zoom == Vector2.ONE, "camera zoom changes independently")
 	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "zoom keeps tile size unchanged")
 	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_INCREASE_ACTION))
 	_expect(
-		is_equal_approx(hero.get_appearance_height(), 96.0),
+		is_equal_approx(hero.get_appearance_height(), 80.0),
 		"hero size changes independently",
 	)
 	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "hero size keeps tiles unchanged")
 	visual_lab._unhandled_input(_pressed_key(KEY_T))
 	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "tiles still change independently")
-	_expect(player_camera.zoom == Vector2(1.5, 1.5), "tiles retain the selected camera zoom")
+	_expect(player_camera.zoom == Vector2.ONE, "tiles retain the selected camera zoom")
 	_expect(
-		is_equal_approx(hero.get_appearance_height(), 96.0),
+		is_equal_approx(hero.get_appearance_height(), 80.0),
 		"tiles retain the selected hero size",
 	)
 
 	visual_lab.queue_free()
 	await tree.process_frame
-	await _expect_reopened_medium_size(tree, visual_lab_scene)
+	await _expect_reopened_small_size(tree, visual_lab_scene)
 	return failures
 
 
-func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene) -> void:
+func _expect_reopened_small_size(tree: SceneTree, visual_lab_scene: PackedScene) -> void:
 	var reopened_node := visual_lab_scene.instantiate()
 	_expect(reopened_node is Control, "VisualLab can be reopened")
 	if not reopened_node is Control:
@@ -316,11 +306,11 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 		_expect_tile_state(
 			reopened_preview,
 			reopened_status,
-			MEDIUM_TILE_SIZE,
-			16,
-			8,
-			MEDIUM_STATUS,
-			"reopened VisualLab resets to medium tile size",
+			SMALL_TILE_SIZE,
+			24,
+			12,
+			SMALL_STATUS,
+			"reopened VisualLab loads the saved small tile size",
 		)
 	reopened_visual_lab.queue_free()
 	await tree.process_frame
