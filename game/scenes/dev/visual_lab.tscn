@@ -168,10 +168,10 @@ text = "Kamera: Mittel · 1,00×"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
-text = "Q / linke Schultertaste: weiter"
+text = "- / linke Schultertaste: weiter"
 
 [node name="CameraZoomInHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
-text = "E / rechte Schultertaste: näher"
+text = "+ / rechte Schultertaste: näher"

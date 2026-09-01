@@ -58,12 +58,12 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(camera_status != null, "VisualLab has a camera-status Label")
 	_expect(
 		zoom_out_hint != null
-		and zoom_out_hint.text == "Q / linke Schultertaste: weiter",
+		and zoom_out_hint.text == "- / linke Schultertaste: weiter",
 		"VisualLab shows the zoom-out hint",
 	)
 	_expect(
 		zoom_in_hint != null
-		and zoom_in_hint.text == "E / rechte Schultertaste: näher",
+		and zoom_in_hint.text == "+ / rechte Schultertaste: näher",
 		"VisualLab shows the zoom-in hint",
 	)
 	_expect(hero != null, "VisualLab has HeroCharacter")
@@ -87,7 +87,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"VisualLab starts at medium zoom",
 		)
 
-		visual_lab._unhandled_input(_pressed_key(KEY_E, true))
+		visual_lab._unhandled_input(_pressed_key(KEY_PLUS, true))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -96,13 +96,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"held zoom input does not repeat",
 		)
 
-		visual_lab._unhandled_input(_pressed_key(KEY_Q))
+		visual_lab._unhandled_input(_pressed_key(KEY_MINUS))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			WIDE_ZOOM,
 			WIDE_STATUS,
-			"Q changes medium zoom to wide",
+			"minus changes medium zoom to wide",
 		)
 		if hero != null:
 			await _expect_camera_limits(
@@ -112,7 +112,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 				visual_lab.size,
 				"wide zoom",
 			)
-		visual_lab._unhandled_input(_pressed_key(KEY_Q))
+		visual_lab._unhandled_input(_pressed_key(KEY_MINUS))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -121,13 +121,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"zoom-out stops at wide",
 		)
 
-		visual_lab._unhandled_input(_pressed_key(KEY_E))
+		visual_lab._unhandled_input(_pressed_key(KEY_PLUS))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			MEDIUM_ZOOM,
 			MEDIUM_STATUS,
-			"E changes wide zoom to medium",
+			"plus changes wide zoom to medium",
 		)
 		if hero != null:
 			await _expect_camera_limits(
@@ -137,13 +137,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 				visual_lab.size,
 				"medium zoom",
 			)
-		visual_lab._unhandled_input(_pressed_key(KEY_E))
+		visual_lab._unhandled_input(_pressed_key(KEY_PLUS))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			NEAR_ZOOM,
 			NEAR_STATUS,
-			"E changes medium zoom to near",
+			"plus changes medium zoom to near",
 		)
 		if hero != null:
 			await _expect_camera_limits(
@@ -153,7 +153,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 				visual_lab.size,
 				"near zoom",
 			)
-		visual_lab._unhandled_input(_pressed_key(KEY_E))
+		visual_lab._unhandled_input(_pressed_key(KEY_PLUS))
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -279,8 +279,8 @@ func _expect_input_mappings() -> void:
 	_expect(InputMap.has_action(ZOOM_IN_ACTION), "InputMap defines zoom in")
 	if InputMap.has_action(ZOOM_OUT_ACTION):
 		_expect(
-			_has_key_mapping(ZOOM_OUT_ACTION, KEY_Q),
-			"zoom out uses the physical Q key",
+			_has_key_mapping(ZOOM_OUT_ACTION, KEY_MINUS),
+			"zoom out uses the minus key",
 		)
 		_expect(
 			_has_button_mapping(ZOOM_OUT_ACTION, JOY_BUTTON_LEFT_SHOULDER),
@@ -288,8 +288,8 @@ func _expect_input_mappings() -> void:
 		)
 	if InputMap.has_action(ZOOM_IN_ACTION):
 		_expect(
-			_has_key_mapping(ZOOM_IN_ACTION, KEY_E),
-			"zoom in uses the physical E key",
+			_has_key_mapping(ZOOM_IN_ACTION, KEY_PLUS),
+			"zoom in uses the plus key",
 		)
 		_expect(
 			_has_button_mapping(ZOOM_IN_ACTION, JOY_BUTTON_RIGHT_SHOULDER),
@@ -300,7 +300,7 @@ func _expect_input_mappings() -> void:
 func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
 	for input_event in InputMap.action_get_events(action):
 		var key_event := input_event as InputEventKey
-		if key_event != null and key_event.physical_keycode == expected_key:
+		if key_event != null and key_event.keycode == expected_key:
 			return true
 	return false
 
@@ -315,7 +315,7 @@ func _has_button_mapping(action: StringName, expected_button: JoyButton) -> bool
 
 func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 	var event := InputEventKey.new()
-	event.physical_keycode = keycode
+	event.keycode = keycode
 	event.pressed = true
 	event.echo = echo
 	return event
