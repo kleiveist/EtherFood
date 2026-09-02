@@ -21,11 +21,11 @@ Strahlungsintensität sind daher getrennte Angaben.
 
 ## 2. Zeiteinheiten
 
-| Größe | Umrechnung |
-|---|---:|
-| 1 Tan | 20 Um |
-| 1 Dir | 10 Tan = 200 Um |
-| 1 Mohn | 35 Dir = 350 Tan = 7000 Um |
+| Größe               |                              Umrechnung |
+| ------------------- | --------------------------------------: |
+| 1 Tan               |                                   20 Um |
+| 1 Dir               |                         10 Tan = 200 Um |
+| 1 Mohn              |              35 Dir = 350 Tan = 7000 Um |
 | 1 Konvektionszyklus | 10 Mohn = 350 Dir = 3500 Tan = 70000 Um |
 
 Die ältere Quellenzeile `1 Mohn = Konvektion` ist rechnerisch unvereinbar mit
@@ -35,32 +35,17 @@ dieser Zeitrechnung und gilt als verworfene Arbeitszeile, nicht als Kanon.
 
 Für den irdischen Vergleich gilt:
 
-| Era-Einheit | Irdischer Vergleich |
-|---|---:|
-| 1 Um | 1 Stunde |
-| 1 Tan | 20 Stunden |
-| 1 Dir | 200 Stunden = 8 Tage und 8 Stunden |
-| 1 Mohn | 7000 Stunden = 291 Tage und 16 Stunden, ungefähr 0,8 Jahre |
+| Era-Einheit         |                                        Irdischer Vergleich |
+| ------------------- | ---------------------------------------------------------: |
+| 1 Um                |                                                   1 Stunde |
+| 1 Tan               |                                                 20 Stunden |
+| 1 Dir               |                         200 Stunden = 8 Tage und 8 Stunden |
+| 1 Mohn              | 7000 Stunden = 291 Tage und 16 Stunden, ungefähr 0,8 Jahre |
 | 1 Konvektionszyklus | 70000 Stunden = 2916 Tage und 16 Stunden, ungefähr 8 Jahre |
 
 `1 Dir = 8 Tage` ist als gerundete Kurzform zulässig. Der exakte Vergleich
 bleibt 8 Tage und 8 Stunden.
 
-## 4. Theoretische In-Game-Umrechnung
-
-Bei der theoretischen Skalierung `1 Um = 1 reale Spielminute` ergibt sich:
-
-| Era-Einheit | Reale Spielzeit |
-|---|---:|
-| 1 Um | 1 Minute |
-| 1 Tan | 20 Minuten |
-| 1 Dir | 200 Minuten = 3 Stunden und 20 Minuten |
-| 1 Mohn | 7000 Minuten = 116 Stunden und 40 Minuten |
-| 1 Konvektionszyklus | 70000 Minuten = 1166 Stunden und 40 Minuten = 48 Tage, 14 Stunden und 40 Minuten |
-
-Diese Tabelle ist eine theoretische Umrechnung. Sie verpflichtet das Spiel
-weder zu einer vollständig in Echtzeit simulierten Welt noch zu diesem
-Balancing.
 
 ## 5. Datums- und Uhrzeitnotation
 

@@ -73,13 +73,13 @@ Era-Umdrehung.
 
 Damit gilt während gewöhnlicher Erkundung:
 
-| Zeitraum                              |        Reale Spielzeit |
-| ------------------------------------- | ----------------------: |
-| 1/2 Um = halbe Era-Umdrehung          | 7 Minuten 30 Sekunden   |
-| 1 Um = vollständige Era-Umdrehung     |              15 Minuten |
-| Vollzyklus der Spielsimulation bei 1× |                480 Tage |
-| Vollzyklus der Spielsimulation bei 6× |                 80 Tage |
-| Konvektion bei 1×                     |    4 Tage und 4 Stunden |
+| Zeitraum                              |       Reale Spielzeit |
+| ------------------------------------- | --------------------: |
+| 1/2 Um = halbe Era-Umdrehung          | 7 Minuten 30 Sekunden |
+| 1 Um = vollständige Era-Umdrehung     |            15 Minuten |
+| Vollzyklus der Spielsimulation bei 1× |              480 Tage |
+| Vollzyklus der Spielsimulation bei 6× |               80 Tage |
+| Konvektion bei 1×                     |  4 Tage und 4 Stunden |
 
 Diese Spielzeiten verändern weder die kanonische Dauer eines Um noch die
 Umrechnung zwischen Um, Tan, Dir und Mohn. Sie bestimmen ausschließlich, wie
@@ -91,13 +91,13 @@ Diese lineare Grundgeschwindigkeit wird nicht für alle Spielsituationen verwend
 
 Der Aufenthaltsort bestimmt die normale Zeitgeschwindigkeit, solange keine besondere Aktion wie Schlafen oder Schnellreise aktiv ist.
 
-| Spielsituation                              | Faktor gegenüber der offenen Welt |           Reale Zeit für 1 Um | Zweck                                                          |
-| ------------------------------------------- | --------------------------------: | ----------------------------: | -------------------------------------------------------------- |
-| Offene Welt und Außenbereiche               |                              1,0× |                    15 Minuten | lesbarer Tag-Nacht-Wechsel und ruhige Erkundung                |
-| Siedlungen und belebte Außenbereiche        |                              1,0× |                    15 Minuten | NPC-Abläufe bleiben nachvollziehbar                            |
-| Häuser, Räume und gewöhnliche Innenbereiche |                              1,5× |                    10 Minuten | Innenaufenthalte stellen mehr verstrichene Alltagszeit dar     |
+| Spielsituation                              | Faktor gegenüber der offenen Welt |            Reale Zeit für 1 Um | Zweck                                                          |
+| ------------------------------------------- | --------------------------------: | -----------------------------: | -------------------------------------------------------------- |
+| Offene Welt und Außenbereiche               |                              1,0× |                     15 Minuten | lesbarer Tag-Nacht-Wechsel und ruhige Erkundung                |
+| Siedlungen und belebte Außenbereiche        |                              1,0× |                     15 Minuten | NPC-Abläufe bleiben nachvollziehbar                            |
+| Häuser, Räume und gewöhnliche Innenbereiche |                              1,5× |                     10 Minuten | Innenaufenthalte stellen mehr verstrichene Alltagszeit dar     |
 | Höhlen, Ruinen und kleine Gefahrenbereiche  |                             1,75× | ungefähr 8 Minuten 34 Sekunden | Erkundung, Klettern und Vorsicht benötigen kanonisch mehr Zeit |
-| Große Dungeons und unterirdische Komplexe   |                              2,0× |         7 Minuten 30 Sekunden | längere Expeditionen wirken auch in der Weltzeit bedeutsam     |
+| Große Dungeons und unterirdische Komplexe   |                              2,0× |          7 Minuten 30 Sekunden | längere Expeditionen wirken auch in der Weltzeit bedeutsam     |
 
 Beim Wechsel zwischen zwei Bereichen wird die Geschwindigkeit über mehrere Sekunden weich angeglichen. Dadurch entstehen keine sichtbaren Sprünge der Sonne, Schatten oder Weltuhr.
 
