@@ -25,6 +25,12 @@ normalen Spielversion sind weder der Menüpunkt noch ein direkter Aufruf dieser
 Route verfügbar. Das Testlabor ist eine reine Entwicklungsfunktion und kein
 Bestandteil der Spielhandlung.
 
+Die Bedienhilfe beginnt eingeklappt. `F5` blendet eine reine Tastenübersicht
+ein oder aus; ein kleiner Hinweis auf `F5` bleibt im eingeklappten Zustand
+sichtbar. Aktuelle Größen-, Zoom-, Welt- und Fensterwerte gehören nicht in
+diese Übersicht, sondern ausschließlich in die Diagnoseanzeige. Der Zustand
+der Bedienhilfe wird nicht gespeichert.
+
 ## Inhalt des Testlabors
 
 ### 1. Helden-Testfläche

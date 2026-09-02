@@ -13,7 +13,7 @@ const EXPECTED_MAIN_MENU_BUTTONS := [
 ]
 const EXPECTED_HERO_ROOM_TITLE := "HELDENRAUM"
 const EXPECTED_HERO_ROOM_PLACEHOLDER := "Spielbarer Raum folgt"
-const EXPECTED_VISUAL_LAB_TITLE := "VISUELLES TESTLABOR"
+const EXPECTED_VISUAL_LAB_TITLE := "STEUERUNG"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
 const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
@@ -52,6 +52,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_tile_size_test.gd",
 	"res://tests/runtime/visual_lab_world_state_test.gd",
 	"res://tests/runtime/visual_lab_diagnostics_test.gd",
+	"res://tests/runtime/visual_lab_controls_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]

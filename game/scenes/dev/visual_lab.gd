@@ -44,6 +44,7 @@ const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
 const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
 const COLLISION_DEBUG_TOGGLE_ACTION := &"dev_collision_debug_toggle"
+const CONTROLS_TOGGLE_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_UPDATE_INTERVAL := 0.2
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
@@ -77,6 +78,9 @@ const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 @onready var collision_debug_overlay: COLLISION_DEBUG_OVERLAY_SCRIPT = (
 	$TestWorld/CollisionDebugOverlay
 )
+@onready var controls_panel: Panel = $InterfaceLayer/HudPanel
+@onready var controls_interface: MarginContainer = $InterfaceLayer/Interface
+@onready var controls_prompt: Label = $InterfaceLayer/ControlsPrompt
 
 var _navigation_requested := false
 var _diagnostics_elapsed := 0.0
@@ -96,6 +100,7 @@ func _ready() -> void:
 	player_camera.make_current()
 	diagnostics_panel.visible = false
 	collision_debug_overlay.set_debug_visible(false)
+	_set_controls_visible(false)
 	resized.connect(_on_visual_lab_resized)
 	get_window().size_changed.connect(_on_main_window_size_changed)
 	_load_settings()
@@ -126,6 +131,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		if not _is_repeated_key_event(event):
 			_toggle_collision_debug()
+		return
+	if event.is_action_pressed(CONTROLS_TOGGLE_ACTION):
+		get_viewport().set_input_as_handled()
+		if not _is_repeated_key_event(event):
+			_set_controls_visible(not controls_panel.visible)
 		return
 	if event.is_action_pressed(ZOOM_OUT_ACTION):
 		get_viewport().set_input_as_handled()
@@ -271,6 +281,12 @@ func _toggle_diagnostics() -> void:
 
 func _toggle_collision_debug() -> void:
 	collision_debug_overlay.set_debug_visible(not collision_debug_overlay.visible)
+
+
+func _set_controls_visible(controls_visible: bool) -> void:
+	controls_panel.visible = controls_visible
+	controls_interface.visible = controls_visible
+	controls_prompt.visible = not controls_visible
 
 
 func _update_diagnostics_values() -> void:

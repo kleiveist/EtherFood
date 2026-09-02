@@ -304,10 +304,11 @@ layer = 10
 follow_viewport_enabled = false
 
 [node name="HudPanel" type="Panel" parent="InterfaceLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 526.0
-offset_bottom = 770.0
+offset_bottom = 594.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 
@@ -319,6 +320,18 @@ offset_right = 118.0
 offset_bottom = 16.0
 mouse_filter = 2
 color = Color(0.84, 0.66, 0.25, 1)
+
+[node name="ControlsPrompt" type="Label" parent="InterfaceLayer"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 240.0
+offset_bottom = 56.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.94, 0.82, 0.48, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "F5 · Steuerung"
 
 [node name="DiagnosticsPanel" type="Panel" parent="InterfaceLayer"]
 visible = false
@@ -359,6 +372,7 @@ theme_override_font_sizes/font_size = 18
 text = "FPS: 0\nSpieler: 1920, 1080\nKamera: 1,50×\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nFenster: 1280 × 720"
 
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -381,20 +395,23 @@ theme_override_colors/font_color = Color(0.94, 0.89, 0.71, 1)
 theme_override_colors/font_outline_color = Color(0.06, 0.09, 0.1, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 32
-text = "VISUELLES TESTLABOR"
+text = "STEUERUNG"
 
 [node name="DisplaySpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+visible = false
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
 [node name="ReferenceStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
 theme_override_font_sizes/font_size = 16
 text = "Referenz: 1920 × 1080 · 16:9"
 
 [node name="WindowSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
 theme_override_font_sizes/font_size = 16
@@ -435,6 +452,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="CameraStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
 theme_override_font_sizes/font_size = 18
@@ -458,12 +476,14 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="HeroSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.66, 0.82, 0.55, 1)
 theme_override_font_sizes/font_size = 18
 text = "Figur: Mittel · 80 Weltpixel"
 
 [node name="ScaleReferenceHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.66, 0.74, 0.6, 1)
 theme_override_font_sizes/font_size = 16
@@ -487,6 +507,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="TileSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.78, 0.76, 1)
 theme_override_font_sizes/font_size = 18
@@ -510,6 +531,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="WorldStateStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.48, 0.8, 0.5, 1)
 theme_override_font_sizes/font_size = 18
@@ -538,12 +560,20 @@ theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
 theme_override_font_sizes/font_size = 16
 text = "F4: Kollisionsflächen"
 
+[node name="ControlsToggleHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.82, 0.48, 1)
+theme_override_font_sizes/font_size = 16
+text = "F5: Steuerung schließen"
+
 [node name="SettingsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+visible = false
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
 [node name="SettingsStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.56, 0.7, 0.82, 1)
 theme_override_font_sizes/font_size = 16
