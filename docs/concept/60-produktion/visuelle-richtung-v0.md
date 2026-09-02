@@ -48,32 +48,6 @@ Pixel-Art-Sprites und Tiles sollen scharf und kontrolliert dargestellt
 werden. Atmosphärische Effekte wie Licht, Nebel oder Magie dürfen bewusst
 weicher gestaltet sein.
 
-## Texturfilter
-
-- Gewählte Standardvariante: **Nearest-Neighbor**.
-- Getestete Zoomstufen: nah mit 1,50×, mittel mit 1,00× und weit mit 0,75×.
-- Verhalten bei Kamerabewegung: Der Filter verändert die logische Bewegung
-  und deren Rasterkadenz nicht. Nearest-Neighbor bewahrt klare Pixelkanten;
-  weiche Filterung überblendet sie lediglich mit Mischfarben.
-- Verhalten bei nicht ganzzahligen Skalierungen: Nearest-Neighbor kann
-  ungleich breite Pixel oder ausgedünnte Feindetails zeigen. Weiche Filterung
-  vermindert harte Übergänge, macht Figuren, Tiles und Weltobjekte aber
-  sichtbar unschärfer.
-- Ausnahmen: Der aktuelle Pixelart-Prototyp besitzt keine. Ein konkret als
-  hochauflösender Atmosphäreneffekt gestaltetes Licht-, Nebel- oder
-  Magieelement darf später ausdrücklich weich gefiltert werden, nachdem es
-  separat geprüft und dokumentiert wurde.
-- Bekannte Darstellungsprobleme: Im weiten Zoom können sehr feine Details bei
-  beiden Filtern verschmelzen; Nearest-Neighbor macht die Rasterkadenz
-  deutlicher sichtbar. Maßstab und Zoom müssen diese Grenzen berücksichtigen.
-
-Der Standard gilt für Pixelart-Sprites, texturierte Tiles und
-Pixelart-Weltobjekte. Abweichungen werden lokal am betroffenen
-Darstellungselement festgelegt und dürfen den Standard anderer Spielszenen
-nicht unbeabsichtigt verändern. Die Entscheidung ist in
-[ADR-0010](../entscheidungen/ADR-0010-texturfilter-der-pixelart-spielwelt.md)
-festgehalten.
-
 ## Auflösung und Seitenverhältnis
 
 Die vorläufige Referenzauflösung für Entwicklung und Tests ist:

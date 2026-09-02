@@ -127,15 +127,24 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	_expect(values.text.contains("Tiles: 48 × 48 px"), "diagnostics show active tile size")
 	_expect(values.text.contains("Welt: Wiederhergestellt"), "diagnostics show active world state")
 	_expect(values.text.contains("Pixel-Snap: AN"), "diagnostics show active pixel snap")
+	_expect(values.text.contains("Vertex-Snap: AUS"), "diagnostics show vertex snap off")
+	_expect(
+		values.text.contains("Darstellungsraster: "),
+		"diagnostics show the active rational render grid",
+	)
+	_expect(
+		values.text.contains("Kameraprofil: Welt/Dungeon · Kandidat"),
+		"diagnostics identify the medium camera candidate",
+	)
 	_expect(values.text.contains("Texturfilter: Weich"), "diagnostics show active filter")
 
-	var player_line_before := _line_with_prefix(values.text, "Spieler: ")
+	var player_line_before := _line_with_prefix(values.text, "Spielerposition roh: ")
 	Input.action_press(&"gameplay_move_right")
 	await tree.physics_frame
 	await tree.physics_frame
 	Input.action_release(&"gameplay_move_right")
 	visual_lab._update_diagnostics_values()
-	var player_line_after := _line_with_prefix(values.text, "Spieler: ")
+	var player_line_after := _line_with_prefix(values.text, "Spielerposition roh: ")
 	_expect(
 		player_line_after != player_line_before,
 		"displayed player coordinates change after movement",
@@ -191,14 +200,20 @@ func _expect_diagnostic_values(
 	var test_world := visual_lab.get_node_or_null("TestWorld") as Node2D
 	_expect(_values_have_numeric_fps(values.text), "FPS is displayed as a number")
 	_expect(
-		values.text.contains("Spieler: %s" % _format_position(hero.global_position)),
+		values.text.contains(
+			"Spielerposition roh: %s" % _format_position(hero.global_position)
+		),
 		"diagnostics show current player coordinates",
+	)
+	_expect(
+		values.text.contains("Spielerposition gerundet: "),
+		"diagnostics show the separate rounded player position",
 	)
 	_expect(player_camera != null, "diagnostics retain the player camera")
 	if player_camera != null:
 		_expect(
 			values.text.contains(
-				"Kamera-Pos: %s" % _format_position(
+				"Kamerazentrum: %s" % _format_position(
 					player_camera.get_screen_center_position()
 				)
 			),
@@ -213,10 +228,27 @@ func _expect_diagnostic_values(
 			"diagnostics show the world anchor separately",
 		)
 	_expect(values.text.contains("Kamera: 1,50×"), "diagnostics show initial camera zoom")
+	_expect(
+		values.text.contains("Kameraprofil: Kleiner Innenraum · experimentell"),
+		"diagnostics identify the experimental near camera candidate",
+	)
+	_expect(
+		values.text.contains("Kameraposition roh: "),
+		"diagnostics show the raw camera target",
+	)
+	_expect(
+		values.text.contains("Kameraposition gerastert: "),
+		"diagnostics show the separate rendered camera target",
+	)
 	_expect(values.text.contains("Figur: 80 px"), "diagnostics show initial hero size")
 	_expect(values.text.contains("Tiles: 32 × 32 px"), "diagnostics show initial tile size")
 	_expect(values.text.contains("Welt: Beschädigt"), "diagnostics show initial world state")
 	_expect(values.text.contains("Pixel-Snap: AUS"), "diagnostics show initial pixel snap")
+	_expect(values.text.contains("Vertex-Snap: AUS"), "diagnostics show vertex snap off")
+	_expect(
+		values.text.contains("Darstellungsraster: frei"),
+		"diagnostics show that the initial render grid is unsnapped",
+	)
 	_expect(
 		values.text.contains("Texturfilter: Nearest-Neighbor"),
 		"diagnostics show the initial texture filter",
@@ -224,6 +256,10 @@ func _expect_diagnostic_values(
 	_expect(
 		values.text.contains("Fenster: %d × %d" % [window_size.x, window_size.y]),
 		"diagnostics show the actual window size",
+	)
+	_expect(
+		values.text.contains("Fensterskalierung: "),
+		"diagnostics show the active window scaling",
 	)
 
 
@@ -322,8 +358,8 @@ func _line_with_prefix(text: String, prefix: String) -> String:
 
 func _format_position(position: Vector2) -> String:
 	return "x=%s · y=%s" % [
-		("%.2f" % position.x).replace(".", ","),
-		("%.2f" % position.y).replace(".", ","),
+		("%.3f" % position.x).replace(".", ","),
+		("%.3f" % position.y).replace(".", ","),
 	]
 
 

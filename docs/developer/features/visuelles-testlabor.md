@@ -32,6 +32,87 @@ Zoom-, Welt- und Fensterwerte gehören nicht in diese Übersicht, sondern
 ausschließlich in die Diagnoseanzeige. Der Zustand der Bedienhilfe wird nicht
 gespeichert.
 
+## Laufende Testergebnisse
+
+### Pixel-Snap und Kamerazoom – 2. September 2026
+
+Der folgende Ausgangsbefund hat die erste Abnahme von Aufgabe 17 aufgehoben:
+
+| Einstellung | Ergebnis | Status |
+|---|---|---|
+| Figur | 80 px | vorläufig geeignet |
+| Tiles | 32 × 32 px | vorläufig geeignet |
+| Texturfilter | Nearest-Neighbor | bevorzugter Kandidat |
+| Pixel-Snap bei 1,00× | kein sichtbares Flackern | bestanden |
+| Pixel-Snap bei 1,50× | Held flackert bei Bewegung | nicht bestanden |
+| Welt-/Dungeonkamera | 1,00× | bevorzugter Kandidat |
+| Kleine Innenräume | 1,50× | gewünscht, aber noch nicht freigegeben |
+
+Pixel-Snap war damit noch nicht abschließend abgenommen. Der Fehler trat bei
+`1920 × 1080` reproduzierbar auf, während `1,50 ×` im Fenster mit
+`1280 × 720` durch dessen Skalierung von zwei Dritteln effektiv auf
+`1,00 ×` Ausgabeskalierung kam und ruhig wirkte.
+
+Die Untersuchung zeigte zwei getrennte Raster. Godot rundete die lokalen
+CanvasItem-Transformationen, der nicht ganzzahlige Kamerazoom bildete diese
+gerundeten Weltpositionen jedoch abwechselnd auf ganze und halbe
+Ausgabepixel ab. Kamera und Heldenbild verwendeten dadurch bei Bewegung nicht
+immer dieselbe Rasterphase.
+
+Die Korrektur rundet nicht die physische Position des `CharacterBody2D`.
+Stattdessen erhalten Heldenbild und Kamera im Pixel-Snap-Modus einen
+gemeinsamen, rein visuellen Anker. Dessen Schrittweite wird als kleinstes
+gemeinsames Raster aus Kamerazoom und Fensterskalierung bestimmt. Vertex-Snap
+bleibt dabei ausdrücklich AUS und Kamera-Smoothing bleibt AUS.
+
+Die Wiederholungsprüfung umfasste echte horizontale, vertikale und diagonale
+Bewegung sowie getrennt verfolgte Ausschnitte für Held, Tilefläche und
+Weltobjekte:
+
+| Einstellung | Ergebnis nach Korrektur | Status |
+|---|---|---|
+| `1,00×`, Pixel-Snap AN, Nearest | Held und Weltmuster bleiben rasterstabil | bestanden |
+| `1,00×`, Pixel-Snap AUS, Nearest | freier Vergleich bleibt möglich | bestanden |
+| `1,50×`, Pixel-Snap AN, Nearest | kein wechselndes Heldenmuster mehr | bestanden |
+| `1,50×`, Pixel-Snap AUS, Nearest | Flackern bei 1920 × 1080 reproduzierbar | Vergleich bestätigt |
+| Fenster 1920 × 1080 | rationales Zwei-Weltpixel-Raster bei 1,50× | bestanden |
+| Fenster 1280 × 720 | interne und ausgegebene Rasterphase stabil | bestanden |
+
+Pixel-Snap AN ist nach der technischen Wiederholung die ruhigere Variante.
+Bei `1,50 ×` entstehen durch das notwendige Zwei-Weltpixel-Raster weiterhin
+diskrete 3- beziehungsweise 6-Ausgabepixel-Schritte. Es gibt kein zusätzliches
+Hin-und-Her-Springen der Kamera und keine wechselnde Heldenkontur; die
+Rasterkadenz selbst bleibt als erwartete Folge des nicht ganzzahligen Zooms
+sichtbar. Ob `1,50 ×` als Profil für kleine Innenräume endgültig freigegeben
+wird, entscheidet erst Aufgabe 20 zusammen mit Maßstab und Referenzauflösung.
+
+Der angezeigte Weltzustand `Beschädigt` bezeichnet ausschließlich den Zustand
+des jeweiligen Tests. Beschädigte und wiederhergestellte Welt bleiben
+gleichberechtigte Spiel- und Testzustände; keiner von beiden ist eine globale
+Darstellungsregel.
+
+## Übergabe an Maßstab V0
+
+Die getesteten Werte haben unterschiedliche Geltungsbereiche und werden nicht
+in einer gemeinsamen Einstellungsdatei verbindlich gemacht:
+
+| Wert | Bedeutung | Vorgesehene Ablage |
+|---|---|---|
+| Figur `80 px` | globaler Figurenmaßstab | Darstellungsgrundlage V0 in Aufgabe 20 |
+| Tiles `32 × 32 px` | globales Weltraster | Darstellungsgrundlage V0 in Aufgabe 20 |
+| Pixel-Snap `AN` | globale Renderingregel | später `project.godot` |
+| Nearest-Neighbor | bevorzugter Filterkandidat | nach Abschluss von Aufgabe 18 später `project.godot` |
+| Kamera `1,00×` / `1,50×` | szenenabhängiges Kameraprofil | CameraProfile-Ressourcen in Aufgabe 20 |
+| Welt `Beschädigt` | aktueller Spiel- oder Testzustand | keine feste Darstellungsregel |
+
+Die geplanten Ressourcen `visual_baseline_v0.tres`, `world_dungeon.tres` und
+`small_interior.tres` werden bewusst erst in Aufgabe 20 angelegt. Das
+Testlabor behält bis dahin den manuellen Wechsel zwischen seinen Testwerten.
+Die lokale Datei `user://visual_lab_settings.cfg` stellt nur die zuletzt
+gewählten persönlichen Testschalter wieder her und ist keine verbindliche
+Quelle für Spielregeln. Die endgültige technische Entscheidung folgt erst
+nach den Aufgaben 17 bis 20; vorher wird kein Darstellungsprofil-ADR angelegt.
+
 ## Inhalt des Testlabors
 
 ### 1. Helden-Testfläche
@@ -108,31 +189,23 @@ gerundet. Beim Verlassen des Testlabors wird die vorherige Viewport-Einstellung
 wiederhergestellt. In der Diagnose bleiben Heldenposition, tatsächliches
 Kamerazentrum und Weltanker mit zwei Nachkommastellen getrennt sichtbar.
 
-Der Vergleich wurde im 1280-×-720-Testfenster mit kontrollierten Schritten von
-2,2 Weltpixeln und allen drei Zoomstufen neu gerendert. Nach ganzzahliger
-Ausrichtung blieb ein 200-×-100-Weltausschnitt mit AN in jeder Aufnahme
-unverändert. Mit AUS änderten sich abhängig vom Zoom wiederholt bis zu 1.000
-Pixel im selben Ausschnitt. Beim ausgerichteten Helden blieb AN im nahen und
-mittleren Zoom stabil und änderte im weiten Zoom höchstens 8 Pixel; mit AUS
-waren es bis zu 182 Pixel. Damit ist AN für feine Pixelmuster sichtbar ruhiger.
-
-Die logische Kamera folgte in beiden Varianten gleichmäßig und ohne
-zusätzlichen Sprung. Die gerasterte Bildschirmbewegung bleibt jedoch
-zwangsläufig abgestuft: Im nahen Zoom wurden 2- bis 3-Pixel-, im mittleren
-1- bis 2-Pixel-Schritte sichtbar. Im weiten Zoom zeigte AN vereinzelt ein
-Haltebild mit anschließendem 2-Pixel-Schritt. AUS wirkt dort fließender,
-erzeugt dafür das gemessene Flimmern zwischen Pixelpositionen. Für den
-derzeitigen Prototyp gilt daher folgende Versuchsempfehlung:
+Der erste Vergleich nur bei `1280 × 720` reichte für die Abnahme nicht aus,
+weil die Fensterskalierung dort den Kamerazoom `1,50 ×` zu einer ganzzahligen
+Ausgabeskalierung machte. Der korrigierte Vergleich prüft deshalb zusätzlich
+`1920 × 1080` und echte Bewegung in drei Richtungen. Details und der
+chronologische Ausgangsbefund stehen unter
+[Laufende Testergebnisse](#laufende-testergebnisse). Für den derzeitigen
+Prototyp gilt folgende Versuchsempfehlung:
 
 | Bereich | Empfehlung | Begründung |
 |---|---|---|
-| Held | AN | Silhouette und innere Pixel bleiben in allen Zoomstufen ruhiger. |
-| Kamera | AN für die Viewport-Darstellung | Die Welt bleibt stabil; die logische Kamera bleibt ungerundet und die weite Zoomkadenz muss weiter beobachtet werden. |
-| Welt | AN | Tiles und feste Weltobjekte flimmern beim Kameraschwenk deutlich weniger. |
+| Held | AN | Der visuelle Anker bleibt stabil; die physische Position wird nicht gerundet. |
+| Kamera | AN mit gemeinsamem Darstellungsraster | Kein Phasenwechsel; die diskrete Kadenz bei 1,50× bleibt sichtbar. |
+| Welt | AN | Tiles und feste Weltobjekte behalten beim Kameraschwenk ihre Rasterphase. |
 
-Das war noch keine endgültige Pixelart-Regel. Die Texturfilter-Entscheidung
-wurde im anschließenden Vergleich getroffen; Maßstab und Zoom bleiben davon
-getrennte Folgeschritte.
+Das legt weder Kamerazoom noch Maßstab verbindlich fest. Die globale
+Pixel-Snap-Regel wird erst mit der Darstellungsgrundlage V0 in das Projekt
+übernommen.
 
 #### Texturfilter-Vergleich
 
@@ -151,7 +224,7 @@ vorherigen Instanzwerte wiederhergestellt. Vektorgezeichnete Tile-Raster und
 Kollisionsformen besitzen keine Texturabtastung und bleiben deshalb in beiden
 Varianten identisch.
 
-Der Vergleich wurde bei 1280 × 720 mit aktivem Pixel-Snap, kontrollierten
+Der vorläufige Vergleich wurde bei 1280 × 720 mit aktivem Pixel-Snap, kontrollierten
 Schritten von 2,2 Weltpixeln und 124 echten OpenGL-Aufnahmen durchgeführt.
 Getestet wurden alle drei Zoomstufen, Stillstand und Bewegung des Helden,
 Kameraverfolgung, texturierter Boden, Referenzobjekte sowie beschädigter und
@@ -182,14 +255,12 @@ Haltebild vor einem 2-Pixel-Schritt. Weiche Filterung ändert diese Bewegung
 nicht, sondern kaschiert Kanten lediglich durch Farbmischung. Bewegung,
 Kollision, Kameragrenzen und Pixel-Snap-Zustand blieben unverändert.
 
-Für die Pixelart-Spielwelt ist damit **Nearest-Neighbor verbindlicher
-Standardfilter**. Der aktuelle Prototyp benötigt keine Ausnahme. Weiche
-Filterung bleibt ausschließlich für künftig konkret getestete, nicht als
-Pixelart angelegte Atmosphäreneffekte möglich; Nebel und Licht werden in der
-folgenden Aufgabe getrennt beurteilt. Bekannte Nachteile von Nearest-Neighbor
-bei nicht ganzzahligen Verkleinerungen sind ungleich breite Pixel und das
-Ausdünnen sehr feiner Details. Diese werden bei der Festlegung von Maßstab und
-Zoom berücksichtigt, statt die gesamte Spielwelt weichzuzeichnen.
+Nearest-Neighbor bleibt damit der **bevorzugte Kandidat**, ist aber noch kein
+verbindlicher Projektstandard. Die Beobachtungen bei `1,50 ×` entstanden vor
+der korrigierten Pixel-Snap-Abnahme und werden in Aufgabe 18 mit allen drei
+Zoomstufen wiederholt. Erst danach werden Standard, mögliche lokale Ausnahmen
+für nicht als Pixelart angelegte Atmosphäreneffekte und bekannte Probleme
+verbindlich dokumentiert.
 
 ### 4. Weltzustände
 
@@ -227,8 +298,9 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 ```text
 - Kollisionsformen
 - aktuelle FPS
-- Spielerkoordinaten
-- tatsächliches Kamerazentrum und Weltanker
+- rohe und gerundete Spielerkoordinaten
+- rohe und gerasterte Kameraposition, tatsächliches Kamerazentrum und Weltanker
+- Kameraprofil und Fensterskalierung
 - aktueller Kamerazoom
 - gewählte Tilegröße
 - gewählte Figurengröße
@@ -241,8 +313,10 @@ Die Anzeigen machen die jeweils aktive Testkonfiguration unmittelbar
 erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
 `F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
-FPS, Helden-, Kamera-, Weltanker-, Figuren-, Tile-, Weltzustands-, Pixel-Snap-,
-Texturfilter- und Fensterwerten.
+FPS, rohen und gerundeten Heldenpositionen, rohem und gerastertem Kameraziel,
+tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Figuren-, Tile-,
+Weltzustands-, Pixel-Snap-, Vertex-Snap-, Darstellungsraster-, Texturfilter-,
+Fenster- und Fensterskalierungswerten.
 `F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen
 Helden-, Hindernis- und Weltgrenzen-Kollisionen. Beide Anzeigen beginnen bei
 jedem Öffnen ausgeschaltet und werden nicht in den Testlabor-Einstellungen

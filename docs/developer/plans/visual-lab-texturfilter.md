@@ -9,7 +9,8 @@ Das visuelle Testlabor vervollständigt den bereits vorbereiteten Vergleich
 zwischen Nearest-Neighbor und weicher linearer Filterung. Beide Varianten
 lassen sich während des laufenden Tests auswählen, werden eindeutig
 diagnostiziert und im vorhandenen Testwert-Preset gespeichert. Anschließend
-wird für die Pixelart-Spielwelt eine verbindliche Standardvariante festgelegt.
+wird für die Pixelart-Spielwelt nach einer gültigen Pixel-Snap-Abnahme eine
+verbindliche Standardvariante festgelegt.
 
 ## Ausgangslage
 
@@ -47,11 +48,12 @@ Entscheidung oder atmosphärische Systeme. Nebel und Licht bleiben Aufgabe 19.
 4. Diagnose um den exakten aktiven Filter ergänzen und Regressionstests für
    Menü, Eingabe, Persistenz, Bewegung, Kamera, Kollision und Szenenisolation
    hinzufügen.
-5. Die vollständige Testmatrix mit echten Renderaufnahmen bei allen Zooms und
-   beiden Weltzuständen auswerten.
-6. Standardfilter, Skalierungsverhalten, Ausnahmen und bekannte Probleme in
-   Konzept, Entscheidung und Testlabor-Dokumentation festhalten; danach den
-   vollständigen Standardlauf ausführen.
+5. Nach Abschluss von Aufgabe 17 die vollständige Testmatrix mit echten
+   Renderaufnahmen bei allen Zooms, beiden Fenstergrößen und beiden
+   Weltzuständen erneut auswerten.
+6. Erst danach Standardfilter, Skalierungsverhalten, Ausnahmen und bekannte
+   Probleme verbindlich festhalten und den vollständigen Standardlauf
+   ausführen.
 
 ## Fortschritt
 
@@ -59,10 +61,11 @@ Entscheidung oder atmosphärische Systeme. Nebel und Licht bleiben Aufgabe 19.
   geprüft.
 - [x] Menü, Laufzeitumschaltung, Diagnose und Persistenz vervollständigt.
 - [x] Aufgabenbezogene Laufzeit- und Isolationstests ergänzt.
-- [x] Alle Kombinationen der Testmatrix real gerendert und ausgewertet.
-- [x] Verbindliche Entscheidung und technische Dokumentation festgehalten.
-- [x] Vollständigen Standardlauf erfolgreich ausgeführt.
-- [x] Vorgesehenen Commit vorbereitet.
+- [x] Vorläufige Testmatrix bei 1280 × 720 gerendert und ausgewertet.
+- [ ] Testmatrix nach der Pixel-Snap-Korrektur bei 1280 × 720 und
+  1920 × 1080 wiederholen.
+- [ ] Verbindliche Entscheidung und technische Dokumentation festhalten.
+- [ ] Vollständigen Standardlauf für die erneute Abnahme ausführen.
 
 ## Erkenntnisse und Überraschungen
 
@@ -86,6 +89,10 @@ Entscheidung oder atmosphärische Systeme. Nebel und Licht bleiben Aufgabe 19.
 - Die gemessene Kamerakadenz war für beide Filter identisch: nah überwiegend
   2 bis 3, mittel 1 bis 2 und weit teilweise 0 gefolgt von 2 Ausgabepixeln.
   Weiche Filterung ändert die Bewegung nicht, sondern mischt nur Kantenfarben.
+- Der nachträgliche Befund aus Aufgabe 17 zeigt, dass `1,50 ×` bei der ersten
+  Filtermatrix im Fenster mit 1280 × 720 effektiv ganzzahlig ausgegeben wurde.
+  Diese Matrix reicht deshalb nicht für eine verbindliche Filterentscheidung
+  bei 1920 × 1080 aus.
 
 ## Entscheidungen
 
@@ -98,13 +105,12 @@ Entscheidung oder atmosphärische Systeme. Nebel und Licht bleiben Aufgabe 19.
   künstlich verändert. Der Vergleich bewertet bei „Tiles und Kanten“ den
   texturierten Boden und hält fest, dass reine Vektorkanten filterunabhängig
   bleiben.
-- Nearest-Neighbor ist der verbindliche Standard für Pixelart-Figuren,
-  texturierte Tiles und Pixelart-Weltobjekte. Der aktuelle Prototyp benötigt
-  keine weich gefilterte Ausnahme.
-- Eine spätere Ausnahme ist nur lokal für einen konkret geprüften,
-  nicht-pixeligen Atmosphäreneffekt zulässig. Sie darf keine globale
-  Filteränderung und keinen unbeabsichtigten Wechsel anderer Spielszenen
-  verursachen.
+- Nearest-Neighbor bleibt der bevorzugte Kandidat für Pixelart-Figuren,
+  texturierte Tiles und Pixelart-Weltobjekte. Die Entscheidung ist bis zur
+  wiederholten vollständigen Matrix nicht verbindlich.
+- Mögliche Ausnahmen für nicht-pixelige Atmosphäreneffekte werden erst nach
+  dieser Wiederholung entschieden. Die Umschaltung bleibt bis dahin auf das
+  Testlabor begrenzt.
 
 ## Prüfungen
 
@@ -137,7 +143,7 @@ behalten ihren ursprünglichen Filter pro Instanz und werden beim Verlassen des
 Testlabors zurückgesetzt. Renderaufnahmen und Engine-Caches bleiben außerhalb
 des Repositorys.
 
-## Ergebnis und Rückblick
+## Vorläufiges Ergebnis und weiterer Bedarf
 
 Das vorhandene Nearest-Setup ist nun ein vollständiger, isolierter
 Laufzeitvergleich. Menüknopf und `N` schalten alle texturierten Sprites der
@@ -147,9 +153,10 @@ fallen auf Nearest-Neighbor zurück. Beim Verlassen werden die vorherigen
 Instanzfilter wiederhergestellt. Eine parallel instanziierte Heldenraum-Figur
 behielt während des gesamten Tests ihren eigenen Nearest-Filter.
 
-Die Render-Testmatrix bestätigt Nearest-Neighbor als verbindlichen Standard
-für die Pixelart-Spielwelt. Weiche Filterung brachte bei ganzzahliger Ausgabe
-keinen Vorteil und verwischte bei nicht ganzzahliger Ausgabe Konturen,
-Materialpixel und kleine Details. Sie änderte weder Kamerafolge noch deren
-Rasterkadenz. Der aktuelle Prototyp benötigt keine Ausnahme; mögliche spätere
-Atmosphäreneffekte müssen einzeln getestet werden.
+Die bisherige Render-Testmatrix bevorzugt Nearest-Neighbor: Weiche Filterung
+brachte bei ganzzahliger Ausgabe keinen Vorteil und verwischte bei
+nicht-ganzzahliger Ausgabe Konturen, Materialpixel und kleine Details. Sie
+änderte weder Kamerafolge noch deren Rasterkadenz. Wegen des nachträglich
+entdeckten Pixel-Snap-Fehlers bei `1,50 ×` ist dies noch keine verbindliche
+Entscheidung. Aufgabe 18 bleibt teilweise umgesetzt und wird erst nach dem
+Abschluss von Aufgabe 17 erneut abgenommen.

@@ -5,27 +5,30 @@
 
 ## Zweck und Gesamtbild
 
-Das visuelle Testlabor erhält einen neu umgesetzten Pixel-Snap-Vergleich.
-Pixel-Snap lässt sich im eingeblendeten Steuerungsmenü und per eigenem
-Tastenkürzel während des laufenden Tests umschalten. Menü, Diagnose und das
-vorhandene Testwert-Preset zeigen beziehungsweise speichern denselben Zustand.
-Held, Kamerazentrum und Weltanker bleiben getrennt beobachtbar.
+Das visuelle Testlabor besitzt einen umschaltbaren Pixel-Snap-Vergleich. Der
+Plan wurde am 2. September 2026 wieder geöffnet, nachdem die erste Abnahme den
+Kamerazoom `1,50 ×` nur im effektiv ganzzahlig skalierten Fenster geprüft
+hatte. Der reproduzierte Phasenwechsel der Heldenfigur bei `1920 × 1080` wird
+behoben, ohne Physik oder Kollision zu runden. Held, Kamera und Welt bleiben
+getrennt beobachtbar.
 
 ## Ausgangslage
 
-Das Testlabor besitzt bereits ein mit `F5` einblendbares Steuerungsmenü,
-gespeicherte Kamera-, Figuren-, Tile- und Weltzustandswerte sowie eine
-flüchtige Diagnoseanzeige. Der aktuelle Viewport verwendet noch keinen
-umschaltbaren Transform-Snap. Die Bedienhilfe besteht bislang nur aus Text und
-enthält kein interaktives Testelement.
+Schalter, Tastenkürzel, Diagnose und Preset-Persistenz waren bereits
+umgesetzt. Bei `1,00 ×` zeigte sich kein Flackern. Bei `1,50 ×` wechselte die
+Heldenfigur während echter Bewegung bei `1920 × 1080` jedoch zwischen
+mehreren Pixelmustern. Im Fenster `1280 × 720` wurde dieser Fehler verdeckt,
+weil die Fensterskalierung von zwei Dritteln zusammen mit dem Kamerazoom eine
+Ausgabeskalierung von `1,00 ×` ergab.
 
 ## Umfang und Nicht-Ziele
 
-Im Umfang liegen genau ein bedienbarer Pixel-Snap-Schalter, ein konfliktfreies
-Tastenkürzel, Preset-Persistenz, ein eindeutiger Diagnosewert, getrennte
-Positionswerte für Held, Kamera und Welt sowie passende Laufzeit- und
-Integrationstests. Beide Darstellungsvarianten werden neu gerendert und das
-Ergebnis wird in der bestehenden Testlabor-Dokumentation festgehalten.
+Im Umfang liegen der bestehende Pixel-Snap-Schalter, Preset-Persistenz, eine
+erweiterte Diagnose mit rohen und gerasterten Positionen, eine rein visuelle
+Rasterausrichtung für Kamera und Heldenbild sowie passende Laufzeit- und
+Integrationstests. Beide Darstellungsvarianten werden bei `1,00 ×` und
+`1,50 ×`, in beiden vorgesehenen Fenstergrößen und in drei Bewegungsrichtungen
+neu gerendert.
 
 Nicht geändert werden Heldenraum, Ratgeber-Interaktion, Dialogverhalten,
 Bewegungsgeschwindigkeit, Physikpositionen, Kollisionsformen, Kameragrenzen,
@@ -40,12 +43,16 @@ Aufgabe noch nicht verbindlich festgelegt.
    vorherigen Viewport-Zustand beim Verlassen wiederherstellen.
 3. Den booleschen Wert rückwärtskompatibel im vorhandenen Version-1-Preset
    speichern und beim Öffnen anwenden.
-4. Diagnose um den exakten Pixel-Snap-Zustand sowie Held-, Kamera- und
-   Weltpositionen ergänzen.
-5. Menü-, Eingabe-, Speicher-, Bewegungs-, Kollisions-, Kamera- und
+4. Diagnose um rohe und gerundete Heldenposition, rohes und gerastertes
+   Kameraziel, tatsächliches Kamerazentrum, Kameraprofil, Vertex-Snap,
+   Darstellungsraster und Fensterskalierung ergänzen.
+5. Kamera und Heldenbild im Modus AN auf dasselbe rationale Raster ausrichten,
+   während der `CharacterBody2D` seine Fließkommaposition behält.
+6. Menü-, Eingabe-, Speicher-, Bewegungs-, Kollisions-, Kamera- und
    Regressionstests ergänzen und die schnellsten Prüfungen zuerst ausführen.
-6. Beide Varianten bei den vorhandenen Zoomstufen rendern, beurteilen,
-   dokumentieren und den vollständigen Standardlauf ausführen.
+7. Beide Varianten bei `1,00 ×` und `1,50 ×` sowie 1280 × 720 und
+   1920 × 1080 rendern, beurteilen, dokumentieren und den vollständigen
+   Standardlauf ausführen.
 
 ## Fortschritt
 
@@ -53,9 +60,13 @@ Aufgabe noch nicht verbindlich festgelegt.
   geprüft.
 - [x] Laufzeitfunktion, echtes Menüelement, Diagnose und Persistenz umgesetzt.
 - [x] Aufgabenbezogene Tests ergänzt und erfolgreich ausgeführt.
-- [x] Gerenderten Vergleich durchgeführt und Ergebnis dokumentiert.
-- [x] Vollständigen Standardlauf erfolgreich ausgeführt.
-- [x] Vorgesehenen Commit vorbereitet.
+- [x] Fehler bei 1,50 × und 1920 × 1080 reproduziert und Ursache eingegrenzt.
+- [x] Rein visuelle Rasterausrichtung ohne Änderung der Physik umgesetzt.
+- [x] Diagnose und aufgabenbezogene Laufzeittests erweitert.
+- [x] Held, Tiles und Weltobjekte bei echter Bewegung getrennt geprüft.
+- [x] Vollständigen Standardlauf nach der Korrektur erfolgreich ausgeführt.
+- [x] Dokumentation und Aufgabenstatus abschließend geprüft.
+- [x] Vorgesehenen Korrektur-Commit erstellt.
 
 ## Erkenntnisse und Überraschungen
 
@@ -64,37 +75,65 @@ Aufgabe noch nicht verbindlich festgelegt.
   Bedienelement in diese vorhandene Struktur integriert werden.
 - `P` ist bereits der allgemeinen Pause-Aktion zugeordnet. Die neue
   Testfunktion darf diese Belegung nicht wiederverwenden.
-- Die erste echte Renderaufnahme zeigte, dass der neue Knopf wegen seiner
-  horizontalen Größenregel über die Menüfläche hinauswuchs. Eine feste
-  Mindestbreite ohne horizontales Aufspannen hält ihn innerhalb des Panels.
-- Im Arbeitsverzeichnis liegt eine ignorierte lokale Obsidian-Konfiguration
-  unter `docs/concept/.obsidian/`. Sie verletzt eine allgemeine
-  Dokumentationsprüfung, gehört aber nicht zum versionierten Projekt und
-  wurde nicht verändert. Der vollständige Standardlauf erfolgte deshalb
-  zusätzlich in einer sauberen Kopie des exakten Änderungsstands.
-- Im gerenderten Vergleich blieb der ausgerichtete Weltausschnitt mit
-  Pixel-Snap bei allen drei Zoomstufen unverändert. Ohne Pixel-Snap änderten
-  sich je nach Zoom wiederholt bis zu 1.000 Pixel. Der ausgerichtete Held
-  blieb mit Pixel-Snap im nahen und mittleren Zoom stabil; ohne Pixel-Snap
-  änderten sich bis zu 182 Pixel.
+- Der erste Vergleich bei 1280 × 720 konnte den Fehler nicht zeigen:
+  `1,50 ×` Kamerazoom und `0,67 ×` Fensterskalierung ergaben zusammen eine
+  ganzzahlige Ausgabe.
+- Bei 1920 × 1080 wechselte der Held mit Pixel-Snap und `1,50 ×` während
+  horizontaler Bewegung zwischen fünf messbar unterschiedlichen
+  Rastermustern.
+- Godots Transform-Snap rundet lokale CanvasItem-Transformationen einzeln.
+  Bei nicht ganzzahligem Zoom können Kameraübersetzung und gerundete
+  Weltposition dadurch verschiedene Rasterphasen verwenden.
+- Ein gemeinsamer rationaler Darstellungsanker stabilisierte die Figur. Eine
+  seltene Abweichung auf exakten Halbpositionen verschwand erst, nachdem
+  Kamera und Heldenbild im Pixel-Snap-Modus als Top-Level-Darstellungsanker
+  von der weiterhin fraktionalen Elternposition getrennt wurden.
+- Die getrennten Bildfolgen für Held, Tilefläche und Weltobjekte zeigen nach
+  der Korrektur bei Pixel-Snap AN eine konstante Rasterphase. Ohne Pixel-Snap
+  bleibt der ursprüngliche Vergleich sichtbar.
 
 ## Entscheidungen
 
 - Der Schalter verwendet Godots Viewport-Transform-Snap. Logische Knoten- und
   Physikpositionen werden nicht gerundet, damit dieselbe Bewegung in beiden
   Darstellungsvarianten vergleichbar bleibt.
+- Vertex-Snap bleibt während des gesamten Vergleichs AUS. Sein vorheriger
+  Viewport-Zustand wird wie der Transform-Snap beim Verlassen wiederhergestellt.
+- Der gemeinsame Darstellungsanker verwendet das kleinste gemeinsame Raster
+  aus Kamerazoom und Fensterskalierung. Bei 1,50 × und 1920 × 1080 sind das
+  zwei Weltpixel, die exakt drei Ausgabepixel ergeben.
+- Nur Kamera und der Knoten `HeroCharacter/Visual` werden dafür visuell vom
+  fraktionalen Körperanker getrennt. Geschwindigkeit, `move_and_slide()`,
+  Kollisionsformen und die Position des `CharacterBody2D` bleiben unverändert.
 - Der fehlende Preset-Schlüssel bedeutet AUS; vorhandene Version-1-Dateien
   bleiben dadurch gültig.
 - Diagnose- und Menü-Sichtbarkeit bleiben flüchtig. Nur Pixel-Snap selbst wird
   als Testwert gespeichert.
 - `X` ist das konfliktfreie Tastenkürzel. Es ergänzt den anklickbaren und per
   Fokus auswählbaren Schalter im `F5`-Menü.
-- Pixel-Snap wird für Held und Welt empfohlen. Für die Kamera wird der
-  Viewport-Snap ebenfalls empfohlen, während ihre logische Position bewusst
-  ungerundet bleibt. Die im weiten Zoom sichtbare Rasterkadenz wird beim
-  späteren gemeinsamen Festlegen von Filter, Maßstab und Zoom erneut geprüft.
+- Pixel-Snap wird nach der Korrektur für Held, Kamera und Welt empfohlen. Der
+  Zoom `1,50 ×` bleibt bis Aufgabe 20 ein Kameraprofil-Kandidat, weil sein
+  Zwei-Weltpixel-Raster eine sichtbare 3-/6-Ausgabepixel-Kadenz erzeugt.
 
 ## Prüfungen
+
+Aktuelle Wiederaufnahme:
+
+- `python3 tools/control.py style`: erfolgreich, 68 Dateien.
+- `git diff --check`: erfolgreich.
+- Godot-Integration mit der offiziellen Godot-4.7.2-Binärdatei: erfolgreich;
+  einschließlich Raster-, Hierarchie-, Preset-, Bewegungs-, Kamera-,
+  Kollisions- und Diagnoseprüfungen.
+- 288 echte OpenGL-Aufnahmen mit horizontaler, vertikaler und diagonaler
+  Bewegung bei 1280 × 720 und 1920 × 1080: Fehler reproduziert und
+  korrigierte Heldenfolgen rasterstabil geprüft.
+- 160 zusätzliche verfolgte OpenGL-Ausschnitte: Tilefläche und beschädigte
+  Weltobjekte getrennt bei 1,00 × und 1,50 × sowie AN und AUS geprüft.
+- `python3 tools/control.py check` im sauberen, abgetrennten Worktree des
+  exakten Commits nach einem Godot-Importlauf: erfolgreich; Doctor 12/12,
+  Stil 68 Dateien, 175 Python-Tests und Godot-Integration.
+
+Erste Umsetzung vor der Wiederaufnahme:
 
 - `python3 tools/control.py style`: erfolgreich, 67 Dateien.
 - `git diff --check`: erfolgreich.
@@ -130,10 +169,11 @@ Weltanker. Tests sichern außerdem, dass beide Varianten Bewegung, Kollision,
 Kamerafolge und Kameragrenzen unverändert lassen und den vorherigen
 Viewport-Zustand beim Verlassen wiederherstellen.
 
-Der gerenderte Vergleich bewertet AN insgesamt als ruhiger. Das verbleibende
-Abstufen entsteht beim Abbilden einer gleichmäßigen logischen Bewegung auf das
-Pixelraster, besonders im weiten Zoom; ein zusätzliches logisches
-Kameraruckeln wurde nicht beobachtet. Held und Welt sollen Pixel-Snap
-verwenden. Für die Kamera soll der Viewport-Snap aktiv, ihre logische Bewegung
-aber ungerundet bleiben. Die Empfehlung ist in der Testlabor-Dokumentation
-festgehalten und nimmt die endgültige Texturfilter-Entscheidung nicht vorweg.
+Der wiederholte gerenderte Vergleich bewertet AN insgesamt als ruhiger. Der
+Phasenwechsel des Helden bei `1,50 ×` ist beseitigt; Tiles und Weltobjekte
+bleiben beim Kameraschwenk auf derselben Rasterphase. Die logische Bewegung
+und Kollision laufen weiter mit Fließkommawerten. Beim nahen Zoom bleibt eine
+diskrete 3-/6-Ausgabepixel-Kadenz sichtbar, aber kein zusätzliches
+Hin-und-Her-Springen oder wechselndes Heldenmuster. Die endgültige Freigabe
+des Kamerazooms gehört weiterhin in Aufgabe 20 und nimmt die erneute
+Texturfilter-Abnahme nicht vorweg.

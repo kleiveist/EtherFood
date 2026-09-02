@@ -7,13 +7,16 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 [Arbeitsplanvorlage](_execplan-template.md) und beachte den
 [allgemeinen Standard](../../../.agent/PLANS.md).
 
-## Aktiver Plan
+## Aktive Pläne
 
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
 
-## Abgeschlossene historische Pläne
+## Nächster teilweise umgesetzter Plan
 
 - [Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
+
+## Abgeschlossene historische Pläne
+
 - [Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)
 - [Erste Ratgeber-Interaktion](erste-ratgeber-interaktion.md)
 - [Begehbarer Heldenraum](begehbarer-heldenraum.md)

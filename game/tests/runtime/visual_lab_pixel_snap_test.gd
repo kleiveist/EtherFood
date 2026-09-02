@@ -18,6 +18,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_remove_test_settings()
 	_expect_input_mapping()
 	var initial_viewport_snap := tree.root.snap_2d_transforms_to_pixel
+	var initial_vertex_snap := tree.root.snap_2d_vertices_to_pixel
 
 	var packed_scene := load(VISUAL_LAB_SCENE_PATH) as PackedScene
 	_expect(packed_scene != null, "VisualLab scene loads")
@@ -35,6 +36,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		tree.root.snap_2d_transforms_to_pixel == initial_viewport_snap,
 		"closing VisualLab restores the previous viewport setting",
 	)
+	_expect(
+		tree.root.snap_2d_vertices_to_pixel == initial_vertex_snap,
+		"closing VisualLab restores the previous vertex-snap setting",
+	)
 
 	var reopened_visual_lab := await _open_visual_lab(tree, packed_scene)
 	if reopened_visual_lab != null:
@@ -47,6 +52,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(
 		tree.root.snap_2d_transforms_to_pixel == initial_viewport_snap,
 		"reopened VisualLab restores the previous viewport setting on exit",
+	)
+	_expect(
+		tree.root.snap_2d_vertices_to_pixel == initial_vertex_snap,
+		"reopened VisualLab restores the previous vertex-snap setting on exit",
 	)
 
 	_write_settings_fixture(null, false)
@@ -80,6 +89,9 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	var camera := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/PlayerCamera"
 	) as Camera2D
+	var hero_visual := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/Visual"
+	) as Node2D
 	var test_world := visual_lab.get_node_or_null("TestWorld") as Node2D
 	var hero_collision := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/CollisionShape2D"
@@ -102,6 +114,7 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 
 	_expect(hero != null, "VisualLab retains the moving hero")
 	_expect(camera != null, "VisualLab retains the following camera")
+	_expect(hero_visual != null, "VisualLab retains a separate hero visual")
 	_expect(test_world != null, "VisualLab retains the test world")
 	_expect(hero_collision != null, "VisualLab retains the hero collision")
 	_expect(obstacle_collision != null, "VisualLab retains the obstacle collision")
@@ -119,6 +132,7 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	if (
 		hero == null
 		or camera == null
+		or hero_visual == null
 		or test_world == null
 		or hero_collision == null
 		or obstacle_collision == null
@@ -130,6 +144,10 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 
 	var original_move_speed := hero.move_speed
 	var original_zoom := camera.zoom
+	var original_camera_position := camera.position
+	var original_visual_position := hero_visual.position
+	var original_camera_top_level := camera.top_level
+	var original_visual_top_level := hero_visual.top_level
 	var original_world_transform := test_world.global_transform
 	var original_hero_shape := hero_collision.shape
 	var original_obstacle_shape := obstacle_collision.shape
@@ -144,7 +162,14 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		diagnostics.text.contains("Pixel-Snap: AUS"),
 		"diagnostics immediately show pixel snap off",
 	)
-	await _expect_motion_contract(tree, hero, camera, false, "pixel snap off")
+	await _expect_motion_contract(
+		tree,
+		visual_lab,
+		hero,
+		camera,
+		false,
+		"pixel snap off",
+	)
 
 	hero.position = Vector2(1840.25, 1020.5)
 	var fractional_position := hero.position
@@ -161,6 +186,18 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"enabling pixel snap does not round the logical hero position",
 	)
 	_expect(
+		_is_on_grid(hero_visual.global_position, visual_lab._pixel_snap_world_grid_step()),
+		"enabling pixel snap aligns only the rendered hero to the output grid",
+	)
+	_expect(
+		_is_on_grid(camera.global_position, visual_lab._pixel_snap_world_grid_step()),
+		"enabling pixel snap aligns the camera target to the same output grid",
+	)
+	_expect(
+		camera.top_level and hero_visual.top_level,
+		"pixel snap separates only the visual anchors from fractional parent transforms",
+	)
+	_expect(
 		diagnostics.text.contains("Pixel-Snap: AN"),
 		"diagnostics immediately show pixel snap on",
 	)
@@ -169,12 +206,33 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	button.button_pressed = false
 	button.pressed.emit()
 	_expect_pixel_snap_state(visual_lab, false, "menu button disables pixel snap")
+	_expect(
+		camera.position.is_equal_approx(original_camera_position),
+		"disabling pixel snap restores the unsnapped camera anchor",
+	)
+	_expect(
+		hero_visual.position.is_equal_approx(original_visual_position),
+		"disabling pixel snap restores the unsnapped hero visual anchor",
+	)
+	_expect(
+		camera.top_level == original_camera_top_level
+		and hero_visual.top_level == original_visual_top_level,
+		"disabling pixel snap restores both original transform hierarchies",
+	)
 	_expect_saved_pixel_snap(false)
 	button.button_pressed = true
 	button.pressed.emit()
 	_expect_pixel_snap_state(visual_lab, true, "menu button enables pixel snap")
 	_expect_saved_pixel_snap(true)
-	await _expect_motion_contract(tree, hero, camera, true, "pixel snap on")
+	await _expect_motion_contract(
+		tree,
+		visual_lab,
+		hero,
+		camera,
+		true,
+		"pixel snap on",
+	)
+	_expect_output_grid_matrix(visual_lab)
 
 	_expect(hero.move_speed == original_move_speed, "pixel snap keeps hero move speed")
 	_expect(camera.zoom == original_zoom, "pixel snap keeps camera zoom")
@@ -191,6 +249,7 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 
 func _expect_motion_contract(
 	tree: SceneTree,
+	visual_lab: Control,
 	hero: HERO_SCRIPT,
 	camera: Camera2D,
 	expected_pixel_snap: bool,
@@ -203,13 +262,32 @@ func _expect_motion_contract(
 	var camera_start := camera.global_position
 
 	await _hold_action_for_physics_frames(tree, &"gameplay_move_right", 4)
+	await tree.process_frame
 	var hero_movement := hero.global_position - hero_start
 	var camera_movement := camera.global_position - camera_start
 	_expect(hero_movement.x > 0.0, "%s: hero movement still works" % description)
-	_expect(
-		camera_movement.is_equal_approx(hero_movement),
-		"%s: camera still follows the hero" % description,
-	)
+	if expected_pixel_snap:
+		var grid_step: Vector2 = visual_lab._pixel_snap_world_grid_step()
+		_expect(
+			camera_movement.x > 0.0,
+			"%s: aligned camera still follows the hero" % description,
+		)
+		_expect(
+			absf(camera.global_position.x - hero.global_position.x)
+			<= grid_step.x / 2.0 + 0.01,
+			"%s: aligned camera remains within half a grid step" % description,
+		)
+		var hero_visual := hero.get_node_or_null("Visual") as Node2D
+		_expect(
+			hero_visual != null
+			and hero_visual.global_position.is_equal_approx(camera.global_position),
+			"%s: hero visual and camera use the same render anchor" % description,
+		)
+	else:
+		_expect(
+			camera_movement.is_equal_approx(hero_movement),
+			"%s: camera still follows the hero" % description,
+		)
 	_expect(camera.enabled and camera.is_current(), "%s: camera remains active" % description)
 	_expect(
 		hero.get_viewport().snap_2d_transforms_to_pixel == expected_pixel_snap,
@@ -247,6 +325,48 @@ func _expect_pixel_snap_state(
 		visual_lab.get_viewport().snap_2d_transforms_to_pixel == expected_enabled,
 		"%s: runtime viewport state" % description,
 	)
+	_expect(
+		not visual_lab.get_viewport().snap_2d_vertices_to_pixel,
+		"%s: vertex snap remains disabled" % description,
+	)
+
+
+func _expect_output_grid_matrix(visual_lab: Control) -> void:
+	_expect(
+		is_equal_approx(visual_lab._world_grid_step_for_output_scale(1.0), 1.0),
+		"integer 1.00 output scale uses single-world-pixel steps",
+	)
+	_expect(
+		is_equal_approx(visual_lab._world_grid_step_for_output_scale(1.5), 2.0),
+		"fractional 1.50 output scale uses the exact two-world-pixel grid",
+	)
+	_expect(
+		is_equal_approx(
+			visual_lab._world_grid_step_for_output_scale(2.0 / 3.0),
+			3.0,
+		),
+		"two-thirds window scaling uses the exact three-world-pixel grid",
+	)
+	_expect(
+		is_equal_approx(visual_lab._world_grid_step_for_output_scale(0.75), 4.0),
+		"fractional 0.75 output scale uses the exact four-world-pixel grid",
+	)
+	_expect(
+		visual_lab._least_common_multiple(2, 1) == 2,
+		"1.50 camera zoom keeps its two-world-pixel grid after integer scaling",
+	)
+	_expect(
+		visual_lab._least_common_multiple(1, 3) == 3,
+		"1.00 camera zoom adopts the three-world-pixel two-thirds output grid",
+	)
+
+
+func _is_on_grid(position: Vector2, grid_step: Vector2) -> bool:
+	var snapped_position := Vector2(
+		snappedf(position.x, grid_step.x),
+		snappedf(position.y, grid_step.y),
+	)
+	return position.is_equal_approx(snapped_position)
 
 
 func _expect_saved_pixel_snap(expected_enabled: bool) -> void:
