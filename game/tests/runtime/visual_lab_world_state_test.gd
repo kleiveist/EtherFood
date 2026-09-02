@@ -12,18 +12,26 @@ const DAMAGED_STATUS := "Weltzustand: Beschädigt"
 const RESTORED_STATUS := "Weltzustand: Wiederhergestellt"
 const DAMAGED_CHILDREN: Array[String] = [
 	"Ground",
+	"GroundTexture",
+	"Path",
 	"BrokenBuilding",
+	"DeadTree",
 	"DeadPlants",
 	"Fog",
 	"ColdLight",
 ]
 const RESTORED_CHILDREN: Array[String] = [
 	"Ground",
+	"GroundTexture",
+	"Path",
 	"RepairedBuilding",
+	"LivingTree",
 	"LivingPlants",
+	"Fog",
 	"ClearAir",
 	"WarmLight",
 ]
+const PLANT_NAMES: Array[String] = ["PlantLeft", "PlantMiddle", "PlantRight"]
 
 var failures: PackedStringArray = []
 var _had_settings_path_override := false
@@ -81,12 +89,20 @@ func _expect_preview_scene_contract(tree: SceneTree) -> void:
 			title.text == "Weltzustand · Beschädigt ↔ Wiederhergestellt",
 			"WorldStatePreview title identifies both states",
 		)
+	if damaged_state != null and restored_state != null:
+		_expect_top_down_layout(damaged_state, restored_state)
+		_expect_state_specific_details(damaged_state, restored_state)
 
+	var original_preview_transform := preview.transform
 	_expect_preview_state(preview, false, "preview starts damaged")
 	preview.set_world_state(preview.WorldState.RESTORED)
 	_expect_preview_state(preview, true, "setting restored shows only RestoredState")
 	preview.set_world_state(preview.WorldState.DAMAGED)
 	_expect_preview_state(preview, false, "setting damaged shows only DamagedState")
+	_expect(
+		preview.transform == original_preview_transform,
+		"world-state changes keep the top-down preview transform unchanged",
+	)
 	_expect(
 		preview.find_children("*", "CollisionObject2D", true, false).is_empty(),
 		"WorldStatePreview contains no collision bodies or areas",
@@ -111,6 +127,253 @@ func _expect_preview_scene_contract(tree: SceneTree) -> void:
 
 	preview.queue_free()
 	await tree.process_frame
+
+
+func _expect_top_down_layout(damaged_state: Node2D, restored_state: Node2D) -> void:
+	_expect(
+		damaged_state.transform == restored_state.transform,
+		"both world states use the same preview perspective",
+	)
+	_expect_matching_polygon(
+		damaged_state,
+		restored_state,
+		^"Ground",
+		^"Ground",
+		"ground footprint",
+	)
+	_expect_matching_polygon(
+		damaged_state,
+		restored_state,
+		^"Path",
+		^"Path",
+		"walkable path",
+	)
+	_expect_matching_line(
+		damaged_state,
+		restored_state,
+		^"PathEdgeLeft",
+		^"PathEdgeLeft",
+		"left path edge",
+	)
+	_expect_matching_line(
+		damaged_state,
+		restored_state,
+		^"PathEdgeRight",
+		^"PathEdgeRight",
+		"right path edge",
+	)
+	_expect_matching_polygon(
+		damaged_state,
+		restored_state,
+		^"GroundTexture/SoilPatch",
+		^"GroundTexture/SoilPatch",
+		"soil patch",
+	)
+	_expect_matching_polygon(
+		damaged_state,
+		restored_state,
+		^"GroundTexture/TreePatch",
+		^"GroundTexture/TreePatch",
+		"tree soil patch",
+	)
+	for stone_name in ["StoneLeft", "StoneMiddle", "StoneRight"]:
+		_expect_matching_polygon(
+			damaged_state,
+			restored_state,
+			NodePath("GroundTexture/%s" % stone_name),
+			NodePath("GroundTexture/%s" % stone_name),
+			"ground structure %s" % stone_name,
+		)
+
+	var broken_building := damaged_state.get_node_or_null("BrokenBuilding") as Node2D
+	var repaired_building := restored_state.get_node_or_null("RepairedBuilding") as Node2D
+	_expect_matching_position(
+		broken_building,
+		repaired_building,
+		"building",
+	)
+	for shape_name in [
+		"FootprintShadow",
+		"FrontWall",
+		"RoofLeft",
+		"RoofRight",
+		"Entrance",
+	]:
+		_expect_matching_polygon(
+			broken_building,
+			repaired_building,
+			NodePath(shape_name),
+			NodePath(shape_name),
+			"building shape %s" % shape_name,
+		)
+	_expect_matching_line(
+		broken_building,
+		repaired_building,
+		^"RoofOutline",
+		^"RoofOutline",
+		"roof outline",
+	)
+
+	var dead_tree := damaged_state.get_node_or_null("DeadTree") as Node2D
+	var living_tree := restored_state.get_node_or_null("LivingTree") as Node2D
+	_expect_matching_position(dead_tree, living_tree, "tree")
+	_expect_matching_polygon(
+		dead_tree,
+		living_tree,
+		^"GroundShadow",
+		^"GroundShadow",
+		"tree shadow",
+	)
+	_expect_matching_polygon(
+		dead_tree,
+		living_tree,
+		^"TrunkCore",
+		^"TrunkCore",
+		"tree trunk footprint",
+	)
+
+	var dead_plants := damaged_state.get_node_or_null("DeadPlants") as Node2D
+	var living_plants := restored_state.get_node_or_null("LivingPlants") as Node2D
+	_expect(
+		dead_plants != null and living_plants != null,
+		"both states contain their top-down plant groups",
+	)
+	if dead_plants != null and living_plants != null:
+		for plant_name in PLANT_NAMES:
+			var dead_plant := dead_plants.get_node_or_null(plant_name) as Node2D
+			var living_plant := living_plants.get_node_or_null(plant_name) as Node2D
+			_expect_matching_position(dead_plant, living_plant, "plant %s" % plant_name)
+			_expect_matching_polygon(
+				dead_plant,
+				living_plant,
+				^"GroundShadow",
+				^"GroundShadow",
+				"plant shadow %s" % plant_name,
+			)
+
+	_expect_matching_polygon(
+		damaged_state,
+		restored_state,
+		^"Fog/FogBandTop",
+		^"Fog/FogBandTop",
+		"upper fog band",
+	)
+	_expect_matching_polygon(
+		damaged_state,
+		restored_state,
+		^"Fog/FogBandBottom",
+		^"Fog/FogBandBottom",
+		"lower fog band",
+	)
+
+
+func _expect_state_specific_details(damaged_state: Node2D, restored_state: Node2D) -> void:
+	_expect(
+		damaged_state.get_node_or_null("GroundTexture/CrackLeft") is Line2D,
+		"damaged ground has visible cracks",
+	)
+	_expect(
+		restored_state.get_node_or_null("GroundTexture/GrassTufts") is Node2D,
+		"restored ground replaces cracks with grass",
+	)
+	_expect(
+		damaged_state.get_node_or_null("BrokenBuilding/MissingRoofLeft") is Polygon2D
+		and damaged_state.get_node_or_null("BrokenBuilding/RoofHole") is Polygon2D,
+		"damaged building has missing roof sections",
+	)
+	_expect(
+		restored_state.get_node_or_null("RepairedBuilding/RoofRidge") is Line2D,
+		"restored building has a continuous repaired roof",
+	)
+	_expect(
+		damaged_state.get_node_or_null("BrokenBuilding/EntranceBlockageTop") is Line2D,
+		"damaged entrance is visibly blocked",
+	)
+	_expect(
+		restored_state.get_node_or_null("RepairedBuilding/EntranceFrame") is Line2D
+		and restored_state.get_node_or_null("RepairedBuilding/Threshold") is Line2D,
+		"restored entrance is clean and recognizable",
+	)
+	_expect(
+		damaged_state.get_node_or_null("DeadTree/BranchNorth") is Line2D,
+		"damaged state has a dead tree seen from above",
+	)
+	_expect(
+		restored_state.get_node_or_null("LivingTree/Canopy") is Polygon2D,
+		"restored state has a living tree canopy seen from above",
+	)
+	_expect(
+		damaged_state.get_node_or_null("DeadPlants/PlantLeft/DryLeaves") is Polygon2D,
+		"damaged state has dead top-down plants",
+	)
+	_expect(
+		restored_state.get_node_or_null("LivingPlants/PlantLeft/Leaves") is Polygon2D,
+		"restored state has green top-down plants",
+	)
+
+	var damaged_fog := damaged_state.get_node_or_null("Fog/FogBandTop") as Polygon2D
+	var restored_fog := restored_state.get_node_or_null("Fog/FogBandTop") as Polygon2D
+	_expect(
+		damaged_fog != null
+		and restored_fog != null
+		and damaged_fog.color.a > restored_fog.color.a,
+		"restored state keeps the same fog shape with less opacity",
+	)
+
+
+func _expect_matching_position(
+	damaged_node: Node2D,
+	restored_node: Node2D,
+	description: String,
+) -> void:
+	_expect(
+		damaged_node != null
+		and restored_node != null
+		and damaged_node.position == restored_node.position,
+		"both states keep the same %s position" % description,
+	)
+
+
+func _expect_matching_polygon(
+	damaged_parent: Node,
+	restored_parent: Node,
+	damaged_path: NodePath,
+	restored_path: NodePath,
+	description: String,
+) -> void:
+	if damaged_parent == null or restored_parent == null:
+		_expect(false, "both states contain the %s nodes" % description)
+		return
+	var damaged_polygon := damaged_parent.get_node_or_null(damaged_path) as Polygon2D
+	var restored_polygon := restored_parent.get_node_or_null(restored_path) as Polygon2D
+	_expect(
+		damaged_polygon != null
+		and restored_polygon != null
+		and damaged_polygon.position == restored_polygon.position
+		and damaged_polygon.polygon == restored_polygon.polygon,
+		"both states keep the same %s geometry" % description,
+	)
+
+
+func _expect_matching_line(
+	damaged_parent: Node,
+	restored_parent: Node,
+	damaged_path: NodePath,
+	restored_path: NodePath,
+	description: String,
+) -> void:
+	if damaged_parent == null or restored_parent == null:
+		_expect(false, "both states contain the %s nodes" % description)
+		return
+	var damaged_line := damaged_parent.get_node_or_null(damaged_path) as Line2D
+	var restored_line := restored_parent.get_node_or_null(restored_path) as Line2D
+	_expect(
+		damaged_line != null
+		and restored_line != null
+		and damaged_line.position == restored_line.position
+		and damaged_line.points == restored_line.points,
+		"both states keep the same %s geometry" % description,
+	)
 
 
 func _expect_visual_lab_contract(tree: SceneTree) -> void:
@@ -186,6 +449,17 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 		not preview_bounds.has_point(hero.position),
 		"WorldStatePreview does not cover the hero start",
 	)
+	_expect(
+		preview.get_parent() == hero.get_parent(),
+		"WorldStatePreview and the controllable hero share the same TestWorld",
+	)
+	var building_side := preview.position + Vector2(390, 270)
+	_expect(
+		preview_bounds.has_point(building_side)
+		and Rect2(0, 0, 3840, 2160).has_point(building_side)
+		and hero.position.distance_to(building_side) < 1500.0,
+		"the controllable hero can walk directly beside the preview building",
+	)
 
 	var original_camera_zoom := player_camera.zoom
 	var original_hero_height := hero.get_appearance_height()
@@ -237,7 +511,7 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 	)
 	_expect(
 		preview.find_children("*", "CollisionObject2D", true, false).is_empty(),
-		"embedded WorldStatePreview contains no collision bodies or areas",
+		"preview remains visual-only without a building entrance trigger",
 	)
 
 	await _close_visual_lab(tree, visual_lab)
