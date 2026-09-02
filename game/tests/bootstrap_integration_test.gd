@@ -11,8 +11,11 @@ const EXPECTED_MAIN_MENU_BUTTONS := [
 	"Visuelles Testlabor",
 	"Spiel beenden",
 ]
-const EXPECTED_HERO_ROOM_TITLE := "HELDENRAUM"
-const EXPECTED_HERO_ROOM_PLACEHOLDER := "Spielbarer Raum folgt"
+const EXPECTED_HERO_ROOM_HINT := (
+	"HELDENRAUM · PROTOTYP\n"
+	+ "WASD / Pfeiltasten / linker Stick\n"
+	+ "Esc / B: Hauptmenü"
+)
 const EXPECTED_VISUAL_LAB_TITLE := "STEUERUNG"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
@@ -46,6 +49,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/application_root_test.gd",
 	"res://tests/runtime/input_map_test.gd",
 	"res://tests/runtime/hero_character_test.gd",
+	"res://tests/runtime/hero_room_test.gd",
 	"res://tests/runtime/visual_lab_zoom_test.gd",
 	"res://tests/runtime/visual_lab_hero_size_test.gd",
 	"res://tests/runtime/visual_lab_scale_reference_test.gd",
@@ -1000,23 +1004,47 @@ func _test_bootstrap_contract() -> void:
 			"ApplicationRoot/RouteHost/HeroRoom"
 		)
 		_expect(hero_room is Control, "hero_room route loads the HeroRoom scene")
-		var hero_room_title := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/HeroRoom/Content/Text/Title"
-		) as Label
-		_expect(hero_room_title != null, "HeroRoom has a title Label")
-		if hero_room_title != null:
-			_expect(
-				hero_room_title.text == EXPECTED_HERO_ROOM_TITLE,
-				"HeroRoom displays its title",
+		var hero_room_world := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/World"
+		) as Node2D
+		var hero_room_hero := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/World/HeroCharacter"
+		) as CharacterBody2D
+		var hero_room_camera := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/HeroRoom/World/HeroCharacter/"
+				+ "PlayerCamera"
 			)
-		var hero_room_placeholder := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/HeroRoom/Content/Text/Placeholder"
+		) as Camera2D
+		var hero_room_hint := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/InterfaceLayer/DevelopmentHint"
 		) as Label
-		_expect(hero_room_placeholder != null, "HeroRoom has a placeholder Label")
-		if hero_room_placeholder != null:
+		_expect(hero_room_world != null, "HeroRoom has a playable World")
+		_expect(hero_room_hero != null, "HeroRoom instantiates HeroCharacter")
+		_expect(
+			hero_room_hero != null
+			and hero_room_hero.position == Vector2(1280, 720),
+			"HeroRoom places HeroCharacter at its center spawn",
+		)
+		_expect(
+			hero_room_camera != null and hero_room_camera.enabled,
+			"HeroRoom activates PlayerCamera",
+		)
+		_expect(
+			hero_room_camera != null
+			and hero_room_camera.zoom == Vector2(1.5, 1.5),
+			"HeroRoom uses its fixed camera zoom",
+		)
+		_expect(hero_room_hint != null, "HeroRoom has a development hint")
+		if hero_room_hint != null:
 			_expect(
-				hero_room_placeholder.text == EXPECTED_HERO_ROOM_PLACEHOLDER,
-				"HeroRoom displays its placeholder",
+				hero_room_hint.text == EXPECTED_HERO_ROOM_HINT,
+				"HeroRoom displays its provisional controls",
+			)
+		if hero_room != null:
+			_expect(
+				not _contains_label_text(hero_room, "Spielbarer Raum folgt"),
+				"HeroRoom removes the old placeholder",
 			)
 
 		if hero_room != null:

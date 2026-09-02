@@ -62,17 +62,21 @@ Das Hauptmenü enthält:
 
 ### `hero_room`
 
-Der Heldenraum ist die erste spielbare Szene.
+Der Heldenraum ist die erste begehbare Spielszene. Der aktuelle
+Prototypstand enthält:
 
-Hier kann der Spieler:
+- einen 2560 × 1440 Weltpixel großen, abgegrenzten Testraum,
+- die vorhandene bewegliche Heldenfigur mit 80 Weltpixel Höhe,
+- eine fest auf 1,50× eingestellte Folgekamera,
+- Kollisionen an vier Außenwänden und zwei vorläufigen Steinblöcken,
+- einen nur in Debug-Builds sichtbaren Steuerungshinweis.
 
-- die Spielfigur bewegen,
-- die Kamera testen,
-- mit einem Objekt oder dem Ratgeber interagieren,
-- den Ausgang in Richtung Turm benutzen.
+Diese Werte sind vom visuellen Testlabor unabhängig. Dessen gespeicherte
+Presets werden im Heldenraum nicht geladen.
 
-Beim Verlassen des Heldenraums wird der Weg zum Turm beziehungsweise direkt
-der vorläufige Turmabschnitt geladen.
+Ratgeber, Interaktionen und der Ausgang in Richtung Turm folgen in späteren
+Ausbauschritten. Bis das Pause-Menü existiert, führt die Zurück-Aktion
+vorläufig zum Hauptmenü.
 
 ### `tower_slice`
 

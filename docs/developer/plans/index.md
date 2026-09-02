@@ -13,6 +13,7 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 
 ## Abgeschlossene historische Pläne
 
+- [Begehbarer Heldenraum](begehbarer-heldenraum.md)
 - [Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)
 - [Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 - [Frühere Umstrukturierung der Dokumentation](etherfood-documentation-restructure.md)
