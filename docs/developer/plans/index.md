@@ -10,10 +10,10 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 ## Aktiver Plan
 
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
-- [Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)
 
 ## Abgeschlossene historische Pläne
 
+- [Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)
 - [Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 - [Frühere Umstrukturierung der Dokumentation](etherfood-documentation-restructure.md)
 - [Dokumentation des Spielablaufs](game-flow-documentation.md)

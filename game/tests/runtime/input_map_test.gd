@@ -12,6 +12,8 @@ const REQUIRED_ACTIONS: Dictionary[StringName, float] = {
 	&"gameplay_move_left": 0.2,
 	&"gameplay_move_right": 0.2,
 	&"app_pause": 0.5,
+	&"dev_diagnostics_toggle": 0.5,
+	&"dev_collision_debug_toggle": 0.5,
 }
 const DIRECTION_ACTIONS: Array[StringName] = [
 	&"ui_up",
@@ -27,6 +29,7 @@ const BUTTON_ACTIONS: Array[StringName] = [
 	&"ui_accept",
 	&"ui_cancel",
 	&"app_pause",
+	&"dev_diagnostics_toggle",
 ]
 
 var failures: PackedStringArray = []

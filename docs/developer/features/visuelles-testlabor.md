@@ -111,6 +111,11 @@ Verglichen werden:
 Der Zustandswechsel dient ausschließlich dem direkten visuellen Vergleich.
 Er benötigt weder Handlung noch Speichersystem.
 
+Die Testgrafiken sind originale, lokal reproduzierbare Prototypassets. Der
+Größenvergleich und der Weltzustandsvergleich teilen eine dunkle
+Top-down-Pixelsprache; feinere Materialpixel ersetzen reine Diagrammformen,
+ohne daraus bereits eine finale Art-Bible abzuleiten.
+
 ### 5. Diagnoseanzeigen
 
 Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
@@ -128,10 +133,14 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 Die Anzeigen machen die jeweils aktive Testkonfiguration unmittelbar
 erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
-Die Testgrafiken sind originale, lokal reproduzierbare Prototypassets. Der
-Größenvergleich und der Weltzustandsvergleich teilen eine dunkle
-Top-down-Pixelsprache; feinere Materialpixel ersetzen reine Diagrammformen,
-ohne daraus bereits eine finale Art-Bible abzuleiten.
+`F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
+FPS, Spielerposition, Kamera-, Figuren-, Tile-, Welt- und Fensterwerten.
+`F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen
+Helden-, Hindernis- und Weltgrenzen-Kollisionen. Beide Anzeigen beginnen bei
+jedem Öffnen ausgeschaltet und werden nicht in den Testlabor-Einstellungen
+gespeichert. Das Diagnosepanel aktualisiert seine Werte ungefähr alle
+0,2 Sekunden. Die Kollisionszeichnung liest die bestehenden Physikformen nur
+aus und verändert weder sie noch Godots globale Debug-Hinweise.
 
 ## Nicht enthalten
 

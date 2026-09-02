@@ -51,6 +51,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_scale_reference_test.gd",
 	"res://tests/runtime/visual_lab_tile_size_test.gd",
 	"res://tests/runtime/visual_lab_world_state_test.gd",
+	"res://tests/runtime/visual_lab_diagnostics_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]

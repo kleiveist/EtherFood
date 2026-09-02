@@ -26,6 +26,9 @@ enum WorldStatePreset {
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
+const COLLISION_DEBUG_OVERLAY_SCRIPT := preload(
+	"res://scenes/dev/collision_debug_overlay.gd"
+)
 const MAIN_MENU_ROUTE := &"main_menu"
 const SETTINGS_VERSION := 1
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
@@ -39,6 +42,9 @@ const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
 const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
+const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
+const COLLISION_DEBUG_TOGGLE_ACTION := &"dev_collision_debug_toggle"
+const DIAGNOSTICS_UPDATE_INTERVAL := 0.2
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
 const WORLD_RIGHT := 3840
@@ -66,8 +72,14 @@ const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 @onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
 @onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
 @onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
+@onready var diagnostics_panel: Panel = $InterfaceLayer/DiagnosticsPanel
+@onready var diagnostics_values: Label = $InterfaceLayer/DiagnosticsPanel/Values
+@onready var collision_debug_overlay: COLLISION_DEBUG_OVERLAY_SCRIPT = (
+	$TestWorld/CollisionDebugOverlay
+)
 
 var _navigation_requested := false
+var _diagnostics_elapsed := 0.0
 var _selected_camera_zoom: int = CameraZoomPreset.NEAR
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
@@ -82,6 +94,8 @@ func _ready() -> void:
 	player_camera.position_smoothing_enabled = false
 	player_camera.enabled = true
 	player_camera.make_current()
+	diagnostics_panel.visible = false
+	collision_debug_overlay.set_debug_visible(false)
 	resized.connect(_on_visual_lab_resized)
 	get_window().size_changed.connect(_on_main_window_size_changed)
 	_load_settings()
@@ -92,7 +106,27 @@ func _ready() -> void:
 	_update_window_size_status()
 
 
+func _process(delta: float) -> void:
+	if not diagnostics_panel.visible:
+		return
+	_diagnostics_elapsed += delta
+	if _diagnostics_elapsed < DIAGNOSTICS_UPDATE_INTERVAL:
+		return
+	_diagnostics_elapsed = 0.0
+	_update_diagnostics_values()
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(DIAGNOSTICS_TOGGLE_ACTION):
+		get_viewport().set_input_as_handled()
+		if not _is_repeated_key_event(event):
+			_toggle_diagnostics()
+		return
+	if event.is_action_pressed(COLLISION_DEBUG_TOGGLE_ACTION):
+		get_viewport().set_input_as_handled()
+		if not _is_repeated_key_event(event):
+			_toggle_collision_debug()
+		return
 	if event.is_action_pressed(ZOOM_OUT_ACTION):
 		get_viewport().set_input_as_handled()
 		_change_camera_zoom(-1)
@@ -163,6 +197,7 @@ func _apply_camera_zoom() -> void:
 		_format_camera_zoom(effective_zoom),
 		limited_suffix,
 	]
+	_refresh_diagnostics_if_visible()
 
 
 func _change_hero_size(direction: int) -> void:
@@ -185,6 +220,7 @@ func _apply_hero_size() -> void:
 		HERO_SIZE_NAMES[_selected_hero_size],
 		roundi(hero_character.get_appearance_height()),
 	]
+	_refresh_diagnostics_if_visible()
 
 
 func _change_tile_size(direction: int) -> void:
@@ -208,6 +244,7 @@ func _apply_tile_size() -> void:
 		selected_size,
 		selected_size,
 	]
+	_refresh_diagnostics_if_visible()
 
 
 func _toggle_world_state() -> void:
@@ -222,6 +259,45 @@ func _toggle_world_state() -> void:
 func _apply_world_state() -> void:
 	world_state_preview.set_world_state(_selected_world_state)
 	world_state_status.text = "Weltzustand: %s" % WORLD_STATE_NAMES[_selected_world_state]
+	_refresh_diagnostics_if_visible()
+
+
+func _toggle_diagnostics() -> void:
+	diagnostics_panel.visible = not diagnostics_panel.visible
+	_diagnostics_elapsed = 0.0
+	if diagnostics_panel.visible:
+		_update_diagnostics_values()
+
+
+func _toggle_collision_debug() -> void:
+	collision_debug_overlay.set_debug_visible(not collision_debug_overlay.visible)
+
+
+func _update_diagnostics_values() -> void:
+	var player_position := hero_character.global_position.round()
+	var tile_size := tile_grid_preview.tile_size
+	var window_size := get_window().size
+	diagnostics_values.text = "\n".join(
+		[
+			"FPS: %d" % maxi(0, roundi(Engine.get_frames_per_second())),
+			"Spieler: %d, %d" % [player_position.x, player_position.y],
+			"Kamera: %s×" % _format_camera_zoom(player_camera.zoom.x),
+			"Figur: %d px" % roundi(hero_character.get_appearance_height()),
+			"Tiles: %d × %d px" % [tile_size, tile_size],
+			"Welt: %s" % WORLD_STATE_NAMES[_selected_world_state],
+			"Fenster: %d × %d" % [window_size.x, window_size.y],
+		]
+	)
+
+
+func _refresh_diagnostics_if_visible() -> void:
+	if diagnostics_panel != null and diagnostics_panel.visible:
+		_update_diagnostics_values()
+
+
+func _is_repeated_key_event(event: InputEvent) -> bool:
+	var echo_value: Variant = event.get("echo")
+	return echo_value is bool and echo_value
 
 
 func _load_settings() -> void:
@@ -336,6 +412,7 @@ func _format_camera_zoom(zoom_value: float) -> String:
 func _update_window_size_status() -> void:
 	var window_size := get_window().size
 	window_size_status.text = "Fenster: %d × %d" % [window_size.x, window_size.y]
+	_refresh_diagnostics_if_visible()
 
 
 func _on_visual_lab_resized() -> void:

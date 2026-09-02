@@ -54,11 +54,11 @@ Leistungsmessungen jenseits der FPS und Produktionsgrafik.
 - [x] Git-Stand, Repository-Regeln, Referenzbild und aktuelle Szenen geprüft.
 - [x] Detaillierte Größen- und Weltzustandsassets erzeugt und eingebunden.
 - [x] Grafiktests und automatische Prüfungen erfolgreich.
-- [ ] Grafik-Polish committed.
-- [ ] Diagnosepanel, Eingaben und Kollisionsüberlagerung implementiert.
-- [ ] Diagnose- und Regressionstests erfolgreich.
-- [ ] Dokumentation und Abschlussprüfung aktualisiert.
-- [ ] Diagnoseänderung mit vorgegebener Nachricht committed.
+- [x] Grafik-Polish als `f9d382b` committed.
+- [x] Diagnosepanel, Eingaben und Kollisionsüberlagerung implementiert.
+- [x] Diagnose- und Regressionstests erfolgreich.
+- [x] Dokumentation und Abschlussprüfung aktualisiert.
+- [x] Diagnoseänderung mit vorgegebener Nachricht zum Commit vorbereitet.
 
 ## Erkenntnisse und Überraschungen
 
@@ -71,6 +71,10 @@ Leistungsmessungen jenseits der FPS und Produktionsgrafik.
 - Der erste Headless-Import übernahm für alle 14 neuen Weltzustands-PNGs die
   gewünschte Einstellung ohne Mipmaps. Die bestehenden Größen-, Speicher-,
   Umschalt-, Menü- und RouteHost-Tests blieben nach dem Spriteumbau grün.
+- Die Repository-Hygiene verlangt für jedes GDScript eine versionierte UID und
+  verbietet konkrete Tastenevent-Klassen im Laufzeitcode. Godot erzeugte die
+  zwei neuen UIDs; die Echo-Erkennung liest die optionale Eigenschaft deshalb
+  generisch aus dem bereits aktionsgebundenen Ereignis.
 
 ## Entscheidungen
 
@@ -90,9 +94,12 @@ Leistungsmessungen jenseits der FPS und Produktionsgrafik.
   res://tests/bootstrap_integration_test.gd`: erfolgreich.
 - `python tools/control.py check`: erfolgreich; Doctor 12/12,
   Quellstilprüfung, 175 Python-Tests und Godot-Integration bestanden.
+- Derselbe vollständige Kontrolllauf war nach Diagnoseimplementierung erneut
+  erfolgreich; der Integrationstest enthält nun die neue Diagnosesuite.
 - `git diff --check`: erfolgreich.
-- Die interaktive GUI-Prüfung bleibt aufgrund der dokumentierten
-  Containergrenze extern.
+- `godot4 --path game`: ausgeführt und mit Exitcode 1 beendet, weil
+  `libXcursor.so.1`, `libwayland-client.so.0` und ein Displayserver fehlen.
+  Die interaktive GUI-Prüfung bleibt wie vereinbart extern.
 
 ## Wiederholbarkeit und Wiederherstellung
 
@@ -103,4 +110,9 @@ Alle Änderungen erfolgen gezielt per Patch ohne destruktive Git-Befehle.
 
 ## Ergebnis und Rückblick
 
-Noch offen.
+Die Größenreferenzen und beide Debug-Weltzustände verwenden nun dieselbe
+detaillierte, originale Top-down-Pixelsprache. Die Diagnose zeigt ihre
+Laufzeitwerte flüchtig im kantigen HUD; die unabhängige Kollisionsansicht
+zeichnet die unveränderten Physikformen des Helden, des Hindernisses und der
+vier Weltgrenzen. Alle automatischen Prüfungen sind erfolgreich, während die
+echte GUI-Abnahme transparent extern bleibt.

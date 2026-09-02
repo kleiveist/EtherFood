@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://scenes/dev/visual_lab.gd" id="1_visual_lab"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/house_wall.png" id="8_house_wall"]
 [ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/large_enemy.png" id="9_large_enemy"]
 [ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/tree.png" id="10_tree"]
+[ext_resource type="Script" path="res://scenes/dev/collision_debug_overlay.gd" id="11_collision_overlay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
 size = Vector2(32, 2160)
@@ -31,6 +32,18 @@ content_margin_left = 12.0
 content_margin_top = 12.0
 content_margin_right = 12.0
 content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diagnostics_panel"]
+bg_color = Color(0.035, 0.055, 0.063, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.68, 0.53, 0.25, 1)
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
 
 [node name="VisualLab" type="Control"]
 layout_mode = 3
@@ -274,6 +287,15 @@ color = Color(0.47, 0.29, 0.22, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestWorld/TestObstacle"]
 shape = SubResource("RectangleShape2D_obstacle")
 
+[node name="CollisionDebugOverlay" type="Node2D" parent="TestWorld"]
+visible = false
+z_index = 90
+z_as_relative = false
+script = ExtResource("11_collision_overlay")
+hero_collision_path = NodePath("../HeroCharacter/CollisionShape2D")
+obstacle_collision_path = NodePath("../TestObstacle/CollisionShape2D")
+arena_bounds_path = NodePath("../ArenaBounds")
+
 [node name="HeroCharacter" parent="TestWorld" instance=ExtResource("2_hero")]
 position = Vector2(1920, 1080)
 
@@ -297,6 +319,44 @@ offset_right = 118.0
 offset_bottom = 16.0
 mouse_filter = 2
 color = Color(0.84, 0.66, 0.25, 1)
+
+[node name="DiagnosticsPanel" type="Panel" parent="InterfaceLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -390.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 304.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_diagnostics_panel")
+
+[node name="Title" type="Label" parent="InterfaceLayer/DiagnosticsPanel"]
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 348.0
+offset_bottom = 48.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.94, 0.82, 0.48, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "DIAGNOSE"
+
+[node name="Values" type="Label" parent="InterfaceLayer/DiagnosticsPanel"]
+offset_left = 18.0
+offset_top = 55.0
+offset_right = 348.0
+offset_bottom = 262.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.84, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "FPS: 0\nSpieler: 1920, 1080\nKamera: 1,50×\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nFenster: 1280 × 720"
 
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
 layout_mode = 3
@@ -460,6 +520,23 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "V / Controller-A: Zustand wechseln"
+
+[node name="DiagnosticsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DiagnosticsHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "F3 / Select: Diagnose"
+
+[node name="CollisionDebugHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "F4: Kollisionsflächen"
 
 [node name="SettingsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
 custom_minimum_size = Vector2(0, 6)
