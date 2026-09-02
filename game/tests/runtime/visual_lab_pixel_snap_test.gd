@@ -186,20 +186,36 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"enabling pixel snap does not round the logical hero position",
 	)
 	_expect(
-		_is_on_grid(hero_visual.global_position, visual_lab._pixel_snap_world_grid_step()),
+		_is_on_grid(
+			hero_visual.global_position
+			- visual_lab._pixel_snap_world_phase_bias() * 2.0,
+			visual_lab._pixel_snap_world_grid_step(),
+		),
 		"enabling pixel snap aligns only the rendered hero to the output grid",
 	)
 	_expect(
-		_is_on_grid(camera.global_position, visual_lab._pixel_snap_world_grid_step()),
+		_is_on_grid(
+			camera.global_position - visual_lab._pixel_snap_world_phase_bias(),
+			visual_lab._pixel_snap_world_grid_step(),
+		),
 		"enabling pixel snap aligns the camera target to the same output grid",
 	)
 	_expect(
-		camera.top_level and hero_visual.top_level,
-		"pixel snap separates only the visual anchors from fractional parent transforms",
+		camera.top_level == original_camera_top_level
+		and hero_visual.top_level == original_visual_top_level,
+		"pixel snap keeps camera and hero visual in their shared world hierarchy",
 	)
 	_expect(
 		diagnostics.text.contains("Pixel-Snap: AN"),
 		"diagnostics immediately show pixel snap on",
+	)
+	_expect(
+		diagnostics.text.contains("Viewport-Transform-Snap: AUS"),
+		"diagnostics expose the intentionally disabled per-item transform snap",
+	)
+	_expect(
+		diagnostics.text.contains("Rasterphase: 0,25 Ausgabepixel"),
+		"diagnostics expose the stable output-pixel phase",
 	)
 	_expect_saved_pixel_snap(true)
 
@@ -257,20 +273,44 @@ func _expect_motion_contract(
 ) -> void:
 	hero.position = Vector2(1800.25, 1000.5)
 	await tree.physics_frame
+	visual_lab._update_pixel_snap_render_alignment()
 	camera.force_update_scroll()
 	var hero_start := hero.global_position
 	var camera_start := camera.global_position
 
-	await _hold_action_for_physics_frames(tree, &"gameplay_move_right", 4)
+	var movement_frame_count := 4
+	if expected_pixel_snap:
+		var grid_step: Vector2 = visual_lab._pixel_snap_world_grid_step()
+		var movement_per_frame := hero.move_speed / Engine.physics_ticks_per_second
+		movement_frame_count = maxi(
+			movement_frame_count,
+			ceili(grid_step.x / movement_per_frame) + 2,
+		)
+	await _hold_action_for_physics_frames(
+		tree,
+		&"gameplay_move_right",
+		movement_frame_count,
+	)
 	await tree.process_frame
+	visual_lab._update_pixel_snap_render_alignment()
 	var hero_movement := hero.global_position - hero_start
 	var camera_movement := camera.global_position - camera_start
 	_expect(hero_movement.x > 0.0, "%s: hero movement still works" % description)
 	if expected_pixel_snap:
 		var grid_step: Vector2 = visual_lab._pixel_snap_world_grid_step()
+		var stretch_scale := hero.get_viewport().get_stretch_transform().get_scale()
+		var output_camera_movement := camera_movement * camera.zoom * Vector2(
+			absf(stretch_scale.x),
+			absf(stretch_scale.y),
+		)
 		_expect(
 			camera_movement.x > 0.0,
 			"%s: aligned camera still follows the hero" % description,
+		)
+		_expect(
+			absf(output_camera_movement.x - roundf(output_camera_movement.x))
+			< 0.001,
+			"%s: camera movement stays on whole output pixels" % description,
 		)
 		_expect(
 			absf(camera.global_position.x - hero.global_position.x)
@@ -280,8 +320,11 @@ func _expect_motion_contract(
 		var hero_visual := hero.get_node_or_null("Visual") as Node2D
 		_expect(
 			hero_visual != null
-			and hero_visual.global_position.is_equal_approx(camera.global_position),
-			"%s: hero visual and camera use the same render anchor" % description,
+			and (
+				hero_visual.global_position - camera.global_position
+			).distance_to(visual_lab._pixel_snap_world_phase_bias())
+			< 0.001,
+			"%s: hero visual keeps a stable output-pixel phase" % description,
 		)
 	else:
 		_expect(
@@ -290,8 +333,8 @@ func _expect_motion_contract(
 		)
 	_expect(camera.enabled and camera.is_current(), "%s: camera remains active" % description)
 	_expect(
-		hero.get_viewport().snap_2d_transforms_to_pixel == expected_pixel_snap,
-		"%s: viewport exposes the selected state" % description,
+		not hero.get_viewport().snap_2d_transforms_to_pixel,
+		"%s: viewport avoids independently rounding world items" % description,
 	)
 
 	hero.position = Vector2(2268.25, 1080.5)
@@ -322,8 +365,8 @@ func _expect_pixel_snap_state(
 		"%s: menu toggle state" % description,
 	)
 	_expect(
-		visual_lab.get_viewport().snap_2d_transforms_to_pixel == expected_enabled,
-		"%s: runtime viewport state" % description,
+		not visual_lab.get_viewport().snap_2d_transforms_to_pixel,
+		"%s: global transform snap remains disabled" % description,
 	)
 	_expect(
 		not visual_lab.get_viewport().snap_2d_vertices_to_pixel,
@@ -332,33 +375,15 @@ func _expect_pixel_snap_state(
 
 
 func _expect_output_grid_matrix(visual_lab: Control) -> void:
-	_expect(
-		is_equal_approx(visual_lab._world_grid_step_for_output_scale(1.0), 1.0),
-		"integer 1.00 output scale uses single-world-pixel steps",
-	)
-	_expect(
-		is_equal_approx(visual_lab._world_grid_step_for_output_scale(1.5), 2.0),
-		"fractional 1.50 output scale uses the exact two-world-pixel grid",
-	)
-	_expect(
-		is_equal_approx(
-			visual_lab._world_grid_step_for_output_scale(2.0 / 3.0),
-			3.0,
-		),
-		"two-thirds window scaling uses the exact three-world-pixel grid",
-	)
-	_expect(
-		is_equal_approx(visual_lab._world_grid_step_for_output_scale(0.75), 4.0),
-		"fractional 0.75 output scale uses the exact four-world-pixel grid",
-	)
-	_expect(
-		visual_lab._least_common_multiple(2, 1) == 2,
-		"1.50 camera zoom keeps its two-world-pixel grid after integer scaling",
-	)
-	_expect(
-		visual_lab._least_common_multiple(1, 3) == 3,
-		"1.00 camera zoom adopts the three-world-pixel two-thirds output grid",
-	)
+	for output_scale in [1.0, 1.5, 2.0 / 3.0, 0.75]:
+		var world_step: float = visual_lab._world_grid_step_for_output_scale(
+			output_scale
+		)
+		_expect(
+			is_equal_approx(world_step * output_scale, 1.0),
+			"output scale %.3f advances by exactly one output pixel"
+			% output_scale,
+		)
 
 
 func _is_on_grid(position: Vector2, grid_step: Vector2) -> bool:

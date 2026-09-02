@@ -53,38 +53,49 @@ Pixel-Snap war damit noch nicht abschließend abgenommen. Der Fehler trat bei
 `1280 × 720` durch dessen Skalierung von zwei Dritteln effektiv auf
 `1,00 ×` Ausgabeskalierung kam und ruhig wirkte.
 
-Die Untersuchung zeigte zwei getrennte Raster. Godot rundete die lokalen
-CanvasItem-Transformationen, der nicht ganzzahlige Kamerazoom bildete diese
-gerundeten Weltpositionen jedoch abwechselnd auf ganze und halbe
-Ausgabepixel ab. Kamera und Heldenbild verwendeten dadurch bei Bewegung nicht
-immer dieselbe Rasterphase.
+Die erste Korrektur rundete nicht die physische Position des
+`CharacterBody2D`, sondern koppelte Heldenbild und Kamera auf einem groben
+Weltpixelraster. Zusätzlich blieb Godots globales Transform-Snap aktiv. Der
+anschließende praktische Nachtest hat diese Lösung am selben Tag verworfen:
 
-Die Korrektur rundet nicht die physische Position des `CharacterBody2D`.
-Stattdessen erhalten Heldenbild und Kamera im Pixel-Snap-Modus einen
-gemeinsamen, rein visuellen Anker. Dessen Schrittweite wird als kleinstes
-gemeinsames Raster aus Kamerazoom und Fensterskalierung bestimmt. Vertex-Snap
-bleibt dabei ausdrücklich AUS und Kamera-Smoothing bleibt AUS.
+| Einstellung | Praktischer Gegenbefund | Status |
+|---|---|---|
+| `1,00×`, Pixel-Snap AN | Welt schimmert und flackert bei Bewegung stark | nicht bestanden |
+| `1,50×`, Pixel-Snap AN | Welt schimmert und flackert bei Bewegung stark | nicht bestanden |
+| Pixel-Snap AUS | Kanten flackern wie vor der Korrektur | nicht bestanden |
+| Heldenanzeige | bleibt gegenüber der Kamera fixiert | Teilproblem gelöst |
 
-Die Wiederholungsprüfung umfasste echte horizontale, vertikale und diagonale
+Die Bildanalyse hatte zwar gleich ausgerichtete Einzelmuster verglichen, aber
+die ungleichmäßige zeitliche Bewegung nicht ausreichend bewertet. Das grobe
+Raster erzeugte bei `1,50 ×` beispielsweise eine `6/6/3`-Pixel-Kadenz. Das
+globale Transform-Snap rundete zudem verschachtelte Weltobjekte unabhängig
+voneinander. Beides erklärt, warum AN im direkten Spieltest unruhiger wirkte.
+
+Die zweite Korrektur verwendet deshalb ein gemeinsames, rein visuelles Raster
+von genau einem Ausgabepixel. Seine Weltweite wird aus Kamerazoom und
+Fensterskalierung berechnet. Kamera und Heldenbild bleiben in ihrer
+vorhandenen Hierarchie; Viewport-Transform-Snap, Vertex-Snap und
+Kamera-Smoothing bleiben AUS. Eine feste Viertelpixelphase hält Kanten von der
+numerisch instabilen Rundungsgrenze fern; bei Nearest-Neighbor bleibt sie ohne
+weiche Zwischenpixel. Bewegung, `move_and_slide()` und Kollision bleiben
+unverändert.
+
+Die automatisierte Wiederholung umfasst horizontale, vertikale und diagonale
 Bewegung sowie getrennt verfolgte Ausschnitte für Held, Tilefläche und
 Weltobjekte:
 
-| Einstellung | Ergebnis nach Korrektur | Status |
+| Einstellung | Technisches Ergebnis der zweiten Korrektur | Status |
 |---|---|---|
-| `1,00×`, Pixel-Snap AN, Nearest | Held und Weltmuster bleiben rasterstabil | bestanden |
-| `1,00×`, Pixel-Snap AUS, Nearest | freier Vergleich bleibt möglich | bestanden |
-| `1,50×`, Pixel-Snap AN, Nearest | kein wechselndes Heldenmuster mehr | bestanden |
-| `1,50×`, Pixel-Snap AUS, Nearest | Flackern bei 1920 × 1080 reproduzierbar | Vergleich bestätigt |
-| Fenster 1920 × 1080 | rationales Zwei-Weltpixel-Raster bei 1,50× | bestanden |
-| Fenster 1280 × 720 | interne und ausgegebene Rasterphase stabil | bestanden |
+| `1,00×`, Pixel-Snap AN, Nearest | ganze Ausgabepixelschritte; Muster stabil | Sichttest offen |
+| `1,50×`, Pixel-Snap AN, Nearest | kleinste 5-/6-Pixel-Kadenz; Muster stabil | Sichttest offen |
+| Pixel-Snap AUS, Nearest | unveränderte freie Vergleichsbewegung | bekannte Kantenunruhe |
+| Fenster 1920 × 1080 | keine grobe 3-/6-Pixel-Kadenz mehr | Sichttest offen |
+| Fenster 1280 × 720 | Fensterskalierung im Ausgaberaster berücksichtigt | Sichttest offen |
 
-Pixel-Snap AN ist nach der technischen Wiederholung die ruhigere Variante.
-Bei `1,50 ×` entstehen durch das notwendige Zwei-Weltpixel-Raster weiterhin
-diskrete 3- beziehungsweise 6-Ausgabepixel-Schritte. Es gibt kein zusätzliches
-Hin-und-Her-Springen der Kamera und keine wechselnde Heldenkontur; die
-Rasterkadenz selbst bleibt als erwartete Folge des nicht ganzzahligen Zooms
-sichtbar. Ob `1,50 ×` als Profil für kleine Innenräume endgültig freigegeben
-wird, entscheidet erst Aufgabe 20 zusammen mit Maßstab und Referenzauflösung.
+Aufgabe 17 bleibt nach dem Gegenbefund offen. Erst der erneute direkte
+Bewegungstest entscheidet, ob Pixel-Snap AN ruhiger ist und ob die Regel für
+Held, Kamera und Welt empfohlen werden kann. Über die endgültige Freigabe von
+`1,50 ×` als Profil für kleine Innenräume entscheidet weiterhin Aufgabe 20.
 
 Der angezeigte Weltzustand `Beschädigt` bezeichnet ausschließlich den Zustand
 des jeweiligen Tests. Beschädigte und wiederhergestellte Welt bleiben
@@ -100,7 +111,7 @@ in einer gemeinsamen Einstellungsdatei verbindlich gemacht:
 |---|---|---|
 | Figur `80 px` | globaler Figurenmaßstab | Darstellungsgrundlage V0 in Aufgabe 20 |
 | Tiles `32 × 32 px` | globales Weltraster | Darstellungsgrundlage V0 in Aufgabe 20 |
-| Pixel-Snap `AN` | globale Renderingregel | später `project.godot` |
+| Pixel-Snap `AN` / `AUS` | offene globale Renderingregel | nach erfolgreichem Sichttest später `project.godot` |
 | Nearest-Neighbor | bevorzugter Filterkandidat | nach Abschluss von Aufgabe 18 später `project.godot` |
 | Kamera `1,00×` / `1,50×` | szenenabhängiges Kameraprofil | CameraProfile-Ressourcen in Aufgabe 20 |
 | Welt `Beschädigt` | aktueller Spiel- oder Testzustand | keine feste Darstellungsregel |
@@ -183,11 +194,13 @@ Wechsel direkt während der Bewegung. Der boolesche Zustand wird gemeinsam mit
 den vorhandenen Testwert-Presets gespeichert und beim nächsten Öffnen geladen.
 Ältere Version-1-Dateien ohne den Schlüssel bleiben gültig und verwenden AUS.
 
-Der Schalter setzt ausschließlich den Transform-Snap des aktiven Viewports.
-Logische Positionen, Bewegung, Kollisionsformen und Kameragrenzen werden nicht
-gerundet. Beim Verlassen des Testlabors wird die vorherige Viewport-Einstellung
-wiederhergestellt. In der Diagnose bleiben Heldenposition, tatsächliches
-Kamerazentrum und Weltanker mit zwei Nachkommastellen getrennt sichtbar.
+Der Schalter rastert ausschließlich die visuellen Positionen von Kamera und
+Heldenbild auf ganze Ausgabepixelschritte. Das globale Viewport-Transform-Snap
+bleibt AUS, damit verschachtelte Weltobjekte nicht unabhängig voneinander
+gerundet werden. Logische Positionen, Bewegung, Kollisionsformen und
+Kameragrenzen werden nicht verändert. Beim Verlassen des Testlabors werden die
+vorherigen Viewport-Einstellungen wiederhergestellt. In der Diagnose bleiben
+rohe und gerasterte Positionen getrennt sichtbar.
 
 Der erste Vergleich nur bei `1280 × 720` reichte für die Abnahme nicht aus,
 weil die Fensterskalierung dort den Kamerazoom `1,50 ×` zu einer ganzzahligen
@@ -195,17 +208,17 @@ Ausgabeskalierung machte. Der korrigierte Vergleich prüft deshalb zusätzlich
 `1920 × 1080` und echte Bewegung in drei Richtungen. Details und der
 chronologische Ausgangsbefund stehen unter
 [Laufende Testergebnisse](#laufende-testergebnisse). Für den derzeitigen
-Prototyp gilt folgende Versuchsempfehlung:
+Prototyp gilt nach dem praktischen Gegenbefund noch keine Freigabe:
 
-| Bereich | Empfehlung | Begründung |
+| Bereich | Status | Offene Prüfung |
 |---|---|---|
-| Held | AN | Der visuelle Anker bleibt stabil; die physische Position wird nicht gerundet. |
-| Kamera | AN mit gemeinsamem Darstellungsraster | Kein Phasenwechsel; die diskrete Kadenz bei 1,50× bleibt sichtbar. |
-| Welt | AN | Tiles und feste Weltobjekte behalten beim Kameraschwenk ihre Rasterphase. |
+| Held | erneut prüfen | Kontur und Bildschirmphase bei Bewegung beobachten. |
+| Kamera | erneut prüfen | Gleichmäßigkeit bei 1,00× und 1,50× vergleichen. |
+| Welt | erneut prüfen | Tiles, Objektkanten und beide Weltzustände beobachten. |
 
-Das legt weder Kamerazoom noch Maßstab verbindlich fest. Die globale
-Pixel-Snap-Regel wird erst mit der Darstellungsgrundlage V0 in das Projekt
-übernommen.
+Das legt weder Pixel-Snap, Kamerazoom noch Maßstab verbindlich fest. Eine
+globale Pixel-Snap-Regel darf erst nach erfolgreichem Sichttest und mit der
+Darstellungsgrundlage V0 in das Projekt übernommen werden.
 
 #### Texturfilter-Vergleich
 
@@ -298,9 +311,9 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 ```text
 - Kollisionsformen
 - aktuelle FPS
-- rohe und gerundete Spielerkoordinaten
+- rohe Spielerkoordinaten und gerasterte Heldenanzeige
 - rohe und gerasterte Kameraposition, tatsächliches Kamerazentrum und Weltanker
-- Kameraprofil und Fensterskalierung
+- Kameraprofil, Darstellungsraster, Rasterphase und Fensterskalierung
 - aktueller Kamerazoom
 - gewählte Tilegröße
 - gewählte Figurengröße
@@ -313,10 +326,11 @@ Die Anzeigen machen die jeweils aktive Testkonfiguration unmittelbar
 erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
 `F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
-FPS, rohen und gerundeten Heldenpositionen, rohem und gerastertem Kameraziel,
-tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Figuren-, Tile-,
-Weltzustands-, Pixel-Snap-, Vertex-Snap-, Darstellungsraster-, Texturfilter-,
-Fenster- und Fensterskalierungswerten.
+FPS, roher Heldenposition, gerasterter Heldenanzeige, rohem und gerastertem
+Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Figuren-,
+Tile-, Weltzustands-, Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-,
+Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
+Fensterskalierungswerten.
 `F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen
 Helden-, Hindernis- und Weltgrenzen-Kollisionen. Beide Anzeigen beginnen bei
 jedem Öffnen ausgeschaltet und werden nicht in den Testlabor-Einstellungen

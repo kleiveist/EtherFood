@@ -53,8 +53,7 @@ const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
 const COLLISION_DEBUG_TOGGLE_ACTION := &"dev_collision_debug_toggle"
 const CONTROLS_TOGGLE_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_UPDATE_INTERVAL := 0.2
-const PIXEL_GRID_MAX_DENOMINATOR := 16
-const PIXEL_GRID_ALIGNMENT_TOLERANCE := 0.001
+const OUTPUT_PIXEL_PHASE_BIAS := 0.25
 const WORLD_LEFT := 0
 const WORLD_TOP := 0
 const WORLD_RIGHT := 3840
@@ -353,7 +352,7 @@ func _set_pixel_snap_enabled(pixel_snap_enabled: bool) -> void:
 
 
 func _apply_pixel_snap() -> void:
-	_pixel_snap_viewport.snap_2d_transforms_to_pixel = _pixel_snap_enabled
+	_pixel_snap_viewport.snap_2d_transforms_to_pixel = false
 	_pixel_snap_viewport.snap_2d_vertices_to_pixel = false
 	_update_pixel_snap_render_alignment()
 	pixel_snap_button.button_pressed = _pixel_snap_enabled
@@ -446,12 +445,12 @@ func _update_diagnostics_values() -> void:
 		[
 			"FPS: %d" % maxi(0, roundi(Engine.get_frames_per_second())),
 			"Spielerposition roh: %s" % _format_diagnostic_position(player_position),
-			"Spielerposition gerundet: %s"
-			% _format_rounded_diagnostic_position(rendered_player_position),
+			"Spieleranzeige gerastert: %s"
+			% _format_diagnostic_position(rendered_player_position),
 			"Kameraposition roh: %s"
 			% _format_diagnostic_position(raw_camera_position),
 			"Kameraposition gerastert: %s"
-			% _format_rounded_diagnostic_position(rendered_camera_position),
+			% _format_diagnostic_position(rendered_camera_position),
 			"Kamerazentrum: %s" % _format_diagnostic_position(camera_position),
 			"Weltanker: %s" % _format_diagnostic_position(world_position),
 			"Kameraprofil: %s" % CAMERA_PROFILE_NAMES[_selected_camera_zoom],
@@ -460,9 +459,16 @@ func _update_diagnostics_values() -> void:
 			"Tiles: %d × %d px" % [tile_size, tile_size],
 			"Welt: %s" % WORLD_STATE_NAMES[_selected_world_state],
 			"Pixel-Snap: %s" % _pixel_snap_name(),
+			"Viewport-Transform-Snap: %s"
+			% (
+				"AN"
+				if _pixel_snap_viewport.snap_2d_transforms_to_pixel
+				else "AUS"
+			),
 			"Vertex-Snap: %s"
 			% ("AN" if _pixel_snap_viewport.snap_2d_vertices_to_pixel else "AUS"),
 			"Darstellungsraster: %s" % _pixel_snap_grid_name(),
+			"Rasterphase: %s" % _pixel_snap_phase_name(),
 			"Texturfilter: %s" % _texture_filter_name(),
 			"Fenster: %d × %d" % [window_size.x, window_size.y],
 			"Fensterskalierung: %s" % _format_stretch_scale(stretch_scale),
@@ -630,10 +636,6 @@ func _format_position_component(value: float) -> String:
 	return ("%.3f" % value).replace(".", ",")
 
 
-func _format_rounded_diagnostic_position(position: Vector2) -> String:
-	return "x=%d · y=%d" % [roundi(position.x), roundi(position.y)]
-
-
 func _pixel_snap_name() -> String:
 	return "AN" if _pixel_snap_enabled else "AUS"
 
@@ -656,71 +658,46 @@ func _update_pixel_snap_render_alignment() -> void:
 		return
 
 	var world_grid_step := _pixel_snap_world_grid_step()
+	var world_phase_bias := _pixel_snap_world_phase_bias()
 	var raw_camera_position := hero_character.to_global(_initial_camera_position)
 	var raw_visual_position := hero_character.to_global(_initial_hero_visual_position)
 	var rendered_camera_position := _snap_position_to_grid(
-		raw_camera_position,
+		raw_camera_position - world_phase_bias,
 		world_grid_step,
+	) + world_phase_bias
+	var rendered_visual_position := (
+		rendered_camera_position
+		+ raw_visual_position
+		- raw_camera_position
+		+ world_phase_bias
 	)
-	var rendered_visual_position := _snap_position_to_grid(
-		raw_visual_position,
-		world_grid_step,
-	)
-	player_camera.top_level = true
-	hero_visual.top_level = true
-	player_camera.global_position = rendered_camera_position
-	hero_visual.global_position = rendered_visual_position
+	player_camera.top_level = _initial_camera_top_level
+	hero_visual.top_level = _initial_hero_visual_top_level
+	player_camera.position = hero_character.to_local(rendered_camera_position)
+	hero_visual.position = hero_character.to_local(rendered_visual_position)
 	player_camera.force_update_scroll()
 
 
 func _pixel_snap_world_grid_step() -> Vector2:
 	var stretch_scale := _pixel_snap_viewport.get_stretch_transform().get_scale()
-	var camera_grid_step := Vector2i(
-		roundi(_world_grid_step_for_output_scale(player_camera.zoom.x)),
-		roundi(_world_grid_step_for_output_scale(player_camera.zoom.y)),
-	)
-	var output_grid_step := Vector2i(
-		roundi(
-			_world_grid_step_for_output_scale(
-				player_camera.zoom.x * absf(stretch_scale.x)
-			)
-		),
-		roundi(
-			_world_grid_step_for_output_scale(
-				player_camera.zoom.y * absf(stretch_scale.y)
-			)
-		),
-	)
 	return Vector2(
-		_least_common_multiple(camera_grid_step.x, output_grid_step.x),
-		_least_common_multiple(camera_grid_step.y, output_grid_step.y),
+		_world_grid_step_for_output_scale(
+			player_camera.zoom.x * absf(stretch_scale.x)
+		),
+		_world_grid_step_for_output_scale(
+			player_camera.zoom.y * absf(stretch_scale.y)
+		),
 	)
 
 
 func _world_grid_step_for_output_scale(output_scale: float) -> float:
 	if output_scale <= 0.0:
 		return 1.0
-	for denominator in range(1, PIXEL_GRID_MAX_DENOMINATOR + 1):
-		var scaled_value := output_scale * float(denominator)
-		if absf(scaled_value - roundf(scaled_value)) <= PIXEL_GRID_ALIGNMENT_TOLERANCE:
-			return float(denominator)
-	return 1.0
+	return 1.0 / output_scale
 
 
-func _least_common_multiple(left: int, right: int) -> int:
-	var first := maxi(1, left)
-	var second := maxi(1, right)
-	return first * second / _greatest_common_divisor(first, second)
-
-
-func _greatest_common_divisor(left: int, right: int) -> int:
-	var first := absi(left)
-	var second := absi(right)
-	while second != 0:
-		var remainder := first % second
-		first = second
-		second = remainder
-	return maxi(1, first)
+func _pixel_snap_world_phase_bias() -> Vector2:
+	return _pixel_snap_world_grid_step() * OUTPUT_PIXEL_PHASE_BIAS
 
 
 func _snap_position_to_grid(position: Vector2, grid_step: Vector2) -> Vector2:
@@ -734,7 +711,14 @@ func _pixel_snap_grid_name() -> String:
 	if not _pixel_snap_enabled:
 		return "frei"
 	var grid_step := _pixel_snap_world_grid_step()
-	return "%d × %d Weltpixel" % [roundi(grid_step.x), roundi(grid_step.y)]
+	return "%s × %s Weltpixel" % [
+		_format_position_component(grid_step.x),
+		_format_position_component(grid_step.y),
+	]
+
+
+func _pixel_snap_phase_name() -> String:
+	return "0,25 Ausgabepixel" if _pixel_snap_enabled else "frei"
 
 
 func _format_stretch_scale(stretch_scale: Vector2) -> String:

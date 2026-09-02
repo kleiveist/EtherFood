@@ -206,8 +206,8 @@ func _expect_diagnostic_values(
 		"diagnostics show current player coordinates",
 	)
 	_expect(
-		values.text.contains("Spielerposition gerundet: "),
-		"diagnostics show the separate rounded player position",
+		values.text.contains("Spieleranzeige gerastert: "),
+		"diagnostics show the separate rasterized player display position",
 	)
 	_expect(player_camera != null, "diagnostics retain the player camera")
 	if player_camera != null:
@@ -244,10 +244,18 @@ func _expect_diagnostic_values(
 	_expect(values.text.contains("Tiles: 32 × 32 px"), "diagnostics show initial tile size")
 	_expect(values.text.contains("Welt: Beschädigt"), "diagnostics show initial world state")
 	_expect(values.text.contains("Pixel-Snap: AUS"), "diagnostics show initial pixel snap")
+	_expect(
+		values.text.contains("Viewport-Transform-Snap: AUS"),
+		"diagnostics show that per-item transform snap stays off",
+	)
 	_expect(values.text.contains("Vertex-Snap: AUS"), "diagnostics show vertex snap off")
 	_expect(
 		values.text.contains("Darstellungsraster: frei"),
 		"diagnostics show that the initial render grid is unsnapped",
+	)
+	_expect(
+		values.text.contains("Rasterphase: frei"),
+		"diagnostics show that the initial output-pixel phase is free",
 	)
 	_expect(
 		values.text.contains("Texturfilter: Nearest-Neighbor"),

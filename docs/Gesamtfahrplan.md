@@ -87,7 +87,7 @@ In dieser Phase wird noch kein vollständiger Grasland-Abschnitt gebaut. Zuerst 
 |    Nr. | Aufgabe                        | Ziel und Abschlusskriterium                                                                                                                | Status |
 | -----: | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | :----: |
 | **16** | **🔍 Diagnoseanzeige**         | FPS, Spielerposition, Kameraposition, Tilegröße, Figurengröße, Zoom, Kollisionsflächen und aktive Testeinstellungen werden live angezeigt. |   ✅   |
-|     17 | 📐 Pixel-Snap testen           | Darstellung und Bewegung mit und ohne Pixel-Snap vergleichen und Probleme dokumentieren.                                                   |    ✅   |
+|     17 | 📐 Pixel-Snap testen           | Darstellung und Bewegung mit und ohne Pixel-Snap vergleichen und Probleme dokumentieren.                                                   |    🔵   |
 |     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    🟡   |
 |     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand vergleichen.                                                                |    🟡   |
 |     20 | 📏 Maßstab V0 festlegen        | Heldenhöhe, Tilegröße, Kamera-Zoom und Referenzauflösung verbindlich auswählen.                                                            |    🟡   |

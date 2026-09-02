@@ -6,20 +6,22 @@
 ## Zweck und Gesamtbild
 
 Das visuelle Testlabor besitzt einen umschaltbaren Pixel-Snap-Vergleich. Der
-Plan wurde am 2. September 2026 wieder geöffnet, nachdem die erste Abnahme den
-Kamerazoom `1,50 ×` nur im effektiv ganzzahlig skalierten Fenster geprüft
-hatte. Der reproduzierte Phasenwechsel der Heldenfigur bei `1920 × 1080` wird
-behoben, ohne Physik oder Kollision zu runden. Held, Kamera und Welt bleiben
-getrennt beobachtbar.
+Plan wurde am 2. September 2026 erneut geöffnet, nachdem der praktische
+Nachtest die erste Korrektur widerlegt hatte: Der Held war zwar stabiler, die
+Welt schimmerte mit Pixel-Snap bei `1,00 ×` und `1,50 ×` aber deutlich stärker.
+Die Rasterung wird deshalb auf kleinste Ausgabepixelschritte umgestellt, ohne
+Physik oder Kollision zu runden. Held, Kamera und Welt bleiben getrennt
+beobachtbar.
 
 ## Ausgangslage
 
 Schalter, Tastenkürzel, Diagnose und Preset-Persistenz waren bereits
-umgesetzt. Bei `1,00 ×` zeigte sich kein Flackern. Bei `1,50 ×` wechselte die
-Heldenfigur während echter Bewegung bei `1920 × 1080` jedoch zwischen
-mehreren Pixelmustern. Im Fenster `1280 × 720` wurde dieser Fehler verdeckt,
-weil die Fensterskalierung von zwei Dritteln zusammen mit dem Kamerazoom eine
-Ausgabeskalierung von `1,00 ×` ergab.
+umgesetzt. Die erste Korrektur koppelte Kamera und Heldenbild auf einem groben
+Weltpixelraster und aktivierte zusätzlich Godots globales Transform-Snap. Der
+Nachtest zeigte zwei Probleme: Die Kamera sprang je nach Zoom in unnötig
+großen Schritten, und verschachtelte Weltobjekte wurden getrennt gerundet.
+Pixel-Snap AN wirkte dadurch unruhiger als AUS. Bei AUS blieb das ursprüngliche
+Kantenflackern bestehen.
 
 ## Umfang und Nicht-Ziele
 
@@ -39,15 +41,17 @@ Aufgabe noch nicht verbindlich festgelegt.
 
 1. Im `F5`-Menü einen fokussier- und anklickbaren AN/AUS-Schalter ergänzen und
    ein freies Tastenkürzel konfigurieren.
-2. Ausschließlich den Transform-Snap des aktiven Viewports umschalten und den
-   vorherigen Viewport-Zustand beim Verlassen wiederherstellen.
+2. Pixel-Snap als gemeinsamen visuellen Kameraanker umschalten, globales
+   Transform- und Vertex-Snap im Testlabor ausgeschaltet lassen und die
+   vorherigen Viewport-Zustände beim Verlassen wiederherstellen.
 3. Den booleschen Wert rückwärtskompatibel im vorhandenen Version-1-Preset
    speichern und beim Öffnen anwenden.
-4. Diagnose um rohe und gerundete Heldenposition, rohes und gerastertes
-   Kameraziel, tatsächliches Kamerazentrum, Kameraprofil, Vertex-Snap,
-   Darstellungsraster und Fensterskalierung ergänzen.
-5. Kamera und Heldenbild im Modus AN auf dasselbe rationale Raster ausrichten,
-   während der `CharacterBody2D` seine Fließkommaposition behält.
+4. Diagnose um rohe und gerasterte Heldenanzeige, rohes und gerastertes
+   Kameraziel, tatsächliches Kamerazentrum, Kameraprofil, beide
+   Viewport-Snap-Zustände, Darstellungsraster und Fensterskalierung ergänzen.
+5. Kamera und Heldenbild im Modus AN im gemeinsamen Weltzweig auf ein Raster
+   von genau einem Ausgabepixel ausrichten, während der `CharacterBody2D`
+   seine Fließkommaposition behält.
 6. Menü-, Eingabe-, Speicher-, Bewegungs-, Kollisions-, Kamera- und
    Regressionstests ergänzen und die schnellsten Prüfungen zuerst ausführen.
 7. Beide Varianten bei `1,00 ×` und `1,50 ×` sowie 1280 × 720 und
@@ -64,9 +68,18 @@ Aufgabe noch nicht verbindlich festgelegt.
 - [x] Rein visuelle Rasterausrichtung ohne Änderung der Physik umgesetzt.
 - [x] Diagnose und aufgabenbezogene Laufzeittests erweitert.
 - [x] Held, Tiles und Weltobjekte bei echter Bewegung getrennt geprüft.
-- [x] Vollständigen Standardlauf nach der Korrektur erfolgreich ausgeführt.
-- [x] Dokumentation und Aufgabenstatus abschließend geprüft.
-- [x] Vorgesehenen Korrektur-Commit erstellt.
+- [x] Vollständigen Standardlauf nach der ersten Korrektur ausgeführt.
+- [x] Dokumentation und Aufgabenstatus der ersten Korrektur geprüft.
+- [x] Ersten Korrektur-Commit erstellt.
+- [x] Praktischen Gegenbefund zur ersten Korrektur aufgenommen und Aufgabe
+  erneut geöffnet.
+- [x] Grobes Weltpixelraster und globales Transform-Snap durch ein
+  Ausgabepixelraster ersetzt.
+- [x] Automatisierte Bewegungsbilder und Laufzeittests erneut ausgeführt.
+- [x] Vollständigen Standardlauf der zweiten Korrektur auf sauberem
+  Commit-Stand ausgeführt.
+- [ ] Korrigierte Variante praktisch bei `1,00 ×` und `1,50 ×` nachprüfen.
+- [ ] Aufgabe erst nach bestätigtem Sichttest wieder abschließen.
 
 ## Erkenntnisse und Überraschungen
 
@@ -81,43 +94,65 @@ Aufgabe noch nicht verbindlich festgelegt.
 - Bei 1920 × 1080 wechselte der Held mit Pixel-Snap und `1,50 ×` während
   horizontaler Bewegung zwischen fünf messbar unterschiedlichen
   Rastermustern.
-- Godots Transform-Snap rundet lokale CanvasItem-Transformationen einzeln.
-  Bei nicht ganzzahligem Zoom können Kameraübersetzung und gerundete
-  Weltposition dadurch verschiedene Rasterphasen verwenden.
-- Ein gemeinsamer rationaler Darstellungsanker stabilisierte die Figur. Eine
-  seltene Abweichung auf exakten Halbpositionen verschwand erst, nachdem
-  Kamera und Heldenbild im Pixel-Snap-Modus als Top-Level-Darstellungsanker
-  von der weiterhin fraktionalen Elternposition getrennt wurden.
-- Die getrennten Bildfolgen für Held, Tilefläche und Weltobjekte zeigen nach
-  der Korrektur bei Pixel-Snap AN eine konstante Rasterphase. Ohne Pixel-Snap
-  bleibt der ursprüngliche Vergleich sichtbar.
+- Der erste gemeinsame Darstellungsanker stabilisierte zwar die Figur, zwang
+  die Kamera bei `1,50 ×` aber in eine sichtbare `6/6/3`-Pixel-Kadenz. Der
+  praktische Nachtest bewertete dieses Ergebnis zu Recht als Verschlechterung.
+- Das globale Transform-Snap rundet lokale CanvasItem-Transformationen
+  einzeln. Es eignet sich hier nicht zusätzlich zur eigenen Kamerarasterung,
+  weil die Welt aus mehreren verschachtelten Ebenen besteht.
+- Ein Weltschritt muss nicht ganzzahlig sein. Entscheidend ist, dass er nach
+  Kamerazoom und Fensterskalierung genau einem Ausgabepixel entspricht.
+- Eine feste Viertelpixelphase verhindert, dass Gleitkomma-Rundungsfehler eine
+  exakt auf der Pixelgrenze liegende Kontur abwechselnd auf beide Seiten
+  rastern. Bei Nearest-Neighbor entstehen dadurch keine weichen Zwischenpixel.
 
 ## Entscheidungen
 
-- Der Schalter verwendet Godots Viewport-Transform-Snap. Logische Knoten- und
-  Physikpositionen werden nicht gerundet, damit dieselbe Bewegung in beiden
-  Darstellungsvarianten vergleichbar bleibt.
-- Vertex-Snap bleibt während des gesamten Vergleichs AUS. Sein vorheriger
-  Viewport-Zustand wird wie der Transform-Snap beim Verlassen wiederhergestellt.
-- Der gemeinsame Darstellungsanker verwendet das kleinste gemeinsame Raster
-  aus Kamerazoom und Fensterskalierung. Bei 1,50 × und 1920 × 1080 sind das
-  zwei Weltpixel, die exakt drei Ausgabepixel ergeben.
-- Nur Kamera und der Knoten `HeroCharacter/Visual` werden dafür visuell vom
-  fraktionalen Körperanker getrennt. Geschwindigkeit, `move_and_slide()`,
-  Kollisionsformen und die Position des `CharacterBody2D` bleiben unverändert.
+- Der Schalter verwendet eine eigene Ausgabepixel-Rasterung für Kamera und
+  Heldenbild. Logische Knoten- und Physikpositionen werden nicht gerundet,
+  damit dieselbe Bewegung in beiden Darstellungsvarianten vergleichbar bleibt.
+- Viewport-Transform-Snap und Vertex-Snap bleiben während des Vergleichs AUS.
+  Ihre vorherigen Zustände werden beim Verlassen wiederhergestellt.
+- Die Rasterweite beträgt `1 / (Kamerazoom × Fensterskalierung)` Weltpixel.
+  Eine Kamerabewegung kann dadurch höchstens um einen Ausgabepixel von der
+  idealen kontinuierlichen Bewegung abweichen.
+- Kamera und `HeroCharacter/Visual` bleiben im vorhandenen Weltzweig. Nur ihre
+  lokalen Darstellungsversätze ändern sich; Geschwindigkeit,
+  `move_and_slide()`, Kollisionsformen und die Position des `CharacterBody2D`
+  bleiben unverändert.
 - Der fehlende Preset-Schlüssel bedeutet AUS; vorhandene Version-1-Dateien
   bleiben dadurch gültig.
 - Diagnose- und Menü-Sichtbarkeit bleiben flüchtig. Nur Pixel-Snap selbst wird
   als Testwert gespeichert.
 - `X` ist das konfliktfreie Tastenkürzel. Es ergänzt den anklickbaren und per
   Fokus auswählbaren Schalter im `F5`-Menü.
-- Pixel-Snap wird nach der Korrektur für Held, Kamera und Welt empfohlen. Der
-  Zoom `1,50 ×` bleibt bis Aufgabe 20 ein Kameraprofil-Kandidat, weil sein
-  Zwei-Weltpixel-Raster eine sichtbare 3-/6-Ausgabepixel-Kadenz erzeugt.
+- Eine Empfehlung für Held, Kamera und Welt wird erst nach dem erneuten
+  praktischen Sichttest festgehalten. Der Zoom `1,50 ×` bleibt unabhängig
+  davon bis Aufgabe 20 ein Kameraprofil-Kandidat.
 
 ## Prüfungen
 
-Aktuelle Wiederaufnahme:
+Zweite Korrektur nach dem praktischen Gegenbefund:
+
+- `python3 tools/control.py style`: erfolgreich, 68 Dateien.
+- Godot-Integration mit der offiziellen Godot-4.7.2-Binärdatei: erfolgreich;
+  einschließlich Ausgabepixelraster, Viewport-Zuständen, Preset, Bewegung,
+  Kamera, Kollision und Diagnose.
+- 288 echte OpenGL-Aufnahmen bei festen 60 Bildern pro Sekunde: Pixel-Snap AN
+  zeigt bei horizontaler, vertikaler und diagonaler Bewegung in beiden
+  Fenstergrößen und bei `1,00 ×` sowie `1,50 ×` jeweils eine konstante
+  Heldenkontur.
+- 160 verfolgte OpenGL-Ausschnitte: Tilefläche und feste Weltobjekte behalten
+  mit Pixel-Snap AN in beiden Fenstergrößen und Zoomstufen jeweils exakt ein
+  Rastermuster.
+- Die Kamera bewegt den Canvas mit Pixel-Snap AN nur noch in ganzen
+  Ausgabepixeln. Die frühere grobe `6/6/3`-Kadenz bei `1,50 ×` ist durch die
+  kleinstmögliche `5/6`-Kadenz ersetzt.
+- `python3 tools/control.py check` im sauberen, abgetrennten Worktree des
+  exakten Korrektur-Commits nach einem Godot-Importlauf: erfolgreich; Doctor
+  12/12, Stil 68 Dateien, 175 Python-Tests und Godot-Integration.
+
+Erste Korrektur vor dem praktischen Gegenbefund:
 
 - `python3 tools/control.py style`: erfolgreich, 68 Dateien.
 - `git diff --check`: erfolgreich.
@@ -159,21 +194,17 @@ Tests verwenden den vorhandenen isolierten `user://`-Pfad und stellen globale
 Viewport- sowie Projekteinstellungen wieder her. Renderaufnahmen und lokale
 Engine-Caches bleiben außerhalb des Repositorys.
 
-## Ergebnis und Rückblick
+## Aktueller Stand – praktische Abnahme offen
 
-Das Testlabor besitzt nun einen echten Pixel-Snap-Schalter im `F5`-Menü und
-das zusätzliche Kürzel `X`. Menü, Diagnose, Viewport und Preset verwenden
-denselben booleschen Zustand; alte und fehlerhafte Preset-Werte fallen sicher
-auf AUS zurück. Die Diagnose trennt Held, tatsächliches Kamerazentrum und
-Weltanker. Tests sichern außerdem, dass beide Varianten Bewegung, Kollision,
-Kamerafolge und Kameragrenzen unverändert lassen und den vorherigen
-Viewport-Zustand beim Verlassen wiederherstellen.
+Schalter, Kürzel und Preset bleiben unverändert bedienbar. Die zweite
+Korrektur entfernt das globale Transform-Snap und ersetzt das zu grobe Raster
+durch den kleinstmöglichen Schritt von einem Ausgabepixel. Automatisierte
+OpenGL-Bildfolgen zeigen konstante Helden-, Tile- und Weltobjektmuster; die
+Kamerakadenz weicht nur noch um den unvermeidbaren einzelnen Ausgabepixel ab.
+Bewegung und Kollision laufen weiter mit Fließkommawerten.
 
-Der wiederholte gerenderte Vergleich bewertet AN insgesamt als ruhiger. Der
-Phasenwechsel des Helden bei `1,50 ×` ist beseitigt; Tiles und Weltobjekte
-bleiben beim Kameraschwenk auf derselben Rasterphase. Die logische Bewegung
-und Kollision laufen weiter mit Fließkommawerten. Beim nahen Zoom bleibt eine
-diskrete 3-/6-Ausgabepixel-Kadenz sichtbar, aber kein zusätzliches
-Hin-und-Her-Springen oder wechselndes Heldenmuster. Die endgültige Freigabe
-des Kamerazooms gehört weiterhin in Aufgabe 20 und nimmt die erneute
-Texturfilter-Abnahme nicht vorweg.
+Dieser technische Befund ersetzt nicht den praktischen Nachtest, weil die
+vorherige Abnahme das wahrgenommene Weltflackern übersehen hat. Aufgabe 17
+bleibt deshalb 🔵, bis die Bewegung bei `1,00 ×` und `1,50 ×` erneut direkt
+beurteilt wurde. Aufgabe 18 und die Freigabe des Kamerazooms werden dadurch
+nicht vorweggenommen.

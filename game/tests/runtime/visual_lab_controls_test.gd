@@ -182,8 +182,8 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"menu selection updates the displayed pixel-snap state",
 	)
 	_expect(
-		visual_lab.get_viewport().snap_2d_transforms_to_pixel,
-		"menu selection enables viewport pixel snap",
+		not visual_lab.get_viewport().snap_2d_transforms_to_pixel,
+		"menu selection avoids independently rounding world transforms",
 	)
 	texture_filter_button.button_pressed = true
 	texture_filter_button.pressed.emit()
