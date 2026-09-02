@@ -151,7 +151,9 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/assets/videos/README.md",
             "docs/concept/index.md",
             "docs/concept/00-grundlagen/spielvision.md",
-            "docs/concept/10-welt/00-kosmologie/zeitrechnung-auf-era.md",
+            "docs/concept/10-welt/00-zeitdarstellung/zeitrechnung-auf-era.md",
+            "docs/concept/10-welt/00-zeitdarstellung/zeitdarstellung-im-spiel.md",
+            "docs/concept/10-welt/00-zeitdarstellung/zeitzyklen-und-konvektion.md",
             "docs/concept/20-handlung/ratgeber-im-heldenraum.md",
             "docs/concept/20-handlung/talisman.md",
             "docs/concept/20-handlung/spielablauf-und-abschnittsstruktur.md",
@@ -163,7 +165,6 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/.forge2d-template/tooling/python-style-guide.md",
             "docs/.forge2d-template/architecture/runtime-overview.md",
             "docs/developer/index.md",
-            "docs/developer/developer.md",
             "docs/developer/documentation-architecture.md",
             "docs/developer/project-identity.md",
             "docs/developer/plans/dokumentationsvereinfachung.md",
@@ -171,7 +172,6 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/developer/decisions/_adr-template.md",
             "docs/developer/plans/_execplan-template.md",
             "docs/player-guide/index.md",
-            "docs/player-guide/player-guide.md",
             "docs/player-guide/_topic-template.md",
         )
         missing = [
@@ -197,7 +197,21 @@ class SourceHygieneTests(unittest.TestCase):
         self.assertFalse((REPOSITORY_ROOT / "docs" / "concept" / "game(de)").exists())
         self.assertFalse((REPOSITORY_ROOT / "docs" / "concept" / "game(en)").exists())
 
-    def test_concept_directories_have_pygitindex_overviews(self) -> None:
+        legacy_entry_points = (
+            REPOSITORY_ROOT / "docs" / "developer" / "developer.md",
+            REPOSITORY_ROOT / "docs" / "player-guide" / "player-guide.md",
+            (
+                REPOSITORY_ROOT
+                / "docs"
+                / "concept"
+                / "10-welt"
+                / "00-kosmologie"
+                / "zeitrechnung-auf-era.md"
+            ),
+        )
+        self.assertFalse(any(path.exists() for path in legacy_entry_points))
+
+    def test_concept_directories_have_simple_index_pages(self) -> None:
         concept_root = REPOSITORY_ROOT / "docs" / "concept"
         directories = [concept_root]
         directories.extend(
@@ -210,17 +224,9 @@ class SourceHygieneTests(unittest.TestCase):
 
         for directory in directories:
             with self.subTest(directory=directory.relative_to(REPOSITORY_ROOT)):
-                overview = directory / f"{directory.name}.md"
+                overview = directory / "index.md"
                 self.assertTrue(overview.is_file())
                 contents = overview.read_text(encoding="utf-8")
-                self.assertEqual(
-                    contents.count("<!-- AUTO-GENERATED:docs-index START -->"),
-                    1,
-                )
-                self.assertEqual(
-                    contents.count("<!-- AUTO-GENERATED:docs-index END -->"),
-                    1,
-                )
                 self.assertEqual(
                     contents.count("<!-- AUTO-GENERATED:backlink START -->"),
                     1,
@@ -229,6 +235,8 @@ class SourceHygieneTests(unittest.TestCase):
                     contents.count("<!-- AUTO-GENERATED:backlink END -->"),
                     1,
                 )
+                legacy_overview = directory / f"{directory.name}.md"
+                self.assertFalse(legacy_overview.exists())
 
     def test_concept_declares_single_german_source(self) -> None:
         concept_index = (

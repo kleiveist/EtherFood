@@ -84,8 +84,8 @@ class RepositoryMetadataTests(unittest.TestCase):
 
     def test_documentation_entry_points_link_the_metadata_guide(self) -> None:
         entry_points = (
+            REPOSITORY_ROOT / "docs" / "index.md",
             REPOSITORY_ROOT / "docs" / "developer" / "index.md",
-            REPOSITORY_ROOT / "docs" / "developer" / "developer.md",
         )
         for path in entry_points:
             with self.subTest(path=path.relative_to(REPOSITORY_ROOT)):

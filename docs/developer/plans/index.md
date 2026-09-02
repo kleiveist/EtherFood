@@ -10,10 +10,10 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 ## Aktiver Plan
 
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
-- [Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 
 ## Abgeschlossene historische Pläne
 
+- [Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 - [Frühere Umstrukturierung der Dokumentation](etherfood-documentation-restructure.md)
 - [Dokumentation des Spielablaufs](game-flow-documentation.md)
 - [Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)

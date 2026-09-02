@@ -59,10 +59,13 @@ Plans.
 - [x] Originalassets und Generator erstellt und reproduzierbar verifiziert.
 - [x] Held, Referenzen, Boden, Y-Sortierung und HUD umgebaut.
 - [x] Tests und Dokumentation aktualisiert.
-- [ ] Automatische und manuelle Prüfungen vollständig abgeschlossen: Der
-  aufgabenspezifische Godot-Lauf ist grün; drei vorbestehende Dokumentationstests
-  und der fehlende GUI-Displaytreiber blockieren das vollständige Gate.
-- [ ] Geprüften Stand mit der vorgegebenen Commit-Nachricht committed.
+- [x] Aufgabenbezogene automatische Prüfungen abgeschlossen. Die echte
+  interaktive GUI-Abnahme erfolgt mit Zustimmung des Benutzers extern.
+- [x] Pixelart-Stand mit der vorgegebenen Commit-Nachricht als `a743558`
+  committed.
+- [x] Nach ausdrücklicher Umfangserweiterung die drei veralteten
+  Dokumentationsprüfungen an die bestehende vereinfachte Struktur angepasst.
+- [x] Vollständigen Kontrolllauf anschließend erfolgreich wiederholt.
 
 ## Erkenntnisse und Überraschungen
 
@@ -86,11 +89,12 @@ Plans.
   Der normale Start findet weder X11 (`libXcursor.so.1`) noch eine nutzbare
   Wayland-Anbindung. Eine echte interaktive Sichtprüfung ist in diesem
   Container deshalb nicht möglich.
-- Der vollständige Kontrolllauf scheitert unverändert an Tests, die in Commit
+- Der erste vollständige Kontrolllauf scheiterte an Tests, die in Commit
   `3fe672f` bewusst entfernte redundante Dokumentationsdateien und den vor
-  `00-zeitdarstellung/` gültigen Zeitrechnungs-Pfad erwarten. Das
-  Wiederherstellen dieser Dateien würde die neuere Dokumentationsvereinfachung
-  zurücknehmen und liegt außerhalb dieses Grafikauftrags.
+  `00-zeitdarstellung/` gültigen Zeitrechnungs-Pfad erwarteten. Der Benutzer
+  erweiterte den Umfang anschließend ausdrücklich. Die Prüfungen wurden auf
+  aktuelle `index.md`-Einstiege und den Zeitdarstellungs-Pfad berichtigt, ohne
+  die entfernten Doppeldateien wiederherzustellen.
 
 ## Entscheidungen
 
@@ -115,16 +119,18 @@ Plans.
   res://tests/bootstrap_integration_test.gd`: erfolgreich. Darin liefen unter
   anderem Textur-, Alpha-Höhen-, Bodenanker-, Preset-, Speicher-,
   Weltzustands-, Menü- und RouteHost-Prüfungen.
-- `python tools/control.py check`: Doctor, Stil und Godot erfolgreich; Python
-  mit 172 von 175 Tests erfolgreich. Drei vorbestehende Pfadprüfungen der
-  Dokumentation schlagen fehl.
+- `python -m pytest tools/tests/test_repository_metadata.py
+  tools/tests/test_source_hygiene.py`: 20 Tests erfolgreich.
+- `python tools/control.py check`: nach der freigegebenen Korrektur vollständig
+  erfolgreich; Doctor 12/12, Stilprüfung, 175/175 Python-Tests und
+  Godot-Integrationstest bestanden.
 - `git diff --check`: erfolgreich.
 - Lokale deterministische Größenreihen-Übersicht: visuell geprüft; gemeinsame
   Perspektive, Silhouetten, Materialtrennung, Beleuchtungsrichtung,
   Pixelkanten und Bodenanker wirken stimmig.
 - `godot4 --path game`: ausgeführt, aber ohne X11-/Wayland-Displaytreiber mit
-  Exitcode 1 beendet. Die geforderte interaktive Prüfung konnte daher nicht
-  als erfolgreich ausgeführt markiert werden.
+  Exitcode 1 beendet. Die interaktive Prüfung wurde ausdrücklich als externe
+  Abnahme vereinbart und wird nicht als lokal erfolgreich ausgegeben.
 
 ## Wiederholbarkeit und Wiederherstellung
 
@@ -136,15 +142,14 @@ gezielt per Patch; fremde Änderungen werden nicht zurückgesetzt.
 
 ## Ergebnis und Rückblick
 
-Der aufgabenspezifische Umbau ist implementiert und seine automatischen
-Godot-Prüfungen sind grün. Held, Gegner, Eingang, Gebäudesegment und Baum
-besitzen eine zusammenhängende dunkle Fantasy-Palette, harte Pixelkanten,
-Top-down-Silhouetten und unveränderte Bodenanker. Der Vergleichsboden und das
-kantige HUD lösen die technische Diagrammwirkung ab.
+Der Umbau ist vollständig implementiert und als `a743558` committed. Held,
+Gegner, Eingang, Gebäudesegment und Baum besitzen eine zusammenhängende dunkle
+Fantasy-Palette, harte Pixelkanten, Top-down-Silhouetten und unveränderte
+Bodenanker. Der Vergleichsboden und das kantige HUD lösen die technische
+Diagrammwirkung ab; die echte GUI-Abnahme bleibt transparent als externer
+Schritt ausgewiesen.
 
-Der Stand bleibt absichtlich uncommitted: Laut Auftrag darf erst nach
-vollständig erfolgreichen automatischen und manuellen Prüfungen committed
-werden. Das vollständige Gate wird derzeit von drei fachfremden Altprüfungen
-und der Container-Grafikumgebung blockiert. Weder die neuere
-Dokumentationsstruktur noch die Commit-Bedingung werden stillschweigend
-umgangen.
+Nach der freigegebenen Erweiterung sichern die Dokumentationstests nun die
+vereinfachte Struktur mit `index.md`-Einstiegen und dem getrennten
+Zeitdarstellungsbereich ab. Der vollständige Release-Kontrolllauf ist
+erfolgreich.
