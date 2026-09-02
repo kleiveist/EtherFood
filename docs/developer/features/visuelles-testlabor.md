@@ -128,6 +128,11 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 Die Anzeigen machen die jeweils aktive Testkonfiguration unmittelbar
 erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
+Die Testgrafiken sind originale, lokal reproduzierbare Prototypassets. Der
+Größenvergleich und der Weltzustandsvergleich teilen eine dunkle
+Top-down-Pixelsprache; feinere Materialpixel ersetzen reine Diagrammformen,
+ohne daraus bereits eine finale Art-Bible abzuleiten.
+
 ## Nicht enthalten
 
 ```text

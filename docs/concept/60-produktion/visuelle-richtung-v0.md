@@ -168,7 +168,11 @@ Kopfoberseite und ihren Bodenanker, Gebäude eine sichtbare Dachfläche und
 Bäume ihre Krone. Eine klassische 16-Bit-RPG-Formsprache dient dabei nur als
 Arbeitsrichtung für gute Lesbarkeit. Sie ist weder eine finale Art-Bible noch
 eine Abkehr vom modernen visuellen Grundstil. Die Größenwerte bleiben
-vorläufig.
+vorläufig. Der Größenvergleich und der visuelle Debug-Vergleich der
+Weltzustände verwenden dieselbe begrenzte Palette, harte Pixelkanten,
+Materialtexturen und eine gemeinsame Beleuchtung von links oben. Beschädigte
+und wiederhergestellte Varianten behalten dabei ihre Leinwand, Grundform und
+Position bei.
 
 ## Weltzustände
 

@@ -116,13 +116,13 @@ func _expect_preview_scene_contract(tree: SceneTree) -> void:
 		"WorldStatePreview contains no collision polygons",
 	)
 
-	var damaged_ground := preview.get_node_or_null("DamagedState/Ground") as Polygon2D
-	var restored_ground := preview.get_node_or_null("RestoredState/Ground") as Polygon2D
+	var damaged_ground := preview.get_node_or_null("DamagedState/Ground") as Sprite2D
+	var restored_ground := preview.get_node_or_null("RestoredState/Ground") as Sprite2D
 	_expect(
 		damaged_ground != null
 		and restored_ground != null
-		and damaged_ground.color != restored_ground.color,
-		"damaged and restored ground colors are visibly distinct",
+		and damaged_ground.texture != restored_ground.texture,
+		"damaged and restored ground use visibly distinct pixel textures",
 	)
 
 	preview.queue_free()
@@ -134,55 +134,13 @@ func _expect_top_down_layout(damaged_state: Node2D, restored_state: Node2D) -> v
 		damaged_state.transform == restored_state.transform,
 		"both world states use the same preview perspective",
 	)
-	_expect_matching_polygon(
-		damaged_state,
-		restored_state,
-		^"Ground",
-		^"Ground",
-		"ground footprint",
-	)
-	_expect_matching_polygon(
-		damaged_state,
-		restored_state,
-		^"Path",
-		^"Path",
-		"walkable path",
-	)
-	_expect_matching_line(
-		damaged_state,
-		restored_state,
-		^"PathEdgeLeft",
-		^"PathEdgeLeft",
-		"left path edge",
-	)
-	_expect_matching_line(
-		damaged_state,
-		restored_state,
-		^"PathEdgeRight",
-		^"PathEdgeRight",
-		"right path edge",
-	)
-	_expect_matching_polygon(
-		damaged_state,
-		restored_state,
-		^"GroundTexture/SoilPatch",
-		^"GroundTexture/SoilPatch",
-		"soil patch",
-	)
-	_expect_matching_polygon(
-		damaged_state,
-		restored_state,
-		^"GroundTexture/TreePatch",
-		^"GroundTexture/TreePatch",
-		"tree soil patch",
-	)
-	for stone_name in ["StoneLeft", "StoneMiddle", "StoneRight"]:
-		_expect_matching_polygon(
+	for sprite_path in [^"Ground", ^"GroundTexture", ^"Path"]:
+		_expect_matching_sprite_canvas(
 			damaged_state,
 			restored_state,
-			NodePath("GroundTexture/%s" % stone_name),
-			NodePath("GroundTexture/%s" % stone_name),
-			"ground structure %s" % stone_name,
+			sprite_path,
+			sprite_path,
+			"paired layer %s" % sprite_path,
 		)
 
 	var broken_building := damaged_state.get_node_or_null("BrokenBuilding") as Node2D
@@ -192,44 +150,23 @@ func _expect_top_down_layout(damaged_state: Node2D, restored_state: Node2D) -> v
 		repaired_building,
 		"building",
 	)
-	for shape_name in [
-		"FootprintShadow",
-		"FrontWall",
-		"RoofLeft",
-		"RoofRight",
-		"Entrance",
-	]:
-		_expect_matching_polygon(
-			broken_building,
-			repaired_building,
-			NodePath(shape_name),
-			NodePath(shape_name),
-			"building shape %s" % shape_name,
-		)
-	_expect_matching_line(
+	_expect_matching_sprite_canvas(
 		broken_building,
 		repaired_building,
-		^"RoofOutline",
-		^"RoofOutline",
-		"roof outline",
+		^"Sprite2D",
+		^"Sprite2D",
+		"building canvas and anchor",
 	)
 
 	var dead_tree := damaged_state.get_node_or_null("DeadTree") as Node2D
 	var living_tree := restored_state.get_node_or_null("LivingTree") as Node2D
 	_expect_matching_position(dead_tree, living_tree, "tree")
-	_expect_matching_polygon(
+	_expect_matching_sprite_canvas(
 		dead_tree,
 		living_tree,
-		^"GroundShadow",
-		^"GroundShadow",
-		"tree shadow",
-	)
-	_expect_matching_polygon(
-		dead_tree,
-		living_tree,
-		^"TrunkCore",
-		^"TrunkCore",
-		"tree trunk footprint",
+		^"Sprite2D",
+		^"Sprite2D",
+		"tree canvas and anchor",
 	)
 
 	var dead_plants := damaged_state.get_node_or_null("DeadPlants") as Node2D
@@ -243,82 +180,74 @@ func _expect_top_down_layout(damaged_state: Node2D, restored_state: Node2D) -> v
 			var dead_plant := dead_plants.get_node_or_null(plant_name) as Node2D
 			var living_plant := living_plants.get_node_or_null(plant_name) as Node2D
 			_expect_matching_position(dead_plant, living_plant, "plant %s" % plant_name)
-			_expect_matching_polygon(
+			_expect_matching_sprite_canvas(
 				dead_plant,
 				living_plant,
-				^"GroundShadow",
-				^"GroundShadow",
-				"plant shadow %s" % plant_name,
+				^"Sprite2D",
+				^"Sprite2D",
+				"plant canvas and anchor %s" % plant_name,
 			)
 
-	_expect_matching_polygon(
+	_expect_matching_sprite_canvas(
 		damaged_state,
 		restored_state,
-		^"Fog/FogBandTop",
-		^"Fog/FogBandTop",
-		"upper fog band",
-	)
-	_expect_matching_polygon(
-		damaged_state,
-		restored_state,
-		^"Fog/FogBandBottom",
-		^"Fog/FogBandBottom",
-		"lower fog band",
+		^"Fog/Sprite2D",
+		^"Fog/Sprite2D",
+		"fog canvas and anchor",
 	)
 
 
 func _expect_state_specific_details(damaged_state: Node2D, restored_state: Node2D) -> void:
 	_expect(
-		damaged_state.get_node_or_null("GroundTexture/CrackLeft") is Line2D,
-		"damaged ground has visible cracks",
+		_expect_distinct_sprite_textures(damaged_state, restored_state, ^"GroundTexture"),
+		"damaged cracks and restored grass use distinct pixel textures",
 	)
 	_expect(
-		restored_state.get_node_or_null("GroundTexture/GrassTufts") is Node2D,
-		"restored ground replaces cracks with grass",
+		damaged_state.get_node_or_null("BrokenBuilding/DamageDetails") is Node2D,
+		"damaged building identifies its missing roof and blocked entrance details",
 	)
 	_expect(
-		damaged_state.get_node_or_null("BrokenBuilding/MissingRoofLeft") is Polygon2D
-		and damaged_state.get_node_or_null("BrokenBuilding/RoofHole") is Polygon2D,
-		"damaged building has missing roof sections",
+		restored_state.get_node_or_null("RepairedBuilding/RepairedDetails") is Node2D,
+		"restored building identifies its continuous roof and clean entrance details",
 	)
 	_expect(
-		restored_state.get_node_or_null("RepairedBuilding/RoofRidge") is Line2D,
-		"restored building has a continuous repaired roof",
+		_expect_distinct_sprite_textures(
+			damaged_state,
+			restored_state,
+			^"BrokenBuilding/Sprite2D",
+			^"RepairedBuilding/Sprite2D",
+		),
+		"building damage and repair are baked into distinct original textures",
 	)
 	_expect(
-		damaged_state.get_node_or_null("BrokenBuilding/EntranceBlockageTop") is Line2D,
-		"damaged entrance is visibly blocked",
+		_expect_distinct_sprite_textures(
+			damaged_state,
+			restored_state,
+			^"DeadTree/Sprite2D",
+			^"LivingTree/Sprite2D",
+		),
+		"dead branches and living canopy use distinct top-down textures",
 	)
 	_expect(
-		restored_state.get_node_or_null("RepairedBuilding/EntranceFrame") is Line2D
-		and restored_state.get_node_or_null("RepairedBuilding/Threshold") is Line2D,
-		"restored entrance is clean and recognizable",
+		_expect_distinct_sprite_textures(
+			damaged_state,
+			restored_state,
+			^"DeadPlants/PlantLeft/Sprite2D",
+			^"LivingPlants/PlantLeft/Sprite2D",
+		),
+		"dead and living plants use distinct top-down textures",
 	)
 	_expect(
-		damaged_state.get_node_or_null("DeadTree/BranchNorth") is Line2D,
-		"damaged state has a dead tree seen from above",
+		_expect_distinct_sprite_textures(
+			damaged_state,
+			restored_state,
+			^"Fog/Sprite2D",
+			^"Fog/Sprite2D",
+		),
+		"restored state uses a less opaque fog texture on the same canvas",
 	)
-	_expect(
-		restored_state.get_node_or_null("LivingTree/Canopy") is Polygon2D,
-		"restored state has a living tree canopy seen from above",
-	)
-	_expect(
-		damaged_state.get_node_or_null("DeadPlants/PlantLeft/DryLeaves") is Polygon2D,
-		"damaged state has dead top-down plants",
-	)
-	_expect(
-		restored_state.get_node_or_null("LivingPlants/PlantLeft/Leaves") is Polygon2D,
-		"restored state has green top-down plants",
-	)
-
-	var damaged_fog := damaged_state.get_node_or_null("Fog/FogBandTop") as Polygon2D
-	var restored_fog := restored_state.get_node_or_null("Fog/FogBandTop") as Polygon2D
-	_expect(
-		damaged_fog != null
-		and restored_fog != null
-		and damaged_fog.color.a > restored_fog.color.a,
-		"restored state keeps the same fog shape with less opacity",
-	)
+	_expect_all_preview_sprites_are_pixel_safe(damaged_state)
+	_expect_all_preview_sprites_are_pixel_safe(restored_state)
 
 
 func _expect_matching_position(
@@ -334,7 +263,7 @@ func _expect_matching_position(
 	)
 
 
-func _expect_matching_polygon(
+func _expect_matching_sprite_canvas(
 	damaged_parent: Node,
 	restored_parent: Node,
 	damaged_path: NodePath,
@@ -344,36 +273,58 @@ func _expect_matching_polygon(
 	if damaged_parent == null or restored_parent == null:
 		_expect(false, "both states contain the %s nodes" % description)
 		return
-	var damaged_polygon := damaged_parent.get_node_or_null(damaged_path) as Polygon2D
-	var restored_polygon := restored_parent.get_node_or_null(restored_path) as Polygon2D
+	var damaged_sprite := damaged_parent.get_node_or_null(damaged_path) as Sprite2D
+	var restored_sprite := restored_parent.get_node_or_null(restored_path) as Sprite2D
 	_expect(
-		damaged_polygon != null
-		and restored_polygon != null
-		and damaged_polygon.position == restored_polygon.position
-		and damaged_polygon.polygon == restored_polygon.polygon,
-		"both states keep the same %s geometry" % description,
+		damaged_sprite != null
+		and restored_sprite != null
+		and damaged_sprite.position == restored_sprite.position
+		and damaged_sprite.centered == restored_sprite.centered
+		and damaged_sprite.texture != null
+		and restored_sprite.texture != null
+		and damaged_sprite.texture.get_size() == restored_sprite.texture.get_size(),
+		"both states keep the same %s" % description,
 	)
 
 
-func _expect_matching_line(
+func _expect_distinct_sprite_textures(
 	damaged_parent: Node,
 	restored_parent: Node,
 	damaged_path: NodePath,
-	restored_path: NodePath,
-	description: String,
-) -> void:
-	if damaged_parent == null or restored_parent == null:
-		_expect(false, "both states contain the %s nodes" % description)
-		return
-	var damaged_line := damaged_parent.get_node_or_null(damaged_path) as Line2D
-	var restored_line := restored_parent.get_node_or_null(restored_path) as Line2D
-	_expect(
-		damaged_line != null
-		and restored_line != null
-		and damaged_line.position == restored_line.position
-		and damaged_line.points == restored_line.points,
-		"both states keep the same %s geometry" % description,
+	restored_path: NodePath = NodePath(),
+) -> bool:
+	var effective_restored_path := restored_path
+	if effective_restored_path.is_empty():
+		effective_restored_path = damaged_path
+	var damaged_sprite := damaged_parent.get_node_or_null(damaged_path) as Sprite2D
+	var restored_sprite := restored_parent.get_node_or_null(
+		effective_restored_path
+	) as Sprite2D
+	return (
+		damaged_sprite != null
+		and restored_sprite != null
+		and damaged_sprite.texture != null
+		and restored_sprite.texture != null
+		and damaged_sprite.texture != restored_sprite.texture
 	)
+
+
+func _expect_all_preview_sprites_are_pixel_safe(state: Node2D) -> void:
+	for node in state.find_children("*", "Sprite2D", true, false):
+		var sprite := node as Sprite2D
+		_expect(sprite.texture != null, "%s has a visible pixel texture" % sprite.name)
+		_expect(
+			sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
+			"%s uses nearest-neighbor filtering" % sprite.name,
+		)
+		_expect(sprite.scale == Vector2.ONE, "%s uses uniform source scale" % sprite.name)
+		_expect(sprite.rotation == 0.0, "%s is not rotated" % sprite.name)
+		if sprite.texture != null:
+			var image := sprite.texture.get_image()
+			_expect(
+				image != null and not image.has_mipmaps(),
+				"%s texture has no mipmaps" % sprite.name,
+			)
 
 
 func _expect_visual_lab_contract(tree: SceneTree) -> void:

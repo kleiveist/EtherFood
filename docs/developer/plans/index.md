@@ -10,6 +10,7 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 ## Aktiver Plan
 
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
+- [Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)
 
 ## Abgeschlossene historische Pläne
 
