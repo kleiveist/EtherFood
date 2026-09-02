@@ -23,10 +23,10 @@ Für die Welt von Era gilt:
 
 | Kanonische Größe              | Bedeutung                            |
 | ----------------------------- | ------------------------------------ |
-| 1 Um                          | 90 irdische Vergleichsminuten        |
+| 1 Um                          | 60 irdische Vergleichsminuten        |
 | 1 Um                          | eine vollständige Eigenrotation Eras |
-| durchschnittliche Hellphase   | 45 irdische Vergleichsminuten        |
-| durchschnittliche Dunkelphase | 45 irdische Vergleichsminuten        |
+| durchschnittliche Hellphase   | 30 irdische Vergleichsminuten        |
+| durchschnittliche Dunkelphase | 30 irdische Vergleichsminuten        |
 
 Die genaue Beleuchtung hängt zusätzlich von der Stellung von Sol und Yol ab. Hell- und Dunkelphase müssen daher nicht immer exakt gleich lang oder gleich stark sein.
 
@@ -66,17 +66,24 @@ Ein beschleunigter Weltlauf ist deshalb **kein erzählerischer Sprung**, sondern
 
 Die normale Zeitgeschwindigkeit der offenen Welt lautet:
 
-`1 Um = 30 reale Spielminuten`
+`1 Um = 15 reale Spielminuten`
+
+Die Spielsimulation verwendet damit 15 reale Minuten pro Um beziehungsweise
+Era-Umdrehung.
 
 Damit gilt während gewöhnlicher Erkundung:
 
-| Zeitraum                      | Reale Spielzeit |
-| ----------------------------- | --------------: |
-| durchschnittliche Hellphase   |      15 Minuten |
-| durchschnittliche Dunkelphase |      15 Minuten |
-| 1 Um                          |      30 Minuten |
-| 1 Tan = 16 Um                 |       8 Stunden |
-| 1 Dir = 8 Tan                 |      64 Stunden |
+| Zeitraum                              |        Reale Spielzeit |
+| ------------------------------------- | ----------------------: |
+| 1/2 Um = halbe Era-Umdrehung          | 7 Minuten 30 Sekunden   |
+| 1 Um = vollständige Era-Umdrehung     |              15 Minuten |
+| Vollzyklus der Spielsimulation bei 1× |                480 Tage |
+| Vollzyklus der Spielsimulation bei 6× |                 80 Tage |
+| Konvektion bei 1×                     |    4 Tage und 4 Stunden |
+
+Diese Spielzeiten verändern weder die kanonische Dauer eines Um noch die
+Umrechnung zwischen Um, Tan, Dir und Mohn. Sie bestimmen ausschließlich, wie
+schnell die Spielsimulation eine Era-Umdrehung und längere Abläufe darstellt.
 
 Diese lineare Grundgeschwindigkeit wird nicht für alle Spielsituationen verwendet. Größere Zeiträume werden durch räumliche und aktionsabhängige Beschleunigung bewältigt.
 
@@ -84,13 +91,13 @@ Diese lineare Grundgeschwindigkeit wird nicht für alle Spielsituationen verwend
 
 Der Aufenthaltsort bestimmt die normale Zeitgeschwindigkeit, solange keine besondere Aktion wie Schlafen oder Schnellreise aktiv ist.
 
-| Spielsituation                              | Faktor gegenüber der offenen Welt |            Reale Zeit für 1 Um | Zweck                                                          |
-| ------------------------------------------- | --------------------------------: | -----------------------------: | -------------------------------------------------------------- |
-| Offene Welt und Außenbereiche               |                              1,0× |                     30 Minuten | lesbarer Tag-Nacht-Wechsel und ruhige Erkundung                |
-| Siedlungen und belebte Außenbereiche        |                              1,0× |                     30 Minuten | NPC-Abläufe bleiben nachvollziehbar                            |
-| Häuser, Räume und gewöhnliche Innenbereiche |                              1,5× |                     20 Minuten | Innenaufenthalte stellen mehr verstrichene Alltagszeit dar     |
-| Höhlen, Ruinen und kleine Gefahrenbereiche  |                             1,75× | ungefähr 17 Minuten 9 Sekunden | Erkundung, Klettern und Vorsicht benötigen kanonisch mehr Zeit |
-| Große Dungeons und unterirdische Komplexe   |                              2,0× |                     15 Minuten | längere Expeditionen wirken auch in der Weltzeit bedeutsam     |
+| Spielsituation                              | Faktor gegenüber der offenen Welt |           Reale Zeit für 1 Um | Zweck                                                          |
+| ------------------------------------------- | --------------------------------: | ----------------------------: | -------------------------------------------------------------- |
+| Offene Welt und Außenbereiche               |                              1,0× |                    15 Minuten | lesbarer Tag-Nacht-Wechsel und ruhige Erkundung                |
+| Siedlungen und belebte Außenbereiche        |                              1,0× |                    15 Minuten | NPC-Abläufe bleiben nachvollziehbar                            |
+| Häuser, Räume und gewöhnliche Innenbereiche |                              1,5× |                    10 Minuten | Innenaufenthalte stellen mehr verstrichene Alltagszeit dar     |
+| Höhlen, Ruinen und kleine Gefahrenbereiche  |                             1,75× | ungefähr 8 Minuten 34 Sekunden | Erkundung, Klettern und Vorsicht benötigen kanonisch mehr Zeit |
+| Große Dungeons und unterirdische Komplexe   |                              2,0× |         7 Minuten 30 Sekunden | längere Expeditionen wirken auch in der Weltzeit bedeutsam     |
 
 Beim Wechsel zwischen zwei Bereichen wird die Geschwindigkeit über mehrere Sekunden weich angeglichen. Dadurch entstehen keine sichtbaren Sprünge der Sonne, Schatten oder Weltuhr.
 
@@ -108,10 +115,10 @@ Besondere Spielerhandlungen überschreiben vorübergehend die räumliche Zeitges
 | Inventar, Kodex, Optionen und Pausenmenü   | pausiert                           | keine Weltzeit vergeht         | langsames Lesen oder Sortieren wird nicht bestraft                      |
 | Handel und gewöhnliche Benutzeroberflächen | pausiert                           | keine Weltzeit vergeht         | der eigentliche Handel kann anschließend eine berechnete Dauer auslösen |
 | Herstellen, Kochen und Reparieren          | berechnete Arbeitsdauer            | beschleunigte Arbeitsanimation | Dauer hängt vom Rezept und Werkzeug ab                                  |
-| Schnellreise                               | adaptiv 60× bis 600×               | 1 Um dauert 30 bis 3 Sekunden  | Route wird vollständig simuliert und kann unterbrochen werden           |
-| Kurzes Warten                              | 900×                               | 1 Um dauert 2 Sekunden         | nur an sicheren Positionen                                              |
-| Schlafen                                   | 1.800×                             | 1 Um dauert 1 Sekunde          | Dauer, Sicherheit und Schlafqualität werden berücksichtigt              |
-| Langzeitbeschäftigung                      | 28.800×                            | 1 Tan dauert 1 Sekunde         | nur an geeigneten sicheren Orten und mit gewählter Tätigkeit            |
+| Schnellreise                               | adaptiv 60× bis 600×               | 1 Um dauert 15 bis 1,5 Sekunden | Route wird vollständig simuliert und kann unterbrochen werden           |
+| Kurzes Warten                              | 900×                               | 1 Um dauert 1 Sekunde           | nur an sicheren Positionen                                              |
+| Schlafen                                   | 1.800×                             | 1 Um dauert 0,5 Sekunden        | Dauer, Sicherheit und Schlafqualität werden berücksichtigt              |
+| Langzeitbeschäftigung                      | eigener Langzeitlauf               | 1 Tan dauert 1 Sekunde          | nur an geeigneten sicheren Orten und mit gewählter Tätigkeit            |
 
 Aktionsfaktoren werden niemals mit Schnellreise, Schlafen oder Langzeitbeschäftigung gestapelt. Es gilt immer genau ein aktiver Hauptzustand.
 
@@ -175,10 +182,10 @@ Der Spieler wählt eine Schlafdauer in Um. Als übliche vollständige Ruhephase 
 
 | Schlafdauer | Kanonischer Vergleich | Reale Darstellung |
 | ----------- | --------------------: | ----------------: |
-| 1 Um        |   1 Stunde 30 Minuten |         1 Sekunde |
-| 4 Um        |             6 Stunden |        4 Sekunden |
-| 6 Um        |             9 Stunden |        6 Sekunden |
-| 8 Um        |            12 Stunden |        8 Sekunden |
+| 1 Um        |              1 Stunde |       0,5 Sekunden |
+| 4 Um        |             4 Stunden |         2 Sekunden |
+| 6 Um        |             6 Stunden |         3 Sekunden |
+| 8 Um        |             8 Stunden |         4 Sekunden |
 
 Während des Schlafs werden alle Weltprozesse fortgeführt. Der Schlaf kann durch Gefahr, Wetter, Krankheit, Lärm, ein wichtiges Ereignis oder einen festgelegten Weckzeitpunkt beendet werden.
 
@@ -199,13 +206,21 @@ Mögliche Ziele sind:
 
 Beim kurzen Warten gilt:
 
-`1 Um = 2 reale Sekunden`
+`1 Um = 1 reale Sekunde`
 
 Vor dem Start zeigt das Spiel die erwartete Zielzeit und alle bekannten Folgen. Warten wird unterbrochen, sobald ein relevantes Ereignis eintritt.
 
 ## 11. Langzeitbeschäftigung und beschleunigter Weltlauf
 
-Ein vollständiger Konvektionszyklus umfasst 46.080 Um. Bei ausschließlich normaler Erkundung würde seine Darstellung zu lange dauern. Deshalb kann der Spieler an geeigneten sicheren Orten eine Langzeitbeschäftigung beginnen.
+Ein Vollzyklus der Spielsimulation benötigt bei normaler Geschwindigkeit 480
+reale Tage. Bei durchgehendem Faktor 6× sind es 80 reale Tage. Die 400 Um der
+Konvektion benötigen bei normaler Geschwindigkeit 4 Tage und 4 Stunden. Diese
+Werte beschreiben nur die Ingame-Darstellung; die kanonische Zeitrechnung und
+die Wiederkehr des Konvektionszyklus bleiben unverändert.
+
+Bei ausschließlich normaler Erkundung würde die Darstellung langer Zeiträume
+zu lange dauern. Deshalb kann der Spieler an geeigneten sicheren Orten eine
+Langzeitbeschäftigung beginnen.
 
 Eine Langzeitbeschäftigung ist keine leere Wartefunktion. Der Charakter führt währenddessen eine gewählte Tätigkeit aus, beispielsweise:
 
@@ -224,10 +239,10 @@ Für diesen Zustand gilt:
 
 | Verstrichene Era-Zeit         | Reale Simulationszeit |
 | ----------------------------- | --------------------: |
-| 1 Tan = 16 Um                 |             1 Sekunde |
-| 1 Dir = 8 Tan                 |            8 Sekunden |
-| 1 Mohn = 36 Dir               | 4 Minuten 48 Sekunden |
-| 1 Konvektionszyklus = 10 Mohn |            48 Minuten |
+| 1 Tan = 20 Um                 |             1 Sekunde |
+| 1 Dir = 10 Tan                |           10 Sekunden |
+| 1 Mohn = 35 Dir               | 5 Minuten 50 Sekunden |
+| 1 Konvektionszyklus = 10 Mohn | 58 Minuten 20 Sekunden |
 
 Obwohl die Darstellung stark beschleunigt wird, verarbeitet die Simulation jeden Um. Grafische Tag-Nacht-Wechsel dürfen dabei zusammengefasst dargestellt werden, damit kein schnelles Flackern entsteht. Die Weltlogik verwendet dennoch die vollständige Zeitfolge.
 
@@ -248,9 +263,10 @@ Der Spieler kann die Beschleunigung jederzeit manuell beenden.
 
 In großen Dungeons gilt grundsätzlich:
 
-`1 Um = 15 reale Spielminuten`
+`1 Um = 7 Minuten 30 Sekunden reale Spielzeit`
 
-Dadurch vergeht während einer einstündigen Dungeon-Erkundung ungefähr vier Um. Das entspricht sechs kanonischen Vergleichsstunden.
+Dadurch vergeht während einer einstündigen Dungeon-Erkundung ungefähr acht Um.
+Das entspricht acht kanonischen Vergleichsstunden.
 
 Diese Beschleunigung bildet ab, dass folgende Tätigkeiten in der Darstellung verkürzt werden:
 
@@ -264,7 +280,7 @@ Diese Beschleunigung bildet ab, dass folgende Tätigkeiten in der Darstellung ve
 
 Im Kampf wird der Dungeonfaktor halbiert. Während eines Kampfes gilt daher:
 
-`1 Um = 30 reale Spielminuten`
+`1 Um = 15 reale Spielminuten`
 
 Beim Verlassen des Dungeons zeigt die Außenwelt exakt den inzwischen erreichten Zustand. Sol, Yol, Wetter, NPCs und Questzeiten werden nicht auf den Eintrittszeitpunkt zurückgesetzt.
 
@@ -314,13 +330,17 @@ Die Handlung löst dabei keinen automatischen Zeitsprung aus. Der Spieler entsch
 
 ## 16. Verbindliche Kurzfassung
 
-* In der offenen Welt gilt `1 Um = 30 reale Minuten`.
-* In gewöhnlichen Innenräumen gilt `1 Um = 20 reale Minuten`.
-* In großen Dungeons gilt `1 Um = 15 reale Minuten`.
+* In der offenen Welt gilt `1 Um = 15 reale Minuten`.
+* In gewöhnlichen Innenräumen gilt `1 Um = 10 reale Minuten`.
+* In großen Dungeons gilt `1 Um = 7 Minuten 30 Sekunden`.
+* Der Vollzyklus der Spielsimulation benötigt bei 1× 480 Tage und bei 6× 80 Tage.
+* Die Konvektion benötigt bei 1× 4 Tage und 4 Stunden.
 * Kämpfe verlangsamen den aktuellen Zeitfaktor um 50 Prozent.
 * Menüs und offene Antwortauswahlen pausieren die Weltzeit.
-* Schnellreise simuliert eine echte Route mit adaptiver Beschleunigung.
-* Schlafen, Warten und Langzeitbeschäftigungen lassen die Weltzeit sichtbar und unterbrechbar weiterlaufen.
+* Schnellreise stellt 1 Um in 15 bis 1,5 Sekunden dar.
+* Warten stellt 1 Um in 1 Sekunde dar.
+* Schlafen stellt 1 Um in 0,5 Sekunden dar.
+* Langzeitbeschäftigungen lassen die Weltzeit sichtbar und unterbrechbar weiterlaufen.
 * Es gibt keine automatischen Handlungssprünge.
 * Jeder verstrichene Um wird von den relevanten Weltsystemen verarbeitet.
 * Ein vollständiger Konvektionszyklus bleibt durch spielergesteuerte Zeitbeschleunigung innerhalb einer langen Kampagne erreichbar.
