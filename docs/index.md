@@ -6,7 +6,7 @@
 <!-- AUTO-GENERATED:docs-index START -->
 
 ## 📄 Seiten
-- ⏭️ (keine Seiten)
+- 📝 [Gesamtfahrplan](Gesamtfahrplan.md)
 
 ## 📁 Medien
 - 🗂️ [Übersicht](assets/assets.md)
