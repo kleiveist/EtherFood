@@ -39,6 +39,31 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(collision_shape != null, "HeroCharacter has a CollisionShape2D")
 	if collision_shape != null:
 		_expect(collision_shape.shape != null, "HeroCharacter collision has a shape")
+	var interaction_detector := hero.get_node_or_null("InteractionDetector") as Area2D
+	var interaction_shape := hero.get_node_or_null(
+		"InteractionDetector/CollisionShape2D"
+	) as CollisionShape2D
+	_expect(interaction_detector != null, "HeroCharacter has an InteractionDetector")
+	_expect(
+		interaction_shape != null and interaction_shape.shape != null,
+		"InteractionDetector has a detection shape",
+	)
+	if interaction_detector != null:
+		_expect(
+			interaction_detector.collision_layer == 0,
+			"InteractionDetector adds no physical collision layer",
+		)
+		_expect(
+			interaction_detector.collision_mask == 2,
+			"InteractionDetector scans only interactable areas",
+		)
+	if interaction_shape != null:
+		var interaction_circle := interaction_shape.shape as CircleShape2D
+		_expect(
+			interaction_circle != null
+			and is_equal_approx(interaction_circle.radius, 96.0),
+			"InteractionDetector reaches 96 world pixels",
+		)
 	var player_camera := hero.get_node_or_null("PlayerCamera") as Camera2D
 	_expect(player_camera != null, "HeroCharacter has a PlayerCamera")
 	if player_camera != null:
@@ -110,6 +135,11 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"Facing marker stays outside Appearance",
 		)
 	_expect(hero.move_speed > 0.0, "HeroCharacter move speed is positive")
+	_expect(hero.is_movement_enabled(), "HeroCharacter movement starts enabled")
+	_expect(
+		hero.get_nearest_interactable() == null,
+		"HeroCharacter starts without a nearby interaction target",
+	)
 	_expect(hero.facing_direction == Vector2.DOWN, "HeroCharacter initially faces down")
 	_expect(hero.velocity.is_zero_approx(), "HeroCharacter remains still without input")
 
@@ -182,6 +212,28 @@ func run(tree: SceneTree) -> PackedStringArray:
 			is_zero_approx(facing_marker.rotation),
 			"facing marker visibly remains pointed down",
 		)
+
+	var position_before_disabled_input := hero.position
+	hero.set_movement_enabled(false)
+	Input.action_press(&"gameplay_move_right")
+	await tree.physics_frame
+	_expect(hero.velocity.is_zero_approx(), "disabled movement clears hero velocity")
+	_expect(
+		hero.position.is_equal_approx(position_before_disabled_input),
+		"disabled movement ignores held movement input",
+	)
+	Input.action_release(&"gameplay_move_right")
+	await tree.physics_frame
+	hero.set_movement_enabled(true)
+	_expect(hero.is_movement_enabled(), "HeroCharacter movement can be re-enabled")
+	Input.action_press(&"gameplay_move_right")
+	await tree.physics_frame
+	_expect(
+		hero.position.x > position_before_disabled_input.x,
+		"re-enabled movement accepts input again",
+	)
+	Input.action_release(&"gameplay_move_right")
+	await tree.physics_frame
 
 	_release_movement_actions()
 	hero.queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scenes/gameplay/hero_room.gd" id="1_hero_room"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
+[ext_resource type="PackedScene" path="res://scenes/gameplay/guide/guide_companion.tscn" id="3_guide"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_wall"]
 size = Vector2(32, 1440)
@@ -23,6 +24,26 @@ content_margin_left = 16.0
 content_margin_top = 12.0
 content_margin_right = 16.0
 content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_interaction_prompt"]
+bg_color = Color(0.035, 0.055, 0.063, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.72, 0.56, 0.26, 1)
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialogue"]
+bg_color = Color(0.027, 0.043, 0.051, 0.98)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.72, 0.56, 0.26, 1)
 
 [node name="HeroRoom" type="Control"]
 layout_mode = 3
@@ -220,6 +241,9 @@ shape = SubResource("RectangleShape2D_stone_block")
 [node name="HeroSpawn" type="Marker2D" parent="World"]
 position = Vector2(1280, 720)
 
+[node name="GuideCompanion" parent="World" instance=ExtResource("3_guide")]
+position = Vector2(1440, 720)
+
 [node name="HeroCharacter" parent="World" instance=ExtResource("2_hero")]
 position = Vector2(1280, 720)
 
@@ -238,3 +262,76 @@ theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_development_hint")
 text = "HELDENRAUM · PROTOTYP\nWASD / Pfeiltasten / linker Stick\nEsc / B: Hauptmenü"
+
+[node name="InteractionPrompt" type="Label" parent="InterfaceLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -218.0
+offset_top = -132.0
+offset_right = 218.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.018, 0.025, 0.029, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_interaction_prompt")
+text = "E / A: Ratgeber ansprechen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialoguePanel" type="Panel" parent="InterfaceLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -280.0
+offset_right = 500.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialogue")
+
+[node name="Speaker" type="Label" parent="InterfaceLayer/DialoguePanel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 20.0
+offset_right = 972.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.91, 0.7, 0.31, 1)
+theme_override_colors/font_outline_color = Color(0.018, 0.025, 0.029, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "Ratgeber"
+
+[node name="Divider" type="ColorRect" parent="InterfaceLayer/DialoguePanel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 62.0
+offset_right = 972.0
+offset_bottom = 65.0
+mouse_filter = 2
+color = Color(0.36, 0.3, 0.2, 1)
+
+[node name="Message" type="Label" parent="InterfaceLayer/DialoguePanel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 82.0
+offset_right = 972.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0.88, 0.87, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.018, 0.025, 0.029, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 22
+text = "Du bist wach. Beweg dich erst einmal.\nWir müssen einen Ausgang aus diesem Raum finden."
+vertical_alignment = 1

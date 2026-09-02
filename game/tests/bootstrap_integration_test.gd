@@ -16,6 +16,11 @@ const EXPECTED_HERO_ROOM_HINT := (
 	+ "WASD / Pfeiltasten / linker Stick\n"
 	+ "Esc / B: Hauptmenü"
 )
+const EXPECTED_GUIDE_PROMPT := "E / A: Ratgeber ansprechen"
+const EXPECTED_GUIDE_MESSAGE := (
+	"Du bist wach. Beweg dich erst einmal.\n"
+	+ "Wir müssen einen Ausgang aus diesem Raum finden."
+)
 const EXPECTED_VISUAL_LAB_TITLE := "STEUERUNG"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
@@ -50,6 +55,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/input_map_test.gd",
 	"res://tests/runtime/hero_character_test.gd",
 	"res://tests/runtime/hero_room_test.gd",
+	"res://tests/runtime/hero_room_interaction_test.gd",
 	"res://tests/runtime/visual_lab_zoom_test.gd",
 	"res://tests/runtime/visual_lab_hero_size_test.gd",
 	"res://tests/runtime/visual_lab_scale_reference_test.gd",
@@ -1019,6 +1025,21 @@ func _test_bootstrap_contract() -> void:
 		var hero_room_hint := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/HeroRoom/InterfaceLayer/DevelopmentHint"
 		) as Label
+		var guide_companion := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/World/GuideCompanion"
+		) as Node2D
+		var interaction_prompt := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/InterfaceLayer/InteractionPrompt"
+		) as Label
+		var dialogue_panel := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/HeroRoom/InterfaceLayer/DialoguePanel"
+		) as Panel
+		var dialogue_message := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/HeroRoom/InterfaceLayer/"
+				+ "DialoguePanel/Message"
+			)
+		) as Label
 		_expect(hero_room_world != null, "HeroRoom has a playable World")
 		_expect(hero_room_hero != null, "HeroRoom instantiates HeroCharacter")
 		_expect(
@@ -1045,6 +1066,46 @@ func _test_bootstrap_contract() -> void:
 			_expect(
 				not _contains_label_text(hero_room, "Spielbarer Raum folgt"),
 				"HeroRoom removes the old placeholder",
+			)
+		_expect(guide_companion != null, "HeroRoom contains GuideCompanion")
+		_expect(interaction_prompt != null, "HeroRoom has an interaction prompt")
+		_expect(
+			interaction_prompt != null and not interaction_prompt.visible,
+			"interaction prompt starts hidden outside guide range",
+		)
+		_expect(
+			dialogue_panel != null and not dialogue_panel.visible,
+			"guide message starts closed",
+		)
+		_expect(
+			dialogue_message != null
+			and dialogue_message.text == EXPECTED_GUIDE_MESSAGE,
+			"HeroRoom contains the first guide message",
+		)
+
+		if hero_room != null and hero_room_hero != null:
+			hero_room_hero.position = Vector2(1348, 720)
+			await physics_frame
+			await physics_frame
+			_expect(
+				interaction_prompt != null
+				and interaction_prompt.visible
+				and interaction_prompt.text == EXPECTED_GUIDE_PROMPT,
+				"approaching the guide displays the interaction prompt",
+			)
+			hero_room._unhandled_input(_pressed_action(&"gameplay_interact"))
+			_expect(
+				dialogue_panel != null and dialogue_panel.visible,
+				"interacting opens the first guide message",
+			)
+			hero_room._unhandled_input(_pressed_action(&"ui_cancel"))
+			_expect(
+				scene_router.get_current_route_id() == &"hero_room",
+				"first ui_cancel closes the guide message in place",
+			)
+			_expect(
+				dialogue_panel != null and not dialogue_panel.visible,
+				"ui_cancel closes the guide message",
 			)
 
 		if hero_room != null:

@@ -8,17 +8,25 @@ const ROOM_BOTTOM := 1440
 const HERO_HEIGHT := 80.0
 const CAMERA_ZOOM := 1.5
 const TILE_SIZE := Vector2i(32, 32)
+const INTERACT_ACTION := &"gameplay_interact"
 
 const HeroCharacterScript := preload(
 	"res://scenes/gameplay/hero/hero_character.gd"
+)
+const GuideCompanionScript := preload(
+	"res://scenes/gameplay/guide/guide_companion.gd"
 )
 
 @onready var hero_character: HeroCharacterScript = $World/HeroCharacter
 @onready var hero_spawn: Marker2D = $World/HeroSpawn
 @onready var player_camera: Camera2D = $World/HeroCharacter/PlayerCamera
+@onready var guide_companion: GuideCompanionScript = $World/GuideCompanion
 @onready var development_hint: Label = $InterfaceLayer/DevelopmentHint
+@onready var interaction_prompt: Label = $InterfaceLayer/InteractionPrompt
+@onready var dialogue_panel: Panel = $InterfaceLayer/DialoguePanel
 
 var _navigation_requested := false
+var _guide_message_open := false
 
 
 func _ready() -> void:
@@ -35,10 +43,32 @@ func _ready() -> void:
 	player_camera.make_current()
 
 	development_hint.visible = OS.is_debug_build()
+	interaction_prompt.visible = false
+	dialogue_panel.visible = false
+	hero_character.interaction_target_changed.connect(
+		_on_interaction_target_changed
+	)
+	guide_companion.interaction_requested.connect(
+		_on_guide_interaction_requested
+	)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
+	if _navigation_requested:
+		return
+	if _guide_message_open:
+		if (
+			event.is_action_pressed(INTERACT_ACTION)
+			or event.is_action_pressed(&"ui_cancel")
+		):
+			get_viewport().set_input_as_handled()
+			_close_guide_message()
+		return
+	if event.is_action_pressed(INTERACT_ACTION):
+		get_viewport().set_input_as_handled()
+		hero_character.try_interact()
+		return
+	if not event.is_action_pressed(&"ui_cancel"):
 		return
 
 	get_viewport().set_input_as_handled()
@@ -52,3 +82,36 @@ func _unhandled_input(event: InputEvent) -> void:
 		"HeroRoom failed to navigate to route '%s' with error %d."
 		% [MAIN_MENU_ROUTE, navigation_error],
 	)
+
+
+func is_guide_message_open() -> bool:
+	return _guide_message_open
+
+
+func _on_interaction_target_changed(target: Area2D) -> void:
+	_update_interaction_prompt(target)
+
+
+func _on_guide_interaction_requested(interactor: Node) -> void:
+	if interactor != hero_character or _guide_message_open:
+		return
+	_guide_message_open = true
+	dialogue_panel.visible = true
+	interaction_prompt.visible = false
+	hero_character.set_movement_enabled(false)
+
+
+func _close_guide_message() -> void:
+	_guide_message_open = false
+	dialogue_panel.visible = false
+	hero_character.set_movement_enabled(true)
+	_update_interaction_prompt(hero_character.get_nearest_interactable())
+
+
+func _update_interaction_prompt(target: Area2D) -> void:
+	if _guide_message_open or target == null:
+		interaction_prompt.visible = false
+		return
+	var prompt := str(target.call(&"get_interaction_prompt"))
+	interaction_prompt.text = prompt
+	interaction_prompt.visible = not prompt.is_empty()

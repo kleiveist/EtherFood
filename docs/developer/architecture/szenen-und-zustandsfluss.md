@@ -69,14 +69,20 @@ Prototypstand enthält:
 - die vorhandene bewegliche Heldenfigur mit 80 Weltpixel Höhe,
 - eine fest auf 1,50× eingestellte Folgekamera,
 - Kollisionen an vier Außenwänden und zwei vorläufigen Steinblöcken,
+- einen sichtbaren, nicht physisch blockierenden Ratgeberplatzhalter,
+- einen lokalen Interaktionshinweis und eine erste kurze Ratgeber-Nachricht,
 - einen nur in Debug-Builds sichtbaren Steuerungshinweis.
 
 Diese Werte sind vom visuellen Testlabor unabhängig. Dessen gespeicherte
 Presets werden im Heldenraum nicht geladen.
 
-Ratgeber, Interaktionen und der Ausgang in Richtung Turm folgen in späteren
-Ausbauschritten. Bis das Pause-Menü existiert, führt die Zurück-Aktion
-vorläufig zum Hauptmenü.
+Der Held wählt innerhalb einer 96 Weltpixel großen Sensorfläche das nächste
+gültige Interaktionsziel. Während die Ratgeber-Nachricht geöffnet ist, ruht
+seine Bewegung. Die Zurück-Aktion schließt zuerst diese Nachricht und führt
+erst beim nächsten Auslösen zum Hauptmenü.
+
+Ein vollständiges Dialogsystem, weitere Interaktionen und der Ausgang in
+Richtung Turm folgen in späteren Ausbauschritten.
 
 ### `tower_slice`
 
