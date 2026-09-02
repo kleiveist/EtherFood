@@ -13,6 +13,7 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 
 ## Abgeschlossene historische Pläne
 
+- [Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
 - [Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)
 - [Erste Ratgeber-Interaktion](erste-ratgeber-interaktion.md)
 - [Begehbarer Heldenraum](begehbarer-heldenraum.md)

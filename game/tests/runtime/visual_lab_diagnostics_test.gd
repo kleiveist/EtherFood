@@ -121,11 +121,13 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab._unhandled_input(_pressed_action(&"dev_tile_size_increase"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_world_state_toggle"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
+	visual_lab._unhandled_input(_pressed_action(&"dev_texture_filter_toggle"))
 	_expect(values.text.contains("Kamera: 1,00×"), "diagnostics show active camera zoom")
 	_expect(values.text.contains("Figur: 96 px"), "diagnostics show active hero size")
 	_expect(values.text.contains("Tiles: 48 × 48 px"), "diagnostics show active tile size")
 	_expect(values.text.contains("Welt: Wiederhergestellt"), "diagnostics show active world state")
 	_expect(values.text.contains("Pixel-Snap: AN"), "diagnostics show active pixel snap")
+	_expect(values.text.contains("Texturfilter: Weich"), "diagnostics show active filter")
 
 	var player_line_before := _line_with_prefix(values.text, "Spieler: ")
 	Input.action_press(&"gameplay_move_right")
@@ -216,6 +218,10 @@ func _expect_diagnostic_values(
 	_expect(values.text.contains("Welt: Beschädigt"), "diagnostics show initial world state")
 	_expect(values.text.contains("Pixel-Snap: AUS"), "diagnostics show initial pixel snap")
 	_expect(
+		values.text.contains("Texturfilter: Nearest-Neighbor"),
+		"diagnostics show the initial texture filter",
+	)
+	_expect(
 		values.text.contains("Fenster: %d × %d" % [window_size.x, window_size.y]),
 		"diagnostics show the actual window size",
 	)
@@ -274,6 +280,10 @@ func _expect_diagnostics_not_saved() -> void:
 	_expect(
 		settings.get_value("visual_lab", "pixel_snap", false) == true,
 		"active pixel-snap test value remains saved",
+	)
+	_expect(
+		settings.get_value("visual_lab", "texture_filter", "") == "soft",
+		"active texture-filter test value remains saved",
 	)
 	_expect(
 		not settings.has_section_key("visual_lab", "diagnostics_visible"),

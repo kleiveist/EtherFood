@@ -14,3 +14,4 @@
 | [ADR-0007](ADR-0007-seelenkreislauf-wiedergeburt-und-seelenentstehung.md) | Seelenkreislauf, Wiedergeburt und Seelenentstehung | angenommen |
 | [ADR-0008](ADR-0008-achtteiliger-spielablauf.md) | Achtteiliger Spielablauf | angenommen |
 | [ADR-0009](ADR-0009-kor-als-ether-entitaet-und-ihre-welten.md) | Kor als Ether-Entität und ihre Welten | angenommen |
+| [ADR-0010](ADR-0010-texturfilter-der-pixelart-spielwelt.md) | Texturfilter der Pixelart-Spielwelt | angenommen |

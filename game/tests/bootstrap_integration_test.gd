@@ -40,6 +40,8 @@ const EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS := "Weltzustand: Beschädigt"
 const EXPECTED_VISUAL_LAB_WORLD_STATE_HINT := "V / Controller-A: Zustand wechseln"
 const EXPECTED_VISUAL_LAB_PIXEL_SNAP_STATUS := "Pixel-Snap: AUS"
 const EXPECTED_VISUAL_LAB_PIXEL_SNAP_HINT := "X / Klick / Auswahl: AN / AUS"
+const EXPECTED_VISUAL_LAB_TEXTURE_FILTER_STATUS := "Texturfilter: Nearest-Neighbor"
+const EXPECTED_VISUAL_LAB_TEXTURE_FILTER_HINT := "N / Klick / Auswahl: Nearest / Weich"
 const EXPECTED_VISUAL_LAB_SETTINGS_STATUS := "Testwerte werden automatisch gespeichert"
 const EXPECTED_REFERENCE_STATUS := "Referenz: 1920 × 1080 · 16:9"
 const EXPECTED_REFERENCE_VIEWPORT_SIZE := Vector2(1920, 1080)
@@ -66,6 +68,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_diagnostics_test.gd",
 	"res://tests/runtime/visual_lab_controls_test.gd",
 	"res://tests/runtime/visual_lab_pixel_snap_test.gd",
+	"res://tests/runtime/visual_lab_texture_filter_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
@@ -954,7 +957,7 @@ func _test_bootstrap_contract() -> void:
 		var visual_lab_pixel_snap_button := bootstrap.get_node_or_null(
 			(
 				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "PixelSnapButton"
+					+ "RenderingButtons/PixelSnapButton"
 			)
 		) as Button
 		_expect(
@@ -972,7 +975,7 @@ func _test_bootstrap_contract() -> void:
 		var visual_lab_pixel_snap_hint := bootstrap.get_node_or_null(
 			(
 				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "PixelSnapToggleHint"
+					+ "RenderingHints/PixelSnapToggleHint"
 			)
 		) as Label
 		_expect(
@@ -983,6 +986,42 @@ func _test_bootstrap_contract() -> void:
 			_expect(
 				visual_lab_pixel_snap_hint.text == EXPECTED_VISUAL_LAB_PIXEL_SNAP_HINT,
 				"VisualLab displays its pixel-snap controls",
+			)
+		var visual_lab_texture_filter_button := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "RenderingButtons/TextureFilterButton"
+			)
+		) as Button
+		_expect(
+			visual_lab_texture_filter_button != null,
+			"VisualLab has an interactive texture-filter menu button",
+		)
+		if visual_lab_texture_filter_button != null:
+			_expect(
+				(
+					visual_lab_texture_filter_button.text
+					== EXPECTED_VISUAL_LAB_TEXTURE_FILTER_STATUS
+				),
+				"VisualLab displays its initial texture filter",
+			)
+		var visual_lab_texture_filter_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "RenderingHints/TextureFilterToggleHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_texture_filter_hint != null,
+			"VisualLab has a texture-filter input hint",
+		)
+		if visual_lab_texture_filter_hint != null:
+			_expect(
+				(
+					visual_lab_texture_filter_hint.text
+					== EXPECTED_VISUAL_LAB_TEXTURE_FILTER_HINT
+				),
+				"VisualLab displays its texture-filter controls",
 			)
 		var visual_lab_settings_status := bootstrap.get_node_or_null(
 			(
@@ -1012,6 +1051,7 @@ func _test_bootstrap_contract() -> void:
 				"small",
 				"damaged",
 				false,
+				"nearest",
 			)
 		_expect(
 			scene_router.get_current_route_id() == &"main_menu",
@@ -1236,6 +1276,7 @@ func _expect_saved_visual_lab_settings(
 	tile_size_id: String,
 	world_state_id: String,
 	pixel_snap_enabled: bool,
+	texture_filter_id: String,
 ) -> void:
 	var settings := ConfigFile.new()
 	_expect(
@@ -1265,6 +1306,10 @@ func _expect_saved_visual_lab_settings(
 	_expect(
 		settings.get_value("visual_lab", "pixel_snap", null) == pixel_snap_enabled,
 		"saved VisualLab settings use the expected pixel-snap value",
+	)
+	_expect(
+		settings.get_value("visual_lab", "texture_filter", "") == texture_filter_id,
+		"saved VisualLab settings use the expected texture-filter ID",
 	)
 
 

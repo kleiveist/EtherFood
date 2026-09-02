@@ -16,6 +16,7 @@ const EXPECTED_CONTROL_TEXTS: Array[String] = [
 	"G / rechter Stick-Klick: größer",
 	"V / Controller-A: Zustand wechseln",
 	"X / Klick / Auswahl: AN / AUS",
+	"N / Klick / Auswahl: Nearest / Weich",
 	"F3 / Select: Diagnose",
 	"F4: Kollisionsflächen",
 	"F5: Steuerung schließen",
@@ -91,7 +92,10 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"InterfaceLayer/DiagnosticsPanel"
 	) as Panel
 	var pixel_snap_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/PixelSnapButton"
+		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
+	) as Button
+	var texture_filter_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton"
 	) as Button
 
 	_expect(panel != null, "VisualLab retains its framed controls panel")
@@ -103,12 +107,17 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"collapsed view explains the F5 shortcut",
 	)
 	_expect(pixel_snap_button != null, "controls have an interactive pixel-snap button")
+	_expect(
+		texture_filter_button != null,
+		"controls have an interactive texture-filter button",
+	)
 	if (
 		panel == null
 		or interface == null
 		or text_container == null
 		or prompt == null
 		or pixel_snap_button == null
+		or texture_filter_button == null
 	):
 		return
 
@@ -124,6 +133,14 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"pixel-snap menu button starts with an exact state",
 	)
 	_expect(
+		not texture_filter_button.is_visible_in_tree(),
+		"texture-filter menu button starts collapsed with the controls",
+	)
+	_expect(
+		texture_filter_button.text == "Texturfilter: Nearest-Neighbor",
+		"texture-filter menu button starts with an exact state",
+	)
+	_expect(
 		diagnostics_panel != null and not diagnostics_panel.visible,
 		"diagnostics remain independently hidden",
 	)
@@ -133,6 +150,10 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	_expect(interface.visible, "F5 action shows the controls content")
 	_expect(not prompt.visible, "expanded controls replace the collapsed shortcut")
 	_expect(pixel_snap_button.is_visible_in_tree(), "F5 shows the pixel-snap menu button")
+	_expect(
+		texture_filter_button.is_visible_in_tree(),
+		"F5 shows the texture-filter menu button",
+	)
 	_expect(pixel_snap_button.has_focus(), "F5 focuses the interactive menu button")
 	_expect_visible_content_is_controls_only(text_container)
 
@@ -164,6 +185,12 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		visual_lab.get_viewport().snap_2d_transforms_to_pixel,
 		"menu selection enables viewport pixel snap",
 	)
+	texture_filter_button.button_pressed = true
+	texture_filter_button.pressed.emit()
+	_expect(
+		texture_filter_button.text == "Texturfilter: Weich",
+		"menu selection updates the displayed texture-filter state",
+	)
 
 	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
 	var settings := ConfigFile.new()
@@ -176,12 +203,16 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		settings.get_value("visual_lab", "pixel_snap", false) == true,
 		"pixel-snap menu choice is persisted as a test value",
 	)
+	_expect(
+		settings.get_value("visual_lab", "texture_filter", "") == "soft",
+		"texture-filter menu choice is persisted as a test value",
+	)
 
 
 func _expect_visible_content_is_controls_only(text_container: VBoxContainer) -> void:
 	var visible_texts: Array[String] = []
-	for child in text_container.get_children():
-		var label := child as Label
+	for descendant in text_container.find_children("*", "Label", true, false):
+		var label := descendant as Label
 		if label != null and label.is_visible_in_tree():
 			visible_texts.append(label.text)
 	for expected_text in EXPECTED_CONTROL_TEXTS:

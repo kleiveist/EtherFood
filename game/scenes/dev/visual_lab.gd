@@ -23,6 +23,11 @@ enum WorldStatePreset {
 	RESTORED,
 }
 
+enum TextureFilterPreset {
+	NEAREST,
+	SOFT,
+}
+
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
@@ -43,6 +48,7 @@ const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
 const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
 const PIXEL_SNAP_TOGGLE_ACTION := &"dev_pixel_snap_toggle"
+const TEXTURE_FILTER_TOGGLE_ACTION := &"dev_texture_filter_toggle"
 const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
 const COLLISION_DEBUG_TOGGLE_ACTION := &"dev_collision_debug_toggle"
 const CONTROLS_TOGGLE_ACTION := &"dev_controls_toggle"
@@ -62,6 +68,12 @@ const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
 const TILE_SIZE_IDS: Array[String] = ["small", "medium", "large"]
 const WORLD_STATE_NAMES: Array[String] = ["Beschädigt", "Wiederhergestellt"]
 const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
+const TEXTURE_FILTER_NAMES: Array[String] = ["Nearest-Neighbor", "Weich"]
+const TEXTURE_FILTER_IDS: Array[String] = ["nearest", "soft"]
+const TEXTURE_FILTER_VALUES: Array[int] = [
+	CanvasItem.TEXTURE_FILTER_NEAREST,
+	CanvasItem.TEXTURE_FILTER_LINEAR,
+]
 
 @onready var player_camera: Camera2D = $TestWorld/HeroCharacter/PlayerCamera
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
@@ -73,7 +85,12 @@ const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 @onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
 @onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
 @onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
-@onready var pixel_snap_button: Button = $InterfaceLayer/Interface/Text/PixelSnapButton
+@onready var pixel_snap_button: Button = (
+	$InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton
+)
+@onready var texture_filter_button: Button = (
+	$InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton
+)
 @onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 @onready var diagnostics_panel: Panel = $InterfaceLayer/DiagnosticsPanel
 @onready var diagnostics_values: Label = $InterfaceLayer/DiagnosticsPanel/Values
@@ -92,14 +109,19 @@ var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
 var _pixel_snap_enabled := false
+var _selected_texture_filter: int = TextureFilterPreset.NEAREST
 var _pixel_snap_viewport: Viewport
 var _initial_viewport_pixel_snap := false
+var _texture_filter_targets: Array[Sprite2D] = []
+var _initial_texture_filters: Array[int] = []
 
 
 func _ready() -> void:
 	_pixel_snap_viewport = get_viewport()
 	_initial_viewport_pixel_snap = _pixel_snap_viewport.snap_2d_transforms_to_pixel
+	_collect_texture_filter_targets(test_world)
 	pixel_snap_button.pressed.connect(_on_pixel_snap_button_pressed)
+	texture_filter_button.pressed.connect(_on_texture_filter_button_pressed)
 	player_camera.limit_left = WORLD_LEFT
 	player_camera.limit_top = WORLD_TOP
 	player_camera.limit_right = WORLD_RIGHT
@@ -118,12 +140,14 @@ func _ready() -> void:
 	_apply_tile_size()
 	_apply_world_state()
 	_apply_pixel_snap()
+	_apply_texture_filter()
 	_update_window_size_status()
 
 
 func _exit_tree() -> void:
 	if _pixel_snap_viewport != null and is_instance_valid(_pixel_snap_viewport):
 		_pixel_snap_viewport.snap_2d_transforms_to_pixel = _initial_viewport_pixel_snap
+	_restore_texture_filters()
 
 
 func _process(delta: float) -> void:
@@ -184,6 +208,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		if not _is_repeated_key_event(event):
 			_toggle_pixel_snap()
+		return
+	if event.is_action_pressed(TEXTURE_FILTER_TOGGLE_ACTION):
+		get_viewport().set_input_as_handled()
+		if not _is_repeated_key_event(event):
+			_toggle_texture_filter()
 		return
 	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
 		return
@@ -309,6 +338,53 @@ func _apply_pixel_snap() -> void:
 	_refresh_diagnostics_if_visible()
 
 
+func _toggle_texture_filter() -> void:
+	var next_filter := TextureFilterPreset.SOFT
+	if _selected_texture_filter == TextureFilterPreset.SOFT:
+		next_filter = TextureFilterPreset.NEAREST
+	_set_texture_filter(next_filter)
+	_save_settings()
+
+
+func _set_texture_filter(texture_filter: int) -> void:
+	_selected_texture_filter = clampi(
+		texture_filter,
+		TextureFilterPreset.NEAREST,
+		TextureFilterPreset.SOFT,
+	)
+	_apply_texture_filter()
+
+
+func _apply_texture_filter() -> void:
+	var selected_filter := TEXTURE_FILTER_VALUES[_selected_texture_filter]
+	for sprite in _texture_filter_targets:
+		if is_instance_valid(sprite):
+			sprite.texture_filter = selected_filter as CanvasItem.TextureFilter
+	texture_filter_button.button_pressed = (
+		_selected_texture_filter == TextureFilterPreset.SOFT
+	)
+	texture_filter_button.text = "Texturfilter: %s" % _texture_filter_name()
+	_refresh_diagnostics_if_visible()
+
+
+func _collect_texture_filter_targets(node: Node) -> void:
+	var sprite := node as Sprite2D
+	if sprite != null and sprite.texture != null:
+		_texture_filter_targets.append(sprite)
+		_initial_texture_filters.append(sprite.texture_filter)
+	for child in node.get_children():
+		_collect_texture_filter_targets(child)
+
+
+func _restore_texture_filters() -> void:
+	for target_index in range(_texture_filter_targets.size()):
+		var sprite := _texture_filter_targets[target_index]
+		if is_instance_valid(sprite):
+			sprite.texture_filter = (
+				_initial_texture_filters[target_index] as CanvasItem.TextureFilter
+			)
+
+
 func _toggle_diagnostics() -> void:
 	diagnostics_panel.visible = not diagnostics_panel.visible
 	_diagnostics_elapsed = 0.0
@@ -326,8 +402,11 @@ func _set_controls_visible(controls_visible: bool) -> void:
 	controls_prompt.visible = not controls_visible
 	if controls_visible:
 		pixel_snap_button.grab_focus()
-	elif pixel_snap_button.has_focus():
-		pixel_snap_button.release_focus()
+	else:
+		if pixel_snap_button.has_focus():
+			pixel_snap_button.release_focus()
+		if texture_filter_button.has_focus():
+			texture_filter_button.release_focus()
 
 
 func _update_diagnostics_values() -> void:
@@ -347,6 +426,7 @@ func _update_diagnostics_values() -> void:
 			"Tiles: %d × %d px" % [tile_size, tile_size],
 			"Welt: %s" % WORLD_STATE_NAMES[_selected_world_state],
 			"Pixel-Snap: %s" % _pixel_snap_name(),
+			"Texturfilter: %s" % _texture_filter_name(),
 			"Fenster: %d × %d" % [window_size.x, window_size.y],
 		]
 	)
@@ -368,6 +448,7 @@ func _load_settings() -> void:
 	_selected_tile_size = TileSizePreset.SMALL
 	_selected_world_state = WorldStatePreset.DAMAGED
 	_pixel_snap_enabled = false
+	_selected_texture_filter = TextureFilterPreset.NEAREST
 
 	var settings := ConfigFile.new()
 	var load_error := settings.load(_settings_path())
@@ -405,6 +486,12 @@ func _load_settings() -> void:
 		WorldStatePreset.DAMAGED,
 	)
 	_pixel_snap_enabled = _read_bool_setting(settings, "pixel_snap", false)
+	_selected_texture_filter = _read_preset_index(
+		settings,
+		"texture_filter",
+		TEXTURE_FILTER_IDS,
+		TextureFilterPreset.NEAREST,
+	)
 
 
 func _save_settings() -> void:
@@ -431,6 +518,11 @@ func _save_settings() -> void:
 		WORLD_STATE_IDS[_selected_world_state],
 	)
 	settings.set_value(SETTINGS_SECTION, "pixel_snap", _pixel_snap_enabled)
+	settings.set_value(
+		SETTINGS_SECTION,
+		"texture_filter",
+		TEXTURE_FILTER_IDS[_selected_texture_filter],
+	)
 	var save_error := settings.save(_settings_path())
 	if save_error != OK:
 		push_warning("VisualLab could not save its settings (error %d)." % save_error)
@@ -504,6 +596,10 @@ func _pixel_snap_name() -> String:
 	return "AN" if _pixel_snap_enabled else "AUS"
 
 
+func _texture_filter_name() -> String:
+	return TEXTURE_FILTER_NAMES[_selected_texture_filter]
+
+
 func _update_window_size_status() -> void:
 	var window_size := get_window().size
 	window_size_status.text = "Fenster: %d × %d" % [window_size.x, window_size.y]
@@ -520,4 +616,12 @@ func _on_main_window_size_changed() -> void:
 
 func _on_pixel_snap_button_pressed() -> void:
 	_set_pixel_snap_enabled(pixel_snap_button.button_pressed)
+	_save_settings()
+
+
+func _on_texture_filter_button_pressed() -> void:
+	var selected_filter := TextureFilterPreset.NEAREST
+	if texture_filter_button.button_pressed:
+		selected_filter = TextureFilterPreset.SOFT
+	_set_texture_filter(selected_filter)
 	_save_settings()

@@ -91,10 +91,10 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"InterfaceLayer/Interface"
 	) as MarginContainer
 	var button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/PixelSnapButton"
+		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
 	) as Button
 	var hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/PixelSnapToggleHint"
+		"InterfaceLayer/Interface/Text/RenderingHints/PixelSnapToggleHint"
 	) as Label
 	var diagnostics := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel/Values"
@@ -231,7 +231,7 @@ func _expect_pixel_snap_state(
 	description: String,
 ) -> void:
 	var button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/PixelSnapButton"
+		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
 	) as Button
 	_expect(button != null, "%s: menu button exists" % description)
 	var expected_text := "Pixel-Snap: AN" if expected_enabled else "Pixel-Snap: AUS"

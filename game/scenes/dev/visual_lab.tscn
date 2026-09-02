@@ -351,7 +351,7 @@ follow_viewport_enabled = false
 visible = false
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 526.0
+offset_right = 780.0
 offset_bottom = 690.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
@@ -385,7 +385,7 @@ anchor_right = 1.0
 offset_left = -390.0
 offset_top = 24.0
 offset_right = -24.0
-offset_bottom = 430.0
+offset_bottom = 458.0
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_diagnostics_panel")
@@ -406,14 +406,14 @@ text = "DIAGNOSE"
 offset_left = 18.0
 offset_top = 55.0
 offset_right = 348.0
-offset_bottom = 402.0
+offset_bottom = 430.0
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.78, 0.84, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 18
-text = "FPS: 0\nSpieler: x=1920,00 · y=1080,00\nKamera-Pos: x=1920,00 · y=1080,00\nWeltanker: x=0,00 · y=0,00\nKamera: 1,50×\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nPixel-Snap: AUS\nFenster: 1280 × 720"
+text = "FPS: 0\nSpieler: x=1920,00 · y=1080,00\nKamera-Pos: x=1920,00 · y=1080,00\nWeltanker: x=0,00 · y=0,00\nKamera: 1,50×\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nPixel-Snap: AUS\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720"
 
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
 visible = false
@@ -592,10 +592,14 @@ custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="PixelSnapButton" type="Button" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(330, 40)
+[node name="RenderingButtons" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="PixelSnapButton" type="Button" parent="InterfaceLayer/Interface/Text/RenderingButtons"]
+custom_minimum_size = Vector2(330, 40)
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.82, 0.76, 0.94, 1)
 theme_override_colors/font_hover_color = Color(0.9, 0.85, 1, 1)
@@ -605,14 +609,44 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
+focus_neighbor_right = NodePath("../TextureFilterButton")
 toggle_mode = true
 text = "Pixel-Snap: AUS"
 
-[node name="PixelSnapToggleHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+[node name="TextureFilterButton" type="Button" parent="InterfaceLayer/Interface/Text/RenderingButtons"]
+custom_minimum_size = Vector2(370, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.82, 0.76, 0.94, 1)
+theme_override_colors/font_hover_color = Color(0.9, 0.85, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.96, 0.91, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
+focus_neighbor_left = NodePath("../PixelSnapButton")
+toggle_mode = true
+text = "Texturfilter: Nearest-Neighbor"
+
+[node name="RenderingHints" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="PixelSnapToggleHint" type="Label" parent="InterfaceLayer/Interface/Text/RenderingHints"]
+custom_minimum_size = Vector2(330, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "X / Klick / Auswahl: AN / AUS"
+
+[node name="TextureFilterToggleHint" type="Label" parent="InterfaceLayer/Interface/Text/RenderingHints"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "N / Klick / Auswahl: Nearest / Weich"
 
 [node name="DiagnosticsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
 custom_minimum_size = Vector2(0, 6)

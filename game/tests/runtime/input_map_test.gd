@@ -17,6 +17,7 @@ const REQUIRED_ACTIONS: Dictionary[StringName, float] = {
 	&"dev_collision_debug_toggle": 0.5,
 	&"dev_controls_toggle": 0.5,
 	&"dev_pixel_snap_toggle": 0.5,
+	&"dev_texture_filter_toggle": 0.5,
 }
 const DIRECTION_ACTIONS: Array[StringName] = [
 	&"ui_up",
