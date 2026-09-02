@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const APPEARANCE_REFERENCE_HEIGHT := 76.0
+const APPEARANCE_REFERENCE_HEIGHT := 80.0
 
 @export_range(50.0, 1000.0, 10.0)
 var move_speed: float = 220.0

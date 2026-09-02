@@ -5,6 +5,7 @@ const SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
 const SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const BASELINE_WORLD_Y := 1760.0
 const WORLD_BOUNDS := Rect2(0, 0, 3840, 2160)
+const HEIGHT_TOLERANCE := 1.0
 const SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
 const REFERENCE_SPECS := [
 	{
@@ -61,6 +62,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var baseline := visual_lab.get_node_or_null(
 		"TestWorld/ScaleComparison/Baseline"
 	) as Line2D
+	var ground_strip := visual_lab.get_node_or_null(
+		"TestWorld/ScaleComparison/GroundStrip"
+	) as Sprite2D
 	var hero_marker := visual_lab.get_node_or_null(
 		"TestWorld/ScaleComparison/HeroStandMarker"
 	) as Polygon2D
@@ -70,13 +74,16 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var scale_reference_hint := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/ScaleReferenceHint"
 	) as Label
+	var hud_panel := visual_lab.get_node_or_null("InterfaceLayer/HudPanel") as Panel
 
 	_expect(test_world != null, "VisualLab has TestWorld")
 	_expect(scale_comparison != null, "TestWorld has ScaleComparison")
 	_expect(baseline != null, "ScaleComparison has a Baseline")
+	_expect(ground_strip != null, "ScaleComparison has a pixel-art GroundStrip")
 	_expect(hero_marker != null, "ScaleComparison has a HeroStandMarker")
 	_expect(hero_marker_label != null, "HeroStandMarker has a Label")
 	_expect(scale_reference_hint != null, "VisualLab has a scale-reference HUD hint")
+	_expect(hud_panel != null, "VisualLab has a framed HUD panel")
 	if scale_reference_hint != null:
 		_expect(
 			scale_reference_hint.text == SCALE_REFERENCE_HINT,
@@ -92,6 +99,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 		scale_comparison.get_parent() == test_world,
 		"ScaleComparison is directly under TestWorld",
 	)
+	_expect(test_world == null or test_world.y_sort_enabled, "TestWorld enables Y-sorting")
+	_expect(scale_comparison.y_sort_enabled, "ScaleComparison enables nested Y-sorting")
 	_expect(
 		scale_comparison.global_position.y == BASELINE_WORLD_Y,
 		"ScaleComparison uses the proportional lower-world baseline",
@@ -100,6 +109,27 @@ func run(tree: SceneTree) -> PackedStringArray:
 		BASELINE_WORLD_Y > WORLD_BOUNDS.get_center().y,
 		"ScaleComparison lies in the lower half of the enlarged world",
 	)
+	if ground_strip != null:
+		_expect(ground_strip.texture != null, "GroundStrip has a texture")
+		_expect(ground_strip.visible, "GroundStrip is visible")
+		_expect(
+			ground_strip.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
+			"GroundStrip uses nearest-neighbor filtering",
+		)
+		_expect(ground_strip.scale == Vector2.ONE, "GroundStrip is not pre-scaled")
+		_expect(ground_strip.rotation == 0.0, "GroundStrip is not rotated")
+		if ground_strip.texture != null:
+			var ground_image := ground_strip.texture.get_image()
+			_expect(
+				ground_image != null and not ground_image.has_mipmaps(),
+				"GroundStrip texture has no mipmaps",
+			)
+	if hud_panel != null:
+		var panel_style := hud_panel.get_theme_stylebox("panel") as StyleBoxFlat
+		_expect(panel_style != null, "HUD panel uses a flat pixel style")
+		if panel_style != null:
+			_expect(panel_style.border_width_left > 0, "HUD panel has a visible border")
+			_expect(panel_style.corner_radius_top_left == 0, "HUD panel has square corners")
 
 	if baseline != null:
 		_expect(baseline.get_parent() == scale_comparison, "Baseline is directly grouped")
@@ -123,6 +153,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"HeroStandMarker Label is a direct child",
 		)
 		_expect(hero_marker_label.text == "Held · steuerbar", "HeroStandMarker is labeled")
+		_expect(
+			hero_marker_label.z_index >= 50 and not hero_marker_label.z_as_relative,
+			"HeroStandMarker Label stays above Y-sorted world objects",
+		)
 
 	var previous_reference_x := -INF
 	for reference_spec in REFERENCE_SPECS:
@@ -145,33 +179,58 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 		previous_reference_x = reference.position.x
 
-		var shape := reference.get_node_or_null("Shape") as Polygon2D
+		var sprite := reference.get_node_or_null("Sprite2D") as Sprite2D
 		var label := reference.get_node_or_null("Label") as Label
-		_expect(shape != null, "%s has a Shape" % reference_name)
+		_expect(sprite != null, "%s has a Sprite2D" % reference_name)
 		_expect(label != null, "%s has a Label" % reference_name)
-		if shape != null:
-			_expect(shape.get_parent() == reference, "%s Shape is a direct child" % reference_name)
-			_expect(shape.visible, "%s Shape is visible" % reference_name)
-			var vertical_bounds := _polygon_world_vertical_bounds(shape)
+		if sprite != null:
+			_expect(
+				sprite.get_parent() == reference,
+				"%s Sprite2D is a direct child" % reference_name,
+			)
+			_expect(sprite.visible, "%s Sprite2D is visible" % reference_name)
+			_expect(sprite.texture != null, "%s Sprite2D has a texture" % reference_name)
+			_expect(
+				sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
+				"%s uses nearest-neighbor filtering" % reference_name,
+			)
+			_expect(sprite.scale == Vector2.ONE, "%s uses its source scale" % reference_name)
+			_expect(sprite.rotation == 0.0, "%s is not rotated" % reference_name)
+			var vertical_bounds := _sprite_world_vertical_bounds(sprite)
 			var expected_height := float(reference_spec["height"])
 			_expect(
-				is_equal_approx(vertical_bounds.y - vertical_bounds.x, expected_height),
-				"%s Shape has the intended height" % reference_name,
+				absf(vertical_bounds.y - vertical_bounds.x - expected_height)
+				<= HEIGHT_TOLERANCE,
+				"%s Sprite2D has the intended visible height" % reference_name,
 			)
 			_expect(
-				is_equal_approx(vertical_bounds.y, BASELINE_WORLD_Y),
-				"%s Shape grows upward from the shared baseline" % reference_name,
+				absf(vertical_bounds.y - BASELINE_WORLD_Y) <= HEIGHT_TOLERANCE,
+				"%s Sprite2D grows upward from the shared baseline" % reference_name,
 			)
-			for point in shape.polygon:
+			if sprite.texture != null:
+				var image := sprite.texture.get_image()
 				_expect(
-					WORLD_BOUNDS.has_point(shape.to_global(point)),
-					"%s Shape stays inside TestWorld" % reference_name,
+					image != null and image.get_used_rect().has_area(),
+					"%s texture contains visible pixels" % reference_name,
+				)
+				_expect(
+					image != null and not image.has_mipmaps(),
+					"%s texture has no mipmaps" % reference_name,
+				)
+			for point in _sprite_world_corners(sprite):
+				_expect(
+					WORLD_BOUNDS.has_point(point),
+					"%s Sprite2D stays inside TestWorld" % reference_name,
 				)
 		if label != null:
 			_expect(label.get_parent() == reference, "%s Label is a direct child" % reference_name)
 			_expect(
 				label.text == str(reference_spec["label"]),
 				"%s Label states its provisional height" % reference_name,
+			)
+			_expect(
+				label.z_index >= 50 and not label.z_as_relative,
+				"%s Label stays above Y-sorted world objects" % reference_name,
 			)
 
 	_expect_reference_order(scale_comparison, hero_marker)
@@ -218,56 +277,70 @@ func _expect_reference_order(scale_comparison: Node2D, hero_marker: Polygon2D) -
 
 
 func _expect_hero_sizes_still_work(visual_lab: Control) -> void:
-	var body := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/Body"
-	) as Polygon2D
-	var head := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/Head"
-	) as Polygon2D
-	_expect(body != null and head != null, "VisualLab retains the scalable hero appearance")
-	if body == null or head == null:
+	var hero_sprite := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite"
+	) as Sprite2D
+	_expect(hero_sprite != null, "VisualLab retains the scalable HeroSprite")
+	if hero_sprite == null:
 		return
 	_expect(
-		is_equal_approx(_hero_appearance_height(body, head), 64.0),
-		"hero still starts at 64 world pixels",
+		is_equal_approx(_sprite_world_height(hero_sprite), 80.0),
+		"hero starts at the 80-world-pixel default",
 	)
 	visual_lab._unhandled_input(_pressed_action(SIZE_DECREASE_ACTION))
 	_expect(
-		is_equal_approx(_hero_appearance_height(body, head), 64.0),
+		is_equal_approx(_sprite_world_height(hero_sprite), 64.0),
+		"hero still reaches 64 world pixels",
+	)
+	visual_lab._unhandled_input(_pressed_action(SIZE_DECREASE_ACTION))
+	_expect(
+		is_equal_approx(_sprite_world_height(hero_sprite), 64.0),
 		"hero size still stops at 64 world pixels",
 	)
 	visual_lab._unhandled_input(_pressed_action(SIZE_INCREASE_ACTION))
 	_expect(
-		is_equal_approx(_hero_appearance_height(body, head), 80.0),
+		is_equal_approx(_sprite_world_height(hero_sprite), 80.0),
 		"hero still reaches 80 world pixels",
 	)
 	visual_lab._unhandled_input(_pressed_action(SIZE_INCREASE_ACTION))
 	_expect(
-		is_equal_approx(_hero_appearance_height(body, head), 96.0),
+		is_equal_approx(_sprite_world_height(hero_sprite), 96.0),
 		"hero still reaches 96 world pixels",
 	)
 
 
-func _polygon_world_vertical_bounds(shape: Polygon2D) -> Vector2:
-	var top := INF
-	var bottom := -INF
-	for point in shape.polygon:
-		var world_y := shape.to_global(point).y
-		top = minf(top, world_y)
-		bottom = maxf(bottom, world_y)
-	return Vector2(top, bottom)
+func _sprite_world_height(sprite: Sprite2D) -> float:
+	var bounds := _sprite_world_vertical_bounds(sprite)
+	return bounds.y - bounds.x
 
 
-func _hero_appearance_height(body: Polygon2D, head: Polygon2D) -> float:
-	var top := INF
-	var bottom := -INF
-	var polygons: Array[Polygon2D] = [body, head]
-	for polygon in polygons:
-		for point in polygon.polygon:
-			var world_y := polygon.to_global(point).y
-			top = minf(top, world_y)
-			bottom = maxf(bottom, world_y)
-	return bottom - top
+func _sprite_world_vertical_bounds(sprite: Sprite2D) -> Vector2:
+	var local_rect := _sprite_local_alpha_rect(sprite)
+	return Vector2(
+		sprite.to_global(Vector2(0.0, local_rect.position.y)).y,
+		sprite.to_global(Vector2(0.0, local_rect.end.y)).y,
+	)
+
+
+func _sprite_world_corners(sprite: Sprite2D) -> PackedVector2Array:
+	var local_rect := _sprite_local_alpha_rect(sprite)
+	return PackedVector2Array([
+		sprite.to_global(local_rect.position),
+		sprite.to_global(Vector2(local_rect.end.x, local_rect.position.y)),
+		sprite.to_global(local_rect.end),
+		sprite.to_global(Vector2(local_rect.position.x, local_rect.end.y)),
+	])
+
+
+func _sprite_local_alpha_rect(sprite: Sprite2D) -> Rect2:
+	if sprite.texture == null:
+		return Rect2()
+	var image := sprite.texture.get_image()
+	if image == null:
+		return Rect2()
+	var used_rect := image.get_used_rect()
+	var texture_rect := sprite.get_rect()
+	return Rect2(texture_rect.position + Vector2(used_rect.position), Vector2(used_rect.size))
 
 
 func _pressed_action(action: StringName) -> InputEventAction:

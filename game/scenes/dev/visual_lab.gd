@@ -69,7 +69,7 @@ const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 
 var _navigation_requested := false
 var _selected_camera_zoom: int = CameraZoomPreset.NEAR
-var _selected_hero_size: int = HeroSizePreset.SMALL
+var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
 
@@ -226,7 +226,7 @@ func _apply_world_state() -> void:
 
 func _load_settings() -> void:
 	_selected_camera_zoom = CameraZoomPreset.NEAR
-	_selected_hero_size = HeroSizePreset.SMALL
+	_selected_hero_size = HeroSizePreset.MEDIUM
 	_selected_tile_size = TileSizePreset.SMALL
 	_selected_world_state = WorldStatePreset.DAMAGED
 
@@ -251,7 +251,7 @@ func _load_settings() -> void:
 		settings,
 		"hero_size",
 		HERO_SIZE_IDS,
-		HeroSizePreset.SMALL,
+		HeroSizePreset.MEDIUM,
 	)
 	_selected_tile_size = _read_preset_index(
 		settings,

@@ -10,6 +10,7 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 ## Aktiver Plan
 
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
+- [Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 
 ## Abgeschlossene historische Pläne
 

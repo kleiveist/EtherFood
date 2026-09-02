@@ -7,11 +7,11 @@ const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_previe
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_settings_test.cfg"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
+const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
 const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const NEAR_STATUS := "Kamera: Nah · 1,50×"
 const MEDIUM_ZOOM_STATUS := "Kamera: Mittel · 1,00×"
-const SMALL_HERO_STATUS := "Figur: Klein · 64 Weltpixel"
 const MEDIUM_HERO_STATUS := "Figur: Mittel · 80 Weltpixel"
 const SMALL_TILE_STATUS := "Tiles: Klein · 32 × 32 Weltpixel"
 const MEDIUM_TILE_STATUS := "Tiles: Mittel · 48 × 48 Weltpixel"
@@ -44,20 +44,20 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect_visual_lab_state(
 		visual_lab,
 		Vector2(1.5, 1.5),
-		64.0,
+		80.0,
 		32,
 		NEAR_STATUS,
-		SMALL_HERO_STATUS,
+		MEDIUM_HERO_STATUS,
 		SMALL_TILE_STATUS,
 		false,
 		DAMAGED_WORLD_STATUS,
-		"missing file uses near, small, small, and damaged defaults",
+		"missing file uses near, medium, small, and damaged defaults",
 	)
 
 	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
 	_expect_saved_settings(
 		"medium",
-		"small",
+		"medium",
 		"small",
 		"damaged",
 		"camera change saves immediately",
@@ -65,10 +65,18 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_INCREASE_ACTION))
 	_expect_saved_settings(
 		"medium",
-		"medium",
+		"large",
 		"small",
 		"damaged",
 		"hero-size change saves immediately",
+	)
+	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_DECREASE_ACTION))
+	_expect_saved_settings(
+		"medium",
+		"medium",
+		"small",
+		"damaged",
+		"returning to medium hero size saves immediately",
 	)
 	visual_lab._unhandled_input(_pressed_action(TILE_SIZE_INCREASE_ACTION))
 	_expect_saved_settings(
@@ -131,10 +139,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		_expect_visual_lab_state(
 			invalid_visual_lab,
 			Vector2(1.5, 1.5),
-			64.0,
+			80.0,
 			32,
 			NEAR_STATUS,
-			SMALL_HERO_STATUS,
+			MEDIUM_HERO_STATUS,
 			SMALL_TILE_STATUS,
 			false,
 			DAMAGED_WORLD_STATUS,
@@ -148,10 +156,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		_expect_visual_lab_state(
 			future_version_visual_lab,
 			Vector2(1.5, 1.5),
-			64.0,
+			80.0,
 			32,
 			NEAR_STATUS,
-			SMALL_HERO_STATUS,
+			MEDIUM_HERO_STATUS,
 			SMALL_TILE_STATUS,
 			false,
 			DAMAGED_WORLD_STATUS,
@@ -166,10 +174,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		_expect_visual_lab_state(
 			corrupted_visual_lab,
 			Vector2(1.5, 1.5),
-			64.0,
+			80.0,
 			32,
 			NEAR_STATUS,
-			SMALL_HERO_STATUS,
+			MEDIUM_HERO_STATUS,
 			SMALL_TILE_STATUS,
 			false,
 			DAMAGED_WORLD_STATUS,

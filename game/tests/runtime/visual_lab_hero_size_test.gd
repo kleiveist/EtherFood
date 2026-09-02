@@ -6,7 +6,7 @@ const SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
 const SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
 const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
-const REFERENCE_HEIGHT := 76.0
+const REFERENCE_HEIGHT := 80.0
 const SMALL_HEIGHT := 64.0
 const MEDIUM_HEIGHT := 80.0
 const LARGE_HEIGHT := 96.0
@@ -45,12 +45,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var appearance := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/Visual/Appearance"
 	) as Node2D
-	var body := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/Body"
-	) as Polygon2D
-	var head := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/Head"
-	) as Polygon2D
+	var hero_sprite := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite"
+	) as Sprite2D
 	var facing_marker := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/Visual/FacingMarker"
 	) as Polygon2D
@@ -74,8 +71,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(visual != null, "HeroCharacter has Visual")
 	_expect(shadow != null, "HeroCharacter has Shadow")
 	_expect(appearance != null, "HeroCharacter has Appearance")
-	_expect(body != null, "Appearance has Body")
-	_expect(head != null, "Appearance has Head")
+	_expect(hero_sprite != null, "Appearance has HeroSprite")
 	_expect(facing_marker != null, "HeroCharacter has FacingMarker")
 	_expect(
 		hero_collision != null and hero_collision.shape != null,
@@ -99,8 +95,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		or visual == null
 		or shadow == null
 		or appearance == null
-		or body == null
-		or head == null
+		or hero_sprite == null
 		or facing_marker == null
 		or hero_collision == null
 		or hero_collision.shape == null
@@ -112,8 +107,12 @@ func run(tree: SceneTree) -> PackedStringArray:
 		return failures
 
 	_expect(appearance.get_parent() == visual, "Appearance is directly under Visual")
-	_expect(body.get_parent() == appearance, "Body is directly under Appearance")
-	_expect(head.get_parent() == appearance, "Head is directly under Appearance")
+	_expect(hero_sprite.get_parent() == appearance, "HeroSprite is directly under Appearance")
+	_expect(hero_sprite.texture != null, "HeroSprite texture is available")
+	_expect(
+		hero_sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
+		"HeroSprite uses nearest-neighbor filtering",
+	)
 	_expect(shadow.get_parent() == visual, "Shadow stays outside Appearance")
 	_expect(facing_marker.get_parent() == visual, "FacingMarker stays outside Appearance")
 	_expect(hero_collision.get_parent() == hero, "collision stays outside Appearance")
@@ -133,30 +132,36 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
-		SMALL_HEIGHT,
-		SMALL_STATUS,
-		"VisualLab starts at the small hero-size default",
+		MEDIUM_HEIGHT,
+		MEDIUM_STATUS,
+		"VisualLab starts at the medium hero-size default",
 	)
 
 	visual_lab._unhandled_input(_pressed_key(KEY_F, true))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
-		SMALL_HEIGHT,
-		SMALL_STATUS,
+		MEDIUM_HEIGHT,
+		MEDIUM_STATUS,
 		"held size input does not repeat",
 	)
 
 	visual_lab._unhandled_input(_pressed_key(KEY_R))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
+		size_status,
+		SMALL_HEIGHT,
+		SMALL_STATUS,
+		"R changes medium hero size to small",
+	)
+	visual_lab._unhandled_input(_pressed_key(KEY_R))
+	_expect_size_state(
+		appearance,
+		hero_sprite,
 		size_status,
 		SMALL_HEIGHT,
 		SMALL_STATUS,
@@ -166,8 +171,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_key(KEY_F))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
@@ -176,8 +180,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_key(KEY_F))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
@@ -186,8 +189,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_key(KEY_F))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
@@ -197,8 +199,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
@@ -207,8 +208,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		SMALL_HEIGHT,
 		SMALL_STATUS,
@@ -217,8 +217,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_Y))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
@@ -227,8 +226,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_Y))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
@@ -240,8 +238,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_Y))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
@@ -251,8 +248,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
@@ -267,8 +263,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(player_camera.zoom == Vector2.ONE, "zoom can change independently")
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
@@ -278,8 +273,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(player_camera.zoom == Vector2.ONE, "size can change without camera zoom")
 	_expect_size_state(
 		appearance,
-		body,
-		head,
+		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
@@ -340,29 +334,23 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 	var reopened_appearance := reopened_visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/Visual/Appearance"
 	) as Node2D
-	var reopened_body := reopened_visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/Body"
-	) as Polygon2D
-	var reopened_head := reopened_visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/Head"
-	) as Polygon2D
+	var reopened_sprite := reopened_visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite"
+	) as Sprite2D
 	var reopened_status := reopened_visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/HeroSizeStatus"
 	) as Label
 	_expect(reopened_appearance != null, "reopened VisualLab has Appearance")
-	_expect(reopened_body != null, "reopened VisualLab has Body")
-	_expect(reopened_head != null, "reopened VisualLab has Head")
+	_expect(reopened_sprite != null, "reopened VisualLab has HeroSprite")
 	_expect(reopened_status != null, "reopened VisualLab has hero-size status")
 	if (
 		reopened_appearance != null
-		and reopened_body != null
-		and reopened_head != null
+		and reopened_sprite != null
 		and reopened_status != null
 	):
 		_expect_size_state(
 			reopened_appearance,
-			reopened_body,
-			reopened_head,
+			reopened_sprite,
 			reopened_status,
 			MEDIUM_HEIGHT,
 			MEDIUM_STATUS,
@@ -435,8 +423,7 @@ func _pressed_action(action: StringName) -> InputEventAction:
 
 func _expect_size_state(
 	appearance: Node2D,
-	body: Polygon2D,
-	head: Polygon2D,
+	sprite: Sprite2D,
 	status: Label,
 	expected_height: float,
 	expected_status: String,
@@ -448,36 +435,39 @@ func _expect_size_state(
 		"%s: uniform Appearance scale" % description,
 	)
 	_expect(
-		is_equal_approx(_measure_height(body, head), expected_height),
-		"%s: measured head-to-foot height" % description,
+		is_equal_approx(_measure_height(sprite), expected_height),
+		"%s: measured sprite-to-foot height" % description,
 	)
 	_expect(
-		is_equal_approx(_measure_bottom(body, head), appearance.global_position.y),
+		is_equal_approx(_measure_bottom(sprite), appearance.global_position.y),
 		"%s: visible foot stays at the scale origin" % description,
 	)
 	_expect(status.text == expected_status, "%s: status text" % description)
 
 
-func _measure_height(body: Polygon2D, head: Polygon2D) -> float:
-	return _measure_bottom(body, head) - _measure_top(body, head)
+func _measure_height(sprite: Sprite2D) -> float:
+	var bounds := _sprite_alpha_vertical_bounds(sprite)
+	return bounds.y - bounds.x
 
 
-func _measure_top(body: Polygon2D, head: Polygon2D) -> float:
-	var top := INF
-	var polygons: Array[Polygon2D] = [body, head]
-	for polygon in polygons:
-		for point in polygon.polygon:
-			top = minf(top, polygon.to_global(point).y)
-	return top
+func _measure_bottom(sprite: Sprite2D) -> float:
+	return _sprite_alpha_vertical_bounds(sprite).y
 
 
-func _measure_bottom(body: Polygon2D, head: Polygon2D) -> float:
-	var bottom := -INF
-	var polygons: Array[Polygon2D] = [body, head]
-	for polygon in polygons:
-		for point in polygon.polygon:
-			bottom = maxf(bottom, polygon.to_global(point).y)
-	return bottom
+func _sprite_alpha_vertical_bounds(sprite: Sprite2D) -> Vector2:
+	if sprite.texture == null:
+		return Vector2.ZERO
+	var image := sprite.texture.get_image()
+	if image == null:
+		return Vector2.ZERO
+	var used_rect := image.get_used_rect()
+	var texture_rect := sprite.get_rect()
+	var local_top := texture_rect.position.y + used_rect.position.y
+	var local_bottom := texture_rect.position.y + used_rect.end.y
+	return Vector2(
+		sprite.to_global(Vector2(0.0, local_top)).y,
+		sprite.to_global(Vector2(0.0, local_bottom)).y,
+	)
 
 
 func _expect(condition: bool, description: String) -> void:

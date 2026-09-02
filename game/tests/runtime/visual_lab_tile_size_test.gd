@@ -266,7 +266,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "zoom keeps tile size unchanged")
 	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_INCREASE_ACTION))
 	_expect(
-		is_equal_approx(hero.get_appearance_height(), 80.0),
+		is_equal_approx(hero.get_appearance_height(), 96.0),
 		"hero size changes independently",
 	)
 	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "hero size keeps tiles unchanged")
@@ -274,7 +274,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "tiles still change independently")
 	_expect(player_camera.zoom == Vector2.ONE, "tiles retain the selected camera zoom")
 	_expect(
-		is_equal_approx(hero.get_appearance_height(), 80.0),
+		is_equal_approx(hero.get_appearance_height(), 96.0),
 		"tiles retain the selected hero size",
 	)
 

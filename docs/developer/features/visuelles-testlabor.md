@@ -53,7 +53,21 @@ Gemeinsam darzustellen sind:
 ```
 
 Damit wird geprüft, ob alle Größen zueinander passen. Die Vergleichsobjekte
-sind Testdarstellungen und müssen noch keine fertigen Spielgrafiken sein.
+sind originale EtherFood-Prototypassets und noch keine fertigen
+Produktionsgrafiken. Sie werden durch ein lokales, deterministisches
+Hilfsskript ohne Netzwerkzugriff erzeugt.
+
+Alle Größenreferenzen verwenden dieselbe schräge Top-down-Spielperspektive.
+Bei Figuren bleiben Kopfoberseite, Schultern und der mittige Bodenanker
+lesbar; Gebäude zeigen Dachfläche, Dachkante und eine schmale südliche Wand.
+Frontale Fassaden, Porträts und seitliche Plattformdarstellungen sind für
+Weltobjekte im Vergleich nicht zulässig. Der bewegliche Held und die
+nicht kollidierbaren Referenzobjekte werden anhand ihrer Bodenanker nach Y
+sortiert, während die Maßstabsbeschriftungen stets darüber liegen.
+
+Der derzeitige klassische 16-Bit-RPG-Stil ist eine Arbeitsrichtung für den
+Prototyp und keine endgültige Art-Bible. Auch die sichtbaren Zielhöhen und
+alle umschaltbaren Größenwerte bleiben vorläufige Testwerte.
 
 ### 3. Grafikvarianten
 

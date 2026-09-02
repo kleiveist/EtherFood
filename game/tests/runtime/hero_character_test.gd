@@ -2,7 +2,7 @@ extends RefCounted
 
 const HERO_SCENE_PATH := "res://scenes/gameplay/hero/hero_character.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
-const EXPECTED_APPEARANCE_REFERENCE_HEIGHT := 76.0
+const EXPECTED_APPEARANCE_REFERENCE_HEIGHT := 80.0
 const MOVEMENT_ACTIONS: Array[StringName] = [
 	&"gameplay_move_left",
 	&"gameplay_move_right",
@@ -56,36 +56,40 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var visual := hero.get_node_or_null("Visual") as Node2D
 	var shadow := hero.get_node_or_null("Visual/Shadow") as Polygon2D
 	var appearance := hero.get_node_or_null("Visual/Appearance") as Node2D
-	var body := hero.get_node_or_null("Visual/Appearance/Body") as Polygon2D
-	var head := hero.get_node_or_null("Visual/Appearance/Head") as Polygon2D
+	var hero_sprite := hero.get_node_or_null("Visual/Appearance/HeroSprite") as Sprite2D
 	_expect(visual != null, "HeroCharacter has a Visual group")
 	_expect(shadow != null, "HeroCharacter has a shadow")
 	_expect(appearance != null, "HeroCharacter has an Appearance group")
-	_expect(body != null, "HeroCharacter has a body under Appearance")
-	_expect(head != null, "HeroCharacter has a head under Appearance")
+	_expect(hero_sprite != null, "HeroCharacter has a HeroSprite under Appearance")
 	if visual != null and appearance != null:
 		_expect(appearance.get_parent() == visual, "Appearance is directly under Visual")
 		_expect(appearance.position == Vector2(0, 10), "Appearance origin is at the feet")
 		_expect(appearance.scale == Vector2.ONE, "Appearance uses its reference scale")
-	if appearance != null and body != null and head != null:
-		_expect(body.get_parent() == appearance, "Body is directly under Appearance")
-		_expect(head.get_parent() == appearance, "Head is directly under Appearance")
-		_expect(appearance.get_child_count() == 2, "Appearance contains only body and head")
+	if appearance != null and hero_sprite != null:
+		_expect(hero_sprite.get_parent() == appearance, "HeroSprite is directly under Appearance")
+		_expect(appearance.get_child_count() == 1, "Appearance contains only HeroSprite")
+		_expect(hero_sprite.texture != null, "HeroSprite has a texture")
+		_expect(hero_sprite.visible, "HeroSprite is visible")
+		_expect(
+			hero_sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
+			"HeroSprite uses nearest-neighbor filtering",
+		)
+		_expect(hero_sprite.rotation == 0.0, "HeroSprite is not rotated")
 		_expect(
 			is_equal_approx(
-				_measure_appearance_height(body, head),
+				_measure_sprite_height(hero_sprite),
 				EXPECTED_APPEARANCE_REFERENCE_HEIGHT,
 			),
-			"unscaled head and body are 76 world pixels high",
+			"unscaled HeroSprite is 80 world pixels high",
 		)
 		_expect(
-			is_equal_approx(_measure_appearance_bottom(body, head), appearance.global_position.y),
+			is_equal_approx(_measure_sprite_bottom(hero_sprite), appearance.global_position.y),
 			"Appearance origin matches the visible foot position",
 		)
 		var reference_foot_position := appearance.global_position
 		hero.set_appearance_height(80.0)
 		_expect(
-			appearance.scale.is_equal_approx(Vector2.ONE * (80.0 / 76.0)),
+			appearance.scale.is_equal_approx(Vector2.ONE),
 			"HeroCharacter applies a uniform appearance scale from the reference height",
 		)
 		_expect(
@@ -190,26 +194,29 @@ func _release_movement_actions() -> void:
 		Input.action_release(action)
 
 
-func _measure_appearance_height(body: Polygon2D, head: Polygon2D) -> float:
-	return _measure_appearance_bottom(body, head) - _measure_appearance_top(body, head)
+func _measure_sprite_height(sprite: Sprite2D) -> float:
+	var bounds := _sprite_alpha_vertical_bounds(sprite)
+	return bounds.y - bounds.x
 
 
-func _measure_appearance_top(body: Polygon2D, head: Polygon2D) -> float:
-	var top := INF
-	var polygons: Array[Polygon2D] = [body, head]
-	for polygon in polygons:
-		for point in polygon.polygon:
-			top = minf(top, polygon.to_global(point).y)
-	return top
+func _measure_sprite_bottom(sprite: Sprite2D) -> float:
+	return _sprite_alpha_vertical_bounds(sprite).y
 
 
-func _measure_appearance_bottom(body: Polygon2D, head: Polygon2D) -> float:
-	var bottom := -INF
-	var polygons: Array[Polygon2D] = [body, head]
-	for polygon in polygons:
-		for point in polygon.polygon:
-			bottom = maxf(bottom, polygon.to_global(point).y)
-	return bottom
+func _sprite_alpha_vertical_bounds(sprite: Sprite2D) -> Vector2:
+	if sprite.texture == null:
+		return Vector2.ZERO
+	var image := sprite.texture.get_image()
+	if image == null:
+		return Vector2.ZERO
+	var used_rect := image.get_used_rect()
+	var texture_rect := sprite.get_rect()
+	var local_top := texture_rect.position.y + used_rect.position.y
+	var local_bottom := texture_rect.position.y + used_rect.end.y
+	return Vector2(
+		sprite.to_global(Vector2(0.0, local_top)).y,
+		sprite.to_global(Vector2(0.0, local_bottom)).y,
+	)
 
 
 func _expect(condition: bool, description: String) -> void:

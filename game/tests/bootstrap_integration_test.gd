@@ -21,7 +21,7 @@ const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
 const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Nah · 1,50×"
 const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "- / linke Schultertaste: weiter"
 const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "+ / rechte Schultertaste: näher"
-const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Klein · 64 Weltpixel"
+const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
 const EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
 const EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT := "R / Controller links: kleiner"
 const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
@@ -958,7 +958,7 @@ func _test_bootstrap_contract() -> void:
 				"VisualLab removes the old centered placeholder",
 			)
 			visual_lab._unhandled_input(_pressed_action(&"ui_cancel"))
-			_expect_saved_visual_lab_settings("near", "small", "small", "damaged")
+			_expect_saved_visual_lab_settings("near", "medium", "small", "damaged")
 		_expect(
 			scene_router.get_current_route_id() == &"main_menu",
 			"ui_cancel returns from the visual laboratory to the main menu",

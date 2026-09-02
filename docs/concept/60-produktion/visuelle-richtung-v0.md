@@ -1,7 +1,7 @@
 ---
 title: Visuelle Richtung V0
 status: accepted
-updated: 2026-08-31
+updated: 2026-09-02
 ---
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](index.md)
@@ -160,6 +160,15 @@ Diese Varianten sind Tests und noch keine endgültigen Stilentscheidungen.
 Die Größen werden immer gemeinsam mit Türen, Gegnern, Bäumen, Gebäuden
 und interaktiven Objekten getestet. Keine dieser Größen ist bereits
 verbindlich.
+
+Die aktuelle Größenvergleichsreihe verwendet originale Prototypassets in
+einer gemeinsamen schrägen Top-down-Perspektive. Weltobjekte dürfen dort
+nicht frontal oder seitlich dargestellt werden: Figuren zeigen die
+Kopfoberseite und ihren Bodenanker, Gebäude eine sichtbare Dachfläche und
+Bäume ihre Krone. Eine klassische 16-Bit-RPG-Formsprache dient dabei nur als
+Arbeitsrichtung für gute Lesbarkeit. Sie ist weder eine finale Art-Bible noch
+eine Abkehr vom modernen visuellen Grundstil. Die Größenwerte bleiben
+vorläufig.
 
 ## Weltzustände
 

@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Script" path="res://scenes/dev/visual_lab.gd" id="1_visual_lab"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
 [ext_resource type="Script" path="res://scenes/dev/tile_grid_preview.gd" id="3_tile_grid"]
 [ext_resource type="PackedScene" path="res://scenes/dev/world_state_preview.tscn" id="4_world_state"]
+[ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/scale_ground.png" id="5_scale_ground"]
+[ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/small_enemy.png" id="6_small_enemy"]
+[ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/door_entrance.png" id="7_door"]
+[ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/house_wall.png" id="8_house_wall"]
+[ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/large_enemy.png" id="9_large_enemy"]
+[ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/tree.png" id="10_tree"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
 size = Vector2(32, 2160)
@@ -13,6 +19,18 @@ size = Vector2(3840, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obstacle"]
 size = Vector2(150, 80)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_panel"]
+bg_color = Color(0.047, 0.071, 0.078, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.68, 0.53, 0.25, 1)
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
 
 [node name="VisualLab" type="Control"]
 layout_mode = 3
@@ -38,8 +56,10 @@ mouse_filter = 2
 color = Color(0.043, 0.055, 0.071, 1)
 
 [node name="TestWorld" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Floor" type="Polygon2D" parent="TestWorld"]
+z_index = -100
 polygon = PackedVector2Array(0, 0, 3840, 0, 3840, 2160, 0, 2160)
 color = Color(0.17, 0.24, 0.24, 1)
 
@@ -107,20 +127,31 @@ position = Vector2(2920, 820)
 
 [node name="ScaleComparison" type="Node2D" parent="TestWorld"]
 position = Vector2(700, 1760)
+y_sort_enabled = true
+
+[node name="GroundStrip" type="Sprite2D" parent="TestWorld/ScaleComparison"]
+texture_filter = 1
+z_index = -20
+position = Vector2(1200, -80)
+texture = ExtResource("5_scale_ground")
 
 [node name="Baseline" type="Line2D" parent="TestWorld/ScaleComparison"]
+z_index = -10
 points = PackedVector2Array(0, 0, 2400, 0)
 width = 4.0
-default_color = Color(0.86, 0.79, 0.52, 0.9)
+default_color = Color(0.84, 0.66, 0.25, 0.9)
 
 [node name="SmallEnemyReference" type="Node2D" parent="TestWorld/ScaleComparison"]
 position = Vector2(180, 0)
 
-[node name="Shape" type="Polygon2D" parent="TestWorld/ScaleComparison/SmallEnemyReference"]
-polygon = PackedVector2Array(-28, 0, -34, -12, -30, -38, -18, -52, 0, -56, 18, -52, 30, -38, 34, -12, 28, 0)
-color = Color(0.58, 0.29, 0.36, 1)
+[node name="Sprite2D" type="Sprite2D" parent="TestWorld/ScaleComparison/SmallEnemyReference"]
+texture_filter = 1
+texture = ExtResource("6_small_enemy")
+offset = Vector2(0, -28)
 
 [node name="Label" type="Label" parent="TestWorld/ScaleComparison/SmallEnemyReference"]
+z_index = 50
+z_as_relative = false
 offset_left = -150.0
 offset_top = 18.0
 offset_right = 150.0
@@ -137,6 +168,8 @@ polygon = PackedVector2Array(0, -12, 9, -9, 12, 0, 9, 9, 0, 12, -9, 9, -12, 0, -
 color = Color(1, 0.82, 0.24, 0.65)
 
 [node name="Label" type="Label" parent="TestWorld/ScaleComparison/HeroStandMarker"]
+z_index = 50
+z_as_relative = false
 offset_left = -150.0
 offset_top = 18.0
 offset_right = 150.0
@@ -150,16 +183,14 @@ horizontal_alignment = 1
 [node name="DoorReference" type="Node2D" parent="TestWorld/ScaleComparison"]
 position = Vector2(840, 0)
 
-[node name="Shape" type="Polygon2D" parent="TestWorld/ScaleComparison/DoorReference"]
-polygon = PackedVector2Array(-42, 0, -42, -112, 42, -112, 42, 0)
-color = Color(0.45, 0.27, 0.18, 1)
-
-[node name="Handle" type="Polygon2D" parent="TestWorld/ScaleComparison/DoorReference/Shape"]
-position = Vector2(25, -54)
-polygon = PackedVector2Array(0, -4, 4, 0, 0, 4, -4, 0)
-color = Color(0.94, 0.75, 0.28, 1)
+[node name="Sprite2D" type="Sprite2D" parent="TestWorld/ScaleComparison/DoorReference"]
+texture_filter = 1
+texture = ExtResource("7_door")
+offset = Vector2(0, -56)
 
 [node name="Label" type="Label" parent="TestWorld/ScaleComparison/DoorReference"]
+z_index = 50
+z_as_relative = false
 offset_left = -150.0
 offset_top = 18.0
 offset_right = 150.0
@@ -173,26 +204,14 @@ horizontal_alignment = 1
 [node name="HouseWallReference" type="Node2D" parent="TestWorld/ScaleComparison"]
 position = Vector2(1250, 0)
 
-[node name="Shape" type="Polygon2D" parent="TestWorld/ScaleComparison/HouseWallReference"]
-polygon = PackedVector2Array(-150, 0, -150, -144, 150, -144, 150, 0)
-color = Color(0.5, 0.43, 0.35, 1)
-
-[node name="MasonryTop" type="Line2D" parent="TestWorld/ScaleComparison/HouseWallReference/Shape"]
-points = PackedVector2Array(-150, -96, 150, -96)
-width = 3.0
-default_color = Color(0.29, 0.25, 0.22, 0.8)
-
-[node name="MasonryBottom" type="Line2D" parent="TestWorld/ScaleComparison/HouseWallReference/Shape"]
-points = PackedVector2Array(-150, -48, 150, -48)
-width = 3.0
-default_color = Color(0.29, 0.25, 0.22, 0.8)
-
-[node name="MasonryVertical" type="Line2D" parent="TestWorld/ScaleComparison/HouseWallReference/Shape"]
-points = PackedVector2Array(0, -144, 0, -96, -75, -96, -75, -48, 75, -48, 75, 0)
-width = 3.0
-default_color = Color(0.29, 0.25, 0.22, 0.8)
+[node name="Sprite2D" type="Sprite2D" parent="TestWorld/ScaleComparison/HouseWallReference"]
+texture_filter = 1
+texture = ExtResource("8_house_wall")
+offset = Vector2(0, -72)
 
 [node name="Label" type="Label" parent="TestWorld/ScaleComparison/HouseWallReference"]
+z_index = 50
+z_as_relative = false
 offset_left = -180.0
 offset_top = 18.0
 offset_right = 180.0
@@ -206,11 +225,14 @@ horizontal_alignment = 1
 [node name="LargeEnemyReference" type="Node2D" parent="TestWorld/ScaleComparison"]
 position = Vector2(1730, 0)
 
-[node name="Shape" type="Polygon2D" parent="TestWorld/ScaleComparison/LargeEnemyReference"]
-polygon = PackedVector2Array(-75, 0, -86, -20, -80, -82, -56, -114, -24, -128, 24, -128, 56, -114, 80, -82, 86, -20, 75, 0)
-color = Color(0.4, 0.2, 0.46, 1)
+[node name="Sprite2D" type="Sprite2D" parent="TestWorld/ScaleComparison/LargeEnemyReference"]
+texture_filter = 1
+texture = ExtResource("9_large_enemy")
+offset = Vector2(0, -64)
 
 [node name="Label" type="Label" parent="TestWorld/ScaleComparison/LargeEnemyReference"]
+z_index = 50
+z_as_relative = false
 offset_left = -180.0
 offset_top = 18.0
 offset_right = 180.0
@@ -224,15 +246,14 @@ horizontal_alignment = 1
 [node name="TreeReference" type="Node2D" parent="TestWorld/ScaleComparison"]
 position = Vector2(2180, 0)
 
-[node name="Shape" type="Polygon2D" parent="TestWorld/ScaleComparison/TreeReference"]
-polygon = PackedVector2Array(-20, 0, -20, -72, -58, -70, -82, -104, -75, -146, -48, -180, 0, -192, 48, -180, 75, -146, 82, -104, 58, -70, 20, -72, 20, 0)
-color = Color(0.24, 0.49, 0.3, 1)
-
-[node name="Trunk" type="Polygon2D" parent="TestWorld/ScaleComparison/TreeReference/Shape"]
-polygon = PackedVector2Array(-18, 0, -18, -84, 18, -84, 18, 0)
-color = Color(0.39, 0.25, 0.15, 1)
+[node name="Sprite2D" type="Sprite2D" parent="TestWorld/ScaleComparison/TreeReference"]
+texture_filter = 1
+texture = ExtResource("10_tree")
+offset = Vector2(0, -96)
 
 [node name="Label" type="Label" parent="TestWorld/ScaleComparison/TreeReference"]
+z_index = 50
+z_as_relative = false
 offset_left = -150.0
 offset_top = 18.0
 offset_right = 150.0
@@ -260,6 +281,23 @@ position = Vector2(1920, 1080)
 layer = 10
 follow_viewport_enabled = false
 
+[node name="HudPanel" type="Panel" parent="InterfaceLayer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 526.0
+offset_bottom = 770.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
+
+[node name="Accent" type="ColorRect" parent="InterfaceLayer/HudPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 118.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.84, 0.66, 0.25, 1)
+
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -279,7 +317,9 @@ theme_override_constants/separation = 5
 
 [node name="Title" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.91, 0.9, 0.82, 1)
+theme_override_colors/font_color = Color(0.94, 0.89, 0.71, 1)
+theme_override_colors/font_outline_color = Color(0.06, 0.09, 0.1, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 32
 text = "VISUELLES TESTLABOR"
 
@@ -361,7 +401,7 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.66, 0.82, 0.55, 1)
 theme_override_font_sizes/font_size = 18
-text = "Figur: Klein · 64 Weltpixel"
+text = "Figur: Mittel · 80 Weltpixel"
 
 [node name="ScaleReferenceHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
