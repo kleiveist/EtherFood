@@ -15,6 +15,7 @@ const EXPECTED_CONTROL_TEXTS: Array[String] = [
 	"T / linker Stick-Klick: kleiner",
 	"G / rechter Stick-Klick: größer",
 	"V / Controller-A: Zustand wechseln",
+	"X / Klick / Auswahl: AN / AUS",
 	"F3 / Select: Diagnose",
 	"F4: Kollisionsflächen",
 	"F5: Steuerung schließen",
@@ -89,6 +90,9 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	var diagnostics_panel := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel"
 	) as Panel
+	var pixel_snap_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/PixelSnapButton"
+	) as Button
 
 	_expect(panel != null, "VisualLab retains its framed controls panel")
 	_expect(interface != null, "VisualLab has controls content")
@@ -98,12 +102,27 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		prompt != null and prompt.text == "F5 · Steuerung",
 		"collapsed view explains the F5 shortcut",
 	)
-	if panel == null or interface == null or text_container == null or prompt == null:
+	_expect(pixel_snap_button != null, "controls have an interactive pixel-snap button")
+	if (
+		panel == null
+		or interface == null
+		or text_container == null
+		or prompt == null
+		or pixel_snap_button == null
+	):
 		return
 
 	_expect(not panel.visible, "controls panel starts hidden")
 	_expect(not interface.visible, "controls content starts hidden")
 	_expect(prompt.visible, "F5 shortcut starts visible")
+	_expect(
+		not pixel_snap_button.is_visible_in_tree(),
+		"pixel-snap menu button starts collapsed with the controls",
+	)
+	_expect(
+		pixel_snap_button.text == "Pixel-Snap: AUS",
+		"pixel-snap menu button starts with an exact state",
+	)
 	_expect(
 		diagnostics_panel != null and not diagnostics_panel.visible,
 		"diagnostics remain independently hidden",
@@ -113,6 +132,8 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	_expect(panel.visible, "F5 action shows the controls panel")
 	_expect(interface.visible, "F5 action shows the controls content")
 	_expect(not prompt.visible, "expanded controls replace the collapsed shortcut")
+	_expect(pixel_snap_button.is_visible_in_tree(), "F5 shows the pixel-snap menu button")
+	_expect(pixel_snap_button.has_focus(), "F5 focuses the interactive menu button")
 	_expect_visible_content_is_controls_only(text_container)
 
 	visual_lab._unhandled_input(_pressed_key(KEY_F5, true))
@@ -133,12 +154,27 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"F5 does not change diagnostics visibility",
 	)
 
+	pixel_snap_button.button_pressed = true
+	pixel_snap_button.pressed.emit()
+	_expect(
+		pixel_snap_button.text == "Pixel-Snap: AN",
+		"menu selection updates the displayed pixel-snap state",
+	)
+	_expect(
+		visual_lab.get_viewport().snap_2d_transforms_to_pixel,
+		"menu selection enables viewport pixel snap",
+	)
+
 	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
 	var settings := ConfigFile.new()
 	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "existing lab settings still save")
 	_expect(
 		not settings.has_section_key("visual_lab", "controls_visible"),
 		"controls visibility is not persisted",
+	)
+	_expect(
+		settings.get_value("visual_lab", "pixel_snap", false) == true,
+		"pixel-snap menu choice is persisted as a test value",
 	)
 
 

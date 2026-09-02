@@ -120,10 +120,12 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_tile_size_increase"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_world_state_toggle"))
+	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
 	_expect(values.text.contains("Kamera: 1,00×"), "diagnostics show active camera zoom")
 	_expect(values.text.contains("Figur: 96 px"), "diagnostics show active hero size")
 	_expect(values.text.contains("Tiles: 48 × 48 px"), "diagnostics show active tile size")
 	_expect(values.text.contains("Welt: Wiederhergestellt"), "diagnostics show active world state")
+	_expect(values.text.contains("Pixel-Snap: AN"), "diagnostics show active pixel snap")
 
 	var player_line_before := _line_with_prefix(values.text, "Spieler: ")
 	Input.action_press(&"gameplay_move_right")
@@ -181,18 +183,38 @@ func _expect_diagnostic_values(
 	hero: HERO_SCRIPT,
 ) -> void:
 	var window_size := visual_lab.get_window().size
-	var player_position := hero.global_position.round()
+	var player_camera := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/PlayerCamera"
+	) as Camera2D
+	var test_world := visual_lab.get_node_or_null("TestWorld") as Node2D
 	_expect(_values_have_numeric_fps(values.text), "FPS is displayed as a number")
 	_expect(
-		values.text.contains(
-			"Spieler: %d, %d" % [player_position.x, player_position.y]
-		),
+		values.text.contains("Spieler: %s" % _format_position(hero.global_position)),
 		"diagnostics show current player coordinates",
 	)
+	_expect(player_camera != null, "diagnostics retain the player camera")
+	if player_camera != null:
+		_expect(
+			values.text.contains(
+				"Kamera-Pos: %s" % _format_position(
+					player_camera.get_screen_center_position()
+				)
+			),
+			"diagnostics show the actual camera center separately",
+		)
+	_expect(test_world != null, "diagnostics retain the test world")
+	if test_world != null:
+		_expect(
+			values.text.contains(
+				"Weltanker: %s" % _format_position(test_world.global_position)
+			),
+			"diagnostics show the world anchor separately",
+		)
 	_expect(values.text.contains("Kamera: 1,50×"), "diagnostics show initial camera zoom")
 	_expect(values.text.contains("Figur: 80 px"), "diagnostics show initial hero size")
 	_expect(values.text.contains("Tiles: 32 × 32 px"), "diagnostics show initial tile size")
 	_expect(values.text.contains("Welt: Beschädigt"), "diagnostics show initial world state")
+	_expect(values.text.contains("Pixel-Snap: AUS"), "diagnostics show initial pixel snap")
 	_expect(
 		values.text.contains("Fenster: %d × %d" % [window_size.x, window_size.y]),
 		"diagnostics show the actual window size",
@@ -250,6 +272,10 @@ func _expect_diagnostics_not_saved() -> void:
 		"existing camera value remains saved",
 	)
 	_expect(
+		settings.get_value("visual_lab", "pixel_snap", false) == true,
+		"active pixel-snap test value remains saved",
+	)
+	_expect(
 		not settings.has_section_key("visual_lab", "diagnostics_visible"),
 		"diagnostics visibility is not saved",
 	)
@@ -282,6 +308,13 @@ func _line_with_prefix(text: String, prefix: String) -> String:
 		if line.begins_with(prefix):
 			return line
 	return ""
+
+
+func _format_position(position: Vector2) -> String:
+	return "x=%s · y=%s" % [
+		("%.2f" % position.x).replace(".", ","),
+		("%.2f" % position.y).replace(".", ","),
+	]
 
 
 func _open_visual_lab(tree: SceneTree, packed_scene: PackedScene) -> Control:

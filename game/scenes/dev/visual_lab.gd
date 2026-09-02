@@ -42,6 +42,7 @@ const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
 const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
+const PIXEL_SNAP_TOGGLE_ACTION := &"dev_pixel_snap_toggle"
 const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
 const COLLISION_DEBUG_TOGGLE_ACTION := &"dev_collision_debug_toggle"
 const CONTROLS_TOGGLE_ACTION := &"dev_controls_toggle"
@@ -72,6 +73,7 @@ const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 @onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
 @onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
 @onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
+@onready var pixel_snap_button: Button = $InterfaceLayer/Interface/Text/PixelSnapButton
 @onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 @onready var diagnostics_panel: Panel = $InterfaceLayer/DiagnosticsPanel
 @onready var diagnostics_values: Label = $InterfaceLayer/DiagnosticsPanel/Values
@@ -81,6 +83,7 @@ const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
 @onready var controls_panel: Panel = $InterfaceLayer/HudPanel
 @onready var controls_interface: MarginContainer = $InterfaceLayer/Interface
 @onready var controls_prompt: Label = $InterfaceLayer/ControlsPrompt
+@onready var test_world: Node2D = $TestWorld
 
 var _navigation_requested := false
 var _diagnostics_elapsed := 0.0
@@ -88,9 +91,15 @@ var _selected_camera_zoom: int = CameraZoomPreset.NEAR
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
+var _pixel_snap_enabled := false
+var _pixel_snap_viewport: Viewport
+var _initial_viewport_pixel_snap := false
 
 
 func _ready() -> void:
+	_pixel_snap_viewport = get_viewport()
+	_initial_viewport_pixel_snap = _pixel_snap_viewport.snap_2d_transforms_to_pixel
+	pixel_snap_button.pressed.connect(_on_pixel_snap_button_pressed)
 	player_camera.limit_left = WORLD_LEFT
 	player_camera.limit_top = WORLD_TOP
 	player_camera.limit_right = WORLD_RIGHT
@@ -108,7 +117,13 @@ func _ready() -> void:
 	_apply_hero_size()
 	_apply_tile_size()
 	_apply_world_state()
+	_apply_pixel_snap()
 	_update_window_size_status()
+
+
+func _exit_tree() -> void:
+	if _pixel_snap_viewport != null and is_instance_valid(_pixel_snap_viewport):
+		_pixel_snap_viewport.snap_2d_transforms_to_pixel = _initial_viewport_pixel_snap
 
 
 func _process(delta: float) -> void:
@@ -164,6 +179,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(WORLD_STATE_TOGGLE_ACTION):
 		get_viewport().set_input_as_handled()
 		_toggle_world_state()
+		return
+	if event.is_action_pressed(PIXEL_SNAP_TOGGLE_ACTION):
+		get_viewport().set_input_as_handled()
+		if not _is_repeated_key_event(event):
+			_toggle_pixel_snap()
 		return
 	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
 		return
@@ -272,6 +292,23 @@ func _apply_world_state() -> void:
 	_refresh_diagnostics_if_visible()
 
 
+func _toggle_pixel_snap() -> void:
+	_set_pixel_snap_enabled(not _pixel_snap_enabled)
+	_save_settings()
+
+
+func _set_pixel_snap_enabled(pixel_snap_enabled: bool) -> void:
+	_pixel_snap_enabled = pixel_snap_enabled
+	_apply_pixel_snap()
+
+
+func _apply_pixel_snap() -> void:
+	_pixel_snap_viewport.snap_2d_transforms_to_pixel = _pixel_snap_enabled
+	pixel_snap_button.button_pressed = _pixel_snap_enabled
+	pixel_snap_button.text = "Pixel-Snap: %s" % _pixel_snap_name()
+	_refresh_diagnostics_if_visible()
+
+
 func _toggle_diagnostics() -> void:
 	diagnostics_panel.visible = not diagnostics_panel.visible
 	_diagnostics_elapsed = 0.0
@@ -287,20 +324,29 @@ func _set_controls_visible(controls_visible: bool) -> void:
 	controls_panel.visible = controls_visible
 	controls_interface.visible = controls_visible
 	controls_prompt.visible = not controls_visible
+	if controls_visible:
+		pixel_snap_button.grab_focus()
+	elif pixel_snap_button.has_focus():
+		pixel_snap_button.release_focus()
 
 
 func _update_diagnostics_values() -> void:
-	var player_position := hero_character.global_position.round()
+	var player_position := hero_character.global_position
+	var camera_position := player_camera.get_screen_center_position()
+	var world_position := test_world.global_position
 	var tile_size := tile_grid_preview.tile_size
 	var window_size := get_window().size
 	diagnostics_values.text = "\n".join(
 		[
 			"FPS: %d" % maxi(0, roundi(Engine.get_frames_per_second())),
-			"Spieler: %d, %d" % [player_position.x, player_position.y],
+			"Spieler: %s" % _format_diagnostic_position(player_position),
+			"Kamera-Pos: %s" % _format_diagnostic_position(camera_position),
+			"Weltanker: %s" % _format_diagnostic_position(world_position),
 			"Kamera: %s×" % _format_camera_zoom(player_camera.zoom.x),
 			"Figur: %d px" % roundi(hero_character.get_appearance_height()),
 			"Tiles: %d × %d px" % [tile_size, tile_size],
 			"Welt: %s" % WORLD_STATE_NAMES[_selected_world_state],
+			"Pixel-Snap: %s" % _pixel_snap_name(),
 			"Fenster: %d × %d" % [window_size.x, window_size.y],
 		]
 	)
@@ -321,6 +367,7 @@ func _load_settings() -> void:
 	_selected_hero_size = HeroSizePreset.MEDIUM
 	_selected_tile_size = TileSizePreset.SMALL
 	_selected_world_state = WorldStatePreset.DAMAGED
+	_pixel_snap_enabled = false
 
 	var settings := ConfigFile.new()
 	var load_error := settings.load(_settings_path())
@@ -357,6 +404,7 @@ func _load_settings() -> void:
 		WORLD_STATE_IDS,
 		WorldStatePreset.DAMAGED,
 	)
+	_pixel_snap_enabled = _read_bool_setting(settings, "pixel_snap", false)
 
 
 func _save_settings() -> void:
@@ -382,6 +430,7 @@ func _save_settings() -> void:
 		"world_state",
 		WORLD_STATE_IDS[_selected_world_state],
 	)
+	settings.set_value(SETTINGS_SECTION, "pixel_snap", _pixel_snap_enabled)
 	var save_error := settings.save(_settings_path())
 	if save_error != OK:
 		push_warning("VisualLab could not save its settings (error %d)." % save_error)
@@ -398,6 +447,21 @@ func _read_preset_index(
 		return default_index
 	var preset_index := preset_ids.find(str(stored_id))
 	return preset_index if preset_index >= 0 else default_index
+
+
+func _read_bool_setting(
+	settings: ConfigFile,
+	setting_key: String,
+	default_value: bool,
+) -> bool:
+	var stored_value: Variant = settings.get_value(
+		SETTINGS_SECTION,
+		setting_key,
+		default_value,
+	)
+	if not stored_value is bool:
+		return default_value
+	return bool(stored_value)
 
 
 func _settings_path() -> String:
@@ -425,6 +489,21 @@ func _format_camera_zoom(zoom_value: float) -> String:
 	return ("%.2f" % zoom_value).replace(".", ",")
 
 
+func _format_diagnostic_position(position: Vector2) -> String:
+	return "x=%s · y=%s" % [
+		_format_position_component(position.x),
+		_format_position_component(position.y),
+	]
+
+
+func _format_position_component(value: float) -> String:
+	return ("%.2f" % value).replace(".", ",")
+
+
+func _pixel_snap_name() -> String:
+	return "AN" if _pixel_snap_enabled else "AUS"
+
+
 func _update_window_size_status() -> void:
 	var window_size := get_window().size
 	window_size_status.text = "Fenster: %d × %d" % [window_size.x, window_size.y]
@@ -437,3 +516,8 @@ func _on_visual_lab_resized() -> void:
 
 func _on_main_window_size_changed() -> void:
 	_update_window_size_status()
+
+
+func _on_pixel_snap_button_pressed() -> void:
+	_set_pixel_snap_enabled(pixel_snap_button.button_pressed)
+	_save_settings()
