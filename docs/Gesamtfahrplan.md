@@ -3,7 +3,8 @@
 <!-- AUTO-GENERATED:backlink END -->
 # EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel 🎮
 
-**Projektstand:** 3. September 2026, nach Bewegungssteuerung V0
+**Projektstand:** 3. September 2026, nach Pixel-Snap-, Texturfilter-, Nebel-
+und Lichttest; Bewegungssteuerung V0 teilweise umgesetzt
 
 Dieser Fahrplan ist das Orientierungshandbuch für neue Chats. Er zeigt die vollständige Entwicklungsreihenfolge vom aktuellen Stand bis zur stabilen Veröffentlichung.
 
@@ -54,6 +55,9 @@ Spätere Aufgaben sind zunächst **Arbeitspakete auf Projektebene**. Sie werden 
 | Testlabor       | Presets können gespeichert werden                         |    ✅   |
 | Testlabor-Grafik | Originale Top-down-Pixelart-Prototypen integriert         |    ✅   |
 | Diagnose        | FPS, Werte und eigene Kollisionsüberlagerung schaltbar     |    ✅   |
+| Pixel-Snap      | Vergleich und Prüfung abgeschlossen                        |    ✅   |
+| Texturfilter    | Vergleich und Prüfung abgeschlossen                        |    ✅   |
+| Atmosphäre      | Nebel und Licht auf großer Haus-, Wald- und Sägewerkfläche geprüft |    ✅   |
 | Steuerungshilfe | Testlabor-Steuerung über F5 ein- und ausblendbar           |    ✅   |
 | Weltzustände    | Beschädigt/Wiederhergestellt als Debug-Vergleich vorhanden |    ✅   |
 | Rekonstruktion  | Getrennte Fortschritte für Natur, Gebäude, Seelen und Personen dokumentiert | ✅ |
@@ -87,10 +91,10 @@ In dieser Phase wird noch kein vollständiger Grasland-Abschnitt gebaut. Zuerst 
 |    Nr. | Aufgabe                        | Ziel und Abschlusskriterium                                                                                                                | Status |
 | -----: | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | :----: |
 | **16** | **🔍 Diagnoseanzeige**         | FPS, Spielerposition, Kameraposition, Tilegröße, Figurengröße, Zoom, Kollisionsflächen und aktive Testeinstellungen werden live angezeigt. |   ✅   |
-|   17.1 | 🎮 Bewegungssteuerung V0       | Lauf-, Boost-, Schleich- und Sprungzustände für die Tastatur technisch absichern.                                                          |    ✅   |
-|   17.2 | 📐 Pixel-Snap vollständig testen | Darstellung und Bewegung mit allen V0-Bewegungszuständen bei 1,00× und 1,50× vergleichen.                                                |    ⚪   |
-|     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    🟡   |
-|     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand vergleichen.                                                                |    🟡   |
+|   17.1 | 🎮 Bewegungssteuerung V0       | Lauf-, Boost-, Schleich- und Sprungzustände für die Tastatur technisch absichern.                                                          |    🟡   |
+|   17.2 | 📐 Pixel-Snap vollständig testen | Darstellung und Bewegung mit allen V0-Bewegungszuständen bei 1,00× und 1,50× vergleichen.                                                |    ✅   |
+|     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    ✅   |
+|     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand auf großer Haus-, Wald- und Sägewerkfläche vergleichen.                      |    ✅   |
 |     20 | 📏 Maßstab V0 festlegen        | Heldenhöhe, Tilegröße, Kamera-Zoom und Referenzauflösung verbindlich auswählen.                                                            |    🟡   |
 |     21 | 📝 Dokumentation aktualisieren | Alle Ergebnisse aus dem visuellen Testlabor dokumentieren.                                                                                 |    🟡   |
 |     22 | 🎨 Pixelart-Grafikpaket V0     | Erstes echtes Grafikpaket nach den festgelegten Maßstabs- und Filterregeln erstellen.                                                      |    🟡   |
@@ -346,14 +350,15 @@ Der folgende Ablauf wird **für jede Region beziehungsweise jedes Kapitel einzel
 
 | Letzter abgeschlossener Schritt | Nachweis | Nächster Schritt |
 | ------------------------------- | -------- | ---------------- |
-| **Bewegungssteuerung V0** | Der gemeinsame Held unterstützt aktionsbasierte Doppel-Taps, Schnell- und Boostlauf, Schleichen samt Kameraprofil sowie drei kollisionsgebundene Top-down-Sprünge. | **Aufgabe 17.2 – Pixel-Snap vollständig testen** folgt als eigener Arbeitsschritt. |
+| **Aufgabe 19 – Nebel und Licht testen** | Beschädigter und wiederhergestellter Zustand sind mit wolkigem Nebel und Licht auf der vergrößerten Haus-, Wald- und Sägewerkfläche geprüft. | **Aufgabe 20 – Maßstab V0 festlegen**; die Bewegungssteuerung V0 bleibt daneben teilweise umgesetzt. |
 
 Die letzten abgeschlossenen Implementierungsschritte sind die Diagnoseanzeige,
 die F5-Steuerungshilfe, der begehbare Heldenraum und die erste
-Ratgeber-Interaktion sowie Bewegungssteuerung V0. Diese Vorarbeiten schließen
-die größeren gelben Arbeitspakete noch nicht vollständig ab. Insbesondere
-fehlen weiterhin die Pixel-Snap-Abnahme, verbindliche Darstellungswerte, Türen
-und Ausgang, Animationen sowie ein allgemeines Text- und Dialogsystem.
+Ratgeber-Interaktion sowie die Pixel-Snap-, Texturfilter-, Nebel- und
+Lichttests. Diese Vorarbeiten schließen die größeren gelben Arbeitspakete noch
+nicht vollständig ab. Insbesondere fehlen weiterhin die Freigabe der
+Bewegungssteuerung V0, verbindliche Darstellungswerte, Türen und Ausgang,
+Animationen sowie ein allgemeines Text- und Dialogsystem.
 
-**Aktuell wird keine weitere Aufgabe automatisch begonnen. Als Nächstes folgt
-Aufgabe 17.2.**
+**Aufgabe 19 ist nach der vergrößerten Nachprüfung abgeschlossen. Als Nächstes
+folgt Aufgabe 20; die Bewegungssteuerung V0 bleibt 🟡.**

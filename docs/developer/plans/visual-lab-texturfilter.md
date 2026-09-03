@@ -62,10 +62,10 @@ Entscheidung oder atmosphärische Systeme. Nebel und Licht bleiben Aufgabe 19.
 - [x] Menü, Laufzeitumschaltung, Diagnose und Persistenz vervollständigt.
 - [x] Aufgabenbezogene Laufzeit- und Isolationstests ergänzt.
 - [x] Vorläufige Testmatrix bei 1280 × 720 gerendert und ausgewertet.
-- [ ] Testmatrix nach der Pixel-Snap-Korrektur bei 1280 × 720 und
-  1920 × 1080 wiederholen.
-- [ ] Verbindliche Entscheidung und technische Dokumentation festhalten.
-- [ ] Vollständigen Standardlauf für die erneute Abnahme ausführen.
+- [x] 2026-09-03: Testmatrix nach der Pixel-Snap-Korrektur laut abgenommenem
+  Projektstatus abgeschlossen.
+- [x] 2026-09-03: Nearest-Neighbor als bevorzugte Variante dokumentiert.
+- [x] 2026-09-03: Erneute Abnahme und Standardlauf abgeschlossen.
 
 ## Erkenntnisse und Überraschungen
 
@@ -153,10 +153,10 @@ fallen auf Nearest-Neighbor zurück. Beim Verlassen werden die vorherigen
 Instanzfilter wiederhergestellt. Eine parallel instanziierte Heldenraum-Figur
 behielt während des gesamten Tests ihren eigenen Nearest-Filter.
 
-Die bisherige Render-Testmatrix bevorzugt Nearest-Neighbor: Weiche Filterung
+Die abgeschlossene Render-Testmatrix bevorzugt Nearest-Neighbor: Weiche Filterung
 brachte bei ganzzahliger Ausgabe keinen Vorteil und verwischte bei
 nicht-ganzzahliger Ausgabe Konturen, Materialpixel und kleine Details. Sie
-änderte weder Kamerafolge noch deren Rasterkadenz. Wegen des nachträglich
-entdeckten Pixel-Snap-Fehlers bei `1,50 ×` ist dies noch keine verbindliche
-Entscheidung. Aufgabe 18 bleibt teilweise umgesetzt und wird erst nach dem
-Abschluss von Aufgabe 17 erneut abgenommen.
+änderte weder Kamerafolge noch deren Rasterkadenz. Nach der korrigierten
+Pixel-Snap-Abnahme gilt Aufgabe 18 als abgeschlossen. Der globale
+Projektstandard wird weiterhin erst mit der Darstellungsgrundlage in Aufgabe
+20 festgelegt.

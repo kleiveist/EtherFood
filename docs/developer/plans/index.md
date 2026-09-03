@@ -9,16 +9,14 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 
 ## Aktive Pläne
 
-- [Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)
+- [Bewegungssteuerung V0](bewegungssteuerung-v0.md)
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
-
-## Nächster teilweise umgesetzter Plan
-
-- [Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
 
 ## Abgeschlossene historische Pläne
 
-- [Bewegungssteuerung V0](bewegungssteuerung-v0.md)
+- [Nebel- und Lichtvergleich im visuellen Testlabor](visual-lab-nebel-und-licht.md)
+- [Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
+- [Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)
 - [Erste Ratgeber-Interaktion](erste-ratgeber-interaktion.md)
 - [Begehbarer Heldenraum](begehbarer-heldenraum.md)
 - [Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)

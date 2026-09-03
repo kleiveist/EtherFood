@@ -127,6 +127,20 @@ class GodotProjectTests(unittest.TestCase):
                 self.assertIn('"location":1', body)
                 self.assertIn('"location":2', body)
 
+    def test_atmosphere_comparison_uses_dedicated_debug_keys(self) -> None:
+        project = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
+        mappings = {
+            "dev_fog_variant_cycle": 66,
+            "dev_light_variant_cycle": 76,
+        }
+
+        for action, physical_key in mappings.items():
+            with self.subTest(action=action):
+                body = self._input_action(project, action)
+                self.assertIn('"deadzone": 0.5', body)
+                self.assertIn(f'"physical_keycode":{physical_key}', body)
+                self.assertNotIn("InputEventJoypad", body)
+
     def test_touch_adapter_uses_only_semantic_action_boundaries(self) -> None:
         adapter = (
             GODOT_ROOT / "shared" / "input" / "touch_action_adapter.gd"
@@ -318,6 +332,7 @@ class GodotProjectTests(unittest.TestCase):
         self.assertIn("res://tests/runtime/application_root_test.gd", runner_text)
         self.assertIn("res://tests/runtime/input_map_test.gd", runner_text)
         self.assertIn("res://tests/runtime/hero_movement_v0_test.gd", runner_text)
+        self.assertIn("res://tests/runtime/visual_lab_atmosphere_test.gd", runner_text)
         self.assertIn("res://tests/runtime/touch_action_adapter_test.gd", runner_text)
         self.assertIn("ApplicationRoot/RouteHost/TitleScreen", runner_text)
         self.assertIn('scene_router.get_current_route_id() == &"main_menu"', runner_text)

@@ -51,6 +51,8 @@ const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
 const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
 const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
+const FOG_VARIANT_CYCLE_ACTION := &"dev_fog_variant_cycle"
+const LIGHT_VARIANT_CYCLE_ACTION := &"dev_light_variant_cycle"
 const PIXEL_SNAP_TOGGLE_ACTION := &"dev_pixel_snap_toggle"
 const TEXTURE_FILTER_TOGGLE_ACTION := &"dev_texture_filter_toggle"
 const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
@@ -78,6 +80,8 @@ const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
 const TILE_SIZE_IDS: Array[String] = ["small", "medium", "large"]
 const WORLD_STATE_NAMES: Array[String] = ["Beschädigt", "Wiederhergestellt"]
 const WORLD_STATE_IDS: Array[String] = ["damaged", "restored"]
+const FOG_SETTING_KEYS: Array[String] = ["damaged_fog", "restored_fog"]
+const LIGHT_SETTING_KEYS: Array[String] = ["damaged_light", "restored_light"]
 const TEXTURE_FILTER_NAMES: Array[String] = ["Nearest-Neighbor", "Weich"]
 const TEXTURE_FILTER_IDS: Array[String] = ["nearest", "soft"]
 const TEXTURE_FILTER_VALUES: Array[int] = [
@@ -98,6 +102,12 @@ const TEXTURE_FILTER_VALUES: Array[int] = [
 @onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
 @onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
 @onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
+@onready var fog_variant_button: Button = (
+	$InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton
+)
+@onready var light_variant_button: Button = (
+	$InterfaceLayer/Interface/Text/AtmosphereButtons/LightVariantButton
+)
 @onready var pixel_snap_button: Button = (
 	$InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton
 )
@@ -121,6 +131,14 @@ var _selected_camera_zoom: int = CameraZoomPreset.NEAR
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
+var _selected_fog_variants: Array[int] = [
+	WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_FOG_VARIANT,
+	WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_FOG_VARIANT,
+]
+var _selected_light_variants: Array[int] = [
+	WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_LIGHT_VARIANT,
+	WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_LIGHT_VARIANT,
+]
 var _pixel_snap_enabled := false
 var _selected_texture_filter: int = TextureFilterPreset.NEAREST
 var _active_camera_profile: CameraProfileResource = CameraProfileResource.new()
@@ -144,6 +162,8 @@ func _ready() -> void:
 	_initial_camera_top_level = player_camera.top_level
 	_initial_hero_visual_top_level = hero_visual.top_level
 	_collect_texture_filter_targets(test_world)
+	fog_variant_button.pressed.connect(_on_fog_variant_button_pressed)
+	light_variant_button.pressed.connect(_on_light_variant_button_pressed)
 	pixel_snap_button.pressed.connect(_on_pixel_snap_button_pressed)
 	texture_filter_button.pressed.connect(_on_texture_filter_button_pressed)
 	player_camera.limit_left = WORLD_LEFT
@@ -229,6 +249,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(WORLD_STATE_TOGGLE_ACTION):
 		get_viewport().set_input_as_handled()
 		_toggle_world_state()
+		return
+	if event.is_action_pressed(FOG_VARIANT_CYCLE_ACTION):
+		get_viewport().set_input_as_handled()
+		_cycle_fog_variant()
+		return
+	if event.is_action_pressed(LIGHT_VARIANT_CYCLE_ACTION):
+		get_viewport().set_input_as_handled()
+		_cycle_light_variant()
 		return
 	if event.is_action_pressed(PIXEL_SNAP_TOGGLE_ACTION):
 		get_viewport().set_input_as_handled()
@@ -349,6 +377,44 @@ func _toggle_world_state() -> void:
 func _apply_world_state() -> void:
 	world_state_preview.set_world_state(_selected_world_state)
 	world_state_status.text = "Weltzustand: %s" % WORLD_STATE_NAMES[_selected_world_state]
+	_apply_atmosphere()
+
+
+func _cycle_fog_variant() -> void:
+	var variant_count := world_state_preview.get_fog_variant_count(
+		_selected_world_state
+	)
+	_selected_fog_variants[_selected_world_state] = wrapi(
+		_selected_fog_variants[_selected_world_state] + 1,
+		0,
+		variant_count,
+	)
+	_apply_atmosphere()
+	_save_settings()
+
+
+func _cycle_light_variant() -> void:
+	var variant_count := world_state_preview.get_light_variant_count(
+		_selected_world_state
+	)
+	_selected_light_variants[_selected_world_state] = wrapi(
+		_selected_light_variants[_selected_world_state] + 1,
+		0,
+		variant_count,
+	)
+	_apply_atmosphere()
+	_save_settings()
+
+
+func _apply_atmosphere() -> void:
+	world_state_preview.set_atmosphere_variants(
+		_selected_fog_variants[_selected_world_state],
+		_selected_light_variants[_selected_world_state],
+	)
+	fog_variant_button.text = "Nebel: %s" % world_state_preview.get_active_fog_name()
+	light_variant_button.text = (
+		"Licht: %s" % world_state_preview.get_active_light_name()
+	)
 	_refresh_diagnostics_if_visible()
 
 
@@ -440,6 +506,10 @@ func _set_controls_visible(controls_visible: bool) -> void:
 			pixel_snap_button.release_focus()
 		if texture_filter_button.has_focus():
 			texture_filter_button.release_focus()
+		if fog_variant_button.has_focus():
+			fog_variant_button.release_focus()
+		if light_variant_button.has_focus():
+			light_variant_button.release_focus()
 
 
 func _update_diagnostics_values() -> void:
@@ -473,7 +543,9 @@ func _update_diagnostics_values() -> void:
 			"Sprung: %s" % hero_character.get_jump_diagnostic(),
 			"Figur: %d px" % roundi(hero_character.get_appearance_height()),
 			"Tiles: %d × %d px" % [tile_size, tile_size],
-			"Welt: %s" % WORLD_STATE_NAMES[_selected_world_state],
+			"Weltzustand: %s" % WORLD_STATE_NAMES[_selected_world_state],
+			"Nebel: %s" % world_state_preview.get_active_fog_name(),
+			"Lichtprofil: %s" % world_state_preview.get_active_light_name(),
 			"Pixel-Snap: %s" % _pixel_snap_name(),
 			"Viewport-Transform-Snap: %s"
 			% (
@@ -507,6 +579,14 @@ func _load_settings() -> void:
 	_selected_hero_size = HeroSizePreset.MEDIUM
 	_selected_tile_size = TileSizePreset.SMALL
 	_selected_world_state = WorldStatePreset.DAMAGED
+	_selected_fog_variants = [
+		WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_FOG_VARIANT,
+		WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_FOG_VARIANT,
+	]
+	_selected_light_variants = [
+		WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_LIGHT_VARIANT,
+		WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_LIGHT_VARIANT,
+	]
 	_pixel_snap_enabled = false
 	_selected_texture_filter = TextureFilterPreset.NEAREST
 
@@ -545,6 +625,31 @@ func _load_settings() -> void:
 		WORLD_STATE_IDS,
 		WorldStatePreset.DAMAGED,
 	)
+	for world_state in range(WORLD_STATE_IDS.size()):
+		var default_fog := world_state_preview.get_default_fog_variant(world_state)
+		var stored_fog: Variant = settings.get_value(
+			SETTINGS_SECTION,
+			FOG_SETTING_KEYS[world_state],
+			world_state_preview.get_fog_variant_id(world_state, default_fog),
+		)
+		_selected_fog_variants[world_state] = world_state_preview.find_fog_variant(
+			world_state,
+			str(stored_fog),
+			default_fog,
+		)
+		var default_light := world_state_preview.get_default_light_variant(world_state)
+		var stored_light: Variant = settings.get_value(
+			SETTINGS_SECTION,
+			LIGHT_SETTING_KEYS[world_state],
+			world_state_preview.get_light_variant_id(world_state, default_light),
+		)
+		_selected_light_variants[world_state] = (
+			world_state_preview.find_light_variant(
+				world_state,
+				str(stored_light),
+				default_light,
+			)
+		)
 	_pixel_snap_enabled = _read_bool_setting(settings, "pixel_snap", false)
 	_selected_texture_filter = _read_preset_index(
 		settings,
@@ -577,6 +682,23 @@ func _save_settings() -> void:
 		"world_state",
 		WORLD_STATE_IDS[_selected_world_state],
 	)
+	for world_state in range(WORLD_STATE_IDS.size()):
+		settings.set_value(
+			SETTINGS_SECTION,
+			FOG_SETTING_KEYS[world_state],
+			world_state_preview.get_fog_variant_id(
+				world_state,
+				_selected_fog_variants[world_state],
+			),
+		)
+		settings.set_value(
+			SETTINGS_SECTION,
+			LIGHT_SETTING_KEYS[world_state],
+			world_state_preview.get_light_variant_id(
+				world_state,
+				_selected_light_variants[world_state],
+			),
+		)
 	settings.set_value(SETTINGS_SECTION, "pixel_snap", _pixel_snap_enabled)
 	settings.set_value(
 		SETTINGS_SECTION,
@@ -771,3 +893,11 @@ func _on_texture_filter_button_pressed() -> void:
 		selected_filter = TextureFilterPreset.SOFT
 	_set_texture_filter(selected_filter)
 	_save_settings()
+
+
+func _on_fog_variant_button_pressed() -> void:
+	_cycle_fog_variant()
+
+
+func _on_light_variant_button_pressed() -> void:
+	_cycle_light_variant()

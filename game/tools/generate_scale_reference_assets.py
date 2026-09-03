@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Generate EtherFood's original Visual Lab prototype PNG assets.
+"""Generate EtherFood's deterministic Visual Lab prototype PNG assets.
 
 The generator uses only Python's standard library. It performs no network
 access and deliberately draws on a two-world-pixel grid without antialiasing.
 Run with ``--check`` to verify that committed PNGs match the deterministic
-output byte for byte.
+output byte for byte. The separately documented cloudy fog textures are not
+regenerated here because their source was created with the built-in image tool.
 """
 
 from __future__ import annotations
@@ -54,10 +55,9 @@ CREAM: Color = (218, 204, 151, 255)
 ASH: Color = (82, 79, 73, 255)
 SOIL: Color = (74, 62, 47, 255)
 SOIL_LIGHT: Color = (111, 91, 61, 255)
-FOG: Color = (132, 153, 151, 104)
-FOG_LIGHT: Color = (164, 180, 168, 48)
-
 SCALE = 2
+WORLD_STATE_SOURCE_WIDTH = 720
+WORLD_STATE_SOURCE_HEIGHT = 405
 OUTPUT_DIR = (
     Path(__file__).resolve().parents[1]
     / "assets"
@@ -733,10 +733,10 @@ def scale_ground() -> Canvas:
 
 
 def world_ground(damaged: bool) -> Canvas:
-    """Create the shared 720 by 420 world-preview ground footprint."""
+    """Create the shared 1440 by 810 world-preview ground footprint."""
 
     base = (32, 54, 51, 255) if damaged else (43, 76, 53, 255)
-    image = Canvas(360, 210, base)
+    image = Canvas(WORLD_STATE_SOURCE_WIDTH, WORLD_STATE_SOURCE_HEIGHT, base)
     dark = (24, 42, 42, 255) if damaged else (32, 62, 45, 255)
     light = (50, 70, 59, 255) if damaged else (67, 99, 58, 255)
     moss = (62, 72, 51, 255) if damaged else (82, 118, 57, 255)
@@ -750,8 +750,22 @@ def world_ground(damaged: bool) -> Canvas:
         [(205, 29), (297, 17), (348, 53), (329, 112), (235, 117), (197, 77)],
         dark,
     )
-    for y in range(5, 205, 9):
-        for x in range(4, 356, 11):
+    # The right half forms a continuous forest floor while the middle remains
+    # open enough for long movement, zoom and collision passes.
+    image.polygon(
+        [(418, 12), (556, 5), (704, 31), (716, 146), (641, 191), (477, 171)],
+        dark,
+    )
+    image.polygon(
+        [(438, 211), (574, 174), (713, 208), (719, 397), (524, 399), (416, 323)],
+        dark,
+    )
+    image.polygon(
+        [(235, 214), (362, 181), (454, 221), (438, 324), (291, 337), (213, 286)],
+        (29, 47, 45, 255) if damaged else (48, 82, 54, 255),
+    )
+    for y in range(5, WORLD_STATE_SOURCE_HEIGHT - 5, 9):
+        for x in range(4, WORLD_STATE_SOURCE_WIDTH - 4, 11):
             value = (x * 23 + y * 41 + x * y) % 29
             if value in (0, 5, 17):
                 image.rect(x, y, 2, 1, light)
@@ -764,8 +778,19 @@ def world_ground(damaged: bool) -> Canvas:
 def world_ground_detail(damaged: bool) -> Canvas:
     """Overlay paired stones plus cracks or new grass on the same positions."""
 
-    image = Canvas(360, 210)
-    stones = ((27, 171), (207, 146), (338, 125), (177, 52), (312, 178))
+    image = Canvas(WORLD_STATE_SOURCE_WIDTH, WORLD_STATE_SOURCE_HEIGHT)
+    stones = (
+        (27, 171),
+        (207, 146),
+        (338, 125),
+        (177, 52),
+        (312, 178),
+        (402, 352),
+        (469, 88),
+        (553, 286),
+        (631, 61),
+        (683, 341),
+    )
     for index, (x, y) in enumerate(stones):
         stone = ASH if damaged else STONE
         image.polygon(
@@ -797,6 +822,9 @@ def world_ground_detail(damaged: bool) -> Canvas:
             ((15, 110), (37, 118), (31, 132), (52, 142), (46, 158)),
             ((184, 59), (199, 70), (192, 85), (211, 94), (203, 108)),
             ((302, 122), (314, 132), (308, 144), (325, 153)),
+            ((431, 236), (453, 246), (445, 264), (472, 278), (465, 295)),
+            ((596, 102), (611, 117), (605, 133), (629, 145), (621, 163)),
+            ((655, 315), (674, 327), (669, 345), (696, 358)),
         )
         for points in cracks:
             for start, end in zip(points, points[1:]):
@@ -804,7 +832,18 @@ def world_ground_detail(damaged: bool) -> Canvas:
             branch_x, branch_y = points[2]
             image.line((branch_x, branch_y), (branch_x + 9, branch_y + 5), INK_SOFT)
     else:
-        for x, y in ((33, 119), (200, 88), (316, 142), (73, 148), (252, 47)):
+        for x, y in (
+            (33, 119),
+            (200, 88),
+            (316, 142),
+            (73, 148),
+            (252, 47),
+            (418, 272),
+            (489, 122),
+            (542, 345),
+            (614, 191),
+            (689, 304),
+        ):
             image.line((x, y + 4), (x - 2, y - 3), GREEN, 2)
             image.line((x + 1, y + 4), (x + 5, y - 4), GREEN_LIGHT, 2)
             image.set_pixel(x + 2, y, GREEN_BRIGHT)
@@ -812,7 +851,7 @@ def world_ground_detail(damaged: bool) -> Canvas:
 
 
 def world_path(damaged: bool) -> Canvas:
-    image = Canvas(360, 210)
+    image = Canvas(WORLD_STATE_SOURCE_WIDTH, WORLD_STATE_SOURCE_HEIGHT)
     path_dark = (58, 51, 45, 255) if damaged else (91, 78, 54, 255)
     path = (77, 66, 53, 255) if damaged else (127, 105, 66, 255)
     path_light = (100, 82, 59, 255) if damaged else (157, 130, 77, 255)
@@ -821,9 +860,13 @@ def world_path(damaged: bool) -> Canvas:
         (137, 133),
         (156, 150),
         (180, 162),
-        (196, 210),
-        (111, 210),
-        (122, 177),
+        (218, 226),
+        (244, 310),
+        (240, 405),
+        (145, 405),
+        (153, 315),
+        (145, 244),
+        (111, 201),
         (102, 159),
     ]
     image.polygon(footprint, path_dark)
@@ -832,12 +875,50 @@ def world_path(damaged: bool) -> Canvas:
         (135, 137),
         (154, 153),
         (176, 166),
-        (190, 210),
-        (117, 210),
-        (126, 176),
+        (210, 230),
+        (236, 313),
+        (232, 405),
+        (153, 405),
+        (161, 316),
+        (153, 247),
+        (118, 199),
         (108, 158),
     ]
     image.polygon(inner, path)
+    # A broad branch links the house path to the sawmill yard and makes the
+    # enlarged preview useful for horizontal and diagonal camera movement.
+    branch = [
+        (141, 157),
+        (170, 149),
+        (211, 158),
+        (253, 177),
+        (305, 190),
+        (365, 199),
+        (417, 224),
+        (405, 269),
+        (351, 254),
+        (299, 236),
+        (247, 221),
+        (201, 201),
+        (164, 187),
+    ]
+    branch_inner = [
+        (147, 161),
+        (170, 155),
+        (207, 165),
+        (248, 183),
+        (302, 197),
+        (361, 206),
+        (408, 229),
+        (399, 260),
+        (354, 247),
+        (302, 229),
+        (250, 214),
+        (204, 194),
+        (167, 181),
+    ]
+    image.polygon(branch, path_dark)
+    image.polygon(branch_inner, path)
     path_stones = (
         (121, 148),
         (139, 151),
@@ -846,6 +927,14 @@ def world_path(damaged: bool) -> Canvas:
         (139, 184),
         (171, 190),
         (127, 201),
+        (164, 251),
+        (193, 292),
+        (176, 346),
+        (214, 382),
+        (207, 176),
+        (259, 195),
+        (315, 211),
+        (370, 228),
     )
     for x, y in path_stones:
         image.rect(x, y, 6, 2, path_dark)
@@ -856,6 +945,92 @@ def world_path(damaged: bool) -> Canvas:
     else:
         image.rect(112, 155, 3, 1, MOSS)
         image.rect(182, 199, 3, 1, GREEN_LIGHT)
+    return image.upscale(SCALE)
+
+
+def world_sawmill(damaged: bool) -> Canvas:
+    """Draw paired open-sided sawmills on one shared 480 by 320 canvas."""
+
+    image = Canvas(240, 160)
+    shadow = (13, 25, 24, 165)
+    yard = (59, 51, 43, 255) if damaged else (91, 76, 50, 255)
+    image.polygon(
+        [(6, 37), (72, 13), (184, 24), (232, 57), (220, 145), (37, 151), (8, 118)],
+        shadow,
+    )
+    image.polygon(
+        [(14, 79), (72, 57), (211, 72), (218, 139), (42, 145), (14, 116)],
+        yard,
+    )
+
+    # Open mill shed: the common silhouette and machinery anchors stay fixed
+    # so state toggles compare repair, material and atmosphere only.
+    image.polygon([(10, 34), (71, 9), (145, 22), (145, 82), (72, 105), (10, 86)], INK)
+    image.polygon(
+        [(14, 35), (72, 13), (141, 25), (141, 78), (72, 100), (14, 82)],
+        WOOD_DARK,
+    )
+    image.polygon([(18, 74), (73, 91), (136, 72), (136, 118), (74, 137), (18, 116)], INK)
+    image.polygon(
+        [(22, 77), (73, 95), (132, 77), (132, 114), (74, 132), (22, 112)],
+        WOOD,
+    )
+    for x in range(26, 130, 14):
+        image.line((x, 80), (x, 113), WOOD_LIGHT if not damaged else ASH)
+    for post_x in (18, 70, 136):
+        image.rect(post_x, 66, 5, 61, INK)
+        image.rect(post_x + 1, 68, 3, 57, WOOD)
+
+    # Circular saw, drive housing and feed table make the structure readable
+    # as a sawmill even at the wide camera profile.
+    image.disc(158, 91, 26, 26, INK)
+    image.disc(158, 91, 22, 22, STEEL_DARK if damaged else STEEL)
+    image.disc(158, 91, 12, 12, yard)
+    image.disc(158, 91, 4, 4, INK)
+    for start, end in (
+        ((158, 62), (158, 69)),
+        ((158, 113), (158, 121)),
+        ((129, 91), (137, 91)),
+        ((179, 91), (187, 91)),
+        ((138, 71), (144, 77)),
+        ((172, 106), (178, 112)),
+        ((137, 111), (143, 105)),
+        ((173, 76), (179, 70)),
+    ):
+        image.line(start, end, STEEL_LIGHT if not damaged else ASH, 3)
+    image.rect(142, 122, 33, 18, INK)
+    image.rect(146, 125, 25, 12, STEEL_DARK)
+
+    # Log conveyor and stacked timber occupy the same footprint in both states.
+    image.polygon([(177, 44), (230, 55), (224, 75), (173, 64)], INK)
+    image.polygon([(180, 47), (227, 57), (222, 70), (177, 61)], WOOD)
+    for x in range(183, 224, 10):
+        image.line((x, 49), (x - 4, 65), WOOD_LIGHT, 2)
+    for index, (x, y) in enumerate(((181, 121), (192, 132), (204, 120), (216, 133))):
+        image.line((x, y), (x + 21, y + 4), INK, 8)
+        image.line((x + 1, y - 1), (x + 20, y + 3), WOOD_DARK, 5)
+        image.disc(x + 21, y + 4, 3, 3, WOOD_LIGHT if index % 2 == 0 else WOOD)
+
+    if damaged:
+        image.polygon([(14, 35), (48, 23), (60, 43), (43, 56), (14, 49)], (14, 25, 25, 255))
+        image.polygon([(96, 18), (141, 25), (141, 51), (121, 48), (108, 34)], (14, 24, 24, 255))
+        image.line((31, 30), (55, 58), ASH, 4)
+        image.line((99, 20), (127, 49), WOOD_DARK, 4)
+        image.line((85, 78), (117, 119), ASH, 4)
+        image.line((185, 47), (219, 71), WOOD_DARK, 3)
+        image.line((133, 80), (181, 105), (118, 55, 48, 255), 3)
+        image.rect(149, 83, 18, 3, (113, 59, 43, 255))
+    else:
+        for y in range(29, 76, 10):
+            image.line((17, y), (70, y + 16), GOLD_DARK)
+            image.line((75, y + 15), (137, y), WOOD_LIGHT)
+        image.rect(68, 12, 5, 88, INK_SOFT)
+        image.rect(70, 14, 2, 83, WOOD_LIGHT)
+        image.rect(151, 88, 14, 3, STEEL_LIGHT)
+        image.rect(150, 126, 18, 2, STEEL)
+        for x, y in ((25, 119), (55, 132), (111, 122)):
+            image.rect(x, y, 7, 2, GREEN)
+            image.set_pixel(x + 2, y - 1, GREEN_LIGHT)
     return image.upscale(SCALE)
 
 
@@ -1026,25 +1201,6 @@ def world_plant(damaged: bool) -> Canvas:
     return image.upscale(SCALE)
 
 
-def world_fog(damaged: bool) -> Canvas:
-    image = Canvas(360, 210)
-    fog_color = FOG if damaged else FOG_LIGHT
-    bands = (
-        [(10, 24), (340, 14), (350, 51), (20, 66)],
-        [(0, 122), (360, 105), (360, 152), (0, 169)],
-    )
-    for band_index, points in enumerate(bands):
-        image.polygon(points, fog_color)
-        # Pixel-cut holes keep the haze textured instead of smoothly modern.
-        y_start = 21 if band_index == 0 else 116
-        y_end = 62 if band_index == 0 else 164
-        for y in range(y_start, y_end, 7):
-            for x in range(5, 356, 13):
-                if (x * 7 + y * 11) % 5 == 0:
-                    image.rect(x, y, 5, 2, TRANSPARENT)
-    return image.upscale(SCALE)
-
-
 def comparison_preview() -> Canvas:
     """Compose the scale row for local visual review, with the hero on its marker."""
 
@@ -1089,9 +1245,19 @@ WORLD_STATE_ASSETS: dict[str, AssetFactory] = {
     "living_tree.png": lambda: world_tree(False),
     "dead_plant.png": lambda: world_plant(True),
     "living_plant.png": lambda: world_plant(False),
-    "damaged_fog.png": lambda: world_fog(True),
-    "restored_fog.png": lambda: world_fog(False),
+    "damaged_sawmill.png": lambda: world_sawmill(True),
+    "restored_sawmill.png": lambda: world_sawmill(False),
 }
+STATIC_WORLD_STATE_ASSETS: dict[str, tuple[tuple[int, int], int]] = {
+    "damaged_fog.png": ((1440, 810), 250_000),
+    "restored_fog.png": ((1440, 810), 250_000),
+}
+
+
+def _png_dimensions(payload: bytes) -> tuple[int, int] | None:
+    if len(payload) < 24 or payload[:8] != b"\x89PNG\r\n\x1a\n":
+        return None
+    return struct.unpack(">II", payload[16:24])
 
 
 def main() -> int:
@@ -1137,12 +1303,25 @@ def main() -> int:
         destination.write_bytes(output)
         print(f"generated {destination.relative_to(Path.cwd())}")
 
+    for filename, (expected_dimensions, maximum_size) in STATIC_WORLD_STATE_ASSETS.items():
+        destination = WORLD_STATE_OUTPUT_DIR / filename
+        payload = destination.read_bytes() if destination.exists() else b""
+        if (
+            _png_dimensions(payload) != expected_dimensions
+            or len(payload) > maximum_size
+        ):
+            mismatches.append(filename)
+
     if mismatches:
         print("outdated generated assets: " + ", ".join(mismatches), file=sys.stderr)
         return 1
     if arguments.check:
         asset_count = len(ASSETS) + len(WORLD_STATE_ASSETS)
-        print(f"verified {asset_count} deterministic Visual Lab assets")
+        fog_count = len(STATIC_WORLD_STATE_ASSETS)
+        print(
+            f"verified {asset_count} deterministic Visual Lab assets "
+            f"and {fog_count} optimized fog textures"
+        )
     if arguments.preview_output is not None:
         arguments.preview_output.write_bytes(comparison_preview().png_bytes())
         print(f"generated visual review at {arguments.preview_output}")

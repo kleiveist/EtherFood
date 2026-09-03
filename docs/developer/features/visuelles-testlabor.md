@@ -26,11 +26,11 @@ Route verfügbar. Das Testlabor ist eine reine Entwicklungsfunktion und kein
 Bestandteil der Spielhandlung.
 
 Die Bedienhilfe beginnt eingeklappt. `F5` blendet die Tastenübersicht sowie die
-bedienbaren Schalter für Pixel-Snap und Texturfilter ein oder aus; ein kleiner
-Hinweis auf `F5` bleibt im eingeklappten Zustand sichtbar. Aktuelle Größen-,
-Zoom-, Welt- und Fensterwerte gehören nicht in diese Übersicht, sondern
-ausschließlich in die Diagnoseanzeige. Der Zustand der Bedienhilfe wird nicht
-gespeichert.
+bedienbaren Schalter für Nebel, Licht, Pixel-Snap und Texturfilter ein oder aus;
+ein kleiner Hinweis auf `F5` bleibt im eingeklappten Zustand sichtbar. Aktuelle
+Größen-, Zoom-, Welt- und Fensterwerte gehören nicht in diese Übersicht,
+sondern ausschließlich in die Diagnoseanzeige. Der Zustand der Bedienhilfe
+wird nicht gespeichert.
 
 ## Laufende Testergebnisse
 
@@ -86,16 +86,15 @@ Weltobjekte:
 
 | Einstellung | Technisches Ergebnis der zweiten Korrektur | Status |
 |---|---|---|
-| `1,00×`, Pixel-Snap AN, Nearest | ganze Ausgabepixelschritte; Muster stabil | Sichttest offen |
-| `1,50×`, Pixel-Snap AN, Nearest | kleinste 5-/6-Pixel-Kadenz; Muster stabil | Sichttest offen |
+| `1,00×`, Pixel-Snap AN, Nearest | ganze Ausgabepixelschritte; Muster stabil | bestanden |
+| `1,50×`, Pixel-Snap AN, Nearest | kleinste 5-/6-Pixel-Kadenz; Muster stabil | bestanden |
 | Pixel-Snap AUS, Nearest | unveränderte freie Vergleichsbewegung | bekannte Kantenunruhe |
-| Fenster 1920 × 1080 | keine grobe 3-/6-Pixel-Kadenz mehr | Sichttest offen |
-| Fenster 1280 × 720 | Fensterskalierung im Ausgaberaster berücksichtigt | Sichttest offen |
+| Fenster 1920 × 1080 | keine grobe 3-/6-Pixel-Kadenz mehr | bestanden |
+| Fenster 1280 × 720 | Fensterskalierung im Ausgaberaster berücksichtigt | bestanden |
 
-Aufgabe 17 bleibt nach dem Gegenbefund offen. Erst der erneute direkte
-Bewegungstest entscheidet, ob Pixel-Snap AN ruhiger ist und ob die Regel für
-Held, Kamera und Welt empfohlen werden kann. Über die endgültige Freigabe von
-`1,50 ×` als Profil für kleine Innenräume entscheidet weiterhin Aufgabe 20.
+Der anschließende direkte Bewegungstest wurde am 3. September 2026 abgenommen;
+Pixel-Snap gilt damit als getestet. Über die endgültige Freigabe von `1,50 ×`
+als Profil für kleine Innenräume entscheidet weiterhin Aufgabe 20.
 
 Der angezeigte Weltzustand `Beschädigt` bezeichnet ausschließlich den Zustand
 des jeweiligen Tests. Beschädigte und wiederhergestellte Welt bleiben
@@ -183,6 +182,8 @@ Umschaltbar sein sollen:
 - weiter Kamerazoom
 - Pixel-Snap ein und aus
 - Texturfilterung zum Vergleich
+- Nebelstärken je Weltzustand
+- Lichtprofile je Weltzustand
 ```
 
 Die zu vergleichenden Tilegrößen, Heldenhöhen und Kameraansichten stammen aus
@@ -232,7 +233,7 @@ Tests. Die ID `nearest` oder `soft` wird zusammen mit den vorhandenen
 Testwerten gespeichert. Version-1-Presets ohne gültige Filter-ID verwenden
 Nearest-Neighbor.
 
-Die Umschaltung erfasst ausschließlich die 25 texturierten `Sprite2D`-
+Die Umschaltung erfasst ausschließlich die 51 texturierten `Sprite2D`-
 Instanzen unter `TestWorld`: den Held, den texturierten Vergleichsboden, die
 Größenreferenzen und die Sprites beider Weltzustände. Sie ändert weder die
 globale Projekteinstellung noch Szenenressourcen. Beim Verlassen werden alle
@@ -272,11 +273,95 @@ nicht, sondern kaschiert Kanten lediglich durch Farbmischung. Bewegung,
 Kollision, Kameragrenzen und Pixel-Snap-Zustand blieben unverändert.
 
 Nearest-Neighbor bleibt damit der **bevorzugte Kandidat**, ist aber noch kein
-verbindlicher Projektstandard. Die Beobachtungen bei `1,50 ×` entstanden vor
-der korrigierten Pixel-Snap-Abnahme und werden in Aufgabe 18 mit allen drei
-Zoomstufen wiederholt. Erst danach werden Standard, mögliche lokale Ausnahmen
-für nicht als Pixelart angelegte Atmosphäreneffekte und bekannte Probleme
-verbindlich dokumentiert.
+verbindlicher Projektstandard. Der anschließende Vergleich mit allen drei
+Zoomstufen wurde am 3. September 2026 abgenommen; Aufgabe 18 gilt damit als
+abgeschlossen. Die verbindliche Darstellungsgrundlage und mögliche lokale
+Ausnahmen für nicht als Pixelart angelegte Atmosphäreneffekte folgen in
+Aufgabe 20.
+
+#### Nebel und Licht
+
+Stand: 3. September 2026.
+
+`V` wechselt weiterhin zwischen beschädigter und wiederhergestellter Welt.
+`B` beziehungsweise der Nebelknopf im `F5`-Menü durchläuft die drei
+Nebelstärken des aktiven Zustands. `L` beziehungsweise der Lichtknopf
+durchläuft dessen zwei Lichtprofile. Die Auswahl wird für beide Weltzustände
+getrennt im vorhandenen Testlabor-Preset gespeichert; ein Zustandswechsel
+stellt die zuletzt gewählte Kombination dieses Zustands wieder her. Alte
+Version-1-Presets ohne diese Werte und unbekannte IDs verwenden die
+bevorzugten Varianten.
+
+Die deckungsgleiche Vergleichsfläche misst jetzt `1440 × 810` Pixel. Sie
+verbindet das vorhandene Haus mit einem offenen Laufweg, zwölf Bäumen und
+einer Sägewerk-Teststation. Haus, Wald und Sägewerk besitzen paarige
+beschädigte und wiederhergestellte Prototypgrafiken. Diese Zusammenstellung
+ist ausschließlich eine nicht-kanonische Entwicklungskulisse; sie legt weder
+einen Ort noch eine Spielmechanik fest.
+
+Die bisherigen geraden Nebelbänder wurden durch zwei wolkige RGBA-Texturen
+ersetzt. Sie besitzen unregelmäßige Bänke, Lücken und 16 abgestufte
+Transparenzwerte. Das Bildgenerator-Ergebnis wurde auf ein logisches
+`720 × 405`-Raster reduziert, mit Nearest-Neighbor auf `1440 × 810`
+verdoppelt, zustandsabhängig eingefärbt und ohne Metadaten komprimiert. Der
+beschädigte Nebel bleibt höchstens 68 Prozent, der wiederhergestellte
+höchstens 38 Prozent deckend. Die Variantensteuerung verändert weiterhin nur
+Sprite-Deckkraft und flächige Farbmodulation; Shader, Physik und Spielmechanik
+bleiben unberührt.
+
+##### Beschädigter Weltzustand
+
+- Gewählte Nebelstärke: Mittel
+- Gewähltes Lichtprofil: Kühl und dunkel
+- Helligkeit: Sehr dunkel
+- Kontrast: Mittel
+- Farbstimmung: Kühl und entsättigt
+- Sichtbarkeit des Helden: Im Stillstand und bei Bewegung in allen drei
+  Zoomstufen erhalten; selbst die hohe Nebelvariante verdeckt ihn nicht.
+  Hauskontur, beschädigtes Sägewerk, Weg und kahle Waldsilhouetten bleiben
+  unterscheidbar.
+- Bekannte Probleme: Die Varianten sind bewusst auf die vorhandene
+  Testlabor-Vorschau begrenzte Prototypwerte. Die hohe Nebelstufe ist nur ein
+  Vergleichsextrem und keine Produktionsvorgabe.
+
+##### Wiederhergestellter Weltzustand
+
+- Gewählte Nebelstärke: Gering
+- Gewähltes Lichtprofil: Warm und klar
+- Helligkeit: Hell
+- Kontrast: Hoch
+- Farbstimmung: Leicht warm
+- Sichtbarkeit des Helden: Im Stillstand und bei Bewegung in allen drei
+  Zoomstufen erhalten; Figur, Weg, arbeitendes Sägewerk und dichter Wald
+  bleiben klar getrennt.
+- Bekannte Probleme: Die warme Farblage und die geringe Nebelstärke sind
+  vorläufige Vergleichswerte. Eine endgültige Palette oder ein finales
+  Atmosphärenasset wird daraus noch nicht abgeleitet.
+
+##### Technische Prüfung
+
+- Getestete Zoomstufen: Weit `0,75×`, Mittel `1,00×` und Nah `1,50×`.
+- Verhalten bei Kamerabewegung: 72 OpenGL-Bewegungsaufnahmen mit je zwölf
+  Bildern pro Zustand und Zoom wurden auf der vergrößerten Fläche verglichen.
+  Nebel, Licht, Haus, Wald und Sägewerk blieben gemeinsam an der Welt
+  verankert; es trat kein separates Springen oder Flackern einer
+  Atmosphärenlage auf.
+- Verhalten beim Weltzustandswechsel: Alle 36 Kombinationen aus zwei
+  Zuständen, drei Nebelstärken, zwei Lichtprofilen und drei Zoomstufen wurden
+  gerendert. Der Wechsel hinterließ keine Ebene und keinen Farbwert des
+  vorherigen Zustands.
+- Auswirkungen auf die Leistung: In einem isolierten
+  Software-OpenGL-Lauf mit je 360 Frames erreichten die bevorzugten Profile
+  auf der vergrößerten Fläche 64,20 Frames/s (beschädigt) und 61,66 Frames/s
+  (wiederhergestellt). Beide Läufe blieben auch im softwaregerenderten
+  llvmpipe-Vergleich oberhalb von 60 Frames/s; die statischen Wolkenbilder
+  benötigen keine laufende Atmosphärenberechnung.
+- Preset-Speicherung geprüft: Ja; aktive und inaktive Zustandsauswahl werden
+  gespeichert, geladen und bei ungültigen IDs kontrolliert zurückgesetzt.
+- Lesbarkeit und Kollision: Die Render- und Laufzeittests bestätigten
+  sichtbare Helden-, Hindernis- und Grenzkonturen in beiden Zuständen. Die
+  vergrößerte Kulisse fügt keine Kollisionsform hinzu; Bewegung,
+  `move_and_slide()` und die vorhandenen Testhindernisse blieben unverändert.
 
 ### 4. Weltzustände
 
@@ -322,6 +407,8 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 - gewählte Tilegröße
 - gewählte Figurengröße
 - aktiver Weltzustand
+- aktive Nebelstärke
+- aktives Lichtprofil
 - aktiver Pixel-Snap-Zustand
 - aktiver Texturfilter
 ```
@@ -332,9 +419,10 @@ erkennbar und sind nicht für normale Spielbuilds bestimmt.
 `F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
 FPS, roher Heldenposition, gerasterter Heldenanzeige, rohem und gerastertem
 Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Basis- und
-Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-, Weltzustands-,
-Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-, Darstellungsraster-,
-Rasterphasen-, Texturfilter-, Fenster- und Fensterskalierungswerten.
+Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-, Weltzustands-, Nebel-,
+Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-,
+Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
+Fensterskalierungswerten.
 `F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen
 Helden-, Hindernis- und Weltgrenzen-Kollisionen. Beide Anzeigen beginnen bei
 jedem Öffnen ausgeschaltet und werden nicht in den Testlabor-Einstellungen

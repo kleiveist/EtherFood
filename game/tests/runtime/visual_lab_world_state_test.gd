@@ -15,7 +15,9 @@ const DAMAGED_CHILDREN: Array[String] = [
 	"GroundTexture",
 	"Path",
 	"BrokenBuilding",
+	"RuinedSawmill",
 	"DeadTree",
+	"Forest",
 	"DeadPlants",
 	"Fog",
 	"ColdLight",
@@ -25,13 +27,29 @@ const RESTORED_CHILDREN: Array[String] = [
 	"GroundTexture",
 	"Path",
 	"RepairedBuilding",
+	"WorkingSawmill",
 	"LivingTree",
+	"Forest",
 	"LivingPlants",
 	"Fog",
 	"ClearAir",
 	"WarmLight",
 ]
 const PLANT_NAMES: Array[String] = ["PlantLeft", "PlantMiddle", "PlantRight"]
+const FOREST_TREE_NAMES: Array[String] = [
+	"Tree01",
+	"Tree02",
+	"Tree03",
+	"Tree04",
+	"Tree05",
+	"Tree06",
+	"Tree07",
+	"Tree08",
+	"Tree09",
+	"Tree10",
+	"Tree11",
+	"Tree12",
+]
 
 var failures: PackedStringArray = []
 var _had_settings_path_override := false
@@ -86,9 +104,14 @@ func _expect_preview_scene_contract(tree: SceneTree) -> void:
 			)
 	if title != null:
 		_expect(
-			title.text == "Weltzustand · Beschädigt ↔ Wiederhergestellt",
-			"WorldStatePreview title identifies both states",
+			title.text
+			== "Weltzustand · Haus, Wald und Sägewerk · Beschädigt ↔ Wiederhergestellt",
+			"WorldStatePreview title identifies both states and all test zones",
 		)
+	_expect(
+		preview.get_preview_size() == Vector2(1440, 810),
+		"WorldStatePreview exposes its enlarged 1440 by 810 test area",
+	)
 	if damaged_state != null and restored_state != null:
 		_expect_top_down_layout(damaged_state, restored_state)
 		_expect_state_specific_details(damaged_state, restored_state)
@@ -124,6 +147,13 @@ func _expect_preview_scene_contract(tree: SceneTree) -> void:
 		and damaged_ground.texture != restored_ground.texture,
 		"damaged and restored ground use visibly distinct pixel textures",
 	)
+	_expect(
+		damaged_ground != null
+		and restored_ground != null
+		and damaged_ground.texture.get_size() == preview.get_preview_size()
+		and restored_ground.texture.get_size() == preview.get_preview_size(),
+		"both ground states cover the complete enlarged test area",
+	)
 
 	preview.queue_free()
 	await tree.process_frame
@@ -158,6 +188,17 @@ func _expect_top_down_layout(damaged_state: Node2D, restored_state: Node2D) -> v
 		"building canvas and anchor",
 	)
 
+	var ruined_sawmill := damaged_state.get_node_or_null("RuinedSawmill") as Node2D
+	var working_sawmill := restored_state.get_node_or_null("WorkingSawmill") as Node2D
+	_expect_matching_position(ruined_sawmill, working_sawmill, "sawmill")
+	_expect_matching_sprite_canvas(
+		ruined_sawmill,
+		working_sawmill,
+		^"Sprite2D",
+		^"Sprite2D",
+		"sawmill canvas and anchor",
+	)
+
 	var dead_tree := damaged_state.get_node_or_null("DeadTree") as Node2D
 	var living_tree := restored_state.get_node_or_null("LivingTree") as Node2D
 	_expect_matching_position(dead_tree, living_tree, "tree")
@@ -168,6 +209,22 @@ func _expect_top_down_layout(damaged_state: Node2D, restored_state: Node2D) -> v
 		^"Sprite2D",
 		"tree canvas and anchor",
 	)
+
+	var damaged_forest := damaged_state.get_node_or_null("Forest") as Node2D
+	var restored_forest := restored_state.get_node_or_null("Forest") as Node2D
+	_expect(
+		damaged_forest != null and restored_forest != null,
+		"both states contain the enlarged forest section",
+	)
+	if damaged_forest != null and restored_forest != null:
+		for tree_name in FOREST_TREE_NAMES:
+			_expect_matching_sprite_canvas(
+				damaged_forest,
+				restored_forest,
+				NodePath(tree_name),
+				NodePath(tree_name),
+				"forest tree %s" % tree_name,
+			)
 
 	var dead_plants := damaged_state.get_node_or_null("DeadPlants") as Node2D
 	var living_plants := restored_state.get_node_or_null("LivingPlants") as Node2D
@@ -211,6 +268,14 @@ func _expect_state_specific_details(damaged_state: Node2D, restored_state: Node2
 		"restored building identifies its continuous roof and clean entrance details",
 	)
 	_expect(
+		damaged_state.get_node_or_null("RuinedSawmill/DamageDetails") is Node2D,
+		"damaged state identifies the ruined sawmill details",
+	)
+	_expect(
+		restored_state.get_node_or_null("WorkingSawmill/RepairedDetails") is Node2D,
+		"restored state identifies the working sawmill details",
+	)
+	_expect(
 		_expect_distinct_sprite_textures(
 			damaged_state,
 			restored_state,
@@ -218,6 +283,15 @@ func _expect_state_specific_details(damaged_state: Node2D, restored_state: Node2
 			^"RepairedBuilding/Sprite2D",
 		),
 		"building damage and repair are baked into distinct original textures",
+	)
+	_expect(
+		_expect_distinct_sprite_textures(
+			damaged_state,
+			restored_state,
+			^"RuinedSawmill/Sprite2D",
+			^"WorkingSawmill/Sprite2D",
+		),
+		"sawmill damage and repair use paired state textures",
 	)
 	_expect(
 		_expect_distinct_sprite_textures(
@@ -384,10 +458,10 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 		return
 
 	_expect(
-		preview.position == Vector2(2920, 820),
-		"WorldStatePreview occupies the right side of TestWorld",
+		preview.position == Vector2(2400, 620),
+		"WorldStatePreview starts closer to the hero on the right side of TestWorld",
 	)
-	var preview_bounds := Rect2(preview.position, Vector2(720, 420))
+	var preview_bounds := Rect2(preview.position, preview.get_preview_size())
 	_expect(
 		Rect2(0, 0, 3840, 2160).encloses(preview_bounds),
 		"WorldStatePreview stays inside the enlarged TestWorld",

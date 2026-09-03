@@ -180,7 +180,7 @@ text = "Tilegrößenvergleich · feste Fläche 768 × 384"
 horizontal_alignment = 1
 
 [node name="WorldStatePreview" parent="TestWorld" instance=ExtResource("4_world_state")]
-position = Vector2(2920, 820)
+position = Vector2(2400, 620)
 
 [node name="ScaleComparison" type="Node2D" parent="TestWorld"]
 position = Vector2(700, 1760)
@@ -413,7 +413,7 @@ theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 18
-text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nKameraprofil: Kleiner Innenraum · experimentell\nKamera-Basis: 1,50×\nKamera-Aktiv: 1,50×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nPixel-Snap: AUS\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: frei\nRasterphase: frei\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
+text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nKameraprofil: Kleiner Innenraum · experimentell\nKamera-Basis: 1,50×\nKamera-Aktiv: 1,50×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWeltzustand: Beschädigt\nNebel: Mittel\nLichtprofil: Kühl und dunkel\nPixel-Snap: AUS\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: frei\nRasterphase: frei\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
 
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
 visible = false
@@ -587,6 +587,62 @@ theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "V / Controller-A: Zustand wechseln"
 
+[node name="AtmosphereButtons" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="FogVariantButton" type="Button" parent="InterfaceLayer/Interface/Text/AtmosphereButtons"]
+custom_minimum_size = Vector2(330, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.86, 1)
+theme_override_colors/font_hover_color = Color(0.84, 0.93, 0.97, 1)
+theme_override_colors/font_pressed_color = Color(0.93, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
+focus_neighbor_right = NodePath("../LightVariantButton")
+focus_neighbor_bottom = NodePath("../../RenderingButtons/PixelSnapButton")
+text = "Nebel: Mittel"
+
+[node name="LightVariantButton" type="Button" parent="InterfaceLayer/Interface/Text/AtmosphereButtons"]
+custom_minimum_size = Vector2(370, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.9, 0.79, 0.57, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9, 0.68, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.95, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
+focus_neighbor_left = NodePath("../FogVariantButton")
+focus_neighbor_bottom = NodePath("../../RenderingButtons/TextureFilterButton")
+text = "Licht: Kühl und dunkel"
+
+[node name="AtmosphereHints" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="FogVariantHint" type="Label" parent="InterfaceLayer/Interface/Text/AtmosphereHints"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "B / Klick / Auswahl: Nebel wechseln"
+
+[node name="LightVariantHint" type="Label" parent="InterfaceLayer/Interface/Text/AtmosphereHints"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "L / Klick / Auswahl: Licht wechseln"
+
 [node name="PixelSnapSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
@@ -610,6 +666,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
 focus_neighbor_right = NodePath("../TextureFilterButton")
+focus_neighbor_top = NodePath("../../AtmosphereButtons/FogVariantButton")
 toggle_mode = true
 text = "Pixel-Snap: AUS"
 
@@ -626,6 +683,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
 focus_neighbor_left = NodePath("../PixelSnapButton")
+focus_neighbor_top = NodePath("../../AtmosphereButtons/LightVariantButton")
 toggle_mode = true
 text = "Texturfilter: Nearest-Neighbor"
 

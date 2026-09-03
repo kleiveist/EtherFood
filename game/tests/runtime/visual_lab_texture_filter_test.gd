@@ -11,7 +11,7 @@ const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
 const WORLD_STATE_ACTION := &"dev_world_state_toggle"
-const EXPECTED_TEXTURE_SPRITE_COUNT := 25
+const EXPECTED_TEXTURE_SPRITE_COUNT := 51
 
 var failures: PackedStringArray = []
 var _had_settings_path_override := false
@@ -167,7 +167,7 @@ func _expect_texture_filter_contract(
 	_expect(diagnostics != null, "VisualLab retains diagnostics values")
 	_expect(
 		texture_sprites.size() == EXPECTED_TEXTURE_SPRITE_COUNT,
-		"filter comparison covers all 25 textured world sprites",
+		"filter comparison covers all 51 textured world sprites",
 	)
 	if (
 		hero == null
@@ -429,6 +429,10 @@ func _expect_named_texture_targets(visual_lab: Control) -> void:
 		"TestWorld/ScaleComparison/TreeReference/Sprite2D",
 		"TestWorld/WorldStatePreview/DamagedState/Ground",
 		"TestWorld/WorldStatePreview/RestoredState/Ground",
+		"TestWorld/WorldStatePreview/DamagedState/RuinedSawmill/Sprite2D",
+		"TestWorld/WorldStatePreview/RestoredState/WorkingSawmill/Sprite2D",
+		"TestWorld/WorldStatePreview/DamagedState/Forest/Tree01",
+		"TestWorld/WorldStatePreview/RestoredState/Forest/Tree01",
 	]
 	for target_path in target_paths:
 		var sprite := visual_lab.get_node_or_null(target_path) as Sprite2D

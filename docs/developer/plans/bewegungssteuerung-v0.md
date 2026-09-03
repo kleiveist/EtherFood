@@ -58,7 +58,10 @@ Aufgabe 83, Aufgabe 84 beziehungsweise späteren Mechanikaufgaben vorbehalten.
   implementiert.
 - [x] 2026-09-03: Diagnose und Szenenintegration umgesetzt.
 - [x] 2026-09-03: Automatische Tests ergänzt und ausgeführt.
-- [x] 2026-09-03: Ergebnis dokumentiert und Aufgabe 17.1 abgeschlossen.
+- [x] 2026-09-03: Technische V0-Umsetzung und automatisierte Prüfungen
+  abgeschlossen.
+- [ ] Praktische Gesamtfreigabe der Bewegungssteuerung V0 nach aktuellem
+  Projektstatus noch offen.
 
 ## Erkenntnisse und Überraschungen
 
@@ -119,5 +122,7 @@ Doppel-Tap-Logik; Boost, Schleichen, Sprung und Dialogsperre sind durch
 Laufzeittests abgesichert. Das Testlabor zeigt Basis- und Aktivzoom sowie
 Bewegungs- und Sprungzustand.
 
-Das Pixel-Snap-Verfahren blieb unverändert. Aufgabe 17.2 ist der nächste
-getrennte Arbeitsschritt und muss die neue Zustandsmatrix praktisch prüfen.
+Das Pixel-Snap-Verfahren blieb unverändert; Aufgabe 17.2 wurde anschließend
+getrennt geprüft und abgeschlossen. Die praktische Gesamtfreigabe der
+Bewegungssteuerung V0 bleibt laut aktuellem Projektstatus offen, weshalb das
+Arbeitspaket weiterhin 🟡 geführt wird.

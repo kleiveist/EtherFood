@@ -128,7 +128,15 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	_expect(values.text.contains("Sprung: Boden"), "diagnostics show grounded jump state")
 	_expect(values.text.contains("Figur: 96 px"), "diagnostics show active hero size")
 	_expect(values.text.contains("Tiles: 48 × 48 px"), "diagnostics show active tile size")
-	_expect(values.text.contains("Welt: Wiederhergestellt"), "diagnostics show active world state")
+	_expect(
+		values.text.contains("Weltzustand: Wiederhergestellt"),
+		"diagnostics show active world state",
+	)
+	_expect(values.text.contains("Nebel: Gering"), "diagnostics show active fog")
+	_expect(
+		values.text.contains("Lichtprofil: Warm und klar"),
+		"diagnostics show active light profile",
+	)
 	_expect(values.text.contains("Pixel-Snap: AN"), "diagnostics show active pixel snap")
 	_expect(values.text.contains("Vertex-Snap: AUS"), "diagnostics show vertex snap off")
 	_expect(
@@ -254,7 +262,15 @@ func _expect_diagnostic_values(
 	)
 	_expect(values.text.contains("Figur: 80 px"), "diagnostics show initial hero size")
 	_expect(values.text.contains("Tiles: 32 × 32 px"), "diagnostics show initial tile size")
-	_expect(values.text.contains("Welt: Beschädigt"), "diagnostics show initial world state")
+	_expect(
+		values.text.contains("Weltzustand: Beschädigt"),
+		"diagnostics show initial world state",
+	)
+	_expect(values.text.contains("Nebel: Mittel"), "diagnostics show initial fog")
+	_expect(
+		values.text.contains("Lichtprofil: Kühl und dunkel"),
+		"diagnostics show initial light profile",
+	)
 	_expect(values.text.contains("Pixel-Snap: AUS"), "diagnostics show initial pixel snap")
 	_expect(
 		values.text.contains("Viewport-Transform-Snap: AUS"),

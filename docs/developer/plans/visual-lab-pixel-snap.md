@@ -78,8 +78,9 @@ Aufgabe noch nicht verbindlich festgelegt.
 - [x] Automatisierte Bewegungsbilder und Laufzeittests erneut ausgeführt.
 - [x] Vollständigen Standardlauf der zweiten Korrektur auf sauberem
   Commit-Stand ausgeführt.
-- [ ] Korrigierte Variante praktisch bei `1,00 ×` und `1,50 ×` nachprüfen.
-- [ ] Aufgabe erst nach bestätigtem Sichttest wieder abschließen.
+- [x] 2026-09-03: Korrigierte Variante praktisch bei `1,00 ×` und `1,50 ×`
+  nachgeprüft.
+- [x] 2026-09-03: Sichttest bestätigt und Aufgabe abgeschlossen.
 
 ## Erkenntnisse und Überraschungen
 
@@ -194,7 +195,7 @@ Tests verwenden den vorhandenen isolierten `user://`-Pfad und stellen globale
 Viewport- sowie Projekteinstellungen wieder her. Renderaufnahmen und lokale
 Engine-Caches bleiben außerhalb des Repositorys.
 
-## Aktueller Stand – praktische Abnahme offen
+## Aktueller Stand – abgenommen
 
 Schalter, Kürzel und Preset bleiben unverändert bedienbar. Die zweite
 Korrektur entfernt das globale Transform-Snap und ersetzt das zu grobe Raster
@@ -203,8 +204,7 @@ OpenGL-Bildfolgen zeigen konstante Helden-, Tile- und Weltobjektmuster; die
 Kamerakadenz weicht nur noch um den unvermeidbaren einzelnen Ausgabepixel ab.
 Bewegung und Kollision laufen weiter mit Fließkommawerten.
 
-Dieser technische Befund ersetzt nicht den praktischen Nachtest, weil die
-vorherige Abnahme das wahrgenommene Weltflackern übersehen hat. Aufgabe 17
-bleibt deshalb 🔵, bis die Bewegung bei `1,00 ×` und `1,50 ×` erneut direkt
-beurteilt wurde. Aufgabe 18 und die Freigabe des Kamerazooms werden dadurch
-nicht vorweggenommen.
+Der direkte Nachtest bei `1,00 ×` und `1,50 ×` wurde am 3. September 2026
+bestätigt. Aufgabe 17.2 gilt damit als abgeschlossen. Die Freigabe des
+Kamerazooms und der verbindlichen Darstellungswerte wird dadurch nicht
+vorweggenommen; sie bleibt Aufgabe 20 vorbehalten.

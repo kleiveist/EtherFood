@@ -15,6 +15,8 @@ const EXPECTED_CONTROL_TEXTS: Array[String] = [
 	"T / linker Stick-Klick: kleiner",
 	"G / rechter Stick-Klick: größer",
 	"V / Controller-A: Zustand wechseln",
+	"B / Klick / Auswahl: Nebel wechseln",
+	"L / Klick / Auswahl: Licht wechseln",
 	"X / Klick / Auswahl: AN / AUS",
 	"N / Klick / Auswahl: Nearest / Weich",
 	"F3 / Select: Diagnose",
@@ -97,6 +99,15 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	var texture_filter_button := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton"
 	) as Button
+	var fog_variant_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton"
+	) as Button
+	var light_variant_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/AtmosphereButtons/LightVariantButton"
+	) as Button
+	var controls_toggle_hint := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/ControlsToggleHint"
+	) as Label
 
 	_expect(panel != null, "VisualLab retains its framed controls panel")
 	_expect(interface != null, "VisualLab has controls content")
@@ -111,6 +122,9 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		texture_filter_button != null,
 		"controls have an interactive texture-filter button",
 	)
+	_expect(fog_variant_button != null, "controls have an interactive fog button")
+	_expect(light_variant_button != null, "controls have an interactive light button")
+	_expect(controls_toggle_hint != null, "controls retain their closing hint")
 	if (
 		panel == null
 		or interface == null
@@ -118,6 +132,9 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		or prompt == null
 		or pixel_snap_button == null
 		or texture_filter_button == null
+		or fog_variant_button == null
+		or light_variant_button == null
+		or controls_toggle_hint == null
 	):
 		return
 
@@ -141,6 +158,16 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"texture-filter menu button starts with an exact state",
 	)
 	_expect(
+		not fog_variant_button.is_visible_in_tree()
+		and fog_variant_button.text == "Nebel: Mittel",
+		"fog menu button starts collapsed with the preferred damaged variant",
+	)
+	_expect(
+		not light_variant_button.is_visible_in_tree()
+		and light_variant_button.text == "Licht: Kühl und dunkel",
+		"light menu button starts collapsed with the preferred damaged profile",
+	)
+	_expect(
 		diagnostics_panel != null and not diagnostics_panel.visible,
 		"diagnostics remain independently hidden",
 	)
@@ -153,6 +180,13 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	_expect(
 		texture_filter_button.is_visible_in_tree(),
 		"F5 shows the texture-filter menu button",
+	)
+	_expect(fog_variant_button.is_visible_in_tree(), "F5 shows the fog menu button")
+	_expect(light_variant_button.is_visible_in_tree(), "F5 shows the light menu button")
+	_expect(
+		controls_toggle_hint.get_global_rect().end.y
+		<= panel.get_global_rect().end.y - 12.0,
+		"atmosphere controls keep the complete F5 menu inside its panel",
 	)
 	_expect(pixel_snap_button.has_focus(), "F5 focuses the interactive menu button")
 	_expect_visible_content_is_controls_only(text_container)
@@ -191,6 +225,13 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		texture_filter_button.text == "Texturfilter: Weich",
 		"menu selection updates the displayed texture-filter state",
 	)
+	fog_variant_button.pressed.emit()
+	light_variant_button.pressed.emit()
+	_expect(fog_variant_button.text == "Nebel: Hoch", "fog button cycles its variant")
+	_expect(
+		light_variant_button.text == "Licht: Kühl und gedämpft",
+		"light button cycles its profile",
+	)
 
 	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
 	var settings := ConfigFile.new()
@@ -206,6 +247,14 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	_expect(
 		settings.get_value("visual_lab", "texture_filter", "") == "soft",
 		"texture-filter menu choice is persisted as a test value",
+	)
+	_expect(
+		settings.get_value("visual_lab", "damaged_fog", "") == "high",
+		"fog menu choice is persisted as a test value",
+	)
+	_expect(
+		settings.get_value("visual_lab", "damaged_light", "") == "cool_muted",
+		"light menu choice is persisted as a test value",
 	)
 
 
