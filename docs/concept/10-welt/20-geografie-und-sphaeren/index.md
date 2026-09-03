@@ -1,7 +1,16 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Geografie und Sphären
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Seiten
+- [Welten und Sphären](welten-und-sphaeren.md)
+- [Konzeptkarte – Die Welten des Ether](weltenkarte-und-arbeitsnamen.md)
+<!-- PYGINDEX:INDEX END -->
 
 Die „Geografie“ Heras beschreibt nicht nur Orte, sondern stabile und instabile Wirklichkeitsräume.
 

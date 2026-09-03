@@ -4,9 +4,11 @@ status: working-canon
 spoiler_level: full
 updated: 2026-09-01
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Kor und Kor’s Shard – die Welten der Ether-Entität Kor
 
 Kor und Kor’s Shard sind die beiden Welten der Ether-Entität Kor. Von Era aus

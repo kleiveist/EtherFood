@@ -1,6 +1,3 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](README.md)
-<!-- AUTO-GENERATED:backlink END -->
 # Änderungsprotokoll
 
 Bedeutende Änderungen an diesem Projekt werden in dieser Datei festgehalten.

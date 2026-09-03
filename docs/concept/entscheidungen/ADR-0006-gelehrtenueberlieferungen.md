@@ -3,9 +3,11 @@ title: ADR-0006 – Gelehrtenüberlieferungen
 status: accepted
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # ADR-0006 – Gelehrtenüberlieferungen
 
 ## Kontext

@@ -1,5 +1,20 @@
 # EtherFood
 
+<!-- PYGINDEX:README START -->
+## Dokumentation
+- [Dokumentationsübersicht](docs/index.md)
+- [Dokumentationsmedien](docs/assets/README.md)
+- [EtherFood – Spielkonzept](docs/concept/index.md)
+- [Entwicklungsdokumentation](docs/developer/index.md)
+- [Spielerhandbuch](docs/player-guide/index.md)
+
+## Projektdateien
+- [Repository-Regeln für EtherFood](AGENTS.md)
+- [Änderungsprotokoll](CHANGELOG.md)
+- [Mitarbeit an EtherFood](CONTRIBUTING.md)
+- [Sicherheitsrichtlinie](SECURITY.md)
+<!-- PYGINDEX:README END -->
+
 Ein Top-down-Action-RPG über den Wiederaufbau einer verlorenen Welt, die
 Rückkehr ihrer Zivilisationen und vergessene Erinnerungen. `EtherFood`
 befindet sich in der Konzept- und Vorproduktionsphase.

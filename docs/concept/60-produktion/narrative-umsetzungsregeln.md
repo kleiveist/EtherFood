@@ -3,9 +3,11 @@ title: Narrative Umsetzungsregeln
 status: draft-guideline
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Narrative Umsetzungsregeln
 
 ## 1. Die erste Geschichte muss glaubwürdig sein

@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../assets.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../README.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Karten und Sphärenübersichten
 
 - [Die Welten des Ether](die-welten-des-ether.png)

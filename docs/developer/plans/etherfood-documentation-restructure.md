@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Historischer Arbeitsplan: erste Dokumentationsumstellung
 
 Status: abgeschlossen und durch die spätere

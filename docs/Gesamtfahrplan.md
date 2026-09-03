@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel 🎮
 
 **Projektstand:** 3. September 2026, visuelle Darstellungsgrundlage V0

@@ -3,9 +3,11 @@ title: ADR-0010 – Bewegungssteuerung V0 vorziehen
 status: accepted
 updated: 2026-09-03
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # ADR-0010 – Bewegungssteuerung V0 vorziehen
 
 ## Kontext

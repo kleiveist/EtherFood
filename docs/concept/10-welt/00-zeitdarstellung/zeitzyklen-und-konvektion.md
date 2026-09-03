@@ -3,9 +3,11 @@ title: Zeitzyklen und Konvektion von Sol und Yol
 status: accepted
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Zeitzyklen und Konvektion von Sol und Yol
 
 ## Astrologie der Zufälle

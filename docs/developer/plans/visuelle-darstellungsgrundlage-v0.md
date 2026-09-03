@@ -62,8 +62,9 @@ Balancewerte, Produktionssprites oder Arbeiten aus Aufgabe 22.
   aktualisiert.
 - [x] 2026-09-03: Dokumentationsprüfungen, Standardlauf und Linux-Build
   erfolgreich ausgeführt.
-- [x] 2026-09-03: Fachlichen Aufgabe-21-Commit vorbereitet.
-- [ ] `PyGitIndex`-Ergebnis separat prüfen und committen.
+- [x] 2026-09-03: Fachlichen Aufgabe-21-Commit `d8bb798` erstellt.
+- [x] 2026-09-03: `PyGitIndex`-Ergebnis separat geprüft und für den
+  eigenen Folge-Commit vorbereitet.
 
 ## Erkenntnisse und Überraschungen
 

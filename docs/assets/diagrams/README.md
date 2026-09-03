@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](diagrams.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../README.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Diagramme
 
 Hier liegen bearbeitbare Diagrammquellen sowie prüfbare SVG- oder PNG-Exporte.

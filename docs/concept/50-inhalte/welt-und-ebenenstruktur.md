@@ -3,9 +3,11 @@ title: Welt- und Ebenenstruktur
 status: content-outline
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Welt- und Ebenenstruktur
 
 ## Basisspiel

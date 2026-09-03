@@ -4,9 +4,11 @@ status: working-canon
 spoiler_level: full
 updated: 2026-09-01
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Die zehn großen Ether-Entitäten
 
 ![Die zehn großen Ether-Entitäten](../../../../assets/.concepts/die-grossen-ether-entitaeten.png)

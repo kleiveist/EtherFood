@@ -3,9 +3,11 @@ title: Konzeptkarte – Die Welten des Ether
 status: visual-reference
 updated: 2026-09-01
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Konzeptkarte – Die Welten des Ether
 
 ![Konzeptkarte der Welten des Ether](../../../../assets/maps/die-welten-des-ether.png)

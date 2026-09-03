@@ -1,7 +1,17 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Zeitdarstellung
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Seiten
+- [Zeitdarstellung im Spiel](zeitdarstellung-im-spiel.md)
+- [Zeitrechnung auf Era](zeitrechnung-auf-era.md)
+- [Zeitzyklen und Konvektion von Sol und Yol](zeitzyklen-und-konvektion.md)
+<!-- PYGINDEX:INDEX END -->
 
 Dieser Bereich trennt die kanonische Zeitrechnung von ihrer Darstellung und
 Beschleunigung im Spiel.

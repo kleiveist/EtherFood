@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](videos.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../README.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Videos
 
 Große Videos werden nur mit einer festgelegten Medienstrategie übernommen.

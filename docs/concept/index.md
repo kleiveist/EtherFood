@@ -4,10 +4,29 @@ status: working-canon
 language: de
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # EtherFood – Spielkonzept
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Seiten
+- [Freigabe-Checkliste](CHECKLIST-ZUR-FREIGABE.md)
+
+### Bereiche
+- [00 – Grundlagen](00-grundlagen/index.md)
+- [10 – Welt](10-welt/index.md)
+- [20 – Handlung](20-handlung/index.md)
+- [30 – Spielmechanik](30-spielmechanik/index.md)
+- [40 – Weltsysteme](40-weltsysteme/index.md)
+- [50 – Inhalte](50-inhalte/index.md)
+- [60 – Produktion](60-produktion/index.md)
+- [Entscheidungen](entscheidungen/index.md)
+<!-- PYGINDEX:INDEX END -->
 
 Hier liegt die einzige aktuelle Konzeptdokumentation des Spiels. Sie ist
 vollständig deutsch und soll Entscheidungen, offene Fragen und nächste Schritte

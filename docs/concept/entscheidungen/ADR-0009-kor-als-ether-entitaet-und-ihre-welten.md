@@ -3,9 +3,11 @@ title: ADR-0009 – Kor als Ether-Entität und ihre Welten
 status: accepted
 updated: 2026-09-01
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # ADR-0009 – Kor als Ether-Entität und ihre Welten
 
 ## Kontext

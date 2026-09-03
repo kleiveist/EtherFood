@@ -1,7 +1,19 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](assets.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Dokumentationsmedien
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Bereiche
+- [Diagramme](diagrams/README.md)
+- [Exportierte Bilder](images/README.md)
+- [Karten und Sphärenübersichten](maps/index.md)
+- [Bearbeitbare Medienquellen](source/README.md)
+- [Videos](videos/README.md)
+<!-- PYGINDEX:INDEX END -->
 
 Dieser Bereich enthält Bilder, Karten, Diagramme, Videos und bearbeitbare
 Quellen für die Dokumentation. Er führt keine eigenen Spielregeln ein.

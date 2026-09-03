@@ -3,9 +3,11 @@ title: Freigabe-Checkliste für Kanon und Begriffe
 status: accepted
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Freigabe-Checkliste
 
 Die zwölf zuvor offenen Punkte sind entschieden. Die folgende Tabelle ist eine

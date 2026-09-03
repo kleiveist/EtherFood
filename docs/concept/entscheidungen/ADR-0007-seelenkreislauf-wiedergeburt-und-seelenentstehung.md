@@ -3,9 +3,11 @@ title: ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung
 status: accepted
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # ADR-0007 – Seelenkreislauf, Wiedergeburt und Seelenentstehung
 
 ## Kontext

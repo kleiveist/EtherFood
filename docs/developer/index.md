@@ -1,7 +1,22 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Entwicklungsdokumentation
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Seiten
+- [Dokumentationsstruktur](documentation-architecture.md)
+- [Projektidentität](project-identity.md)
+
+### Bereiche
+- [Spielarchitektur](architecture/index.md)
+- [Decisions](decisions/index.md)
+- [Features](features/index.md)
+- [Arbeitspläne](plans/index.md)
+<!-- PYGINDEX:INDEX END -->
 
 Dieser Bereich beschreibt die technische Arbeit an `EtherFood`. Er erklärt
 Architektur und Umsetzung, ohne den Spielkanon neu auszulegen.

@@ -3,9 +3,11 @@ title: Kanon und offene Fragen
 status: accepted
 updated: 2026-09-01
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Kanon und offene Fragen
 
 ## Bereits klar festgelegt

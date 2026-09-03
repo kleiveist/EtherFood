@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](source.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../README.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Bearbeitbare Medienquellen
 
 Hier liegen bearbeitbare Quelldateien, sofern sie sinnvoll mit Git verwaltet

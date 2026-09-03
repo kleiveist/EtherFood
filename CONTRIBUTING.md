@@ -1,6 +1,3 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](README.md)
-<!-- AUTO-GENERATED:backlink END -->
 # Mitarbeit an EtherFood
 
 Danke, dass du `EtherFood` verbesserst. Änderungen sollen nachvollziehbar,

@@ -211,7 +211,7 @@ class SourceHygieneTests(unittest.TestCase):
         )
         self.assertFalse(any(path.exists() for path in legacy_entry_points))
 
-    def test_concept_directories_have_simple_index_pages(self) -> None:
+    def test_concept_directories_have_pygindex_pages(self) -> None:
         concept_root = REPOSITORY_ROOT / "docs" / "concept"
         directories = [concept_root]
         directories.extend(
@@ -228,11 +228,11 @@ class SourceHygieneTests(unittest.TestCase):
                 self.assertTrue(overview.is_file())
                 contents = overview.read_text(encoding="utf-8")
                 self.assertEqual(
-                    contents.count("<!-- AUTO-GENERATED:backlink START -->"),
+                    contents.count("<!-- PYGINDEX:NAVIGATION START -->"),
                     1,
                 )
                 self.assertEqual(
-                    contents.count("<!-- AUTO-GENERATED:backlink END -->"),
+                    contents.count("<!-- PYGINDEX:NAVIGATION END -->"),
                     1,
                 )
                 legacy_overview = directory / f"{directory.name}.md"

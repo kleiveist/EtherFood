@@ -4,9 +4,11 @@ status: proposal
 spoiler_level: critical
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Enthüllungs- und Spoilerstruktur
 
 Die Wahrheit soll nicht als einzelner Infoblock am Schluss erscheinen. Sie wird in Stufen vorbereitet, ohne die zentrale Wendung vorzeitig eindeutig zu machen.

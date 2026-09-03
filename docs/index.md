@@ -1,30 +1,22 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../README.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Projektübersicht](../README.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Dokumentationsübersicht
 
-<!-- AUTO-GENERATED:docs-index START -->
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
 
-## 📄 Seiten
-- 📝 [Gesamtfahrplan](Gesamtfahrplan.md)
+### Seiten
+- [EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel](Gesamtfahrplan.md)
+- [Dokumentation](README.md)
 
-## 📁 Medien
-- 🗂️ [Übersicht](assets/assets.md)
-
-## 📁 Konzept
-- 🗂️ [Übersicht](concept/index.md)
-- 📝 [Freigabe-Checkliste](concept/CHECKLIST-ZUR-FREIGABE.md)
-
-## 📁 Entwicklung
-- 🗂️ [Übersicht](developer/index.md)
-- 📝 [Dokumentationsstruktur](developer/documentation-architecture.md)
-- 📝 [Projektidentität](developer/project-identity.md)
-
-## 📁 Spielerhandbuch
-- 🗂️ [Übersicht](player-guide/index.md)
-- 📝 [<Thema des Spielerhandbuchs>](player-guide/_topic-template.md)
-
-<!-- AUTO-GENERATED:docs-index END -->
+### Bereiche
+- [Dokumentationsmedien](assets/README.md)
+- [EtherFood – Spielkonzept](concept/index.md)
+- [Entwicklungsdokumentation](developer/index.md)
+- [Spielerhandbuch](player-guide/index.md)
+<!-- PYGINDEX:INDEX END -->
 
 Die Projektdokumentation ist nach ihrem Zweck gegliedert:
 
@@ -39,6 +31,9 @@ Die Projektdokumentation ist nach ihrem Zweck gegliedert:
 Es gibt keine zweite Content-Hierarchie und keinen englischen Konzeptspiegel.
 Neue Spielentscheidungen werden direkt in den passenden Konzeptseiten
 festgehalten.
+
+Verbindliche Angaben zu Repositoryname, Kurzbeschreibung und GitHub-Metadaten
+stehen unter [Projektidentität](developer/project-identity.md).
 
 Das Repository steht unter der [MIT-Lizenz](../LICENSE). Hinweise zur Mitarbeit
 und Sicherheit stehen in [CONTRIBUTING.md](../CONTRIBUTING.md) und

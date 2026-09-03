@@ -1,7 +1,19 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # 10 – Welt
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Bereiche
+- [Kosmologie](00-kosmologie/index.md)
+- [Zeitdarstellung](00-zeitdarstellung/index.md)
+- [Weltgeschichte](10-weltgeschichte/index.md)
+- [Geografie und Sphären](20-geografie-und-sphaeren/index.md)
+- [Fraktionen und übergeordnete Wesen](40-fraktionen/index.md)
+<!-- PYGINDEX:INDEX END -->
 
 Dieser Bereich beschreibt die objektive Wahrheit hinter Era, Hera, den Splitterwelten und den beteiligten Mächten.
 

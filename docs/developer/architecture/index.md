@@ -1,7 +1,17 @@
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](../index.md)
-<!-- AUTO-GENERATED:backlink END -->
+<!-- PYGINDEX:NAVIGATION START -->
+[Übergeordnete Übersicht](../index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Spielarchitektur
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Seiten
+- [Architektur: <Spielbereich>](_architecture-template.md)
+- [Szenen- und Zustandsfluss](szenen-und-zustandsfluss.md)
+- [Visuelle Darstellungsgrundlage V0](visuelle-darstellungsgrundlage-v0.md)
+<!-- PYGINDEX:INDEX END -->
 
 Hier wird Architektur dokumentiert, die ausschließlich zum konkreten Spiel
 gehört. Verwende die [Architekturvorlage](_architecture-template.md), sobald

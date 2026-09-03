@@ -3,9 +3,11 @@ title: Scope – Basisspiel und Erweiterung
 status: accepted-outline
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](index.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Umfang – Basisspiel und Erweiterung
 
 ## Basisspiel

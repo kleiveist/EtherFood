@@ -3,9 +3,11 @@ title: "Talisman: beibehaltener Pixel-Art-Entwurf"
 status: draft
 updated: 2026-08-30
 ---
-<!-- AUTO-GENERATED:backlink START -->
-[← Zurück](images.md)
-<!-- AUTO-GENERATED:backlink END -->
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](README.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
 # Talisman: beibehaltener Pixel-Art-Entwurf
 
 - **Medientyp:** Pixel-Art-Objektentwurf
