@@ -3,9 +3,9 @@
 <!-- AUTO-GENERATED:backlink END -->
 # EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel 🎮
 
-**Projektstand:** 3. September 2026, Maßstab V0 verbindlich festgelegt;
-Pixel-Snap-, Texturfilter-, Nebel- und Lichttest abgeschlossen;
-Bewegungssteuerung V0 teilweise umgesetzt
+**Projektstand:** 3. September 2026, visuelle Darstellungsgrundlage V0
+dokumentiert; Pixel-Snap-, Texturfilter-, Nebel-, Licht- und Maßstabstest
+abgeschlossen; Bewegungssteuerung V0 teilweise umgesetzt
 
 Dieser Fahrplan ist das Orientierungshandbuch für neue Chats. Er zeigt die vollständige Entwicklungsreihenfolge vom aktuellen Stand bis zur stabilen Veröffentlichung.
 
@@ -98,7 +98,7 @@ In dieser Phase wird noch kein vollständiger Grasland-Abschnitt gebaut. Zuerst 
 |     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    ✅   |
 |     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand auf großer Haus-, Wald- und Sägewerkfläche vergleichen.                      |    ✅   |
 |     20 | 📏 Maßstab V0 festlegen        | Heldenhöhe, Tilegröße, Kamera-Zoom und Referenzauflösung verbindlich auswählen.                                                            |    ✅   |
-|     21 | 📝 Dokumentation aktualisieren | Alle Ergebnisse aus dem visuellen Testlabor dokumentieren.                                                                                 |    🟡   |
+|     21 | 📝 Dokumentation aktualisieren | Alle Ergebnisse aus dem visuellen Testlabor dokumentieren.                                                                                 |    ✅   |
 |     22 | 🎨 Pixelart-Grafikpaket V0     | Erstes echtes Grafikpaket nach den festgelegten Maßstabs- und Filterregeln erstellen.                                                      |    🟡   |
 |      — | 🔒 Meilenstein                 | Darstellungsgrundlage V0 ist geprüft. Erst danach beginnt der Heldenraum.                                                                  |    ⚪   |
 
@@ -352,7 +352,7 @@ Der folgende Ablauf wird **für jede Region beziehungsweise jedes Kapitel einzel
 
 | Letzter abgeschlossener Schritt | Nachweis | Nächster Schritt |
 | ------------------------------- | -------- | ---------------- |
-| **Aufgabe 20 – Maßstab V0 festlegen** | Kandidat B ist als 80-px-Held, 32er Raster und normale 1,00×-Spielansicht festgelegt; kleine Räume dürfen 1,50×-Profile verwenden. | **Aufgabe 21 – Dokumentation aktualisieren**: Ergebnisse des visuellen Testlabors systematisch zusammenführen. |
+| **Aufgabe 21 – Dokumentation aktualisieren** | Die verbindlichen Ergebnisse aus Maßstab, Kamera, Pixel-Snap, Filter sowie Nebel und Licht sind zentral dokumentiert und mit Referenzaufnahmen belegt. | **Aufgabe 22 – Pixelart-Grafikpaket V0**: erstes zusammenhängendes Grafikpaket nach der Darstellungsgrundlage erstellen. |
 
 Die letzten abgeschlossenen Implementierungsschritte sind die Diagnoseanzeige,
 die F5-Steuerungshilfe, der begehbare Heldenraum und die erste
@@ -362,5 +362,5 @@ Arbeitspakete noch nicht vollständig ab. Insbesondere fehlen weiterhin die
 Freigabe der Bewegungssteuerung V0, Türen und Ausgang, Animationen sowie ein
 allgemeines Text- und Dialogsystem.
 
-**Aufgabe 20 ist abgeschlossen. Als Nächstes folgt Aufgabe 21; die
+**Aufgabe 21 ist abgeschlossen. Als Nächstes folgt Aufgabe 22; die
 Bewegungssteuerung V0 bleibt 🟡.**

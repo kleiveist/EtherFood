@@ -146,6 +146,11 @@ Einstellungsdatei. Bestehende Karten wurden nicht großflächig umgebaut. Der
 Heldenraum liest die Heldenhöhe aus dem Maßstab und verwendet dasselbe 32er
 Raster, behält aber sein passendes kleines Innenraumprofil mit `1,50×`.
 
+Die verbindlichen Ergebnisse des gesamten Testlabors sind in der
+[visuellen Darstellungsgrundlage V0](../architecture/visuelle-darstellungsgrundlage-v0.md)
+zusammengeführt. Diese Funktionsseite behält die ausführlichen historischen
+Vergleiche und die Bedienung des Labors bei.
+
 ## Inhalt des Testlabors
 
 ### 1. Helden-Testfläche

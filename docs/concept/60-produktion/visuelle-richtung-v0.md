@@ -186,6 +186,11 @@ Palette, harte Pixelkanten, Materialtexturen und eine gemeinsame Beleuchtung
 von links oben. Beschädigte und wiederhergestellte Varianten behalten dabei
 ihre Leinwand, Grundform und Position bei.
 
+Die technische Anwendung von Maßstab, Kamera, Skalierung, Pixel-Snap,
+Texturfilter sowie Nebel und Licht ist zentral in der
+[visuellen Darstellungsgrundlage V0](../../developer/architecture/visuelle-darstellungsgrundlage-v0.md)
+zusammengeführt.
+
 ## Weltzustände
 
 ### Verbindliches Spielprinzip

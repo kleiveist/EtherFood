@@ -121,15 +121,18 @@ Aufgabe noch nicht verbindlich festgelegt.
   lokalen Darstellungsversätze ändern sich; Geschwindigkeit,
   `move_and_slide()`, Kollisionsformen und die Position des `CharacterBody2D`
   bleiben unverändert.
-- Der fehlende Preset-Schlüssel bedeutet AUS; vorhandene Version-1-Dateien
-  bleiben dadurch gültig.
+- Während Aufgabe 17 bedeutete ein fehlender Preset-Schlüssel noch AUS.
+  Aufgabe 20 hat diesen historischen Standard abgelöst: Frische,
+  unvollständige oder ungültige Testlabor-Konfigurationen verwenden heute
+  `Maßstab V0` mit Pixel-Snap AN.
 - Diagnose- und Menü-Sichtbarkeit bleiben flüchtig. Nur Pixel-Snap selbst wird
   als Testwert gespeichert.
 - `X` ist das konfliktfreie Tastenkürzel. Es ergänzt den anklickbaren und per
   Fokus auswählbaren Schalter im `F5`-Menü.
-- Eine Empfehlung für Held, Kamera und Welt wird erst nach dem erneuten
-  praktischen Sichttest festgehalten. Der Zoom `1,50 ×` bleibt unabhängig
-  davon bis Aufgabe 20 ein Kameraprofil-Kandidat.
+- Der praktische Sichttest empfiehlt die gemeinsame Ausgabepixel-Ausrichtung
+  für Held, Kamera und Welt. Aufgabe 20 hat danach `1,00×` als normale
+  Spielansicht und `1,50×` als zulässiges Profil für kleine Innenräume
+  festgelegt.
 
 ## Prüfungen
 
@@ -205,6 +208,6 @@ Kamerakadenz weicht nur noch um den unvermeidbaren einzelnen Ausgabepixel ab.
 Bewegung und Kollision laufen weiter mit Fließkommawerten.
 
 Der direkte Nachtest bei `1,00 ×` und `1,50 ×` wurde am 3. September 2026
-bestätigt. Aufgabe 17.2 gilt damit als abgeschlossen. Die Freigabe des
-Kamerazooms und der verbindlichen Darstellungswerte wird dadurch nicht
-vorweggenommen; sie bleibt Aufgabe 20 vorbehalten.
+bestätigt. Aufgabe 17.2 gilt damit als abgeschlossen. Aufgabe 20 hat
+anschließend den normalen Zoom `1,00×`, den situationsabhängigen
+Innenraumzoom `1,50×` und die übrigen Werte des Maßstabs V0 freigegeben.
