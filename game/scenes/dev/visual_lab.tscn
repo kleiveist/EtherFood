@@ -413,7 +413,7 @@ theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 18
-text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nKameraprofil: Kleiner Innenraum · experimentell\nKamera: 1,50×\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nPixel-Snap: AUS\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: frei\nRasterphase: frei\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
+text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nKameraprofil: Kleiner Innenraum · experimentell\nKamera-Basis: 1,50×\nKamera-Aktiv: 1,50×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWelt: Beschädigt\nPixel-Snap: AUS\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: frei\nRasterphase: frei\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
 
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
 visible = false

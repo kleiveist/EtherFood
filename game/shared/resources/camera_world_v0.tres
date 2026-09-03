@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CameraProfile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://shared/resources/camera_profile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+base_zoom = 1.0
+profile_name = "World / dungeon"

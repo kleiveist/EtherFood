@@ -33,7 +33,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 	var hero_room := hero_room_scene.instantiate()
 	var hero_room_sprite := hero_room.get_node_or_null(
-		"World/HeroCharacter/Visual/Appearance/HeroSprite"
+		"World/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
 	) as Sprite2D
 	_expect(hero_room_sprite != null, "HeroRoom retains its own hero sprite")
 	_expect(
@@ -183,7 +183,7 @@ func _expect_texture_filter_contract(
 	):
 		return
 
-	var original_move_speed := hero.move_speed
+	var original_walk_speed := hero.movement_config.walk_speed
 	var original_world_transform := test_world.global_transform
 	var original_tile_size: Variant = tile_grid.get("tile_size")
 	var original_hero_shape := hero_collision.shape
@@ -260,7 +260,10 @@ func _expect_texture_filter_contract(
 	_expect_zoom_filter_matrix(visual_lab, camera)
 	_expect_world_state_matrix(visual_lab, world_state)
 
-	_expect(hero.move_speed == original_move_speed, "filter keeps hero move speed")
+	_expect(
+		hero.movement_config.walk_speed == original_walk_speed,
+		"filter keeps hero walk speed",
+	)
 	_expect(
 		test_world.global_transform.is_equal_approx(original_world_transform),
 		"filter keeps the world transform",
@@ -417,7 +420,7 @@ func _expect_subtree_filter(
 
 func _expect_named_texture_targets(visual_lab: Control) -> void:
 	var target_paths: Array[String] = [
-		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite",
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite",
 		"TestWorld/ScaleComparison/GroundStrip",
 		"TestWorld/ScaleComparison/SmallEnemyReference/Sprite2D",
 		"TestWorld/ScaleComparison/DoorReference/Sprite2D",

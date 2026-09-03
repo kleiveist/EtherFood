@@ -6,9 +6,11 @@ const ROOM_TOP := 0
 const ROOM_RIGHT := 2560
 const ROOM_BOTTOM := 1440
 const HERO_HEIGHT := 80.0
-const CAMERA_ZOOM := 1.5
 const TILE_SIZE := Vector2i(32, 32)
 const INTERACT_ACTION := &"gameplay_interact"
+const SMALL_INTERIOR_CAMERA_PROFILE := preload(
+	"res://shared/resources/camera_small_interior_v0.tres"
+)
 
 const HeroCharacterScript := preload(
 	"res://scenes/gameplay/hero/hero_character.gd"
@@ -16,10 +18,15 @@ const HeroCharacterScript := preload(
 const GuideCompanionScript := preload(
 	"res://scenes/gameplay/guide/guide_companion.gd"
 )
+const PlayerCameraControllerScript := preload(
+	"res://shared/camera/player_camera_controller.gd"
+)
 
 @onready var hero_character: HeroCharacterScript = $World/HeroCharacter
 @onready var hero_spawn: Marker2D = $World/HeroSpawn
-@onready var player_camera: Camera2D = $World/HeroCharacter/PlayerCamera
+@onready var player_camera: PlayerCameraControllerScript = (
+	$World/HeroCharacter/PlayerCamera
+)
 @onready var guide_companion: GuideCompanionScript = $World/GuideCompanion
 @onready var development_hint: Label = $InterfaceLayer/DevelopmentHint
 @onready var interaction_prompt: Label = $InterfaceLayer/InteractionPrompt
@@ -37,7 +44,9 @@ func _ready() -> void:
 	player_camera.limit_top = ROOM_TOP
 	player_camera.limit_right = ROOM_RIGHT
 	player_camera.limit_bottom = ROOM_BOTTOM
-	player_camera.zoom = Vector2(CAMERA_ZOOM, CAMERA_ZOOM)
+	var profile_error := player_camera.set_profile(SMALL_INTERIOR_CAMERA_PROFILE)
+	if profile_error != OK:
+		push_error("HeroRoom could not apply its camera profile.")
 	player_camera.position_smoothing_enabled = false
 	player_camera.enabled = true
 	player_camera.make_current()

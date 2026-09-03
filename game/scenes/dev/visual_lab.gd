@@ -34,6 +34,10 @@ const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_previe
 const COLLISION_DEBUG_OVERLAY_SCRIPT := preload(
 	"res://scenes/dev/collision_debug_overlay.gd"
 )
+const CameraProfileResource := preload("res://shared/resources/camera_profile.gd")
+const PlayerCameraControllerScript := preload(
+	"res://shared/camera/player_camera_controller.gd"
+)
 const MAIN_MENU_ROUTE := &"main_menu"
 const SETTINGS_VERSION := 1
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
@@ -81,7 +85,9 @@ const TEXTURE_FILTER_VALUES: Array[int] = [
 	CanvasItem.TEXTURE_FILTER_LINEAR,
 ]
 
-@onready var player_camera: Camera2D = $TestWorld/HeroCharacter/PlayerCamera
+@onready var player_camera: PlayerCameraControllerScript = (
+	$TestWorld/HeroCharacter/PlayerCamera
+)
 @onready var hero_visual: Node2D = $TestWorld/HeroCharacter/Visual
 @onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
 @onready var hero_character: HERO_SCRIPT = $TestWorld/HeroCharacter
@@ -117,6 +123,7 @@ var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
 var _pixel_snap_enabled := false
 var _selected_texture_filter: int = TextureFilterPreset.NEAREST
+var _active_camera_profile: CameraProfileResource = CameraProfileResource.new()
 var _pixel_snap_viewport: Viewport
 var _initial_viewport_pixel_snap := false
 var _initial_viewport_vertex_snap := false
@@ -266,7 +273,11 @@ func _change_camera_zoom(direction: int) -> void:
 func _apply_camera_zoom() -> void:
 	var selected_zoom := CAMERA_ZOOM_VALUES[_selected_camera_zoom]
 	var effective_zoom := maxf(selected_zoom, _minimum_camera_zoom())
-	player_camera.zoom = Vector2(effective_zoom, effective_zoom)
+	_active_camera_profile.base_zoom = effective_zoom
+	_active_camera_profile.profile_name = CAMERA_PROFILE_NAMES[_selected_camera_zoom]
+	var profile_error := player_camera.set_profile(_active_camera_profile)
+	if profile_error != OK:
+		push_error("VisualLab could not apply its camera profile.")
 	_update_pixel_snap_render_alignment()
 	var limited_suffix := ""
 	if effective_zoom > selected_zoom:
@@ -454,7 +465,12 @@ func _update_diagnostics_values() -> void:
 			"Kamerazentrum: %s" % _format_diagnostic_position(camera_position),
 			"Weltanker: %s" % _format_diagnostic_position(world_position),
 			"Kameraprofil: %s" % CAMERA_PROFILE_NAMES[_selected_camera_zoom],
-			"Kamera: %s×" % _format_camera_zoom(player_camera.zoom.x),
+			"Kamera-Basis: %s×"
+			% _format_camera_zoom(player_camera.get_base_zoom()),
+			"Kamera-Aktiv: %s×"
+			% _format_camera_zoom(player_camera.get_active_zoom()),
+			"Bewegung: %s" % hero_character.get_movement_diagnostic(),
+			"Sprung: %s" % hero_character.get_jump_diagnostic(),
 			"Figur: %d px" % roundi(hero_character.get_appearance_height()),
 			"Tiles: %d × %d px" % [tile_size, tile_size],
 			"Welt: %s" % WORLD_STATE_NAMES[_selected_world_state],

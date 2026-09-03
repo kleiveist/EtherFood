@@ -42,14 +42,17 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var shadow := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/Visual/Shadow"
 	) as Polygon2D
+	var jump_visual := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/Visual/JumpVisual"
+	) as Node2D
 	var appearance := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance"
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance"
 	) as Node2D
 	var hero_sprite := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite"
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
 	) as Sprite2D
 	var facing_marker := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/FacingMarker"
+		"TestWorld/HeroCharacter/Visual/JumpVisual/FacingMarker"
 	) as Polygon2D
 	var hero_collision := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/CollisionShape2D"
@@ -70,6 +73,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(hero != null, "VisualLab has HeroCharacter")
 	_expect(visual != null, "HeroCharacter has Visual")
 	_expect(shadow != null, "HeroCharacter has Shadow")
+	_expect(jump_visual != null, "HeroCharacter has JumpVisual")
 	_expect(appearance != null, "HeroCharacter has Appearance")
 	_expect(hero_sprite != null, "Appearance has HeroSprite")
 	_expect(facing_marker != null, "HeroCharacter has FacingMarker")
@@ -94,6 +98,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		hero == null
 		or visual == null
 		or shadow == null
+		or jump_visual == null
 		or appearance == null
 		or hero_sprite == null
 		or facing_marker == null
@@ -106,7 +111,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 		await tree.process_frame
 		return failures
 
-	_expect(appearance.get_parent() == visual, "Appearance is directly under Visual")
+	_expect(jump_visual.get_parent() == visual, "JumpVisual is directly under Visual")
+	_expect(appearance.get_parent() == jump_visual, "Appearance is under JumpVisual")
 	_expect(hero_sprite.get_parent() == appearance, "HeroSprite is directly under Appearance")
 	_expect(hero_sprite.texture != null, "HeroSprite texture is available")
 	_expect(
@@ -114,13 +120,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"HeroSprite uses nearest-neighbor filtering",
 	)
 	_expect(shadow.get_parent() == visual, "Shadow stays outside Appearance")
-	_expect(facing_marker.get_parent() == visual, "FacingMarker stays outside Appearance")
+	_expect(facing_marker.get_parent() == jump_visual, "FacingMarker follows JumpVisual")
 	_expect(hero_collision.get_parent() == hero, "collision stays outside Appearance")
 	_expect(player_camera.get_parent() == hero, "camera stays outside Appearance")
 
 	var original_hero_position := hero.position
 	var original_hero_scale := hero.scale
-	var original_move_speed := hero.move_speed
+	var original_walk_speed := hero.movement_config.walk_speed
 	var original_facing_direction := hero.facing_direction
 	var original_collision_shape := hero_collision.shape
 	var original_collision_transform := hero_collision.transform
@@ -288,7 +294,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 	_expect(hero.position == original_hero_position, "size keeps hero position unchanged")
 	_expect(hero.scale == original_hero_scale, "size never scales HeroCharacter")
-	_expect(hero.move_speed == original_move_speed, "size keeps movement speed unchanged")
+	_expect(
+		hero.movement_config.walk_speed == original_walk_speed,
+		"size keeps walk speed unchanged",
+	)
 	_expect(
 		hero.facing_direction == original_facing_direction,
 		"size keeps facing direction unchanged",
@@ -332,10 +341,10 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 	tree.root.add_child(reopened_visual_lab)
 	await tree.process_frame
 	var reopened_appearance := reopened_visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance"
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance"
 	) as Node2D
 	var reopened_sprite := reopened_visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite"
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
 	) as Sprite2D
 	var reopened_status := reopened_visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/HeroSizeStatus"

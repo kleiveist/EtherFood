@@ -104,6 +104,29 @@ class GodotProjectTests(unittest.TestCase):
                 for fragment in fragments:
                     self.assertIn(fragment, body)
 
+    def test_movement_v0_actions_have_reviewed_keyboard_bindings(self) -> None:
+        project = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
+        mappings = {
+            "gameplay_jump": ('"keycode":32', '"location":0'),
+            "gameplay_sneak": ('"physical_keycode":4194326',),
+            "gameplay_boost": ('"physical_keycode":4194325',),
+        }
+
+        for action, fragments in mappings.items():
+            with self.subTest(action=action):
+                body = self._input_action(project, action)
+                self.assertIn('"deadzone": 0.5', body)
+                for fragment in fragments:
+                    self.assertIn(fragment, body)
+                self.assertNotIn("InputEventJoypad", body)
+
+        for action in ("gameplay_sneak", "gameplay_boost"):
+            with self.subTest(action=action):
+                body = self._input_action(project, action)
+                self.assertEqual(body.count("InputEventKey"), 2)
+                self.assertIn('"location":1', body)
+                self.assertIn('"location":2', body)
+
     def test_touch_adapter_uses_only_semantic_action_boundaries(self) -> None:
         adapter = (
             GODOT_ROOT / "shared" / "input" / "touch_action_adapter.gd"
@@ -294,6 +317,7 @@ class GodotProjectTests(unittest.TestCase):
         self.assertIn("res://tests/runtime/scene_router_test.gd", runner_text)
         self.assertIn("res://tests/runtime/application_root_test.gd", runner_text)
         self.assertIn("res://tests/runtime/input_map_test.gd", runner_text)
+        self.assertIn("res://tests/runtime/hero_movement_v0_test.gd", runner_text)
         self.assertIn("res://tests/runtime/touch_action_adapter_test.gd", runner_text)
         self.assertIn("ApplicationRoot/RouteHost/TitleScreen", runner_text)
         self.assertIn('scene_router.get_current_route_id() == &"main_menu"', runner_text)

@@ -71,6 +71,11 @@ func run(tree: SceneTree) -> PackedStringArray:
 		_expect(not player_camera.enabled, "PlayerCamera is disabled by default")
 		_expect(player_camera.zoom == Vector2.ONE, "PlayerCamera uses neutral zoom")
 		_expect(
+			player_camera.has_method(&"get_base_zoom")
+			and is_equal_approx(float(player_camera.call(&"get_base_zoom")), 1.0),
+			"PlayerCamera starts with the world profile",
+		)
+		_expect(
 			not player_camera.position_smoothing_enabled,
 			"PlayerCamera has position smoothing disabled",
 		)
@@ -80,14 +85,19 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 	var visual := hero.get_node_or_null("Visual") as Node2D
 	var shadow := hero.get_node_or_null("Visual/Shadow") as Polygon2D
-	var appearance := hero.get_node_or_null("Visual/Appearance") as Node2D
-	var hero_sprite := hero.get_node_or_null("Visual/Appearance/HeroSprite") as Sprite2D
+	var jump_visual := hero.get_node_or_null("Visual/JumpVisual") as Node2D
+	var appearance := hero.get_node_or_null("Visual/JumpVisual/Appearance") as Node2D
+	var hero_sprite := hero.get_node_or_null(
+		"Visual/JumpVisual/Appearance/HeroSprite"
+	) as Sprite2D
 	_expect(visual != null, "HeroCharacter has a Visual group")
 	_expect(shadow != null, "HeroCharacter has a shadow")
+	_expect(jump_visual != null, "HeroCharacter has a separate jump visual")
 	_expect(appearance != null, "HeroCharacter has an Appearance group")
 	_expect(hero_sprite != null, "HeroCharacter has a HeroSprite under Appearance")
-	if visual != null and appearance != null:
-		_expect(appearance.get_parent() == visual, "Appearance is directly under Visual")
+	if visual != null and jump_visual != null and appearance != null:
+		_expect(jump_visual.get_parent() == visual, "JumpVisual is directly under Visual")
+		_expect(appearance.get_parent() == jump_visual, "Appearance belongs to JumpVisual")
 		_expect(appearance.position == Vector2(0, 10), "Appearance origin is at the feet")
 		_expect(appearance.scale == Vector2.ONE, "Appearance uses its reference scale")
 	if appearance != null and hero_sprite != null:
@@ -126,15 +136,19 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"scaling Appearance keeps its foot origin fixed",
 		)
 		hero.set_appearance_height(EXPECTED_APPEARANCE_REFERENCE_HEIGHT)
-	var facing_marker := hero.get_node_or_null("Visual/FacingMarker") as Polygon2D
+	var facing_marker := hero.get_node_or_null(
+		"Visual/JumpVisual/FacingMarker"
+	) as Polygon2D
 	_expect(facing_marker != null, "HeroCharacter has a facing marker")
 	if visual != null:
-		_expect(shadow == null or shadow.get_parent() == visual, "Shadow stays outside Appearance")
+		_expect(shadow == null or shadow.get_parent() == visual, "Shadow stays grounded")
+	if jump_visual != null:
 		_expect(
-			facing_marker == null or facing_marker.get_parent() == visual,
-			"Facing marker stays outside Appearance",
+			facing_marker == null or facing_marker.get_parent() == jump_visual,
+			"Facing marker belongs to JumpVisual",
 		)
-	_expect(hero.move_speed > 0.0, "HeroCharacter move speed is positive")
+	_expect(hero.movement_config != null, "HeroCharacter has a movement configuration")
+	_expect(hero.get_current_speed() > 0.0, "HeroCharacter walk speed is positive")
 	_expect(hero.is_movement_enabled(), "HeroCharacter movement starts enabled")
 	_expect(
 		hero.get_nearest_interactable() == null,
@@ -182,7 +196,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	await tree.physics_frame
 	_expect(hero.velocity.x > 0.0, "analog-strength input produces movement")
 	_expect(
-		hero.velocity.length() < hero.move_speed,
+		hero.velocity.length() < hero.movement_config.walk_speed,
 		"analog-strength input preserves partial movement speed",
 	)
 	Input.action_release(&"gameplay_move_right")
@@ -196,7 +210,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"diagonal input produces diagonal velocity",
 	)
 	_expect(
-		hero.velocity.length() <= hero.move_speed + 0.001,
+		hero.velocity.length() <= hero.movement_config.walk_speed + 0.001,
 		"diagonal velocity does not exceed move speed",
 	)
 	Input.action_release(&"gameplay_move_right")

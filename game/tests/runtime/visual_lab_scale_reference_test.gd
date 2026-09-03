@@ -278,7 +278,7 @@ func _expect_reference_order(scale_comparison: Node2D, hero_marker: Polygon2D) -
 
 func _expect_hero_sizes_still_work(visual_lab: Control) -> void:
 	var hero_sprite := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/Appearance/HeroSprite"
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
 	) as Sprite2D
 	_expect(hero_sprite != null, "VisualLab retains the scalable HeroSprite")
 	if hero_sprite == null:

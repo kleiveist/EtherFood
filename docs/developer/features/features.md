@@ -7,6 +7,7 @@
 
 ## 📄 Seiten
 - 📝 [Funktion: <Name>](_feature-template.md)
+- 📝 [Funktion: Bewegungssteuerung V0](bewegungssteuerung-v0.md)
 
 <!-- AUTO-GENERATED:docs-index END -->
 

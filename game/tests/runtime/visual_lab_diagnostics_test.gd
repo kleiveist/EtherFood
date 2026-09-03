@@ -122,7 +122,10 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab._unhandled_input(_pressed_action(&"dev_world_state_toggle"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_texture_filter_toggle"))
-	_expect(values.text.contains("Kamera: 1,00×"), "diagnostics show active camera zoom")
+	_expect(values.text.contains("Kamera-Basis: 1,00×"), "diagnostics show base camera zoom")
+	_expect(values.text.contains("Kamera-Aktiv: 1,00×"), "diagnostics show active camera zoom")
+	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show normal movement")
+	_expect(values.text.contains("Sprung: Boden"), "diagnostics show grounded jump state")
 	_expect(values.text.contains("Figur: 96 px"), "diagnostics show active hero size")
 	_expect(values.text.contains("Tiles: 48 × 48 px"), "diagnostics show active tile size")
 	_expect(values.text.contains("Welt: Wiederhergestellt"), "diagnostics show active world state")
@@ -227,7 +230,16 @@ func _expect_diagnostic_values(
 			),
 			"diagnostics show the world anchor separately",
 		)
-	_expect(values.text.contains("Kamera: 1,50×"), "diagnostics show initial camera zoom")
+	_expect(
+		values.text.contains("Kamera-Basis: 1,50×"),
+		"diagnostics show initial base camera zoom",
+	)
+	_expect(
+		values.text.contains("Kamera-Aktiv: 1,50×"),
+		"diagnostics show initial active camera zoom",
+	)
+	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show movement state")
+	_expect(values.text.contains("Sprung: Boden"), "diagnostics show jump state")
 	_expect(
 		values.text.contains("Kameraprofil: Kleiner Innenraum · experimentell"),
 		"diagnostics identify the experimental near camera candidate",

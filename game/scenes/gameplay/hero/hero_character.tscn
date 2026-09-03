@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scenes/gameplay/hero/hero_character.gd" id="1_hero"]
 [ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/hero_idle_down.png" id="2_hero_texture"]
+[ext_resource type="Resource" path="res://shared/resources/hero_movement_v0.tres" id="3_movement"]
+[ext_resource type="Script" path="res://shared/camera/player_camera_controller.gd" id="4_camera"]
+[ext_resource type="Resource" path="res://shared/resources/camera_world_v0.tres" id="5_camera_profile"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feet"]
 size = Vector2(28, 16)
@@ -12,6 +15,7 @@ radius = 96.0
 [node name="HeroCharacter" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_hero")
+movement_config = ExtResource("3_movement")
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -19,15 +23,17 @@ script = ExtResource("1_hero")
 polygon = PackedVector2Array(-24, 8, -18, 2, 0, 0, 18, 2, 24, 8, 18, 14, 0, 16, -18, 14)
 color = Color(0.039, 0.047, 0.055, 0.65)
 
-[node name="Appearance" type="Node2D" parent="Visual"]
+[node name="JumpVisual" type="Node2D" parent="Visual"]
+
+[node name="Appearance" type="Node2D" parent="Visual/JumpVisual"]
 position = Vector2(0, 10)
 
-[node name="HeroSprite" type="Sprite2D" parent="Visual/Appearance"]
+[node name="HeroSprite" type="Sprite2D" parent="Visual/JumpVisual/Appearance"]
 texture_filter = 1
 texture = ExtResource("2_hero_texture")
 offset = Vector2(0, -40)
 
-[node name="FacingMarker" type="Polygon2D" parent="Visual"]
+[node name="FacingMarker" type="Polygon2D" parent="Visual/JumpVisual"]
 polygon = PackedVector2Array(-3, 14, 3, 14, 0, 18)
 color = Color(0.84, 0.66, 0.25, 0.42)
 
@@ -48,3 +54,7 @@ process_callback = 0
 enabled = false
 position_smoothing_enabled = false
 zoom = Vector2(1, 1)
+script = ExtResource("4_camera")
+profile = ExtResource("5_camera_profile")
+
+[connection signal="sneak_state_changed" from="." to="PlayerCamera" method="_on_sneak_state_changed"]

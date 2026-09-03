@@ -142,7 +142,7 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	):
 		return
 
-	var original_move_speed := hero.move_speed
+	var original_walk_speed := hero.movement_config.walk_speed
 	var original_zoom := camera.zoom
 	var original_camera_position := camera.position
 	var original_visual_position := hero_visual.position
@@ -250,7 +250,10 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	)
 	_expect_output_grid_matrix(visual_lab)
 
-	_expect(hero.move_speed == original_move_speed, "pixel snap keeps hero move speed")
+	_expect(
+		hero.movement_config.walk_speed == original_walk_speed,
+		"pixel snap keeps hero walk speed",
+	)
 	_expect(camera.zoom == original_zoom, "pixel snap keeps camera zoom")
 	_expect(
 		test_world.global_transform.is_equal_approx(original_world_transform),
@@ -281,7 +284,9 @@ func _expect_motion_contract(
 	var movement_frame_count := 4
 	if expected_pixel_snap:
 		var grid_step: Vector2 = visual_lab._pixel_snap_world_grid_step()
-		var movement_per_frame := hero.move_speed / Engine.physics_ticks_per_second
+		var movement_per_frame := (
+			hero.get_current_speed() / Engine.physics_ticks_per_second
+		)
 		movement_frame_count = maxi(
 			movement_frame_count,
 			ceili(grid_step.x / movement_per_frame) + 2,

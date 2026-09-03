@@ -3,6 +3,9 @@ extends RefCounted
 const HERO_ROOM_SCENE_PATH := "res://scenes/gameplay/hero_room.tscn"
 const APPLICATION_ROOT_SCENE := preload("res://scenes/app/application_root.tscn")
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
+const CAMERA_CONTROLLER_SCRIPT := preload(
+	"res://shared/camera/player_camera_controller.gd"
+)
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
 const ROOM_SIZE := Vector2(2560, 1440)
@@ -80,9 +83,9 @@ func _test_room_contract(tree: SceneTree) -> void:
 	var hero: HERO_SCRIPT = hero_room.get_node_or_null(
 		"World/HeroCharacter"
 	) as HERO_SCRIPT
-	var player_camera := hero_room.get_node_or_null(
+	var player_camera: CAMERA_CONTROLLER_SCRIPT = hero_room.get_node_or_null(
 		"World/HeroCharacter/PlayerCamera"
-	) as Camera2D
+	) as CAMERA_CONTROLLER_SCRIPT
 	var development_hint := hero_room.get_node_or_null(
 		"InterfaceLayer/DevelopmentHint"
 	) as Label
@@ -131,7 +134,11 @@ func _test_room_contract(tree: SceneTree) -> void:
 	if player_camera != null:
 		_expect(player_camera.enabled, "PlayerCamera is enabled")
 		_expect(player_camera.is_current(), "PlayerCamera is current")
-		_expect(player_camera.zoom == CAMERA_ZOOM, "camera uses fixed 1.50 zoom")
+		_expect(player_camera.zoom == CAMERA_ZOOM, "camera uses active 1.50 zoom")
+		_expect(
+			is_equal_approx(player_camera.get_base_zoom(), 1.5),
+			"camera receives the small-interior scene profile",
+		)
 		_expect(player_camera.limit_left == 0, "camera left limit is zero")
 		_expect(player_camera.limit_top == 0, "camera top limit is zero")
 		_expect(player_camera.limit_right == 2560, "camera right limit is 2560")
@@ -175,10 +182,12 @@ func _test_room_contract(tree: SceneTree) -> void:
 		)
 		_expect(
 			development_hint.text
-			== (
-				"HELDENRAUM · PROTOTYP\n"
-				+ "WASD / Pfeiltasten / linker Stick\n"
-				+ "Esc / B: Hauptmenü"
+				== (
+					"HELDENRAUM · PROTOTYP\n"
+					+ "WASD / Pfeile: bewegen · Doppel-Tap: schnell\n"
+					+ "Shift beim 2. Tap: Boost · Strg: schleichen\n"
+					+ "Leertaste: springen · E / A: interagieren\n"
+					+ "Esc / B: Hauptmenü"
 			),
 			"development hint lists the provisional controls",
 		)
@@ -194,7 +203,7 @@ func _test_room_contract(tree: SceneTree) -> void:
 func _expect_movement_and_collisions(
 	tree: SceneTree,
 	hero: HERO_SCRIPT,
-	player_camera: Camera2D,
+	player_camera: CAMERA_CONTROLLER_SCRIPT,
 ) -> void:
 	hero.global_position = HERO_SPAWN
 	var hero_start := hero.global_position

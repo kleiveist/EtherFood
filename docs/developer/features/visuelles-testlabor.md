@@ -113,12 +113,14 @@ in einer gemeinsamen Einstellungsdatei verbindlich gemacht:
 | Tiles `32 × 32 px` | globales Weltraster | Darstellungsgrundlage V0 in Aufgabe 20 |
 | Pixel-Snap `AN` / `AUS` | offene globale Renderingregel | nach erfolgreichem Sichttest später `project.godot` |
 | Nearest-Neighbor | bevorzugter Filterkandidat | nach Abschluss von Aufgabe 18 später `project.godot` |
-| Kamera `1,00×` / `1,50×` | szenenabhängiges Kameraprofil | CameraProfile-Ressourcen in Aufgabe 20 |
+| Kamera `1,00×` / `1,50×` | szenenabhängiger Basiszoom | vorläufige CameraProfile-Ressourcen aus Aufgabe 17.1 |
 | Welt `Beschädigt` | aktueller Spiel- oder Testzustand | keine feste Darstellungsregel |
 
-Die geplanten Ressourcen `visual_baseline_v0.tres`, `world_dungeon.tres` und
-`small_interior.tres` werden bewusst erst in Aufgabe 20 angelegt. Das
-Testlabor behält bis dahin den manuellen Wechsel zwischen seinen Testwerten.
+Die endgültigen Ressourcen `visual_baseline_v0.tres`, `world_dungeon.tres` und
+`small_interior.tres` werden bewusst erst in Aufgabe 20 angelegt. Die
+Bewegungssteuerung V0 verwendet vorläufige Kamera-Profile für Welt und kleinen
+Innenraum; das Testlabor behält weiterhin den manuellen Wechsel zwischen
+seinen Testwerten.
 Die lokale Datei `user://visual_lab_settings.cfg` stellt nur die zuletzt
 gewählten persönlichen Testschalter wieder her und ist keine verbindliche
 Quelle für Spielregeln. Die endgültige technische Entscheidung folgt erst
@@ -132,7 +134,8 @@ Die Helden-Testfläche ermöglicht:
 
 ```text
 - Spielfigur anzeigen
-- Bewegung in vier Richtungen
+- normale, schnelle, verstärkte und schleichende Bewegung in vier Richtungen
+- Standard-, Lauf- und Boostsprung
 - Idle- und Laufanimation testen
 - Figurengröße vergleichen
 - Schatten und Kollisionskörper anzeigen
@@ -314,7 +317,8 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 - rohe Spielerkoordinaten und gerasterte Heldenanzeige
 - rohe und gerasterte Kameraposition, tatsächliches Kamerazentrum und Weltanker
 - Kameraprofil, Darstellungsraster, Rasterphase und Fensterskalierung
-- aktueller Kamerazoom
+- Basis- und aktiver Kamerazoom
+- aktueller Bewegungs- und Sprungzustand
 - gewählte Tilegröße
 - gewählte Figurengröße
 - aktiver Weltzustand
@@ -327,10 +331,10 @@ erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
 `F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
 FPS, roher Heldenposition, gerasterter Heldenanzeige, rohem und gerastertem
-Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Figuren-,
-Tile-, Weltzustands-, Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-,
-Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
-Fensterskalierungswerten.
+Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Basis- und
+Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-, Weltzustands-,
+Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-, Darstellungsraster-,
+Rasterphasen-, Texturfilter-, Fenster- und Fensterskalierungswerten.
 `F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen
 Helden-, Hindernis- und Weltgrenzen-Kollisionen. Beide Anzeigen beginnen bei
 jedem Öffnen ausgeschaltet und werden nicht in den Testlabor-Einstellungen

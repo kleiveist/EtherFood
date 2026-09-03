@@ -13,7 +13,9 @@ const EXPECTED_MAIN_MENU_BUTTONS := [
 ]
 const EXPECTED_HERO_ROOM_HINT := (
 	"HELDENRAUM · PROTOTYP\n"
-	+ "WASD / Pfeiltasten / linker Stick\n"
+	+ "WASD / Pfeile: bewegen · Doppel-Tap: schnell\n"
+	+ "Shift beim 2. Tap: Boost · Strg: schleichen\n"
+	+ "Leertaste: springen · E / A: interagieren\n"
 	+ "Esc / B: Hauptmenü"
 )
 const EXPECTED_GUIDE_PROMPT := "E / A: Ratgeber ansprechen"
@@ -58,6 +60,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/application_root_test.gd",
 	"res://tests/runtime/input_map_test.gd",
 	"res://tests/runtime/hero_character_test.gd",
+	"res://tests/runtime/hero_movement_v0_test.gd",
 	"res://tests/runtime/hero_room_test.gd",
 	"res://tests/runtime/hero_room_interaction_test.gd",
 	"res://tests/runtime/visual_lab_zoom_test.gd",

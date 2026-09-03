@@ -415,7 +415,7 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 	var original_camera_zoom := player_camera.zoom
 	var original_hero_height := hero.get_appearance_height()
 	var original_hero_position := hero.position
-	var original_move_speed := hero.move_speed
+	var original_walk_speed := hero.movement_config.walk_speed
 	var original_tile_size := tile_grid_preview.tile_size
 	var original_collision_shape := hero_collision.shape
 	var original_collision_transform := hero_collision.transform
@@ -447,7 +447,10 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 		"world-state changes keep hero size unchanged",
 	)
 	_expect(hero.position == original_hero_position, "world-state changes keep hero position")
-	_expect(hero.move_speed == original_move_speed, "world-state changes keep movement speed")
+	_expect(
+		hero.movement_config.walk_speed == original_walk_speed,
+		"world-state changes keep walk speed",
+	)
 	_expect(
 		tile_grid_preview.tile_size == original_tile_size,
 		"world-state changes keep tile size unchanged",

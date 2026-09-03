@@ -3,7 +3,7 @@
 <!-- AUTO-GENERATED:backlink END -->
 # EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel 🎮
 
-**Projektstand:** 2. September 2026, nach der ersten Ratgeber-Interaktion
+**Projektstand:** 3. September 2026, nach Bewegungssteuerung V0
 
 Dieser Fahrplan ist das Orientierungshandbuch für neue Chats. Er zeigt die vollständige Entwicklungsreihenfolge vom aktuellen Stand bis zur stabilen Veröffentlichung.
 
@@ -87,7 +87,8 @@ In dieser Phase wird noch kein vollständiger Grasland-Abschnitt gebaut. Zuerst 
 |    Nr. | Aufgabe                        | Ziel und Abschlusskriterium                                                                                                                | Status |
 | -----: | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | :----: |
 | **16** | **🔍 Diagnoseanzeige**         | FPS, Spielerposition, Kameraposition, Tilegröße, Figurengröße, Zoom, Kollisionsflächen und aktive Testeinstellungen werden live angezeigt. |   ✅   |
-|     17 | 📐 Pixel-Snap testen           | Darstellung und Bewegung mit und ohne Pixel-Snap vergleichen und Probleme dokumentieren.                                                   |    🔵   |
+|   17.1 | 🎮 Bewegungssteuerung V0       | Lauf-, Boost-, Schleich- und Sprungzustände für die Tastatur technisch absichern.                                                          |    ✅   |
+|   17.2 | 📐 Pixel-Snap vollständig testen | Darstellung und Bewegung mit allen V0-Bewegungszuständen bei 1,00× und 1,50× vergleichen.                                                |    ⚪   |
 |     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    🟡   |
 |     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand vergleichen.                                                                |    🟡   |
 |     20 | 📏 Maßstab V0 festlegen        | Heldenhöhe, Tilegröße, Kamera-Zoom und Referenzauflösung verbindlich auswählen.                                                            |    🟡   |
@@ -345,13 +346,14 @@ Der folgende Ablauf wird **für jede Region beziehungsweise jedes Kapitel einzel
 
 | Letzter abgeschlossener Schritt | Nachweis | Nächster Schritt |
 | ------------------------------- | -------- | ---------------- |
-| **Erste Ratgeber-Interaktion** | Der Heldenraum enthält den sichtbaren Ratgeber, einen Reichweitenhinweis und eine einzelne schließbare Nachricht. Bewegung, Kamera, Kollisionen und Rückkehr zum Hauptmenü bleiben getestet. | Noch keine neue Aufgabe aktiv. Der nächste Fahrplanpunkt wird erst nach ausdrücklicher Auswahl begonnen. |
+| **Bewegungssteuerung V0** | Der gemeinsame Held unterstützt aktionsbasierte Doppel-Taps, Schnell- und Boostlauf, Schleichen samt Kameraprofil sowie drei kollisionsgebundene Top-down-Sprünge. | **Aufgabe 17.2 – Pixel-Snap vollständig testen** folgt als eigener Arbeitsschritt. |
 
 Die letzten abgeschlossenen Implementierungsschritte sind die Diagnoseanzeige,
 die F5-Steuerungshilfe, der begehbare Heldenraum und die erste
-Ratgeber-Interaktion. Diese Vorarbeiten schließen die größeren gelben
-Arbeitspakete noch nicht vollständig ab. Insbesondere fehlen weiterhin die
-Pixel-Snap-Abnahme, verbindliche Darstellungswerte, Türen und Ausgang,
-Animationen sowie ein allgemeines Text- und Dialogsystem.
+Ratgeber-Interaktion sowie Bewegungssteuerung V0. Diese Vorarbeiten schließen
+die größeren gelben Arbeitspakete noch nicht vollständig ab. Insbesondere
+fehlen weiterhin die Pixel-Snap-Abnahme, verbindliche Darstellungswerte, Türen
+und Ausgang, Animationen sowie ein allgemeines Text- und Dialogsystem.
 
-**Aktuell wird keine weitere Aufgabe automatisch begonnen.**
+**Aktuell wird keine weitere Aufgabe automatisch begonnen. Als Nächstes folgt
+Aufgabe 17.2.**

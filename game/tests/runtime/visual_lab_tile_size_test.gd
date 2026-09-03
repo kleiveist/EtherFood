@@ -140,7 +140,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var original_hero_height := hero.get_appearance_height()
 	var original_hero_position := hero.position
 	var original_hero_scale := hero.scale
-	var original_move_speed := hero.move_speed
+	var original_walk_speed := hero.movement_config.walk_speed
 	var original_collision_shape := hero_collision.shape
 	var original_collision_transform := hero_collision.transform
 
@@ -230,7 +230,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 	)
 	_expect(hero.position == original_hero_position, "tile-size changes keep hero position")
 	_expect(hero.scale == original_hero_scale, "tile-size changes never scale HeroCharacter")
-	_expect(hero.move_speed == original_move_speed, "tile-size changes keep movement speed")
+	_expect(
+		hero.movement_config.walk_speed == original_walk_speed,
+		"tile-size changes keep walk speed",
+	)
 	_expect(
 		hero_collision.shape == original_collision_shape,
 		"tile-size changes keep the collision shape",

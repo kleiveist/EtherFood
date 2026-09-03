@@ -67,7 +67,9 @@ Prototypstand enthält:
 
 - einen 2560 × 1440 Weltpixel großen, abgegrenzten Testraum,
 - die vorhandene bewegliche Heldenfigur mit 80 Weltpixel Höhe,
-- eine fest auf 1,50× eingestellte Folgekamera,
+- eine Folgekamera mit dem Szenenprofil für kleine Innenräume bei 1,50×,
+- die gemeinsame Bewegungssteuerung V0 mit Lauf-, Schleich- und
+  Top-down-Sprungzuständen,
 - Kollisionen an vier Außenwänden und zwei vorläufigen Steinblöcken,
 - einen sichtbaren, nicht physisch blockierenden Ratgeberplatzhalter,
 - einen lokalen Interaktionshinweis und eine erste kurze Ratgeber-Nachricht,
@@ -77,8 +79,9 @@ Diese Werte sind vom visuellen Testlabor unabhängig. Dessen gespeicherte
 Presets werden im Heldenraum nicht geladen.
 
 Der Held wählt innerhalb einer 96 Weltpixel großen Sensorfläche das nächste
-gültige Interaktionsziel. Während die Ratgeber-Nachricht geöffnet ist, ruht
-seine Bewegung. Die Zurück-Aktion schließt zuerst diese Nachricht und führt
+gültige Interaktionsziel. Während eines Sprungs kann er nicht interagieren.
+Während die Ratgeber-Nachricht geöffnet ist, ruhen sämtliche Bewegungs- und
+Sprungzustände. Die Zurück-Aktion schließt zuerst diese Nachricht und führt
 erst beim nächsten Auslösen zum Hauptmenü.
 
 Ein vollständiges Dialogsystem, weitere Interaktionen und der Ausgang in

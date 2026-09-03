@@ -72,7 +72,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"VisualLab HeroCharacter has a collision shape",
 	)
 
-	var original_move_speed := hero.move_speed if hero != null else 0.0
+	var original_walk_speed := (
+		hero.movement_config.walk_speed if hero != null else 0.0
+	)
 	var original_hero_scale := hero.scale if hero != null else Vector2.ZERO
 	var original_collision_shape := hero_collision.shape if hero_collision != null else null
 	var status_screen_position := (
@@ -242,7 +244,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 
 	if hero != null:
-		_expect(hero.move_speed == original_move_speed, "zoom does not change hero move speed")
+		_expect(
+			hero.movement_config.walk_speed == original_walk_speed,
+			"zoom does not change hero walk speed",
+		)
 		_expect(hero.scale == original_hero_scale, "zoom does not change hero scale")
 	if hero_collision != null:
 		_expect(

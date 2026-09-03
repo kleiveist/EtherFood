@@ -103,7 +103,9 @@ nicht festgelegt.
 - Rückkehr einer Seele oder einer Erinnerung als erzählerische Rückmeldung;
 - ein klar erkennbarer Endzustand des Prototyps.
 
-Die konkreten Eingaben, Zahlenwerte, Gegnerwerte und technischen
+Die vorgezogene [Bewegungssteuerung V0](../30-spielmechanik/bewegungssteuerung-v0.md)
+legt Tastatureingaben und vorläufige Bewegungswerte fest. Endgültige
+Tastenbelegung, Controllerunterstützung, Gegnerwerte und technische
 Szenenwechsel werden erst in späteren Aufgaben festgelegt.
 
 ## Noch nicht enthalten

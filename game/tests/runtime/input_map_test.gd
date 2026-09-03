@@ -12,6 +12,9 @@ const REQUIRED_ACTIONS: Dictionary[StringName, float] = {
 	&"gameplay_move_left": 0.2,
 	&"gameplay_move_right": 0.2,
 	&"gameplay_interact": 0.5,
+	&"gameplay_jump": 0.5,
+	&"gameplay_sneak": 0.5,
+	&"gameplay_boost": 0.5,
 	&"app_pause": 0.5,
 	&"dev_diagnostics_toggle": 0.5,
 	&"dev_collision_debug_toggle": 0.5,
@@ -61,6 +64,17 @@ func run(_tree: SceneTree) -> PackedStringArray:
 	for action in BUTTON_ACTIONS:
 		_expect(_has_keyboard_event(action), "'%s' has a keyboard mapping" % action)
 		_expect(_has_button_event(action), "'%s' has a controller mapping" % action)
+	_expect(
+		_has_key_mapping(&"gameplay_jump", KEY_SPACE, KEY_LOCATION_UNSPECIFIED),
+		"gameplay_jump uses Space",
+	)
+	_expect_modifier_pair(&"gameplay_sneak", KEY_CTRL, "gameplay_sneak uses both Ctrl keys")
+	_expect_modifier_pair(&"gameplay_boost", KEY_SHIFT, "gameplay_boost uses both Shift keys")
+	for action in [&"gameplay_jump", &"gameplay_sneak", &"gameplay_boost"]:
+		_expect(
+			not _has_button_event(action) and not _has_axis_event(action),
+			"'%s' remains keyboard-only in movement V0" % action,
+		)
 	return failures
 
 
@@ -83,6 +97,46 @@ func _has_axis_event(action: StringName) -> bool:
 		if event is InputEventJoypadMotion:
 			return true
 	return false
+
+
+func _has_key_mapping(
+		action: StringName,
+		expected_key: Key,
+		expected_location: KeyLocation,
+) -> bool:
+	for input_event in InputMap.action_get_events(action):
+		var key_event := input_event as InputEventKey
+		if key_event == null:
+			continue
+		if (
+			(key_event.keycode == expected_key or key_event.physical_keycode == expected_key)
+			and key_event.location == expected_location
+		):
+			return true
+	return false
+
+
+func _expect_modifier_pair(action: StringName, key: Key, description: String) -> void:
+	_expect(
+		_has_key_mapping(action, key, KEY_LOCATION_LEFT)
+		and _has_key_mapping(action, key, KEY_LOCATION_RIGHT)
+		and _modifier_event_matches(action, key, KEY_LOCATION_LEFT)
+		and _modifier_event_matches(action, key, KEY_LOCATION_RIGHT),
+		description,
+	)
+
+
+func _modifier_event_matches(
+		action: StringName,
+		key: Key,
+		location: KeyLocation,
+) -> bool:
+	var event := InputEventKey.new()
+	event.device = InputEvent.DEVICE_ID_KEYBOARD
+	event.physical_keycode = key
+	event.location = location
+	event.pressed = true
+	return InputMap.event_is_action(event, action, true)
 
 
 func _expect(condition: bool, description: String) -> void:
