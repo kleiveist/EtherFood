@@ -4,7 +4,17 @@ Bedeutende Änderungen an diesem Projekt werden in dieser Datei festgehalten.
 
 ## Unveröffentlicht
 
-Noch keine Veröffentlichung vorbereitet.
+### Hinzugefügt
+
+- `python tools/control.py godot4 import` führt einen expliziten kopflosen
+  Godot-Ressourcenimport aus.
+
+### Geändert
+
+- Run, Test und Release-Gate bereiten Godot-Ressourcen vor dem jeweiligen
+  Zielprozess automatisch auf.
+- Frische Checkouts erzeugen ihren ignorierten Cache selbst, sodass fehlende
+  `.ctex`-Dateien nicht mehr zu einer Kaskade irreführender Folgefehler führen.
 
 ## Forge2D-Template v0.1.0 - 2026-08-28
 

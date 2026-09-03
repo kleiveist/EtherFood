@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from pathlib import Path
 import argparse
+import subprocess
 import textwrap
 
 from g2dtool import __version__
@@ -11,17 +13,24 @@ from g2dtool.check import run_check
 from g2dtool.config import ProjectConfigError
 from g2dtool.doctor import collect_doctor_report, format_doctor_report
 from g2dtool.export import EXPORT_TARGETS, run_export
-from g2dtool.logger import error, print_help_line
 from g2dtool.godot import (
-    FAIL,
+    GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
     PASS,
     build_godot_editor_command,
+    build_godot_import_command,
     build_godot_run_command,
     build_godot_test_command,
     discover_godot,
     run_godot_command,
 )
 from g2dtool.install import run_install
+from g2dtool.logger import (
+    error,
+    join_command,
+    print_help_line,
+    print_status_line,
+    success,
+)
 from g2dtool.release import run_release_prepare
 from g2dtool.repository import discover_repository_layout
 from g2dtool.style import run_style
@@ -47,6 +56,7 @@ WELCOME_TEXT = textwrap.dedent(
 
     🎮 Run or test the project
       python tools/control.py godot4
+      python tools/control.py godot4 import
       python tools/control.py godot4 test
       python tools/control.py forge2d-template run
       python tools/control.py Forge2D-Template run
@@ -69,6 +79,7 @@ def build_parser(prog: str = "g2d") -> argparse.ArgumentParser:
               python tools/control.py check
               python tools/control.py export linux --dry-run
               python tools/control.py release prepare --dry-run
+              python tools/control.py godot4 import
               python tools/control.py godot4 test
               python tools/control.py forge2d-template run
               python tools/control.py Forge2D-Template run
@@ -148,7 +159,7 @@ def build_parser(prog: str = "g2d") -> argparse.ArgumentParser:
     godot_parser.add_argument(
         "mode",
         nargs="?",
-        choices=("editor", "run", "test"),
+        choices=("editor", "import", "run", "test"),
         default="editor",
         help="godot4 command mode",
     )
@@ -251,10 +262,22 @@ def _run_godot_command(options: argparse.Namespace) -> int:
         return EXIT_REQUIREMENT_MISSING
 
     if options.mode == "editor":
-        command = build_godot_editor_command(
-            result.executable, layout.game_directory, user_arguments
+        return _run_external_command(
+            build_godot_editor_command(
+                result.executable,
+                layout.game_directory,
+                user_arguments,
+            )
         )
-    elif options.mode == "run":
+
+    import_exit_code = _run_godot_resource_import(
+        result.executable,
+        layout.game_directory,
+    )
+    if import_exit_code != EXIT_OK or options.mode == "import":
+        return import_exit_code
+
+    if options.mode == "run":
         command = build_godot_run_command(
             result.executable, layout.game_directory, user_arguments
         )
@@ -273,12 +296,38 @@ def _run_template_project(options: argparse.Namespace) -> int:
     return _run_godot_command(options)
 
 
-def _run_external_command(command: Sequence[str]) -> int:
+def _run_godot_resource_import(executable: Path, game_directory: Path) -> int:
+    command = build_godot_import_command(executable, game_directory)
+    print_status_line("running", "Godot resource import", join_command(command))
+    exit_code = _run_external_command(
+        command,
+        timeout_seconds=GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
+    )
+    if exit_code == EXIT_OK:
+        success("Godot-Ressourcenimport abgeschlossen.")
+    else:
+        error(f"Godot-Ressourcenimport mit Exit-Code {exit_code} fehlgeschlagen.")
+    return exit_code
+
+
+def _run_external_command(
+    command: Sequence[str],
+    *,
+    timeout_seconds: int | None = None,
+) -> int:
     try:
-        return run_godot_command(command)
+        if timeout_seconds is None:
+            return run_godot_command(command)
+        return run_godot_command(command, timeout_seconds=timeout_seconds)
     except FileNotFoundError:
         error("Godot executable not found.")
         return EXIT_REQUIREMENT_MISSING
+    except subprocess.TimeoutExpired:
+        error(
+            "Godot command timed out after "
+            f"{timeout_seconds} seconds: {join_command(command)}"
+        )
+        return EXIT_FAILURE
     except KeyboardInterrupt:
         error("Aborted.")
         return EXIT_INTERRUPTED

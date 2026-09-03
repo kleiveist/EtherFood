@@ -7,13 +7,14 @@ from io import StringIO
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import call, patch
 
 from _source_path import add_source_root
 
 add_source_root()
 
-from g2dtool.cli import main
+from g2dtool.cli import WELCOME_TEXT, main
+from g2dtool.godot import GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS
 from g2dtool import __version__
 from g2dtool.repository import RepositoryLayout
 
@@ -34,8 +35,12 @@ class CliTests(unittest.TestCase):
         self.assertIn("python tools/control.py style", text)
         self.assertIn("python tools/control.py export linux --dry-run", text)
         self.assertIn("python tools/control.py release prepare --dry-run", text)
+        self.assertIn("python tools/control.py godot4 import", text)
         self.assertIn("python tools/control.py godot4 test", text)
         self.assertIn("python tools/control.py Forge2D-Template run", text)
+
+    def test_welcome_text_contains_resource_import_command(self) -> None:
+        self.assertIn("python tools/control.py godot4 import", WELCOME_TEXT)
 
     def test_version_has_stable_output(self) -> None:
         output = StringIO()
@@ -167,19 +172,130 @@ class CliTests(unittest.TestCase):
                     },
                 )(),
             ),
-            patch(
-                "g2dtool.cli.build_godot_run_command",
-                return_value=["/fake/godot", "--path", str(layout.game_directory)],
-            ) as build_command,
-            patch("g2dtool.cli._run_external_command", return_value=42) as runner,
+            patch("g2dtool.cli.run_godot_command", return_value=0) as runner,
         ):
             exit_lower = main(["forge2d-template", "run"])
             exit_upper = main(["Forge2D-Template", "run"])
 
-        self.assertEqual(build_command.call_count, 2)
-        self.assertEqual(exit_lower, 42)
-        self.assertEqual(exit_upper, 42)
-        self.assertEqual(runner.call_count, 2)
+        self.assertEqual(exit_lower, 0)
+        self.assertEqual(exit_upper, 0)
+        self.assertEqual(runner.call_count, 4)
+        for import_call, run_call in zip(runner.call_args_list[::2], runner.call_args_list[1::2]):
+            self.assertIn("--import", import_call.args[0])
+            self.assertEqual(
+                import_call.kwargs,
+                {"timeout_seconds": GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS},
+            )
+            self.assertNotIn("--import", run_call.args[0])
+            self.assertNotIn("--script", run_call.args[0])
+
+    def test_godot_import_dispatches_only_the_bounded_import_command(self) -> None:
+        layout = self._layout()
+        with (
+            patch("g2dtool.cli.discover_repository_layout", return_value=layout),
+            patch("g2dtool.cli.discover_godot", return_value=self._godot_result()),
+            patch("g2dtool.cli.run_godot_command", return_value=0) as runner,
+        ):
+            exit_code = main(["godot4", "import"])
+
+        self.assertEqual(exit_code, 0)
+        runner.assert_called_once_with(
+            [
+                "/fake/godot",
+                "--headless",
+                "--path",
+                str(layout.game_directory),
+                "--import",
+            ],
+            timeout_seconds=GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
+        )
+
+    def test_godot_run_imports_first_and_preserves_game_arguments(self) -> None:
+        layout = self._layout()
+        with (
+            patch("g2dtool.cli.discover_repository_layout", return_value=layout),
+            patch("g2dtool.cli.discover_godot", return_value=self._godot_result()),
+            patch("g2dtool.cli.run_godot_command", return_value=0) as runner,
+        ):
+            exit_code = main(["godot4", "run", "--", "--player-name", "Ada"])
+
+        self.assertEqual(exit_code, 0)
+        import_call, run_call = runner.call_args_list
+        self.assertIn("--import", import_call.args[0])
+        self.assertNotIn("--player-name", import_call.args[0])
+        self.assertEqual(
+            run_call,
+            call(
+                [
+                    "/fake/godot",
+                    "--path",
+                    str(layout.game_directory),
+                    "--",
+                    "--player-name",
+                    "Ada",
+                ]
+            ),
+        )
+
+    def test_godot_test_imports_first_and_preserves_test_arguments(self) -> None:
+        layout = self._layout()
+        test_runner = layout.game_directory / "tests" / "bootstrap_integration_test.gd"
+        with (
+            patch("g2dtool.cli.discover_repository_layout", return_value=layout),
+            patch("g2dtool.cli.discover_godot", return_value=self._godot_result()),
+            patch("g2dtool.cli.run_godot_command", return_value=0) as runner,
+        ):
+            exit_code = main(["godot4", "test", "--", "--case", "bootstrap"])
+
+        self.assertEqual(exit_code, 0)
+        import_call, test_call = runner.call_args_list
+        self.assertIn("--import", import_call.args[0])
+        self.assertNotIn("--case", import_call.args[0])
+        self.assertEqual(
+            test_call,
+            call(
+                [
+                    "/fake/godot",
+                    "--headless",
+                    "--path",
+                    str(layout.game_directory),
+                    "--script",
+                    str(test_runner),
+                    "--",
+                    "--case",
+                    "bootstrap",
+                ]
+            ),
+        )
+
+    def test_failed_import_returns_godot_code_and_prevents_target_process(self) -> None:
+        layout = self._layout()
+        with (
+            patch("g2dtool.cli.discover_repository_layout", return_value=layout),
+            patch("g2dtool.cli.discover_godot", return_value=self._godot_result()),
+            patch("g2dtool.cli.run_godot_command", return_value=19) as runner,
+        ):
+            exit_code = main(["godot4", "test"])
+
+        self.assertEqual(exit_code, 19)
+        self.assertEqual(runner.call_count, 1)
+        self.assertIn("--import", runner.call_args.args[0])
+
+    def test_editor_starts_once_without_a_preparatory_import(self) -> None:
+        layout = self._layout()
+        with (
+            patch("g2dtool.cli.discover_repository_layout", return_value=layout),
+            patch("g2dtool.cli.discover_godot", return_value=self._godot_result()),
+            patch("g2dtool.cli.run_godot_command", return_value=0) as runner,
+        ):
+            exit_code = main(["godot4", "editor", "--", "--editor-pseudolocalization"])
+
+        self.assertEqual(exit_code, 0)
+        runner.assert_called_once()
+        command = runner.call_args.args[0]
+        self.assertIn("--editor", command)
+        self.assertNotIn("--import", command)
+        self.assertIn("--editor-pseudolocalization", command)
 
     def test_missing_godot_prints_install_guidance(self) -> None:
         layout = RepositoryLayout(
@@ -240,3 +356,28 @@ class CliTests(unittest.TestCase):
             "Internal error: unexpected internal failure"
         )
         self.assertEqual(exit_code, 1)
+
+    @staticmethod
+    def _layout() -> RepositoryLayout:
+        return RepositoryLayout(
+            repository_root=REPOSITORY_ROOT,
+            pyproject_toml=REPOSITORY_ROOT / "pyproject.toml",
+            project_config=REPOSITORY_ROOT / "config" / "project.toml",
+            toolchain_config=REPOSITORY_ROOT / "config" / "toolchain.toml",
+            tools_directory=REPOSITORY_ROOT / "tools",
+            tools_source_directory=REPOSITORY_ROOT / "tools" / "src",
+            game_directory=REPOSITORY_ROOT / "game",
+            venv_directory=REPOSITORY_ROOT / ".venv",
+        )
+
+    @staticmethod
+    def _godot_result() -> object:
+        return type(
+            "Result",
+            (),
+            {
+                "status": "pass",
+                "executable": Path("/fake/godot"),
+                "version": "4.3",
+            },
+        )()

@@ -22,10 +22,16 @@ Installation zunächst ohne Änderungen:
 python tools/control.py install --dry-run
 python tools/control.py install --yes
 python tools/control.py doctor
+python tools/control.py godot4 import
 ```
 
 Verwende `python3`, falls `python` nicht vorhanden ist, oder unter Windows
-`py -3.11`. Python-Pakete gehören ausschließlich in die lokale `.venv`.
+`py -3.11`. Python-Pakete gehören ausschließlich in die lokale `.venv`. Der
+Import erzeugt den ignorierten Godot-Ressourcen-Cache aus den getrackten
+Quellen. Nach einem frischen Checkout oder dem bewussten Entfernen lokaler
+Caches darf `game/.godot/` nicht aus einer anderen Arbeitsumgebung kopiert oder
+committed werden. Weitere Hinweise stehen unter
+[Godot-Ressourcenimporte](docs/developer/tooling/godot-resource-imports.md).
 
 ## Änderungen durchführen
 
@@ -57,8 +63,11 @@ python tools/control.py style
 python tools/control.py check
 ```
 
-`python tools/control.py check` prüft Umgebung, Quellstil, Python-Tests und
-die kopflose Godot-Integration. Für Spielentwicklung sollen Pull Requests
+`python tools/control.py check` prüft Umgebung, Quellstil, Python-Tests, den
+Godot-Ressourcenimport und danach die kopflose Godot-Integration. Schlägt der
+Import fehl, wird der abhängige Integrationstest nicht gestartet. Auch
+`godot4 run` und `godot4 test` bereiten Ressourcen automatisch vor. Für
+Spielentwicklung sollen Pull Requests
 zusätzlich automatisierte Godot- und GDScript-Tests ausführen, soweit die
 eingesetzten Werkzeuge das zulassen. Ist eine Prüfung technisch nicht
 verfügbar, dokumentiert der Pull Request die Grenze, führt alle möglichen

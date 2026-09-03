@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import re
+import subprocess
 import unittest
 
 
@@ -27,7 +28,10 @@ RUNTIME_PATHS = (
 DOCUMENTATION_ENTRY_POINTS = (
     REPOSITORY_ROOT / "README.md",
     REPOSITORY_ROOT / "AGENTS.md",
+    REPOSITORY_ROOT / "CONTRIBUTING.md",
 )
+
+
 class SourceHygieneTests(unittest.TestCase):
     def test_source_and_configuration_have_no_hard_coded_user_paths(self) -> None:
         violations: list[str] = []
@@ -67,6 +71,26 @@ class SourceHygieneTests(unittest.TestCase):
         )
         for target in targets:
             self.assertNotIn("--break-system-packages", target.read_text(encoding="utf-8"))
+
+    def test_godot_generated_cache_stays_untracked_and_ignored(self) -> None:
+        tracked = subprocess.run(
+            ["git", "ls-files", "--", "game/.godot/**", "*.ctex"],
+            cwd=REPOSITORY_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(tracked.returncode, 0, tracked.stderr)
+        self.assertEqual(tracked.stdout, "")
+
+        ignored = subprocess.run(
+            ["git", "check-ignore", "--quiet", "game/.godot/imported/probe.ctex"],
+            cwd=REPOSITORY_ROOT,
+            check=False,
+        )
+        self.assertEqual(ignored.returncode, 0)
+        ignore_file = (REPOSITORY_ROOT / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("\n.godot/\n", f"\n{ignore_file}")
 
     def test_runtime_has_no_direct_global_scene_changes(self) -> None:
         violations = self._gdscript_violations(
@@ -168,9 +192,12 @@ class SourceHygieneTests(unittest.TestCase):
             "docs/developer/documentation-architecture.md",
             "docs/developer/project-identity.md",
             "docs/developer/plans/dokumentationsvereinfachung.md",
+            "docs/developer/plans/godot-resource-import-pipeline.md",
             "docs/developer/features/_feature-template.md",
             "docs/developer/decisions/_adr-template.md",
             "docs/developer/plans/_execplan-template.md",
+            "docs/developer/tooling/index.md",
+            "docs/developer/tooling/godot-resource-imports.md",
             "docs/player-guide/index.md",
             "docs/player-guide/_topic-template.md",
         )
@@ -210,6 +237,18 @@ class SourceHygieneTests(unittest.TestCase):
             ),
         )
         self.assertFalse(any(path.exists() for path in legacy_entry_points))
+
+    def test_active_tooling_area_has_one_index_entry_point(self) -> None:
+        tooling_root = REPOSITORY_ROOT / "docs" / "developer" / "tooling"
+        index_pages = sorted(
+            path.relative_to(tooling_root) for path in tooling_root.rglob("index.md")
+        )
+
+        self.assertEqual(index_pages, [Path("index.md")])
+        self.assertFalse((tooling_root / "tooling.md").exists())
+        contents = (tooling_root / "index.md").read_text(encoding="utf-8")
+        self.assertEqual(contents.count("<!-- PYGINDEX:NAVIGATION START -->"), 1)
+        self.assertEqual(contents.count("<!-- PYGINDEX:NAVIGATION END -->"), 1)
 
     def test_concept_directories_have_pygindex_pages(self) -> None:
         concept_root = REPOSITORY_ROOT / "docs" / "concept"

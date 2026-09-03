@@ -19,6 +19,7 @@ add_source_root()
 from g2dtool.release import (
     RELEASE_ASSETS,
     ReleaseAsset,
+    ReleaseError,
     run_release_prepare,
     validate_release_metadata,
 )
@@ -29,22 +30,14 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 
 
 class ReleaseRepositoryContractTests(unittest.TestCase):
-    def test_repository_release_metadata_is_consistent(self) -> None:
-        metadata = validate_release_metadata(
-            discover_repository_layout(REPOSITORY_ROOT)
-        )
+    def test_repository_release_metadata_blocks_pending_changes(self) -> None:
+        layout = discover_repository_layout(REPOSITORY_ROOT)
 
-        self.assertEqual(metadata.version, "0.1.0")
-        self.assertEqual(metadata.tag, "v0.1.0")
-        self.assertEqual(metadata.release_date, "2026-08-28")
-        self.assertEqual(
-            metadata.notes_path,
-            REPOSITORY_ROOT
-            / "docs"
-            / ".forge2d-template"
-            / "releases"
-            / "v0.1.0.md",
-        )
+        with self.assertRaisesRegex(
+            ReleaseError,
+            "still contains Unreleased list entries",
+        ):
+            validate_release_metadata(layout)
 
     def test_publication_guide_preserves_tag_and_asset_audit_boundaries(self) -> None:
         guide = (

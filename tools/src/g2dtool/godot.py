@@ -54,6 +54,7 @@ WARN = "warn"
 FAIL = "fail"
 
 GODOT_TEST_RUNNER_PATH = Path("tests/bootstrap_integration_test.gd")
+GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS = 180
 GODOT_LABELED_VERSION_RE = re.compile(
     r"(?i)\bgodot\b.*?\bv?(?P<major>\d+)\.(?P<minor>\d+)"
 )
@@ -199,6 +200,21 @@ def build_godot_run_command(
     )
 
 
+def build_godot_import_command(
+    executable: Path,
+    game_directory: Path,
+) -> list[str]:
+    """Build the complete headless Godot editor import command."""
+
+    return [
+        str(executable),
+        "--headless",
+        "--path",
+        str(game_directory),
+        "--import",
+    ]
+
+
 def build_godot_test_command(
     executable: Path,
     game_directory: Path,
@@ -224,10 +240,18 @@ def build_godot_test_command(
     ]
 
 
-def run_godot_command(arguments: Sequence[str]) -> int:
+def run_godot_command(
+    arguments: Sequence[str],
+    *,
+    timeout_seconds: int | None = None,
+) -> int:
     """Run a pre-built Godot command and return the child process return code."""
 
-    completed = subprocess.run(list(arguments), check=False)
+    completed = subprocess.run(
+        list(arguments),
+        check=False,
+        timeout=timeout_seconds,
+    )
     return int(completed.returncode)
 
 

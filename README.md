@@ -6,6 +6,7 @@
 - [Dokumentationsmedien](docs/assets/README.md)
 - [EtherFood – Spielkonzept](docs/concept/index.md)
 - [Entwicklungsdokumentation](docs/developer/index.md)
+- [Entwicklungswerkzeuge](docs/developer/tooling/index.md)
 - [Spielerhandbuch](docs/player-guide/index.md)
 
 ## Projektdateien
@@ -24,6 +25,7 @@ befindet sich in der Konzept- und Vorproduktionsphase.
 - [Dokumentationsübersicht](docs/index.md)
 - [Deutsches Spielkonzept](docs/concept/index.md)
 - [Entwicklungsdokumentation](docs/developer/index.md)
+- [Godot-Ressourcenimporte](docs/developer/tooling/godot-resource-imports.md)
 - [Spielerhandbuch](docs/player-guide/index.md)
 - [Dokumentationsmedien](docs/assets/README.md)
 - [Geerbte Forge2D-Grundlage](docs/.forge2d-template/index.md)
@@ -46,9 +48,16 @@ python tools/control.py install --yes
 python tools/control.py doctor
 python tools/control.py style
 python tools/control.py check
+python tools/control.py godot4 import
 python tools/control.py godot4 run
 python tools/control.py godot4 test
 ```
+
+`godot4 import` erzeugt den ignorierten Godot-Ressourcen-Cache aus den
+getrackten Quell-Assets. `run`, `test` und `check` führen diese Vorbereitung
+automatisch aus; ein frischer Checkout benötigt deshalb keinen eingecheckten
+`game/.godot`-Ordner. Details und Fehlerdiagnose stehen unter
+[Godot-Ressourcenimporte](docs/developer/tooling/godot-resource-imports.md).
 
 Auf Systemen ohne `python` kann `python3` beziehungsweise unter Windows
 `py -3.11` verwendet werden. Abhängigkeiten gehören in die lokale `.venv` und

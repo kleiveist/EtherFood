@@ -16,6 +16,7 @@
 - [Historischer Arbeitsplan: erste Dokumentationsumstellung](etherfood-documentation-restructure.md)
 - [Historischer Arbeitsplan: Dokumentation des Spielablaufs](game-flow-documentation.md)
 - [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
+- [Arbeitsplan: Reproduzierbare Godot-Ressourcenimporte](godot-resource-import-pipeline.md)
 - [Arbeitsplan: Maßstab V0](massstab-v0.md)
 - [Historischer Arbeitsplan: Talisman als Handlungsobjekt](talisman-story-object-documentation.md)
 - [Arbeitsplan: Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)
@@ -29,11 +30,14 @@
 Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 [Arbeitsplanvorlage](_execplan-template.md) und beachte den
 [allgemeinen Standard](../../../.agent/PLANS.md).
+Der technische Zielzustand für den aktuellen Importplan ist unter
+[Godot-Ressourcenimporte](../tooling/godot-resource-imports.md) dokumentiert.
 
 ## Aktive Pläne
 
 - [Bewegungssteuerung V0](bewegungssteuerung-v0.md)
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
+- [Reproduzierbare Godot-Ressourcenimporte](godot-resource-import-pipeline.md)
 
 ## Abgeschlossene historische Pläne
 

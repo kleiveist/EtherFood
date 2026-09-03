@@ -16,6 +16,7 @@
 - [Decisions](decisions/index.md)
 - [Features](features/index.md)
 - [Arbeitspläne](plans/index.md)
+- [Entwicklungswerkzeuge](tooling/index.md)
 <!-- PYGINDEX:INDEX END -->
 
 Dieser Bereich beschreibt die technische Arbeit an `EtherFood`. Er erklärt
@@ -29,6 +30,7 @@ Architektur und Umsetzung, ohne den Spielkanon neu auszulegen.
 - [Technische Entscheidungen](decisions/decisions.md)
 - [Funktionen](features/features.md)
 - [Arbeitspläne](plans/index.md)
+- [Entwicklungswerkzeuge](tooling/index.md)
 
 ## Grenze zum Konzept
 
@@ -44,6 +46,8 @@ die schnellsten passenden Prüfungen sowie den vollständigen Lauf
 `python tools/control.py check` aus. Godot- und GDScript-Tests werden
 automatisiert, soweit Engine und Testwerkzeuge dies zulassen; technische
 Grenzen und manuelle Ersatzprüfungen müssen im Pull Request stehen.
+Der [Godot-Ressourcenimport](tooling/godot-resource-imports.md) bereitet dabei
+frische Checkouts vor dem kopflosen Integrationstest reproduzierbar vor.
 
 ## Geerbte Grundlage
 

@@ -11,8 +11,10 @@ import sys
 
 from g2dtool.doctor import collect_doctor_report, format_doctor_report
 from g2dtool.godot import (
+    GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
     PASS,
     GodotTestConfigurationError,
+    build_godot_import_command,
     build_godot_test_command,
     discover_godot,
 )
@@ -23,6 +25,9 @@ from g2dtool.style import run_style
 
 ProcessRunner = Callable[[Sequence[str], Path], int]
 GODOT_TEST_SUCCESS_MARKER = "EtherFood bootstrap integration test: passed"
+GODOT_INTEGRATION_IMPORT_SKIP_MESSAGE = (
+    "Godot headless integration test skipped because the Godot resource import failed."
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -62,32 +67,53 @@ def run_check(
 
     godot_result = discover_godot(layout.repository_root)
     if godot_result.status != PASS or godot_result.executable is None:
-        error(f"Godot integration test skipped as failure: {godot_result.detail}")
-        steps.append(GateStep("Godot headless integration test", 1))
+        error(f"Godot resource import could not start: {godot_result.detail}")
+        steps.append(GateStep("Godot resource import", 1))
+        error(GODOT_INTEGRATION_IMPORT_SKIP_MESSAGE)
     else:
-        try:
-            godot_command = build_godot_test_command(
-                godot_result.executable,
-                layout.game_directory,
-            )
-        except GodotTestConfigurationError as exc:
-            error(f"Godot integration test configuration failed: {exc}")
-            steps.append(GateStep("Godot headless integration test", 1))
+        import_command = build_godot_import_command(
+            godot_result.executable,
+            layout.game_directory,
+        )
+        print_status_line(
+            "running",
+            "Godot resource import",
+            join_command(import_command),
+        )
+        import_exit_code = runner(import_command, layout.repository_root)
+        steps.append(GateStep("Godot resource import", import_exit_code))
+
+        if import_exit_code != 0:
+            error(GODOT_INTEGRATION_IMPORT_SKIP_MESSAGE)
         else:
-            print_status_line(
-                "running", "Godot headless integration test", join_command(godot_command)
-            )
-            godot_exit_code = (
-                runner(godot_command, layout.repository_root)
-                if run_process is not None
-                else _run_godot_integration_test(godot_command, layout.repository_root)
-            )
-            steps.append(
-                GateStep(
-                    "Godot headless integration test",
-                    godot_exit_code,
+            try:
+                godot_command = build_godot_test_command(
+                    godot_result.executable,
+                    layout.game_directory,
                 )
-            )
+            except GodotTestConfigurationError as exc:
+                error(f"Godot integration test configuration failed: {exc}")
+                steps.append(GateStep("Godot headless integration test", 1))
+            else:
+                print_status_line(
+                    "running",
+                    "Godot headless integration test",
+                    join_command(godot_command),
+                )
+                godot_exit_code = (
+                    runner(godot_command, layout.repository_root)
+                    if run_process is not None
+                    else _run_godot_integration_test(
+                        godot_command,
+                        layout.repository_root,
+                    )
+                )
+                steps.append(
+                    GateStep(
+                        "Godot headless integration test",
+                        godot_exit_code,
+                    )
+                )
 
     failures = [step for step in steps if step.exit_code != 0]
     if failures:
@@ -114,7 +140,7 @@ def _run_process(command: Sequence[str], cwd: Path) -> int:
             list(command),
             cwd=str(cwd),
             check=False,
-            timeout=180,
+            timeout=GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
         )
     except FileNotFoundError as exc:
         error(f"Command not found: {exc.filename}")
@@ -135,7 +161,7 @@ def _run_godot_integration_test(command: Sequence[str], cwd: Path) -> int:
             check=False,
             capture_output=True,
             text=True,
-            timeout=180,
+            timeout=GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
         )
     except FileNotFoundError as exc:
         error(f"Command not found: {exc.filename}")

@@ -3,16 +3,20 @@
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from g2dtool.godot import (
-    PASS,
     FAIL,
+    GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
+    PASS,
     CommandResult,
     GodotTestConfigurationError,
-    discover_godot,
     build_godot_editor_command,
+    build_godot_import_command,
     build_godot_run_command,
     build_godot_test_command,
+    discover_godot,
+    run_godot_command,
 )
 
 from _source_path import add_source_root
@@ -187,6 +191,42 @@ class GodotTests(unittest.TestCase):
                 "--",
                 "--foo",
             ],
+        )
+
+    def test_import_command_is_headless_exact_and_has_no_game_arguments(self) -> None:
+        executable = Path("/opt/godot/bin/godot4")
+        game = Path("/checkout/EtherFood/game")
+
+        command = build_godot_import_command(executable, game)
+
+        self.assertEqual(
+            command,
+            [
+                str(executable),
+                "--headless",
+                "--path",
+                str(game),
+                "--import",
+            ],
+        )
+        self.assertNotIn("--player-name", command)
+        self.assertNotIn("--", command)
+
+    def test_runner_preserves_import_exit_code_and_uses_bounded_timeout(self) -> None:
+        command = ["/opt/godot4", "--headless", "--import"]
+        completed = type("Completed", (), {"returncode": 23})()
+
+        with patch("g2dtool.godot.subprocess.run", return_value=completed) as runner:
+            exit_code = run_godot_command(
+                command,
+                timeout_seconds=GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
+            )
+
+        self.assertEqual(exit_code, 23)
+        runner.assert_called_once_with(
+            command,
+            check=False,
+            timeout=GODOT_RESOURCE_IMPORT_TIMEOUT_SECONDS,
         )
 
     def test_test_command_rejects_missing_runner(self) -> None:

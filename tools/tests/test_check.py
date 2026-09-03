@@ -1,5 +1,7 @@
 """Tests for the release gate orchestration."""
 
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import subprocess
@@ -11,6 +13,7 @@ from _source_path import add_source_root
 add_source_root()
 
 from g2dtool.check import (
+    GODOT_INTEGRATION_IMPORT_SKIP_MESSAGE,
     GODOT_TEST_SUCCESS_MARKER,
     _run_godot_integration_test,
     run_check,
@@ -73,10 +76,17 @@ class CheckTests(unittest.TestCase):
 
         self.assertEqual(code, 0)
         self.assertTrue(any(command[1:3] == ("-m", "pytest") for command in executed))
-        godot_command = next(command for command in executed if "--headless" in command)
-        self.assertIn("--script", godot_command)
-        self.assertIn(str(self.test_runner), godot_command)
-        self.assertNotIn("--test-mode", godot_command)
+        import_index = next(
+            index for index, command in enumerate(executed) if "--import" in command
+        )
+        test_index = next(
+            index for index, command in enumerate(executed) if "--script" in command
+        )
+        self.assertLess(import_index, test_index)
+        self.assertNotIn("--script", executed[import_index])
+        self.assertNotIn("--import", executed[test_index])
+        self.assertIn(str(self.test_runner), executed[test_index])
+        self.assertNotIn("--test-mode", executed[test_index])
 
     def test_returns_failure_after_running_python_tests_when_godot_is_missing(self) -> None:
         executed: list[tuple[str, ...]] = []
@@ -132,7 +142,8 @@ class CheckTests(unittest.TestCase):
 
         self.assertEqual(code, 1)
         self.assertTrue(any(command[1:3] == ("-m", "pytest") for command in executed))
-        self.assertTrue(any("--headless" in command for command in executed))
+        self.assertTrue(any("--import" in command for command in executed))
+        self.assertTrue(any("--script" in command for command in executed))
 
     def test_returns_failure_when_python_tests_fail(self) -> None:
         executed: list[tuple[str, ...]] = []
@@ -159,7 +170,8 @@ class CheckTests(unittest.TestCase):
             code = run_check(start=self.root, run_process=runner)
 
         self.assertEqual(code, 1)
-        self.assertTrue(any("--headless" in command for command in executed))
+        self.assertTrue(any("--import" in command for command in executed))
+        self.assertTrue(any("--script" in command for command in executed))
 
     def test_returns_failure_after_running_remaining_steps_when_style_fails(self) -> None:
         executed: list[tuple[str, ...]] = []
@@ -189,14 +201,15 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(code, 1)
         source_style.assert_called_once_with(start=self.root)
         self.assertTrue(any(command[1:3] == ("-m", "pytest") for command in executed))
-        self.assertTrue(any("--headless" in command for command in executed))
+        self.assertTrue(any("--import" in command for command in executed))
+        self.assertTrue(any("--script" in command for command in executed))
 
     def test_returns_failure_when_godot_integration_test_fails(self) -> None:
         executed: list[tuple[str, ...]] = []
 
         def runner(command, _cwd):
             executed.append(tuple(command))
-            return 7 if "--headless" in command else 0
+            return 7 if "--script" in command else 0
 
         with (
             patch("g2dtool.check.discover_repository_layout", return_value=self.layout),
@@ -216,7 +229,40 @@ class CheckTests(unittest.TestCase):
             code = run_check(start=self.root, run_process=runner)
 
         self.assertEqual(code, 1)
-        self.assertTrue(any("--headless" in command for command in executed))
+        self.assertTrue(any("--import" in command for command in executed))
+        self.assertTrue(any("--script" in command for command in executed))
+
+    def test_failed_import_skips_script_and_fails_once_at_the_dependency(self) -> None:
+        executed: list[tuple[str, ...]] = []
+
+        def runner(command, _cwd):
+            executed.append(tuple(command))
+            return 17 if "--import" in command else 0
+
+        output = StringIO()
+        with (
+            patch("g2dtool.check.discover_repository_layout", return_value=self.layout),
+            patch(
+                "g2dtool.check.collect_doctor_report",
+                return_value=DoctorReport((DoctorCheck("repository", "pass", "ok"),)),
+            ),
+            patch(
+                "g2dtool.check.discover_godot",
+                return_value=type(
+                    "GodotResult",
+                    (),
+                    {"status": "pass", "executable": Path("/fake/godot4")},
+                )(),
+            ),
+            redirect_stdout(output),
+        ):
+            code = run_check(start=self.root, run_process=runner)
+
+        self.assertEqual(code, 1)
+        self.assertTrue(any("--import" in command for command in executed))
+        self.assertFalse(any("--script" in command for command in executed))
+        self.assertEqual(output.getvalue().count(GODOT_INTEGRATION_IMPORT_SKIP_MESSAGE), 1)
+        self.assertIn("Godot resource import failed with exit code 17", output.getvalue())
 
     def test_returns_failure_when_godot_test_runner_is_missing(self) -> None:
         self.test_runner.unlink()
@@ -245,7 +291,8 @@ class CheckTests(unittest.TestCase):
 
         self.assertEqual(code, 1)
         self.assertTrue(any(command[1:3] == ("-m", "pytest") for command in executed))
-        self.assertFalse(any("--headless" in command for command in executed))
+        self.assertTrue(any("--import" in command for command in executed))
+        self.assertFalse(any("--script" in command for command in executed))
 
     def test_godot_runner_requires_explicit_success_marker(self) -> None:
         command = ["/fake/godot4", "--headless"]
