@@ -266,7 +266,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	)
 
 	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
-	_expect(player_camera.zoom == Vector2.ONE, "zoom can change independently")
+	_expect(player_camera.zoom == Vector2(0.75, 0.75), "zoom can change independently")
 	_expect_size_state(
 		appearance,
 		hero_sprite,
@@ -276,7 +276,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"zoom changes keep hero size unchanged",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_F))
-	_expect(player_camera.zoom == Vector2.ONE, "size can change without camera zoom")
+	_expect(
+		player_camera.zoom == Vector2(0.75, 0.75),
+		"size can change without camera zoom",
+	)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
@@ -288,7 +291,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
 	_expect(
 		player_camera.zoom.is_equal_approx(original_camera_zoom),
-		"zoom returns independently to near",
+		"zoom returns independently to the standard profile",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_R))
 

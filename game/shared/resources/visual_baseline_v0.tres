@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VisualScaleProfile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://shared/resources/visual_scale_profile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+profile_id = "visual_scale_v0"
+profile_name = "Maßstab V0"
+comparison_focus = "Verbindlicher ausgewogener Maßstab für die normale Spielansicht."
+hero_height = 80.0
+tile_size = 32
+camera_zoom = 1.0
+reference_resolution = Vector2i(1920, 1080)
+aspect_ratio = "16:9"
+pixel_snap_enabled = true
+texture_filter_id = "nearest"

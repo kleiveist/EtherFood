@@ -10,6 +10,7 @@ const TEXTURE_FILTER_ACTION := &"dev_texture_filter_toggle"
 const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
 const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
+const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
 const WORLD_STATE_ACTION := &"dev_world_state_toggle"
 const EXPECTED_TEXTURE_SPRITE_COUNT := 51
 
@@ -245,7 +246,14 @@ func _expect_texture_filter_contract(
 		"menu button selects nearest-neighbor",
 	)
 	_expect_saved_texture_filter("nearest")
-	await _expect_motion_contract(tree, hero, camera, false, "nearest-neighbor")
+	await _expect_motion_contract(
+		tree,
+		visual_lab,
+		hero,
+		camera,
+		false,
+		"nearest-neighbor",
+	)
 
 	button.button_pressed = true
 	button.pressed.emit()
@@ -256,7 +264,14 @@ func _expect_texture_filter_contract(
 		"menu button selects soft filtering",
 	)
 	_expect_saved_texture_filter("soft")
-	await _expect_motion_contract(tree, hero, camera, true, "soft filtering")
+	await _expect_motion_contract(
+		tree,
+		visual_lab,
+		hero,
+		camera,
+		true,
+		"soft filtering",
+	)
 	_expect_zoom_filter_matrix(visual_lab, camera)
 	_expect_world_state_matrix(visual_lab, world_state)
 
@@ -285,6 +300,7 @@ func _expect_zoom_filter_matrix(
 	visual_lab: Control,
 	camera: Camera2D,
 ) -> void:
+	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
 	var expected_zooms: Array[float] = [1.5, 1.0, 0.75]
 	for zoom_index in range(expected_zooms.size()):
 		_expect(
@@ -338,6 +354,7 @@ func _expect_world_state_matrix(
 
 func _expect_motion_contract(
 	tree: SceneTree,
+	visual_lab: Control,
 	hero: HERO_SCRIPT,
 	camera: Camera2D,
 	expected_soft: bool,
@@ -345,17 +362,36 @@ func _expect_motion_contract(
 ) -> void:
 	hero.position = Vector2(1800.25, 1000.5)
 	await tree.physics_frame
+	visual_lab._update_pixel_snap_render_alignment()
 	camera.force_update_scroll()
 	var hero_start := hero.global_position
 	var camera_start := camera.global_position
 
-	await _hold_action_for_physics_frames(tree, &"gameplay_move_right", 4)
+	var movement_per_frame := hero.get_current_speed() / Engine.physics_ticks_per_second
+	var movement_frame_count := maxi(
+		4,
+		ceili(visual_lab._pixel_snap_world_grid_step().x / movement_per_frame) + 2,
+	)
+	await _hold_action_for_physics_frames(
+		tree,
+		&"gameplay_move_right",
+		movement_frame_count,
+	)
+	await tree.process_frame
+	visual_lab._update_pixel_snap_render_alignment()
+	camera.force_update_scroll()
 	var hero_movement := hero.global_position - hero_start
 	var camera_movement := camera.global_position - camera_start
+	var grid_step: Vector2 = visual_lab._pixel_snap_world_grid_step()
 	_expect(hero_movement.x > 0.0, "%s: hero movement works" % description)
 	_expect(
-		camera_movement.is_equal_approx(hero_movement),
-		"%s: camera follows the hero" % description,
+		camera_movement.x > 0.0,
+		"%s: aligned camera follows the hero" % description,
+	)
+	_expect(
+		absf(camera.global_position.x - hero.global_position.x)
+		<= grid_step.x / 2.0 + 0.01,
+		"%s: aligned camera stays within half an output-pixel grid step" % description,
 	)
 	_expect(camera.enabled and camera.is_current(), "%s: camera remains active" % description)
 	var expected_filter := CanvasItem.TEXTURE_FILTER_LINEAR

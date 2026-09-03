@@ -63,8 +63,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 	if legacy_visual_lab != null:
 		_expect_pixel_snap_state(
 			legacy_visual_lab,
-			false,
-			"version 1 preset without pixel snap uses the safe default",
+			true,
+			"version 1 preset without pixel snap uses Maßstab V0",
 		)
 		await _close_visual_lab(tree, legacy_visual_lab)
 
@@ -73,8 +73,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 	if invalid_visual_lab != null:
 		_expect_pixel_snap_state(
 			invalid_visual_lab,
-			false,
-			"invalid pixel-snap value uses the safe default",
+			true,
+			"invalid pixel-snap value uses Maßstab V0",
 		)
 		await _close_visual_lab(tree, invalid_visual_lab)
 
@@ -144,31 +144,31 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 
 	var original_walk_speed := hero.movement_config.walk_speed
 	var original_zoom := camera.zoom
-	var original_camera_position := camera.position
-	var original_visual_position := hero_visual.position
+	var original_camera_position: Vector2 = visual_lab._initial_camera_position
+	var original_visual_position: Vector2 = visual_lab._initial_hero_visual_position
 	var original_camera_top_level := camera.top_level
 	var original_visual_top_level := hero_visual.top_level
 	var original_world_transform := test_world.global_transform
 	var original_hero_shape := hero_collision.shape
 	var original_obstacle_shape := obstacle_collision.shape
 
-	_expect_pixel_snap_state(visual_lab, false, "VisualLab starts with pixel snap off")
+	_expect_pixel_snap_state(visual_lab, true, "VisualLab starts with Maßstab V0 snap")
 	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
 	_expect(controls.visible, "F5 opens the menu containing the pixel-snap control")
 	_expect(button.is_visible_in_tree(), "pixel-snap button is visible in the open menu")
 	_expect(button.has_focus(), "opening the menu focuses the pixel-snap button")
 	visual_lab._unhandled_input(_pressed_action(DIAGNOSTICS_ACTION))
 	_expect(
-		diagnostics.text.contains("Pixel-Snap: AUS"),
-		"diagnostics immediately show pixel snap off",
+		diagnostics.text.contains("Pixel-Snap: AN"),
+		"diagnostics immediately show the active standard pixel snap",
 	)
 	await _expect_motion_contract(
 		tree,
 		visual_lab,
 		hero,
 		camera,
-		false,
-		"pixel snap off",
+		true,
+		"standard pixel snap on",
 	)
 
 	hero.position = Vector2(1840.25, 1020.5)
@@ -176,15 +176,19 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab._unhandled_input(_pressed_key(KEY_X, true))
 	_expect_pixel_snap_state(
 		visual_lab,
-		false,
+		true,
 		"held pixel-snap shortcut does not toggle repeatedly",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_X))
-	_expect_pixel_snap_state(visual_lab, true, "X enables pixel snap while running")
+	_expect_pixel_snap_state(visual_lab, false, "X disables pixel snap while running")
 	_expect(
 		hero.position.is_equal_approx(fractional_position),
-		"enabling pixel snap does not round the logical hero position",
+		"disabling pixel snap does not round the logical hero position",
 	)
+	_expect_saved_pixel_snap(false)
+	button.button_pressed = true
+	button.pressed.emit()
+	_expect_pixel_snap_state(visual_lab, true, "menu button restores Maßstab V0 snap")
 	_expect(
 		_is_on_grid(
 			hero_visual.global_position

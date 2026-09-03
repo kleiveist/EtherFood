@@ -5,9 +5,11 @@ const ROOM_LEFT := 0
 const ROOM_TOP := 0
 const ROOM_RIGHT := 2560
 const ROOM_BOTTOM := 1440
-const HERO_HEIGHT := 80.0
 const TILE_SIZE := Vector2i(32, 32)
 const INTERACT_ACTION := &"gameplay_interact"
+const VISUAL_BASELINE_V0 := preload(
+	"res://shared/resources/visual_baseline_v0.tres"
+)
 const SMALL_INTERIOR_CAMERA_PROFILE := preload(
 	"res://shared/resources/camera_small_interior_v0.tres"
 )
@@ -38,7 +40,7 @@ var _guide_message_open := false
 
 func _ready() -> void:
 	hero_character.global_position = hero_spawn.global_position
-	hero_character.set_appearance_height(HERO_HEIGHT)
+	hero_character.set_appearance_height(VISUAL_BASELINE_V0.hero_height)
 
 	player_camera.limit_left = ROOM_LEFT
 	player_camera.limit_top = ROOM_TOP

@@ -1,7 +1,7 @@
 ---
 title: Visuelle Richtung V0
 status: accepted
-updated: 2026-09-02
+updated: 2026-09-03
 ---
 <!-- AUTO-GENERATED:backlink START -->
 [← Zurück](index.md)
@@ -50,12 +50,13 @@ weicher gestaltet sein.
 
 ## Auflösung und Seitenverhältnis
 
-Die vorläufige Referenzauflösung für Entwicklung und Tests ist:
+Die verbindliche Referenzauflösung für `Maßstab V0` ist:
 
 - 1920 × 1080 Pixel,
 - Seitenverhältnis 16:9.
 
-Diese Auflösung ist noch keine endgültige technische Festlegung.
+Sie bildet zusammen mit dem Seitenverhältnis die logische Spielansicht.
+Andere Fenster- und Vollbildgrößen skalieren diese Ansicht gleichmäßig.
 
 Das Spiel soll später auch breitere Bildschirmformate unterstützen.
 Insbesondere sollen folgende Seitenverhältnisse getestet werden:
@@ -85,20 +86,22 @@ positioniert bleiben.
 
 ## Kamera
 
-Die Kamera folgt im ersten Prototyp der Spielfigur und bleibt zunächst
-auf sie ausgerichtet.
+Die Kamera folgt im ersten Prototyp der Spielfigur und bleibt zunächst auf sie
+ausgerichtet. Die normale Spielansicht verwendet `1,00×`. Kleine Räume dürfen
+über ihr Szenenprofil `1,50×` verwenden; weitere begründete
+Setting-spezifische Profile bleiben möglich. Der Standardzoom ist damit kein
+Verbot lokaler Kameraanpassungen.
 
 Noch getestet werden:
 
-- Kamerazoom,
 - sichtbarer Weltbereich,
 - leichte Kameraverzögerung,
 - Kamerabegrenzungen,
-- Verhalten in kleinen Räumen,
 - Verhalten bei Kämpfen und Bossen.
 
-Die endgültige Kameraführung wird erst nach dem visuellen Testlabor
-festgelegt.
+Die weitere Kameraführung wird in späteren Spieltests festgelegt. Basiszoom
+und szenenabhängige Profile folgen
+[ADR-0011](../entscheidungen/ADR-0011-massstab-v0.md).
 
 ## Offene Stiltests
 
@@ -137,7 +140,16 @@ Pixel-Art-Ausprägungen miteinander verglichen.
 
 Diese Varianten sind Tests und noch keine endgültigen Stilentscheidungen.
 
-## Größen für das visuelle Testlabor
+## Maßstab V0 und Vergleichsgrößen
+
+Verbindlich sind eine Heldenhöhe von `80 px`, ein Weltraster von
+`32 × 32 px` und der normale Kamera-Zoom `1,00×`. Pixel-Snap ist aktiv und
+richtet die gemeinsame sichtbare Bewegung auf ganze Ausgabepixel aus, ohne
+Physikpositionen zu runden. Pixelart verwendet standardmäßig
+Nearest-Neighbor.
+
+Das Testlabor bewahrt daneben die folgenden Werte für Regressionen und
+sichtbare Vergleiche auf:
 
 ### Tilegrößen
 
@@ -157,9 +169,10 @@ Diese Varianten sind Tests und noch keine endgültigen Stilentscheidungen.
 - mittel,
 - weit.
 
-Die Größen werden immer gemeinsam mit Türen, Gegnern, Bäumen, Gebäuden
-und interaktiven Objekten getestet. Keine dieser Größen ist bereits
-verbindlich.
+Die Größen werden immer gemeinsam mit Türen, Gegnern, Bäumen, Gebäuden und
+interaktiven Objekten getestet. Innerhalb der Vergleichslisten kennzeichnen
+80 Pixel, 32 × 32 Pixel und die mittlere Ansicht den verbindlichen Standard;
+die übrigen Werte sind Testvarianten.
 
 Die aktuelle Größenvergleichsreihe verwendet originale Prototypassets in
 einer gemeinsamen schrägen Top-down-Perspektive. Weltobjekte dürfen dort
@@ -167,12 +180,11 @@ nicht frontal oder seitlich dargestellt werden: Figuren zeigen die
 Kopfoberseite und ihren Bodenanker, Gebäude eine sichtbare Dachfläche und
 Bäume ihre Krone. Eine klassische 16-Bit-RPG-Formsprache dient dabei nur als
 Arbeitsrichtung für gute Lesbarkeit. Sie ist weder eine finale Art-Bible noch
-eine Abkehr vom modernen visuellen Grundstil. Die Größenwerte bleiben
-vorläufig. Der Größenvergleich und der visuelle Debug-Vergleich der
-Weltzustände verwenden dieselbe begrenzte Palette, harte Pixelkanten,
-Materialtexturen und eine gemeinsame Beleuchtung von links oben. Beschädigte
-und wiederhergestellte Varianten behalten dabei ihre Leinwand, Grundform und
-Position bei.
+eine Abkehr vom modernen visuellen Grundstil. Der Größenvergleich und der
+visuelle Debug-Vergleich der Weltzustände verwenden dieselbe begrenzte
+Palette, harte Pixelkanten, Materialtexturen und eine gemeinsame Beleuchtung
+von links oben. Beschädigte und wiederhergestellte Varianten behalten dabei
+ihre Leinwand, Grundform und Position bei.
 
 ## Weltzustände
 
@@ -214,9 +226,6 @@ Prototyp. Die endgültige Farbpalette wird später festgelegt.
 ```text
 - endgültige Farbpalette
 - endgültiger Detailgrad
-- endgültige Tilegröße
-- endgültige Figurengröße
-- endgültiger Kamerazoom
 - endgültiges Verhalten auf Breitbildschirmen
 - endgültige Licht- und Shadertechnik
 - endgültiges Heldendesign
@@ -230,8 +239,8 @@ Prototyp. Die endgültige Farbpalette wird später festgelegt.
 - moderne Top-down-Pixel-Art als Grundstil dokumentiert ist,
 - HD-Darstellung ausdrücklich erlaubt ist,
 - moderne Licht-, Nebel- und Shadertechnik berücksichtigt wird,
-- 16:9 als vorläufige Referenz feststeht,
+- 1920 × 1080 bei 16:9 als Referenz feststeht,
 - 21:9 und 32:9 als offene Tests dokumentiert sind,
-- die größeren Tile- und Figurentests enthalten sind,
+- Maßstab V0 und die größeren Vergleichswerte getrennt dokumentiert sind,
 - feste Weltzustände und vorläufige Darstellung getrennt sind,
 - alle noch offenen Stilfragen eindeutig markiert sind.

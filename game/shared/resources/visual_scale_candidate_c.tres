@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VisualScaleProfile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://shared/resources/visual_scale_profile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+profile_id = "candidate_c"
+profile_name = "Kandidat C · Nah und groß"
+comparison_focus = "Große Figur und mittleres Raster bei naher Spielansicht."
+hero_height = 96.0
+tile_size = 48
+camera_zoom = 1.5
+reference_resolution = Vector2i(1920, 1080)
+aspect_ratio = "16:9"
+pixel_snap_enabled = true
+texture_filter_id = "nearest"

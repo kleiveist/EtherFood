@@ -26,11 +26,11 @@ Route verfügbar. Das Testlabor ist eine reine Entwicklungsfunktion und kein
 Bestandteil der Spielhandlung.
 
 Die Bedienhilfe beginnt eingeklappt. `F5` blendet die Tastenübersicht sowie die
-bedienbaren Schalter für Nebel, Licht, Pixel-Snap und Texturfilter ein oder aus;
-ein kleiner Hinweis auf `F5` bleibt im eingeklappten Zustand sichtbar. Aktuelle
-Größen-, Zoom-, Welt- und Fensterwerte gehören nicht in diese Übersicht,
-sondern ausschließlich in die Diagnoseanzeige. Der Zustand der Bedienhilfe
-wird nicht gespeichert.
+bedienbaren Schalter für Maßstabsprofile, Nebel, Licht, Pixel-Snap und
+Texturfilter ein oder aus; ein kleiner Hinweis auf `F5` bleibt im
+eingeklappten Zustand sichtbar. Aktuelle Größen-, Zoom-, Welt- und
+Fensterwerte gehören nicht in diese Übersicht, sondern ausschließlich in die
+Diagnoseanzeige. Der Zustand der Bedienhilfe wird nicht gespeichert.
 
 ## Laufende Testergebnisse
 
@@ -46,7 +46,7 @@ Der folgende Ausgangsbefund hat die erste Abnahme von Aufgabe 17 aufgehoben:
 | Pixel-Snap bei 1,00× | kein sichtbares Flackern | bestanden |
 | Pixel-Snap bei 1,50× | Held flackert bei Bewegung | nicht bestanden |
 | Welt-/Dungeonkamera | 1,00× | bevorzugter Kandidat |
-| Kleine Innenräume | 1,50× | gewünscht, aber noch nicht freigegeben |
+| Kleine Innenräume | 1,50× | später als Szenenprofil freigegeben |
 
 Pixel-Snap war damit noch nicht abschließend abgenommen. Der Fehler trat bei
 `1920 × 1080` reproduzierbar auf, während `1,50 ×` im Fenster mit
@@ -93,37 +93,58 @@ Weltobjekte:
 | Fenster 1280 × 720 | Fensterskalierung im Ausgaberaster berücksichtigt | bestanden |
 
 Der anschließende direkte Bewegungstest wurde am 3. September 2026 abgenommen;
-Pixel-Snap gilt damit als getestet. Über die endgültige Freigabe von `1,50 ×`
-als Profil für kleine Innenräume entscheidet weiterhin Aufgabe 20.
+Pixel-Snap gilt damit als getestet. Aufgabe 20 hat `1,50×` anschließend als
+zulässiges Szenenprofil für kleine Innenräume bestätigt; die normale
+Spielansicht bleibt `1,00×`.
 
 Der angezeigte Weltzustand `Beschädigt` bezeichnet ausschließlich den Zustand
 des jeweiligen Tests. Beschädigte und wiederhergestellte Welt bleiben
 gleichberechtigte Spiel- und Testzustände; keiner von beiden ist eine globale
 Darstellungsregel.
 
-## Übergabe an Maßstab V0
+## Maßstab V0
 
-Die getesteten Werte haben unterschiedliche Geltungsbereiche und werden nicht
-in einer gemeinsamen Einstellungsdatei verbindlich gemacht:
+Der Benutzer hat am 3. September 2026 Kandidat B als verbindlichen
+`Maßstab V0` ausgewählt:
 
-| Wert | Bedeutung | Vorgesehene Ablage |
-|---|---|---|
-| Figur `80 px` | globaler Figurenmaßstab | Darstellungsgrundlage V0 in Aufgabe 20 |
-| Tiles `32 × 32 px` | globales Weltraster | Darstellungsgrundlage V0 in Aufgabe 20 |
-| Pixel-Snap `AN` / `AUS` | offene globale Renderingregel | nach erfolgreichem Sichttest später `project.godot` |
-| Nearest-Neighbor | bevorzugter Filterkandidat | nach Abschluss von Aufgabe 18 später `project.godot` |
-| Kamera `1,00×` / `1,50×` | szenenabhängiger Basiszoom | vorläufige CameraProfile-Ressourcen aus Aufgabe 17.1 |
-| Welt `Beschädigt` | aktueller Spiel- oder Testzustand | keine feste Darstellungsregel |
+| Eigenschaft | Verbindlicher Wert |
+|---|---|
+| Heldenhöhe | 80 px |
+| Tilegröße | 32 × 32 px |
+| Standard-Zoom | 1,00× |
+| Referenzauflösung | 1920 × 1080 |
+| Seitenverhältnis | 16:9 |
+| Pixel-Snap | AN |
+| Texturfilter | Nearest-Neighbor |
 
-Die endgültigen Ressourcen `visual_baseline_v0.tres`, `world_dungeon.tres` und
-`small_interior.tres` werden bewusst erst in Aufgabe 20 angelegt. Die
-Bewegungssteuerung V0 verwendet vorläufige Kamera-Profile für Welt und kleinen
-Innenraum; das Testlabor behält weiterhin den manuellen Wechsel zwischen
-seinen Testwerten.
-Die lokale Datei `user://visual_lab_settings.cfg` stellt nur die zuletzt
-gewählten persönlichen Testschalter wieder her und ist keine verbindliche
-Quelle für Spielregeln. Die endgültige technische Entscheidung folgt erst
-nach den Aufgaben 17 bis 20; vorher wird kein Darstellungsprofil-ADR angelegt.
+`1,00×` bezeichnet die normale Spielansicht. Kleine Räume dürfen wie der
+Heldenraum über ein Szenenprofil `1,50×` verwenden; weitere
+Setting-spezifische Profile bleiben möglich. Der Held kennt diese
+Szenenentscheidung nicht selbst. Die verbindliche Begründung steht in
+[ADR-0011](../../concept/entscheidungen/ADR-0011-massstab-v0.md).
+
+Für Regressionen bewahrt das Testlabor zwei abweichende Kombinationen auf:
+
+| Profil | Heldenhöhe | Tilegröße | Kamera | Schwerpunkt |
+|---|---:|---:|---:|---|
+| A · Weite Übersicht | 64 px | 32 × 32 px | 0,75× | größter sichtbarer Weltbereich |
+| Maßstab V0 | 80 px | 32 × 32 px | 1,00× | verbindliche normale Spielansicht |
+| C · Nah und groß | 96 px | 48 × 48 px | 1,50× | maximale Figuren- und Objektnähe |
+
+Alle drei Profile enthalten die Referenzauflösung `1920 × 1080`, 16:9,
+Pixel-Snap `AN` und Nearest-Neighbor. Der Knopf `Maßstabsprofil` im
+`F5`-Menü schaltet `A → Maßstab V0 → C` als vollständige Bündel um. Eine
+manuelle Änderung von Heldenhöhe, Tilegröße, Zoom, Pixel-Snap oder Filter
+kennzeichnet den Zustand als `Freier Vergleich`.
+
+Eine frische oder unvollständige Testlabor-Konfiguration lädt `Maßstab V0`.
+Die vorhandene Datei `user://visual_lab_settings.cfg` speichert weiterhin die
+Einzelwerte; daraus wird beim Laden das passende Profil erkannt. Die
+verbindliche Ressourcenquelle ist
+`game/shared/resources/visual_baseline_v0.tres`, nicht die lokale
+Einstellungsdatei. Bestehende Karten wurden nicht großflächig umgebaut. Der
+Heldenraum liest die Heldenhöhe aus dem Maßstab und verwendet dasselbe 32er
+Raster, behält aber sein passendes kleines Innenraumprofil mit `1,50×`.
 
 ## Inhalt des Testlabors
 
@@ -167,8 +188,8 @@ nicht kollidierbaren Referenzobjekte werden anhand ihrer Bodenanker nach Y
 sortiert, während die Maßstabsbeschriftungen stets darüber liegen.
 
 Der derzeitige klassische 16-Bit-RPG-Stil ist eine Arbeitsrichtung für den
-Prototyp und keine endgültige Art-Bible. Auch die sichtbaren Zielhöhen und
-alle umschaltbaren Größenwerte bleiben vorläufige Testwerte.
+Prototyp und keine endgültige Art-Bible. Die abweichenden umschaltbaren
+Größenwerte bleiben Testwerte; Maßstab V0 ist davon eindeutig getrennt.
 
 ### 3. Grafikvarianten
 
@@ -186,9 +207,9 @@ Umschaltbar sein sollen:
 - Lichtprofile je Weltzustand
 ```
 
-Die zu vergleichenden Tilegrößen, Heldenhöhen und Kameraansichten stammen aus
-der visuellen Richtung V0. Die endgültige Auswahl erfolgt erst nach dem
-sichtbaren Vergleich.
+Die umschaltbaren Tilegrößen, Heldenhöhen und Kameraansichten stammen aus der
+visuellen Richtung V0. Der sichtbare Vergleich ist abgeschlossen; die
+Varianten bleiben für spätere Regressionen verfügbar.
 
 #### Pixel-Snap-Vergleich
 
@@ -196,7 +217,8 @@ Im mit `F5` geöffneten Testlabor-Menü schaltet ein fokussier- und anklickbarer
 Knopf zwischen `Pixel-Snap: AN` und `Pixel-Snap: AUS`. `X` bietet denselben
 Wechsel direkt während der Bewegung. Der boolesche Zustand wird gemeinsam mit
 den vorhandenen Testwert-Presets gespeichert und beim nächsten Öffnen geladen.
-Ältere Version-1-Dateien ohne den Schlüssel bleiben gültig und verwenden AUS.
+Ältere Version-1-Dateien ohne den Schlüssel bleiben gültig und verwenden den
+Standard `AN`.
 
 Der Schalter rastert ausschließlich die visuellen Positionen von Kamera und
 Heldenbild auf ganze Ausgabepixelschritte. Das globale Viewport-Transform-Snap
@@ -211,18 +233,10 @@ weil die Fensterskalierung dort den Kamerazoom `1,50 ×` zu einer ganzzahligen
 Ausgabeskalierung machte. Der korrigierte Vergleich prüft deshalb zusätzlich
 `1920 × 1080` und echte Bewegung in drei Richtungen. Details und der
 chronologische Ausgangsbefund stehen unter
-[Laufende Testergebnisse](#laufende-testergebnisse). Für den derzeitigen
-Prototyp gilt nach dem praktischen Gegenbefund noch keine Freigabe:
-
-| Bereich | Status | Offene Prüfung |
-|---|---|---|
-| Held | erneut prüfen | Kontur und Bildschirmphase bei Bewegung beobachten. |
-| Kamera | erneut prüfen | Gleichmäßigkeit bei 1,00× und 1,50× vergleichen. |
-| Welt | erneut prüfen | Tiles, Objektkanten und beide Weltzustände beobachten. |
-
-Das legt weder Pixel-Snap, Kamerazoom noch Maßstab verbindlich fest. Eine
-globale Pixel-Snap-Regel darf erst nach erfolgreichem Sichttest und mit der
-Darstellungsgrundlage V0 in das Projekt übernommen werden.
+[Laufende Testergebnisse](#laufende-testergebnisse). Der anschließende
+Sichttest hat Held, Kamera und Welt bei `1,00×` und `1,50×` bestätigt.
+Aufgabe 20 ordnet diese Ausgabepixel-Ausrichtung dem verbindlichen Maßstab V0
+zu.
 
 #### Texturfilter-Vergleich
 
@@ -272,12 +286,11 @@ Haltebild vor einem 2-Pixel-Schritt. Weiche Filterung ändert diese Bewegung
 nicht, sondern kaschiert Kanten lediglich durch Farbmischung. Bewegung,
 Kollision, Kameragrenzen und Pixel-Snap-Zustand blieben unverändert.
 
-Nearest-Neighbor bleibt damit der **bevorzugte Kandidat**, ist aber noch kein
-verbindlicher Projektstandard. Der anschließende Vergleich mit allen drei
-Zoomstufen wurde am 3. September 2026 abgenommen; Aufgabe 18 gilt damit als
-abgeschlossen. Die verbindliche Darstellungsgrundlage und mögliche lokale
-Ausnahmen für nicht als Pixelart angelegte Atmosphäreneffekte folgen in
-Aufgabe 20.
+Nearest-Neighbor wurde damit zum bevorzugten Kandidaten. Der anschließende
+Vergleich mit allen drei Zoomstufen wurde am 3. September 2026 abgenommen;
+Aufgabe 18 gilt damit als abgeschlossen. Aufgabe 20 hat den Filter als
+Standard für Pixelart in Maßstab V0 übernommen. Bewusst weich angelegte
+Atmosphäreneffekte bleiben davon ausgenommen.
 
 #### Nebel und Licht
 
@@ -406,6 +419,8 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 - aktueller Bewegungs- und Sprungzustand
 - gewählte Tilegröße
 - gewählte Figurengröße
+- aktives Maßstabsprofil oder freier Vergleich
+- Referenzauflösung und Seitenverhältnis
 - aktiver Weltzustand
 - aktive Nebelstärke
 - aktives Lichtprofil
@@ -418,8 +433,9 @@ erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
 `F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
 FPS, roher Heldenposition, gerasterter Heldenanzeige, rohem und gerastertem
-Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Kameraprofil, Basis- und
-Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-, Weltzustands-, Nebel-,
+Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Maßstabsprofil,
+Referenzauflösung, Seitenverhältnis, Kameraprofil, Basis- und Aktivzoom,
+Bewegungs- und Sprungzustand, Figuren-, Tile-, Weltzustands-, Nebel-,
 Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-,
 Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
 Fensterskalierungswerten.

@@ -3,8 +3,9 @@
 <!-- AUTO-GENERATED:backlink END -->
 # EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel 🎮
 
-**Projektstand:** 3. September 2026, nach Pixel-Snap-, Texturfilter-, Nebel-
-und Lichttest; Bewegungssteuerung V0 teilweise umgesetzt
+**Projektstand:** 3. September 2026, Maßstab V0 verbindlich festgelegt;
+Pixel-Snap-, Texturfilter-, Nebel- und Lichttest abgeschlossen;
+Bewegungssteuerung V0 teilweise umgesetzt
 
 Dieser Fahrplan ist das Orientierungshandbuch für neue Chats. Er zeigt die vollständige Entwicklungsreihenfolge vom aktuellen Stand bis zur stabilen Veröffentlichung.
 
@@ -58,6 +59,7 @@ Spätere Aufgaben sind zunächst **Arbeitspakete auf Projektebene**. Sie werden 
 | Pixel-Snap      | Vergleich und Prüfung abgeschlossen                        |    ✅   |
 | Texturfilter    | Vergleich und Prüfung abgeschlossen                        |    ✅   |
 | Atmosphäre      | Nebel und Licht auf großer Haus-, Wald- und Sägewerkfläche geprüft |    ✅   |
+| Maßstab V0      | 80-px-Held, 32er Raster und normale 1,00×-Spielansicht festgelegt |    ✅   |
 | Steuerungshilfe | Testlabor-Steuerung über F5 ein- und ausblendbar           |    ✅   |
 | Weltzustände    | Beschädigt/Wiederhergestellt als Debug-Vergleich vorhanden |    ✅   |
 | Rekonstruktion  | Getrennte Fortschritte für Natur, Gebäude, Seelen und Personen dokumentiert | ✅ |
@@ -95,7 +97,7 @@ In dieser Phase wird noch kein vollständiger Grasland-Abschnitt gebaut. Zuerst 
 |   17.2 | 📐 Pixel-Snap vollständig testen | Darstellung und Bewegung mit allen V0-Bewegungszuständen bei 1,00× und 1,50× vergleichen.                                                |    ✅   |
 |     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    ✅   |
 |     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand auf großer Haus-, Wald- und Sägewerkfläche vergleichen.                      |    ✅   |
-|     20 | 📏 Maßstab V0 festlegen        | Heldenhöhe, Tilegröße, Kamera-Zoom und Referenzauflösung verbindlich auswählen.                                                            |    🟡   |
+|     20 | 📏 Maßstab V0 festlegen        | Heldenhöhe, Tilegröße, Kamera-Zoom und Referenzauflösung verbindlich auswählen.                                                            |    ✅   |
 |     21 | 📝 Dokumentation aktualisieren | Alle Ergebnisse aus dem visuellen Testlabor dokumentieren.                                                                                 |    🟡   |
 |     22 | 🎨 Pixelart-Grafikpaket V0     | Erstes echtes Grafikpaket nach den festgelegten Maßstabs- und Filterregeln erstellen.                                                      |    🟡   |
 |      — | 🔒 Meilenstein                 | Darstellungsgrundlage V0 ist geprüft. Erst danach beginnt der Heldenraum.                                                                  |    ⚪   |
@@ -350,15 +352,15 @@ Der folgende Ablauf wird **für jede Region beziehungsweise jedes Kapitel einzel
 
 | Letzter abgeschlossener Schritt | Nachweis | Nächster Schritt |
 | ------------------------------- | -------- | ---------------- |
-| **Aufgabe 19 – Nebel und Licht testen** | Beschädigter und wiederhergestellter Zustand sind mit wolkigem Nebel und Licht auf der vergrößerten Haus-, Wald- und Sägewerkfläche geprüft. | **Aufgabe 20 – Maßstab V0 festlegen**; die Bewegungssteuerung V0 bleibt daneben teilweise umgesetzt. |
+| **Aufgabe 20 – Maßstab V0 festlegen** | Kandidat B ist als 80-px-Held, 32er Raster und normale 1,00×-Spielansicht festgelegt; kleine Räume dürfen 1,50×-Profile verwenden. | **Aufgabe 21 – Dokumentation aktualisieren**: Ergebnisse des visuellen Testlabors systematisch zusammenführen. |
 
 Die letzten abgeschlossenen Implementierungsschritte sind die Diagnoseanzeige,
 die F5-Steuerungshilfe, der begehbare Heldenraum und die erste
 Ratgeber-Interaktion sowie die Pixel-Snap-, Texturfilter-, Nebel- und
-Lichttests. Diese Vorarbeiten schließen die größeren gelben Arbeitspakete noch
-nicht vollständig ab. Insbesondere fehlen weiterhin die Freigabe der
-Bewegungssteuerung V0, verbindliche Darstellungswerte, Türen und Ausgang,
-Animationen sowie ein allgemeines Text- und Dialogsystem.
+Lichttests sowie Maßstab V0. Diese Vorarbeiten schließen die größeren gelben
+Arbeitspakete noch nicht vollständig ab. Insbesondere fehlen weiterhin die
+Freigabe der Bewegungssteuerung V0, Türen und Ausgang, Animationen sowie ein
+allgemeines Text- und Dialogsystem.
 
-**Aufgabe 19 ist nach der vergrößerten Nachprüfung abgeschlossen. Als Nächstes
-folgt Aufgabe 20; die Bewegungssteuerung V0 bleibt 🟡.**
+**Aufgabe 20 ist abgeschlossen. Als Nächstes folgt Aufgabe 21; die
+Bewegungssteuerung V0 bleibt 🟡.**

@@ -14,6 +14,7 @@ Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
 
 ## Abgeschlossene historische Pläne
 
+- [Maßstab V0](massstab-v0.md)
 - [Nebel- und Lichtvergleich im visuellen Testlabor](visual-lab-nebel-und-licht.md)
 - [Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
 - [Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)

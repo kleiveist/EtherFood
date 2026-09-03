@@ -15,3 +15,4 @@
 | [ADR-0008](ADR-0008-achtteiliger-spielablauf.md) | Achtteiliger Spielablauf | angenommen |
 | [ADR-0009](ADR-0009-kor-als-ether-entitaet-und-ihre-welten.md) | Kor als Ether-Entität und ihre Welten | angenommen |
 | [ADR-0010](ADR-0010-bewegungssteuerung-v0-vorziehen.md) | Bewegungssteuerung V0 vorziehen | angenommen |
+| [ADR-0011](ADR-0011-massstab-v0.md) | Maßstab V0 | angenommen |

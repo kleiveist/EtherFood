@@ -15,6 +15,7 @@ const EXPECTED_CONTROL_TEXTS: Array[String] = [
 	"T / linker Stick-Klick: kleiner",
 	"G / rechter Stick-Klick: größer",
 	"V / Controller-A: Zustand wechseln",
+	"Klick / Auswahl: A → Maßstab V0 → C",
 	"B / Klick / Auswahl: Nebel wechseln",
 	"L / Klick / Auswahl: Licht wechseln",
 	"X / Klick / Auswahl: AN / AUS",
@@ -102,6 +103,9 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	var fog_variant_button := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton"
 	) as Button
+	var scale_profile_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Text/ScaleProfileButton"
+	) as Button
 	var light_variant_button := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Text/AtmosphereButtons/LightVariantButton"
 	) as Button
@@ -123,6 +127,10 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"controls have an interactive texture-filter button",
 	)
 	_expect(fog_variant_button != null, "controls have an interactive fog button")
+	_expect(
+		scale_profile_button != null,
+		"controls have an interactive scale-candidate button",
+	)
 	_expect(light_variant_button != null, "controls have an interactive light button")
 	_expect(controls_toggle_hint != null, "controls retain their closing hint")
 	if (
@@ -133,6 +141,7 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		or pixel_snap_button == null
 		or texture_filter_button == null
 		or fog_variant_button == null
+		or scale_profile_button == null
 		or light_variant_button == null
 		or controls_toggle_hint == null
 	):
@@ -146,7 +155,7 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"pixel-snap menu button starts collapsed with the controls",
 	)
 	_expect(
-		pixel_snap_button.text == "Pixel-Snap: AUS",
+		pixel_snap_button.text == "Pixel-Snap: AN",
 		"pixel-snap menu button starts with an exact state",
 	)
 	_expect(
@@ -168,6 +177,11 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 		"light menu button starts collapsed with the preferred damaged profile",
 	)
 	_expect(
+		not scale_profile_button.is_visible_in_tree()
+		and scale_profile_button.text == "Maßstabsprofil: Maßstab V0",
+		"scale-profile button starts collapsed with the selected baseline",
+	)
+	_expect(
 		diagnostics_panel != null and not diagnostics_panel.visible,
 		"diagnostics remain independently hidden",
 	)
@@ -183,6 +197,10 @@ func _expect_controls_contract(visual_lab: Control) -> void:
 	)
 	_expect(fog_variant_button.is_visible_in_tree(), "F5 shows the fog menu button")
 	_expect(light_variant_button.is_visible_in_tree(), "F5 shows the light menu button")
+	_expect(
+		scale_profile_button.is_visible_in_tree(),
+		"F5 shows the scale-profile menu button",
+	)
 	_expect(
 		controls_toggle_hint.get_global_rect().end.y
 		<= panel.get_global_rect().end.y - 12.0,

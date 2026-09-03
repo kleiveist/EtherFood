@@ -35,9 +35,17 @@ const COLLISION_DEBUG_OVERLAY_SCRIPT := preload(
 	"res://scenes/dev/collision_debug_overlay.gd"
 )
 const CameraProfileResource := preload("res://shared/resources/camera_profile.gd")
+const VisualScaleProfileResource := preload(
+	"res://shared/resources/visual_scale_profile.gd"
+)
 const PlayerCameraControllerScript := preload(
 	"res://shared/camera/player_camera_controller.gd"
 )
+const SCALE_COMPARISON_PROFILES: Array[Resource] = [
+	preload("res://shared/resources/visual_scale_candidate_a.tres"),
+	preload("res://shared/resources/visual_baseline_v0.tres"),
+	preload("res://shared/resources/visual_scale_candidate_c.tres"),
+]
 const MAIN_MENU_ROUTE := &"main_menu"
 const SETTINGS_VERSION := 1
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
@@ -88,6 +96,8 @@ const TEXTURE_FILTER_VALUES: Array[int] = [
 	CanvasItem.TEXTURE_FILTER_NEAREST,
 	CanvasItem.TEXTURE_FILTER_LINEAR,
 ]
+const FREE_SCALE_COMPARISON_NAME := "Freier Vergleich"
+const REFERENCE_ASPECT_RATIO := "16:9"
 
 @onready var player_camera: PlayerCameraControllerScript = (
 	$TestWorld/HeroCharacter/PlayerCamera
@@ -102,6 +112,9 @@ const TEXTURE_FILTER_VALUES: Array[int] = [
 @onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
 @onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
 @onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
+@onready var scale_profile_button: Button = (
+	$InterfaceLayer/Interface/Text/ScaleProfileButton
+)
 @onready var fog_variant_button: Button = (
 	$InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton
 )
@@ -127,7 +140,7 @@ const TEXTURE_FILTER_VALUES: Array[int] = [
 
 var _navigation_requested := false
 var _diagnostics_elapsed := 0.0
-var _selected_camera_zoom: int = CameraZoomPreset.NEAR
+var _selected_camera_zoom: int = CameraZoomPreset.MEDIUM
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
@@ -139,7 +152,7 @@ var _selected_light_variants: Array[int] = [
 	WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_LIGHT_VARIANT,
 	WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_LIGHT_VARIANT,
 ]
-var _pixel_snap_enabled := false
+var _pixel_snap_enabled := true
 var _selected_texture_filter: int = TextureFilterPreset.NEAREST
 var _active_camera_profile: CameraProfileResource = CameraProfileResource.new()
 var _pixel_snap_viewport: Viewport
@@ -162,6 +175,7 @@ func _ready() -> void:
 	_initial_camera_top_level = player_camera.top_level
 	_initial_hero_visual_top_level = hero_visual.top_level
 	_collect_texture_filter_targets(test_world)
+	scale_profile_button.pressed.connect(_on_scale_profile_button_pressed)
 	fog_variant_button.pressed.connect(_on_fog_variant_button_pressed)
 	light_variant_button.pressed.connect(_on_light_variant_button_pressed)
 	pixel_snap_button.pressed.connect(_on_pixel_snap_button_pressed)
@@ -185,6 +199,7 @@ func _ready() -> void:
 	_apply_world_state()
 	_apply_pixel_snap()
 	_apply_texture_filter()
+	_update_scale_profile_status()
 	_update_window_size_status()
 
 
@@ -295,6 +310,7 @@ func _change_camera_zoom(direction: int) -> void:
 		return
 	_selected_camera_zoom = next_zoom
 	_apply_camera_zoom()
+	_update_scale_profile_status()
 	_save_settings()
 
 
@@ -328,6 +344,7 @@ func _change_hero_size(direction: int) -> void:
 		return
 	_selected_hero_size = next_size
 	_apply_hero_size()
+	_update_scale_profile_status()
 	_save_settings()
 
 
@@ -351,6 +368,7 @@ func _change_tile_size(direction: int) -> void:
 		return
 	_selected_tile_size = next_size
 	_apply_tile_size()
+	_update_scale_profile_status()
 	_save_settings()
 
 
@@ -420,6 +438,7 @@ func _apply_atmosphere() -> void:
 
 func _toggle_pixel_snap() -> void:
 	_set_pixel_snap_enabled(not _pixel_snap_enabled)
+	_update_scale_profile_status()
 	_save_settings()
 
 
@@ -442,7 +461,51 @@ func _toggle_texture_filter() -> void:
 	if _selected_texture_filter == TextureFilterPreset.SOFT:
 		next_filter = TextureFilterPreset.NEAREST
 	_set_texture_filter(next_filter)
+	_update_scale_profile_status()
 	_save_settings()
+
+
+func get_scale_profile_count() -> int:
+	return SCALE_COMPARISON_PROFILES.size()
+
+
+func get_scale_profile(profile_index: int) -> VisualScaleProfileResource:
+	if profile_index < 0 or profile_index >= get_scale_profile_count():
+		return null
+	return SCALE_COMPARISON_PROFILES[profile_index] as VisualScaleProfileResource
+
+
+func apply_scale_profile(profile_index: int) -> Error:
+	var profile := get_scale_profile(profile_index)
+	if profile == null:
+		return ERR_INVALID_PARAMETER
+	var camera_index := CAMERA_ZOOM_VALUES.find(profile.camera_zoom)
+	var hero_index := HERO_SIZE_VALUES.find(profile.hero_height)
+	var tile_index := TILE_SIZE_VALUES.find(profile.tile_size)
+	var texture_filter_index := TEXTURE_FILTER_IDS.find(profile.texture_filter_id)
+	if (
+		camera_index < 0
+		or hero_index < 0
+		or tile_index < 0
+		or texture_filter_index < 0
+		or profile.reference_resolution != _reference_resolution()
+		or profile.aspect_ratio != REFERENCE_ASPECT_RATIO
+	):
+		return ERR_INVALID_DATA
+
+	_selected_camera_zoom = camera_index
+	_selected_hero_size = hero_index
+	_selected_tile_size = tile_index
+	_pixel_snap_enabled = profile.pixel_snap_enabled
+	_selected_texture_filter = texture_filter_index
+	_apply_camera_zoom()
+	_apply_hero_size()
+	_apply_tile_size()
+	_apply_pixel_snap()
+	_apply_texture_filter()
+	_update_scale_profile_status()
+	_save_settings()
+	return OK
 
 
 func _set_texture_filter(texture_filter: int) -> void:
@@ -510,6 +573,8 @@ func _set_controls_visible(controls_visible: bool) -> void:
 			fog_variant_button.release_focus()
 		if light_variant_button.has_focus():
 			light_variant_button.release_focus()
+		if scale_profile_button.has_focus():
+			scale_profile_button.release_focus()
 
 
 func _update_diagnostics_values() -> void:
@@ -534,6 +599,10 @@ func _update_diagnostics_values() -> void:
 			% _format_diagnostic_position(rendered_camera_position),
 			"Kamerazentrum: %s" % _format_diagnostic_position(camera_position),
 			"Weltanker: %s" % _format_diagnostic_position(world_position),
+			"Maßstabsprofil: %s" % _active_scale_profile_name(),
+			"Referenzauflösung: %d × %d"
+			% [_reference_resolution().x, _reference_resolution().y],
+			"Seitenverhältnis: %s" % REFERENCE_ASPECT_RATIO,
 			"Kameraprofil: %s" % CAMERA_PROFILE_NAMES[_selected_camera_zoom],
 			"Kamera-Basis: %s×"
 			% _format_camera_zoom(player_camera.get_base_zoom()),
@@ -575,7 +644,7 @@ func _is_repeated_key_event(event: InputEvent) -> bool:
 
 
 func _load_settings() -> void:
-	_selected_camera_zoom = CameraZoomPreset.NEAR
+	_selected_camera_zoom = CameraZoomPreset.MEDIUM
 	_selected_hero_size = HeroSizePreset.MEDIUM
 	_selected_tile_size = TileSizePreset.SMALL
 	_selected_world_state = WorldStatePreset.DAMAGED
@@ -587,7 +656,7 @@ func _load_settings() -> void:
 		WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_LIGHT_VARIANT,
 		WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_LIGHT_VARIANT,
 	]
-	_pixel_snap_enabled = false
+	_pixel_snap_enabled = true
 	_selected_texture_filter = TextureFilterPreset.NEAREST
 
 	var settings := ConfigFile.new()
@@ -605,7 +674,7 @@ func _load_settings() -> void:
 		settings,
 		"camera_zoom",
 		CAMERA_ZOOM_IDS,
-		CameraZoomPreset.NEAR,
+		CameraZoomPreset.MEDIUM,
 	)
 	_selected_hero_size = _read_preset_index(
 		settings,
@@ -650,7 +719,7 @@ func _load_settings() -> void:
 				default_light,
 			)
 		)
-	_pixel_snap_enabled = _read_bool_setting(settings, "pixel_snap", false)
+	_pixel_snap_enabled = _read_bool_setting(settings, "pixel_snap", true)
 	_selected_texture_filter = _read_preset_index(
 		settings,
 		"texture_filter",
@@ -782,6 +851,50 @@ func _texture_filter_name() -> String:
 	return TEXTURE_FILTER_NAMES[_selected_texture_filter]
 
 
+func _active_scale_profile_name() -> String:
+	var profile_index := _matching_scale_profile_index()
+	if profile_index < 0:
+		return FREE_SCALE_COMPARISON_NAME
+	return get_scale_profile(profile_index).profile_name
+
+
+func _matching_scale_profile_index() -> int:
+	for profile_index in range(get_scale_profile_count()):
+		var profile := get_scale_profile(profile_index)
+		if (
+			is_equal_approx(
+				HERO_SIZE_VALUES[_selected_hero_size],
+				profile.hero_height,
+			)
+			and TILE_SIZE_VALUES[_selected_tile_size] == profile.tile_size
+			and is_equal_approx(
+				CAMERA_ZOOM_VALUES[_selected_camera_zoom],
+				profile.camera_zoom,
+			)
+			and _pixel_snap_enabled == profile.pixel_snap_enabled
+			and TEXTURE_FILTER_IDS[_selected_texture_filter]
+			== profile.texture_filter_id
+			and profile.reference_resolution == _reference_resolution()
+			and profile.aspect_ratio == REFERENCE_ASPECT_RATIO
+		):
+			return profile_index
+	return -1
+
+
+func _update_scale_profile_status() -> void:
+	if scale_profile_button == null:
+		return
+	scale_profile_button.text = "Maßstabsprofil: %s" % _active_scale_profile_name()
+	_refresh_diagnostics_if_visible()
+
+
+func _reference_resolution() -> Vector2i:
+	return Vector2i(
+		int(ProjectSettings.get_setting("display/window/size/viewport_width", 0)),
+		int(ProjectSettings.get_setting("display/window/size/viewport_height", 0)),
+	)
+
+
 func _update_pixel_snap_render_alignment() -> void:
 	if not _pixel_snap_enabled:
 		var camera_was_aligned := not player_camera.position.is_equal_approx(
@@ -884,6 +997,7 @@ func _on_main_window_size_changed() -> void:
 
 func _on_pixel_snap_button_pressed() -> void:
 	_set_pixel_snap_enabled(pixel_snap_button.button_pressed)
+	_update_scale_profile_status()
 	_save_settings()
 
 
@@ -892,7 +1006,19 @@ func _on_texture_filter_button_pressed() -> void:
 	if texture_filter_button.button_pressed:
 		selected_filter = TextureFilterPreset.SOFT
 	_set_texture_filter(selected_filter)
+	_update_scale_profile_status()
 	_save_settings()
+
+
+func _on_scale_profile_button_pressed() -> void:
+	var next_profile := wrapi(
+		_matching_scale_profile_index() + 1,
+		0,
+		get_scale_profile_count(),
+	)
+	var apply_error := apply_scale_profile(next_profile)
+	if apply_error != OK:
+		push_error("VisualLab could not apply scale profile %d." % next_profile)
 
 
 func _on_fog_variant_button_pressed() -> void:

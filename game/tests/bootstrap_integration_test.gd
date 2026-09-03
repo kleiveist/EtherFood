@@ -28,7 +28,7 @@ const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
 const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
 const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
 const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
-const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Nah · 1,50×"
+const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Mittel · 1,00×"
 const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "- / linke Schultertaste: weiter"
 const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "+ / rechte Schultertaste: näher"
 const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
@@ -40,7 +40,9 @@ const EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT := "T / linker Stick-Klick: kleiner
 const EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT := "G / rechter Stick-Klick: größer"
 const EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS := "Weltzustand: Beschädigt"
 const EXPECTED_VISUAL_LAB_WORLD_STATE_HINT := "V / Controller-A: Zustand wechseln"
-const EXPECTED_VISUAL_LAB_PIXEL_SNAP_STATUS := "Pixel-Snap: AUS"
+const EXPECTED_VISUAL_LAB_SCALE_PROFILE_STATUS := "Maßstabsprofil: Maßstab V0"
+const EXPECTED_VISUAL_LAB_SCALE_PROFILE_HINT := "Klick / Auswahl: A → Maßstab V0 → C"
+const EXPECTED_VISUAL_LAB_PIXEL_SNAP_STATUS := "Pixel-Snap: AN"
 const EXPECTED_VISUAL_LAB_PIXEL_SNAP_HINT := "X / Klick / Auswahl: AN / AUS"
 const EXPECTED_VISUAL_LAB_TEXTURE_FILTER_STATUS := "Texturfilter: Nearest-Neighbor"
 const EXPECTED_VISUAL_LAB_TEXTURE_FILTER_HINT := "N / Klick / Auswahl: Nearest / Weich"
@@ -74,6 +76,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_pixel_snap_test.gd",
 	"res://tests/runtime/visual_lab_texture_filter_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
+	"res://tests/runtime/visual_scale_candidates_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -610,8 +613,8 @@ func _test_bootstrap_contract() -> void:
 				"PlayerCamera has the bottom world limit",
 			)
 			_expect(
-				player_camera.zoom == Vector2(1.5, 1.5),
-				"PlayerCamera uses the saved-test default near zoom",
+				player_camera.zoom == Vector2.ONE,
+				"PlayerCamera uses the selected Maßstab V0 zoom",
 			)
 			_expect(
 				not player_camera.position_smoothing_enabled,
@@ -632,6 +635,7 @@ func _test_bootstrap_contract() -> void:
 			var hero_start_position := hero_character.global_position
 			var camera_start_position := Vector2.ZERO
 			if player_camera != null:
+				player_camera.force_update_scroll()
 				camera_start_position = player_camera.global_position
 			var interface_screen_position := Vector2.ZERO
 			if interface != null:
@@ -639,16 +643,39 @@ func _test_bootstrap_contract() -> void:
 			var background_screen_position := Vector2.ZERO
 			if background != null:
 				background_screen_position = background.get_screen_transform().origin
-			await _hold_action_for_physics_frames(&"gameplay_move_right", 4)
+			var movement_per_frame := (
+				float(hero_character.call("get_current_speed"))
+				/ Engine.physics_ticks_per_second
+			)
+			var movement_frame_count := maxi(
+				4,
+				ceili(
+					visual_lab._pixel_snap_world_grid_step().x / movement_per_frame
+				) + 2,
+			)
+			await _hold_action_for_physics_frames(
+				&"gameplay_move_right",
+				movement_frame_count,
+			)
+			await process_frame
+			visual_lab._update_pixel_snap_render_alignment()
+			if player_camera != null:
+				player_camera.force_update_scroll()
 			var hero_movement := hero_character.global_position - hero_start_position
 			_expect(hero_movement.x > 0.0, "VisualLab HeroCharacter moves through the world")
 			if player_camera != null:
-				var camera_movement := (
-					player_camera.global_position - camera_start_position
-				)
+				var camera_movement := player_camera.global_position - camera_start_position
 				_expect(
-					camera_movement.is_equal_approx(hero_movement),
-					"PlayerCamera moves together with HeroCharacter",
+					camera_movement.x > 0.0,
+					"PlayerCamera follows HeroCharacter on the output-pixel grid",
+				)
+				var grid_step: Vector2 = visual_lab._pixel_snap_world_grid_step()
+				_expect(
+					absf(
+						player_camera.global_position.x
+						- hero_character.global_position.x
+					) <= grid_step.x / 2.0 + 0.01,
+					"PlayerCamera stays within half an output-pixel grid step",
 				)
 			if interface != null:
 				_expect(
@@ -958,6 +985,40 @@ func _test_bootstrap_contract() -> void:
 				visual_lab_world_state_hint.text == EXPECTED_VISUAL_LAB_WORLD_STATE_HINT,
 				"VisualLab displays its world-state toggle controls",
 			)
+		var visual_lab_scale_profile_button := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "ScaleProfileButton"
+			)
+		) as Button
+		_expect(
+			visual_lab_scale_profile_button != null,
+			"VisualLab has an interactive scale-profile button",
+		)
+		if visual_lab_scale_profile_button != null:
+			_expect(
+				(
+					visual_lab_scale_profile_button.text
+					== EXPECTED_VISUAL_LAB_SCALE_PROFILE_STATUS
+				),
+				"VisualLab displays the selected Maßstab V0 profile",
+			)
+		var visual_lab_scale_profile_hint := bootstrap.get_node_or_null(
+			(
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
+					+ "ScaleProfileHint"
+			)
+		) as Label
+		_expect(
+			visual_lab_scale_profile_hint != null,
+			"VisualLab has a scale-profile comparison hint",
+		)
+		if visual_lab_scale_profile_hint != null:
+			_expect(
+				visual_lab_scale_profile_hint.text
+				== EXPECTED_VISUAL_LAB_SCALE_PROFILE_HINT,
+				"VisualLab explains the remaining profile comparison",
+			)
 		var visual_lab_pixel_snap_button := bootstrap.get_node_or_null(
 			(
 				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
@@ -1050,11 +1111,11 @@ func _test_bootstrap_contract() -> void:
 			)
 			visual_lab._unhandled_input(_pressed_action(&"ui_cancel"))
 			_expect_saved_visual_lab_settings(
-				"near",
+				"medium",
 				"medium",
 				"small",
 				"damaged",
-				false,
+				true,
 				"nearest",
 			)
 		_expect(

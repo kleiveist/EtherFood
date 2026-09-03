@@ -352,7 +352,7 @@ visible = false
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 780.0
-offset_bottom = 690.0
+offset_bottom = 760.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 
@@ -385,7 +385,7 @@ anchor_right = 1.0
 offset_left = -590.0
 offset_top = 24.0
 offset_right = -24.0
-offset_bottom = 696.0
+offset_bottom = 940.0
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_diagnostics_panel")
@@ -406,14 +406,14 @@ text = "DIAGNOSE"
 offset_left = 18.0
 offset_top = 55.0
 offset_right = 548.0
-offset_bottom = 672.0
+offset_bottom = 916.0
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.78, 0.84, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 18
-text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nKameraprofil: Kleiner Innenraum · experimentell\nKamera-Basis: 1,50×\nKamera-Aktiv: 1,50×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWeltzustand: Beschädigt\nNebel: Mittel\nLichtprofil: Kühl und dunkel\nPixel-Snap: AUS\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: frei\nRasterphase: frei\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
+text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nMaßstabsprofil: Maßstab V0\nReferenzauflösung: 1920 × 1080\nSeitenverhältnis: 16:9\nKameraprofil: Welt/Dungeon · Kandidat\nKamera-Basis: 1,00×\nKamera-Aktiv: 1,00×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWeltzustand: Beschädigt\nNebel: Mittel\nLichtprofil: Kühl und dunkel\nPixel-Snap: AN\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: 1,500 × 1,500 Weltpixel\nRasterphase: 0,25 Ausgabepixel\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
 
 [node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
 visible = false
@@ -500,7 +500,7 @@ visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
 theme_override_font_sizes/font_size = 18
-text = "Kamera: Nah · 1,50×"
+text = "Kamera: Mittel · 1,00×"
 
 [node name="CameraZoomOutHint" type="Label" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
@@ -587,6 +587,33 @@ theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
 theme_override_font_sizes/font_size = 16
 text = "V / Controller-A: Zustand wechseln"
 
+[node name="ScaleProfileSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScaleProfileButton" type="Button" parent="InterfaceLayer/Interface/Text"]
+custom_minimum_size = Vector2(712, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.84, 0.76, 0.5, 1)
+theme_override_colors/font_hover_color = Color(0.96, 0.88, 0.61, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.94, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
+focus_neighbor_bottom = NodePath("../AtmosphereButtons/FogVariantButton")
+text = "Maßstabsprofil: Maßstab V0"
+
+[node name="ScaleProfileHint" type="Label" parent="InterfaceLayer/Interface/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "Klick / Auswahl: A → Maßstab V0 → C"
+
 [node name="AtmosphereButtons" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -605,6 +632,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
 focus_neighbor_right = NodePath("../LightVariantButton")
+focus_neighbor_top = NodePath("../../ScaleProfileButton")
 focus_neighbor_bottom = NodePath("../../RenderingButtons/PixelSnapButton")
 text = "Nebel: Mittel"
 
@@ -621,6 +649,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
 focus_neighbor_left = NodePath("../FogVariantButton")
+focus_neighbor_top = NodePath("../../ScaleProfileButton")
 focus_neighbor_bottom = NodePath("../../RenderingButtons/TextureFilterButton")
 text = "Licht: Kühl und dunkel"
 
@@ -668,7 +697,8 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
 focus_neighbor_right = NodePath("../TextureFilterButton")
 focus_neighbor_top = NodePath("../../AtmosphereButtons/FogVariantButton")
 toggle_mode = true
-text = "Pixel-Snap: AUS"
+button_pressed = true
+text = "Pixel-Snap: AN"
 
 [node name="TextureFilterButton" type="Button" parent="InterfaceLayer/Interface/Text/RenderingButtons"]
 custom_minimum_size = Vector2(370, 40)

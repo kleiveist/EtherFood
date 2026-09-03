@@ -117,9 +117,11 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	_expect(panel.visible, "Controller-Select shows diagnostics")
 
 	visual_lab._unhandled_input(_pressed_action(&"dev_camera_zoom_out"))
+	visual_lab._unhandled_input(_pressed_action(&"dev_camera_zoom_in"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_tile_size_increase"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_world_state_toggle"))
+	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
 	visual_lab._unhandled_input(_pressed_action(&"dev_texture_filter_toggle"))
 	_expect(values.text.contains("Kamera-Basis: 1,00×"), "diagnostics show base camera zoom")
@@ -239,19 +241,28 @@ func _expect_diagnostic_values(
 			"diagnostics show the world anchor separately",
 		)
 	_expect(
-		values.text.contains("Kamera-Basis: 1,50×"),
+		values.text.contains("Kamera-Basis: 1,00×"),
 		"diagnostics show initial base camera zoom",
 	)
 	_expect(
-		values.text.contains("Kamera-Aktiv: 1,50×"),
+		values.text.contains("Kamera-Aktiv: 1,00×"),
 		"diagnostics show initial active camera zoom",
 	)
 	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show movement state")
 	_expect(values.text.contains("Sprung: Boden"), "diagnostics show jump state")
 	_expect(
-		values.text.contains("Kameraprofil: Kleiner Innenraum · experimentell"),
-		"diagnostics identify the experimental near camera candidate",
+		values.text.contains("Kameraprofil: Welt/Dungeon · Kandidat"),
+		"diagnostics identify the normal world camera profile",
 	)
+	_expect(
+		values.text.contains("Maßstabsprofil: Maßstab V0"),
+		"diagnostics identify the selected visual baseline",
+	)
+	_expect(
+		values.text.contains("Referenzauflösung: 1920 × 1080"),
+		"diagnostics show the selected reference resolution",
+	)
+	_expect(values.text.contains("Seitenverhältnis: 16:9"), "diagnostics show 16:9")
 	_expect(
 		values.text.contains("Kameraposition roh: "),
 		"diagnostics show the raw camera target",
@@ -271,19 +282,20 @@ func _expect_diagnostic_values(
 		values.text.contains("Lichtprofil: Kühl und dunkel"),
 		"diagnostics show initial light profile",
 	)
-	_expect(values.text.contains("Pixel-Snap: AUS"), "diagnostics show initial pixel snap")
+	_expect(values.text.contains("Pixel-Snap: AN"), "diagnostics show initial pixel snap")
 	_expect(
 		values.text.contains("Viewport-Transform-Snap: AUS"),
 		"diagnostics show that per-item transform snap stays off",
 	)
 	_expect(values.text.contains("Vertex-Snap: AUS"), "diagnostics show vertex snap off")
 	_expect(
-		values.text.contains("Darstellungsraster: frei"),
-		"diagnostics show that the initial render grid is unsnapped",
+		values.text.contains("Darstellungsraster: ")
+		and not values.text.contains("Darstellungsraster: frei"),
+		"diagnostics show the active output-pixel grid",
 	)
 	_expect(
-		values.text.contains("Rasterphase: frei"),
-		"diagnostics show that the initial output-pixel phase is free",
+		values.text.contains("Rasterphase: 0,25 Ausgabepixel"),
+		"diagnostics show the selected output-pixel phase",
 	)
 	_expect(
 		values.text.contains("Texturfilter: Nearest-Neighbor"),
