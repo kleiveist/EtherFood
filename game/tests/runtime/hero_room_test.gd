@@ -57,15 +57,13 @@ func _test_room_contract(tree: SceneTree) -> void:
 	tree.root.add_child(hero_room)
 	await tree.process_frame
 	await tree.physics_frame
-	var room_constants: Dictionary = hero_room.get_script().get_script_constant_map()
-
 	_expect(
 		not _contains_label_text(hero_room, "Spielbarer Raum folgt"),
 		"old playable-room placeholder is removed",
 	)
 	_expect(
-		room_constants.get("TILE_SIZE", Vector2i.ZERO) == Vector2i(32, 32),
-		"HeroRoom defines its fixed 32 by 32 working grid",
+		hero_room.get_visual_tile_size() == Vector2i(32, 32),
+		"HeroRoom reads its fixed 32 by 32 grid from visual standards",
 	)
 	_expect(
 		hero_room.get_node_or_null("BackgroundLayer") is CanvasLayer,

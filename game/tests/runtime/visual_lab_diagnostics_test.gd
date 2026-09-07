@@ -116,14 +116,14 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_BACK))
 	_expect(panel.visible, "Controller-Select shows diagnostics")
 
-	visual_lab._unhandled_input(_pressed_action(&"dev_camera_zoom_out"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_camera_zoom_in"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_tile_size_increase"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_world_state_toggle"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_pixel_snap_toggle"))
-	visual_lab._unhandled_input(_pressed_action(&"dev_texture_filter_toggle"))
+	visual_lab._change_camera_zoom(-1)
+	visual_lab._change_camera_zoom(1)
+	visual_lab._change_hero_size(1)
+	visual_lab._change_tile_size(1)
+	visual_lab._toggle_world_state()
+	visual_lab._toggle_pixel_snap()
+	visual_lab._toggle_pixel_snap()
+	visual_lab._toggle_texture_filter()
 	_expect(values.text.contains("Kamera-Basis: 1,00×"), "diagnostics show base camera zoom")
 	_expect(values.text.contains("Kamera-Aktiv: 1,00×"), "diagnostics show active camera zoom")
 	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show normal movement")
@@ -146,7 +146,7 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"diagnostics show the active rational render grid",
 	)
 	_expect(
-		values.text.contains("Kameraprofil: Welt/Dungeon · Kandidat"),
+		values.text.contains("Kamerabereich: Außenwelt"),
 		"diagnostics identify the medium camera candidate",
 	)
 	_expect(values.text.contains("Texturfilter: Weich"), "diagnostics show active filter")
@@ -251,7 +251,7 @@ func _expect_diagnostic_values(
 	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show movement state")
 	_expect(values.text.contains("Sprung: Boden"), "diagnostics show jump state")
 	_expect(
-		values.text.contains("Kameraprofil: Welt/Dungeon · Kandidat"),
+		values.text.contains("Kamerabereich: Außenwelt"),
 		"diagnostics identify the normal world camera profile",
 	)
 	_expect(
@@ -358,7 +358,7 @@ func _expect_diagnostics_not_saved() -> void:
 		"existing hero value remains saved",
 	)
 	_expect(
-		settings.get_value("visual_lab", "camera_zoom", "") == "medium",
+		settings.get_value("visual_lab", "camera_zoom_world", "") == "medium",
 		"existing camera value remains saved",
 	)
 	_expect(

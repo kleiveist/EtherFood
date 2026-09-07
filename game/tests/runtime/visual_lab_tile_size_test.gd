@@ -3,10 +3,6 @@ extends RefCounted
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
-const SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
-const SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
-const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
-const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const PREVIEW_SIZE := Vector2(768.0, 384.0)
 const SMALL_TILE_SIZE := 32
 const MEDIUM_TILE_SIZE := 48
@@ -19,7 +15,7 @@ var failures: PackedStringArray = []
 
 
 func run(tree: SceneTree) -> PackedStringArray:
-	_expect_input_mappings()
+	_expect_removed_shortcuts()
 	var visual_lab_scene := load(VISUAL_LAB_SCENE_PATH) as PackedScene
 	_expect(visual_lab_scene != null, "VisualLab scene loads")
 	if visual_lab_scene == null:
@@ -46,13 +42,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"TestWorld/TileComparison/Title"
 	) as Label
 	var tile_size_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/TileSizeStatus"
-	) as Label
-	var decrease_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/TileSizeDecreaseHint"
-	) as Label
-	var increase_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/TileSizeIncreaseHint"
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/TileSizeStatus"
 	) as Label
 	var player_camera := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/PlayerCamera"
@@ -76,16 +66,6 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"VisualLab retains the hero collision shape",
 	)
 	_expect(floor != null, "VisualLab retains its Floor")
-	_expect(
-		decrease_hint != null
-		and decrease_hint.text == "T / linker Stick-Klick: kleiner",
-		"VisualLab shows the tile-size-decrease hint",
-	)
-	_expect(
-		increase_hint != null
-		and increase_hint.text == "G / rechter Stick-Klick: größer",
-		"VisualLab shows the tile-size-increase hint",
-	)
 
 	if (
 		tile_comparison == null
@@ -152,10 +132,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		24,
 		12,
 		SMALL_STATUS,
-		"held tile-size input does not repeat",
+		"removed G shortcut leaves tile size unchanged",
 	)
 
-	visual_lab._unhandled_input(_pressed_key(KEY_T))
+	visual_lab._change_tile_size(-1)
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
@@ -166,7 +146,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"tile-size decrease stops at small",
 	)
 
-	visual_lab._unhandled_input(_pressed_key(KEY_G))
+	visual_lab._change_tile_size(1)
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
@@ -174,9 +154,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 		16,
 		8,
 		MEDIUM_STATUS,
-		"G changes small tiles to medium",
+		"tile increment changes small tiles to medium",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_G))
+	visual_lab._change_tile_size(1)
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
@@ -184,9 +164,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 		12,
 		6,
 		LARGE_STATUS,
-		"G changes medium tiles to large",
+		"tile increment changes medium tiles to large",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_G))
+	visual_lab._change_tile_size(1)
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
@@ -197,19 +177,19 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"tile-size increase stops at large",
 	)
 
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_LEFT_STICK))
-	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "left stick click decreases")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_LEFT_STICK))
-	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "left stick reaches small")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_LEFT_STICK))
-	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "left stick stops at small")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_RIGHT_STICK))
-	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "right stick reaches medium")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_RIGHT_STICK))
-	_expect(tile_grid_preview.tile_size == LARGE_TILE_SIZE, "right stick reaches large")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_RIGHT_STICK))
-	_expect(tile_grid_preview.tile_size == LARGE_TILE_SIZE, "right stick stops at large")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_LEFT_STICK))
+	visual_lab._change_tile_size(-1)
+	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "tile decrement reaches medium")
+	visual_lab._change_tile_size(-1)
+	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "tile decrement reaches small")
+	visual_lab._change_tile_size(-1)
+	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "tile decrement stops at small")
+	visual_lab._change_tile_size(1)
+	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "tile increment reaches medium")
+	visual_lab._change_tile_size(1)
+	_expect(tile_grid_preview.tile_size == LARGE_TILE_SIZE, "tile increment reaches large")
+	visual_lab._change_tile_size(1)
+	_expect(tile_grid_preview.tile_size == LARGE_TILE_SIZE, "tile increment stops at large")
+	visual_lab._change_tile_size(-1)
 	_expect_tile_state(
 		tile_grid_preview,
 		tile_size_status,
@@ -217,7 +197,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		16,
 		8,
 		MEDIUM_STATUS,
-		"controller returns tiles to medium",
+		"tile decrement returns tiles to medium",
 	)
 
 	_expect(
@@ -264,19 +244,19 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"tile-size presets keep the enlarged TestWorld unchanged",
 		)
 
-	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+	visual_lab._change_camera_zoom(-1)
 	_expect(
 		player_camera.zoom == Vector2(0.75, 0.75),
 		"camera zoom changes independently",
 	)
 	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "zoom keeps tile size unchanged")
-	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_INCREASE_ACTION))
+	visual_lab._change_hero_size(1)
 	_expect(
 		is_equal_approx(hero.get_appearance_height(), 96.0),
 		"hero size changes independently",
 	)
 	_expect(tile_grid_preview.tile_size == MEDIUM_TILE_SIZE, "hero size keeps tiles unchanged")
-	visual_lab._unhandled_input(_pressed_key(KEY_T))
+	visual_lab._change_tile_size(-1)
 	_expect(tile_grid_preview.tile_size == SMALL_TILE_SIZE, "tiles still change independently")
 	_expect(
 		player_camera.zoom == Vector2(0.75, 0.75),
@@ -307,7 +287,7 @@ func _expect_reopened_small_size(tree: SceneTree, visual_lab_scene: PackedScene)
 		"TestWorld/TileComparison/TileGridPreview"
 	) as TILE_GRID_PREVIEW_SCRIPT
 	var reopened_status := reopened_visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/TileSizeStatus"
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/TileSizeStatus"
 	) as Label
 	_expect(reopened_preview != null, "reopened VisualLab has TileGridPreview")
 	_expect(reopened_status != null, "reopened VisualLab has tile-size status")
@@ -325,43 +305,15 @@ func _expect_reopened_small_size(tree: SceneTree, visual_lab_scene: PackedScene)
 	await tree.process_frame
 
 
-func _expect_input_mappings() -> void:
-	_expect(InputMap.has_action(SIZE_DECREASE_ACTION), "InputMap defines tile decrease")
-	_expect(InputMap.has_action(SIZE_INCREASE_ACTION), "InputMap defines tile increase")
-	if InputMap.has_action(SIZE_DECREASE_ACTION):
-		_expect(
-			_has_key_mapping(SIZE_DECREASE_ACTION, KEY_T),
-			"tile decrease uses the physical T key",
-		)
-		_expect(
-			_has_button_mapping(SIZE_DECREASE_ACTION, JOY_BUTTON_LEFT_STICK),
-			"tile decrease uses the left stick click",
-		)
-	if InputMap.has_action(SIZE_INCREASE_ACTION):
-		_expect(
-			_has_key_mapping(SIZE_INCREASE_ACTION, KEY_G),
-			"tile increase uses the physical G key",
-		)
-		_expect(
-			_has_button_mapping(SIZE_INCREASE_ACTION, JOY_BUTTON_RIGHT_STICK),
-			"tile increase uses the right stick click",
-		)
-
-
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and key_event.physical_keycode == expected_key:
-			return true
-	return false
-
-
-func _has_button_mapping(action: StringName, expected_button: JoyButton) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var button_event := input_event as InputEventJoypadButton
-		if button_event != null and button_event.button_index == expected_button:
-			return true
-	return false
+func _expect_removed_shortcuts() -> void:
+	_expect(
+		not InputMap.has_action(&"dev_tile_size_decrease"),
+		"tile-size decrease action is absent",
+	)
+	_expect(
+		not InputMap.has_action(&"dev_tile_size_increase"),
+		"tile-size increase action is absent",
+	)
 
 
 func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
@@ -369,20 +321,6 @@ func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 	event.physical_keycode = keycode
 	event.pressed = true
 	event.echo = echo
-	return event
-
-
-func _pressed_button(button_index: JoyButton) -> InputEventJoypadButton:
-	var event := InputEventJoypadButton.new()
-	event.button_index = button_index
-	event.pressed = true
-	return event
-
-
-func _pressed_action(action: StringName) -> InputEventAction:
-	var event := InputEventAction.new()
-	event.action = action
-	event.pressed = true
 	return event
 
 

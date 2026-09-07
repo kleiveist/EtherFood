@@ -10,9 +10,12 @@ const VisualScaleProfileResource := preload(
 const CameraProfileResource := preload("res://shared/resources/camera_profile.gd")
 const PROFILE_PATHS: Array[String] = [
 	"res://shared/resources/visual_scale_candidate_a.tres",
-	"res://shared/resources/visual_baseline_v0.tres",
+	"res://shared/resources/visual_scale_candidate_b.tres",
 	"res://shared/resources/visual_scale_candidate_c.tres",
 ]
+const PRODUCTION_BASELINE_PATH := (
+	"res://shared/resources/visual_baseline_v0.tres"
+)
 const EXPECTED_PROFILES: Array[Dictionary] = [
 	{
 		"id": "candidate_a",
@@ -123,13 +126,15 @@ func _expect_visual_lab_candidates(tree: SceneTree) -> void:
 		"TestWorld/HeroCharacter/CollisionShape2D"
 	) as CollisionShape2D
 	var profile_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/ScaleProfileButton"
-	) as Button
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/ScaleProfileStatus"
+	) as Label
 	var pixel_snap_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "PixelSnapOptions/OnButton"
 	) as Button
 	var texture_filter_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton"
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "TextureFilterOptions/NearestButton"
 	) as Button
 	var diagnostics := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel/Values"
@@ -165,8 +170,8 @@ func _expect_visual_lab_candidates(tree: SceneTree) -> void:
 		"fresh settings activate the selected scale baseline",
 	)
 	_expect(
-		profile_button.text == "Maßstabsprofil: Maßstab V0",
-		"profile button identifies the selected scale baseline",
+		profile_button.text == "Aktueller Vergleich: Maßstab V0",
+		"profile status identifies the selected scale baseline",
 	)
 	var original_collision_shape := hero_collision.shape
 	var original_collision_transform := hero_collision.transform
@@ -187,8 +192,8 @@ func _expect_visual_lab_candidates(tree: SceneTree) -> void:
 			"scale profile %d is recognized after applying" % profile_index,
 		)
 		_expect(
-			profile_button.text == "Maßstabsprofil: %s" % expected["name"],
-			"scale profile %d button text is exact" % profile_index,
+			profile_button.text == "Aktueller Vergleich: %s" % expected["name"],
+			"scale profile %d status text is exact" % profile_index,
 		)
 		_expect(
 			is_equal_approx(float(hero.call(&"get_appearance_height")), profile.hero_height),
@@ -202,9 +207,9 @@ func _expect_visual_lab_candidates(tree: SceneTree) -> void:
 			camera.zoom.is_equal_approx(Vector2.ONE * profile.camera_zoom),
 			"scale profile %d applies camera zoom" % profile_index,
 		)
-		_expect(pixel_snap_button.text == "Pixel-Snap: AN", "candidate enables pixel snap")
+		_expect(pixel_snap_button.button_pressed, "candidate enables pixel snap")
 		_expect(
-			texture_filter_button.text == "Texturfilter: Nearest-Neighbor",
+			texture_filter_button.button_pressed,
 			"candidate applies nearest-neighbor",
 		)
 		_expect(
@@ -233,10 +238,10 @@ func _expect_visual_lab_candidates(tree: SceneTree) -> void:
 			profile_index,
 		)
 
-	profile_button.pressed.emit()
+	_expect(visual_lab.apply_scale_profile(0) == OK, "scale profile wraps to A")
 	_expect(
 		visual_lab._active_scale_profile_name() == EXPECTED_PROFILES[0]["name"],
-		"scale-profile button wraps from C to A",
+		"scale-profile selection returns from C to A",
 	)
 	visual_lab._change_hero_size(1)
 	_expect(
@@ -308,7 +313,7 @@ func _expect_saved_candidate(profile: VisualScaleProfileResource) -> void:
 		"candidate stores tile size",
 	)
 	_expect(
-		settings.get_value("visual_lab", "camera_zoom", "")
+		settings.get_value("visual_lab", "camera_zoom_world", "")
 		== _camera_zoom_id(profile.camera_zoom),
 		"candidate stores camera zoom",
 	)
@@ -429,11 +434,10 @@ func _expect_hero_room_compatibility(tree: SceneTree) -> void:
 	if hero == null or camera == null or collision == null:
 		await _close_scene(tree, hero_room)
 		return
-	var room_constants: Dictionary = hero_room.get_script().get_script_constant_map()
-	var baseline := load(PROFILE_PATHS[1]) as VisualScaleProfileResource
+	var baseline := load(PRODUCTION_BASELINE_PATH) as VisualScaleProfileResource
 	_expect(baseline != null, "HeroRoom comparison loads Maßstab V0")
 	_expect(
-		room_constants.get("TILE_SIZE", Vector2i.ZERO) == Vector2i(32, 32),
+		hero_room.get_visual_tile_size() == Vector2i(32, 32),
 		"HeroRoom reports the selected 32-pixel raster",
 	)
 	if baseline != null:
@@ -445,8 +449,7 @@ func _expect_hero_room_compatibility(tree: SceneTree) -> void:
 			"HeroRoom reads its hero height from Maßstab V0",
 		)
 		_expect(
-			room_constants.get("TILE_SIZE", Vector2i.ZERO)
-			== Vector2i.ONE * baseline.tile_size,
+			hero_room.get_visual_tile_size() == Vector2i.ONE * baseline.tile_size,
 			"HeroRoom raster matches Maßstab V0",
 		)
 		_expect(

@@ -2,23 +2,25 @@ extends RefCounted
 
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
-const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
-const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
 const WIDE_ZOOM := Vector2(0.75, 0.75)
 const MEDIUM_ZOOM := Vector2.ONE
 const NEAR_ZOOM := Vector2(1.5, 1.5)
-const WIDE_STATUS := "Kamera: Weit · 0,75×"
-const MEDIUM_STATUS := "Kamera: Mittel · 1,00×"
-const NEAR_STATUS := "Kamera: Nah · 1,50×"
-const LIMITED_WIDE_STATUS := "Kamera: Weit · 1,25× · durch Weltgröße begrenzt"
-const LIMITED_MEDIUM_STATUS := "Kamera: Mittel · 1,25× · durch Weltgröße begrenzt"
+const WIDE_STATUS := "Kamera: Außenwelt · Weit · 0,75×"
+const MEDIUM_STATUS := "Kamera: Außenwelt · Mittel · 1,00×"
+const NEAR_STATUS := "Kamera: Außenwelt · Nah · 1,50×"
+const LIMITED_WIDE_STATUS := (
+	"Kamera: Außenwelt · Weit · 1,25× · durch Weltgröße begrenzt"
+)
+const LIMITED_MEDIUM_STATUS := (
+	"Kamera: Außenwelt · Mittel · 1,25× · durch Weltgröße begrenzt"
+)
 const WORLD_SIZE := Vector2(3840, 2160)
 
 var failures: PackedStringArray = []
 
 
 func run(tree: SceneTree) -> PackedStringArray:
-	_expect_input_mappings()
+	_expect_removed_shortcuts()
 	var visual_lab_scene := load(VISUAL_LAB_SCENE_PATH) as PackedScene
 	_expect(visual_lab_scene != null, "VisualLab scene loads")
 	if visual_lab_scene == null:
@@ -39,13 +41,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"TestWorld/HeroCharacter/PlayerCamera"
 	) as Camera2D
 	var camera_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/CameraStatus"
-	) as Label
-	var zoom_out_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/CameraZoomOutHint"
-	) as Label
-	var zoom_in_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/CameraZoomInHint"
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/CameraStatus"
 	) as Label
 	var hero: HERO_SCRIPT = visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter"
@@ -56,16 +52,6 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 	_expect(player_camera != null, "VisualLab has PlayerCamera")
 	_expect(camera_status != null, "VisualLab has a camera-status Label")
-	_expect(
-		zoom_out_hint != null
-		and zoom_out_hint.text == "- / linke Schultertaste: weiter",
-		"VisualLab shows the zoom-out hint",
-	)
-	_expect(
-		zoom_in_hint != null
-		and zoom_in_hint.text == "+ / rechte Schultertaste: näher",
-		"VisualLab shows the zoom-in hint",
-	)
 	_expect(hero != null, "VisualLab has HeroCharacter")
 	_expect(
 		hero_collision != null and hero_collision.shape != null,
@@ -95,16 +81,16 @@ func run(tree: SceneTree) -> PackedStringArray:
 			camera_status,
 			MEDIUM_ZOOM,
 			MEDIUM_STATUS,
-			"held zoom input does not repeat",
+			"removed plus shortcut leaves zoom unchanged",
 		)
 
-		visual_lab._unhandled_input(_pressed_key(KEY_MINUS))
+		visual_lab._change_camera_zoom(-1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			WIDE_ZOOM,
 			WIDE_STATUS,
-			"minus changes the standard zoom to wide",
+			"zoom decrement changes medium to wide",
 		)
 		if hero != null:
 			await _expect_camera_limits(
@@ -114,7 +100,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 				visual_lab.size,
 				"wide zoom",
 			)
-		visual_lab._unhandled_input(_pressed_key(KEY_MINUS))
+		visual_lab._change_camera_zoom(-1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -123,13 +109,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"zoom-out stops at wide",
 		)
 
-		visual_lab._unhandled_input(_pressed_key(KEY_PLUS))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			MEDIUM_ZOOM,
 			MEDIUM_STATUS,
-			"plus changes wide zoom to medium",
+			"zoom increment changes wide to medium",
 		)
 		if hero != null:
 			await _expect_camera_limits(
@@ -139,13 +125,13 @@ func run(tree: SceneTree) -> PackedStringArray:
 				visual_lab.size,
 				"medium zoom",
 			)
-		visual_lab._unhandled_input(_pressed_key(KEY_PLUS))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			NEAR_ZOOM,
 			NEAR_STATUS,
-			"plus changes medium zoom to near",
+			"zoom increment changes medium to near",
 		)
 		if hero != null:
 			await _expect_camera_limits(
@@ -155,7 +141,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 				visual_lab.size,
 				"near zoom",
 			)
-		visual_lab._unhandled_input(_pressed_key(KEY_PLUS))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -164,41 +150,41 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"zoom-in stops at near",
 		)
 
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_LEFT_SHOULDER))
+		visual_lab._change_camera_zoom(-1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			MEDIUM_ZOOM,
 			MEDIUM_STATUS,
-			"left shoulder changes near zoom to medium",
+			"zoom decrement changes near to medium",
 		)
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_LEFT_SHOULDER))
+		visual_lab._change_camera_zoom(-1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			WIDE_ZOOM,
 			WIDE_STATUS,
-			"left shoulder changes medium zoom to wide",
+			"zoom decrement changes medium to wide again",
 		)
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_RIGHT_SHOULDER))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			MEDIUM_ZOOM,
 			MEDIUM_STATUS,
-			"right shoulder changes wide zoom to medium",
+			"zoom increment changes wide to medium again",
 		)
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_RIGHT_SHOULDER))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
 			NEAR_ZOOM,
 			NEAR_STATUS,
-			"right shoulder changes medium zoom to near",
+			"zoom increment changes medium to near again",
 		)
 
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_LEFT_SHOULDER))
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_LEFT_SHOULDER))
+		visual_lab._change_camera_zoom(-1)
+		visual_lab._change_camera_zoom(-1)
 		visual_lab.size = Vector2(4800, 2700)
 		_expect_zoom_state(
 			player_camera,
@@ -207,7 +193,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 			LIMITED_WIDE_STATUS,
 			"world size limits wide zoom after viewport resize",
 		)
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_RIGHT_SHOULDER))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -215,7 +201,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 			LIMITED_MEDIUM_STATUS,
 			"limited zoom still displays the selected medium preset",
 		)
-		visual_lab._unhandled_input(_pressed_joypad_button(JOY_BUTTON_RIGHT_SHOULDER))
+		visual_lab._change_camera_zoom(1)
 		_expect_zoom_state(
 			player_camera,
 			camera_status,
@@ -260,7 +246,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"TestWorld/HeroCharacter/PlayerCamera"
 		) as Camera2D
 		var reopened_status := reopened_visual_lab.get_node_or_null(
-			"InterfaceLayer/Interface/Text/CameraStatus"
+			"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/CameraStatus"
 		) as Label
 		_expect(reopened_camera != null, "reopened VisualLab has PlayerCamera")
 		_expect(reopened_status != null, "reopened VisualLab has camera status")
@@ -279,43 +265,15 @@ func run(tree: SceneTree) -> PackedStringArray:
 	return failures
 
 
-func _expect_input_mappings() -> void:
-	_expect(InputMap.has_action(ZOOM_OUT_ACTION), "InputMap defines zoom out")
-	_expect(InputMap.has_action(ZOOM_IN_ACTION), "InputMap defines zoom in")
-	if InputMap.has_action(ZOOM_OUT_ACTION):
-		_expect(
-			_has_key_mapping(ZOOM_OUT_ACTION, KEY_MINUS),
-			"zoom out uses the minus key",
-		)
-		_expect(
-			_has_button_mapping(ZOOM_OUT_ACTION, JOY_BUTTON_LEFT_SHOULDER),
-			"zoom out uses the left controller shoulder",
-		)
-	if InputMap.has_action(ZOOM_IN_ACTION):
-		_expect(
-			_has_key_mapping(ZOOM_IN_ACTION, KEY_PLUS),
-			"zoom in uses the plus key",
-		)
-		_expect(
-			_has_button_mapping(ZOOM_IN_ACTION, JOY_BUTTON_RIGHT_SHOULDER),
-			"zoom in uses the right controller shoulder",
-		)
-
-
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and key_event.keycode == expected_key:
-			return true
-	return false
-
-
-func _has_button_mapping(action: StringName, expected_button: JoyButton) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var button_event := input_event as InputEventJoypadButton
-		if button_event != null and button_event.button_index == expected_button:
-			return true
-	return false
+func _expect_removed_shortcuts() -> void:
+	_expect(
+		not InputMap.has_action(&"dev_camera_zoom_out"),
+		"zoom-out direct action is absent",
+	)
+	_expect(
+		not InputMap.has_action(&"dev_camera_zoom_in"),
+		"zoom-in direct action is absent",
+	)
 
 
 func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
@@ -323,13 +281,6 @@ func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 	event.keycode = keycode
 	event.pressed = true
 	event.echo = echo
-	return event
-
-
-func _pressed_joypad_button(button_index: JoyButton) -> InputEventJoypadButton:
-	var event := InputEventJoypadButton.new()
-	event.button_index = button_index
-	event.pressed = true
 	return event
 
 

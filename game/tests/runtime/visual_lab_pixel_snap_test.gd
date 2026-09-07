@@ -4,7 +4,6 @@ const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_pixel_snap_test.cfg"
-const PIXEL_SNAP_ACTION := &"dev_pixel_snap_toggle"
 const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
 
@@ -16,7 +15,7 @@ var _original_settings_path: Variant = null
 func run(tree: SceneTree) -> PackedStringArray:
 	_remember_and_set_test_path()
 	_remove_test_settings()
-	_expect_input_mapping()
+	_expect_removed_shortcut()
 	var initial_viewport_snap := tree.root.snap_2d_transforms_to_pixel
 	var initial_vertex_snap := tree.root.snap_2d_vertices_to_pixel
 
@@ -103,11 +102,15 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"InterfaceLayer/Interface"
 	) as MarginContainer
 	var button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/PixelSnapOptions/OnButton"
 	) as Button
-	var hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingHints/PixelSnapToggleHint"
-	) as Label
+	var off_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "PixelSnapOptions/OffButton"
+	) as Button
+	var rendering_tab := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/ThemeTabs/RenderingTab"
+	) as Button
 	var diagnostics := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel/Values"
 	) as Label
@@ -124,10 +127,8 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		button != null and button.toggle_mode,
 		"pixel-snap menu button exposes an on/off state",
 	)
-	_expect(
-		hint != null and hint.text == "X / Klick / Auswahl: AN / AUS",
-		"controls menu explains all pixel-snap inputs",
-	)
+	_expect(off_button != null, "controls menu has a pixel-snap off button")
+	_expect(rendering_tab != null, "controls menu has a rendering tab")
 	_expect(diagnostics != null, "VisualLab retains diagnostics values")
 	if (
 		hero == null
@@ -138,6 +139,8 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 		or obstacle_collision == null
 		or controls == null
 		or button == null
+		or off_button == null
+		or rendering_tab == null
 		or diagnostics == null
 	):
 		return
@@ -155,8 +158,10 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	_expect_pixel_snap_state(visual_lab, true, "VisualLab starts with Maßstab V0 snap")
 	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
 	_expect(controls.visible, "F5 opens the menu containing the pixel-snap control")
-	_expect(button.is_visible_in_tree(), "pixel-snap button is visible in the open menu")
-	_expect(button.has_focus(), "opening the menu focuses the pixel-snap button")
+	rendering_tab.pressed.emit()
+	await tree.process_frame
+	_expect(button.is_visible_in_tree(), "pixel-snap button is visible on its theme page")
+	_expect(button.has_focus(), "rendering theme focuses the current pixel-snap value")
 	visual_lab._unhandled_input(_pressed_action(DIAGNOSTICS_ACTION))
 	_expect(
 		diagnostics.text.contains("Pixel-Snap: AN"),
@@ -177,16 +182,21 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	_expect_pixel_snap_state(
 		visual_lab,
 		true,
-		"held pixel-snap shortcut does not toggle repeatedly",
+		"removed repeated X shortcut leaves pixel snap unchanged",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_X))
-	_expect_pixel_snap_state(visual_lab, false, "X disables pixel snap while running")
+	_expect_pixel_snap_state(
+		visual_lab,
+		true,
+		"removed X shortcut does not change pixel snap",
+	)
+	off_button.pressed.emit()
+	_expect_pixel_snap_state(visual_lab, false, "menu disables pixel snap while running")
 	_expect(
 		hero.position.is_equal_approx(fractional_position),
 		"disabling pixel snap does not round the logical hero position",
 	)
 	_expect_saved_pixel_snap(false)
-	button.button_pressed = true
 	button.pressed.emit()
 	_expect_pixel_snap_state(visual_lab, true, "menu button restores Maßstab V0 snap")
 	_expect(
@@ -223,8 +233,7 @@ func _expect_pixel_snap_contract(tree: SceneTree, visual_lab: Control) -> void:
 	)
 	_expect_saved_pixel_snap(true)
 
-	button.button_pressed = false
-	button.pressed.emit()
+	off_button.pressed.emit()
 	_expect_pixel_snap_state(visual_lab, false, "menu button disables pixel snap")
 	_expect(
 		camera.position.is_equal_approx(original_camera_position),
@@ -360,18 +369,22 @@ func _expect_pixel_snap_state(
 	expected_enabled: bool,
 	description: String,
 ) -> void:
-	var button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
+	var on_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "PixelSnapOptions/OnButton"
 	) as Button
-	_expect(button != null, "%s: menu button exists" % description)
-	var expected_text := "Pixel-Snap: AN" if expected_enabled else "Pixel-Snap: AUS"
+	var off_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "PixelSnapOptions/OffButton"
+	) as Button
+	_expect(on_button != null and off_button != null, "%s: menu buttons exist" % description)
 	_expect(
-		button != null and button.text == expected_text,
-		"%s: menu state text is exact" % description,
+		on_button != null and on_button.button_pressed == expected_enabled,
+		"%s: on-option state" % description,
 	)
 	_expect(
-		button != null and button.button_pressed == expected_enabled,
-		"%s: menu toggle state" % description,
+		off_button != null and off_button.button_pressed != expected_enabled,
+		"%s: off-option state" % description,
 	)
 	_expect(
 		not visual_lab.get_viewport().snap_2d_transforms_to_pixel,
@@ -412,12 +425,10 @@ func _expect_saved_pixel_snap(expected_enabled: bool) -> void:
 	)
 
 
-func _expect_input_mapping() -> void:
-	_expect(InputMap.has_action(PIXEL_SNAP_ACTION), "InputMap defines pixel snap toggle")
-	_expect(_has_key_mapping(PIXEL_SNAP_ACTION, KEY_X), "pixel snap toggle uses X")
+func _expect_removed_shortcut() -> void:
 	_expect(
-		not _has_key_mapping(&"app_pause", KEY_X),
-		"pixel snap toggle does not reuse the pause key",
+		not InputMap.has_action(&"dev_pixel_snap_toggle"),
+		"pixel-snap direct action is absent",
 	)
 
 
@@ -448,16 +459,6 @@ func _open_visual_lab(tree: SceneTree, packed_scene: PackedScene) -> Control:
 func _close_visual_lab(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab.queue_free()
 	await tree.process_frame
-
-
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and (
-			key_event.keycode == expected_key or key_event.physical_keycode == expected_key
-		):
-			return true
-	return false
 
 
 func _pressed_action(action: StringName) -> InputEventAction:

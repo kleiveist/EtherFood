@@ -19,11 +19,21 @@ const REQUIRED_ACTIONS: Dictionary[StringName, float] = {
 	&"dev_diagnostics_toggle": 0.5,
 	&"dev_collision_debug_toggle": 0.5,
 	&"dev_controls_toggle": 0.5,
-	&"dev_pixel_snap_toggle": 0.5,
-	&"dev_texture_filter_toggle": 0.5,
-	&"dev_fog_variant_cycle": 0.5,
-	&"dev_light_variant_cycle": 0.5,
+	&"dev_accept_visual_standard": 0.5,
 }
+const REMOVED_VISUAL_LAB_ACTIONS: Array[StringName] = [
+	&"dev_camera_zoom_out",
+	&"dev_camera_zoom_in",
+	&"dev_hero_size_decrease",
+	&"dev_hero_size_increase",
+	&"dev_tile_size_decrease",
+	&"dev_tile_size_increase",
+	&"dev_world_state_toggle",
+	&"dev_fog_variant_cycle",
+	&"dev_light_variant_cycle",
+	&"dev_pixel_snap_toggle",
+	&"dev_texture_filter_toggle",
+]
 const DIRECTION_ACTIONS: Array[StringName] = [
 	&"ui_up",
 	&"ui_down",
@@ -72,12 +82,36 @@ func run(_tree: SceneTree) -> PackedStringArray:
 	)
 	_expect_modifier_pair(&"gameplay_sneak", KEY_CTRL, "gameplay_sneak uses both Ctrl keys")
 	_expect_modifier_pair(&"gameplay_boost", KEY_SHIFT, "gameplay_boost uses both Shift keys")
+	_expect(
+		_has_accept_standard_mapping(),
+		"dev_accept_visual_standard uses Ctrl + Alt + physical E",
+	)
+	for action in REMOVED_VISUAL_LAB_ACTIONS:
+		_expect(
+			not InputMap.has_action(action),
+			"obsolete direct Visual Lab action '%s' is absent" % action,
+		)
 	for action in [&"gameplay_jump", &"gameplay_sneak", &"gameplay_boost"]:
 		_expect(
 			not _has_button_event(action) and not _has_axis_event(action),
 			"'%s' remains keyboard-only in movement V0" % action,
 		)
 	return failures
+
+
+func _has_accept_standard_mapping() -> bool:
+	for input_event in InputMap.action_get_events(&"dev_accept_visual_standard"):
+		var key_event := input_event as InputEventKey
+		if key_event == null:
+			continue
+		if (
+			key_event.physical_keycode == KEY_E
+			and key_event.ctrl_pressed
+			and key_event.alt_pressed
+			and not key_event.shift_pressed
+		):
+			return true
+	return false
 
 
 func _has_keyboard_event(action: StringName) -> bool:

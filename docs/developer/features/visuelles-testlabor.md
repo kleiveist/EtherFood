@@ -20,12 +20,10 @@ bestätigten Entscheidungen hier fest, ohne offene Folgefragen vorwegzunehmen.
 Stand: 7. September 2026.
 
 Die vorhandenen Testflächen und Testergebnisse bleiben bestehen. Die auf
-dieser Seite festgelegte Neufassung der `F5`-Steuerung mit Themenmenü,
-getrennten Test- und Spielwerten sowie sichtbarer Goldmarkierung ist der
-zur Prüfung vorgelegte Zielzustand für die nächste Umsetzung. Bis zu dieser
-Umsetzung kann die laufende Szene noch die bisherige Bedienoberfläche und
-deren direkte Testkürzel enthalten. Diese Altbedienung ist keine zweite
-Spezifikation und wird bei der Umsetzung entfernt.
+dieser Seite festgelegte Neufassung der `F5`-Steuerung ist umgesetzt. Das
+Testlabor verwendet ein Themenmenü, trennt lokale Testwerte von versionierten
+Spielstandards und kennzeichnet letztere mit goldenem Rahmen und Stern. Die
+früheren Direktkürzel der einzelnen Testparameter sind entfernt.
 
 Die Neufassung ändert für sich genommen keinen bereits angenommenen Wert.
 Insbesondere bleibt [Maßstab V0](#maßstab-v0) bestehen, bis im Labor ein
@@ -53,8 +51,8 @@ weiterhin unabhängig davon die Kollisionsflächen ein oder aus. Beide Funktione
 sind zusätzlich im Menü erreichbar, beginnen bei jedem Start ausgeschaltet und
 werden nicht als Test- oder Spielwert gespeichert.
 
-Alle veränderlichen Testparameter werden nach der Neufassung ausschließlich im
-Menü bedient. Eigene Direktkürzel für Zoom, Figurengröße, Tilegröße,
+Alle veränderlichen Testparameter werden ausschließlich im Menü bedient.
+Eigene Direktkürzel für Zoom, Figurengröße, Tilegröße,
 Weltzustand, Nebel, Licht, Pixel-Snap und Texturfilter entfallen. Die normale
 Spielsteuerung, `Esc` zum Verlassen, `F3`, `F4` und `F5` sind davon nicht
 betroffen. `Strg + Alt + E` bleibt als einziges Kürzel zum ausdrücklichen
@@ -174,9 +172,20 @@ Der lokale Arbeitsstand und der Spielstandard bleiben technisch getrennt:
 - Spielszenen lesen ihre Ausgangswerte aus denselben versionierten Ressourcen
   und niemals aus der lokalen Testlabor-Konfiguration.
 
-Das Speicherschema des lokalen Arbeitsstands erhält bei der Umsetzung eine
-neue Version. Gültige alte Werte werden migriert; fehlende oder ungültige
-Werte fallen auf den jeweiligen übernommenen Spielstandard zurück.
+Die zentrale Zuordnung liegt in
+`game/shared/resources/visual_lab_standards_v0.tres`. Sie verweist auf
+`visual_baseline_v0.tres` sowie die Kameraprofile für Außenwelt, Dorf, Dungeon
+und kleinen Innenraum und enthält die Nebel- und Licht-IDs beider
+Weltzustände. Das Dorfprofil bleibt zunächst als eigene Ressource vorbereitet,
+erbt aber über die Zuordnung den Außenweltwert. Erst die ausdrückliche
+Übernahme eines Dorfzooms löst diese Vererbung.
+
+Der lokale Arbeitsstand verwendet Speicherschema 2. Neben
+`camera_context` werden `camera_zoom_world`, `camera_zoom_village`,
+`camera_zoom_dungeon` und `camera_zoom_small_interior` getrennt gespeichert.
+Gültige Version-1-Werte werden beim Laden übernommen und unmittelbar in das
+neue Schema geschrieben; fehlende oder ungültige Werte fallen auf den
+jeweiligen Spielstandard zurück.
 
 Eine Übernahme macht die gewählten Werte ohne erneute Mitteilung im
 Arbeitsbaum prüfbar. Sie ersetzt jedoch nicht die Repository-Regeln: Wenn ein
@@ -596,7 +605,7 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 - aktuelle FPS
 - rohe Spielerkoordinaten und gerasterte Heldenanzeige
 - rohe und gerasterte Kameraposition, tatsächliches Kamerazentrum und Weltanker
-- Kameraprofil, Darstellungsraster, Rasterphase und Fensterskalierung
+- Kamerabereich, Darstellungsraster, Rasterphase und Fensterskalierung
 - Basis- und aktiver Kamerazoom
 - aktueller Bewegungs- und Sprungzustand
 - gewählte Tilegröße
@@ -615,7 +624,7 @@ erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
 `F3` schaltet das Diagnosepanel mit FPS, roher Heldenposition, gerasterter
 Heldenanzeige, rohem und gerastertem Kameraziel, tatsächlichem Kamerazentrum,
-Weltanker, Maßstabsprofil, Referenzauflösung, Seitenverhältnis, Kameraprofil,
+Weltanker, Maßstabsprofil, Referenzauflösung, Seitenverhältnis, Kamerabereich,
 Basis- und Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-,
 Weltzustands-, Nebel-, Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-,
 Vertex-Snap-, Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und

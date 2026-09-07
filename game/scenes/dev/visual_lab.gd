@@ -38,34 +38,37 @@ const CameraProfileResource := preload("res://shared/resources/camera_profile.gd
 const VisualScaleProfileResource := preload(
 	"res://shared/resources/visual_scale_profile.gd"
 )
+const VisualLabMenuScript := preload("res://scenes/dev/visual_lab_menu.gd")
+const VisualLabStandardsResource := preload(
+	"res://shared/resources/visual_lab_standards.gd"
+)
 const PlayerCameraControllerScript := preload(
 	"res://shared/camera/player_camera_controller.gd"
 )
 const SCALE_COMPARISON_PROFILES: Array[Resource] = [
 	preload("res://shared/resources/visual_scale_candidate_a.tres"),
-	preload("res://shared/resources/visual_baseline_v0.tres"),
+	preload("res://shared/resources/visual_scale_candidate_b.tres"),
 	preload("res://shared/resources/visual_scale_candidate_c.tres"),
 ]
+const DEFAULT_STANDARDS: VisualLabStandardsResource = preload(
+	"res://shared/resources/visual_lab_standards_v0.tres"
+)
 const MAIN_MENU_ROUTE := &"main_menu"
-const SETTINGS_VERSION := 1
+const SETTINGS_VERSION := 2
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
+const DEFAULT_STANDARDS_PATH := (
+	"res://shared/resources/visual_lab_standards_v0.tres"
+)
+const STANDARDS_PATH_PROJECT_KEY := (
+	"etherfood/development/visual_lab_standards_path"
+)
 const SETTINGS_META_SECTION := "meta"
 const SETTINGS_SECTION := "visual_lab"
-const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
-const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
-const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
-const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
-const TILE_SIZE_DECREASE_ACTION := &"dev_tile_size_decrease"
-const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
-const WORLD_STATE_TOGGLE_ACTION := &"dev_world_state_toggle"
-const FOG_VARIANT_CYCLE_ACTION := &"dev_fog_variant_cycle"
-const LIGHT_VARIANT_CYCLE_ACTION := &"dev_light_variant_cycle"
-const PIXEL_SNAP_TOGGLE_ACTION := &"dev_pixel_snap_toggle"
-const TEXTURE_FILTER_TOGGLE_ACTION := &"dev_texture_filter_toggle"
 const DIAGNOSTICS_TOGGLE_ACTION := &"dev_diagnostics_toggle"
 const COLLISION_DEBUG_TOGGLE_ACTION := &"dev_collision_debug_toggle"
 const CONTROLS_TOGGLE_ACTION := &"dev_controls_toggle"
+const ACCEPT_STANDARD_ACTION := &"dev_accept_visual_standard"
 const DIAGNOSTICS_UPDATE_INTERVAL := 0.2
 const OUTPUT_PIXEL_PHASE_BIAS := 0.25
 const WORLD_LEFT := 0
@@ -75,10 +78,23 @@ const WORLD_BOTTOM := 2160
 const CAMERA_ZOOM_NAMES: Array[String] = ["Weit", "Mittel", "Nah"]
 const CAMERA_ZOOM_VALUES: Array[float] = [0.75, 1.0, 1.5]
 const CAMERA_ZOOM_IDS: Array[String] = ["wide", "medium", "near"]
-const CAMERA_PROFILE_NAMES: Array[String] = [
-	"Testlabor · Weit",
-	"Welt/Dungeon · Kandidat",
-	"Kleiner Innenraum · experimentell",
+const CAMERA_CONTEXT_IDS: Array[StringName] = [
+	&"world",
+	&"village",
+	&"dungeon",
+	&"small_interior",
+]
+const CAMERA_CONTEXT_NAMES: Array[String] = [
+	"Außenwelt",
+	"Dorf",
+	"Dungeon",
+	"Kleiner Innenraum",
+]
+const CAMERA_SETTING_KEYS: Array[String] = [
+	"camera_zoom_world",
+	"camera_zoom_village",
+	"camera_zoom_dungeon",
+	"camera_zoom_small_interior",
 ]
 const HERO_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const HERO_SIZE_VALUES: Array[float] = [64.0, 80.0, 96.0]
@@ -103,44 +119,36 @@ const REFERENCE_ASPECT_RATIO := "16:9"
 	$TestWorld/HeroCharacter/PlayerCamera
 )
 @onready var hero_visual: Node2D = $TestWorld/HeroCharacter/Visual
-@onready var camera_status: Label = $InterfaceLayer/Interface/Text/CameraStatus
 @onready var hero_character: HERO_SCRIPT = $TestWorld/HeroCharacter
-@onready var hero_size_status: Label = $InterfaceLayer/Interface/Text/HeroSizeStatus
 @onready var tile_grid_preview: TILE_GRID_PREVIEW_SCRIPT = (
 	$TestWorld/TileComparison/TileGridPreview
 )
-@onready var tile_size_status: Label = $InterfaceLayer/Interface/Text/TileSizeStatus
 @onready var world_state_preview: WORLD_STATE_PREVIEW_SCRIPT = $TestWorld/WorldStatePreview
-@onready var world_state_status: Label = $InterfaceLayer/Interface/Text/WorldStateStatus
-@onready var scale_profile_button: Button = (
-	$InterfaceLayer/Interface/Text/ScaleProfileButton
-)
-@onready var fog_variant_button: Button = (
-	$InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton
-)
-@onready var light_variant_button: Button = (
-	$InterfaceLayer/Interface/Text/AtmosphereButtons/LightVariantButton
-)
-@onready var pixel_snap_button: Button = (
-	$InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton
-)
-@onready var texture_filter_button: Button = (
-	$InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton
-)
-@onready var window_size_status: Label = $InterfaceLayer/Interface/Text/WindowSizeStatus
 @onready var diagnostics_panel: Panel = $InterfaceLayer/DiagnosticsPanel
 @onready var diagnostics_values: Label = $InterfaceLayer/DiagnosticsPanel/Values
 @onready var collision_debug_overlay: COLLISION_DEBUG_OVERLAY_SCRIPT = (
 	$TestWorld/CollisionDebugOverlay
 )
 @onready var controls_panel: Panel = $InterfaceLayer/HudPanel
-@onready var controls_interface: MarginContainer = $InterfaceLayer/Interface
+@onready var controls_interface: VisualLabMenuScript = $InterfaceLayer/Interface
 @onready var controls_prompt: Label = $InterfaceLayer/ControlsPrompt
 @onready var test_world: Node2D = $TestWorld
+@onready var camera_status: Label = controls_interface.camera_status
+@onready var hero_size_status: Label = controls_interface.hero_size_status
+@onready var tile_size_status: Label = controls_interface.tile_size_status
+@onready var world_state_status: Label = controls_interface.world_state_status
+@onready var window_size_status: Label = controls_interface.window_size_status
 
 var _navigation_requested := false
 var _diagnostics_elapsed := 0.0
+var _selected_camera_context := 0
 var _selected_camera_zoom: int = CameraZoomPreset.MEDIUM
+var _selected_camera_zooms: Array[int] = [
+	CameraZoomPreset.MEDIUM,
+	CameraZoomPreset.MEDIUM,
+	CameraZoomPreset.MEDIUM,
+	CameraZoomPreset.NEAR,
+]
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
@@ -154,6 +162,7 @@ var _selected_light_variants: Array[int] = [
 ]
 var _pixel_snap_enabled := true
 var _selected_texture_filter: int = TextureFilterPreset.NEAREST
+var _standards: VisualLabStandardsResource = DEFAULT_STANDARDS
 var _active_camera_profile: CameraProfileResource = CameraProfileResource.new()
 var _pixel_snap_viewport: Viewport
 var _initial_viewport_pixel_snap := false
@@ -175,11 +184,11 @@ func _ready() -> void:
 	_initial_camera_top_level = player_camera.top_level
 	_initial_hero_visual_top_level = hero_visual.top_level
 	_collect_texture_filter_targets(test_world)
-	scale_profile_button.pressed.connect(_on_scale_profile_button_pressed)
-	fog_variant_button.pressed.connect(_on_fog_variant_button_pressed)
-	light_variant_button.pressed.connect(_on_light_variant_button_pressed)
-	pixel_snap_button.pressed.connect(_on_pixel_snap_button_pressed)
-	texture_filter_button.pressed.connect(_on_texture_filter_button_pressed)
+	controls_interface.option_selected.connect(_on_menu_option_selected)
+	controls_interface.setting_focused.connect(_on_menu_setting_focused)
+	controls_interface.accept_requested.connect(_on_accept_requested)
+	controls_interface.close_requested.connect(_on_menu_close_requested)
+	controls_interface.bundle_confirmed.connect(_on_scale_bundle_confirmed)
 	player_camera.limit_left = WORLD_LEFT
 	player_camera.limit_top = WORLD_TOP
 	player_camera.limit_right = WORLD_RIGHT
@@ -189,9 +198,9 @@ func _ready() -> void:
 	player_camera.make_current()
 	diagnostics_panel.visible = false
 	collision_debug_overlay.set_debug_visible(false)
-	_set_controls_visible(false)
 	resized.connect(_on_visual_lab_resized)
 	get_window().size_changed.connect(_on_main_window_size_changed)
+	_load_standards()
 	_load_settings()
 	_apply_camera_zoom()
 	_apply_hero_size()
@@ -201,6 +210,8 @@ func _ready() -> void:
 	_apply_texture_filter()
 	_update_scale_profile_status()
 	_update_window_size_status()
+	_refresh_menu()
+	_set_controls_visible(false)
 
 
 func _exit_tree() -> void:
@@ -237,51 +248,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not _is_repeated_key_event(event):
 			_set_controls_visible(not controls_panel.visible)
 		return
-	if event.is_action_pressed(ZOOM_OUT_ACTION):
+	if event.is_action_pressed(ACCEPT_STANDARD_ACTION):
 		get_viewport().set_input_as_handled()
-		_change_camera_zoom(-1)
-		return
-	if event.is_action_pressed(ZOOM_IN_ACTION):
-		get_viewport().set_input_as_handled()
-		_change_camera_zoom(1)
-		return
-	if event.is_action_pressed(HERO_SIZE_DECREASE_ACTION):
-		get_viewport().set_input_as_handled()
-		_change_hero_size(-1)
-		return
-	if event.is_action_pressed(HERO_SIZE_INCREASE_ACTION):
-		get_viewport().set_input_as_handled()
-		_change_hero_size(1)
-		return
-	if event.is_action_pressed(TILE_SIZE_DECREASE_ACTION):
-		get_viewport().set_input_as_handled()
-		_change_tile_size(-1)
-		return
-	if event.is_action_pressed(TILE_SIZE_INCREASE_ACTION):
-		get_viewport().set_input_as_handled()
-		_change_tile_size(1)
-		return
-	if event.is_action_pressed(WORLD_STATE_TOGGLE_ACTION):
-		get_viewport().set_input_as_handled()
-		_toggle_world_state()
-		return
-	if event.is_action_pressed(FOG_VARIANT_CYCLE_ACTION):
-		get_viewport().set_input_as_handled()
-		_cycle_fog_variant()
-		return
-	if event.is_action_pressed(LIGHT_VARIANT_CYCLE_ACTION):
-		get_viewport().set_input_as_handled()
-		_cycle_light_variant()
-		return
-	if event.is_action_pressed(PIXEL_SNAP_TOGGLE_ACTION):
-		get_viewport().set_input_as_handled()
-		if not _is_repeated_key_event(event):
-			_toggle_pixel_snap()
-		return
-	if event.is_action_pressed(TEXTURE_FILTER_TOGGLE_ACTION):
-		get_viewport().set_input_as_handled()
-		if not _is_repeated_key_event(event):
-			_toggle_texture_filter()
+		if controls_panel.visible and not _is_repeated_key_event(event):
+			_on_accept_requested()
 		return
 	if _navigation_requested or not event.is_action_pressed(&"ui_cancel"):
 		return
@@ -308,17 +278,41 @@ func _change_camera_zoom(direction: int) -> void:
 	)
 	if next_zoom == _selected_camera_zoom:
 		return
-	_selected_camera_zoom = next_zoom
+	_set_camera_zoom(next_zoom)
+
+
+func _set_camera_context(context_index: int) -> void:
+	_selected_camera_context = clampi(
+		context_index,
+		0,
+		CAMERA_CONTEXT_IDS.size() - 1,
+	)
+	_selected_camera_zoom = _selected_camera_zooms[_selected_camera_context]
+	_apply_camera_zoom()
+	_save_settings()
+	_refresh_menu()
+
+
+func _set_camera_zoom(zoom_index: int) -> void:
+	_selected_camera_zoom = clampi(
+		zoom_index,
+		CameraZoomPreset.WIDE,
+		CameraZoomPreset.NEAR,
+	)
+	_selected_camera_zooms[_selected_camera_context] = _selected_camera_zoom
 	_apply_camera_zoom()
 	_update_scale_profile_status()
 	_save_settings()
+	_refresh_menu()
 
 
 func _apply_camera_zoom() -> void:
 	var selected_zoom := CAMERA_ZOOM_VALUES[_selected_camera_zoom]
 	var effective_zoom := maxf(selected_zoom, _minimum_camera_zoom())
 	_active_camera_profile.base_zoom = effective_zoom
-	_active_camera_profile.profile_name = CAMERA_PROFILE_NAMES[_selected_camera_zoom]
+	_active_camera_profile.profile_name = (
+		"Testlabor · %s" % CAMERA_CONTEXT_NAMES[_selected_camera_context]
+	)
 	var profile_error := player_camera.set_profile(_active_camera_profile)
 	if profile_error != OK:
 		push_error("VisualLab could not apply its camera profile.")
@@ -326,10 +320,18 @@ func _apply_camera_zoom() -> void:
 	var limited_suffix := ""
 	if effective_zoom > selected_zoom:
 		limited_suffix = " · durch Weltgröße begrenzt"
-	camera_status.text = "Kamera: %s · %s×%s" % [
+	var inheritance_suffix := ""
+	if (
+		CAMERA_CONTEXT_IDS[_selected_camera_context] == &"village"
+		and _standards.village_inherits_world
+	):
+		inheritance_suffix = " · Spielstandard erbt Außenwelt"
+	camera_status.text = "Kamera: %s · %s · %s×%s%s" % [
+		CAMERA_CONTEXT_NAMES[_selected_camera_context],
 		CAMERA_ZOOM_NAMES[_selected_camera_zoom],
 		_format_camera_zoom(effective_zoom),
 		limited_suffix,
+		inheritance_suffix,
 	]
 	_refresh_diagnostics_if_visible()
 
@@ -342,10 +344,19 @@ func _change_hero_size(direction: int) -> void:
 	)
 	if next_size == _selected_hero_size:
 		return
-	_selected_hero_size = next_size
+	_set_hero_size(next_size)
+
+
+func _set_hero_size(size_index: int) -> void:
+	_selected_hero_size = clampi(
+		size_index,
+		HeroSizePreset.SMALL,
+		HeroSizePreset.LARGE,
+	)
 	_apply_hero_size()
 	_update_scale_profile_status()
 	_save_settings()
+	_refresh_menu()
 
 
 func _apply_hero_size() -> void:
@@ -366,10 +377,19 @@ func _change_tile_size(direction: int) -> void:
 	)
 	if next_size == _selected_tile_size:
 		return
-	_selected_tile_size = next_size
+	_set_tile_size(next_size)
+
+
+func _set_tile_size(size_index: int) -> void:
+	_selected_tile_size = clampi(
+		size_index,
+		TileSizePreset.SMALL,
+		TileSizePreset.LARGE,
+	)
 	_apply_tile_size()
 	_update_scale_profile_status()
 	_save_settings()
+	_refresh_menu()
 
 
 func _apply_tile_size() -> void:
@@ -388,8 +408,18 @@ func _toggle_world_state() -> void:
 		_selected_world_state = WorldStatePreset.RESTORED
 	else:
 		_selected_world_state = WorldStatePreset.DAMAGED
+	_set_world_state(_selected_world_state)
+
+
+func _set_world_state(world_state: int) -> void:
+	_selected_world_state = clampi(
+		world_state,
+		WorldStatePreset.DAMAGED,
+		WorldStatePreset.RESTORED,
+	)
 	_apply_world_state()
 	_save_settings()
+	_refresh_menu()
 
 
 func _apply_world_state() -> void:
@@ -402,26 +432,44 @@ func _cycle_fog_variant() -> void:
 	var variant_count := world_state_preview.get_fog_variant_count(
 		_selected_world_state
 	)
-	_selected_fog_variants[_selected_world_state] = wrapi(
+	_set_fog_variant(wrapi(
 		_selected_fog_variants[_selected_world_state] + 1,
 		0,
 		variant_count,
+	))
+
+
+func _set_fog_variant(variant_index: int) -> void:
+	_selected_fog_variants[_selected_world_state] = clampi(
+		variant_index,
+		0,
+		world_state_preview.get_fog_variant_count(_selected_world_state) - 1,
 	)
 	_apply_atmosphere()
 	_save_settings()
+	_refresh_menu()
 
 
 func _cycle_light_variant() -> void:
 	var variant_count := world_state_preview.get_light_variant_count(
 		_selected_world_state
 	)
-	_selected_light_variants[_selected_world_state] = wrapi(
+	_set_light_variant(wrapi(
 		_selected_light_variants[_selected_world_state] + 1,
 		0,
 		variant_count,
+	))
+
+
+func _set_light_variant(variant_index: int) -> void:
+	_selected_light_variants[_selected_world_state] = clampi(
+		variant_index,
+		0,
+		world_state_preview.get_light_variant_count(_selected_world_state) - 1,
 	)
 	_apply_atmosphere()
 	_save_settings()
+	_refresh_menu()
 
 
 func _apply_atmosphere() -> void:
@@ -429,30 +477,35 @@ func _apply_atmosphere() -> void:
 		_selected_fog_variants[_selected_world_state],
 		_selected_light_variants[_selected_world_state],
 	)
-	fog_variant_button.text = "Nebel: %s" % world_state_preview.get_active_fog_name()
-	light_variant_button.text = (
+	controls_interface.fog_status.text = (
+		"Nebel: %s" % world_state_preview.get_active_fog_name()
+	)
+	controls_interface.light_status.text = (
 		"Licht: %s" % world_state_preview.get_active_light_name()
 	)
 	_refresh_diagnostics_if_visible()
 
 
 func _toggle_pixel_snap() -> void:
-	_set_pixel_snap_enabled(not _pixel_snap_enabled)
-	_update_scale_profile_status()
-	_save_settings()
+	_set_pixel_snap_enabled(not _pixel_snap_enabled, true)
 
 
-func _set_pixel_snap_enabled(pixel_snap_enabled: bool) -> void:
+func _set_pixel_snap_enabled(
+		pixel_snap_enabled: bool,
+		persist_and_refresh: bool = false,
+) -> void:
 	_pixel_snap_enabled = pixel_snap_enabled
 	_apply_pixel_snap()
+	if persist_and_refresh:
+		_update_scale_profile_status()
+		_save_settings()
+		_refresh_menu()
 
 
 func _apply_pixel_snap() -> void:
 	_pixel_snap_viewport.snap_2d_transforms_to_pixel = false
 	_pixel_snap_viewport.snap_2d_vertices_to_pixel = false
 	_update_pixel_snap_render_alignment()
-	pixel_snap_button.button_pressed = _pixel_snap_enabled
-	pixel_snap_button.text = "Pixel-Snap: %s" % _pixel_snap_name()
 	_refresh_diagnostics_if_visible()
 
 
@@ -460,9 +513,7 @@ func _toggle_texture_filter() -> void:
 	var next_filter := TextureFilterPreset.SOFT
 	if _selected_texture_filter == TextureFilterPreset.SOFT:
 		next_filter = TextureFilterPreset.NEAREST
-	_set_texture_filter(next_filter)
-	_update_scale_profile_status()
-	_save_settings()
+	_set_texture_filter(next_filter, true)
 
 
 func get_scale_profile_count() -> int:
@@ -493,7 +544,9 @@ func apply_scale_profile(profile_index: int) -> Error:
 	):
 		return ERR_INVALID_DATA
 
-	_selected_camera_zoom = camera_index
+	_selected_camera_zooms[0] = camera_index
+	if _selected_camera_context == 0:
+		_selected_camera_zoom = camera_index
 	_selected_hero_size = hero_index
 	_selected_tile_size = tile_index
 	_pixel_snap_enabled = profile.pixel_snap_enabled
@@ -505,16 +558,24 @@ func apply_scale_profile(profile_index: int) -> Error:
 	_apply_texture_filter()
 	_update_scale_profile_status()
 	_save_settings()
+	_refresh_menu()
 	return OK
 
 
-func _set_texture_filter(texture_filter: int) -> void:
+func _set_texture_filter(
+		texture_filter: int,
+		persist_and_refresh: bool = false,
+) -> void:
 	_selected_texture_filter = clampi(
 		texture_filter,
 		TextureFilterPreset.NEAREST,
 		TextureFilterPreset.SOFT,
 	)
 	_apply_texture_filter()
+	if persist_and_refresh:
+		_update_scale_profile_status()
+		_save_settings()
+		_refresh_menu()
 
 
 func _apply_texture_filter() -> void:
@@ -522,10 +583,6 @@ func _apply_texture_filter() -> void:
 	for sprite in _texture_filter_targets:
 		if is_instance_valid(sprite):
 			sprite.texture_filter = selected_filter as CanvasItem.TextureFilter
-	texture_filter_button.button_pressed = (
-		_selected_texture_filter == TextureFilterPreset.SOFT
-	)
-	texture_filter_button.text = "Texturfilter: %s" % _texture_filter_name()
 	_refresh_diagnostics_if_visible()
 
 
@@ -552,29 +609,24 @@ func _toggle_diagnostics() -> void:
 	_diagnostics_elapsed = 0.0
 	if diagnostics_panel.visible:
 		_update_diagnostics_values()
+	_refresh_menu()
 
 
 func _toggle_collision_debug() -> void:
 	collision_debug_overlay.set_debug_visible(not collision_debug_overlay.visible)
+	_refresh_menu()
 
 
 func _set_controls_visible(controls_visible: bool) -> void:
 	controls_panel.visible = controls_visible
 	controls_interface.visible = controls_visible
 	controls_prompt.visible = not controls_visible
+	hero_character.set_movement_enabled(not controls_visible)
 	if controls_visible:
-		pixel_snap_button.grab_focus()
+		_refresh_menu()
+		controls_interface.focus_primary_setting()
 	else:
-		if pixel_snap_button.has_focus():
-			pixel_snap_button.release_focus()
-		if texture_filter_button.has_focus():
-			texture_filter_button.release_focus()
-		if fog_variant_button.has_focus():
-			fog_variant_button.release_focus()
-		if light_variant_button.has_focus():
-			light_variant_button.release_focus()
-		if scale_profile_button.has_focus():
-			scale_profile_button.release_focus()
+		controls_interface.release_menu_focus()
 
 
 func _update_diagnostics_values() -> void:
@@ -603,7 +655,7 @@ func _update_diagnostics_values() -> void:
 			"Referenzauflösung: %d × %d"
 			% [_reference_resolution().x, _reference_resolution().y],
 			"Seitenverhältnis: %s" % REFERENCE_ASPECT_RATIO,
-			"Kameraprofil: %s" % CAMERA_PROFILE_NAMES[_selected_camera_zoom],
+			"Kamerabereich: %s" % CAMERA_CONTEXT_NAMES[_selected_camera_context],
 			"Kamera-Basis: %s×"
 			% _format_camera_zoom(player_camera.get_base_zoom()),
 			"Kamera-Aktiv: %s×"
@@ -643,22 +695,29 @@ func _is_repeated_key_event(event: InputEvent) -> bool:
 	return echo_value is bool and echo_value
 
 
-func _load_settings() -> void:
-	_selected_camera_zoom = CameraZoomPreset.MEDIUM
-	_selected_hero_size = HeroSizePreset.MEDIUM
-	_selected_tile_size = TileSizePreset.SMALL
-	_selected_world_state = WorldStatePreset.DAMAGED
-	_selected_fog_variants = [
-		WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_FOG_VARIANT,
-		WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_FOG_VARIANT,
-	]
-	_selected_light_variants = [
-		WORLD_STATE_PREVIEW_SCRIPT.DAMAGED_DEFAULT_LIGHT_VARIANT,
-		WORLD_STATE_PREVIEW_SCRIPT.RESTORED_DEFAULT_LIGHT_VARIANT,
-	]
-	_pixel_snap_enabled = true
-	_selected_texture_filter = TextureFilterPreset.NEAREST
+func _load_standards() -> void:
+	var loaded := load(_standards_path()) as VisualLabStandardsResource
+	if not _standards_are_valid(loaded):
+		push_error("VisualLab could not load valid visual standards.")
+		_standards = DEFAULT_STANDARDS
+		return
+	_standards = loaded
 
+
+func _standards_are_valid(standards: VisualLabStandardsResource) -> bool:
+	return (
+		standards != null
+		and standards.schema_version == 1
+		and standards.scale_profile != null
+		and standards.world_camera_profile != null
+		and standards.village_camera_profile != null
+		and standards.dungeon_camera_profile != null
+		and standards.small_interior_camera_profile != null
+	)
+
+
+func _load_settings() -> void:
+	_reset_preview_to_standards()
 	var settings := ConfigFile.new()
 	var load_error := settings.load(_settings_path())
 	if load_error == ERR_FILE_NOT_FOUND:
@@ -667,26 +726,88 @@ func _load_settings() -> void:
 		push_warning("VisualLab could not load its settings (error %d)." % load_error)
 		return
 	var stored_version: Variant = settings.get_value(SETTINGS_META_SECTION, "version", 0)
-	if not stored_version is int or stored_version != SETTINGS_VERSION:
+	if not stored_version is int:
 		return
+	if stored_version == 1:
+		_load_legacy_settings(settings)
+		_save_settings()
+		return
+	if stored_version != SETTINGS_VERSION:
+		return
+	_load_current_settings(settings)
 
-	_selected_camera_zoom = _read_preset_index(
+
+func _reset_preview_to_standards() -> void:
+	for context_index in range(CAMERA_CONTEXT_IDS.size()):
+		_selected_camera_zooms[context_index] = _accepted_camera_zoom_index(
+			context_index
+		)
+	_selected_camera_context = 0
+	_selected_camera_zoom = _selected_camera_zooms[_selected_camera_context]
+	var scale_profile := _standards.scale_profile
+	_selected_hero_size = _preset_index_for_float(
+		HERO_SIZE_VALUES,
+		scale_profile.hero_height,
+		HeroSizePreset.MEDIUM,
+	)
+	_selected_tile_size = _preset_index_for_int(
+		TILE_SIZE_VALUES,
+		scale_profile.tile_size,
+		TileSizePreset.SMALL,
+	)
+	_selected_world_state = WorldStatePreset.DAMAGED
+	for world_state in range(WORLD_STATE_IDS.size()):
+		_selected_fog_variants[world_state] = _accepted_fog_index(world_state)
+		_selected_light_variants[world_state] = _accepted_light_index(world_state)
+	_pixel_snap_enabled = scale_profile.pixel_snap_enabled
+	_selected_texture_filter = _preset_index_for_string(
+		TEXTURE_FILTER_IDS,
+		scale_profile.texture_filter_id,
+		TextureFilterPreset.NEAREST,
+	)
+
+
+func _load_legacy_settings(settings: ConfigFile) -> void:
+	_selected_camera_zooms[0] = _read_preset_index(
 		settings,
 		"camera_zoom",
 		CAMERA_ZOOM_IDS,
-		CameraZoomPreset.MEDIUM,
+		_selected_camera_zooms[0],
 	)
+	_load_shared_settings(settings)
+	_selected_camera_zoom = _selected_camera_zooms[_selected_camera_context]
+
+
+func _load_current_settings(settings: ConfigFile) -> void:
+	_selected_camera_context = _read_preset_index(
+		settings,
+		"camera_context",
+		_camera_context_string_ids(),
+		0,
+	)
+	for context_index in range(CAMERA_CONTEXT_IDS.size()):
+		_selected_camera_zooms[context_index] = _read_preset_index(
+			settings,
+			CAMERA_SETTING_KEYS[context_index],
+			CAMERA_ZOOM_IDS,
+			_selected_camera_zooms[context_index],
+		)
+	_load_shared_settings(settings)
+	_selected_camera_zoom = _selected_camera_zooms[_selected_camera_context]
+
+
+func _load_shared_settings(settings: ConfigFile) -> void:
 	_selected_hero_size = _read_preset_index(
 		settings,
 		"hero_size",
 		HERO_SIZE_IDS,
-		HeroSizePreset.MEDIUM,
+		_selected_hero_size,
 	)
 	_selected_tile_size = _read_preset_index(
 		settings,
 		"tile_size",
 		TILE_SIZE_IDS,
-		TileSizePreset.SMALL,
+		_selected_tile_size,
 	)
 	_selected_world_state = _read_preset_index(
 		settings,
@@ -695,36 +816,38 @@ func _load_settings() -> void:
 		WorldStatePreset.DAMAGED,
 	)
 	for world_state in range(WORLD_STATE_IDS.size()):
-		var default_fog := world_state_preview.get_default_fog_variant(world_state)
 		var stored_fog: Variant = settings.get_value(
 			SETTINGS_SECTION,
 			FOG_SETTING_KEYS[world_state],
-			world_state_preview.get_fog_variant_id(world_state, default_fog),
+			_standards.fog_id_for(StringName(WORLD_STATE_IDS[world_state])),
 		)
 		_selected_fog_variants[world_state] = world_state_preview.find_fog_variant(
 			world_state,
 			str(stored_fog),
-			default_fog,
+			_selected_fog_variants[world_state],
 		)
-		var default_light := world_state_preview.get_default_light_variant(world_state)
 		var stored_light: Variant = settings.get_value(
 			SETTINGS_SECTION,
 			LIGHT_SETTING_KEYS[world_state],
-			world_state_preview.get_light_variant_id(world_state, default_light),
+			_standards.light_id_for(StringName(WORLD_STATE_IDS[world_state])),
 		)
 		_selected_light_variants[world_state] = (
 			world_state_preview.find_light_variant(
 				world_state,
 				str(stored_light),
-				default_light,
+				_selected_light_variants[world_state],
 			)
 		)
-	_pixel_snap_enabled = _read_bool_setting(settings, "pixel_snap", true)
+	_pixel_snap_enabled = _read_bool_setting(
+		settings,
+		"pixel_snap",
+		_pixel_snap_enabled,
+	)
 	_selected_texture_filter = _read_preset_index(
 		settings,
 		"texture_filter",
 		TEXTURE_FILTER_IDS,
-		TextureFilterPreset.NEAREST,
+		_selected_texture_filter,
 	)
 
 
@@ -733,9 +856,15 @@ func _save_settings() -> void:
 	settings.set_value(SETTINGS_META_SECTION, "version", SETTINGS_VERSION)
 	settings.set_value(
 		SETTINGS_SECTION,
-		"camera_zoom",
-		CAMERA_ZOOM_IDS[_selected_camera_zoom],
+		"camera_context",
+		str(CAMERA_CONTEXT_IDS[_selected_camera_context]),
 	)
+	for context_index in range(CAMERA_CONTEXT_IDS.size()):
+		settings.set_value(
+			SETTINGS_SECTION,
+			CAMERA_SETTING_KEYS[context_index],
+			CAMERA_ZOOM_IDS[_selected_camera_zooms[context_index]],
+		)
 	settings.set_value(
 		SETTINGS_SECTION,
 		"hero_size",
@@ -816,6 +945,51 @@ func _settings_path() -> String:
 	)
 
 
+func _standards_path() -> String:
+	return str(
+		ProjectSettings.get_setting(
+			STANDARDS_PATH_PROJECT_KEY,
+			DEFAULT_STANDARDS_PATH,
+		)
+	)
+
+
+func _camera_context_string_ids() -> Array[String]:
+	var result: Array[String] = []
+	for context_id in CAMERA_CONTEXT_IDS:
+		result.append(str(context_id))
+	return result
+
+
+func _preset_index_for_float(
+		values: Array[float],
+		selected_value: float,
+		fallback: int,
+) -> int:
+	for value_index in range(values.size()):
+		if is_equal_approx(values[value_index], selected_value):
+			return value_index
+	return fallback
+
+
+func _preset_index_for_int(
+		values: Array[int],
+		selected_value: int,
+		fallback: int,
+) -> int:
+	var value_index := values.find(selected_value)
+	return value_index if value_index >= 0 else fallback
+
+
+func _preset_index_for_string(
+		values: Array[String],
+		selected_value: String,
+		fallback: int,
+) -> int:
+	var value_index := values.find(selected_value)
+	return value_index if value_index >= 0 else fallback
+
+
 func _minimum_camera_zoom() -> float:
 	var viewport_size := size
 	if viewport_size.x <= 0.0 or viewport_size.y <= 0.0:
@@ -868,7 +1042,7 @@ func _matching_scale_profile_index() -> int:
 			)
 			and TILE_SIZE_VALUES[_selected_tile_size] == profile.tile_size
 			and is_equal_approx(
-				CAMERA_ZOOM_VALUES[_selected_camera_zoom],
+				CAMERA_ZOOM_VALUES[_selected_camera_zooms[0]],
 				profile.camera_zoom,
 			)
 			and _pixel_snap_enabled == profile.pixel_snap_enabled
@@ -882,10 +1056,574 @@ func _matching_scale_profile_index() -> int:
 
 
 func _update_scale_profile_status() -> void:
-	if scale_profile_button == null:
+	if controls_interface == null:
 		return
-	scale_profile_button.text = "Maßstabsprofil: %s" % _active_scale_profile_name()
+	controls_interface.scale_profile_status.text = (
+		"Aktueller Vergleich: %s" % _active_scale_profile_name()
+	)
 	_refresh_diagnostics_if_visible()
+
+
+func _refresh_menu() -> void:
+	if controls_interface == null or not is_instance_valid(controls_interface):
+		return
+	controls_interface.set_setting_labels(
+		VisualLabMenuScript.SETTING_FOG,
+		_fog_variant_names(_selected_world_state),
+	)
+	controls_interface.set_setting_labels(
+		VisualLabMenuScript.SETTING_LIGHT,
+		_light_variant_names(_selected_world_state),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_CAMERA_CONTEXT,
+		_selected_camera_context,
+	)
+	var accepted_zoom := _accepted_camera_zoom_index(_selected_camera_context)
+	var accepted_zoom_description := "%s×" % _format_camera_zoom(
+		CAMERA_ZOOM_VALUES[accepted_zoom]
+	)
+	if (
+		CAMERA_CONTEXT_IDS[_selected_camera_context] == &"village"
+		and _standards.village_inherits_world
+	):
+		accepted_zoom_description += " · geerbt von Außenwelt"
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_CAMERA_ZOOM,
+		_selected_camera_zoom,
+		accepted_zoom,
+		accepted_zoom_description,
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_SCALE_PROFILE,
+		_matching_scale_profile_index(),
+		_accepted_scale_profile_index(),
+		_accepted_scale_profile_name(),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_HERO_SIZE,
+		_selected_hero_size,
+		_accepted_hero_size_index(),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_TILE_SIZE,
+		_selected_tile_size,
+		_accepted_tile_size_index(),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_PIXEL_SNAP,
+		int(_pixel_snap_enabled),
+		int(_standards.scale_profile.pixel_snap_enabled),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_TEXTURE_FILTER,
+		_selected_texture_filter,
+		_accepted_texture_filter_index(),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_WORLD_STATE,
+		_selected_world_state,
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_FOG,
+		_selected_fog_variants[_selected_world_state],
+		_accepted_fog_index(_selected_world_state),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_LIGHT,
+		_selected_light_variants[_selected_world_state],
+		_accepted_light_index(_selected_world_state),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_DIAGNOSTICS,
+		int(diagnostics_panel.visible),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_COLLISION,
+		int(collision_debug_overlay.visible),
+	)
+	_on_menu_setting_focused(controls_interface.get_focused_setting_id())
+
+
+func _fog_variant_names(world_state: int) -> Array[String]:
+	var names: Array[String] = []
+	for variant_index in range(
+		world_state_preview.get_fog_variant_count(world_state)
+	):
+		names.append(
+			world_state_preview.get_fog_variant_name(world_state, variant_index)
+		)
+	return names
+
+
+func _light_variant_names(world_state: int) -> Array[String]:
+	var names: Array[String] = []
+	for variant_index in range(
+		world_state_preview.get_light_variant_count(world_state)
+	):
+		names.append(
+			world_state_preview.get_light_variant_name(world_state, variant_index)
+		)
+	return names
+
+
+func _accepted_camera_zoom_index(context_index: int) -> int:
+	var context_id := CAMERA_CONTEXT_IDS[clampi(
+		context_index,
+		0,
+		CAMERA_CONTEXT_IDS.size() - 1,
+	)]
+	var profile := _standards.camera_profile_for(context_id)
+	if profile == null:
+		return CameraZoomPreset.MEDIUM
+	return _preset_index_for_float(
+		CAMERA_ZOOM_VALUES,
+		profile.base_zoom,
+		CameraZoomPreset.MEDIUM,
+	)
+
+
+func _accepted_hero_size_index() -> int:
+	return _preset_index_for_float(
+		HERO_SIZE_VALUES,
+		_standards.scale_profile.hero_height,
+		HeroSizePreset.MEDIUM,
+	)
+
+
+func _accepted_tile_size_index() -> int:
+	return _preset_index_for_int(
+		TILE_SIZE_VALUES,
+		_standards.scale_profile.tile_size,
+		TileSizePreset.SMALL,
+	)
+
+
+func _accepted_texture_filter_index() -> int:
+	return _preset_index_for_string(
+		TEXTURE_FILTER_IDS,
+		_standards.scale_profile.texture_filter_id,
+		TextureFilterPreset.NEAREST,
+	)
+
+
+func _accepted_fog_index(world_state: int) -> int:
+	var default_index := world_state_preview.get_default_fog_variant(world_state)
+	return world_state_preview.find_fog_variant(
+		world_state,
+		_standards.fog_id_for(StringName(WORLD_STATE_IDS[world_state])),
+		default_index,
+	)
+
+
+func _accepted_light_index(world_state: int) -> int:
+	var default_index := world_state_preview.get_default_light_variant(world_state)
+	return world_state_preview.find_light_variant(
+		world_state,
+		_standards.light_id_for(StringName(WORLD_STATE_IDS[world_state])),
+		default_index,
+	)
+
+
+func _accepted_scale_profile_index() -> int:
+	for profile_index in range(get_scale_profile_count()):
+		var profile := get_scale_profile(profile_index)
+		if (
+			is_equal_approx(
+				_standards.scale_profile.hero_height,
+				profile.hero_height,
+			)
+			and _standards.scale_profile.tile_size == profile.tile_size
+			and is_equal_approx(
+				_standards.world_camera_profile.base_zoom,
+				profile.camera_zoom,
+			)
+			and _standards.scale_profile.pixel_snap_enabled
+			== profile.pixel_snap_enabled
+			and _standards.scale_profile.texture_filter_id
+			== profile.texture_filter_id
+			and profile.reference_resolution == _reference_resolution()
+			and profile.aspect_ratio == REFERENCE_ASPECT_RATIO
+		):
+			return profile_index
+	return -1
+
+
+func _accepted_scale_profile_name() -> String:
+	var profile_index := _accepted_scale_profile_index()
+	if profile_index < 0:
+		return "Individuelle Kombination"
+	return get_scale_profile(profile_index).profile_name
+
+
+func _on_menu_option_selected(setting_id: StringName, option_index: int) -> void:
+	match setting_id:
+		VisualLabMenuScript.SETTING_CAMERA_CONTEXT:
+			_set_camera_context(option_index)
+		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
+			_set_camera_zoom(option_index)
+		VisualLabMenuScript.SETTING_SCALE_PROFILE:
+			var apply_error := apply_scale_profile(option_index)
+			if apply_error != OK:
+				controls_interface.show_feedback(
+					"Maßstabsprofil konnte nicht angewendet werden.",
+					true,
+				)
+		VisualLabMenuScript.SETTING_HERO_SIZE:
+			_set_hero_size(option_index)
+		VisualLabMenuScript.SETTING_TILE_SIZE:
+			_set_tile_size(option_index)
+		VisualLabMenuScript.SETTING_PIXEL_SNAP:
+			_set_pixel_snap_enabled(option_index == 1, true)
+		VisualLabMenuScript.SETTING_TEXTURE_FILTER:
+			_set_texture_filter(option_index, true)
+		VisualLabMenuScript.SETTING_WORLD_STATE:
+			_set_world_state(option_index)
+		VisualLabMenuScript.SETTING_FOG:
+			_set_fog_variant(option_index)
+		VisualLabMenuScript.SETTING_LIGHT:
+			_set_light_variant(option_index)
+		VisualLabMenuScript.SETTING_DIAGNOSTICS:
+			_set_diagnostics_visible(option_index == 1)
+		VisualLabMenuScript.SETTING_COLLISION:
+			_set_collision_debug_visible(option_index == 1)
+
+
+func _set_diagnostics_visible(visible: bool) -> void:
+	if diagnostics_panel.visible == visible:
+		return
+	_toggle_diagnostics()
+
+
+func _set_collision_debug_visible(visible: bool) -> void:
+	if collision_debug_overlay.visible == visible:
+		return
+	_toggle_collision_debug()
+
+
+func _on_menu_setting_focused(setting_id: StringName) -> void:
+	var can_accept := _focused_setting_can_be_accepted(setting_id)
+	controls_interface.update_acceptance(
+		can_accept,
+		can_accept and _setting_matches_standard(setting_id),
+		_setting_subject(setting_id),
+	)
+
+
+func _setting_is_acceptable(setting_id: StringName) -> bool:
+	return setting_id in [
+		VisualLabMenuScript.SETTING_CAMERA_ZOOM,
+		VisualLabMenuScript.SETTING_SCALE_PROFILE,
+		VisualLabMenuScript.SETTING_HERO_SIZE,
+		VisualLabMenuScript.SETTING_TILE_SIZE,
+		VisualLabMenuScript.SETTING_PIXEL_SNAP,
+		VisualLabMenuScript.SETTING_TEXTURE_FILTER,
+		VisualLabMenuScript.SETTING_FOG,
+		VisualLabMenuScript.SETTING_LIGHT,
+	]
+
+
+func _focused_setting_can_be_accepted(setting_id: StringName) -> bool:
+	if not _setting_is_acceptable(setting_id):
+		return false
+	return (
+		setting_id != VisualLabMenuScript.SETTING_SCALE_PROFILE
+		or _matching_scale_profile_index() >= 0
+	)
+
+
+func _setting_matches_standard(setting_id: StringName) -> bool:
+	match setting_id:
+		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
+			return (
+				_selected_camera_zoom
+				== _accepted_camera_zoom_index(_selected_camera_context)
+			)
+		VisualLabMenuScript.SETTING_SCALE_PROFILE:
+			var current_profile := _matching_scale_profile_index()
+			return (
+				current_profile >= 0
+				and current_profile == _accepted_scale_profile_index()
+			)
+		VisualLabMenuScript.SETTING_HERO_SIZE:
+			return _selected_hero_size == _accepted_hero_size_index()
+		VisualLabMenuScript.SETTING_TILE_SIZE:
+			return _selected_tile_size == _accepted_tile_size_index()
+		VisualLabMenuScript.SETTING_PIXEL_SNAP:
+			return (
+				_pixel_snap_enabled
+				== _standards.scale_profile.pixel_snap_enabled
+			)
+		VisualLabMenuScript.SETTING_TEXTURE_FILTER:
+			return (
+				_selected_texture_filter == _accepted_texture_filter_index()
+			)
+		VisualLabMenuScript.SETTING_FOG:
+			return (
+				_selected_fog_variants[_selected_world_state]
+				== _accepted_fog_index(_selected_world_state)
+			)
+		VisualLabMenuScript.SETTING_LIGHT:
+			return (
+				_selected_light_variants[_selected_world_state]
+				== _accepted_light_index(_selected_world_state)
+			)
+	return false
+
+
+func _setting_subject(setting_id: StringName) -> String:
+	match setting_id:
+		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
+			return "Zoom · %s" % CAMERA_CONTEXT_NAMES[_selected_camera_context]
+		VisualLabMenuScript.SETTING_SCALE_PROFILE:
+			return "Maßstabsprofil"
+		VisualLabMenuScript.SETTING_HERO_SIZE:
+			return "Heldenhöhe"
+		VisualLabMenuScript.SETTING_TILE_SIZE:
+			return "Tilegröße"
+		VisualLabMenuScript.SETTING_PIXEL_SNAP:
+			return "Pixel-Snap"
+		VisualLabMenuScript.SETTING_TEXTURE_FILTER:
+			return "Texturfilter"
+		VisualLabMenuScript.SETTING_FOG:
+			return "Nebel · %s" % WORLD_STATE_NAMES[_selected_world_state]
+		VisualLabMenuScript.SETTING_LIGHT:
+			return "Licht · %s" % WORLD_STATE_NAMES[_selected_world_state]
+	return "Testlaborwert"
+
+
+func _on_accept_requested() -> void:
+	if not controls_panel.visible:
+		return
+	var setting_id := controls_interface.get_focused_setting_id()
+	if not _focused_setting_can_be_accepted(setting_id):
+		controls_interface.show_feedback(
+			"Dieser fokussierte Testwert kann nicht übernommen werden.",
+			true,
+		)
+		return
+	if _setting_matches_standard(setting_id):
+		controls_interface.show_feedback("Der Wert ist bereits Spielstandard.")
+		return
+	if setting_id == VisualLabMenuScript.SETTING_SCALE_PROFILE:
+		_show_scale_bundle_confirmation()
+		return
+	_accept_single_setting(setting_id)
+
+
+func _show_scale_bundle_confirmation() -> void:
+	var profile_index := _matching_scale_profile_index()
+	if profile_index < 0:
+		controls_interface.show_feedback(
+			"Ein freier Vergleich kann nicht als Profilbündel übernommen werden.",
+			true,
+		)
+		return
+	var profile := get_scale_profile(profile_index)
+	controls_interface.show_bundle_confirmation(
+		"Folgende Werte als Spielstandard übernehmen?\n\n"
+		+ "Profil: %s\n" % profile.profile_name
+		+ "Außenwelt-Zoom: %s×\n" % _format_camera_zoom(profile.camera_zoom)
+		+ "Heldenhöhe: %d px\n" % roundi(profile.hero_height)
+		+ "Tilegröße: %d × %d px\n" % [profile.tile_size, profile.tile_size]
+		+ "Pixel-Snap: %s\n" % ("AN" if profile.pixel_snap_enabled else "AUS")
+		+ "Texturfilter: %s"
+		% TEXTURE_FILTER_NAMES[_selected_texture_filter]
+	)
+
+
+func _on_scale_bundle_confirmed() -> void:
+	var save_error := _accept_scale_bundle()
+	_finish_acceptance("Maßstabsprofil", save_error)
+
+
+func _accept_single_setting(setting_id: StringName) -> void:
+	var save_error := ERR_INVALID_PARAMETER
+	match setting_id:
+		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
+			save_error = _accept_camera_zoom()
+		VisualLabMenuScript.SETTING_HERO_SIZE:
+			save_error = _accept_scale_property(
+				&"hero_height",
+				HERO_SIZE_VALUES[_selected_hero_size],
+			)
+		VisualLabMenuScript.SETTING_TILE_SIZE:
+			save_error = _accept_scale_property(
+				&"tile_size",
+				TILE_SIZE_VALUES[_selected_tile_size],
+			)
+		VisualLabMenuScript.SETTING_PIXEL_SNAP:
+			save_error = _accept_scale_property(
+				&"pixel_snap_enabled",
+				_pixel_snap_enabled,
+			)
+		VisualLabMenuScript.SETTING_TEXTURE_FILTER:
+			save_error = _accept_scale_property(
+				&"texture_filter_id",
+				TEXTURE_FILTER_IDS[_selected_texture_filter],
+			)
+		VisualLabMenuScript.SETTING_FOG:
+			save_error = _accept_atmosphere(true)
+		VisualLabMenuScript.SETTING_LIGHT:
+			save_error = _accept_atmosphere(false)
+	_finish_acceptance(_setting_subject(setting_id), save_error)
+
+
+func _accept_camera_zoom() -> Error:
+	if _selected_camera_context == 0:
+		return _accept_world_camera_zoom()
+	var context_id := CAMERA_CONTEXT_IDS[_selected_camera_context]
+	var profile := _standards.owned_camera_profile_for(context_id)
+	var old_zoom := profile.base_zoom
+	var old_inheritance := _standards.village_inherits_world
+	profile.base_zoom = CAMERA_ZOOM_VALUES[_selected_camera_zoom]
+	if context_id == &"village":
+		_standards.village_inherits_world = false
+	var save_error := _save_standard_resource(profile)
+	if save_error == OK and context_id == &"village":
+		save_error = _save_standard_resource(_standards)
+	if save_error == OK:
+		return OK
+	profile.base_zoom = old_zoom
+	_standards.village_inherits_world = old_inheritance
+	_save_standard_resource(profile)
+	return save_error
+
+
+func _accept_world_camera_zoom() -> Error:
+	var camera_profile := _standards.world_camera_profile
+	var scale_profile := _standards.scale_profile
+	var old_camera_zoom := camera_profile.base_zoom
+	var old_scale_zoom := scale_profile.camera_zoom
+	var selected_zoom := CAMERA_ZOOM_VALUES[_selected_camera_zooms[0]]
+	camera_profile.base_zoom = selected_zoom
+	scale_profile.camera_zoom = selected_zoom
+	var save_error := _save_standard_resource(camera_profile)
+	if save_error == OK:
+		save_error = _save_standard_resource(scale_profile)
+	if save_error == OK:
+		return OK
+	camera_profile.base_zoom = old_camera_zoom
+	scale_profile.camera_zoom = old_scale_zoom
+	_save_standard_resource(camera_profile)
+	_save_standard_resource(scale_profile)
+	return save_error
+
+
+func _accept_scale_property(property_name: StringName, value: Variant) -> Error:
+	var scale_profile := _standards.scale_profile
+	var old_value: Variant = scale_profile.get(property_name)
+	scale_profile.set(property_name, value)
+	var save_error := _save_standard_resource(scale_profile)
+	if save_error != OK:
+		scale_profile.set(property_name, old_value)
+	return save_error
+
+
+func _accept_atmosphere(is_fog: bool) -> Error:
+	var world_state_id := StringName(WORLD_STATE_IDS[_selected_world_state])
+	var old_id := (
+		_standards.fog_id_for(world_state_id)
+		if is_fog
+		else _standards.light_id_for(world_state_id)
+	)
+	var selected_id := (
+		world_state_preview.get_fog_variant_id(
+			_selected_world_state,
+			_selected_fog_variants[_selected_world_state],
+		)
+		if is_fog
+		else world_state_preview.get_light_variant_id(
+			_selected_world_state,
+			_selected_light_variants[_selected_world_state],
+		)
+	)
+	if is_fog:
+		_standards.set_fog_id(world_state_id, selected_id)
+	else:
+		_standards.set_light_id(world_state_id, selected_id)
+	var save_error := _save_standard_resource(_standards)
+	if save_error == OK:
+		return OK
+	if is_fog:
+		_standards.set_fog_id(world_state_id, old_id)
+	else:
+		_standards.set_light_id(world_state_id, old_id)
+	return save_error
+
+
+func _accept_scale_bundle() -> Error:
+	var profile_index := _matching_scale_profile_index()
+	if profile_index < 0:
+		return ERR_INVALID_DATA
+	var selected_profile := get_scale_profile(profile_index)
+	var scale_profile := _standards.scale_profile
+	var camera_profile := _standards.world_camera_profile
+	var old_values := {
+		"hero_height": scale_profile.hero_height,
+		"tile_size": scale_profile.tile_size,
+		"camera_zoom": scale_profile.camera_zoom,
+		"pixel_snap_enabled": scale_profile.pixel_snap_enabled,
+		"texture_filter_id": scale_profile.texture_filter_id,
+		"world_camera_zoom": camera_profile.base_zoom,
+	}
+	scale_profile.hero_height = selected_profile.hero_height
+	scale_profile.tile_size = selected_profile.tile_size
+	scale_profile.camera_zoom = selected_profile.camera_zoom
+	scale_profile.pixel_snap_enabled = selected_profile.pixel_snap_enabled
+	scale_profile.texture_filter_id = selected_profile.texture_filter_id
+	camera_profile.base_zoom = selected_profile.camera_zoom
+	var save_error := _save_standard_resource(scale_profile)
+	if save_error == OK:
+		save_error = _save_standard_resource(camera_profile)
+	if save_error == OK:
+		return OK
+	scale_profile.hero_height = float(old_values["hero_height"])
+	scale_profile.tile_size = int(old_values["tile_size"])
+	scale_profile.camera_zoom = float(old_values["camera_zoom"])
+	scale_profile.pixel_snap_enabled = bool(old_values["pixel_snap_enabled"])
+	scale_profile.texture_filter_id = str(old_values["texture_filter_id"])
+	camera_profile.base_zoom = float(old_values["world_camera_zoom"])
+	_save_standard_resource(scale_profile)
+	_save_standard_resource(camera_profile)
+	return save_error
+
+
+func _save_standard_resource(resource: Resource) -> Error:
+	if not OS.is_debug_build() or resource == null:
+		return ERR_UNAUTHORIZED
+	if resource.resource_path.is_empty():
+		return ERR_FILE_CANT_WRITE
+	return ResourceSaver.save(resource)
+
+
+func _finish_acceptance(subject: String, save_error: Error) -> void:
+	if save_error == OK:
+		controls_interface.show_feedback(
+			"%s wurde als Spielstandard übernommen." % subject
+		)
+	else:
+		controls_interface.show_feedback(
+			_standard_save_error_message(save_error),
+			true,
+		)
+	_refresh_menu()
+
+
+func _standard_save_error_message(save_error: Error) -> String:
+	match save_error:
+		ERR_UNAUTHORIZED:
+			return (
+				"Übernahme ist nur in einem beschreibbaren "
+				+ "Entwicklungsbuild verfügbar."
+			)
+		ERR_FILE_CANT_WRITE:
+			return "Die Spielstandard-Ressource besitzt keinen Schreibpfad."
+	return "Spielstandard konnte nicht geschrieben werden (Fehler %d)." % save_error
+
+
+func _on_menu_close_requested() -> void:
+	_set_controls_visible(false)
 
 
 func _reference_resolution() -> Vector2i:
@@ -993,37 +1731,3 @@ func _on_visual_lab_resized() -> void:
 
 func _on_main_window_size_changed() -> void:
 	_update_window_size_status()
-
-
-func _on_pixel_snap_button_pressed() -> void:
-	_set_pixel_snap_enabled(pixel_snap_button.button_pressed)
-	_update_scale_profile_status()
-	_save_settings()
-
-
-func _on_texture_filter_button_pressed() -> void:
-	var selected_filter := TextureFilterPreset.NEAREST
-	if texture_filter_button.button_pressed:
-		selected_filter = TextureFilterPreset.SOFT
-	_set_texture_filter(selected_filter)
-	_update_scale_profile_status()
-	_save_settings()
-
-
-func _on_scale_profile_button_pressed() -> void:
-	var next_profile := wrapi(
-		_matching_scale_profile_index() + 1,
-		0,
-		get_scale_profile_count(),
-	)
-	var apply_error := apply_scale_profile(next_profile)
-	if apply_error != OK:
-		push_error("VisualLab could not apply scale profile %d." % next_profile)
-
-
-func _on_fog_variant_button_pressed() -> void:
-	_cycle_fog_variant()
-
-
-func _on_light_variant_button_pressed() -> void:
-	_cycle_light_variant()

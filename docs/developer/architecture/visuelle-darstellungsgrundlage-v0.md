@@ -1,7 +1,7 @@
 ---
 title: Visuelle Darstellungsgrundlage V0
 status: accepted
-updated: 2026-09-03
+updated: 2026-09-07
 ---
 
 <!-- PYGINDEX:NAVIGATION START -->
@@ -46,9 +46,12 @@ Veröffentlichung niemals mehr überprüft werden dürfen.
 
 ## 3. Kamera und Skalierung
 
-- `1,00×` ist der Standard für Welt, Dungeon und größere Spielbereiche.
-- Kleine Innenräume dürfen über ihr Szenenprofil `1,50×` verwenden.
-- Andere Settings dürfen später ein begründetes eigenes Szenenprofil erhalten.
+- Außenwelt verwendet das Zielbereichsprofil `world` mit `1,00×`.
+- Dorf verwendet `village` und erbt zunächst den Außenweltwert.
+- Dungeon verwendet das eigene Zielbereichsprofil `dungeon` mit `1,00×`.
+- Kleine Innenräume verwenden `small_interior` mit `1,50×`.
+- Weitere Settings dürfen später ein begründetes eigenes Zielbereichsprofil
+  erhalten.
 - Schleichen überlagert das Szenenprofil sofort mit `1,50×`; danach wird das
   Szenenprofil wiederhergestellt.
 - Das Testlabor bewahrt `0,75×`, `1,00×` und `1,50×` für Regressionen auf.
@@ -227,16 +230,26 @@ Name: `Maßstab V0`
 | wiederhergestelltes Nebelprofil | Gering |
 | wiederhergestelltes Lichtprofil | Warm und klar |
 
-Die verbindlichen Maßstabswerte liegen in
-`game/shared/resources/visual_baseline_v0.tres`. Im `F5`-Menü schaltet
-`Maßstabsprofil` die Bündel `A → Maßstab V0 → C`; eine manuelle Abweichung
-erscheint als `Freier Vergleich`.
+Die zentrale Zuordnung der verbindlichen Darstellungswerte liegt in
+`game/shared/resources/visual_lab_standards_v0.tres`. Sie verweist auf die
+Maßstabsressource `visual_baseline_v0.tres`, die vier Zielbereichsprofile
+`camera_world_v0.tres`, `camera_village_v0.tres`,
+`camera_dungeon_v0.tres` und `camera_small_interior_v0.tres` und führt die
+zustandsbezogenen Nebel- und Licht-IDs. Der Heldenraum liest Heldenhöhe,
+Tilegröße und sein kleines Innenraumprofil über diese Zuordnung.
 
-Nebel und Licht sind nicht Teil der Maßstabsressource. Das Testlabor kombiniert
-sie beim Start mit den Standardvarianten des jeweiligen Weltzustands und
-speichert die gewählte Variante getrennt in
-`user://visual_lab_settings.cfg`. Diese lokale Datei überlebt einen
-Programmneustart, ist aber keine Quelle für Produktionsregeln.
+Im `F5`-Menü schaltet `Maßstabsprofil` die unveränderlichen
+Vergleichsbündel `A → Maßstab V0 → C`; eine manuelle Abweichung erscheint als
+`Freier Vergleich`. Die mittlere Vergleichsressource bleibt dabei vom
+beschreibbaren Produktionsstandard getrennt, damit eine spätere Übernahme die
+Vergleichsreihe nicht unbemerkt verändert.
+
+`user://visual_lab_settings.cfg` speichert ausschließlich lokale Testwerte im
+Schema 2. Diese Datei überlebt einen Programmneustart, ist aber keine Quelle
+für Produktionsregeln. Ein Wert wird erst durch den sichtbaren
+Übernahmeknopf oder `Strg + Alt + E` in die versionierten Ressourcen
+geschrieben. Diagnose, Kollisionsanzeige und Weltzustandsvorschau werden nie
+als Spielstandard gespeichert.
 
 Die Profile A und C, alternative Einzelwerte sowie `Freier Vergleich` bleiben
 reine Testvarianten. Eine frische oder unvollständige Konfiguration verwendet
@@ -252,7 +265,7 @@ Werte zeigen:
 - rohes und gerastertes Kameraziel sowie Kamerazentrum,
 - Weltanker,
 - Maßstabsprofil, Referenzauflösung und Seitenverhältnis,
-- Kameraprofil, Kamera-Basis und aktiven Zoom,
+- Kamerabereich, Kamera-Basis und aktiven Zoom,
 - Bewegungs- und Sprungzustand,
 - Figuren- und Tilegröße,
 - Weltzustand, Nebel- und Lichtprofil,

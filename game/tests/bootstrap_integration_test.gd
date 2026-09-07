@@ -23,31 +23,13 @@ const EXPECTED_GUIDE_MESSAGE := (
 	"Du bist wach. Beweg dich erst einmal.\n"
 	+ "Wir müssen einen Ausgang aus diesem Raum finden."
 )
-const EXPECTED_VISUAL_LAB_TITLE := "STEUERUNG"
-const EXPECTED_VISUAL_LAB_MOVEMENT_HEADING := "Bewegen:"
-const EXPECTED_VISUAL_LAB_MOVEMENT_HINT := "WASD / Pfeiltasten / linker Stick"
-const EXPECTED_VISUAL_LAB_BACK_HEADING := "Zurück:"
-const EXPECTED_VISUAL_LAB_BACK_HINT := "Esc / B"
-const EXPECTED_VISUAL_LAB_CAMERA_STATUS := "Kamera: Mittel · 1,00×"
-const EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT := "- / linke Schultertaste: weiter"
-const EXPECTED_VISUAL_LAB_ZOOM_IN_HINT := "+ / rechte Schultertaste: näher"
+const EXPECTED_VISUAL_LAB_TITLE := "VISUELLES TESTLABOR"
+const EXPECTED_VISUAL_LAB_CAMERA_STATUS := (
+	"Kamera: Außenwelt · Mittel · 1,00×"
+)
 const EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS := "Figur: Mittel · 80 Weltpixel"
-const EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
-const EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT := "R / Controller links: kleiner"
-const EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT := "F / Controller oben: größer"
 const EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS := "Tiles: Klein · 32 × 32 Weltpixel"
-const EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT := "T / linker Stick-Klick: kleiner"
-const EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT := "G / rechter Stick-Klick: größer"
 const EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS := "Weltzustand: Beschädigt"
-const EXPECTED_VISUAL_LAB_WORLD_STATE_HINT := "V / Controller-A: Zustand wechseln"
-const EXPECTED_VISUAL_LAB_SCALE_PROFILE_STATUS := "Maßstabsprofil: Maßstab V0"
-const EXPECTED_VISUAL_LAB_SCALE_PROFILE_HINT := "Klick / Auswahl: A → Maßstab V0 → C"
-const EXPECTED_VISUAL_LAB_PIXEL_SNAP_STATUS := "Pixel-Snap: AN"
-const EXPECTED_VISUAL_LAB_PIXEL_SNAP_HINT := "X / Klick / Auswahl: AN / AUS"
-const EXPECTED_VISUAL_LAB_TEXTURE_FILTER_STATUS := "Texturfilter: Nearest-Neighbor"
-const EXPECTED_VISUAL_LAB_TEXTURE_FILTER_HINT := "N / Klick / Auswahl: Nearest / Weich"
-const EXPECTED_VISUAL_LAB_SETTINGS_STATUS := "Testwerte werden automatisch gespeichert"
-const EXPECTED_REFERENCE_STATUS := "Referenz: 1920 × 1080 · 16:9"
 const EXPECTED_REFERENCE_VIEWPORT_SIZE := Vector2(1920, 1080)
 const EXPECTED_START_WINDOW_SIZE := Vector2(1280, 720)
 const EXPECTED_SQUARE_WINDOW_SIZE := Vector2i(1000, 1000)
@@ -522,25 +504,13 @@ func _test_bootstrap_contract() -> void:
 		)
 		if interface != null:
 			_expect(
-				interface.size == configured_viewport_size,
-				"VisualLab interface covers the configured viewport",
-			)
-		var reference_status := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "ReferenceStatus"
-			)
-		) as Label
-		_expect(reference_status != null, "VisualLab has a reference-format Label")
-		if reference_status != null:
-			_expect(
-				reference_status.text == EXPECTED_REFERENCE_STATUS,
-				"VisualLab displays the 1920 by 1080 16:9 reference",
+				interface.size == configured_viewport_size - Vector2(40, 24),
+				"VisualLab menu keeps its responsive viewport margins",
 			)
 		var window_size_status := bootstrap.get_node_or_null(
 			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "WindowSizeStatus"
+				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
+					+ "DiagnosticsPage/Content/WindowSizeStatus"
 			)
 		) as Label
 		_expect(window_size_status != null, "VisualLab has a window-size Label")
@@ -569,8 +539,8 @@ func _test_bootstrap_contract() -> void:
 			)
 		if interface != null:
 			_expect(
-				interface.size == configured_viewport_size,
-				"square window keeps the interface at reference size",
+				interface.size == configured_viewport_size - Vector2(40, 24),
+				"square window keeps the menu at its reference margins",
 			)
 		if window_size_status != null:
 			_expect(
@@ -743,366 +713,76 @@ func _test_bootstrap_contract() -> void:
 					"PlayerCamera stops at the right and bottom world limits",
 				)
 		var visual_lab_title := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/Title"
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/"
+			+ "Header/Title"
 		) as Label
-		_expect(visual_lab_title != null, "VisualLab has a title Label")
-		if visual_lab_title != null:
-			_expect(
-				visual_lab_title.text == EXPECTED_VISUAL_LAB_TITLE,
-				"VisualLab displays its title",
-			)
-		var visual_lab_movement_heading := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-				+ "MovementHeading"
-			)
-		) as Label
-		_expect(
-			visual_lab_movement_heading != null,
-			"VisualLab has a movement-heading Label",
-		)
-		if visual_lab_movement_heading != null:
-			_expect(
-				visual_lab_movement_heading.text == EXPECTED_VISUAL_LAB_MOVEMENT_HEADING,
-				"VisualLab displays its movement heading",
-			)
-		var visual_lab_movement_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-				+ "MovementHint"
-			)
-		) as Label
-		_expect(visual_lab_movement_hint != null, "VisualLab has a movement-hint Label")
-		if visual_lab_movement_hint != null:
-			_expect(
-				visual_lab_movement_hint.text == EXPECTED_VISUAL_LAB_MOVEMENT_HINT,
-				"VisualLab displays its movement hint",
-			)
-		var visual_lab_back_heading := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-				+ "BackHeading"
-			)
-		) as Label
-		_expect(visual_lab_back_heading != null, "VisualLab has a back-heading Label")
-		if visual_lab_back_heading != null:
-			_expect(
-				visual_lab_back_heading.text == EXPECTED_VISUAL_LAB_BACK_HEADING,
-				"VisualLab displays its back heading",
-			)
-		var visual_lab_back_hint := bootstrap.get_node_or_null(
-			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/BackHint"
-		) as Label
-		_expect(visual_lab_back_hint != null, "VisualLab has a back-hint Label")
-		if visual_lab_back_hint != null:
-			_expect(
-				visual_lab_back_hint.text == EXPECTED_VISUAL_LAB_BACK_HINT,
-				"VisualLab displays its back hint",
-			)
+		var visual_lab_tabs := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/"
+			+ "ThemeTabs"
+		) as HBoxContainer
 		var visual_lab_camera_status := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-				+ "CameraStatus"
-			)
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
+			+ "CameraPage/Content/CameraStatus"
 		) as Label
-		_expect(visual_lab_camera_status != null, "VisualLab has a camera-status Label")
-		if visual_lab_camera_status != null:
-			_expect(
-				visual_lab_camera_status.text == EXPECTED_VISUAL_LAB_CAMERA_STATUS,
-				"VisualLab displays its initial camera zoom",
-			)
-		var visual_lab_zoom_out_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-				+ "CameraZoomOutHint"
-			)
+		var visual_lab_hero_status := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
+			+ "ScalePage/Content/HeroSizeStatus"
 		) as Label
-		_expect(visual_lab_zoom_out_hint != null, "VisualLab has a zoom-out hint Label")
-		if visual_lab_zoom_out_hint != null:
-			_expect(
-				visual_lab_zoom_out_hint.text == EXPECTED_VISUAL_LAB_ZOOM_OUT_HINT,
-				"VisualLab displays its zoom-out controls",
-			)
-		var visual_lab_zoom_in_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-				+ "CameraZoomInHint"
-			)
+		var visual_lab_tile_status := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
+			+ "ScalePage/Content/TileSizeStatus"
 		) as Label
-		_expect(visual_lab_zoom_in_hint != null, "VisualLab has a zoom-in hint Label")
-		if visual_lab_zoom_in_hint != null:
-			_expect(
-				visual_lab_zoom_in_hint.text == EXPECTED_VISUAL_LAB_ZOOM_IN_HINT,
-				"VisualLab displays its zoom-in controls",
-			)
-		var visual_lab_hero_size_status := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "HeroSizeStatus"
-			)
+		var visual_lab_world_status := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
+			+ "WorldPage/Content/WorldStateStatus"
 		) as Label
-		_expect(visual_lab_hero_size_status != null, "VisualLab has a hero-size Label")
-		if visual_lab_hero_size_status != null:
-			_expect(
-				visual_lab_hero_size_status.text == EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS,
-				"VisualLab displays its initial hero size",
-			)
-		var visual_lab_scale_reference_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "ScaleReferenceHint"
-			)
-		) as Label
-		_expect(
-			visual_lab_scale_reference_hint != null,
-			"VisualLab has a scale-reference hint Label",
-		)
-		if visual_lab_scale_reference_hint != null:
-			_expect(
-				(
-					visual_lab_scale_reference_hint.text
-					== EXPECTED_VISUAL_LAB_SCALE_REFERENCE_HINT
-				),
-				"VisualLab identifies the reference objects as provisional",
-			)
-		var visual_lab_size_decrease_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "HeroSizeDecreaseHint"
-			)
-		) as Label
-		_expect(
-			visual_lab_size_decrease_hint != null,
-			"VisualLab has a size-decrease hint Label",
-		)
-		if visual_lab_size_decrease_hint != null:
-			_expect(
-				(
-					visual_lab_size_decrease_hint.text
-					== EXPECTED_VISUAL_LAB_SIZE_DECREASE_HINT
-				),
-				"VisualLab displays its size-decrease controls",
-			)
-		var visual_lab_size_increase_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "HeroSizeIncreaseHint"
-			)
-		) as Label
-		_expect(
-			visual_lab_size_increase_hint != null,
-			"VisualLab has a size-increase hint Label",
-		)
-		if visual_lab_size_increase_hint != null:
-			_expect(
-				(
-					visual_lab_size_increase_hint.text
-					== EXPECTED_VISUAL_LAB_SIZE_INCREASE_HINT
-				),
-				"VisualLab displays its size-increase controls",
-			)
-		var visual_lab_tile_size_status := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "TileSizeStatus"
-			)
-		) as Label
-		_expect(
-			visual_lab_tile_size_status != null,
-			"VisualLab has a tile-size Label",
-		)
-		if visual_lab_tile_size_status != null:
-			_expect(
-				visual_lab_tile_size_status.text == EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS,
-				"VisualLab displays its initial tile size",
-			)
-		var visual_lab_tile_decrease_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "TileSizeDecreaseHint"
-			)
-		) as Label
-		_expect(
-			visual_lab_tile_decrease_hint != null,
-			"VisualLab has a tile-size-decrease hint Label",
-		)
-		if visual_lab_tile_decrease_hint != null:
-			_expect(
-				(
-					visual_lab_tile_decrease_hint.text
-					== EXPECTED_VISUAL_LAB_TILE_DECREASE_HINT
-				),
-				"VisualLab displays its tile-size-decrease controls",
-			)
-		var visual_lab_tile_increase_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "TileSizeIncreaseHint"
-			)
-		) as Label
-		_expect(
-			visual_lab_tile_increase_hint != null,
-			"VisualLab has a tile-size-increase hint Label",
-		)
-		if visual_lab_tile_increase_hint != null:
-			_expect(
-				(
-					visual_lab_tile_increase_hint.text
-					== EXPECTED_VISUAL_LAB_TILE_INCREASE_HINT
-				),
-				"VisualLab displays its tile-size-increase controls",
-			)
-		var visual_lab_world_state_status := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "WorldStateStatus"
-			)
-		) as Label
-		_expect(
-			visual_lab_world_state_status != null,
-			"VisualLab has a world-state status Label",
-		)
-		if visual_lab_world_state_status != null:
-			_expect(
-				(
-					visual_lab_world_state_status.text
-					== EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS
-				),
-				"VisualLab displays its initial damaged world state",
-			)
-		var visual_lab_world_state_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "WorldStateToggleHint"
-			)
-		) as Label
-		_expect(
-			visual_lab_world_state_hint != null,
-			"VisualLab has a world-state toggle hint Label",
-		)
-		if visual_lab_world_state_hint != null:
-			_expect(
-				visual_lab_world_state_hint.text == EXPECTED_VISUAL_LAB_WORLD_STATE_HINT,
-				"VisualLab displays its world-state toggle controls",
-			)
-		var visual_lab_scale_profile_button := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "ScaleProfileButton"
-			)
+		var visual_lab_standard_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
+			+ "CameraPage/Content/ZoomOptions/MediumButton"
+		) as Button
+		var visual_lab_accept_button := bootstrap.get_node_or_null(
+			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/"
+			+ "Acceptance/AcceptButton"
 		) as Button
 		_expect(
-			visual_lab_scale_profile_button != null,
-			"VisualLab has an interactive scale-profile button",
+			visual_lab_title != null
+			and visual_lab_title.text == EXPECTED_VISUAL_LAB_TITLE,
+			"VisualLab displays its themed menu title",
 		)
-		if visual_lab_scale_profile_button != null:
-			_expect(
-				(
-					visual_lab_scale_profile_button.text
-					== EXPECTED_VISUAL_LAB_SCALE_PROFILE_STATUS
-				),
-				"VisualLab displays the selected Maßstab V0 profile",
-			)
-		var visual_lab_scale_profile_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "ScaleProfileHint"
-			)
-		) as Label
 		_expect(
-			visual_lab_scale_profile_hint != null,
-			"VisualLab has a scale-profile comparison hint",
+			visual_lab_tabs != null and visual_lab_tabs.get_child_count() == 5,
+			"VisualLab provides five extensible theme tabs",
 		)
-		if visual_lab_scale_profile_hint != null:
-			_expect(
-				visual_lab_scale_profile_hint.text
-				== EXPECTED_VISUAL_LAB_SCALE_PROFILE_HINT,
-				"VisualLab explains the remaining profile comparison",
-			)
-		var visual_lab_pixel_snap_button := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "RenderingButtons/PixelSnapButton"
-			)
-		) as Button
 		_expect(
-			visual_lab_pixel_snap_button != null,
-			"VisualLab has an interactive pixel-snap menu button",
+			visual_lab_camera_status != null
+			and visual_lab_camera_status.text == EXPECTED_VISUAL_LAB_CAMERA_STATUS,
+			"VisualLab displays its contextual camera status",
 		)
-		if visual_lab_pixel_snap_button != null:
-			_expect(
-				(
-					visual_lab_pixel_snap_button.text
-					== EXPECTED_VISUAL_LAB_PIXEL_SNAP_STATUS
-				),
-				"VisualLab displays its initial pixel-snap state",
-			)
-		var visual_lab_pixel_snap_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "RenderingHints/PixelSnapToggleHint"
-			)
-		) as Label
 		_expect(
-			visual_lab_pixel_snap_hint != null,
-			"VisualLab has a pixel-snap input hint",
+			visual_lab_hero_status != null
+			and visual_lab_hero_status.text == EXPECTED_VISUAL_LAB_HERO_SIZE_STATUS,
+			"VisualLab displays its initial hero size",
 		)
-		if visual_lab_pixel_snap_hint != null:
-			_expect(
-				visual_lab_pixel_snap_hint.text == EXPECTED_VISUAL_LAB_PIXEL_SNAP_HINT,
-				"VisualLab displays its pixel-snap controls",
-			)
-		var visual_lab_texture_filter_button := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "RenderingButtons/TextureFilterButton"
-			)
-		) as Button
 		_expect(
-			visual_lab_texture_filter_button != null,
-			"VisualLab has an interactive texture-filter menu button",
+			visual_lab_tile_status != null
+			and visual_lab_tile_status.text == EXPECTED_VISUAL_LAB_TILE_SIZE_STATUS,
+			"VisualLab displays its initial tile size",
 		)
-		if visual_lab_texture_filter_button != null:
-			_expect(
-				(
-					visual_lab_texture_filter_button.text
-					== EXPECTED_VISUAL_LAB_TEXTURE_FILTER_STATUS
-				),
-				"VisualLab displays its initial texture filter",
-			)
-		var visual_lab_texture_filter_hint := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "RenderingHints/TextureFilterToggleHint"
-			)
-		) as Label
 		_expect(
-			visual_lab_texture_filter_hint != null,
-			"VisualLab has a texture-filter input hint",
+			visual_lab_world_status != null
+			and visual_lab_world_status.text == EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS,
+			"VisualLab displays its initial world state",
 		)
-		if visual_lab_texture_filter_hint != null:
-			_expect(
-				(
-					visual_lab_texture_filter_hint.text
-					== EXPECTED_VISUAL_LAB_TEXTURE_FILTER_HINT
-				),
-				"VisualLab displays its texture-filter controls",
-			)
-		var visual_lab_settings_status := bootstrap.get_node_or_null(
-			(
-				"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Text/"
-					+ "SettingsStatus"
-			)
-		) as Label
 		_expect(
-			visual_lab_settings_status != null,
-			"VisualLab has an automatic-settings status Label",
+			visual_lab_standard_button != null
+			and visual_lab_standard_button.text.contains("★")
+			and visual_lab_standard_button.text.contains("●"),
+			"VisualLab marks game standard and current test value independently",
 		)
-		if visual_lab_settings_status != null:
-			_expect(
-				visual_lab_settings_status.text == EXPECTED_VISUAL_LAB_SETTINGS_STATUS,
-				"VisualLab explains that test values are saved automatically",
-			)
+		_expect(
+			visual_lab_accept_button != null,
+			"VisualLab exposes the visible game-standard action",
+		)
 
 		if visual_lab != null:
 			_expect(
@@ -1349,12 +1029,26 @@ func _expect_saved_visual_lab_settings(
 		"leaving VisualLab saves its settings to the isolated test path",
 	)
 	_expect(
-		settings.get_value("meta", "version", 0) == 1,
-		"saved VisualLab settings use version 1",
+		settings.get_value("meta", "version", 0) == 2,
+		"saved VisualLab settings use version 2",
 	)
 	_expect(
-		settings.get_value("visual_lab", "camera_zoom", "") == camera_zoom_id,
+		settings.get_value("visual_lab", "camera_zoom_world", "") == camera_zoom_id,
 		"saved VisualLab settings use the expected camera ID",
+	)
+	_expect(
+		settings.get_value("visual_lab", "camera_context", "") == "world",
+		"saved VisualLab settings keep the active camera context",
+	)
+	_expect(
+		settings.get_value("visual_lab", "camera_zoom_village", "") == "medium"
+		and settings.get_value("visual_lab", "camera_zoom_dungeon", "") == "medium"
+		and settings.get_value(
+			"visual_lab",
+			"camera_zoom_small_interior",
+			"",
+		) == "near",
+		"saved VisualLab settings keep all contextual camera values",
 	)
 	_expect(
 		settings.get_value("visual_lab", "hero_size", "") == hero_size_id,

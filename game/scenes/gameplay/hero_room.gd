@@ -5,13 +5,12 @@ const ROOM_LEFT := 0
 const ROOM_TOP := 0
 const ROOM_RIGHT := 2560
 const ROOM_BOTTOM := 1440
-const TILE_SIZE := Vector2i(32, 32)
 const INTERACT_ACTION := &"gameplay_interact"
-const VISUAL_BASELINE_V0 := preload(
-	"res://shared/resources/visual_baseline_v0.tres"
+const VisualLabStandardsResource := preload(
+	"res://shared/resources/visual_lab_standards.gd"
 )
-const SMALL_INTERIOR_CAMERA_PROFILE := preload(
-	"res://shared/resources/camera_small_interior_v0.tres"
+const VISUAL_STANDARDS_V0 := preload(
+	"res://shared/resources/visual_lab_standards_v0.tres"
 )
 
 const HeroCharacterScript := preload(
@@ -40,13 +39,18 @@ var _guide_message_open := false
 
 func _ready() -> void:
 	hero_character.global_position = hero_spawn.global_position
-	hero_character.set_appearance_height(VISUAL_BASELINE_V0.hero_height)
+	hero_character.set_appearance_height(
+		VISUAL_STANDARDS_V0.scale_profile.hero_height
+	)
 
 	player_camera.limit_left = ROOM_LEFT
 	player_camera.limit_top = ROOM_TOP
 	player_camera.limit_right = ROOM_RIGHT
 	player_camera.limit_bottom = ROOM_BOTTOM
-	var profile_error := player_camera.set_profile(SMALL_INTERIOR_CAMERA_PROFILE)
+	var camera_profile := VISUAL_STANDARDS_V0.camera_profile_for(
+		VisualLabStandardsResource.CONTEXT_SMALL_INTERIOR
+	)
+	var profile_error := player_camera.set_profile(camera_profile)
 	if profile_error != OK:
 		push_error("HeroRoom could not apply its camera profile.")
 	player_camera.position_smoothing_enabled = false
@@ -62,6 +66,11 @@ func _ready() -> void:
 	guide_companion.interaction_requested.connect(
 		_on_guide_interaction_requested
 	)
+
+
+## Returns the versioned world grid used by this production scene.
+func get_visual_tile_size() -> Vector2i:
+	return Vector2i.ONE * VISUAL_STANDARDS_V0.scale_profile.tile_size
 
 
 func _unhandled_input(event: InputEvent) -> void:

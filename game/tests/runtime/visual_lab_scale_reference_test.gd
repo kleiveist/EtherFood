@@ -1,12 +1,9 @@
 extends RefCounted
 
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
-const SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
-const SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
 const BASELINE_WORLD_Y := 1760.0
 const WORLD_BOUNDS := Rect2(0, 0, 3840, 2160)
 const HEIGHT_TOLERANCE := 1.0
-const SCALE_REFERENCE_HINT := "Referenzobjekte: vorläufige Testmaße"
 const REFERENCE_SPECS := [
 	{
 		"node_name": "SmallEnemyReference",
@@ -71,9 +68,6 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var hero_marker_label := visual_lab.get_node_or_null(
 		"TestWorld/ScaleComparison/HeroStandMarker/Label"
 	) as Label
-	var scale_reference_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/ScaleReferenceHint"
-	) as Label
 	var hud_panel := visual_lab.get_node_or_null("InterfaceLayer/HudPanel") as Panel
 
 	_expect(test_world != null, "VisualLab has TestWorld")
@@ -82,13 +76,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(ground_strip != null, "ScaleComparison has a pixel-art GroundStrip")
 	_expect(hero_marker != null, "ScaleComparison has a HeroStandMarker")
 	_expect(hero_marker_label != null, "HeroStandMarker has a Label")
-	_expect(scale_reference_hint != null, "VisualLab has a scale-reference HUD hint")
 	_expect(hud_panel != null, "VisualLab has a framed HUD panel")
-	if scale_reference_hint != null:
-		_expect(
-			scale_reference_hint.text == SCALE_REFERENCE_HINT,
-			"HUD identifies reference dimensions as provisional",
-		)
 
 	if scale_comparison == null:
 		visual_lab.queue_free()
@@ -287,22 +275,22 @@ func _expect_hero_sizes_still_work(visual_lab: Control) -> void:
 		is_equal_approx(_sprite_world_height(hero_sprite), 80.0),
 		"hero starts at the 80-world-pixel default",
 	)
-	visual_lab._unhandled_input(_pressed_action(SIZE_DECREASE_ACTION))
+	visual_lab._change_hero_size(-1)
 	_expect(
 		is_equal_approx(_sprite_world_height(hero_sprite), 64.0),
 		"hero still reaches 64 world pixels",
 	)
-	visual_lab._unhandled_input(_pressed_action(SIZE_DECREASE_ACTION))
+	visual_lab._change_hero_size(-1)
 	_expect(
 		is_equal_approx(_sprite_world_height(hero_sprite), 64.0),
 		"hero size still stops at 64 world pixels",
 	)
-	visual_lab._unhandled_input(_pressed_action(SIZE_INCREASE_ACTION))
+	visual_lab._change_hero_size(1)
 	_expect(
 		is_equal_approx(_sprite_world_height(hero_sprite), 80.0),
 		"hero still reaches 80 world pixels",
 	)
-	visual_lab._unhandled_input(_pressed_action(SIZE_INCREASE_ACTION))
+	visual_lab._change_hero_size(1)
 	_expect(
 		is_equal_approx(_sprite_world_height(hero_sprite), 96.0),
 		"hero still reaches 96 world pixels",
@@ -341,13 +329,6 @@ func _sprite_local_alpha_rect(sprite: Sprite2D) -> Rect2:
 	var used_rect := image.get_used_rect()
 	var texture_rect := sprite.get_rect()
 	return Rect2(texture_rect.position + Vector2(used_rect.position), Vector2(used_rect.size))
-
-
-func _pressed_action(action: StringName) -> InputEventAction:
-	var event := InputEventAction.new()
-	event.action = action
-	event.pressed = true
-	return event
 
 
 func _expect(condition: bool, description: String) -> void:

@@ -6,12 +6,8 @@ const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_texture_filter_test.cfg"
-const TEXTURE_FILTER_ACTION := &"dev_texture_filter_toggle"
 const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
-const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
-const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
-const WORLD_STATE_ACTION := &"dev_world_state_toggle"
 const EXPECTED_TEXTURE_SPRITE_COUNT := 51
 
 var failures: PackedStringArray = []
@@ -22,7 +18,7 @@ var _original_settings_path: Variant = null
 func run(tree: SceneTree) -> PackedStringArray:
 	_remember_and_set_test_path()
 	_remove_test_settings()
-	_expect_input_mapping()
+	_expect_removed_shortcut()
 
 	var visual_lab_scene := load(VISUAL_LAB_SCENE_PATH) as PackedScene
 	var hero_room_scene := load(HERO_ROOM_SCENE_PATH) as PackedScene
@@ -142,11 +138,15 @@ func _expect_texture_filter_contract(
 		"InterfaceLayer/Interface"
 	) as MarginContainer
 	var button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton"
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/TextureFilterOptions/SoftButton"
 	) as Button
-	var hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingHints/TextureFilterToggleHint"
-	) as Label
+	var nearest_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "TextureFilterOptions/NearestButton"
+	) as Button
+	var rendering_tab := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/ThemeTabs/RenderingTab"
+	) as Button
 	var diagnostics := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel/Values"
 	) as Label
@@ -161,10 +161,8 @@ func _expect_texture_filter_contract(
 	_expect(controls != null, "VisualLab retains the controls menu")
 	_expect(button != null, "controls menu has a texture-filter button")
 	_expect(button != null and button.toggle_mode, "filter button exposes two states")
-	_expect(
-		hint != null and hint.text == "N / Klick / Auswahl: Nearest / Weich",
-		"controls menu explains all texture-filter inputs",
-	)
+	_expect(nearest_button != null, "controls menu has a nearest-filter button")
+	_expect(rendering_tab != null, "controls menu has a rendering tab")
 	_expect(diagnostics != null, "VisualLab retains diagnostics values")
 	_expect(
 		texture_sprites.size() == EXPECTED_TEXTURE_SPRITE_COUNT,
@@ -180,6 +178,8 @@ func _expect_texture_filter_contract(
 		or obstacle_collision == null
 		or controls == null
 		or button == null
+		or nearest_button == null
+		or rendering_tab == null
 		or diagnostics == null
 	):
 		return
@@ -200,7 +200,9 @@ func _expect_texture_filter_contract(
 	)
 	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
 	_expect(controls.visible, "F5 opens the menu containing the filter control")
-	_expect(button.is_visible_in_tree(), "filter button is visible in the open menu")
+	rendering_tab.pressed.emit()
+	await tree.process_frame
+	_expect(button.is_visible_in_tree(), "filter button is visible on its theme page")
 	visual_lab._unhandled_input(_pressed_action(DIAGNOSTICS_ACTION))
 	_expect(
 		diagnostics.text.contains("Texturfilter: Nearest-Neighbor"),
@@ -218,9 +220,16 @@ func _expect_texture_filter_contract(
 	visual_lab._unhandled_input(_pressed_key(KEY_N))
 	_expect_texture_filter_state(
 		visual_lab,
+		CanvasItem.TEXTURE_FILTER_NEAREST,
+		"Texturfilter: Nearest-Neighbor",
+		"removed N shortcut leaves filtering unchanged",
+	)
+	button.pressed.emit()
+	_expect_texture_filter_state(
+		visual_lab,
 		CanvasItem.TEXTURE_FILTER_LINEAR,
 		"Texturfilter: Weich",
-		"N enables soft filtering while running",
+		"menu enables soft filtering while running",
 	)
 	_expect(camera.zoom == zoom_before_toggle, "filter toggle does not change camera zoom")
 	_expect(
@@ -237,8 +246,7 @@ func _expect_texture_filter_contract(
 	)
 	_expect_saved_texture_filter("soft")
 
-	button.button_pressed = false
-	button.pressed.emit()
+	nearest_button.pressed.emit()
 	_expect_texture_filter_state(
 		visual_lab,
 		CanvasItem.TEXTURE_FILTER_NEAREST,
@@ -255,7 +263,6 @@ func _expect_texture_filter_contract(
 		"nearest-neighbor",
 	)
 
-	button.button_pressed = true
 	button.pressed.emit()
 	_expect_texture_filter_state(
 		visual_lab,
@@ -300,7 +307,7 @@ func _expect_zoom_filter_matrix(
 	visual_lab: Control,
 	camera: Camera2D,
 ) -> void:
-	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
+	visual_lab._change_camera_zoom(1)
 	var expected_zooms: Array[float] = [1.5, 1.0, 0.75]
 	for zoom_index in range(expected_zooms.size()):
 		_expect(
@@ -312,15 +319,15 @@ func _expect_zoom_filter_matrix(
 			CanvasItem.TEXTURE_FILTER_LINEAR,
 			"soft filter at zoom level %d" % (zoom_index + 1),
 		)
-		visual_lab._unhandled_input(_pressed_action(TEXTURE_FILTER_ACTION))
+		visual_lab._toggle_texture_filter()
 		_expect_all_texture_filters(
 			visual_lab,
 			CanvasItem.TEXTURE_FILTER_NEAREST,
 			"nearest filter at zoom level %d" % (zoom_index + 1),
 		)
-		visual_lab._unhandled_input(_pressed_action(TEXTURE_FILTER_ACTION))
+		visual_lab._toggle_texture_filter()
 		if zoom_index < expected_zooms.size() - 1:
-			visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+			visual_lab._change_camera_zoom(-1)
 
 
 func _expect_world_state_matrix(
@@ -340,7 +347,7 @@ func _expect_world_state_matrix(
 			CanvasItem.TEXTURE_FILTER_LINEAR,
 			"damaged world",
 		)
-	visual_lab._unhandled_input(_pressed_action(WORLD_STATE_ACTION))
+	visual_lab._toggle_world_state()
 	_expect(world_state.is_restored(), "restored state can be selected with soft filter")
 	_expect(damaged_state != null and not damaged_state.visible, "damaged state becomes hidden")
 	_expect(restored_state != null and restored_state.visible, "restored state becomes visible")
@@ -407,21 +414,29 @@ func _expect_motion_contract(
 func _expect_texture_filter_state(
 	visual_lab: Control,
 	expected_filter: CanvasItem.TextureFilter,
-	expected_text: String,
+	_expected_text: String,
 	description: String,
 ) -> void:
-	var button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton"
+	var soft_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "TextureFilterOptions/SoftButton"
 	) as Button
-	_expect(button != null, "%s: filter button exists" % description)
+	var nearest_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/RenderingPage/Content/"
+		+ "TextureFilterOptions/NearestButton"
+	) as Button
+	var expected_soft := expected_filter == CanvasItem.TEXTURE_FILTER_LINEAR
 	_expect(
-		button != null and button.text == expected_text,
-		"%s: filter text is exact" % description,
+		soft_button != null and nearest_button != null,
+		"%s: filter buttons exist" % description,
 	)
 	_expect(
-		button != null
-		and button.button_pressed == (expected_filter == CanvasItem.TEXTURE_FILTER_LINEAR),
-		"%s: button toggle state" % description,
+		soft_button != null and soft_button.button_pressed == expected_soft,
+		"%s: soft-option state" % description,
+	)
+	_expect(
+		nearest_button != null and nearest_button.button_pressed != expected_soft,
+		"%s: nearest-option state" % description,
 	)
 	_expect_all_texture_filters(visual_lab, expected_filter, description)
 
@@ -496,12 +511,10 @@ func _expect_saved_texture_filter(expected_id: String) -> void:
 	)
 
 
-func _expect_input_mapping() -> void:
-	_expect(InputMap.has_action(TEXTURE_FILTER_ACTION), "InputMap defines filter toggle")
-	_expect(_has_key_mapping(TEXTURE_FILTER_ACTION, KEY_N), "filter toggle uses N")
+func _expect_removed_shortcut() -> void:
 	_expect(
-		not _has_key_mapping(&"app_pause", KEY_N),
-		"filter toggle does not reuse the pause key",
+		not InputMap.has_action(&"dev_texture_filter_toggle"),
+		"texture-filter direct action is absent",
 	)
 
 
@@ -532,16 +545,6 @@ func _open_visual_lab(tree: SceneTree, packed_scene: PackedScene) -> Control:
 func _close_visual_lab(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab.queue_free()
 	await tree.process_frame
-
-
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and (
-			key_event.keycode == expected_key or key_event.physical_keycode == expected_key
-		):
-			return true
-	return false
 
 
 func _pressed_action(action: StringName) -> InputEventAction:

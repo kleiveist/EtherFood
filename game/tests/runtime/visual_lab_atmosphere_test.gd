@@ -4,8 +4,6 @@ const WORLD_STATE_SCENE_PATH := "res://scenes/dev/world_state_preview.tscn"
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
-const FOG_ACTION := &"dev_fog_variant_cycle"
-const LIGHT_ACTION := &"dev_light_variant_cycle"
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_atmosphere_test.cfg"
 const CAMERA_ZOOMS: Array[float] = [0.75, 1.0, 1.5]
@@ -24,7 +22,7 @@ var _original_settings_path: Variant = null
 func run(tree: SceneTree) -> PackedStringArray:
 	_remember_and_set_test_path()
 	_remove_test_settings()
-	_expect_input_mapping()
+	_expect_removed_shortcuts()
 	await _expect_preview_profiles(tree)
 	await _expect_visual_lab_matrix(tree)
 	_cleanup_test_path()
@@ -218,11 +216,11 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 		"TestWorld/WorldStatePreview"
 	) as WORLD_STATE_PREVIEW_SCRIPT
 	var fog_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton"
-	) as Button
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/FogStatus"
+	) as Label
 	var light_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/AtmosphereButtons/LightVariantButton"
-	) as Button
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/LightStatus"
+	) as Label
 	var diagnostics := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel/Values"
 	) as Label
@@ -274,9 +272,9 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 		"preferred damaged start",
 	)
 	visual_lab._unhandled_input(_pressed_key(KEY_B, true))
-	_expect(preview.get_active_fog_name() == "Mittel", "held B does not repeat")
-	visual_lab._unhandled_input(_pressed_key(KEY_B))
-	visual_lab._unhandled_input(_pressed_key(KEY_L))
+	_expect(preview.get_active_fog_name() == "Mittel", "removed B leaves fog unchanged")
+	visual_lab._cycle_fog_variant()
+	visual_lab._cycle_light_variant()
 	_expect_atmosphere_state(
 		preview,
 		fog_button,
@@ -289,7 +287,7 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 	)
 	_expect_saved_atmosphere("high", "cool_muted", "low", "warm_clear")
 
-	visual_lab._unhandled_input(_pressed_key(KEY_V))
+	visual_lab._toggle_world_state()
 	_expect_atmosphere_state(
 		preview,
 		fog_button,
@@ -300,8 +298,8 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 		"Warm und klar",
 		"preferred restored start",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_B))
-	visual_lab._unhandled_input(_pressed_key(KEY_L))
+	visual_lab._cycle_fog_variant()
+	visual_lab._cycle_light_variant()
 	_expect_atmosphere_state(
 		preview,
 		fog_button,
@@ -312,7 +310,7 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 		"Neutral und klar",
 		"restored alternatives",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_V))
+	visual_lab._toggle_world_state()
 	_expect(
 		preview.get_active_fog_name() == "Hoch"
 		and preview.get_active_light_name() == "Kühl und gedämpft",
@@ -322,8 +320,8 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 	_expect_zoom_and_variant_matrix(visual_lab, preview, camera, obstacle_collision)
 	await _expect_collision_contract(tree, visual_lab, preview, hero, obstacle)
 	visual_lab._toggle_collision_debug()
-	visual_lab._unhandled_input(_pressed_key(KEY_V))
-	visual_lab._unhandled_input(_pressed_key(KEY_B))
+	visual_lab._toggle_world_state()
+	visual_lab._cycle_fog_variant()
 	_expect(
 		collision_overlay.visible and collision_overlay.z_index > 5,
 		"collision boundaries remain visible above every atmosphere layer",
@@ -350,7 +348,7 @@ func _expect_visual_lab_matrix(tree: SceneTree) -> void:
 				and reopened_preview.get_active_light_name() == "Neutral und klar",
 				"reopened lab restores active restored atmosphere",
 			)
-			reopened._unhandled_input(_pressed_key(KEY_V))
+			reopened._toggle_world_state()
 			_expect(
 				reopened_preview.get_active_fog_name() == "Hoch"
 				and reopened_preview.get_active_light_name() == "Kühl und gedämpft",
@@ -443,8 +441,8 @@ func _expect_collision_contract(
 
 func _expect_atmosphere_state(
 	preview: WORLD_STATE_PREVIEW_SCRIPT,
-	fog_button: Button,
-	light_button: Button,
+	fog_button: Label,
+	light_button: Label,
 	diagnostics: Label,
 	expected_restored: bool,
 	expected_fog: String,
@@ -454,10 +452,10 @@ func _expect_atmosphere_state(
 	_expect(preview.is_restored() == expected_restored, "%s: world state" % description)
 	_expect(preview.get_active_fog_name() == expected_fog, "%s: fog" % description)
 	_expect(preview.get_active_light_name() == expected_light, "%s: light" % description)
-	_expect(fog_button.text == "Nebel: %s" % expected_fog, "%s: fog button" % description)
+	_expect(fog_button.text == "Nebel: %s" % expected_fog, "%s: fog status" % description)
 	_expect(
 		light_button.text == "Licht: %s" % expected_light,
-		"%s: light button" % description,
+		"%s: light status" % description,
 	)
 	_expect(
 		diagnostics.text.contains("Nebel: %s" % expected_fog),
@@ -515,30 +513,15 @@ func _color_luminance(color: Color) -> float:
 	return color.r * 0.2126 + color.g * 0.7152 + color.b * 0.0722
 
 
-func _expect_input_mapping() -> void:
-	_expect(_has_key_mapping(FOG_ACTION, KEY_B), "fog cycle uses physical B")
-	_expect(_has_key_mapping(LIGHT_ACTION, KEY_L), "light cycle uses physical L")
-	_expect(not _has_joypad_mapping(FOG_ACTION), "fog cycle adds no controller binding")
-	_expect(not _has_joypad_mapping(LIGHT_ACTION), "light cycle adds no controller binding")
-
-
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	if not InputMap.has_action(action):
-		return false
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and key_event.physical_keycode == expected_key:
-			return true
-	return false
-
-
-func _has_joypad_mapping(action: StringName) -> bool:
-	if not InputMap.has_action(action):
-		return false
-	for input_event in InputMap.action_get_events(action):
-		if input_event is InputEventJoypadButton or input_event is InputEventJoypadMotion:
-			return true
-	return false
+func _expect_removed_shortcuts() -> void:
+	_expect(
+		not InputMap.has_action(&"dev_fog_variant_cycle"),
+		"fog direct action is absent",
+	)
+	_expect(
+		not InputMap.has_action(&"dev_light_variant_cycle"),
+		"light direct action is absent",
+	)
 
 
 func _expect_saved_atmosphere(

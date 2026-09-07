@@ -6,12 +6,7 @@ const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_settings_test.cfg"
-const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
-const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
-const HERO_SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
-const HERO_SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
-const TILE_SIZE_INCREASE_ACTION := &"dev_tile_size_increase"
-const MEDIUM_ZOOM_STATUS := "Kamera: Mittel · 1,00×"
+const MEDIUM_ZOOM_STATUS := "Kamera: Außenwelt · Mittel · 1,00×"
 const MEDIUM_HERO_STATUS := "Figur: Mittel · 80 Weltpixel"
 const SMALL_TILE_STATUS := "Tiles: Klein · 32 × 32 Weltpixel"
 const MEDIUM_TILE_STATUS := "Tiles: Mittel · 48 × 48 Weltpixel"
@@ -54,7 +49,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"missing file uses the selected Maßstab V0 defaults",
 	)
 
-	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+	visual_lab._change_camera_zoom(-1)
 	_expect_saved_settings(
 		"wide",
 		"medium",
@@ -62,7 +57,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"damaged",
 		"camera change saves immediately",
 	)
-	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
+	visual_lab._change_camera_zoom(1)
 	_expect_saved_settings(
 		"medium",
 		"medium",
@@ -70,7 +65,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"damaged",
 		"returning to the standard camera saves immediately",
 	)
-	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_INCREASE_ACTION))
+	visual_lab._change_hero_size(1)
 	_expect_saved_settings(
 		"medium",
 		"large",
@@ -78,7 +73,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"damaged",
 		"hero-size change saves immediately",
 	)
-	visual_lab._unhandled_input(_pressed_action(HERO_SIZE_DECREASE_ACTION))
+	visual_lab._change_hero_size(-1)
 	_expect_saved_settings(
 		"medium",
 		"medium",
@@ -86,7 +81,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"damaged",
 		"returning to medium hero size saves immediately",
 	)
-	visual_lab._unhandled_input(_pressed_action(TILE_SIZE_INCREASE_ACTION))
+	visual_lab._change_tile_size(1)
 	_expect_saved_settings(
 		"medium",
 		"medium",
@@ -124,6 +119,31 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 		await _close_visual_lab(tree, reopened_visual_lab)
 
+	_write_context_settings()
+	var contextual_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
+	if contextual_visual_lab != null:
+		var contextual_camera := contextual_visual_lab.get_node_or_null(
+			"TestWorld/HeroCharacter/PlayerCamera"
+		) as Camera2D
+		var contextual_status := contextual_visual_lab.get_node_or_null(
+			"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/CameraStatus"
+		) as Label
+		_expect(
+			contextual_visual_lab._selected_camera_context == 2
+			and contextual_visual_lab._selected_camera_zooms == [0, 2, 0, 1],
+			"version 2 restores four independent contextual zooms",
+		)
+		_expect(
+			contextual_camera != null and contextual_camera.zoom == Vector2(0.75, 0.75),
+			"active dungeon context applies its own saved zoom",
+		)
+		_expect(
+			contextual_status != null
+			and contextual_status.text == "Kamera: Dungeon · Weit · 0,75×",
+			"camera status identifies the restored dungeon context",
+		)
+		await _close_visual_lab(tree, contextual_visual_lab)
+
 	_write_settings(1, "medium", "medium", "medium")
 	var legacy_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
 	if legacy_visual_lab != null:
@@ -158,7 +178,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 		await _close_visual_lab(tree, invalid_visual_lab)
 
-	_write_settings(2, "wide", "large", "large", "restored")
+	_write_settings(3, "wide", "large", "large", "restored")
 	var future_version_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
 	if future_version_visual_lab != null:
 		_expect_visual_lab_state(
@@ -240,16 +260,16 @@ func _expect_visual_lab_state(
 		"TestWorld/WorldStatePreview"
 	) as WORLD_STATE_PREVIEW_SCRIPT
 	var camera_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/CameraStatus"
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/CameraStatus"
 	) as Label
 	var hero_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/HeroSizeStatus"
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/HeroSizeStatus"
 	) as Label
 	var tile_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/TileSizeStatus"
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/TileSizeStatus"
 	) as Label
 	var world_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/WorldStateStatus"
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/WorldStateStatus"
 	) as Label
 
 	_expect(player_camera != null, "%s: PlayerCamera exists" % description)
@@ -316,12 +336,32 @@ func _expect_saved_settings(
 	var settings := ConfigFile.new()
 	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "%s: file loads" % description)
 	_expect(
-		settings.get_value("meta", "version", 0) == 1,
+		settings.get_value("meta", "version", 0) == 2,
 		"%s: version is stored" % description,
 	)
 	_expect(
-		settings.get_value("visual_lab", "camera_zoom", "") == expected_camera_id,
+		settings.get_value("visual_lab", "camera_zoom_world", "") == expected_camera_id,
 		"%s: camera ID" % description,
+	)
+	_expect(
+		settings.get_value("visual_lab", "camera_context", "") == "world",
+		"%s: active camera context" % description,
+	)
+	_expect(
+		settings.get_value("visual_lab", "camera_zoom_village", "") == "medium",
+		"%s: village camera remains independent" % description,
+	)
+	_expect(
+		settings.get_value("visual_lab", "camera_zoom_dungeon", "") == "medium",
+		"%s: dungeon camera remains independent" % description,
+	)
+	_expect(
+		settings.get_value(
+			"visual_lab",
+			"camera_zoom_small_interior",
+			"",
+		) == "near",
+		"%s: small-interior camera remains independent" % description,
 	)
 	_expect(
 		settings.get_value("visual_lab", "hero_size", "") == expected_hero_id,
@@ -352,6 +392,22 @@ func _write_settings(
 	if world_state != null:
 		settings.set_value("visual_lab", "world_state", world_state)
 	_expect(settings.save(SETTINGS_TEST_PATH) == OK, "test settings can be written")
+
+
+func _write_context_settings() -> void:
+	var settings := ConfigFile.new()
+	settings.set_value("meta", "version", 2)
+	settings.set_value("visual_lab", "camera_context", "dungeon")
+	settings.set_value("visual_lab", "camera_zoom_world", "wide")
+	settings.set_value("visual_lab", "camera_zoom_village", "near")
+	settings.set_value("visual_lab", "camera_zoom_dungeon", "wide")
+	settings.set_value("visual_lab", "camera_zoom_small_interior", "medium")
+	settings.set_value("visual_lab", "hero_size", "medium")
+	settings.set_value("visual_lab", "tile_size", "small")
+	settings.set_value("visual_lab", "world_state", "damaged")
+	settings.set_value("visual_lab", "pixel_snap", true)
+	settings.set_value("visual_lab", "texture_filter", "nearest")
+	_expect(settings.save(SETTINGS_TEST_PATH) == OK, "context fixture can be written")
 
 
 func _write_corrupted_settings() -> void:
@@ -389,13 +445,6 @@ func _remove_test_settings() -> void:
 		ProjectSettings.globalize_path(SETTINGS_TEST_PATH)
 	)
 	_expect(remove_error == OK, "isolated test settings can be removed")
-
-
-func _pressed_action(action: StringName) -> InputEventAction:
-	var event := InputEventAction.new()
-	event.action = action
-	event.pressed = true
-	return event
 
 
 func _expect(condition: bool, description: String) -> void:

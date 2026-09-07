@@ -23,6 +23,7 @@
 - [Arbeitsplan: Nebel- und Lichtvergleich im visuellen Testlabor](visual-lab-nebel-und-licht.md)
 - [Arbeitsplan: Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)
 - [Arbeitsplan: Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
+- [Arbeitsplan: Themenmenü und Spielstandards im visuellen Testlabor](visual-lab-menue-und-spielstandards.md)
 - [Arbeitsplan: Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 - [Arbeitsplan: Visuelle Darstellungsgrundlage V0 dokumentieren](visuelle-darstellungsgrundlage-v0.md)
 <!-- PYGINDEX:INDEX END -->
@@ -41,6 +42,7 @@ Der technische Zielzustand für den aktuellen Importplan ist unter
 
 ## Abgeschlossene historische Pläne
 
+- [Themenmenü und Spielstandards im visuellen Testlabor](visual-lab-menue-und-spielstandards.md)
 - [Maßstab V0](massstab-v0.md)
 - [Nebel- und Lichtvergleich im visuellen Testlabor](visual-lab-nebel-und-licht.md)
 - [Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)

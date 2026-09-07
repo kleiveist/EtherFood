@@ -1,316 +1,497 @@
 extends RefCounted
 
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
+const CameraProfileResource := preload("res://shared/resources/camera_profile.gd")
+const VisualScaleProfileResource := preload(
+	"res://shared/resources/visual_scale_profile.gd"
+)
+const VisualLabStandardsResource := preload(
+	"res://shared/resources/visual_lab_standards.gd"
+)
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
+const STANDARDS_PATH_PROJECT_KEY := (
+	"etherfood/development/visual_lab_standards_path"
+)
 const SETTINGS_TEST_PATH := "user://visual_lab_controls_test.cfg"
+const STANDARDS_TEST_PATH := "user://visual_lab_controls_standards.tres"
+const SCALE_TEST_PATH := "user://visual_lab_controls_scale.tres"
+const WORLD_CAMERA_TEST_PATH := "user://visual_lab_controls_camera_world.tres"
+const VILLAGE_CAMERA_TEST_PATH := "user://visual_lab_controls_camera_village.tres"
+const DUNGEON_CAMERA_TEST_PATH := "user://visual_lab_controls_camera_dungeon.tres"
+const INTERIOR_CAMERA_TEST_PATH := "user://visual_lab_controls_camera_interior.tres"
 const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
-const EXPECTED_CONTROL_TEXTS: Array[String] = [
-	"WASD / Pfeiltasten / linker Stick",
-	"Esc / B",
-	"- / linke Schultertaste: weiter",
-	"+ / rechte Schultertaste: näher",
-	"R / Controller links: kleiner",
-	"F / Controller oben: größer",
-	"T / linker Stick-Klick: kleiner",
-	"G / rechter Stick-Klick: größer",
-	"V / Controller-A: Zustand wechseln",
-	"Klick / Auswahl: A → Maßstab V0 → C",
-	"B / Klick / Auswahl: Nebel wechseln",
-	"L / Klick / Auswahl: Licht wechseln",
-	"X / Klick / Auswahl: AN / AUS",
-	"N / Klick / Auswahl: Nearest / Weich",
-	"F3 / Select: Diagnose",
-	"F4: Kollisionsflächen",
-	"F5: Steuerung schließen",
-]
-const VALUE_PREFIXES: Array[String] = [
-	"Referenz:",
-	"Fenster:",
-	"Kamera:",
-	"Figur:",
-	"Tiles:",
-	"Weltzustand:",
-	"Testwerte werden",
+const COLLISION_ACTION := &"dev_collision_debug_toggle"
+const ACCEPT_ACTION := &"dev_accept_visual_standard"
+const TEST_RESOURCE_PATHS: Array[String] = [
+	STANDARDS_TEST_PATH,
+	SCALE_TEST_PATH,
+	WORLD_CAMERA_TEST_PATH,
+	VILLAGE_CAMERA_TEST_PATH,
+	DUNGEON_CAMERA_TEST_PATH,
+	INTERIOR_CAMERA_TEST_PATH,
 ]
 
 var failures: PackedStringArray = []
 var _had_settings_path_override := false
 var _original_settings_path: Variant = null
+var _had_standards_path_override := false
+var _original_standards_path: Variant = null
 
 
 func run(tree: SceneTree) -> PackedStringArray:
-	_remember_and_set_test_path()
-	_remove_test_settings()
-	_expect_input_mapping()
+	_remember_project_settings()
+	_remove_test_files()
+	if not _write_standard_fixture():
+		_cleanup()
+		return failures
 
 	var packed_scene := load(VISUAL_LAB_SCENE_PATH) as PackedScene
 	_expect(packed_scene != null, "VisualLab scene loads")
 	if packed_scene == null:
-		_cleanup_test_path()
+		_cleanup()
 		return failures
-
 	var visual_lab := await _open_visual_lab(tree, packed_scene)
 	if visual_lab != null:
-		_expect_controls_contract(visual_lab)
+		await _expect_menu_contract(tree, visual_lab)
 		await _close_visual_lab(tree, visual_lab)
+		_expect_saved_standard_files()
 
-	var reopened_visual_lab := await _open_visual_lab(tree, packed_scene)
-	if reopened_visual_lab != null:
-		var panel := reopened_visual_lab.get_node_or_null(
-			"InterfaceLayer/HudPanel"
-		) as Panel
-		var interface := reopened_visual_lab.get_node_or_null(
+	var reopened := await _open_visual_lab(tree, packed_scene)
+	if reopened != null:
+		var panel := reopened.get_node_or_null("InterfaceLayer/HudPanel") as Panel
+		var interface := reopened.get_node_or_null(
 			"InterfaceLayer/Interface"
 		) as MarginContainer
-		_expect(
-			panel != null and not panel.visible,
-			"controls panel starts hidden after reopening",
-		)
-		_expect(
-			interface != null and not interface.visible,
-			"controls content starts hidden after reopening",
-		)
-		await _close_visual_lab(tree, reopened_visual_lab)
-
-	_cleanup_test_path()
+		_expect(panel != null and not panel.visible, "F5 panel reopens closed")
+		_expect(interface != null and not interface.visible, "F5 menu reopens closed")
+		await _close_visual_lab(tree, reopened)
+	_cleanup()
 	return failures
 
 
-func _expect_controls_contract(visual_lab: Control) -> void:
+func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 	var panel := visual_lab.get_node_or_null("InterfaceLayer/HudPanel") as Panel
 	var interface := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface"
 	) as MarginContainer
-	var text_container := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text"
-	) as VBoxContainer
-	var title := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/Title"
-	) as Label
 	var prompt := visual_lab.get_node_or_null(
 		"InterfaceLayer/ControlsPrompt"
 	) as Label
+	var hero := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter"
+	) as CharacterBody2D
+	var title := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Header/Title"
+	) as Label
+	var tabs := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/ThemeTabs"
+	) as HBoxContainer
+	var medium_zoom := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ZoomOptions/MediumButton"
+	) as Button
+	var near_zoom := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ZoomOptions/NearButton"
+	) as Button
+	var world_context := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ContextOptions/WorldButton"
+	) as Button
+	var village_context := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ContextOptions/VillageButton"
+	) as Button
+	var dungeon_context := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ContextOptions/DungeonButton"
+	) as Button
+	var interior_context := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ContextOptions/InteriorButton"
+	) as Button
+	var wide_zoom := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
+		+ "ZoomOptions/WideButton"
+	) as Button
+	var accept_button := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Acceptance/AcceptButton"
+	) as Button
+	var scale_tab := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/ThemeTabs/ScaleTab"
+	) as Button
+	var candidate_a := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/"
+		+ "ProfileOptions/CandidateAButton"
+	) as Button
+	var medium_hero := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/"
+		+ "HeroOptions/MediumButton"
+	) as Button
+	var world_tab := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/ThemeTabs/WorldTab"
+	) as Button
+	var high_fog := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/"
+		+ "FogOptions/HighButton"
+	) as Button
+	var first_light := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/"
+		+ "LightOptions/FirstButton"
+	) as Button
+	var confirmation := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/BundleConfirmation"
+	) as ConfirmationDialog
 	var diagnostics_panel := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel"
 	) as Panel
-	var pixel_snap_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/PixelSnapButton"
-	) as Button
-	var texture_filter_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/RenderingButtons/TextureFilterButton"
-	) as Button
-	var fog_variant_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/AtmosphereButtons/FogVariantButton"
-	) as Button
-	var scale_profile_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/ScaleProfileButton"
-	) as Button
-	var light_variant_button := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/AtmosphereButtons/LightVariantButton"
-	) as Button
-	var controls_toggle_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/ControlsToggleHint"
-	) as Label
+	var collision_overlay := visual_lab.get_node_or_null(
+		"TestWorld/CollisionDebugOverlay"
+	) as Node2D
 
-	_expect(panel != null, "VisualLab retains its framed controls panel")
-	_expect(interface != null, "VisualLab has controls content")
-	_expect(text_container != null, "controls use the existing text container")
-	_expect(title != null and title.text == "STEUERUNG", "controls have a clear title")
+	_expect(panel != null, "VisualLab has a responsive menu background")
+	_expect(interface != null, "VisualLab has the themed F5 menu")
+	_expect(prompt != null and prompt.text == "F5 · Steuerung", "closed menu shows F5")
+	_expect(hero != null, "VisualLab retains its controllable hero")
+	_expect(title != null and title.text == "VISUELLES TESTLABOR", "menu has a title")
 	_expect(
-		prompt != null and prompt.text == "F5 · Steuerung",
-		"collapsed view explains the F5 shortcut",
+		tabs != null
+		and _button_texts(tabs)
+		== [
+			"Kamera",
+			"Maßstab",
+			"Darstellung",
+			"Welt & Atmosphäre",
+			"Diagnose & Hilfe",
+		],
+		"menu has the five ordered theme tabs",
 	)
-	_expect(pixel_snap_button != null, "controls have an interactive pixel-snap button")
+	_expect(medium_zoom != null and near_zoom != null, "camera has three zoom options")
 	_expect(
-		texture_filter_button != null,
-		"controls have an interactive texture-filter button",
+		world_context != null
+		and village_context != null
+		and dungeon_context != null
+		and interior_context != null,
+		"camera has all four target contexts",
 	)
-	_expect(fog_variant_button != null, "controls have an interactive fog button")
+	_expect(wide_zoom != null, "camera exposes the wide zoom")
+	_expect(accept_button != null, "menu has a visible acceptance button")
 	_expect(
-		scale_profile_button != null,
-		"controls have an interactive scale-candidate button",
+		scale_tab != null and candidate_a != null and medium_hero != null,
+		"menu has scale candidates and individual values",
 	)
-	_expect(light_variant_button != null, "controls have an interactive light button")
-	_expect(controls_toggle_hint != null, "controls retain their closing hint")
+	_expect(
+		world_tab != null and high_fog != null and first_light != null,
+		"menu has world-state atmosphere values",
+	)
+	_expect(confirmation != null, "scale bundle has explicit confirmation")
+	_expect(diagnostics_panel != null, "F3 diagnostics remain available")
+	_expect(collision_overlay != null, "F4 collision overlay remains available")
 	if (
 		panel == null
 		or interface == null
-		or text_container == null
 		or prompt == null
-		or pixel_snap_button == null
-		or texture_filter_button == null
-		or fog_variant_button == null
-		or scale_profile_button == null
-		or light_variant_button == null
-		or controls_toggle_hint == null
+		or hero == null
+		or medium_zoom == null
+		or near_zoom == null
+		or world_context == null
+		or village_context == null
+		or dungeon_context == null
+		or interior_context == null
+		or wide_zoom == null
+		or accept_button == null
+		or scale_tab == null
+		or candidate_a == null
+		or medium_hero == null
+		or world_tab == null
+		or high_fog == null
+		or first_light == null
+		or confirmation == null
+		or diagnostics_panel == null
+		or collision_overlay == null
 	):
 		return
 
-	_expect(not panel.visible, "controls panel starts hidden")
-	_expect(not interface.visible, "controls content starts hidden")
-	_expect(prompt.visible, "F5 shortcut starts visible")
+	_expect(not panel.visible and not interface.visible, "F5 menu starts closed")
+	_expect(hero.call(&"is_movement_enabled"), "closed menu leaves movement enabled")
+	_expect(medium_zoom.text.contains("★"), "world standard starts gold and starred")
+	_expect(medium_zoom.text.contains("●"), "matching test value is also marked current")
+	interior_context.pressed.emit()
 	_expect(
-		not pixel_snap_button.is_visible_in_tree(),
-		"pixel-snap menu button starts collapsed with the controls",
+		near_zoom.text.contains("★") and near_zoom.text.contains("●"),
+		"small-interior context starts at its independent 1.50 standard",
 	)
+	dungeon_context.pressed.emit()
 	_expect(
-		pixel_snap_button.text == "Pixel-Snap: AN",
-		"pixel-snap menu button starts with an exact state",
+		medium_zoom.text.contains("★") and medium_zoom.text.contains("●"),
+		"dungeon context starts at its independent 1.00 standard",
 	)
+	world_context.pressed.emit()
 	_expect(
-		not texture_filter_button.is_visible_in_tree(),
-		"texture-filter menu button starts collapsed with the controls",
-	)
-	_expect(
-		texture_filter_button.text == "Texturfilter: Nearest-Neighbor",
-		"texture-filter menu button starts with an exact state",
-	)
-	_expect(
-		not fog_variant_button.is_visible_in_tree()
-		and fog_variant_button.text == "Nebel: Mittel",
-		"fog menu button starts collapsed with the preferred damaged variant",
-	)
-	_expect(
-		not light_variant_button.is_visible_in_tree()
-		and light_variant_button.text == "Licht: Kühl und dunkel",
-		"light menu button starts collapsed with the preferred damaged profile",
-	)
-	_expect(
-		not scale_profile_button.is_visible_in_tree()
-		and scale_profile_button.text == "Maßstabsprofil: Maßstab V0",
-		"scale-profile button starts collapsed with the selected baseline",
-	)
-	_expect(
-		diagnostics_panel != null and not diagnostics_panel.visible,
-		"diagnostics remain independently hidden",
+		interface.get_combined_minimum_size().x <= 1280.0
+		and interface.get_combined_minimum_size().y <= 720.0,
+		"menu remains operable at 1280 by 720",
 	)
 
 	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
-	_expect(panel.visible, "F5 action shows the controls panel")
-	_expect(interface.visible, "F5 action shows the controls content")
-	_expect(not prompt.visible, "expanded controls replace the collapsed shortcut")
-	_expect(pixel_snap_button.is_visible_in_tree(), "F5 shows the pixel-snap menu button")
-	_expect(
-		texture_filter_button.is_visible_in_tree(),
-		"F5 shows the texture-filter menu button",
-	)
-	_expect(fog_variant_button.is_visible_in_tree(), "F5 shows the fog menu button")
-	_expect(light_variant_button.is_visible_in_tree(), "F5 shows the light menu button")
-	_expect(
-		scale_profile_button.is_visible_in_tree(),
-		"F5 shows the scale-profile menu button",
-	)
-	_expect(
-		controls_toggle_hint.get_global_rect().end.y
-		<= panel.get_global_rect().end.y - 12.0,
-		"atmosphere controls keep the complete F5 menu inside its panel",
-	)
-	_expect(pixel_snap_button.has_focus(), "F5 focuses the interactive menu button")
-	_expect_visible_content_is_controls_only(text_container)
-
+	_expect(panel.visible and interface.visible, "F5 opens the complete menu")
+	_expect(not prompt.visible, "open menu replaces the compact prompt")
+	_expect(not hero.call(&"is_movement_enabled"), "open menu blocks hero movement")
+	_expect(medium_zoom.has_focus(), "F5 focuses the current camera zoom")
 	visual_lab._unhandled_input(_pressed_key(KEY_F5, true))
-	_expect(panel.visible and interface.visible, "held F5 does not toggle repeatedly")
-	visual_lab._unhandled_input(_pressed_key(KEY_F5))
-	_expect(not panel.visible and not interface.visible, "second F5 press hides controls")
-	_expect(prompt.visible, "collapsed F5 shortcut returns after closing controls")
+	_expect(interface.visible, "held F5 does not close the menu")
+
+	near_zoom.pressed.emit()
+	_expect(near_zoom.button_pressed, "menu selects a new current zoom")
+	_expect(near_zoom.text.contains("●"), "current test value has a non-gold marker")
+	_expect(not near_zoom.text.contains("★"), "untaken test value is not starred")
+	_expect(medium_zoom.text.contains("★"), "gold marker stays on the game standard")
+	_expect(
+		is_equal_approx(visual_lab._standards.world_camera_profile.base_zoom, 1.0),
+		"testing a zoom does not change the game standard",
+	)
+
+	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
+	visual_lab._unhandled_input(_pressed_action(ACCEPT_ACTION))
+	_expect(
+		is_equal_approx(visual_lab._standards.world_camera_profile.base_zoom, 1.0),
+		"accept shortcut is inert while F5 is closed",
+	)
+	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
+	near_zoom.grab_focus()
+	visual_lab._unhandled_input(_pressed_action(ACCEPT_ACTION))
+	_expect(
+		is_equal_approx(visual_lab._standards.world_camera_profile.base_zoom, 1.5),
+		"Ctrl Alt E accepts only the focused open-menu setting",
+	)
+	_expect(near_zoom.text.contains("★"), "gold marker moves after a successful write")
+	_expect(not medium_zoom.text.contains("★"), "previous standard loses its gold marker")
+
+	medium_zoom.pressed.emit()
+	accept_button.pressed.emit()
+	_expect(
+		is_equal_approx(visual_lab._standards.world_camera_profile.base_zoom, 1.0),
+		"visible button performs the same single-value acceptance",
+	)
+
+	village_context.pressed.emit()
+	wide_zoom.pressed.emit()
+	wide_zoom.grab_focus()
+	accept_button.pressed.emit()
+	_expect(
+		not visual_lab._standards.village_inherits_world,
+		"accepting a village zoom ends initial world inheritance",
+	)
+	_expect(
+		is_equal_approx(visual_lab._standards.village_camera_profile.base_zoom, 0.75),
+		"village receives its own accepted zoom",
+	)
+	_expect(
+		is_equal_approx(visual_lab._standards.world_camera_profile.base_zoom, 1.0),
+		"village acceptance leaves world zoom unchanged",
+	)
+
+	world_context.pressed.emit()
+	world_context.grab_focus()
+	_expect(accept_button.disabled, "non-standard context row cannot be accepted")
+	visual_lab._unhandled_input(_pressed_action(ACCEPT_ACTION))
+	_expect(
+		is_equal_approx(visual_lab._standards.world_camera_profile.base_zoom, 1.0),
+		"ineligible focused row cannot change a standard",
+	)
+
+	scale_tab.pressed.emit()
+	candidate_a.pressed.emit()
+	candidate_a.grab_focus()
+	visual_lab._unhandled_input(_pressed_action(ACCEPT_ACTION))
+	_expect(confirmation.visible, "scale bundle requires a confirmation dialog")
+	_expect(
+		confirmation.dialog_text.contains("Außenwelt-Zoom: 0,75×")
+		and confirmation.dialog_text.contains("Heldenhöhe: 64 px")
+		and confirmation.dialog_text.contains("Tilegröße: 32 × 32 px")
+		and confirmation.dialog_text.contains("Pixel-Snap: AN")
+		and confirmation.dialog_text.contains("Texturfilter: Nearest-Neighbor"),
+		"bundle confirmation lists every affected value",
+	)
+	confirmation.confirmed.emit()
+	_expect(
+		is_equal_approx(visual_lab._standards.scale_profile.hero_height, 64.0)
+		and visual_lab._standards.scale_profile.tile_size == 32
+		and is_equal_approx(
+			visual_lab._standards.world_camera_profile.base_zoom,
+			0.75,
+		),
+		"confirmed bundle writes all listed standards",
+	)
+	_expect(candidate_a.text.contains("★"), "accepted bundle receives the gold marker")
+
+	medium_hero.pressed.emit()
+	medium_hero.grab_focus()
+	accept_button.pressed.emit()
+	_expect(
+		is_equal_approx(visual_lab._standards.scale_profile.hero_height, 80.0)
+		and visual_lab._standards.scale_profile.tile_size == 32
+		and is_equal_approx(
+			visual_lab._standards.world_camera_profile.base_zoom,
+			0.75,
+		),
+		"single-value acceptance does not hide a bundle change",
+	)
+	candidate_a.grab_focus()
+	_expect(
+		accept_button.disabled,
+		"a free scale combination cannot be accepted as a hidden bundle",
+	)
+
+	world_tab.pressed.emit()
+	high_fog.pressed.emit()
+	high_fog.grab_focus()
+	accept_button.pressed.emit()
+	first_light.pressed.emit()
+	first_light.grab_focus()
+	accept_button.pressed.emit()
+	_expect(
+		visual_lab._standards.damaged_fog_id == "high"
+		and visual_lab._standards.damaged_light_id == "cool_muted",
+		"fog and light standards are accepted per visible world state",
+	)
 
 	visual_lab._unhandled_input(_pressed_action(DIAGNOSTICS_ACTION))
-	_expect(
-		diagnostics_panel != null and diagnostics_panel.visible,
-		"F3 still opens diagnostics without opening controls",
-	)
-	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
-	_expect(panel.visible and interface.visible, "F5 opens controls beside diagnostics")
-	_expect(
-		diagnostics_panel != null and diagnostics_panel.visible,
-		"F5 does not change diagnostics visibility",
-	)
-
-	pixel_snap_button.button_pressed = true
-	pixel_snap_button.pressed.emit()
-	_expect(
-		pixel_snap_button.text == "Pixel-Snap: AN",
-		"menu selection updates the displayed pixel-snap state",
-	)
-	_expect(
-		not visual_lab.get_viewport().snap_2d_transforms_to_pixel,
-		"menu selection avoids independently rounding world transforms",
-	)
-	texture_filter_button.button_pressed = true
-	texture_filter_button.pressed.emit()
-	_expect(
-		texture_filter_button.text == "Texturfilter: Weich",
-		"menu selection updates the displayed texture-filter state",
-	)
-	fog_variant_button.pressed.emit()
-	light_variant_button.pressed.emit()
-	_expect(fog_variant_button.text == "Nebel: Hoch", "fog button cycles its variant")
-	_expect(
-		light_variant_button.text == "Licht: Kühl und gedämpft",
-		"light button cycles its profile",
-	)
-
-	visual_lab._unhandled_input(_pressed_action(&"dev_hero_size_increase"))
+	visual_lab._unhandled_input(_pressed_action(COLLISION_ACTION))
+	_expect(diagnostics_panel.visible, "F3 still toggles diagnostics directly")
+	_expect(collision_overlay.visible, "F4 still toggles collisions directly")
 	var settings := ConfigFile.new()
-	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "existing lab settings still save")
+	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "local preview settings load")
 	_expect(
-		not settings.has_section_key("visual_lab", "controls_visible"),
-		"controls visibility is not persisted",
+		not settings.has_section_key("visual_lab", "diagnostics")
+		and not settings.has_section_key("visual_lab", "collision"),
+		"diagnostic tools are never persisted as test or game values",
+	)
+
+	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
+	_expect(not interface.visible and prompt.visible, "F5 closes the menu")
+	_expect(hero.call(&"is_movement_enabled"), "closing the menu restores movement")
+
+
+func _write_standard_fixture() -> bool:
+	var scale_profile := VisualScaleProfileResource.new()
+	scale_profile.profile_id = "visual_lab_controls"
+	scale_profile.profile_name = "Teststandard"
+	scale_profile.hero_height = 80.0
+	scale_profile.tile_size = 32
+	scale_profile.camera_zoom = 1.0
+	scale_profile.reference_resolution = Vector2i(1920, 1080)
+	scale_profile.aspect_ratio = "16:9"
+	scale_profile.pixel_snap_enabled = true
+	scale_profile.texture_filter_id = "nearest"
+	if ResourceSaver.save(scale_profile, SCALE_TEST_PATH) != OK:
+		_expect(false, "isolated scale standard can be written")
+		return false
+
+	var world_camera := _camera_profile(1.0, "World")
+	var village_camera := _camera_profile(1.0, "Village")
+	var dungeon_camera := _camera_profile(1.0, "Dungeon")
+	var interior_camera := _camera_profile(1.5, "Small interior")
+	var camera_profiles: Array[CameraProfileResource] = [
+		world_camera,
+		village_camera,
+		dungeon_camera,
+		interior_camera,
+	]
+	var camera_paths: Array[String] = [
+		WORLD_CAMERA_TEST_PATH,
+		VILLAGE_CAMERA_TEST_PATH,
+		DUNGEON_CAMERA_TEST_PATH,
+		INTERIOR_CAMERA_TEST_PATH,
+	]
+	for profile_index in range(camera_profiles.size()):
+		if ResourceSaver.save(camera_profiles[profile_index], camera_paths[profile_index]) != OK:
+			_expect(false, "isolated camera standard %d can be written" % profile_index)
+			return false
+
+	var standards := VisualLabStandardsResource.new()
+	standards.scale_profile = scale_profile
+	standards.world_camera_profile = world_camera
+	standards.village_camera_profile = village_camera
+	standards.village_inherits_world = true
+	standards.dungeon_camera_profile = dungeon_camera
+	standards.small_interior_camera_profile = interior_camera
+	standards.damaged_fog_id = "medium"
+	standards.damaged_light_id = "cool_dark"
+	standards.restored_fog_id = "low"
+	standards.restored_light_id = "warm_clear"
+	var save_error := ResourceSaver.save(standards, STANDARDS_TEST_PATH)
+	_expect(save_error == OK, "isolated standard registry can be written")
+	return save_error == OK
+
+
+func _camera_profile(zoom: float, profile_name: String) -> CameraProfileResource:
+	var profile := CameraProfileResource.new()
+	profile.base_zoom = zoom
+	profile.profile_name = profile_name
+	return profile
+
+
+func _button_texts(container: Container) -> Array[String]:
+	var result: Array[String] = []
+	for child in container.get_children():
+		var button := child as Button
+		if button != null:
+			result.append(button.text)
+	return result
+
+
+func _expect_saved_standard_files() -> void:
+	var registry_text := FileAccess.get_file_as_string(STANDARDS_TEST_PATH)
+	var scale_text := FileAccess.get_file_as_string(SCALE_TEST_PATH)
+	var world_camera_text := FileAccess.get_file_as_string(
+		WORLD_CAMERA_TEST_PATH
+	)
+	var village_camera_text := FileAccess.get_file_as_string(
+		VILLAGE_CAMERA_TEST_PATH
 	)
 	_expect(
-		settings.get_value("visual_lab", "pixel_snap", false) == true,
-		"pixel-snap menu choice is persisted as a test value",
+		registry_text.contains("village_inherits_world = false")
+		and registry_text.contains("damaged_fog_id = \"high\"")
+		and registry_text.contains("damaged_light_id = \"cool_muted\""),
+		"accepted registry values are written to the isolated resource",
 	)
 	_expect(
-		settings.get_value("visual_lab", "texture_filter", "") == "soft",
-		"texture-filter menu choice is persisted as a test value",
+		scale_text.contains("hero_height = 80.0")
+		and scale_text.contains("tile_size = 32")
+		and scale_text.contains("camera_zoom = 0.75"),
+		"accepted scale values are written to the isolated resource",
 	)
 	_expect(
-		settings.get_value("visual_lab", "damaged_fog", "") == "high",
-		"fog menu choice is persisted as a test value",
-	)
-	_expect(
-		settings.get_value("visual_lab", "damaged_light", "") == "cool_muted",
-		"light menu choice is persisted as a test value",
+		world_camera_text.contains("base_zoom = 0.75")
+		and village_camera_text.contains("base_zoom = 0.75"),
+		"accepted contextual camera values are written to isolated resources",
 	)
 
 
-func _expect_visible_content_is_controls_only(text_container: VBoxContainer) -> void:
-	var visible_texts: Array[String] = []
-	for descendant in text_container.find_children("*", "Label", true, false):
-		var label := descendant as Label
-		if label != null and label.is_visible_in_tree():
-			visible_texts.append(label.text)
-	for expected_text in EXPECTED_CONTROL_TEXTS:
-		_expect(
-			expected_text in visible_texts,
-			"controls list contains '%s'" % expected_text,
+func _remember_project_settings() -> void:
+	_had_settings_path_override = ProjectSettings.has_setting(
+		SETTINGS_PATH_PROJECT_KEY
+	)
+	if _had_settings_path_override:
+		_original_settings_path = ProjectSettings.get_setting(
+			SETTINGS_PATH_PROJECT_KEY
 		)
-	for visible_text in visible_texts:
-		for prefix in VALUE_PREFIXES:
-			_expect(
-				not visible_text.begins_with(prefix),
-				"controls omit live value '%s'" % visible_text,
-			)
-
-
-func _expect_input_mapping() -> void:
-	_expect(InputMap.has_action(CONTROLS_ACTION), "InputMap defines controls toggle")
-	if not InputMap.has_action(CONTROLS_ACTION):
-		return
-	for input_event in InputMap.action_get_events(CONTROLS_ACTION):
-		var key_event := input_event as InputEventKey
-		if key_event != null and (
-			key_event.keycode == KEY_F5 or key_event.physical_keycode == KEY_F5
-		):
-			return
-	_expect(false, "controls toggle uses F5")
+	_had_standards_path_override = ProjectSettings.has_setting(
+		STANDARDS_PATH_PROJECT_KEY
+	)
+	if _had_standards_path_override:
+		_original_standards_path = ProjectSettings.get_setting(
+			STANDARDS_PATH_PROJECT_KEY
+		)
+	ProjectSettings.set_setting(SETTINGS_PATH_PROJECT_KEY, SETTINGS_TEST_PATH)
+	ProjectSettings.set_setting(STANDARDS_PATH_PROJECT_KEY, STANDARDS_TEST_PATH)
 
 
 func _open_visual_lab(tree: SceneTree, packed_scene: PackedScene) -> Control:
 	var node := packed_scene.instantiate()
-	_expect(node is Control, "VisualLab instantiates as Control")
+	_expect(node is Control, "VisualLab instantiates")
 	if not node is Control:
 		if node != null:
 			node.free()
@@ -341,28 +522,33 @@ func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 	return event
 
 
-func _remember_and_set_test_path() -> void:
-	_had_settings_path_override = ProjectSettings.has_setting(SETTINGS_PATH_PROJECT_KEY)
+func _cleanup() -> void:
+	_remove_test_files()
 	if _had_settings_path_override:
-		_original_settings_path = ProjectSettings.get_setting(SETTINGS_PATH_PROJECT_KEY)
-	ProjectSettings.set_setting(SETTINGS_PATH_PROJECT_KEY, SETTINGS_TEST_PATH)
+		ProjectSettings.set_setting(
+			SETTINGS_PATH_PROJECT_KEY,
+			_original_settings_path,
+		)
+	else:
+		ProjectSettings.set_setting(SETTINGS_PATH_PROJECT_KEY, null)
+	if _had_standards_path_override:
+		ProjectSettings.set_setting(
+			STANDARDS_PATH_PROJECT_KEY,
+			_original_standards_path,
+		)
+	else:
+		ProjectSettings.set_setting(STANDARDS_PATH_PROJECT_KEY, null)
 
 
-func _cleanup_test_path() -> void:
-	_remove_test_settings()
-	if _had_settings_path_override:
-		ProjectSettings.set_setting(SETTINGS_PATH_PROJECT_KEY, _original_settings_path)
-		return
-	ProjectSettings.set_setting(SETTINGS_PATH_PROJECT_KEY, null)
-
-
-func _remove_test_settings() -> void:
-	if not FileAccess.file_exists(SETTINGS_TEST_PATH):
-		return
-	var remove_error := DirAccess.remove_absolute(
-		ProjectSettings.globalize_path(SETTINGS_TEST_PATH)
-	)
-	_expect(remove_error == OK, "isolated controls settings can be removed")
+func _remove_test_files() -> void:
+	var paths := TEST_RESOURCE_PATHS.duplicate()
+	paths.append(SETTINGS_TEST_PATH)
+	for resource_path in paths:
+		if FileAccess.file_exists(resource_path):
+			var remove_error := DirAccess.remove_absolute(
+				ProjectSettings.globalize_path(resource_path)
+			)
+			_expect(remove_error == OK, "isolated test file can be removed")
 
 
 func _expect(condition: bool, description: String) -> void:

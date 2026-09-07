@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://scenes/dev/visual_lab.gd" id="1_visual_lab"]
 [ext_resource type="PackedScene" path="res://scenes/gameplay/hero/hero_character.tscn" id="2_hero"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/large_enemy.png" id="9_large_enemy"]
 [ext_resource type="Texture2D" path="res://assets/prototypes/scale_references/tree.png" id="10_tree"]
 [ext_resource type="Script" path="res://scenes/dev/collision_debug_overlay.gd" id="11_collision_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/dev/visual_lab_menu.tscn" id="12_visual_lab_menu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical_bound"]
 size = Vector2(32, 2160)
@@ -44,50 +45,6 @@ content_margin_left = 14.0
 content_margin_top = 14.0
 content_margin_right = 14.0
 content_margin_bottom = 14.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pixel_snap_normal"]
-bg_color = Color(0.075, 0.098, 0.11, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.42, 0.37, 0.55, 1)
-content_margin_left = 12.0
-content_margin_top = 7.0
-content_margin_right = 12.0
-content_margin_bottom = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pixel_snap_hover"]
-bg_color = Color(0.12, 0.13, 0.17, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.65, 0.56, 0.82, 1)
-content_margin_left = 12.0
-content_margin_top = 7.0
-content_margin_right = 12.0
-content_margin_bottom = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pixel_snap_pressed"]
-bg_color = Color(0.2, 0.17, 0.29, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.79, 0.68, 0.96, 1)
-content_margin_left = 12.0
-content_margin_top = 7.0
-content_margin_right = 12.0
-content_margin_bottom = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pixel_snap_focus"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.94, 0.82, 0.48, 1)
 
 [node name="VisualLab" type="Control"]
 layout_mode = 3
@@ -349,10 +306,15 @@ follow_viewport_enabled = false
 
 [node name="HudPanel" type="Panel" parent="InterfaceLayer"]
 visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 780.0
-offset_bottom = 760.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 
@@ -413,361 +375,11 @@ theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 18
-text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nMaßstabsprofil: Maßstab V0\nReferenzauflösung: 1920 × 1080\nSeitenverhältnis: 16:9\nKameraprofil: Welt/Dungeon · Kandidat\nKamera-Basis: 1,00×\nKamera-Aktiv: 1,00×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWeltzustand: Beschädigt\nNebel: Mittel\nLichtprofil: Kühl und dunkel\nPixel-Snap: AN\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: 1,500 × 1,500 Weltpixel\nRasterphase: 0,25 Ausgabepixel\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
+text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nMaßstabsprofil: Maßstab V0\nReferenzauflösung: 1920 × 1080\nSeitenverhältnis: 16:9\nKamerabereich: Außenwelt\nKamera-Basis: 1,00×\nKamera-Aktiv: 1,00×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWeltzustand: Beschädigt\nNebel: Mittel\nLichtprofil: Kühl und dunkel\nPixel-Snap: AN\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: 1,500 × 1,500 Weltpixel\nRasterphase: 0,25 Ausgabepixel\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
 
-[node name="Interface" type="MarginContainer" parent="InterfaceLayer"]
+[node name="Interface" parent="InterfaceLayer" instance=ExtResource("12_visual_lab_menu")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
-theme_override_constants/margin_bottom = 24
-
-[node name="Text" type="VBoxContainer" parent="InterfaceLayer/Interface"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Title" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.94, 0.89, 0.71, 1)
-theme_override_colors/font_outline_color = Color(0.06, 0.09, 0.1, 1)
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 32
-text = "STEUERUNG"
-
-[node name="DisplaySpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-visible = false
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ReferenceStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
-theme_override_font_sizes/font_size = 16
-text = "Referenz: 1920 × 1080 · 16:9"
-
-[node name="WindowSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
-theme_override_font_sizes/font_size = 16
-text = "Fenster: 1280 × 720"
-
-[node name="MovementHeading" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.75, 0.77, 1)
-theme_override_font_sizes/font_size = 18
-text = "Bewegen:"
-
-[node name="MovementHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.67, 0.69, 0.72, 1)
-theme_override_font_sizes/font_size = 18
-text = "WASD / Pfeiltasten / linker Stick"
-
-[node name="Spacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="BackHeading" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.75, 0.77, 1)
-theme_override_font_sizes/font_size = 18
-text = "Zurück:"
-
-[node name="BackHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.68, 0.78, 1)
-theme_override_font_sizes/font_size = 18
-text = "Esc / B"
-
-[node name="CameraSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="CameraStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
-theme_override_font_sizes/font_size = 18
-text = "Kamera: Mittel · 1,00×"
-
-[node name="CameraZoomOutHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "- / linke Schultertaste: weiter"
-
-[node name="CameraZoomInHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "+ / rechte Schultertaste: näher"
-
-[node name="HeroSizeSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="HeroSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.66, 0.82, 0.55, 1)
-theme_override_font_sizes/font_size = 18
-text = "Figur: Mittel · 80 Weltpixel"
-
-[node name="ScaleReferenceHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.66, 0.74, 0.6, 1)
-theme_override_font_sizes/font_size = 16
-text = "Referenzobjekte: vorläufige Testmaße"
-
-[node name="HeroSizeDecreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "R / Controller links: kleiner"
-
-[node name="HeroSizeIncreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "F / Controller oben: größer"
-
-[node name="TileSizeSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="TileSizeStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.78, 0.76, 1)
-theme_override_font_sizes/font_size = 18
-text = "Tiles: Klein · 32 × 32 Weltpixel"
-
-[node name="TileSizeDecreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "T / linker Stick-Klick: kleiner"
-
-[node name="TileSizeIncreaseHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "G / rechter Stick-Klick: größer"
-
-[node name="WorldStateSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="WorldStateStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.48, 0.8, 0.5, 1)
-theme_override_font_sizes/font_size = 18
-text = "Weltzustand: Beschädigt"
-
-[node name="WorldStateToggleHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "V / Controller-A: Zustand wechseln"
-
-[node name="ScaleProfileSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ScaleProfileButton" type="Button" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(712, 40)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.84, 0.76, 0.5, 1)
-theme_override_colors/font_hover_color = Color(0.96, 0.88, 0.61, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.94, 0.72, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
-focus_neighbor_bottom = NodePath("../AtmosphereButtons/FogVariantButton")
-text = "Maßstabsprofil: Maßstab V0"
-
-[node name="ScaleProfileHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "Klick / Auswahl: A → Maßstab V0 → C"
-
-[node name="AtmosphereButtons" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 12
-
-[node name="FogVariantButton" type="Button" parent="InterfaceLayer/Interface/Text/AtmosphereButtons"]
-custom_minimum_size = Vector2(330, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.72, 0.82, 0.86, 1)
-theme_override_colors/font_hover_color = Color(0.84, 0.93, 0.97, 1)
-theme_override_colors/font_pressed_color = Color(0.93, 0.98, 1, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
-focus_neighbor_right = NodePath("../LightVariantButton")
-focus_neighbor_top = NodePath("../../ScaleProfileButton")
-focus_neighbor_bottom = NodePath("../../RenderingButtons/PixelSnapButton")
-text = "Nebel: Mittel"
-
-[node name="LightVariantButton" type="Button" parent="InterfaceLayer/Interface/Text/AtmosphereButtons"]
-custom_minimum_size = Vector2(370, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.9, 0.79, 0.57, 1)
-theme_override_colors/font_hover_color = Color(1, 0.9, 0.68, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.95, 0.8, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
-focus_neighbor_left = NodePath("../FogVariantButton")
-focus_neighbor_top = NodePath("../../ScaleProfileButton")
-focus_neighbor_bottom = NodePath("../../RenderingButtons/TextureFilterButton")
-text = "Licht: Kühl und dunkel"
-
-[node name="AtmosphereHints" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 12
-
-[node name="FogVariantHint" type="Label" parent="InterfaceLayer/Interface/Text/AtmosphereHints"]
-custom_minimum_size = Vector2(330, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "B / Klick / Auswahl: Nebel wechseln"
-
-[node name="LightVariantHint" type="Label" parent="InterfaceLayer/Interface/Text/AtmosphereHints"]
-custom_minimum_size = Vector2(370, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "L / Klick / Auswahl: Licht wechseln"
-
-[node name="PixelSnapSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="RenderingButtons" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 12
-
-[node name="PixelSnapButton" type="Button" parent="InterfaceLayer/Interface/Text/RenderingButtons"]
-custom_minimum_size = Vector2(330, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.82, 0.76, 0.94, 1)
-theme_override_colors/font_hover_color = Color(0.9, 0.85, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.96, 0.91, 1, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
-focus_neighbor_right = NodePath("../TextureFilterButton")
-focus_neighbor_top = NodePath("../../AtmosphereButtons/FogVariantButton")
-toggle_mode = true
-button_pressed = true
-text = "Pixel-Snap: AN"
-
-[node name="TextureFilterButton" type="Button" parent="InterfaceLayer/Interface/Text/RenderingButtons"]
-custom_minimum_size = Vector2(370, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.82, 0.76, 0.94, 1)
-theme_override_colors/font_hover_color = Color(0.9, 0.85, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.96, 0.91, 1, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_pixel_snap_normal")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pixel_snap_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pixel_snap_pressed")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pixel_snap_focus")
-focus_neighbor_left = NodePath("../PixelSnapButton")
-focus_neighbor_top = NodePath("../../AtmosphereButtons/LightVariantButton")
-toggle_mode = true
-text = "Texturfilter: Nearest-Neighbor"
-
-[node name="RenderingHints" type="HBoxContainer" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 12
-
-[node name="PixelSnapToggleHint" type="Label" parent="InterfaceLayer/Interface/Text/RenderingHints"]
-custom_minimum_size = Vector2(330, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "X / Klick / Auswahl: AN / AUS"
-
-[node name="TextureFilterToggleHint" type="Label" parent="InterfaceLayer/Interface/Text/RenderingHints"]
-custom_minimum_size = Vector2(370, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.61, 0.68, 0.72, 1)
-theme_override_font_sizes/font_size = 16
-text = "N / Klick / Auswahl: Nearest / Weich"
-
-[node name="DiagnosticsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="DiagnosticsHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
-theme_override_font_sizes/font_size = 16
-text = "F3 / Select: Diagnose"
-
-[node name="CollisionDebugHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.78, 0.72, 0.45, 1)
-theme_override_font_sizes/font_size = 16
-text = "F4: Kollisionsflächen"
-
-[node name="ControlsToggleHint" type="Label" parent="InterfaceLayer/Interface/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.94, 0.82, 0.48, 1)
-theme_override_font_sizes/font_size = 16
-text = "F5: Steuerung schließen"
-
-[node name="SettingsSpacer" type="Control" parent="InterfaceLayer/Interface/Text"]
-visible = false
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="SettingsStatus" type="Label" parent="InterfaceLayer/Interface/Text"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.56, 0.7, 0.82, 1)
-theme_override_font_sizes/font_size = 16
-text = "Testwerte werden automatisch gespeichert"
+offset_left = 20.0
+offset_top = 12.0
+offset_right = -20.0
+offset_bottom = -12.0

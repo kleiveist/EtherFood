@@ -2,10 +2,6 @@ extends RefCounted
 
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
-const SIZE_DECREASE_ACTION := &"dev_hero_size_decrease"
-const SIZE_INCREASE_ACTION := &"dev_hero_size_increase"
-const ZOOM_OUT_ACTION := &"dev_camera_zoom_out"
-const ZOOM_IN_ACTION := &"dev_camera_zoom_in"
 const REFERENCE_HEIGHT := 80.0
 const SMALL_HEIGHT := 64.0
 const MEDIUM_HEIGHT := 80.0
@@ -18,7 +14,7 @@ var failures: PackedStringArray = []
 
 
 func run(tree: SceneTree) -> PackedStringArray:
-	_expect_input_mappings()
+	_expect_removed_shortcuts()
 	var visual_lab_scene := load(VISUAL_LAB_SCENE_PATH) as PackedScene
 	_expect(visual_lab_scene != null, "VisualLab scene loads")
 	if visual_lab_scene == null:
@@ -61,13 +57,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"TestWorld/HeroCharacter/PlayerCamera"
 	) as Camera2D
 	var size_status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/HeroSizeStatus"
-	) as Label
-	var decrease_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/HeroSizeDecreaseHint"
-	) as Label
-	var increase_hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/HeroSizeIncreaseHint"
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/HeroSizeStatus"
 	) as Label
 
 	_expect(hero != null, "VisualLab has HeroCharacter")
@@ -83,16 +73,6 @@ func run(tree: SceneTree) -> PackedStringArray:
 	)
 	_expect(player_camera != null, "HeroCharacter has PlayerCamera")
 	_expect(size_status != null, "VisualLab has a hero-size Label")
-	_expect(
-		decrease_hint != null
-		and decrease_hint.text == "R / Controller links: kleiner",
-		"VisualLab shows the size-decrease hint",
-	)
-	_expect(
-		increase_hint != null
-		and increase_hint.text == "F / Controller oben: größer",
-		"VisualLab shows the size-increase hint",
-	)
 
 	if (
 		hero == null
@@ -152,19 +132,19 @@ func run(tree: SceneTree) -> PackedStringArray:
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
-		"held size input does not repeat",
+		"removed F shortcut leaves hero size unchanged",
 	)
 
-	visual_lab._unhandled_input(_pressed_key(KEY_R))
+	visual_lab._change_hero_size(-1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		SMALL_HEIGHT,
 		SMALL_STATUS,
-		"R changes medium hero size to small",
+		"size decrement changes medium hero to small",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_R))
+	visual_lab._change_hero_size(-1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
@@ -174,25 +154,25 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"size decrease stops at small",
 	)
 
-	visual_lab._unhandled_input(_pressed_key(KEY_F))
+	visual_lab._change_hero_size(1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
-		"F changes small hero size to medium",
+		"size increment changes small hero to medium",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_F))
+	visual_lab._change_hero_size(1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
-		"F changes medium hero size to large",
+		"size increment changes medium hero to large",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_F))
+	visual_lab._change_hero_size(1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
@@ -202,46 +182,46 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"size increase stops at large",
 	)
 
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
+	visual_lab._change_hero_size(-1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
-		"left controller action changes large size to medium",
+		"size decrement changes large hero to medium",
 	)
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
+	visual_lab._change_hero_size(-1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		SMALL_HEIGHT,
 		SMALL_STATUS,
-		"left controller action changes medium size to small",
+		"size decrement changes medium hero to small again",
 	)
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_Y))
+	visual_lab._change_hero_size(1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
-		"top controller action changes small size to medium",
+		"size increment changes small hero to medium again",
 	)
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_Y))
+	visual_lab._change_hero_size(1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		LARGE_HEIGHT,
 		LARGE_STATUS,
-		"top controller action changes medium size to large",
+		"size increment changes medium hero to large again",
 	)
 
 	for _iteration in range(24):
-		visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
-		visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_Y))
+		visual_lab._change_hero_size(-1)
+		visual_lab._change_hero_size(1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
@@ -251,21 +231,21 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"repeated switching does not accumulate scale error",
 	)
 
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_X))
+	visual_lab._change_hero_size(-1)
 	_expect_size_state(
 		appearance,
 		hero_sprite,
 		size_status,
 		MEDIUM_HEIGHT,
 		MEDIUM_STATUS,
-		"controller returns hero size to medium",
+		"size decrement returns hero to medium",
 	)
 	_expect(
 		player_camera.zoom.is_equal_approx(original_camera_zoom),
 		"hero-size changes keep camera zoom unchanged",
 	)
 
-	visual_lab._unhandled_input(_pressed_action(ZOOM_OUT_ACTION))
+	visual_lab._change_camera_zoom(-1)
 	_expect(player_camera.zoom == Vector2(0.75, 0.75), "zoom can change independently")
 	_expect_size_state(
 		appearance,
@@ -275,7 +255,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		MEDIUM_STATUS,
 		"zoom changes keep hero size unchanged",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_F))
+	visual_lab._change_hero_size(1)
 	_expect(
 		player_camera.zoom == Vector2(0.75, 0.75),
 		"size can change without camera zoom",
@@ -288,12 +268,12 @@ func run(tree: SceneTree) -> PackedStringArray:
 		LARGE_STATUS,
 		"hero size remains independent at medium zoom",
 	)
-	visual_lab._unhandled_input(_pressed_action(ZOOM_IN_ACTION))
+	visual_lab._change_camera_zoom(1)
 	_expect(
 		player_camera.zoom.is_equal_approx(original_camera_zoom),
 		"zoom returns independently to the standard profile",
 	)
-	visual_lab._unhandled_input(_pressed_key(KEY_R))
+	visual_lab._change_hero_size(-1)
 
 	_expect(hero.position == original_hero_position, "size keeps hero position unchanged")
 	_expect(hero.scale == original_hero_scale, "size never scales HeroCharacter")
@@ -350,7 +330,7 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
 	) as Sprite2D
 	var reopened_status := reopened_visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/HeroSizeStatus"
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/HeroSizeStatus"
 	) as Label
 	_expect(reopened_appearance != null, "reopened VisualLab has Appearance")
 	_expect(reopened_sprite != null, "reopened VisualLab has HeroSprite")
@@ -372,43 +352,15 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 	await tree.process_frame
 
 
-func _expect_input_mappings() -> void:
-	_expect(InputMap.has_action(SIZE_DECREASE_ACTION), "InputMap defines size decrease")
-	_expect(InputMap.has_action(SIZE_INCREASE_ACTION), "InputMap defines size increase")
-	if InputMap.has_action(SIZE_DECREASE_ACTION):
-		_expect(
-			_has_key_mapping(SIZE_DECREASE_ACTION, KEY_R),
-			"size decrease uses the physical R key",
-		)
-		_expect(
-			_has_button_mapping(SIZE_DECREASE_ACTION, JOY_BUTTON_X),
-			"size decrease uses the left controller action",
-		)
-	if InputMap.has_action(SIZE_INCREASE_ACTION):
-		_expect(
-			_has_key_mapping(SIZE_INCREASE_ACTION, KEY_F),
-			"size increase uses the physical F key",
-		)
-		_expect(
-			_has_button_mapping(SIZE_INCREASE_ACTION, JOY_BUTTON_Y),
-			"size increase uses the top controller action",
-		)
-
-
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and key_event.physical_keycode == expected_key:
-			return true
-	return false
-
-
-func _has_button_mapping(action: StringName, expected_button: JoyButton) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var button_event := input_event as InputEventJoypadButton
-		if button_event != null and button_event.button_index == expected_button:
-			return true
-	return false
+func _expect_removed_shortcuts() -> void:
+	_expect(
+		not InputMap.has_action(&"dev_hero_size_decrease"),
+		"hero-size decrease action is absent",
+	)
+	_expect(
+		not InputMap.has_action(&"dev_hero_size_increase"),
+		"hero-size increase action is absent",
+	)
 
 
 func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
@@ -416,20 +368,6 @@ func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 	event.physical_keycode = keycode
 	event.pressed = true
 	event.echo = echo
-	return event
-
-
-func _pressed_button(button_index: JoyButton) -> InputEventJoypadButton:
-	var event := InputEventJoypadButton.new()
-	event.button_index = button_index
-	event.pressed = true
-	return event
-
-
-func _pressed_action(action: StringName) -> InputEventAction:
-	var event := InputEventAction.new()
-	event.action = action
-	event.pressed = true
 	return event
 
 

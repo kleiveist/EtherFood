@@ -5,7 +5,6 @@ const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
-const TOGGLE_ACTION := &"dev_world_state_toggle"
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const SETTINGS_TEST_PATH := "user://visual_lab_settings_test.cfg"
 const DAMAGED_STATUS := "Weltzustand: Beschädigt"
@@ -59,7 +58,7 @@ var _original_settings_path: Variant = null
 func run(tree: SceneTree) -> PackedStringArray:
 	_remember_and_set_test_path()
 	_remove_test_settings()
-	_expect_input_mapping()
+	_expect_removed_shortcut()
 	await _expect_preview_scene_contract(tree)
 	await _expect_visual_lab_contract(tree)
 	_cleanup_test_path()
@@ -414,10 +413,7 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 		"TestWorld/WorldStatePreview"
 	) as WORLD_STATE_PREVIEW_SCRIPT
 	var status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/WorldStateStatus"
-	) as Label
-	var hint := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/WorldStateToggleHint"
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/WorldStateStatus"
 	) as Label
 	var player_camera := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/PlayerCamera"
@@ -434,10 +430,6 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 
 	_expect(preview != null, "VisualLab contains WorldStatePreview")
 	_expect(status != null, "VisualLab has a world-state status Label")
-	_expect(
-		hint != null and hint.text == "V / Controller-A: Zustand wechseln",
-		"VisualLab shows the world-state controls",
-	)
 	_expect(player_camera != null, "VisualLab retains PlayerCamera")
 	_expect(hero != null, "VisualLab retains HeroCharacter")
 	_expect(tile_grid_preview != null, "VisualLab retains TileGridPreview")
@@ -497,19 +489,19 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 	_expect_preview_state(preview, false, "VisualLab starts with damaged world state")
 	_expect(status.text == DAMAGED_STATUS, "damaged start state has matching HUD text")
 	visual_lab._unhandled_input(_pressed_key(KEY_V, true))
-	_expect_preview_state(preview, false, "held toggle input does not repeat")
+	_expect_preview_state(preview, false, "removed V shortcut leaves state unchanged")
 
-	visual_lab._unhandled_input(_pressed_key(KEY_V))
-	_expect_preview_state(preview, true, "V changes damaged state to restored")
+	visual_lab._toggle_world_state()
+	_expect_preview_state(preview, true, "state helper changes damaged to restored")
 	_expect(status.text == RESTORED_STATUS, "restored state has matching HUD text")
 	_expect_saved_world_state("restored")
-	visual_lab._unhandled_input(_pressed_key(KEY_V))
-	_expect_preview_state(preview, false, "second V press restores damaged state")
-	_expect(status.text == DAMAGED_STATUS, "second V press updates the HUD")
+	visual_lab._toggle_world_state()
+	_expect_preview_state(preview, false, "second state change restores damaged state")
+	_expect(status.text == DAMAGED_STATUS, "second state change updates the HUD")
 	_expect_saved_world_state("damaged")
-	visual_lab._unhandled_input(_pressed_button(JOY_BUTTON_A))
-	_expect_preview_state(preview, true, "Controller-A changes damaged state to restored")
-	_expect(status.text == RESTORED_STATUS, "controller toggle updates the HUD")
+	visual_lab._toggle_world_state()
+	_expect_preview_state(preview, true, "state helper restores the restored preview")
+	_expect(status.text == RESTORED_STATUS, "state helper updates the HUD")
 	_expect_saved_world_state("restored")
 
 	_expect(
@@ -550,7 +542,7 @@ func _expect_visual_lab_contract(tree: SceneTree) -> void:
 			as WORLD_STATE_PREVIEW_SCRIPT
 		)
 		var reopened_status := reopened_visual_lab.get_node_or_null(
-			"InterfaceLayer/Interface/Text/WorldStateStatus"
+			"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/WorldStateStatus"
 		) as Label
 		_expect(reopened_preview != null, "reopened VisualLab has WorldStatePreview")
 		_expect(reopened_status != null, "reopened VisualLab has world-state status")
@@ -588,7 +580,7 @@ func _expect_file_world_fallback(
 		"TestWorld/WorldStatePreview"
 	) as WORLD_STATE_PREVIEW_SCRIPT
 	var status := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Text/WorldStateStatus"
+		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/WorldStateStatus"
 	) as Label
 	var camera := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/PlayerCamera"
@@ -646,14 +638,10 @@ func _expect_preview_state(
 	)
 
 
-func _expect_input_mapping() -> void:
-	_expect(InputMap.has_action(TOGGLE_ACTION), "InputMap defines world-state toggle")
-	if not InputMap.has_action(TOGGLE_ACTION):
-		return
-	_expect(_has_key_mapping(TOGGLE_ACTION, KEY_V), "world-state toggle uses physical V")
+func _expect_removed_shortcut() -> void:
 	_expect(
-		_has_button_mapping(TOGGLE_ACTION, JOY_BUTTON_A),
-		"world-state toggle uses Controller-A",
+		not InputMap.has_action(&"dev_world_state_toggle"),
+		"world-state direct action is absent",
 	)
 
 
@@ -695,34 +683,11 @@ func _close_visual_lab(tree: SceneTree, visual_lab: Control) -> void:
 	await tree.process_frame
 
 
-func _has_key_mapping(action: StringName, expected_key: Key) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var key_event := input_event as InputEventKey
-		if key_event != null and key_event.physical_keycode == expected_key:
-			return true
-	return false
-
-
-func _has_button_mapping(action: StringName, expected_button: JoyButton) -> bool:
-	for input_event in InputMap.action_get_events(action):
-		var button_event := input_event as InputEventJoypadButton
-		if button_event != null and button_event.button_index == expected_button:
-			return true
-	return false
-
-
 func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 	var event := InputEventKey.new()
 	event.physical_keycode = keycode
 	event.pressed = true
 	event.echo = echo
-	return event
-
-
-func _pressed_button(button_index: JoyButton) -> InputEventJoypadButton:
-	var event := InputEventJoypadButton.new()
-	event.button_index = button_index
-	event.pressed = true
 	return event
 
 

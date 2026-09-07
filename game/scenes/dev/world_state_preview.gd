@@ -161,8 +161,16 @@ func get_fog_variant_id(state: int, variant: int) -> String:
 	return str(_variant(_fog_variants_for_state(state), variant)["id"])
 
 
+func get_fog_variant_name(state: int, variant: int) -> String:
+	return str(_variant(_fog_variants_for_state(state), variant)["name"])
+
+
 func get_light_variant_id(state: int, variant: int) -> String:
 	return str(_variant(_light_variants_for_state(state), variant)["id"])
+
+
+func get_light_variant_name(state: int, variant: int) -> String:
+	return str(_variant(_light_variants_for_state(state), variant)["name"])
 
 
 func get_active_fog_name() -> String:

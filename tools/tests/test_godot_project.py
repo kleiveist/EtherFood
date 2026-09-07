@@ -127,19 +127,41 @@ class GodotProjectTests(unittest.TestCase):
                 self.assertIn('"location":1', body)
                 self.assertIn('"location":2', body)
 
-    def test_atmosphere_comparison_uses_dedicated_debug_keys(self) -> None:
+    def test_visual_lab_uses_menu_and_keeps_reviewed_global_shortcuts(self) -> None:
         project = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
-        mappings = {
-            "dev_fog_variant_cycle": 66,
-            "dev_light_variant_cycle": 76,
+        retained_mappings = {
+            "dev_diagnostics_toggle": 4194334,
+            "dev_collision_debug_toggle": 4194335,
+            "dev_controls_toggle": 4194336,
         }
 
-        for action, physical_key in mappings.items():
+        for action, keycode in retained_mappings.items():
             with self.subTest(action=action):
                 body = self._input_action(project, action)
                 self.assertIn('"deadzone": 0.5', body)
-                self.assertIn(f'"physical_keycode":{physical_key}', body)
-                self.assertNotIn("InputEventJoypad", body)
+                self.assertIn(f'"keycode":{keycode}', body)
+
+        accept_body = self._input_action(project, "dev_accept_visual_standard")
+        self.assertIn('"physical_keycode":69', accept_body)
+        self.assertIn('"alt_pressed":true', accept_body)
+        self.assertIn('"ctrl_pressed":true', accept_body)
+
+        removed_actions = (
+            "dev_camera_zoom_out",
+            "dev_camera_zoom_in",
+            "dev_hero_size_decrease",
+            "dev_hero_size_increase",
+            "dev_tile_size_decrease",
+            "dev_tile_size_increase",
+            "dev_world_state_toggle",
+            "dev_fog_variant_cycle",
+            "dev_light_variant_cycle",
+            "dev_pixel_snap_toggle",
+            "dev_texture_filter_toggle",
+        )
+        for action in removed_actions:
+            with self.subTest(action=action):
+                self.assertNotRegex(project, rf"(?m)^{re.escape(action)}=\{{")
 
     def test_touch_adapter_uses_only_semantic_action_boundaries(self) -> None:
         adapter = (
