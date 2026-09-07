@@ -10,12 +10,12 @@ selbst keine GIFs; die Vorschauen stehen ausschließlich auf den Detailseiten.
 
 | Typ | Figur | Kurzbeschreibung | Animationen | Detailseite |
 |---|---|---|---:|---|
-| Held | Green Hero | Spielbarer grüner Held | 5 / 25 (4 vollständig) | [Green Hero](heroes/green-hero.md) |
+| Held | Green Hero | Spielbarer grüner Held | 6 / 25 (5 vollständig) | [Green Hero](heroes/green-hero.md) |
 
-`5 / 25 (4 vollständig)` bedeutet: Für fünf Animationstypen liegt mindestens
-eine GIF-Vorschau vor. Stehen, langes Warten, Gehen und Laufen besitzen je acht
-Richtungsvorschauen; genervtes Warten liegt derzeit nur nach Süden vor. Der
-vollständige Heldenstandard sieht 25 Animationstypen vor.
+`6 / 25 (5 vollständig)` bedeutet: Für sechs Animationstypen liegt mindestens
+eine GIF-Vorschau vor. Stehen, langes Warten, Gehen, Laufen und Rennen besitzen
+je acht Richtungsvorschauen; genervtes Warten liegt derzeit nur nach Süden vor.
+Der vollständige Heldenstandard sieht 25 Animationstypen vor.
 
 ## Kategorien
 
