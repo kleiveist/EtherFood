@@ -26,7 +26,3 @@ nach [`../source/`](../source/README.md).
 Katalog, ihre Herkunft und ihr jeweiliger Spielstand werden in der
 [Animationsreferenz](../../reference/animations/index.md) dokumentiert. Dieser
 Bestand enthält keine Arbeits-PNGs, Spritesheets oder Godot-Ressourcen.
-
-Bewusst richtungsunabhängige Animationen verwenden anstelle eines
-Richtungskürzels die Datei `all.gif`. Diese eine Vorschau darf in allen
-Richtungszuständen eingebunden werden.
