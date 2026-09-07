@@ -20,9 +20,9 @@ updated: 2026-09-07
 | Name | Green Hero |
 | Kurzbeschreibung | Spielbarer grüner Held |
 | Animationsstandard | 25 Animationstypen mit je 8 Richtungen |
-| Aktuell dokumentiert | 4 Animationstypen; 3 davon für alle 8 Richtungszustände |
-| Belegte Richtungsplätze | 25 von 200 |
-| Dokumentierte GIFs | 20 |
+| Aktuell dokumentiert | 5 Animationstypen; 4 davon für alle 8 Richtungszustände |
+| Belegte Richtungsplätze | 33 von 200 |
+| Dokumentierte GIFs | 28 |
 | Frames je GIF | 16 |
 | Dokumentationsformat | GIF |
 | Doku-Assets | `docs/assets/images/animations/heroes/green-hero/` |
@@ -31,11 +31,11 @@ updated: 2026-09-07
 
 Der Green Hero ist eine spielbare Heldenfigur von EtherFood. Diese Seite
 dokumentiert ausschließlich die tatsächlich vorhandenen visuellen
-GIF-Vorschauen der Figur. Stehen und Gehen liegen in allen acht Richtungen vor;
-langes Warten ist nur nach Süden dokumentiert. Beim genervten Warten wendet sich
-der Held unabhängig von seiner vorherigen Richtung zur Kamera und schaut den
-inaktiven Spieler an. Die dreiteilige Vorschau gilt deshalb für alle acht
-Richtungszustände.
+GIF-Vorschauen der Figur. Stehen, Gehen und Laufen liegen in allen acht
+Richtungen vor; langes Warten ist nur nach Süden dokumentiert. Beim genervten
+Warten wendet sich der Held unabhängig von seiner vorherigen Richtung zur
+Kamera und schaut den inaktiven Spieler an. Die dreiteilige Vorschau gilt
+deshalb für alle acht Richtungszustände.
 
 Der vollständige Heldenstandard bleibt mit 25 Animationstypen sichtbar. Ein
 Gedankenstrich (`—`) bedeutet, dass für diesen Richtungsplatz aktuell kein GIF in
@@ -50,8 +50,8 @@ Arbeiten existieren.
 | Zweck | Öffentliche, releasegeeignete Vorschau und visuelle Referenz der vorhandenen Animationen |
 | Herkunft | Fertige GIF-Exporte aus der lokal bereitgestellten Green-Hero-Arbeitsstruktur |
 | Dokumentationsstand | 7. September 2026 |
-| Spielstand | Green Hero; Stehen, genervtes Warten und Gehen vollständig; langes Warten nur nach Süden |
-| Technische Merkmale | 20 GIFs mit je 640 × 640 Pixeln, 16 Frames und 1,92 Sekunden Laufzeit |
+| Spielstand | Green Hero; Stehen, genervtes Warten, Gehen und Laufen vollständig; langes Warten nur nach Süden |
+| Technische Merkmale | 28 GIFs mit je 640 × 640 Pixeln, 16 Frames und 1,92 Sekunden Laufzeit |
 | Urheberschaft und Lizenzstatus | Ausgangsmotiv vom Benutzer bereitgestellt; die Übernahme der Vorschauen verändert dessen Nutzungsrechte nicht |
 
 Die Arbeitsstruktur und ihre PNG-, Spritesheet- und Quelldateien bleiben lokal
@@ -96,7 +96,7 @@ damit 48 Frames und 5,76 Sekunden.
 | Animation | N | NE | E | SE | S | SW | W | NW |
 |---|---|---|---|---|---|---|---|---|
 | Gehen | <img src="../../../assets/images/animations/heroes/green-hero/walk/n.gif" alt="Green Hero geht nach Norden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/ne.gif" alt="Green Hero geht nach Nordosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/e.gif" alt="Green Hero geht nach Osten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/se.gif" alt="Green Hero geht nach Südosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/s.gif" alt="Green Hero geht nach Süden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/sw.gif" alt="Green Hero geht nach Südwesten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/w.gif" alt="Green Hero geht nach Westen" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/walk/nw.gif" alt="Green Hero geht nach Nordwesten" width="96"> |
-| Laufen | — | — | — | — | — | — | — | — |
+| Laufen | <img src="../../../assets/images/animations/heroes/green-hero/run/n.gif" alt="Green Hero läuft nach Norden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/ne.gif" alt="Green Hero läuft nach Nordosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/e.gif" alt="Green Hero läuft nach Osten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/se.gif" alt="Green Hero läuft nach Südosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/s.gif" alt="Green Hero läuft nach Süden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/sw.gif" alt="Green Hero läuft nach Südwesten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/w.gif" alt="Green Hero läuft nach Westen" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/run/nw.gif" alt="Green Hero läuft nach Nordwesten" width="96"> |
 | Rennen | — | — | — | — | — | — | — | — |
 | Sprinten | — | — | — | — | — | — | — | — |
 
@@ -152,16 +152,16 @@ damit 48 Frames und 5,76 Sekunden.
 | Richtungsplätze im vollständigen Standard | 200 |
 | Frames je GIF | 16 |
 | Theoretischer Gesamtumfang des Standards | 3.200 Frames |
-| Aktuell durch GIFs belegte Animationstypen | 4 |
-| Davon für alle acht Richtungszustände verfügbar | 3 |
-| Aktuell belegte Richtungsplätze | 25 |
-| Aktuell vorhandene GIF-Dateien | 20 |
-| Aktuell in GIFs dokumentierter Umfang | 320 Frames |
-| Derzeit ohne GIF-Vorschau | 175 Richtungsplätze |
+| Aktuell durch GIFs belegte Animationstypen | 5 |
+| Davon für alle acht Richtungszustände verfügbar | 4 |
+| Aktuell belegte Richtungsplätze | 33 |
+| Aktuell vorhandene GIF-Dateien | 28 |
+| Aktuell in GIFs dokumentierter Umfang | 448 Frames |
+| Derzeit ohne GIF-Vorschau | 167 Richtungsplätze |
 
 Der theoretische Gesamtumfang beschreibt das einheitliche Raster eines
 vollständigen Heldenanimationssatzes. Als tatsächlich vorhanden gelten auf
-dieser Seite nur die 20 eingebetteten GIF-Dateien. Die drei Teile des genervten
+dieser Seite nur die 28 eingebetteten GIF-Dateien. Die drei Teile des genervten
 Wartens zählen als ein Animationstyp und belegen durch ihre gemeinsame Nutzung
 alle acht Richtungsplätze. Physisch bleiben es drei GIF-Dateien mit insgesamt
 48 Frames.
@@ -180,9 +180,9 @@ Eine absichtlich richtungsunabhängige Animation verwendet stattdessen:
 
 `<animation>/all.gif`
 
-Die vollständigen Richtungssätze liegen unter `stand/` und `walk/`. Vom langen
-Warten ist derzeit nur `stand-long/s.gif` vorhanden. Die dreiteilige Vorschau
-des genervten Wartens verwendet die Animationspfade
+Die vollständigen Richtungssätze liegen unter `stand/`, `walk/` und `run/`.
+Vom langen Warten ist derzeit nur `stand-long/s.gif` vorhanden. Die dreiteilige
+Vorschau des genervten Wartens verwendet die Animationspfade
 `stand-very-long-1/`, `stand-very-long-2/` und `stand-very-long-3/`. In jedem
 dieser Pfade liegt die gemeinsam verwendete Vorschau als `all.gif`.
 
