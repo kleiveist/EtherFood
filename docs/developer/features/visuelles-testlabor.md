@@ -15,6 +15,23 @@ Die Versuche folgen der
 Sie dienen dem sichtbaren Vergleich. Abgeschlossene Einzeltests halten ihre
 bestätigten Entscheidungen hier fest, ohne offene Folgefragen vorwegzunehmen.
 
+## Umsetzungsstand
+
+Stand: 7. September 2026.
+
+Die vorhandenen Testflächen und Testergebnisse bleiben bestehen. Die auf
+dieser Seite festgelegte Neufassung der `F5`-Steuerung mit Themenmenü,
+getrennten Test- und Spielwerten sowie sichtbarer Goldmarkierung ist der
+zur Prüfung vorgelegte Zielzustand für die nächste Umsetzung. Bis zu dieser
+Umsetzung kann die laufende Szene noch die bisherige Bedienoberfläche und
+deren direkte Testkürzel enthalten. Diese Altbedienung ist keine zweite
+Spezifikation und wird bei der Umsetzung entfernt.
+
+Die Neufassung ändert für sich genommen keinen bereits angenommenen Wert.
+Insbesondere bleibt [Maßstab V0](#maßstab-v0) bestehen, bis im Labor ein
+anderer Wert ausdrücklich übernommen und die zugehörige Entscheidung
+nachvollziehbar aktualisiert wurde.
+
 ## Route und Zugang
 
 ```text
@@ -26,12 +43,169 @@ normalen Spielversion sind weder der Menüpunkt noch ein direkter Aufruf dieser
 Route verfügbar. Das Testlabor ist eine reine Entwicklungsfunktion und kein
 Bestandteil der Spielhandlung.
 
-Die Bedienhilfe beginnt eingeklappt. `F5` blendet die Tastenübersicht sowie die
-bedienbaren Schalter für Maßstabsprofile, Nebel, Licht, Pixel-Snap und
-Texturfilter ein oder aus; ein kleiner Hinweis auf `F5` bleibt im
-eingeklappten Zustand sichtbar. Aktuelle Größen-, Zoom-, Welt- und
-Fensterwerte gehören nicht in diese Übersicht, sondern ausschließlich in die
-Diagnoseanzeige. Der Zustand der Bedienhilfe wird nicht gespeichert.
+Das Testlabor startet mit geschlossenem Steuerungsmenü. `F5` öffnet und
+schließt das gesamte Menü; ein kleiner Hinweis auf `F5` bleibt bei
+geschlossenem Menü sichtbar. Der offene oder geschlossene Zustand wird nicht
+gespeichert.
+
+`F3` schaltet die Diagnoseanzeige weiterhin direkt ein oder aus. `F4` schaltet
+weiterhin unabhängig davon die Kollisionsflächen ein oder aus. Beide Funktionen
+sind zusätzlich im Menü erreichbar, beginnen bei jedem Start ausgeschaltet und
+werden nicht als Test- oder Spielwert gespeichert.
+
+Alle veränderlichen Testparameter werden nach der Neufassung ausschließlich im
+Menü bedient. Eigene Direktkürzel für Zoom, Figurengröße, Tilegröße,
+Weltzustand, Nebel, Licht, Pixel-Snap und Texturfilter entfallen. Die normale
+Spielsteuerung, `Esc` zum Verlassen, `F3`, `F4` und `F5` sind davon nicht
+betroffen. `Strg + Alt + E` bleibt als einziges Kürzel zum ausdrücklichen
+Übernehmen einer fokussierten Einstellung bestehen; dieselbe Aktion muss auch
+über einen sichtbaren Menüknopf erreichbar sein.
+
+## Aufbau des F5-Menüs
+
+Eine dauerhaft sichtbare Themenleiste am oberen Rand des geöffneten Menüs
+ordnet die vorhandenen und späteren Laborwerkzeuge. Neue Testwerkzeuge werden
+einem Thema zugewiesen und erhalten kein neues globales Direktkürzel.
+
+| Thema | Inhalt |
+|---|---|
+| Kamera | Zielbereich und dessen Zoomstufe |
+| Maßstab | Vergleichsprofil, Heldenhöhe und Tilegröße |
+| Darstellung | Pixel-Snap, Texturfilter und spätere Grafikoptionen |
+| Welt und Atmosphäre | Vorschau des Weltzustands sowie zustandsbezogener Nebel und zustandsbezogenes Licht |
+| Diagnose und Hilfe | Diagnoseanzeige, Kollisionsflächen, Bewegung, Zurück und Bedienhinweise |
+
+Das grundsätzliche Layout lautet:
+
+```text
+┌ TESTLABOR ─────────────────────────────────────────────┐
+│ [Kamera] [Maßstab] [Darstellung] [Welt] [Diagnose]   │
+├──────────────────────────────────────────────────────┤
+│ Thema und gegebenenfalls Zielbereich                 │
+│                                                      │
+│ Bezeichnung                                          │
+│ [Wert A] [★ Spielstandard] [Wert C]                  │
+│ Aktueller Testwert: … · Übernommener Wert: …        │
+│                                                      │
+│ [Als Spielstandard übernehmen]                      │
+├──────────────────────────────────────────────────────┤
+│ F3 Diagnose · F4 Kollision · F5 Schließen           │
+└──────────────────────────────────────────────────────┘
+```
+
+Das Menü verwendet Container und einen scrollbaren Inhaltsbereich, damit
+es mindestens bei `1280 × 720` und `1920 × 1080` vollständig bedienbar
+bleibt. Maus, normale UI-Tastaturnavigation und Controller-Navigation müssen
+dieselben Einstellungen erreichen. Menüeingaben dürfen nicht gleichzeitig
+eine Testfigur oder einen verdeckten Schalter auslösen. Änderungen werden
+sofort in der sichtbaren Testfläche dargestellt.
+
+## Testwert und übernommener Spielwert
+
+Jede übernehmbare Einstellung unterscheidet zwei voneinander unabhängige
+Zustände:
+
+- Der **aktuelle Testwert** ist die momentan sichtbare Auswahl im Labor. Er
+  darf beliebig gewechselt und als lokaler Arbeitsstand gemerkt werden.
+- Der **übernommene Spielwert** ist der versionierte Standard, den passende
+  Spielszenen tatsächlich verwenden. Er bleibt beim weiteren Vergleichen
+  unverändert, bis er erneut ausdrücklich übernommen wird.
+
+Bei wenigen festen Varianten werden alle Werte nebeneinander als
+Auswahlknöpfe gezeigt. Der aktuelle Testwert erhält die normale
+Auswahlmarkierung. Der übernommene Wert erhält unabhängig davon einen goldenen
+Rahmen, einen Stern und die zugängliche Bezeichnung `Spielstandard`. Wenn
+beide Zustände auf demselben Wert liegen, sind beide Kennzeichnungen sichtbar.
+Die Goldmarkierung darf nicht nur durch Farbe vermittelt werden und darf beim
+bloßen Durchschalten der Testwerte nicht mitwandern.
+
+Ein Status am jeweiligen Eintrag zeigt eindeutig entweder `Entspricht dem
+Spielstandard` oder `Nicht übernommener Testwert`. Fokus, Hover und gedrückter
+Zustand verwenden eine andere Darstellung als die goldene
+Spielstandard-Markierung.
+
+### Werte übernehmen
+
+Der Knopf `Als Spielstandard übernehmen` und `Strg + Alt + E` arbeiten immer
+auf dem aktuell fokussierten Eintrag und seinem sichtbaren Kontext. Eine
+Einzeleinstellung übernimmt nur diesen Wert. Ein gebündeltes
+Maßstabsvergleichsprofil darf mehrere Werte gemeinsam übernehmen, muss vor
+dem Schreiben aber alle betroffenen Werte in einer Bestätigung aufführen.
+Verdeckte Sammeländerungen sind nicht zulässig.
+
+Das Übernahmekürzel reagiert nur bei geöffnetem `F5`-Menü und einem
+übernehmbaren fokussierten Eintrag. Außerhalb dieses Zustands verändert es
+nichts. Damit kann kein zuletzt fokussierter oder aktuell unsichtbarer Wert
+versehentlich zum Spielstandard werden.
+
+Erst nach erfolgreichem Schreiben des Spielwerts wandert dessen
+Goldmarkierung. Bei einem Fehler bleibt der bisherige Spielstandard sichtbar
+und das Menü meldet den Grund. Die Übernahme ist ausschließlich in einer
+beschreibbaren Entwicklungsumgebung verfügbar und führt niemals selbstständig
+einen Git-Commit aus.
+
+Nicht jede Laborfunktion stellt einen Spielstandard dar:
+
+| Einstellung | Übernehmbar | Bedeutung |
+|---|---|---|
+| Zoom | ja, je Zielbereich | festes Basiskameraprofil des Bereichs |
+| Heldenhöhe und Tilegröße | ja | Produktionsmaßstab |
+| Pixel-Snap und Texturfilter | ja | Darstellungsstandard beziehungsweise spätere Voreinstellung |
+| Nebel und Licht | ja, je Weltzustand | atmosphärischer Standard des jeweiligen Zustands |
+| Maßstabsvergleichsprofil | ja, als bestätigtes Bündel | mehrere einzeln sichtbare Produktionswerte |
+| angezeigter Weltzustand | nein | gleichberechtigte Vorschau bestehender Spielzustände |
+| Diagnose, Kollision und Fensterwerte | nein | reine Entwicklungswerkzeuge und Messwerte |
+| Bewegung und Sprung | nein | Testeingaben, keine visuelle Voreinstellung |
+
+Wird eine Einstellung später als Spieleroption angeboten, ist der goldene
+Wert nur ihre ausgelieferte Voreinstellung. Eine im Spiel gespeicherte
+Benutzerauswahl darf diese Voreinstellung überschreiben.
+
+### Speicherquellen
+
+Der lokale Arbeitsstand und der Spielstandard bleiben technisch getrennt:
+
+- `user://visual_lab_settings.cfg` darf aktuelle Testwerte für das erneute
+  Öffnen des Labors merken. Sie ist niemals Produktionsquelle.
+- Angenommene Spielwerte liegen in versionierten Ressourcen unter
+  `game/shared/resources/`. Das Labor liest die Goldmarkierung direkt aus
+  diesen Ressourcen; eine zweite Datei mit denselben Standardwerten ist nicht
+  zulässig.
+- Spielszenen lesen ihre Ausgangswerte aus denselben versionierten Ressourcen
+  und niemals aus der lokalen Testlabor-Konfiguration.
+
+Das Speicherschema des lokalen Arbeitsstands erhält bei der Umsetzung eine
+neue Version. Gültige alte Werte werden migriert; fehlende oder ungültige
+Werte fallen auf den jeweiligen übernommenen Spielstandard zurück.
+
+Eine Übernahme macht die gewählten Werte ohne erneute Mitteilung im
+Arbeitsbaum prüfbar. Sie ersetzt jedoch nicht die Repository-Regeln: Wenn ein
+bereits angenommener Kanonwert geändert wird, müssen die passende Entscheidung
+und die beschreibende Dokumentation vor dem Commit nachvollziehbar
+aktualisiert werden.
+
+## Zoomprofile nach Zielbereich
+
+Der Kamerabereich wird vor der Zoomstufe ausgewählt. Jeder Bereich merkt
+seinen aktuellen Testwert und besitzt einen unabhängig markierten
+Spielstandard:
+
+| Stabile ID | Anzeige | Bestehender Ausgangspunkt |
+|---|---|---|
+| `world` | Außenwelt | `1,00×` aus Maßstab V0 |
+| `village` | Dorf | erbt zunächst den Außenweltwert, bis ein eigener Wert angenommen wird |
+| `dungeon` | Dungeon | `1,00×` aus Maßstab V0 |
+| `small_interior` | Kleiner Innenraum | `1,50×` aus dem bestehenden Szenenprofil |
+
+Alle vier Bereiche lassen sich unabhängig vergleichen. Ein Wechsel des
+Bereichs übernimmt keinen Wert. Die Bezeichnung `Kleiner Innenraum` bleibt
+bewusst enger als `Innenraum`, weil Maßstab V0 bisher nur kleine Räume mit
+`1,50×` festlegt. Weitere Bereiche können später mit stabiler ID ergänzt
+werden.
+
+Der angenommene Zoom ist der Basiszoom der passenden Spielszene. Temporäre
+Überlagerungen wie der vorhandene Schleichzoom bleiben davon getrennt und
+dürfen den gespeicherten Bereichsstandard nicht verändern.
 
 ## Laufende Testergebnisse
 
@@ -133,10 +307,12 @@ Für Regressionen bewahrt das Testlabor zwei abweichende Kombinationen auf:
 | C · Nah und groß | 96 px | 48 × 48 px | 1,50× | maximale Figuren- und Objektnähe |
 
 Alle drei Profile enthalten die Referenzauflösung `1920 × 1080`, 16:9,
-Pixel-Snap `AN` und Nearest-Neighbor. Der Knopf `Maßstabsprofil` im
-`F5`-Menü schaltet `A → Maßstab V0 → C` als vollständige Bündel um. Eine
+Pixel-Snap `AN` und Nearest-Neighbor. Die Auswahl `Maßstabsprofil` unter
+`Maßstab` schaltet `A → Maßstab V0 → C` als vollständige Bündel um. Eine
 manuelle Änderung von Heldenhöhe, Tilegröße, Zoom, Pixel-Snap oder Filter
-kennzeichnet den Zustand als `Freier Vergleich`.
+kennzeichnet den Zustand als `Freier Vergleich`. Die Auswahl eines Bündels
+ist zunächst nur ein Test; seine Produktionswerte werden erst durch die
+ausdrückliche Übernahme geändert.
 
 Eine frische oder unvollständige Testlabor-Konfiguration lädt `Maßstab V0`.
 Die vorhandene Datei `user://visual_lab_settings.cfg` speichert weiterhin die
@@ -219,12 +395,12 @@ Varianten bleiben für spätere Regressionen verfügbar.
 
 #### Pixel-Snap-Vergleich
 
-Im mit `F5` geöffneten Testlabor-Menü schaltet ein fokussier- und anklickbarer
-Knopf zwischen `Pixel-Snap: AN` und `Pixel-Snap: AUS`. `X` bietet denselben
-Wechsel direkt während der Bewegung. Der boolesche Zustand wird gemeinsam mit
-den vorhandenen Testwert-Presets gespeichert und beim nächsten Öffnen geladen.
-Ältere Version-1-Dateien ohne den Schlüssel bleiben gültig und verwenden den
-Standard `AN`.
+Im Thema `Darstellung` wählt ein fokussier- und anklickbarer Eintrag zwischen
+`Pixel-Snap: AN` und `Pixel-Snap: AUS`. Es gibt dafür kein eigenes
+Direktkürzel. Der aktuelle Testwert kann als lokaler Arbeitsstand gemerkt
+werden; der gold markierte Spielstandard wird davon getrennt aus der
+versionierten Darstellungsgrundlage gelesen. Alte lokale Einstellungsdateien
+ohne den Schlüssel fallen bei der Migration auf diesen Spielstandard zurück.
 
 Der Schalter rastert ausschließlich die visuellen Positionen von Kamera und
 Heldenbild auf ganze Ausgabepixelschritte. Das globale Viewport-Transform-Snap
@@ -246,12 +422,12 @@ zu.
 
 #### Texturfilter-Vergleich
 
-Neben Pixel-Snap steht im `F5`-Menü ein zweiter fokussier- und anklickbarer
-Knopf. Er wechselt zwischen `Texturfilter: Nearest-Neighbor` und
-`Texturfilter: Weich`; `N` ermöglicht denselben Wechsel während des laufenden
-Tests. Die ID `nearest` oder `soft` wird zusammen mit den vorhandenen
-Testwerten gespeichert. Version-1-Presets ohne gültige Filter-ID verwenden
-Nearest-Neighbor.
+Neben Pixel-Snap steht im Thema `Darstellung` ein zweiter fokussier- und
+anklickbarer Eintrag. Er wählt zwischen `Texturfilter: Nearest-Neighbor` und
+`Texturfilter: Weich`; ein eigenes Direktkürzel gibt es nicht. Die ID
+`nearest` oder `soft` kann als lokaler Testwert gemerkt werden. Lokale
+Altstände ohne gültige Filter-ID fallen bei der Migration auf den
+versionierten Spielstandard zurück.
 
 Die Umschaltung erfasst ausschließlich die 51 texturierten `Sprite2D`-
 Instanzen unter `TestWorld`: den Held, den texturierten Vergleichsboden, die
@@ -302,14 +478,14 @@ Atmosphäreneffekte bleiben davon ausgenommen.
 
 Stand: 3. September 2026.
 
-`V` wechselt weiterhin zwischen beschädigter und wiederhergestellter Welt.
-`B` beziehungsweise der Nebelknopf im `F5`-Menü durchläuft die drei
-Nebelstärken des aktiven Zustands. `L` beziehungsweise der Lichtknopf
-durchläuft dessen zwei Lichtprofile. Die Auswahl wird für beide Weltzustände
-getrennt im vorhandenen Testlabor-Preset gespeichert; ein Zustandswechsel
-stellt die zuletzt gewählte Kombination dieses Zustands wieder her. Alte
-Version-1-Presets ohne diese Werte und unbekannte IDs verwenden die
-bevorzugten Varianten.
+Das Thema `Welt und Atmosphäre` wechselt zwischen beschädigter und
+wiederhergestellter Welt. Die Nebelauswahl durchläuft die drei Nebelstärken
+des aktiven Zustands; die Lichtauswahl durchläuft dessen zwei Lichtprofile.
+Eigene Direktkürzel für diese drei Einträge gibt es nicht. Der lokale
+Arbeitsstand wird für beide Weltzustände getrennt gemerkt; ein
+Zustandswechsel stellt die zuletzt getestete Kombination dieses Zustands
+wieder her. Alte lokale Einstellungsdateien ohne diese Werte und unbekannte
+IDs verwenden die jeweiligen versionierten Spielstandards.
 
 Die deckungsgleiche Vergleichsfläche misst jetzt `1440 × 810` Pixel. Sie
 verbindet das vorhandene Haus mit einem offenen Laufweg, zwölf Bäumen und
@@ -437,20 +613,23 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 Die Anzeigen machen die jeweils aktive Testkonfiguration unmittelbar
 erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
-`F3` beziehungsweise Controller-Select/Back schaltet das Diagnosepanel mit
-FPS, roher Heldenposition, gerasterter Heldenanzeige, rohem und gerastertem
-Kameraziel, tatsächlichem Kamerazentrum, Weltanker, Maßstabsprofil,
-Referenzauflösung, Seitenverhältnis, Kameraprofil, Basis- und Aktivzoom,
-Bewegungs- und Sprungzustand, Figuren-, Tile-, Weltzustands-, Nebel-,
-Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-, Vertex-Snap-,
-Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
-Fensterskalierungswerten.
-`F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen
-Helden-, Hindernis- und Weltgrenzen-Kollisionen. Beide Anzeigen beginnen bei
-jedem Öffnen ausgeschaltet und werden nicht in den Testlabor-Einstellungen
-gespeichert. Das Diagnosepanel aktualisiert seine Werte ungefähr alle
-0,2 Sekunden. Die Kollisionszeichnung liest die bestehenden Physikformen nur
-aus und verändert weder sie noch Godots globale Debug-Hinweise.
+`F3` schaltet das Diagnosepanel mit FPS, roher Heldenposition, gerasterter
+Heldenanzeige, rohem und gerastertem Kameraziel, tatsächlichem Kamerazentrum,
+Weltanker, Maßstabsprofil, Referenzauflösung, Seitenverhältnis, Kameraprofil,
+Basis- und Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-,
+Weltzustands-, Nebel-, Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-,
+Vertex-Snap-, Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
+Fensterskalierungswerten. Derselbe Schalter ist unter `Diagnose und Hilfe`
+erreichbar.
+
+`F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen Helden-,
+Hindernis- und Weltgrenzen-Kollisionen; auch dafür gibt es einen Menüeintrag.
+Beide direkten Funktionstasten bleiben bewusst erhalten. Beide Anzeigen
+beginnen bei jedem Öffnen ausgeschaltet und werden nicht in den
+Testlabor-Einstellungen gespeichert. Das Diagnosepanel aktualisiert seine
+Werte ungefähr alle 0,2 Sekunden. Die Kollisionszeichnung liest die
+bestehenden Physikformen nur aus und verändert weder sie noch Godots globale
+Debug-Hinweise.
 
 ## Nicht enthalten
 
@@ -472,6 +651,21 @@ Das visuelle Testlabor ist ausreichend festgelegt, wenn:
 - sein Zweck als unabhängige interne Entwicklungsszene eindeutig beschrieben
   ist,
 - alle fünf Testbereiche dokumentiert sind,
+- `F5` ein nach Themen gegliedertes und bei `1280 × 720` bedienbares Menü
+  öffnet,
+- veränderliche Testparameter ohne eigene Direktkürzel vollständig über das
+  Menü bedienbar sind,
+- `F3` für Diagnose und `F4` für Kollisionsflächen erhalten bleiben,
+- aktueller Testwert und übernommener Spielwert technisch und visuell getrennt
+  bleiben,
+- die Goldmarkierung auch beim weiteren Vergleichen eindeutig beim
+  übernommenen Wert bleibt,
+- `Strg + Alt + E` und der sichtbare Übernahmeknopf nur den fokussierten Wert
+  oder ein ausdrücklich bestätigtes Bündel übernehmen,
+- Außenwelt, Dorf, Dungeon und kleiner Innenraum unabhängige Zoomtests und
+  Spielstandards besitzen,
+- Spielszenen ausschließlich versionierte Spielwerte und niemals lokale
+  Testwerte als Ausgangspunkt verwenden,
 - beschädigte und wiederhergestellte Welt direkt verglichen werden können,
 - die umschaltbaren Diagnoseanzeigen festgelegt sind,
 - `visual_lab` ausdrücklich nur in Entwicklungsbuilds erreichbar ist und
