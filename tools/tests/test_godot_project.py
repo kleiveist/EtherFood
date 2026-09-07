@@ -163,6 +163,40 @@ class GodotProjectTests(unittest.TestCase):
             with self.subTest(action=action):
                 self.assertNotRegex(project, rf"(?m)^{re.escape(action)}=\{{")
 
+    def test_visual_lab_tools_stay_compact_transparent_and_non_blocking(self) -> None:
+        scene = (GODOT_ROOT / "scenes" / "dev" / "visual_lab.tscn").read_text(
+            encoding="utf-8"
+        )
+        menu_scene = (
+            GODOT_ROOT / "scenes" / "dev" / "visual_lab_menu.tscn"
+        ).read_text(encoding="utf-8")
+        script = (GODOT_ROOT / "scenes" / "dev" / "visual_lab.gd").read_text(
+            encoding="utf-8"
+        )
+
+        hud = self._scene_node(scene, "HudPanel", "InterfaceLayer")
+        self.assertIn("offset_right = 636.0", hud)
+        self.assertIn("offset_bottom = 716.0", hud)
+        self.assertNotIn("anchor_right = 1.0", hud)
+        interface = self._scene_node(scene, "Interface", "InterfaceLayer")
+        self.assertIn("offset_left = 26.0", interface)
+        self.assertIn("offset_right = 626.0", interface)
+        self.assertIn("offset_bottom = 708.0", interface)
+
+        diagnostics = self._scene_node(scene, "DiagnosticsPanel", "InterfaceLayer")
+        self.assertIn("offset_left = -466.0", diagnostics)
+        self.assertIn("offset_bottom = 636.0", diagnostics)
+        self.assertIn("bg_color = Color(0.035, 0.055, 0.063, 0.58)", scene)
+        self.assertIn(
+            '[node name="ThemeTabs" type="GridContainer" parent="Menu"]',
+            menu_scene,
+        )
+        self.assertIn("offset_right = 600.0", menu_scene)
+        self.assertIn("offset_bottom = 684.0", menu_scene)
+        self.assertNotIn(
+            "hero_character.set_movement_enabled(not controls_visible)", script
+        )
+
     def test_touch_adapter_uses_only_semantic_action_boundaries(self) -> None:
         adapter = (
             GODOT_ROOT / "shared" / "input" / "touch_action_adapter.gd"
@@ -367,6 +401,17 @@ class GodotProjectTests(unittest.TestCase):
             project,
         )
         self.assertIsNotNone(match, f"InputMap action is missing: {action}")
+        assert match is not None
+        return match.group("body")
+
+    def _scene_node(self, scene: str, name: str, parent: str) -> str:
+        match = re.search(
+            rf'(?ms)^\[node name="{re.escape(name)}"[^]]*'
+            rf'parent="{re.escape(parent)}"[^]]*\]\n'
+            r"(?P<body>.*?)(?=^\[node |\Z)",
+            scene,
+        )
+        self.assertIsNotNone(match, f"Scene node is missing: {parent}/{name}")
         assert match is not None
         return match.group("body")
 

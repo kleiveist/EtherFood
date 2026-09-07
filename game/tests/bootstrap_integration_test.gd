@@ -33,6 +33,7 @@ const EXPECTED_VISUAL_LAB_WORLD_STATE_STATUS := "Weltzustand: Beschädigt"
 const EXPECTED_REFERENCE_VIEWPORT_SIZE := Vector2(1920, 1080)
 const EXPECTED_START_WINDOW_SIZE := Vector2(1280, 720)
 const EXPECTED_SQUARE_WINDOW_SIZE := Vector2i(1000, 1000)
+const EXPECTED_VISUAL_LAB_MENU_SIZE := Vector2(600, 684)
 const EXPECTED_VISUAL_LAB_WORLD_BOUNDS := Rect2(0.0, 0.0, 3840.0, 2160.0)
 const VISUAL_LAB_SETTINGS_PATH_PROJECT_KEY := (
 	"etherfood/development/visual_lab_settings_path"
@@ -504,8 +505,8 @@ func _test_bootstrap_contract() -> void:
 		)
 		if interface != null:
 			_expect(
-				interface.size == configured_viewport_size - Vector2(40, 24),
-				"VisualLab menu keeps its responsive viewport margins",
+				interface.size == EXPECTED_VISUAL_LAB_MENU_SIZE,
+				"VisualLab menu stays a compact tool window",
 			)
 		var window_size_status := bootstrap.get_node_or_null(
 			(
@@ -539,8 +540,8 @@ func _test_bootstrap_contract() -> void:
 			)
 		if interface != null:
 			_expect(
-				interface.size == configured_viewport_size - Vector2(40, 24),
-				"square window keeps the menu at its reference margins",
+				interface.size == EXPECTED_VISUAL_LAB_MENU_SIZE,
+				"square window keeps the compact menu size",
 			)
 		if window_size_status != null:
 			_expect(
@@ -719,7 +720,7 @@ func _test_bootstrap_contract() -> void:
 		var visual_lab_tabs := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/"
 			+ "ThemeTabs"
-		) as HBoxContainer
+		) as GridContainer
 		var visual_lab_camera_status := bootstrap.get_node_or_null(
 			"ApplicationRoot/RouteHost/VisualLab/InterfaceLayer/Interface/Menu/Pages/"
 			+ "CameraPage/Content/CameraStatus"

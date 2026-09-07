@@ -35,16 +35,16 @@ content_margin_right = 12.0
 content_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diagnostics_panel"]
-bg_color = Color(0.035, 0.055, 0.063, 0.96)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.68, 0.53, 0.25, 1)
-content_margin_left = 14.0
-content_margin_top = 14.0
-content_margin_right = 14.0
-content_margin_bottom = 14.0
+bg_color = Color(0.035, 0.055, 0.063, 0.58)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.68, 0.53, 0.25, 0.78)
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
 [node name="VisualLab" type="Control"]
 layout_mode = 3
@@ -306,15 +306,10 @@ follow_viewport_enabled = false
 
 [node name="HudPanel" type="Panel" parent="InterfaceLayer"]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 636.0
+offset_bottom = 716.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 
@@ -344,42 +339,42 @@ visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -590.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = 940.0
+offset_left = -466.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 636.0
 grow_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_diagnostics_panel")
 
 [node name="Title" type="Label" parent="InterfaceLayer/DiagnosticsPanel"]
-offset_left = 18.0
-offset_top = 15.0
-offset_right = 548.0
-offset_bottom = 48.0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 436.0
+offset_bottom = 36.0
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.94, 0.82, 0.48, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 22
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 18
 text = "DIAGNOSE"
 
 [node name="Values" type="Label" parent="InterfaceLayer/DiagnosticsPanel"]
-offset_left = 18.0
-offset_top = 55.0
-offset_right = 548.0
-offset_bottom = 916.0
+offset_left = 14.0
+offset_top = 42.0
+offset_right = 436.0
+offset_bottom = 608.0
 mouse_filter = 2
 theme_override_colors/font_color = Color(0.78, 0.84, 0.82, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.05, 0.06, 1)
-theme_override_constants/line_spacing = 3
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 18
+theme_override_constants/line_spacing = 1
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 13
 text = "FPS: 0\nSpielerposition roh: x=1920,000 · y=1080,000\nSpieleranzeige gerastert: x=1920,000 · y=1080,000\nKameraposition roh: x=1920,000 · y=1080,000\nKameraposition gerastert: x=1920,000 · y=1080,000\nKamerazentrum: x=1920,000 · y=1080,000\nWeltanker: x=0,000 · y=0,000\nMaßstabsprofil: Maßstab V0\nReferenzauflösung: 1920 × 1080\nSeitenverhältnis: 16:9\nKamerabereich: Außenwelt\nKamera-Basis: 1,00×\nKamera-Aktiv: 1,00×\nBewegung: Normal\nSprung: Boden\nFigur: 80 px\nTiles: 32 × 32 px\nWeltzustand: Beschädigt\nNebel: Mittel\nLichtprofil: Kühl und dunkel\nPixel-Snap: AN\nViewport-Transform-Snap: AUS\nVertex-Snap: AUS\nDarstellungsraster: 1,500 × 1,500 Weltpixel\nRasterphase: 0,25 Ausgabepixel\nTexturfilter: Nearest-Neighbor\nFenster: 1280 × 720\nFensterskalierung: 0,67×"
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource("12_visual_lab_menu")]
 visible = false
-offset_left = 20.0
-offset_top = 12.0
-offset_right = -20.0
-offset_bottom = -12.0
+offset_left = 26.0
+offset_top = 24.0
+offset_right = 626.0
+offset_bottom = 708.0

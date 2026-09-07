@@ -44,7 +44,7 @@ ausgeführt ausgewiesen werden.
 
 ## Umfang und Nicht-Ziele
 
-Im Umfang liegen das responsive Themenmenü, die Neuordnung aller vorhandenen
+Im Umfang liegen das kompakte Themenmenü, die Neuordnung aller vorhandenen
 Laborsteuerungen, die Entfernung ihrer direkten Testkürzel, die ausdrückliche
 Erhaltung von `F3` und `F4`, getrennte Test- und Spielwerte, sichere
 Übernahme, Goldmarkierung, vier Zoomkontexte, lokale Migration, gemeinsame
@@ -64,7 +64,7 @@ Grafikassets und Produktionskarten werden nicht neu gestaltet.
 2. Eine typisierte Quelle für übernommene Darstellungswerte und eine Zuordnung
    der vier Kamera-Zielbereiche schaffen. Bestehende V0-Werte ohne
    Kanonänderung übernehmen; das Dorf erbt anfangs den Außenweltwert.
-3. Das `F5`-Panel in eine responsive Menüszene mit Themenleiste,
+3. Das `F5`-Panel in eine kompakte Menüszene mit Themenleiste,
    scrollbarem Inhalt, eindeutiger Fokusführung und wiederverwendbaren
    Auswahlzeilen umbauen.
 4. Alle vorhandenen Laborparameter in Kamera, Maßstab, Darstellung, Welt und
@@ -99,6 +99,8 @@ Grafikassets und Produktionskarten werden nicht neu gestaltet.
   der angenommenen Ressourcen ausgerichtet.
 - [x] 2026-09-07: Tests und Dokumentation an den Endzustand angepasst.
 - [x] 2026-09-07: Abschlussprüfungen ausgeführt und Ergebnis festgehalten.
+- [x] 2026-09-07: Nachtrag umgesetzt: F5 als schmales Werkzeugfenster,
+  Bewegung bei geöffnetem Menü und kompakte transparente Diagnose.
 
 ## Erkenntnisse und Überraschungen
 
@@ -114,8 +116,11 @@ Grafikassets und Produktionskarten werden nicht neu gestaltet.
   globalen Kürzel angepasst.
 - Der lokale Standardlauf kann die Godot-Ressourcen und Laufzeittests nicht
   starten, weil im Container keine Godot-4-Engine vorhanden ist. `pytest`
-  fehlt ebenfalls; dieselben 188 Tooltests liefen erfolgreich über
+  fehlt ebenfalls; dieselben 189 Tooltests liefen erfolgreich über
   `unittest`.
+- Drei statt fünf Tabellenspalten halten die Themenwahl schmal, ohne einen
+  Themenbereich zu verstecken. Die fünf Bereiche verteilen sich auf zwei
+  Zeilen.
 
 ## Entscheidungen
 
@@ -140,12 +145,15 @@ Grafikassets und Produktionskarten werden nicht neu gestaltet.
 - Der vorhandene Heldenraum liest Heldenhöhe, Tilegröße und das Profil für
   kleine Innenräume über dieselbe zentrale Zuordnung. Dorf-, Dungeon- und
   Atmosphärenprofile stehen für die späteren passenden Spielszenen bereit.
+- Das F5-Werkzeug misst im logischen Referenzraum `600 × 684` Pixel. Es
+  verändert den Bewegungszustand der Figur nicht. Das F3-Panel misst
+  `450 × 620` Pixel und verwendet einen Hintergrund mit `58 %` Deckkraft.
 
 ## Prüfungen
 
 - `python3 tools/control.py style`: bestanden, 77 Dateien geprüft.
 - `python3 -m unittest discover -s tools/tests -p 'test_*.py'`: bestanden,
-  188 Tests.
+  189 Tests.
 - `python3 -m unittest tools.tests.test_source_hygiene`: bestanden, 16 Tests.
 - Statische Szenen-, Ressourcen-, UID- und `res://`-Pfadprüfungen: bestanden.
 - `git diff --check`: bestanden.
@@ -165,15 +173,22 @@ sichtbar und können dateiweise zurückgenommen werden.
 
 ## Ergebnis und Rückblick
 
-Das visuelle Testlabor besitzt nun ein bei `1280 × 720` ausgelegtes
-Fünf-Themen-Menü. Parameteränderungen erfolgen dort ohne eigene globale
-Kürzel; `F3`, `F4` und `F5` bleiben erhalten. Lokale Vorschauwerte verwenden
-Schema 2 und vier getrennte Kamerakontexte. Spielstandards werden unabhängig
-davon aus versionierten Ressourcen gelesen, gold und zusätzlich textuell
-markiert und nur über den sichtbaren Knopf oder `Strg + Alt + E` übernommen.
+Das visuelle Testlabor besitzt nun ein kompaktes, bei `1280 × 720`
+bedienbares Fünf-Themen-Menü. Parameteränderungen erfolgen dort ohne eigene
+globale Kürzel; `F3`, `F4` und `F5` bleiben erhalten. Die Figur bleibt bei
+geöffnetem Menü beweglich. Lokale Vorschauwerte verwenden Schema 2 und vier
+getrennte Kamerakontexte. Spielstandards werden unabhängig davon aus
+versionierten Ressourcen gelesen, gold und zusätzlich textuell markiert und
+nur über den sichtbaren Knopf oder `Strg + Alt + E` übernommen.
 Maßstabsbündel benötigen eine Bestätigung mit allen betroffenen Werten.
 
 Die vorhandenen V0-Werte wurden nicht geändert, daher war keine neue
 Konzeptentscheidung erforderlich. Die geschriebenen Godot-Laufzeitverträge
 müssen in einer Umgebung mit Godot 4 noch tatsächlich ausgeführt werden; der
 verfügbare statische und Python-basierte Prüfstand ist vollständig grün.
+
+Nachtrag vom 7. September 2026: Auf Wunsch bleibt das F5-Menü nicht
+bildfüllend, sondern wird als kompaktes Werkzeugfenster über der weiterhin
+sicht- und begehbaren Testwelt angeordnet. Die Diagnose wird ebenfalls
+verkleinert und erhält einen halbtransparenten Hintergrund. Der Nachtrag ist
+umgesetzt und durch statische sowie neue Godot-Laufzeitverträge abgesichert.

@@ -23,6 +23,9 @@ const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
 const COLLISION_ACTION := &"dev_collision_debug_toggle"
 const ACCEPT_ACTION := &"dev_accept_visual_standard"
+const MOVE_RIGHT_ACTION := &"gameplay_move_right"
+const EXPECTED_PANEL_SIZE := Vector2(620, 700)
+const EXPECTED_MENU_SIZE := Vector2(600, 684)
 const TEST_RESOURCE_PATHS: Array[String] = [
 	STANDARDS_TEST_PATH,
 	SCALE_TEST_PATH,
@@ -86,7 +89,7 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 	) as Label
 	var tabs := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Menu/ThemeTabs"
-	) as HBoxContainer
+	) as GridContainer
 	var medium_zoom := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Menu/Pages/CameraPage/Content/"
 		+ "ZoomOptions/MediumButton"
@@ -150,7 +153,7 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"TestWorld/CollisionDebugOverlay"
 	) as Node2D
 
-	_expect(panel != null, "VisualLab has a responsive menu background")
+	_expect(panel != null, "VisualLab has a compact menu background")
 	_expect(interface != null, "VisualLab has the themed F5 menu")
 	_expect(prompt != null and prompt.text == "F5 · Steuerung", "closed menu shows F5")
 	_expect(hero != null, "VisualLab retains its controllable hero")
@@ -215,6 +218,8 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 
 	_expect(not panel.visible and not interface.visible, "F5 menu starts closed")
 	_expect(hero.call(&"is_movement_enabled"), "closed menu leaves movement enabled")
+	_expect(panel.size == EXPECTED_PANEL_SIZE, "F5 background stays narrow and compact")
+	_expect(interface.size == EXPECTED_MENU_SIZE, "F5 menu occupies only a small area")
 	_expect(medium_zoom.text.contains("★"), "world standard starts gold and starred")
 	_expect(medium_zoom.text.contains("●"), "matching test value is also marked current")
 	interior_context.pressed.emit()
@@ -229,16 +234,26 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 	)
 	world_context.pressed.emit()
 	_expect(
-		interface.get_combined_minimum_size().x <= 1280.0
-		and interface.get_combined_minimum_size().y <= 720.0,
-		"menu remains operable at 1280 by 720",
+		interface.get_combined_minimum_size().x <= interface.size.x
+		and interface.get_combined_minimum_size().y <= interface.size.y,
+		"compact menu remains operable without covering the viewport",
 	)
 
 	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
 	_expect(panel.visible and interface.visible, "F5 opens the complete menu")
 	_expect(not prompt.visible, "open menu replaces the compact prompt")
-	_expect(not hero.call(&"is_movement_enabled"), "open menu blocks hero movement")
+	_expect(hero.call(&"is_movement_enabled"), "open menu leaves hero movement enabled")
 	_expect(medium_zoom.has_focus(), "F5 focuses the current camera zoom")
+	var position_before_open_menu_movement := hero.global_position
+	Input.action_press(MOVE_RIGHT_ACTION)
+	await tree.physics_frame
+	await tree.physics_frame
+	Input.action_release(MOVE_RIGHT_ACTION)
+	await tree.physics_frame
+	_expect(
+		hero.global_position.x > position_before_open_menu_movement.x,
+		"hero can move while the F5 menu is open",
+	)
 	visual_lab._unhandled_input(_pressed_key(KEY_F5, true))
 	_expect(interface.visible, "held F5 does not close the menu")
 
@@ -371,7 +386,7 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 
 	visual_lab._unhandled_input(_pressed_action(CONTROLS_ACTION))
 	_expect(not interface.visible and prompt.visible, "F5 closes the menu")
-	_expect(hero.call(&"is_movement_enabled"), "closing the menu restores movement")
+	_expect(hero.call(&"is_movement_enabled"), "closing F5 leaves movement enabled")
 
 
 func _write_standard_fixture() -> bool:

@@ -251,6 +251,11 @@ für Produktionsregeln. Ein Wert wird erst durch den sichtbaren
 geschrieben. Diagnose, Kollisionsanzeige und Weltzustandsvorschau werden nie
 als Spielstandard gespeichert.
 
+Das `F5`-Menü bleibt als kompaktes Werkzeugfenster über der Testwelt. Es hält
+die Bewegung der Figur nicht an. Das getrennte `F3`-Diagnosepanel ist kleiner
+und halbtransparent, damit Kamera- und Bewegungstests hinter beiden
+Werkzeugen sichtbar bleiben.
+
 Die Profile A und C, alternative Einzelwerte sowie `Freier Vergleich` bleiben
 reine Testvarianten. Eine frische oder unvollständige Konfiguration verwendet
 `Maßstab V0`.

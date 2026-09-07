@@ -4,11 +4,8 @@
 
 [node name="VisualLabMenu" type="MarginContainer"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 600.0
+offset_bottom = 684.0
 theme_override_constants/margin_left = 22
 theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 22
@@ -41,32 +38,34 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "F5 · Schließen"
 
-[node name="ThemeTabs" type="HBoxContainer" parent="Menu"]
+[node name="ThemeTabs" type="GridContainer" parent="Menu"]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 3
 
 [node name="CameraTab" type="Button" parent="Menu/ThemeTabs"]
-custom_minimum_size = Vector2(144, 40)
+custom_minimum_size = Vector2(132, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="ScaleTab" type="Button" parent="Menu/ThemeTabs"]
-custom_minimum_size = Vector2(144, 40)
+custom_minimum_size = Vector2(132, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="RenderingTab" type="Button" parent="Menu/ThemeTabs"]
-custom_minimum_size = Vector2(144, 40)
+custom_minimum_size = Vector2(132, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="WorldTab" type="Button" parent="Menu/ThemeTabs"]
-custom_minimum_size = Vector2(180, 40)
+custom_minimum_size = Vector2(160, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
 [node name="DiagnosticsTab" type="Button" parent="Menu/ThemeTabs"]
-custom_minimum_size = Vector2(182, 40)
+custom_minimum_size = Vector2(166, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
@@ -74,7 +73,7 @@ mouse_default_cursor_shape = 2
 layout_mode = 2
 
 [node name="Pages" type="Control" parent="Menu"]
-custom_minimum_size = Vector2(0, 418)
+custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -88,7 +87,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Content" type="VBoxContainer" parent="Menu/Pages/CameraPage"]
-custom_minimum_size = Vector2(824, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 9
@@ -105,9 +104,11 @@ theme_override_colors/font_color = Color(0.7, 0.76, 0.77, 1)
 theme_override_font_sizes/font_size = 17
 text = "Zielbereich"
 
-[node name="ContextOptions" type="HBoxContainer" parent="Menu/Pages/CameraPage/Content"]
+[node name="ContextOptions" type="GridContainer" parent="Menu/Pages/CameraPage/Content"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
 
 [node name="WorldButton" type="Button" parent="Menu/Pages/CameraPage/Content/ContextOptions"]
 layout_mode = 2
@@ -187,7 +188,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Content" type="VBoxContainer" parent="Menu/Pages/ScalePage"]
-custom_minimum_size = Vector2(824, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 7
@@ -318,7 +319,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Content" type="VBoxContainer" parent="Menu/Pages/RenderingPage"]
-custom_minimum_size = Vector2(824, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 9
@@ -397,7 +398,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Content" type="VBoxContainer" parent="Menu/Pages/WorldPage"]
-custom_minimum_size = Vector2(824, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 7
@@ -512,7 +513,7 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Content" type="VBoxContainer" parent="Menu/Pages/DiagnosticsPage"]
-custom_minimum_size = Vector2(824, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 9
@@ -606,12 +607,12 @@ theme_override_colors/font_color = Color(0.7, 0.79, 0.82, 1)
 theme_override_font_sizes/font_size = 15
 autowrap_mode = 2
 
-[node name="Acceptance" type="HBoxContainer" parent="Menu"]
+[node name="Acceptance" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 3
 
 [node name="AcceptButton" type="Button" parent="Menu/Acceptance"]
-custom_minimum_size = Vector2(550, 42)
+custom_minimum_size = Vector2(390, 42)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -622,6 +623,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.73, 0.33, 1)
 theme_override_font_sizes/font_size = 16
 text = "Strg + Alt + E"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="FunctionHints" type="Label" parent="Menu"]

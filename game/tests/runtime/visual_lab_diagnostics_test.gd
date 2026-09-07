@@ -96,6 +96,18 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	if panel_style != null:
 		_expect(panel_style.border_width_left > 0, "diagnostics panel has a clear border")
 		_expect(panel_style.corner_radius_top_left == 0, "diagnostics panel has square corners")
+		_expect(
+			panel_style.bg_color.a < 0.7,
+			"diagnostics panel has a transparent background",
+		)
+	_expect(
+		panel.size.x <= 450.0 and panel.size.y <= 620.0,
+		"diagnostics panel stays compact",
+	)
+	_expect(
+		values.get_theme_font_size("font_size") <= 13,
+		"diagnostic values use compact typography",
+	)
 
 	visual_lab._unhandled_input(_pressed_action(DIAGNOSTICS_ACTION))
 	_expect(panel.visible, "F3 action shows diagnostics")

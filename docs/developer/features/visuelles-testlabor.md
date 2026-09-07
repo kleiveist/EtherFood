@@ -43,8 +43,10 @@ Bestandteil der Spielhandlung.
 
 Das Testlabor startet mit geschlossenem Steuerungsmenü. `F5` öffnet und
 schließt das gesamte Menü; ein kleiner Hinweis auf `F5` bleibt bei
-geschlossenem Menü sichtbar. Der offene oder geschlossene Zustand wird nicht
-gespeichert.
+geschlossenem Menü sichtbar. Das geöffnete Menü bleibt als schmales
+Werkzeugfenster links oben und bedeckt nur einen kleinen Teil der Testwelt.
+Der offene oder geschlossene Zustand wird nicht gespeichert. Die Testfigur
+bleibt auch bei geöffnetem Menü beweglich.
 
 `F3` schaltet die Diagnoseanzeige weiterhin direkt ein oder aus. `F4` schaltet
 weiterhin unabhängig davon die Kollisionsflächen ein oder aus. Beide Funktionen
@@ -76,27 +78,24 @@ einem Thema zugewiesen und erhalten kein neues globales Direktkürzel.
 Das grundsätzliche Layout lautet:
 
 ```text
-┌ TESTLABOR ─────────────────────────────────────────────┐
-│ [Kamera] [Maßstab] [Darstellung] [Welt] [Diagnose]   │
-├──────────────────────────────────────────────────────┤
-│ Thema und gegebenenfalls Zielbereich                 │
-│                                                      │
-│ Bezeichnung                                          │
-│ [Wert A] [★ Spielstandard] [Wert C]                  │
-│ Aktueller Testwert: … · Übernommener Wert: …        │
-│                                                      │
-│ [Als Spielstandard übernehmen]                      │
-├──────────────────────────────────────────────────────┤
-│ F3 Diagnose · F4 Kollision · F5 Schließen           │
-└──────────────────────────────────────────────────────┘
+┌ TESTLABOR ───────────────────────────┐   sichtbare Testwelt
+│ [Kamera] [Maßstab] [Darstellung]    │
+│ [Welt]   [Diagnose]                  │
+├──────────────────────────────────────┤
+│ scrollbarer Themeninhalt             │
+│ [Wert A] [★ Standard] [Wert C]       │
+│ Status und Übernahme                 │
+└──────────────────────────────────────┘
 ```
 
-Das Menü verwendet Container und einen scrollbaren Inhaltsbereich, damit
-es mindestens bei `1280 × 720` und `1920 × 1080` vollständig bedienbar
-bleibt. Maus, normale UI-Tastaturnavigation und Controller-Navigation müssen
-dieselben Einstellungen erreichen. Menüeingaben dürfen nicht gleichzeitig
-eine Testfigur oder einen verdeckten Schalter auslösen. Änderungen werden
-sofort in der sichtbaren Testfläche dargestellt.
+Das Menü verwendet ein mehrzeiliges Themenraster, Container und einen
+scrollbaren Inhaltsbereich. Bei der logischen Referenzansicht misst es
+`600 × 684` Pixel und beansprucht damit weniger als ein Viertel der
+Bildfläche. Es bleibt mindestens bei `1280 × 720` und `1920 × 1080`
+vollständig bedienbar. Maus, normale UI-Tastaturnavigation und
+Controller-Navigation erreichen dieselben Einstellungen. Die Welt wird durch
+das Menü nicht pausiert; insbesondere kann die Figur weiterhin bewegt werden,
+während Änderungen sofort in der sichtbaren Testfläche erscheinen.
 
 ## Testwert und übernommener Spielwert
 
@@ -622,14 +621,16 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 Die Anzeigen machen die jeweils aktive Testkonfiguration unmittelbar
 erkennbar und sind nicht für normale Spielbuilds bestimmt.
 
-`F3` schaltet das Diagnosepanel mit FPS, roher Heldenposition, gerasterter
-Heldenanzeige, rohem und gerastertem Kameraziel, tatsächlichem Kamerazentrum,
+`F3` schaltet ein kompaktes, halbtransparentes Diagnosepanel um. Es zeigt FPS,
+rohe Heldenposition, gerasterte Heldenanzeige, rohes und gerastertes
+Kameraziel, tatsächliches Kamerazentrum,
 Weltanker, Maßstabsprofil, Referenzauflösung, Seitenverhältnis, Kamerabereich,
 Basis- und Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-,
 Weltzustands-, Nebel-, Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-,
-Vertex-Snap-, Darstellungsraster-, Rasterphasen-, Texturfilter-, Fenster- und
-Fensterskalierungswerten. Derselbe Schalter ist unter `Diagnose und Hilfe`
-erreichbar.
+Vertex-Snap-, Darstellungsraster-, Rasterphasen- und Texturfilterwerte sowie
+Fenstergröße und Skalierungsfaktor. In der Referenzansicht ist das Panel auf
+`450 × 620` Pixel begrenzt; sein Hintergrund besitzt `58 %` Deckkraft.
+Derselbe Schalter ist unter `Diagnose und Hilfe` erreichbar.
 
 `F4` schaltet davon unabhängig eine eigene Zeichnung der vorhandenen Helden-,
 Hindernis- und Weltgrenzen-Kollisionen; auch dafür gibt es einen Menüeintrag.
@@ -661,7 +662,8 @@ Das visuelle Testlabor ist ausreichend festgelegt, wenn:
   ist,
 - alle fünf Testbereiche dokumentiert sind,
 - `F5` ein nach Themen gegliedertes und bei `1280 × 720` bedienbares Menü
-  öffnet,
+  öffnet, das nur einen kleinen Teil der Testwelt bedeckt,
+- die Testfigur bei geöffnetem `F5`-Menü beweglich bleibt,
 - veränderliche Testparameter ohne eigene Direktkürzel vollständig über das
   Menü bedienbar sind,
 - `F3` für Diagnose und `F4` für Kollisionsflächen erhalten bleiben,
@@ -676,7 +678,7 @@ Das visuelle Testlabor ist ausreichend festgelegt, wenn:
 - Spielszenen ausschließlich versionierte Spielwerte und niemals lokale
   Testwerte als Ausgangspunkt verwenden,
 - beschädigte und wiederhergestellte Welt direkt verglichen werden können,
-- die umschaltbaren Diagnoseanzeigen festgelegt sind,
+- die umschaltbaren Diagnoseanzeigen kompakt und halbtransparent bleiben,
 - `visual_lab` ausdrücklich nur in Entwicklungsbuilds erreichbar ist und
 - noch offene Grafikentscheidungen nicht ohne ihren vorgesehenen Vergleich
   vorweggenommen werden.

@@ -621,7 +621,6 @@ func _set_controls_visible(controls_visible: bool) -> void:
 	controls_panel.visible = controls_visible
 	controls_interface.visible = controls_visible
 	controls_prompt.visible = not controls_visible
-	hero_character.set_movement_enabled(not controls_visible)
 	if controls_visible:
 		_refresh_menu()
 		controls_interface.focus_primary_setting()
