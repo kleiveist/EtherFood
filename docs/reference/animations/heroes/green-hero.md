@@ -50,7 +50,7 @@ Arbeiten existieren.
 | Herkunft | Fertige GIF-Exporte aus der lokal bereitgestellten Green-Hero-Arbeitsstruktur |
 | Dokumentationsstand | 7. September 2026 |
 | Spielstand | Green Hero; Stehen, langes Warten, Gehen, Laufen, Rennen und Sprinten vollständig; genervtes Warten nur nach Süden |
-| Technische Merkmale | Alle GIFs mit 640 × 640 Pixeln; 35 GIFs mit 16 Frames; Rennen und Sprinten mit 6 Frames je Richtung, Südosten jeweils mit 8 Frames |
+| Technische Merkmale | Alle GIFs mit 640 × 640 Pixeln; 34 GIFs mit 16 Frames; Laufen mit 16 Frames außer Südosten mit 6 Frames; Rennen und Sprinten mit je 6 Frames pro Richtung |
 | Race-Wiedergabe | 12 Hundertstelsekunden je Frame, etwa 8,3 FPS |
 | Sprint-Wiedergabe | 6 Hundertstelsekunden je Frame, etwa 16,7 FPS; exakt doppelte Bildrate von Rennen |
 | Urheberschaft und Lizenzstatus | Ausgangsmotiv vom Benutzer bereitgestellt; die Übernahme der Vorschauen verändert dessen Nutzungsrechte nicht |
@@ -102,10 +102,10 @@ gesamte Folge umfasst damit 48 Frames und 5,76 Sekunden.
 | Rennen | <img src="../../../assets/images/animations/heroes/green-hero/race/n.gif" alt="Green Hero rennt nach Norden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/ne.gif" alt="Green Hero rennt nach Nordosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/e.gif" alt="Green Hero rennt nach Osten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/se.gif" alt="Green Hero rennt nach Südosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/s.gif" alt="Green Hero rennt nach Süden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/sw.gif" alt="Green Hero rennt nach Südwesten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/w.gif" alt="Green Hero rennt nach Westen" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/race/nw.gif" alt="Green Hero rennt nach Nordwesten" width="96"> |
 | Sprinten | <img src="../../../assets/images/animations/heroes/green-hero/sprint/n.gif" alt="Green Hero sprintet nach Norden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/ne.gif" alt="Green Hero sprintet nach Nordosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/e.gif" alt="Green Hero sprintet nach Osten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/se.gif" alt="Green Hero sprintet nach Südosten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/s.gif" alt="Green Hero sprintet nach Süden" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/sw.gif" alt="Green Hero sprintet nach Südwesten" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/w.gif" alt="Green Hero sprintet nach Westen" width="96"> | <img src="../../../assets/images/animations/heroes/green-hero/sprint/nw.gif" alt="Green Hero sprintet nach Nordwesten" width="96"> |
 
-Rennen und Sprinten besitzen in sieben Richtungen je 6 Frames, in Südosten je
-8 Frames. Die Race-GIFs laufen 0,72 beziehungsweise 0,96 Sekunden; die
-pixelgleichen Sprint-GIFs laufen mit 0,36 beziehungsweise 0,48 Sekunden exakt
-doppelt so schnell.
+Rennen und Sprinten besitzen in allen acht Richtungen je 6 Frames. Die
+Race-GIFs laufen 0,72 Sekunden; die pixelgleichen Sprint-GIFs laufen mit 0,36
+Sekunden exakt doppelt so schnell. Die neu animierte Südost-Bildfolge wird
+zusätzlich in der Zeile „Laufen“ mit ihrer ursprünglichen Bildrate gezeigt.
 
 ### Bewegungssprünge
 
@@ -163,7 +163,7 @@ doppelt so schnell.
 | Davon vollständig in acht Richtungen | 6 |
 | Aktuell belegte Richtungsplätze | 49 |
 | Aktuell vorhandene GIF-Dateien | 51 |
-| Aktuell in GIFs dokumentierter Umfang | 660 Frames |
+| Aktuell in GIFs dokumentierter Umfang | 646 Frames |
 | Derzeit ohne GIF-Vorschau | 151 Richtungsplätze |
 
 Der theoretische Gesamtumfang beschreibt das einheitliche Raster eines
@@ -171,7 +171,7 @@ vollständigen Heldenanimationssatzes. Als tatsächlich vorhanden gelten auf
 dieser Seite nur die 51 eingebetteten GIF-Dateien. Die drei Teile des genervten
 Wartens zählen als ein Animationstyp und ein belegter Richtungsplatz, aber als
 drei einzelne GIF-Dateien mit insgesamt 48 Frames. Race und Sprint steuern
-jeweils 50 Frames bei; deshalb weicht der tatsächliche Umfang vom theoretischen
+jeweils 48 Frames bei; deshalb weicht der tatsächliche Umfang vom theoretischen
 16-Frame-Raster ab.
 
 ## Dateisystem
