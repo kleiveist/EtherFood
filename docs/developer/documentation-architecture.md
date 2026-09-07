@@ -4,8 +4,9 @@
 
 # Dokumentationsstruktur
 
-Die Dokumentation ist bewusst einfach gegliedert. Jeder Bereich hat genau eine
-Aufgabe.
+Die Dokumentation ist bewusst einfach gegliedert. Die fünf aktiven Bereiche
+haben jeweils genau eine Aufgabe. Die geerbte Forge2D-Grundlage bleibt davon
+getrennt.
 
 | Bereich | Pfad | Aufgabe |
 |---|---|---|
@@ -13,6 +14,7 @@ Aufgabe.
 | Entwicklung | [`docs/developer/`](index.md) | Architektur, Umsetzung, technische Entscheidungen und Arbeitspläne |
 | Spielerhandbuch | [`docs/player-guide/`](../player-guide/index.md) | Spätere öffentliche Spielhilfe |
 | Medien | [`docs/assets/`](../assets/README.md) | Bilder, Karten, Diagramme, Videos und bearbeitbare Quellen |
+| Referenz | [`docs/reference/`](../reference/index.md) | Tatsächlich vorhandene Spielinhalte, Figuren, Animationen und releasefähige Assetübersichten |
 | Forge2D-Referenz | [`docs/.forge2d-template/`](../.forge2d-template/index.md) | Unveränderte englische Grundlage der Vorlage |
 
 ## Sprache
@@ -30,6 +32,9 @@ Konzeptspiegel.
   `docs/concept/entscheidungen/` geändert.
 - Technische Seiten beschreiben die Umsetzung und verweisen auf das Konzept,
   statt eine zweite Fassung zu führen.
+- Referenzseiten katalogisieren nachweislich vorhandene Spiel- und
+  Dokumentationsassets. Sie führen weder neue Spielregeln noch technische
+  Implementierungsentscheidungen ein.
 - Komplexe Arbeiten erhalten einen fortlaufenden Plan unter
   `docs/developer/plans/`.
 - Relative Markdown-Links halten die Dokumentation auf GitHub und lokal
@@ -47,4 +52,7 @@ Konzeptspiegel.
 Bearbeitbare Quellen liegen unter `docs/assets/source/`, Exporte unter
 `docs/assets/images/`, Diagramme unter `docs/assets/diagrams/` und
 Videohinweise unter `docs/assets/videos/`. Für einfache Abläufe ist Mermaid
-bevorzugt, wenn das Diagramm auch im Markdown verständlich bleibt.
+bevorzugt, wenn das Diagramm auch im Markdown verständlich bleibt. Animierte
+GIF-Vorschauen für öffentliche Referenzseiten liegen unter
+`docs/assets/images/animations/`. Arbeits-PNGs und spätere Godot-Spritesheets
+gehören nicht in diesen Dokumentationsbestand.

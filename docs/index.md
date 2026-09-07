@@ -16,6 +16,7 @@
 - [EtherFood – Spielkonzept](concept/index.md)
 - [Entwicklungsdokumentation](developer/index.md)
 - [Spielerhandbuch](player-guide/index.md)
+- [Spiel- und Assetreferenz](reference/index.md)
 <!-- PYGINDEX:INDEX END -->
 
 Die Projektdokumentation ist nach ihrem Zweck gegliedert:
@@ -26,6 +27,7 @@ Die Projektdokumentation ist nach ihrem Zweck gegliedert:
 | [Entwicklung](developer/index.md) | Architektur, technische Entscheidungen, Funktionen und Arbeitspläne |
 | [Spielerhandbuch](player-guide/index.md) | Spätere öffentliche Hilfe für Spielerinnen und Spieler |
 | [Medien](assets/README.md) | Bilder, Diagramme, Karten, Videos und bearbeitbare Quellen |
+| [Referenz](reference/index.md) | Tatsächlich vorhandene Spielinhalte, Figuren, Animationen und releasefähige Assetübersichten |
 | [Forge2D-Grundlage](.forge2d-template/index.md) | Unveränderte englische Referenz der geerbten Vorlage |
 
 Es gibt keine zweite Content-Hierarchie und keinen englischen Konzeptspiegel.

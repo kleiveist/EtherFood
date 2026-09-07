@@ -8,6 +8,7 @@
 ## Inhalt
 
 ### Seiten
+- [Animationsreferenz](../../reference/animations/index.md)
 - [Ratgeber: beibehaltener Pixel-Art-Entwurf](guide-companion-variants.md)
 - [Talisman: beibehaltener Pixel-Art-Entwurf](soul-talisman-variants.md)
 - [Referenzaufnahmen der visuellen Darstellungsgrundlage V0](visual-foundation-v0-references.md)
@@ -17,3 +18,11 @@ Hier liegen für die Dokumentation aufbereitete Bilder mit englischen
 Kebab-Case-Dateinamen. Jeder Eintrag hält Zweck, Quelle, Datum, Konzept- oder
 Spielstand, Urheberschaft und Lizenzstatus fest. Bearbeitbare Originale gehören
 nach [`../source/`](../source/README.md).
+
+## Animierte Vorschauen
+
+Öffentliche GIF-Vorschauen vorhandener Spielanimationen liegen unter
+`animations/<entity-type>/<entity-id>/<animation>/<direction>.gif`. Ihr
+Katalog, ihre Herkunft und ihr jeweiliger Spielstand werden in der
+[Animationsreferenz](../../reference/animations/index.md) dokumentiert. Dieser
+Bestand enthält keine Arbeits-PNGs, Spritesheets oder Godot-Ressourcen.
