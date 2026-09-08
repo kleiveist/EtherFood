@@ -6,8 +6,8 @@
 - [Dokumentationsmedien](docs/assets/README.md)
 - [EtherFood – Spielkonzept](docs/concept/index.md)
 - [Entwicklungsdokumentation](docs/developer/index.md)
-- [Entwicklungswerkzeuge](docs/developer/tooling/index.md)
 - [Spielerhandbuch](docs/player-guide/index.md)
+- [Spiel- und Assetreferenz](docs/reference/index.md)
 
 ## Projektdateien
 - [Repository-Regeln für EtherFood](AGENTS.md)
@@ -19,16 +19,6 @@
 Ein Top-down-Action-RPG über den Wiederaufbau einer verlorenen Welt, die
 Rückkehr ihrer Zivilisationen und vergessene Erinnerungen. `EtherFood`
 befindet sich in der Konzept- und Vorproduktionsphase.
-
-## Dokumentation
-
-- [Dokumentationsübersicht](docs/index.md)
-- [Deutsches Spielkonzept](docs/concept/index.md)
-- [Entwicklungsdokumentation](docs/developer/index.md)
-- [Godot-Ressourcenimporte](docs/developer/tooling/godot-resource-imports.md)
-- [Spielerhandbuch](docs/player-guide/index.md)
-- [Dokumentationsmedien](docs/assets/README.md)
-- [Geerbte Forge2D-Grundlage](docs/.forge2d-template/index.md)
 
 Das Spielkonzept unter `docs/concept/` ist die einzige aktuelle Quelle für
 Kanon, Handlung, Welt und Spielmechanik. Die übrige Projektdokumentation wird

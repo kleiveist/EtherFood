@@ -20,10 +20,10 @@
 - [Arbeitsplan: Maßstab V0](massstab-v0.md)
 - [Historischer Arbeitsplan: Talisman als Handlungsobjekt](talisman-story-object-documentation.md)
 - [Arbeitsplan: Grafik-Polish und Diagnose im visuellen Testlabor](visual-lab-grafik-und-diagnose.md)
+- [Arbeitsplan: Themenmenü und Spielstandards im visuellen Testlabor](visual-lab-menue-und-spielstandards.md)
 - [Arbeitsplan: Nebel- und Lichtvergleich im visuellen Testlabor](visual-lab-nebel-und-licht.md)
 - [Arbeitsplan: Pixel-Snap-Vergleich im visuellen Testlabor](visual-lab-pixel-snap.md)
 - [Arbeitsplan: Texturfilter-Vergleich im visuellen Testlabor](visual-lab-texturfilter.md)
-- [Arbeitsplan: Themenmenü und Spielstandards im visuellen Testlabor](visual-lab-menue-und-spielstandards.md)
 - [Arbeitsplan: Top-down-Pixelart im visuellen Testlabor](visual-lab-top-down-pixelart.md)
 - [Arbeitsplan: Visuelle Darstellungsgrundlage V0 dokumentieren](visuelle-darstellungsgrundlage-v0.md)
 <!-- PYGINDEX:INDEX END -->

@@ -1,8 +1,15 @@
 <!-- PYGINDEX:NAVIGATION START -->
-[Zur Dokumentationsübersicht](../index.md)
+[Übergeordnete Übersicht](../index.md)
 <!-- PYGINDEX:NAVIGATION END -->
 
 # Spiel- und Assetreferenz
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Bereiche
+- [Animationsreferenz](animations/index.md)
+<!-- PYGINDEX:INDEX END -->
 
 ## Inhalt
 

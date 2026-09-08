@@ -6,7 +6,7 @@ updated: 2026-09-07
 ---
 
 <!-- PYGINDEX:NAVIGATION START -->
-[Zur Heldenübersicht](index.md) · [Zum Animationskatalog](../index.md)
+[Zur Übersicht](index.md)
 <!-- PYGINDEX:NAVIGATION END -->
 
 # Green Hero – Animationen

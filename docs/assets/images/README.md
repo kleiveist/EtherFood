@@ -8,7 +8,6 @@
 ## Inhalt
 
 ### Seiten
-- [Animationsreferenz](../../reference/animations/index.md)
 - [Ratgeber: beibehaltener Pixel-Art-Entwurf](guide-companion-variants.md)
 - [Talisman: beibehaltener Pixel-Art-Entwurf](soul-talisman-variants.md)
 - [Referenzaufnahmen der visuellen Darstellungsgrundlage V0](visual-foundation-v0-references.md)

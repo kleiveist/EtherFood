@@ -1,8 +1,15 @@
 <!-- PYGINDEX:NAVIGATION START -->
-[Zur Animationsreferenz](../index.md)
+[Übergeordnete Übersicht](../index.md)
 <!-- PYGINDEX:NAVIGATION END -->
 
 # Heldenanimationen
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Seiten
+- [Green Hero – Animationen](green-hero.md)
+<!-- PYGINDEX:INDEX END -->
 
 | Figur | Kurzbeschreibung | Dokumentierte Animationen | Detailseite |
 |---|---|---:|---|

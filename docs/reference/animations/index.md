@@ -1,8 +1,18 @@
 <!-- PYGINDEX:NAVIGATION START -->
-[Zur Spiel- und Assetreferenz](../index.md)
+[Übergeordnete Übersicht](../index.md)
 <!-- PYGINDEX:NAVIGATION END -->
 
 # Animationsreferenz
+
+<!-- PYGINDEX:INDEX START -->
+## Inhalt
+
+### Bereiche
+- [Bossanimationen](bosses/index.md)
+- [Heldenanimationen](heroes/index.md)
+- [Monsteranimationen](monsters/index.md)
+- [NPC-Animationen](npcs/index.md)
+<!-- PYGINDEX:INDEX END -->
 
 Diese Übersicht katalogisiert alle Einheiten, für die fertige animierte
 GIF-Vorschauen in der öffentlichen Dokumentation vorhanden sind. Sie lädt

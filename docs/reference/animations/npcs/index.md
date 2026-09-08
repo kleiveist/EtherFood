@@ -1,5 +1,5 @@
 <!-- PYGINDEX:NAVIGATION START -->
-[Zur Animationsreferenz](../index.md)
+[Übergeordnete Übersicht](../index.md)
 <!-- PYGINDEX:NAVIGATION END -->
 
 # NPC-Animationen
