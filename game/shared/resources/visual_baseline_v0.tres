@@ -7,4 +7,5 @@ script = ExtResource("1_profile")
 profile_id = "visual_scale_v0"
 profile_name = "Maßstab V0"
 comparison_focus = "Verbindlicher ausgewogener Maßstab für die normale Spielansicht."
+hero_height = 96.0
 camera_zoom = 0.75
