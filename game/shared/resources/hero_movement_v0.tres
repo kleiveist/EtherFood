@@ -6,3 +6,4 @@
 script = ExtResource("1_config")
 jog_speed = 210.0
 sprint_speed = 450.0
+run_jump_distance = 79.0

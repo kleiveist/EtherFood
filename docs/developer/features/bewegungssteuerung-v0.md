@@ -72,7 +72,7 @@ erste Standbild ihrer Richtung.
 
 Das visuelle Testlabor weist dem Helden eine tiefe Laufzeitkopie der geladenen
 Bewegungsressource zu. Die Regler verändern nur diese Kopie und speichern
-ihren Arbeitsstand in `user://visual_lab_settings.cfg` mit Schema 3. Werte
+ihren Arbeitsstand in `user://visual_lab_settings.cfg` mit Schema 4. Werte
 werden auch bei manipulierten Einstellungsdateien auf sichere Grenzen
 beschränkt.
 

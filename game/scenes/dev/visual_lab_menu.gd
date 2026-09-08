@@ -14,6 +14,7 @@ const SETTING_CAMERA_CONTEXT := &"camera_context"
 const SETTING_CAMERA_ZOOM := &"camera_zoom"
 const SETTING_HERO_SIZE := &"hero_size"
 const SETTING_TILE_SIZE := &"tile_size"
+const SETTING_HERO_GRAPHICS := &"hero_graphics"
 const SETTING_PIXEL_SNAP := &"pixel_snap"
 const SETTING_TEXTURE_FILTER := &"texture_filter"
 const SETTING_WORLD_STATE := &"world_state"
@@ -72,6 +73,9 @@ const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 @onready var camera_status: Label = $Menu/Pages/CameraPage/Content/CameraStatus
 @onready var hero_size_status: Label = $Menu/Pages/ScalePage/Content/HeroSizeStatus
 @onready var tile_size_status: Label = $Menu/Pages/ScalePage/Content/TileSizeStatus
+@onready var hero_graphics_status: Label = (
+	$Menu/Pages/RenderingPage/Content/HeroGraphicsStatus
+)
 @onready var world_state_status: Label = (
 	$Menu/Pages/WorldPage/Content/WorldStateStatus
 )
@@ -121,6 +125,10 @@ const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 @onready var _pixel_snap_buttons: Array[Button] = [
 	$Menu/Pages/RenderingPage/Content/PixelSnapOptions/OffButton,
 	$Menu/Pages/RenderingPage/Content/PixelSnapOptions/OnButton,
+]
+@onready var _hero_graphics_buttons: Array[Button] = [
+	$Menu/Pages/RenderingPage/Content/HeroGraphicsOptions/UltraButton,
+	$Menu/Pages/RenderingPage/Content/HeroGraphicsOptions/PixelArtButton,
 ]
 @onready var _texture_filter_buttons: Array[Button] = [
 	$Menu/Pages/RenderingPage/Content/TextureFilterOptions/NearestButton,
@@ -330,6 +338,11 @@ func _register_settings() -> void:
 		_tile_size_buttons,
 		["32 × 32 px", "48 × 48 px", "64 × 64 px"],
 		$Menu/Pages/ScalePage/Content/TileStandardStatus,
+	)
+	_register_setting(
+		SETTING_HERO_GRAPHICS,
+		_hero_graphics_buttons,
+		["Ultra · animiert", "Pixelart · Standbilder"],
 	)
 	_register_setting(
 		SETTING_PIXEL_SNAP,
@@ -630,6 +643,8 @@ func _setting_display_name(setting_id: StringName) -> String:
 			return "Heldenhöhe"
 		SETTING_TILE_SIZE:
 			return "Tilegröße"
+		SETTING_HERO_GRAPHICS:
+			return "Hero-Grafik"
 		SETTING_PIXEL_SNAP:
 			return "Pixel-Snap"
 		SETTING_TEXTURE_FILTER:

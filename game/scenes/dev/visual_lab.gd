@@ -28,6 +28,11 @@ enum TextureFilterPreset {
 	SOFT,
 }
 
+enum HeroGraphicsPreset {
+	ULTRA,
+	PIXEL_ART,
+}
+
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const TILE_GRID_PREVIEW_SCRIPT := preload("res://scenes/dev/tile_grid_preview.gd")
 const WORLD_STATE_PREVIEW_SCRIPT := preload("res://scenes/dev/world_state_preview.gd")
@@ -51,8 +56,14 @@ const DEFAULT_STANDARDS: VisualLabStandardsResource = preload(
 const DEFAULT_MOVEMENT_STANDARD: HeroMovementConfigResource = preload(
 	"res://shared/resources/hero_movement_v0.tres"
 )
+const ULTRA_HERO_FRAMES: SpriteFrames = preload(
+	"res://assets/characters/heroes/green_hero/ultra/green_hero_stand_walk_ultra.tres"
+)
+const PIXEL_ART_HERO_FRAMES: SpriteFrames = preload(
+	"res://assets/characters/heroes/green_hero/pixel_art/green_hero_stand_walk_pixel_art.tres"
+)
 const MAIN_MENU_ROUTE := &"main_menu"
-const SETTINGS_VERSION := 3
+const SETTINGS_VERSION := 4
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const DEFAULT_STANDARDS_PATH := (
@@ -103,6 +114,18 @@ const CAMERA_SETTING_KEYS: Array[String] = [
 const HERO_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const HERO_SIZE_VALUES: Array[float] = [64.0, 80.0, 96.0]
 const HERO_SIZE_IDS: Array[String] = ["small", "medium", "large"]
+const HERO_GRAPHICS_NAMES: Array[String] = ["Ultra", "Pixelart"]
+const HERO_GRAPHICS_IDS: Array[String] = ["ultra", "pixel_art"]
+const HERO_GRAPHICS_REFERENCE_HEIGHTS: Array[float] = [618.0, 245.0]
+const HERO_GRAPHICS_OFFSETS: Array[Vector2] = [
+	Vector2(0.0, -305.0),
+	Vector2(0.0, -122.5),
+]
+const HERO_GRAPHICS_DETAILS: Array[String] = [
+	"16 Frames je Richtung · 640 × 640 px Referenz",
+	"1 Standbild je Richtung · 265 × 265 px",
+]
+const HERO_GRAPHICS_WORLD_HEIGHT := 80.0
 const TILE_SIZE_NAMES: Array[String] = ["Klein", "Mittel", "Groß"]
 const TILE_SIZE_VALUES: Array[int] = [32, 48, 64]
 const TILE_SIZE_IDS: Array[String] = ["small", "medium", "large"]
@@ -159,6 +182,12 @@ const GAMEPLAY_SETTING_SUBJECTS: Dictionary = {
 )
 @onready var hero_visual: Node2D = $TestWorld/HeroCharacter/Visual
 @onready var hero_character: HERO_SCRIPT = $TestWorld/HeroCharacter
+@onready var hero_texture_scale: Node2D = (
+	$TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/TextureScale
+)
+@onready var hero_sprite: AnimatedSprite2D = (
+	$TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/TextureScale/HeroSprite
+)
 @onready var tile_grid_preview: TILE_GRID_PREVIEW_SCRIPT = (
 	$TestWorld/TileComparison/TileGridPreview
 )
@@ -174,6 +203,7 @@ const GAMEPLAY_SETTING_SUBJECTS: Dictionary = {
 @onready var test_world: Node2D = $TestWorld
 @onready var camera_status: Label = controls_interface.camera_status
 @onready var hero_size_status: Label = controls_interface.hero_size_status
+@onready var hero_graphics_status: Label = controls_interface.hero_graphics_status
 @onready var tile_size_status: Label = controls_interface.tile_size_status
 @onready var world_state_status: Label = controls_interface.world_state_status
 @onready var window_size_status: Label = controls_interface.window_size_status
@@ -189,6 +219,7 @@ var _selected_camera_zooms: Array[int] = [
 	CameraZoomPreset.NEAR,
 ]
 var _selected_hero_size: int = HeroSizePreset.MEDIUM
+var _selected_hero_graphics: int = HeroGraphicsPreset.ULTRA
 var _selected_tile_size: int = TileSizePreset.SMALL
 var _selected_world_state: int = WorldStatePreset.DAMAGED
 var _selected_fog_variants: Array[int] = [
@@ -245,6 +276,7 @@ func _ready() -> void:
 	_load_movement_standard()
 	_load_settings()
 	_apply_camera_zoom()
+	_apply_hero_graphics()
 	_apply_hero_size()
 	_apply_tile_size()
 	_apply_world_state()
@@ -406,6 +438,48 @@ func _apply_hero_size() -> void:
 		roundi(hero_character.get_appearance_height()),
 	]
 	_refresh_diagnostics_if_visible()
+
+
+func _set_hero_graphics(graphics_index: int) -> void:
+	_selected_hero_graphics = clampi(
+		graphics_index,
+		HeroGraphicsPreset.ULTRA,
+		HeroGraphicsPreset.PIXEL_ART,
+	)
+	_apply_hero_graphics()
+	_save_settings()
+	_refresh_menu()
+
+
+func _apply_hero_graphics() -> void:
+	var previous_animation := hero_sprite.animation
+	var was_playing := hero_sprite.is_playing()
+	hero_sprite.sprite_frames = _selected_hero_frames()
+	if not hero_sprite.sprite_frames.has_animation(previous_animation):
+		previous_animation = &"stand_s"
+	hero_sprite.animation = previous_animation
+	hero_sprite.set_frame_and_progress(0, 0.0)
+	if was_playing:
+		hero_sprite.play(previous_animation)
+	else:
+		hero_sprite.pause()
+	var source_scale := (
+		HERO_GRAPHICS_WORLD_HEIGHT
+		/ HERO_GRAPHICS_REFERENCE_HEIGHTS[_selected_hero_graphics]
+	)
+	hero_texture_scale.scale = Vector2(source_scale, source_scale)
+	hero_sprite.offset = HERO_GRAPHICS_OFFSETS[_selected_hero_graphics]
+	hero_graphics_status.text = "Hero-Grafik: %s · %s" % [
+		HERO_GRAPHICS_NAMES[_selected_hero_graphics],
+		HERO_GRAPHICS_DETAILS[_selected_hero_graphics],
+	]
+	_refresh_diagnostics_if_visible()
+
+
+func _selected_hero_frames() -> SpriteFrames:
+	if _selected_hero_graphics == HeroGraphicsPreset.PIXEL_ART:
+		return PIXEL_ART_HERO_FRAMES
+	return ULTRA_HERO_FRAMES
 
 
 func _change_tile_size(direction: int) -> void:
@@ -693,6 +767,7 @@ func _update_diagnostics_values() -> void:
 			"Feststelltasten-Gehen: %s"
 			% ("AN" if hero_character.is_walk_mode_active() else "AUS"),
 			"Sprung: %s" % hero_character.get_jump_diagnostic(),
+			"Hero-Grafik: %s" % _hero_graphics_name(),
 			"Figur: %d px" % roundi(hero_character.get_appearance_height()),
 			"Tiles: %d × %d px" % [tile_size, tile_size],
 			"Weltzustand: %s" % WORLD_STATE_NAMES[_selected_world_state],
@@ -789,8 +864,10 @@ func _load_settings() -> void:
 		_load_legacy_settings(settings)
 		_save_settings()
 		return
-	if stored_version == 2:
+	if stored_version == 2 or stored_version == 3:
 		_load_current_settings(settings)
+		if stored_version == 3:
+			_load_gameplay_settings(settings)
 		_save_settings()
 		return
 	if stored_version != SETTINGS_VERSION:
@@ -812,6 +889,7 @@ func _reset_preview_to_standards() -> void:
 		scale_profile.hero_height,
 		HeroSizePreset.MEDIUM,
 	)
+	_selected_hero_graphics = HeroGraphicsPreset.ULTRA
 	_selected_tile_size = _preset_index_for_int(
 		TILE_SIZE_VALUES,
 		scale_profile.tile_size,
@@ -870,6 +948,12 @@ func _load_shared_settings(settings: ConfigFile) -> void:
 		"hero_size",
 		HERO_SIZE_IDS,
 		_selected_hero_size,
+	)
+	_selected_hero_graphics = _read_preset_index(
+		settings,
+		"hero_graphics",
+		HERO_GRAPHICS_IDS,
+		_selected_hero_graphics,
 	)
 	_selected_tile_size = _read_preset_index(
 		settings,
@@ -952,6 +1036,11 @@ func _save_settings() -> void:
 		SETTINGS_SECTION,
 		"hero_size",
 		HERO_SIZE_IDS[_selected_hero_size],
+	)
+	settings.set_value(
+		SETTINGS_SECTION,
+		"hero_graphics",
+		HERO_GRAPHICS_IDS[_selected_hero_graphics],
 	)
 	settings.set_value(
 		SETTINGS_SECTION,
@@ -1140,6 +1229,10 @@ func _texture_filter_name() -> String:
 	return TEXTURE_FILTER_NAMES[_selected_texture_filter]
 
 
+func _hero_graphics_name() -> String:
+	return HERO_GRAPHICS_NAMES[_selected_hero_graphics]
+
+
 func _refresh_menu() -> void:
 	if controls_interface == null or not is_instance_valid(controls_interface):
 		return
@@ -1174,6 +1267,10 @@ func _refresh_menu() -> void:
 		VisualLabMenuScript.SETTING_HERO_SIZE,
 		_selected_hero_size,
 		_accepted_hero_size_index(),
+	)
+	controls_interface.update_setting(
+		VisualLabMenuScript.SETTING_HERO_GRAPHICS,
+		_selected_hero_graphics,
 	)
 	controls_interface.update_setting(
 		VisualLabMenuScript.SETTING_TILE_SIZE,
@@ -1310,6 +1407,8 @@ func _on_menu_option_selected(setting_id: StringName, option_index: int) -> void
 			_set_camera_zoom(option_index)
 		VisualLabMenuScript.SETTING_HERO_SIZE:
 			_set_hero_size(option_index)
+		VisualLabMenuScript.SETTING_HERO_GRAPHICS:
+			_set_hero_graphics(option_index)
 		VisualLabMenuScript.SETTING_TILE_SIZE:
 			_set_tile_size(option_index)
 		VisualLabMenuScript.SETTING_PIXEL_SNAP:

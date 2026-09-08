@@ -6,10 +6,12 @@
 
 ## Ziel und Umsetzungsstand
 
-Der spielbare `HeroCharacter` verwendet seit dem 8. September 2026 den Green
-Hero anstelle der bisherigen Platzhaltergrafik. Eingebunden sind ausschließlich
-die Ultra-Folgen für Stehen und Gehen: acht Richtungen, 16 Frames je Folge und
-damit insgesamt 256 Frames aus 16 optimierten PNG-Sheets.
+Der spielbare `HeroCharacter` verwendet seit dem 8. September 2026
+standardmäßig den Green Hero anstelle der bisherigen Platzhaltergrafik.
+Eingebunden sind die Ultra-Folgen für Stehen und Gehen: acht Richtungen, 16
+Frames je Folge und damit insgesamt 256 Frames aus 16 optimierten PNG-Sheets.
+Nur im visuellen Testlabor kann diese Instanz zusätzlich auf eine
+einrahmige Pixelart-Vergleichsvariante umgeschaltet werden.
 
 Die vorhandenen Bewegungswerte, Kollision, Interaktion, Kamera und Sprungkurven
 bleiben davon getrennt. Lange und genervte Wartefolgen sowie eigene Grafiken
@@ -121,6 +123,21 @@ Wand laufende Figur die passende Standfolge. Bei einem Richtungswechsel während
 des Gehens werden Frame und Teilfortschritt übernommen, statt die Schrittfolge
 neu zu starten. Bewegungssperren wechseln auf Stehen; während des bestehenden
 Sprungs wird Frame 0 der richtungsbezogenen Standfolge eingefroren.
+
+## Pixelart-Vergleich im Testlabor
+
+Das [visuelle Testlabor](visuelles-testlabor.md#hero-grafikvergleich) kann die
+Ultra-Ressource der dortigen Heldeninstanz gegen eine zweite
+`SpriteFrames`-Ressource austauschen. Sie enthält dieselben 16 Namen für
+Stehen und Gehen in acht Richtungen, aber jeweils genau ein Pixelart-Standbild
+auf einem transparenten `265 × 265`-Canvas.
+
+Die sichtbare Höhe von 245 Quellpixeln wird auf dieselben 80 Weltpixel wie die
+Ultra-Referenz normiert; ein gemeinsamer Fußanker verhindert einen Sprung der
+Weltposition. Die Auswahl wird nur lokal gespeichert. Der gemeinsame
+`HeroCharacter`, sein Controller und der Heldenraum behalten standardmäßig die
+Ultra-Ressource, bis eine spätere Entscheidung ausdrücklich etwas anderes
+festlegt.
 
 ## Reproduzierbarer Import
 

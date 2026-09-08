@@ -59,6 +59,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_controls_test.gd",
 	"res://tests/runtime/visual_lab_pixel_snap_test.gd",
 	"res://tests/runtime/visual_lab_texture_filter_test.gd",
+	"res://tests/runtime/visual_lab_hero_graphics_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
 	"res://tests/runtime/visual_lab_gameplay_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
@@ -1031,8 +1032,8 @@ func _expect_saved_visual_lab_settings(
 		"leaving VisualLab saves its settings to the isolated test path",
 	)
 	_expect(
-		settings.get_value("meta", "version", 0) == 3,
-		"saved VisualLab settings use version 3",
+		settings.get_value("meta", "version", 0) == 4,
+		"saved VisualLab settings use version 4",
 	)
 	_expect(
 		settings.get_value("visual_lab", "camera_zoom_world", "") == camera_zoom_id,

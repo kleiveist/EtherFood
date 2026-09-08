@@ -178,7 +178,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 		await _close_visual_lab(tree, invalid_visual_lab)
 
-	_write_settings(4, "wide", "large", "large", "restored")
+	_write_settings(5, "wide", "large", "large", "restored")
 	var future_version_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
 	if future_version_visual_lab != null:
 		_expect_visual_lab_state(
@@ -336,7 +336,7 @@ func _expect_saved_settings(
 	var settings := ConfigFile.new()
 	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "%s: file loads" % description)
 	_expect(
-		settings.get_value("meta", "version", 0) == 3,
+		settings.get_value("meta", "version", 0) == 4,
 		"%s: version is stored" % description,
 	)
 	_expect(

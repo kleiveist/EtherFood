@@ -10,6 +10,8 @@ Bedeutende Änderungen an diesem Projekt werden in dieser Datei festgehalten.
   Godot-Ressourcenimport aus.
 - Der Green Hero besitzt Ultra-Stand- und Gehfolgen mit je 16 Frames in acht
   Richtungen sowie einen reproduzierbaren, geprüften Ressourcen-Generator.
+- Das visuelle Testlabor kann den Green Hero zwischen der animierten
+  Ultra-Grafik und 16 richtungsbezogenen Pixelart-Standbildern umschalten.
 
 ### Geändert
 

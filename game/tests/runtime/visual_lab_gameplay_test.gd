@@ -201,7 +201,7 @@ func _expect_persisted_preview(visual_lab: Control) -> void:
 	var settings := ConfigFile.new()
 	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "Gameplay settings file loads")
 	_expect(
-		settings.get_value("meta", "version", 0) == 3
+		settings.get_value("meta", "version", 0) == 4
 		and is_equal_approx(settings.get_value("visual_lab", "walk_speed", 0.0), 135.0)
 		and is_equal_approx(settings.get_value("visual_lab", "sprint_speed", 0.0), 500.0),
 		"Gameplay previews use the current local settings format",

@@ -25,6 +25,11 @@ Testlabor verwendet ein Themenmenü, trennt lokale Testwerte von versionierten
 Spielstandards und kennzeichnet letztere mit goldenem Rahmen und Stern. Die
 früheren Direktkürzel der einzelnen Testparameter sind entfernt.
 
+Unter `Darstellung` kann der Laborheld zusätzlich zwischen der animierten
+Ultra-Grafik und 16 Pixelart-Standbildern umgeschaltet werden. Diese Auswahl
+ist ein lokaler Sichtvergleich und ausdrücklich kein übernehmbarer
+Spielstandard.
+
 Die Neufassung ändert für sich genommen keinen bereits angenommenen Wert.
 Insbesondere bleibt [Maßstab V0](#maßstab-v0) bestehen, bis im Labor ein
 anderer Wert ausdrücklich übernommen und die zugehörige Entscheidung
@@ -71,7 +76,7 @@ einem Thema zugewiesen und erhalten kein neues globales Direktkürzel.
 |---|---|
 | Kamera | Zielbereich und dessen Zoomstufe |
 | Maßstab | Heldenhöhe und Tilegröße als unabhängige Einzelwerte |
-| Darstellung | Pixel-Snap, Texturfilter und spätere Grafikoptionen |
+| Darstellung | Hero-Grafik, Pixel-Snap, Texturfilter und spätere Grafikoptionen |
 | Welt und Atmosphäre | Vorschau des Weltzustands sowie zustandsbezogener Nebel und zustandsbezogenes Licht |
 | Diagnose und Hilfe | Diagnoseanzeige, Kollisionsflächen, Bewegung, Zurück und Bedienhinweise |
 | Gameplay | Geschwindigkeiten sowie Sprunghöhen und -weiten |
@@ -149,6 +154,7 @@ Nicht jede Laborfunktion stellt einen Spielstandard dar:
 | Pixel-Snap und Texturfilter | ja | Darstellungsstandard beziehungsweise spätere Voreinstellung |
 | Nebel und Licht | ja, je Weltzustand | atmosphärischer Standard des jeweiligen Zustands |
 | Bewegungsgeschwindigkeiten und Sprungwerte | ja, je fokussiertem Regler | versionierte Bewegungsressource |
+| Hero-Grafik | nein | lokaler Vergleich von Ultra-Animation und Pixelart-Standbildern |
 | angezeigter Weltzustand | nein | gleichberechtigte Vorschau bestehender Spielzustände |
 | Diagnose, Kollision und Fensterwerte | nein | reine Entwicklungswerkzeuge und Messwerte |
 
@@ -177,13 +183,14 @@ Weltzustände. Das Dorfprofil bleibt zunächst als eigene Ressource vorbereitet,
 erbt aber über die Zuordnung den Außenweltwert. Erst die ausdrückliche
 Übernahme eines Dorfzooms löst diese Vererbung.
 
-Der lokale Arbeitsstand verwendet Speicherschema 3. Neben
+Der lokale Arbeitsstand verwendet Speicherschema 4. Neben
 `camera_context` werden `camera_zoom_world`, `camera_zoom_village`,
 `camera_zoom_dungeon` und `camera_zoom_small_interior` getrennt gespeichert.
-Die Gameplay-Regler werden als begrenzte Zahlenwerte gespeichert. Gültige
-Version-1- und Version-2-Werte werden beim Laden übernommen und unmittelbar
-in das neue Schema geschrieben; fehlende oder ungültige Werte fallen auf den
-jeweiligen Spielstandard zurück.
+Die Gameplay-Regler werden als begrenzte Zahlenwerte gespeichert;
+`hero_graphics` merkt `ultra` oder `pixel_art`. Gültige Werte der Versionen 1
+bis 3 werden beim Laden übernommen und unmittelbar in das neue Schema
+geschrieben. Fehlt die Grafikauswahl, bleibt `ultra` aktiv; andere fehlende
+oder ungültige Werte fallen auf ihren jeweiligen Spielstandard zurück.
 
 Der Gameplay-Held erhält beim Öffnen eine tiefe Kopie von
 `hero_movement_v0.tres`. Änderungen an der lokalen Vorschau können die
@@ -194,6 +201,35 @@ Arbeitsbaum prüfbar. Sie ersetzt jedoch nicht die Repository-Regeln: Wenn ein
 bereits angenommener Kanonwert geändert wird, müssen die passende Entscheidung
 und die beschreibende Dokumentation vor dem Commit nachvollziehbar
 aktualisiert werden.
+
+## Hero-Grafikvergleich
+
+Das Thema `Darstellung` bietet zwei Varianten für dieselbe bewegliche
+Laborfigur:
+
+| Auswahl | Inhalt | Verhalten |
+|---|---|---|
+| `Ultra · animiert` | acht Stand- und acht Gehfolgen mit je 16 Frames | Startwert und weiterhin Spielgrafik außerhalb des Labors |
+| `Pixelart · Standbilder` | acht Stand- und acht Gehposen mit je einem Frame | nur lokaler Laborvergleich |
+
+Beide Varianten verwenden dieselben Animationsnamen `stand_n` bis `stand_nw`
+und `walk_n` bis `walk_nw`. Dadurch bleiben Bewegung, achtteilige Richtung,
+Sprungvorschau und Kollisionsverhalten beim Umschalten unverändert. Die
+Pixelart-Gehbilder sind noch keine vollständige Bewegungsschleife: Beim Laufen
+wechselt die Figur zur passenden Gehpose, innerhalb derselben Richtung bleibt
+das Bild stehen.
+
+Alle Pixelart-Dateien besitzen einen transparenten `265 × 265`-Canvas und
+eine sichtbare Figurenhöhe von 245 Pixeln. Das Labor normalisiert sie wie die
+Ultra-Referenz auf die gewählte Heldenhöhe und richtet den gemeinsamen
+Fußpunkt auf dem Bodenanker aus. So vergleicht der Test Grafikauflösung und
+Bildwirkung, nicht versehentlich Figurengröße oder Weltposition.
+
+Die Auswahl wird nur in `user://visual_lab_settings.cfg` gemerkt. Sie besitzt
+keinen goldenen Stern, kann weder über den Menüknopf noch über
+`Strg + Alt + E` übernommen werden und verändert den `HeroCharacter` im
+Heldenraum nicht. Es ist noch nicht entschieden, welche Variante angenehmer
+wirkt; dieses Ergebnis entsteht erst im direkten Sichttest.
 
 ## Zoomprofile nach Zielbereich
 
@@ -356,9 +392,10 @@ Die Helden-Testfläche ermöglicht:
 
 ```text
 - Spielfigur anzeigen
-- Schleichen, Gehen, Laufen, Rennen und Sprinten in vier Richtungen
+- Schleichen, Gehen, Laufen, Rennen und Sprinten in acht Animationsrichtungen
 - Steh-, Geh-, Lauf-, Renn- und Sprintsprung
 - Idle- und Laufanimation testen
+- Ultra-Animation und Pixelart-Standbilder direkt vergleichen
 - Figurengröße vergleichen
 - Schatten und Kollisionskörper anzeigen
 ```
@@ -405,6 +442,7 @@ Umschaltbar sein sollen:
 - weiter Kamerazoom
 - Pixel-Snap ein und aus
 - Texturfilterung zum Vergleich
+- Ultra- und Pixelart-Heldengrafik vergleichen
 - Nebelstärken je Weltzustand
 - Lichtprofile je Weltzustand
 ```
@@ -412,6 +450,15 @@ Umschaltbar sein sollen:
 Die umschaltbaren Tilegrößen, Heldenhöhen und Kameraansichten stammen aus der
 visuellen Richtung V0. Der sichtbare Vergleich ist abgeschlossen; die
 Varianten bleiben für spätere Regressionen verfügbar.
+
+#### Hero-Grafikvergleich
+
+Im Thema `Darstellung` steht oberhalb von Pixel-Snap und Texturfilter die
+Auswahl `Ultra · animiert` / `Pixelart · Standbilder`. Der aktuelle Wert wird
+markiert und lokal gespeichert. Weil noch keine Grafikentscheidung getroffen
+wurde, fehlt bewusst die goldene Spielstandard-Markierung und die
+Übernahmeaktion bleibt für diesen Eintrag gesperrt. Größenwahl, Kamera,
+Texturfilter und Pixel-Snap können unabhängig davon weitergeschaltet werden.
 
 #### Pixel-Snap-Vergleich
 
@@ -621,6 +668,7 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 - aktueller Bewegungs- und Sprungzustand
 - gewählte Tilegröße
 - gewählte Figurengröße
+- gewählte Hero-Grafik
 - manuelle Maßstabseinstellung
 - aktuelle Geschwindigkeit und Feststelltasten-Gehmodus
 - Referenzauflösung und Seitenverhältnis
@@ -639,7 +687,7 @@ rohe Heldenposition, gerasterte Heldenanzeige, rohes und gerastertes
 Kameraziel, tatsächliches Kamerazentrum,
 Weltanker, manuelle Maßstabseinstellung, Referenzauflösung, Seitenverhältnis,
 Kamerabereich, Basis- und Aktivzoom, Bewegungszustand, Geschwindigkeit,
-Feststelltasten-Gehmodus, Sprungzustand, Figuren-, Tile-,
+Feststelltasten-Gehmodus, Sprungzustand, Hero-Grafik, Figuren-, Tile-,
 Weltzustands-, Nebel-, Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-,
 Vertex-Snap-, Darstellungsraster-, Rasterphasen- und Texturfilterwerte sowie
 Fenstergröße und Skalierungsfaktor. In der Referenzansicht ist das Panel auf
@@ -694,6 +742,8 @@ Das visuelle Testlabor ist ausreichend festgelegt, wenn:
 - Spielszenen ausschließlich versionierte Spielwerte und niemals lokale
   Testwerte als Ausgangspunkt verwenden,
 - beschädigte und wiederhergestellte Welt direkt verglichen werden können,
+- Ultra-Animation und Pixelart-Standbilder ohne Änderung des Spielstandards
+  direkt verglichen werden können,
 - die umschaltbaren Diagnoseanzeigen kompakt und halbtransparent bleiben,
 - `visual_lab` ausdrücklich nur in Entwicklungsbuilds erreichbar ist und
 - noch offene Grafikentscheidungen nicht ohne ihren vorgesehenen Vergleich

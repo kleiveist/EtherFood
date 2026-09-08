@@ -26,7 +26,7 @@ updated: 2026-09-08
 | Frames je GIF | 6 bis 16 |
 | Dokumentationsformat | GIF |
 | Doku-Assets | `docs/assets/images/animations/heroes/green-hero/` |
-| Im Spiel eingebunden | Ultra: Stehen und Gehen, je 8 Richtungen × 16 Frames |
+| Im Spiel eingebunden | Ultra: Stehen und Gehen, je 8 Richtungen × 16 Frames; Pixelart mit je 1 Standbild nur als Testlabor-Variante |
 
 ## Kurzbeschreibung
 
@@ -53,7 +53,7 @@ Arbeiten existieren.
 | Herkunft | Fertige GIF-Exporte aus der lokal bereitgestellten Green-Hero-Arbeitsstruktur |
 | Dokumentationsstand | 8. September 2026 |
 | Grafikbestand | Stehen, langes Warten, Gehen, Laufen, Rennen und Sprinten vollständig; genervtes Warten nur nach Süden |
-| Laufzeitstand | Stehen und Gehen in acht Richtungen als Ultra-Sheets eingebunden |
+| Laufzeitstand | Stehen und Gehen in acht Richtungen als Ultra-Sheets; 16 Pixelart-Einzelbilder zusätzlich nur für den Laborvergleich |
 | Technische Merkmale | Alle GIFs mit 640 × 640 Pixeln; 35 GIFs mit 16 Frames; Gehen und Laufen mit je 16 Frames; Rennen und Sprinten mit je 6 Frames pro Richtung |
 | Quellzuordnung | Gehen: `walk`; Laufen: `run`; Rennen: `sprint`; Sprinten: `race` |
 | Renn-Wiedergabe | `sprint`: sieben Richtungen mit 12 Hundertstelsekunden je Frame (etwa 8,3 FPS), Südosten mit 6 (etwa 16,7 FPS) |
@@ -104,6 +104,13 @@ Laufen, Rennen, Sprinten, Schleichen, Sprünge und Wartevarianten sind als
 Grafiken teilweise vorhanden, aber noch nicht als eigene Laufzeitfolgen
 eingebunden. Bodenbewegungen verwenden bis dahin übergangsweise die passende
 Gehfolge; der bestehende Sprung friert das erste Standbild der Richtung ein.
+
+Das visuelle Testlabor besitzt daneben eine eigenständige Pixelart-Ressource
+unter `game/assets/characters/heroes/green_hero/pixel_art/`. Sie ordnet je ein
+transparentes `265 × 265`-PNG denselben acht Stand- und acht Gehnamen zu. Die
+Figurenhöhe und der Fußpunkt sind für einen deckungsgleichen Vergleich mit
+Ultra normalisiert. Diese Standbilder sind weder GIF-Vorschauen noch eine
+angenommene neue Spielgrafik; außerhalb des Labors bleibt Ultra aktiv.
 
 ## Animationsübersicht
 
@@ -223,7 +230,7 @@ Die Tabellen dieser Seite dokumentieren nur die sichtbaren GIF-Vorschauen der
 fertigen Animationen. Die Laufzeit-Einbindung wird lediglich als getrennter
 Status beschrieben. Nicht als öffentliche Vorschau eingebettet sind:
 
-- PNG-Einzelframes,
+- weitere PNG-Einzelframes außerhalb der versionierten Laborvariante,
 - Arbeitsdateien,
 - KI-Ausgangsbilder,
 - Upscale-Dateien,

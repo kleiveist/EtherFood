@@ -244,8 +244,10 @@ Vergleichsbündel `A → Maßstab V0 → C` ist entfernt; eine Übernahme schrei
 nur den fokussierten Einzelwert.
 
 `user://visual_lab_settings.cfg` speichert ausschließlich lokale Testwerte im
-Schema 3. Diese Datei überlebt einen Programmneustart, ist aber keine Quelle
-für Produktionsregeln. Ein Wert wird erst durch den sichtbaren
+Schema 4. Dazu gehört auch die nicht übernehmbare Auswahl zwischen
+Ultra-Animation und Pixelart-Standbildern. Diese Datei überlebt einen
+Programmneustart, ist aber keine Quelle für Produktionsregeln. Ein Wert wird
+erst durch den sichtbaren
 Übernahmeknopf oder `Strg + Alt + E` in die versionierten Ressourcen
 geschrieben. Diagnose, Kollisionsanzeige und Weltzustandsvorschau werden nie
 als Spielstandard gespeichert.
