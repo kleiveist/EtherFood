@@ -1,27 +1,8 @@
-[gd_resource type="Resource" script_class="HeroMovementConfig" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="HeroMovementConfig" format=3]
 
 [ext_resource type="Script" path="res://shared/resources/hero_movement_config.gd" id="1_config"]
 
 [resource]
 script = ExtResource("1_config")
-sneak_speed = 60.0
-walk_speed = 100.0
-jog_speed = 220.0
-run_speed = 310.0
-sprint_speed = 400.0
-double_tap_window = 0.3
-direction_change_grace = 0.12
-standing_jump_duration = 0.32
-walk_jump_duration = 0.28
-jog_jump_duration = 0.32
-run_jump_duration = 0.4
-sprint_jump_duration = 0.48
-walk_jump_distance = 32.0
-jog_jump_distance = 48.0
-run_jump_distance = 80.0
-sprint_jump_distance = 112.0
-standing_jump_height = 24.0
-walk_jump_height = 20.0
-jog_jump_height = 24.0
-run_jump_height = 30.0
-sprint_jump_height = 36.0
+jog_speed = 210.0
+sprint_speed = 450.0

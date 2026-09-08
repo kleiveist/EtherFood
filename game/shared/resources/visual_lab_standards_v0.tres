@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="VisualLabStandards" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="VisualLabStandards" format=3]
 
 [ext_resource type="Script" path="res://shared/resources/visual_lab_standards.gd" id="1_standards"]
 [ext_resource type="Resource" path="res://shared/resources/visual_baseline_v0.tres" id="2_scale"]
@@ -9,14 +9,10 @@
 
 [resource]
 script = ExtResource("1_standards")
-schema_version = 1
 scale_profile = ExtResource("2_scale")
 world_camera_profile = ExtResource("3_world")
 village_camera_profile = ExtResource("4_village")
-village_inherits_world = true
+village_inherits_world = false
 dungeon_camera_profile = ExtResource("5_dungeon")
 small_interior_camera_profile = ExtResource("6_interior")
-damaged_fog_id = "medium"
-damaged_light_id = "cool_dark"
-restored_fog_id = "low"
-restored_light_id = "warm_clear"
+damaged_fog_id = "low"
