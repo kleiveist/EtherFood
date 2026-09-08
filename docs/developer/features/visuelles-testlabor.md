@@ -449,13 +449,13 @@ anklickbarer Eintrag. Er wählt zwischen `Texturfilter: Nearest-Neighbor` und
 Altstände ohne gültige Filter-ID fallen bei der Migration auf den
 versionierten Spielstandard zurück.
 
-Die Umschaltung erfasst ausschließlich die 51 texturierten `Sprite2D`-
-Instanzen unter `TestWorld`: den Held, den texturierten Vergleichsboden, die
-Größenreferenzen und die Sprites beider Weltzustände. Sie ändert weder die
-globale Projekteinstellung noch Szenenressourcen. Beim Verlassen werden alle
-vorherigen Instanzwerte wiederhergestellt. Vektorgezeichnete Tile-Raster und
-Kollisionsformen besitzen keine Texturabtastung und bleiben deshalb in beiden
-Varianten identisch.
+Die Umschaltung erfasst ausschließlich die 51 texturierten `CanvasItem`-
+Instanzen unter `TestWorld`: den animierten Helden als `AnimatedSprite2D`, den
+texturierten Vergleichsboden, die Größenreferenzen und die `Sprite2D`-Objekte
+beider Weltzustände. Sie ändert weder die globale Projekteinstellung noch
+Szenenressourcen. Beim Verlassen werden alle vorherigen Instanzwerte
+wiederhergestellt. Vektorgezeichnete Tile-Raster und Kollisionsformen besitzen
+keine Texturabtastung und bleiben deshalb in beiden Varianten identisch.
 
 Der vorläufige Vergleich wurde bei 1280 × 720 mit aktivem Pixel-Snap, kontrollierten
 Schritten von 2,2 Weltpixeln und 124 echten OpenGL-Aufnahmen durchgeführt.

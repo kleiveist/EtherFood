@@ -20,8 +20,20 @@ enum JumpState {
 	SPRINT,
 }
 
+enum AnimationDirection {
+	NORTH,
+	NORTH_EAST,
+	EAST,
+	SOUTH_EAST,
+	SOUTH,
+	SOUTH_WEST,
+	WEST,
+	NORTH_WEST,
+}
+
 const APPEARANCE_REFERENCE_HEIGHT := 80.0
 const AIR_CONTROL_TURN_RATE := 2.5
+const ANIMATION_DIRECTION_OCTANT := PI / 4.0
 const MOVE_LEFT_ACTION := &"gameplay_move_left"
 const MOVE_RIGHT_ACTION := &"gameplay_move_right"
 const MOVE_UP_ACTION := &"gameplay_move_up"
@@ -46,6 +58,7 @@ const DEFAULT_MOVEMENT_CONFIG := preload(
 @export var movement_config: HeroMovementConfigResource = DEFAULT_MOVEMENT_CONFIG
 
 var facing_direction: Vector2 = Vector2.DOWN
+var animation_direction: AnimationDirection = AnimationDirection.SOUTH
 var _movement_enabled := true
 var _interaction_target: Area2D = null
 var _movement_state: MovementState = MovementState.JOG
@@ -62,6 +75,7 @@ var _jump_distance := 0.0
 var _jump_height := 0.0
 var _jump_direction := Vector2.DOWN
 var _jump_visual_base_position := Vector2.ZERO
+var _ground_motion_active := false
 
 @onready var jump_visual: Node2D = $Visual/JumpVisual
 @onready var appearance: Node2D = $Visual/JumpVisual/Appearance
@@ -114,6 +128,7 @@ func _physics_process(delta: float) -> void:
 	_refresh_interaction_target()
 	if not _movement_enabled:
 		velocity = Vector2.ZERO
+		_ground_motion_active = false
 		_set_sneak_active(false)
 		_movement_state = (
 			MovementState.WALK if _walk_mode_active else MovementState.JOG
@@ -127,12 +142,16 @@ func _physics_process(delta: float) -> void:
 		_set_sneak_active(Input.is_action_pressed(SNEAK_ACTION))
 	_update_movement_state()
 	if not direction.is_zero_approx():
+		_update_animation_direction(direction)
 		_update_facing_direction(direction)
 	if is_jumping():
+		_ground_motion_active = false
 		_advance_jump(delta, direction)
 		return
 	velocity = direction * get_current_speed()
+	var position_before_move := global_position
 	move_and_slide()
+	_ground_motion_active = not global_position.is_equal_approx(position_before_move)
 
 
 func set_movement_enabled(enabled: bool) -> void:
@@ -141,6 +160,7 @@ func set_movement_enabled(enabled: bool) -> void:
 	_movement_enabled = enabled
 	if not _movement_enabled:
 		velocity = Vector2.ZERO
+		_ground_motion_active = false
 		_reset_transient_movement()
 
 
@@ -166,6 +186,31 @@ func is_jumping() -> bool:
 ## Reports whether Caps Lock selected the persistent walking mode.
 func is_walk_mode_active() -> bool:
 	return _walk_mode_active
+
+
+## Reports actual collision-resolved movement during the latest grounded step.
+func is_ground_motion_active() -> bool:
+	return _ground_motion_active
+
+
+## Returns the stable suffix shared by stand and walk animation names.
+func get_animation_direction_name() -> StringName:
+	match animation_direction:
+		AnimationDirection.NORTH:
+			return &"n"
+		AnimationDirection.NORTH_EAST:
+			return &"ne"
+		AnimationDirection.EAST:
+			return &"e"
+		AnimationDirection.SOUTH_EAST:
+			return &"se"
+		AnimationDirection.SOUTH_WEST:
+			return &"sw"
+		AnimationDirection.WEST:
+			return &"w"
+		AnimationDirection.NORTH_WEST:
+			return &"nw"
+	return &"s"
 
 
 ## Returns the speed selected by movement priority, or zero while disabled.
@@ -417,6 +462,7 @@ func _finish_jump(restore_sneak: bool = true) -> void:
 	_jump_state = JumpState.GROUND
 	_jump_elapsed = 0.0
 	velocity = Vector2.ZERO
+	_ground_motion_active = false
 	if is_instance_valid(jump_visual):
 		jump_visual.position = _jump_visual_base_position
 	_set_sneak_active(
@@ -428,6 +474,7 @@ func _finish_jump(restore_sneak: bool = true) -> void:
 func _reset_transient_movement() -> void:
 	_race_active = false
 	_direction_change_time_remaining = 0.0
+	_ground_motion_active = false
 	_set_sneak_active(false)
 	_movement_state = (
 		MovementState.WALK if _walk_mode_active else MovementState.JOG
@@ -445,6 +492,31 @@ func _update_facing_direction(direction: Vector2) -> void:
 	else:
 		facing_direction = Vector2.DOWN if direction.y > 0.0 else Vector2.UP
 	_update_facing_marker()
+
+
+func _update_animation_direction(direction: Vector2) -> void:
+	var octant := wrapi(
+		roundi(direction.angle() / ANIMATION_DIRECTION_OCTANT),
+		0,
+		8,
+	)
+	match octant:
+		0:
+			animation_direction = AnimationDirection.EAST
+		1:
+			animation_direction = AnimationDirection.SOUTH_EAST
+		2:
+			animation_direction = AnimationDirection.SOUTH
+		3:
+			animation_direction = AnimationDirection.SOUTH_WEST
+		4:
+			animation_direction = AnimationDirection.WEST
+		5:
+			animation_direction = AnimationDirection.NORTH_WEST
+		6:
+			animation_direction = AnimationDirection.NORTH
+		7:
+			animation_direction = AnimationDirection.NORTH_EAST
 
 
 func _update_facing_marker() -> void:

@@ -1,6 +1,7 @@
 extends RefCounted
 
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
+const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const BASELINE_WORLD_Y := 1760.0
 const WORLD_BOUNDS := Rect2(0, 0, 3840, 2160)
 const HEIGHT_TOLERANCE := 1.0
@@ -265,41 +266,36 @@ func _expect_reference_order(scale_comparison: Node2D, hero_marker: Polygon2D) -
 
 
 func _expect_hero_sizes_still_work(visual_lab: Control) -> void:
-	var hero_sprite := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
-	) as Sprite2D
-	_expect(hero_sprite != null, "VisualLab retains the scalable HeroSprite")
-	if hero_sprite == null:
+	var hero: HERO_SCRIPT = visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter"
+	) as HERO_SCRIPT
+	_expect(hero != null, "VisualLab retains the scalable HeroCharacter")
+	if hero == null:
 		return
 	_expect(
-		is_equal_approx(_sprite_world_height(hero_sprite), 80.0),
+		is_equal_approx(hero.get_appearance_height(), 80.0),
 		"hero starts at the 80-world-pixel default",
 	)
 	visual_lab._change_hero_size(-1)
 	_expect(
-		is_equal_approx(_sprite_world_height(hero_sprite), 64.0),
+		is_equal_approx(hero.get_appearance_height(), 64.0),
 		"hero still reaches 64 world pixels",
 	)
 	visual_lab._change_hero_size(-1)
 	_expect(
-		is_equal_approx(_sprite_world_height(hero_sprite), 64.0),
+		is_equal_approx(hero.get_appearance_height(), 64.0),
 		"hero size still stops at 64 world pixels",
 	)
 	visual_lab._change_hero_size(1)
 	_expect(
-		is_equal_approx(_sprite_world_height(hero_sprite), 80.0),
+		is_equal_approx(hero.get_appearance_height(), 80.0),
 		"hero still reaches 80 world pixels",
 	)
 	visual_lab._change_hero_size(1)
 	_expect(
-		is_equal_approx(_sprite_world_height(hero_sprite), 96.0),
+		is_equal_approx(hero.get_appearance_height(), 96.0),
 		"hero still reaches 96 world pixels",
 	)
-
-
-func _sprite_world_height(sprite: Sprite2D) -> float:
-	var bounds := _sprite_world_vertical_bounds(sprite)
-	return bounds.y - bounds.x
 
 
 func _sprite_world_vertical_bounds(sprite: Sprite2D) -> Vector2:

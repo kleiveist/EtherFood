@@ -58,6 +58,16 @@ inaktiven Schleichzustand. Bei der Landung wird Schleichen wieder aktiv, wenn
 Strg weiterhin gehalten ist. Der gemeinsame `PlayerCameraController`
 kombiniert dieses Signal mit dem szeneneigenen `CameraProfile`.
 
+## Darstellung
+
+Die Bewegungslogik stellt zusätzlich eine achtteilige Animationsrichtung und
+die tatsächlich nach Kollision verbleibende Bodenbewegung bereit. Der getrennte
+Animationscontroller verwendet diese Angaben für die eingebundenen
+[Green-Hero-Stand- und Gehfolgen](green-hero-stand-und-gehen.md), ohne Eingaben
+oder Geschwindigkeiten ein zweites Mal auszuwerten. Bis eigene Bildfolgen
+folgen, zeigen alle Bodenbewegungsstufen die Gehfolge und alle Sprünge das
+erste Standbild ihrer Richtung.
+
 ## Gameplay-Labor
 
 Das visuelle Testlabor weist dem Helden eine tiefe Laufzeitkopie der geladenen

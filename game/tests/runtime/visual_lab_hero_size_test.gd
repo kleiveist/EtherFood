@@ -3,6 +3,7 @@ extends RefCounted
 const VISUAL_LAB_SCENE_PATH := "res://scenes/dev/visual_lab.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const REFERENCE_HEIGHT := 80.0
+const TEXTURE_REFERENCE_HEIGHT := 618.0
 const SMALL_HEIGHT := 64.0
 const MEDIUM_HEIGHT := 80.0
 const LARGE_HEIGHT := 96.0
@@ -44,9 +45,12 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var appearance := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance"
 	) as Node2D
+	var texture_scale := visual_lab.get_node_or_null(
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/TextureScale"
+	) as Node2D
 	var hero_sprite := visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
-	) as Sprite2D
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/TextureScale/HeroSprite"
+	) as AnimatedSprite2D
 	var facing_marker := visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter/Visual/JumpVisual/FacingMarker"
 	) as Polygon2D
@@ -65,6 +69,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	_expect(shadow != null, "HeroCharacter has Shadow")
 	_expect(jump_visual != null, "HeroCharacter has JumpVisual")
 	_expect(appearance != null, "HeroCharacter has Appearance")
+	_expect(texture_scale != null, "Appearance has TextureScale")
 	_expect(hero_sprite != null, "Appearance has HeroSprite")
 	_expect(facing_marker != null, "HeroCharacter has FacingMarker")
 	_expect(
@@ -80,6 +85,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		or shadow == null
 		or jump_visual == null
 		or appearance == null
+		or texture_scale == null
 		or hero_sprite == null
 		or facing_marker == null
 		or hero_collision == null
@@ -93,8 +99,9 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 	_expect(jump_visual.get_parent() == visual, "JumpVisual is directly under Visual")
 	_expect(appearance.get_parent() == jump_visual, "Appearance is under JumpVisual")
-	_expect(hero_sprite.get_parent() == appearance, "HeroSprite is directly under Appearance")
-	_expect(hero_sprite.texture != null, "HeroSprite texture is available")
+	_expect(texture_scale.get_parent() == appearance, "TextureScale is under Appearance")
+	_expect(hero_sprite.get_parent() == texture_scale, "HeroSprite is under TextureScale")
+	_expect(hero_sprite.sprite_frames != null, "HeroSprite animation resource is available")
 	_expect(
 		hero_sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
 		"HeroSprite uses nearest-neighbor filtering",
@@ -327,8 +334,8 @@ func _expect_reopened_medium_size(tree: SceneTree, visual_lab_scene: PackedScene
 		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance"
 	) as Node2D
 	var reopened_sprite := reopened_visual_lab.get_node_or_null(
-		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
-	) as Sprite2D
+		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/TextureScale/HeroSprite"
+	) as AnimatedSprite2D
 	var reopened_status := reopened_visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/HeroSizeStatus"
 	) as Label
@@ -373,7 +380,7 @@ func _pressed_key(keycode: Key, echo: bool = false) -> InputEventKey:
 
 func _expect_size_state(
 	appearance: Node2D,
-	sprite: Sprite2D,
+	sprite: AnimatedSprite2D,
 	status: Label,
 	expected_height: float,
 	expected_status: String,
@@ -395,29 +402,15 @@ func _expect_size_state(
 	_expect(status.text == expected_status, "%s: status text" % description)
 
 
-func _measure_height(sprite: Sprite2D) -> float:
-	var bounds := _sprite_alpha_vertical_bounds(sprite)
-	return bounds.y - bounds.x
+func _measure_height(sprite: AnimatedSprite2D) -> float:
+	var texture_scale := sprite.get_parent() as Node2D
+	if texture_scale == null:
+		return 0.0
+	return TEXTURE_REFERENCE_HEIGHT * absf(texture_scale.global_scale.y)
 
 
-func _measure_bottom(sprite: Sprite2D) -> float:
-	return _sprite_alpha_vertical_bounds(sprite).y
-
-
-func _sprite_alpha_vertical_bounds(sprite: Sprite2D) -> Vector2:
-	if sprite.texture == null:
-		return Vector2.ZERO
-	var image := sprite.texture.get_image()
-	if image == null:
-		return Vector2.ZERO
-	var used_rect := image.get_used_rect()
-	var texture_rect := sprite.get_rect()
-	var local_top := texture_rect.position.y + used_rect.position.y
-	var local_bottom := texture_rect.position.y + used_rect.end.y
-	return Vector2(
-		sprite.to_global(Vector2(0.0, local_top)).y,
-		sprite.to_global(Vector2(0.0, local_bottom)).y,
-	)
+func _measure_bottom(sprite: AnimatedSprite2D) -> float:
+	return sprite.global_position.y
 
 
 func _expect(condition: bool, description: String) -> void:

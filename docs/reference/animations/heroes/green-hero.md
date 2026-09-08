@@ -2,7 +2,7 @@
 title: Green Hero – Animationen
 entity_id: green-hero
 entity_type: hero
-updated: 2026-09-07
+updated: 2026-09-08
 ---
 
 <!-- PYGINDEX:NAVIGATION START -->
@@ -26,17 +26,18 @@ updated: 2026-09-07
 | Frames je GIF | 6 bis 16 |
 | Dokumentationsformat | GIF |
 | Doku-Assets | `docs/assets/images/animations/heroes/green-hero/` |
+| Im Spiel eingebunden | Ultra: Stehen und Gehen, je 8 Richtungen × 16 Frames |
 
 ## Kurzbeschreibung
 
 Der Green Hero ist eine spielbare Heldenfigur von EtherFood. Diese Seite
-dokumentiert ausschließlich die tatsächlich vorhandenen visuellen
-GIF-Vorschauen der Figur. Stehen, langes Warten, Gehen, Laufen, Rennen und
-Sprinten liegen in allen acht Richtungen vor. Genervtes Warten ist als
-dreiteilige Folge nach Süden dokumentiert. Rennen verwendet die GIFs aus dem
-Arbeitsordner `sprint`, Sprinten die GIFs aus `race`. Ihre Bildfolgen sind je
-Richtung pixelgleich; die hinterlegten Wiedergabegeschwindigkeiten werden
-unverändert übernommen.
+dokumentiert die tatsächlich vorhandenen visuellen GIF-Vorschauen und weist
+davon getrennt aus, welche Folgen bereits als Laufzeitgrafik eingebunden sind.
+Stehen, langes Warten, Gehen, Laufen, Rennen und Sprinten liegen in allen acht
+Richtungen vor. Genervtes Warten ist als dreiteilige Folge nach Süden
+dokumentiert. Rennen verwendet die GIFs aus dem Arbeitsordner `sprint`,
+Sprinten die GIFs aus `race`. Ihre Bildfolgen sind je Richtung pixelgleich;
+die hinterlegten Wiedergabegeschwindigkeiten werden unverändert übernommen.
 
 Der vollständige Heldenstandard bleibt mit 25 Animationstypen sichtbar. Ein
 Gedankenstrich (`—`) bedeutet, dass für diesen Richtungsplatz aktuell kein GIF in
@@ -50,8 +51,9 @@ Arbeiten existieren.
 |---|---|
 | Zweck | Öffentliche, releasegeeignete Vorschau und visuelle Referenz der vorhandenen Animationen |
 | Herkunft | Fertige GIF-Exporte aus der lokal bereitgestellten Green-Hero-Arbeitsstruktur |
-| Dokumentationsstand | 7. September 2026 |
-| Spielstand | Green Hero; Stehen, langes Warten, Gehen, Laufen, Rennen und Sprinten vollständig; genervtes Warten nur nach Süden |
+| Dokumentationsstand | 8. September 2026 |
+| Grafikbestand | Stehen, langes Warten, Gehen, Laufen, Rennen und Sprinten vollständig; genervtes Warten nur nach Süden |
+| Laufzeitstand | Stehen und Gehen in acht Richtungen als Ultra-Sheets eingebunden |
 | Technische Merkmale | Alle GIFs mit 640 × 640 Pixeln; 35 GIFs mit 16 Frames; Gehen und Laufen mit je 16 Frames; Rennen und Sprinten mit je 6 Frames pro Richtung |
 | Quellzuordnung | Gehen: `walk`; Laufen: `run`; Rennen: `sprint`; Sprinten: `race` |
 | Renn-Wiedergabe | `sprint`: sieben Richtungen mit 12 Hundertstelsekunden je Frame (etwa 8,3 FPS), Südosten mit 6 (etwa 16,7 FPS) |
@@ -81,6 +83,27 @@ Für richtungsabhängige Animationen gilt diese einheitliche Reihenfolge:
 | SW | Südwesten |
 | W | Westen |
 | NW | Nordwesten |
+
+## Laufzeit-Einbindung
+
+Im Spiel verwendet der `HeroCharacter` derzeit genau 16 optimierte
+Spritesheets: acht für Stehen und acht für Gehen. Jedes Sheet besitzt ein
+4×4-Raster und 16 Frames; die gemeinsame `SpriteFrames`-Ressource umfasst
+damit 256 Frames. Alle Folgen laufen in Endlosschleife mit 120 Millisekunden je
+Frame. Beim Start blickt der Held nach Süden, beim Anhalten behält er die letzte
+der acht Richtungen.
+
+Die Laufzeitassets liegen unter
+`game/assets/characters/heroes/green_hero/ultra/`. Manifest,
+Ausschnittkoordinaten, Fußanker, Referenzmaß und Wiederherstellung des
+640 × 640-px-Bezugsfelds sind in der
+[Entwicklungsdokumentation zur Einbindung](../../../developer/features/green-hero-stand-und-gehen.md)
+festgehalten.
+
+Laufen, Rennen, Sprinten, Schleichen, Sprünge und Wartevarianten sind als
+Grafiken teilweise vorhanden, aber noch nicht als eigene Laufzeitfolgen
+eingebunden. Bodenbewegungen verwenden bis dahin übergangsweise die passende
+Gehfolge; der bestehende Sprung friert das erste Standbild der Richtung ein.
 
 ## Animationsübersicht
 
@@ -196,19 +219,21 @@ verwendet die Pfade `stand-very-long-1/`, `stand-very-long-2/` und
 
 ## Abgrenzung
 
-Diese Seite dokumentiert nur die sichtbaren GIF-Vorschauen der fertigen
-Animationen. Nicht Bestandteil dieser Dokumentation sind:
+Die Tabellen dieser Seite dokumentieren nur die sichtbaren GIF-Vorschauen der
+fertigen Animationen. Die Laufzeit-Einbindung wird lediglich als getrennter
+Status beschrieben. Nicht als öffentliche Vorschau eingebettet sind:
 
 - PNG-Einzelframes,
 - Arbeitsdateien,
 - KI-Ausgangsbilder,
 - Upscale-Dateien,
 - Zwischenversionen,
-- Spritesheets für Godot,
+- die versionierten Ultra-Spritesheets für Godot,
 - Godot-Importdateien und
 - lokale `.workspace`-Inhalte.
 
-Spritesheets und Runtime-Animationen werden später getrennt in der
+Spritesheets und Runtime-Animationen werden getrennt von diesen GIFs in der
 Godot-Struktur verwaltet. Wird eine dokumentierte Animation verbessert oder
 ersetzt, wird ihr bestehendes GIF am gleichen Pfad aktualisiert; die
-Referenzstruktur bleibt unverändert.
+Referenzstruktur bleibt unverändert und der Laufzeitstatus wird ausdrücklich
+nachgeführt.

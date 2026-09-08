@@ -8,7 +8,7 @@ const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_pa
 const SETTINGS_TEST_PATH := "user://visual_lab_texture_filter_test.cfg"
 const CONTROLS_ACTION := &"dev_controls_toggle"
 const DIAGNOSTICS_ACTION := &"dev_diagnostics_toggle"
-const EXPECTED_TEXTURE_SPRITE_COUNT := 51
+const EXPECTED_TEXTURE_TARGET_COUNT := 51
 
 var failures: PackedStringArray = []
 var _had_settings_path_override := false
@@ -30,8 +30,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 
 	var hero_room := hero_room_scene.instantiate()
 	var hero_room_sprite := hero_room.get_node_or_null(
-		"World/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite"
-	) as Sprite2D
+		"World/HeroCharacter/Visual/JumpVisual/Appearance/TextureScale/HeroSprite"
+	) as AnimatedSprite2D
 	_expect(hero_room_sprite != null, "HeroRoom retains its own hero sprite")
 	_expect(
 		hero_room_sprite != null
@@ -112,8 +112,8 @@ func run(tree: SceneTree) -> PackedStringArray:
 func _expect_texture_filter_contract(
 	tree: SceneTree,
 	visual_lab: Control,
-	texture_sprites: Array[Sprite2D],
-	hero_room_sprite: Sprite2D,
+	texture_sprites: Array[CanvasItem],
+	hero_room_sprite: AnimatedSprite2D,
 ) -> void:
 	var hero: HERO_SCRIPT = visual_lab.get_node_or_null(
 		"TestWorld/HeroCharacter"
@@ -165,8 +165,8 @@ func _expect_texture_filter_contract(
 	_expect(rendering_tab != null, "controls menu has a rendering tab")
 	_expect(diagnostics != null, "VisualLab retains diagnostics values")
 	_expect(
-		texture_sprites.size() == EXPECTED_TEXTURE_SPRITE_COUNT,
-		"filter comparison covers all 51 textured world sprites",
+		texture_sprites.size() == EXPECTED_TEXTURE_TARGET_COUNT,
+		"filter comparison covers all 51 textured world targets",
 	)
 	if (
 		hero == null
@@ -471,7 +471,10 @@ func _expect_subtree_filter(
 
 func _expect_named_texture_targets(visual_lab: Control) -> void:
 	var target_paths: Array[String] = [
-		"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/HeroSprite",
+		(
+			"TestWorld/HeroCharacter/Visual/JumpVisual/Appearance/"
+			+ "TextureScale/HeroSprite"
+		),
 		"TestWorld/ScaleComparison/GroundStrip",
 		"TestWorld/ScaleComparison/SmallEnemyReference/Sprite2D",
 		"TestWorld/ScaleComparison/DoorReference/Sprite2D",
@@ -486,20 +489,32 @@ func _expect_named_texture_targets(visual_lab: Control) -> void:
 		"TestWorld/WorldStatePreview/RestoredState/Forest/Tree01",
 	]
 	for target_path in target_paths:
-		var sprite := visual_lab.get_node_or_null(target_path) as Sprite2D
+		var target := visual_lab.get_node_or_null(target_path) as CanvasItem
 		_expect(
-			sprite != null and sprite.texture != null,
+			target != null and _canvas_item_has_texture(target),
 			"filter matrix includes %s" % target_path,
 		)
 
 
-func _texture_sprites(root: Node) -> Array[Sprite2D]:
-	var sprites: Array[Sprite2D] = []
+func _texture_sprites(root: Node) -> Array[CanvasItem]:
+	var sprites: Array[CanvasItem] = []
 	for descendant in root.find_children("*", "Sprite2D", true, false):
 		var sprite := descendant as Sprite2D
 		if sprite != null and sprite.texture != null:
 			sprites.append(sprite)
+	for descendant in root.find_children("*", "AnimatedSprite2D", true, false):
+		var sprite := descendant as AnimatedSprite2D
+		if sprite != null and sprite.sprite_frames != null:
+			sprites.append(sprite)
 	return sprites
+
+
+func _canvas_item_has_texture(target: CanvasItem) -> bool:
+	var sprite := target as Sprite2D
+	if sprite != null:
+		return sprite.texture != null
+	var animated_sprite := target as AnimatedSprite2D
+	return animated_sprite != null and animated_sprite.sprite_frames != null
 
 
 func _expect_saved_texture_filter(expected_id: String) -> void:

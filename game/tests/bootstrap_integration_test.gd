@@ -45,6 +45,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/application_root_test.gd",
 	"res://tests/runtime/input_map_test.gd",
 	"res://tests/runtime/hero_character_test.gd",
+	"res://tests/runtime/green_hero_animation_test.gd",
 	"res://tests/runtime/hero_movement_v0_test.gd",
 	"res://tests/runtime/hero_room_test.gd",
 	"res://tests/runtime/hero_room_interaction_test.gd",

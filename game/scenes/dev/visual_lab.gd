@@ -212,7 +212,7 @@ var _initial_camera_position := Vector2.ZERO
 var _initial_hero_visual_position := Vector2.ZERO
 var _initial_camera_top_level := false
 var _initial_hero_visual_top_level := false
-var _texture_filter_targets: Array[Sprite2D] = []
+var _texture_filter_targets: Array[CanvasItem] = []
 var _initial_texture_filters: Array[int] = []
 
 
@@ -601,26 +601,34 @@ func _gameplay_setting_bounds(setting_id: StringName) -> Vector2:
 
 func _apply_texture_filter() -> void:
 	var selected_filter := TEXTURE_FILTER_VALUES[_selected_texture_filter]
-	for sprite in _texture_filter_targets:
-		if is_instance_valid(sprite):
-			sprite.texture_filter = selected_filter as CanvasItem.TextureFilter
+	for target in _texture_filter_targets:
+		if is_instance_valid(target):
+			target.texture_filter = selected_filter as CanvasItem.TextureFilter
 	_refresh_diagnostics_if_visible()
 
 
 func _collect_texture_filter_targets(node: Node) -> void:
-	var sprite := node as Sprite2D
-	if sprite != null and sprite.texture != null:
-		_texture_filter_targets.append(sprite)
-		_initial_texture_filters.append(sprite.texture_filter)
+	var target := node as CanvasItem
+	if target != null and _canvas_item_has_texture(target):
+		_texture_filter_targets.append(target)
+		_initial_texture_filters.append(target.texture_filter)
 	for child in node.get_children():
 		_collect_texture_filter_targets(child)
 
 
+func _canvas_item_has_texture(target: CanvasItem) -> bool:
+	var sprite := target as Sprite2D
+	if sprite != null:
+		return sprite.texture != null
+	var animated_sprite := target as AnimatedSprite2D
+	return animated_sprite != null and animated_sprite.sprite_frames != null
+
+
 func _restore_texture_filters() -> void:
 	for target_index in range(_texture_filter_targets.size()):
-		var sprite := _texture_filter_targets[target_index]
-		if is_instance_valid(sprite):
-			sprite.texture_filter = (
+		var target := _texture_filter_targets[target_index]
+		if is_instance_valid(target):
+			target.texture_filter = (
 				_initial_texture_filters[target_index] as CanvasItem.TextureFilter
 			)
 

@@ -16,6 +16,7 @@
 - [Historischer Arbeitsplan: erste Dokumentationsumstellung](etherfood-documentation-restructure.md)
 - [Historischer Arbeitsplan: Dokumentation des Spielablaufs](game-flow-documentation.md)
 - [Arbeitsplan: Gameplay-Labor und Bewegungssteuerung](gameplay-labor-und-bewegungssteuerung.md)
+- [Arbeitsplan: Green Hero mit Stehen und Gehen in acht Richtungen](green-hero-stand-und-gehen.md)
 - [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
 - [Arbeitsplan: Reproduzierbare Godot-Ressourcenimporte](godot-resource-import-pipeline.md)
 - [Arbeitsplan: Maßstab V0](massstab-v0.md)
@@ -42,6 +43,7 @@ Der technische Zielzustand für den aktuellen Importplan ist unter
 
 ## Abgeschlossene historische Pläne
 
+- [Green Hero mit Stehen und Gehen in acht Richtungen](green-hero-stand-und-gehen.md)
 - [Gameplay-Labor und Bewegungssteuerung](gameplay-labor-und-bewegungssteuerung.md)
 - [Bewegungssteuerung V0](bewegungssteuerung-v0.md)
 - [Themenmenü und Spielstandards im visuellen Testlabor](visual-lab-menue-und-spielstandards.md)

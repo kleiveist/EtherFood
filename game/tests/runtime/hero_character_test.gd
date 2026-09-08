@@ -3,6 +3,8 @@ extends RefCounted
 const HERO_SCENE_PATH := "res://scenes/gameplay/hero/hero_character.tscn"
 const HERO_SCRIPT := preload("res://scenes/gameplay/hero/hero_character.gd")
 const EXPECTED_APPEARANCE_REFERENCE_HEIGHT := 80.0
+const EXPECTED_TEXTURE_REFERENCE_HEIGHT := 618.0
+const EXPECTED_TEXTURE_SCALE := 80.0 / EXPECTED_TEXTURE_REFERENCE_HEIGHT
 const MOVEMENT_ACTIONS: Array[StringName] = [
 	&"gameplay_move_left",
 	&"gameplay_move_right",
@@ -87,23 +89,29 @@ func run(tree: SceneTree) -> PackedStringArray:
 	var shadow := hero.get_node_or_null("Visual/Shadow") as Polygon2D
 	var jump_visual := hero.get_node_or_null("Visual/JumpVisual") as Node2D
 	var appearance := hero.get_node_or_null("Visual/JumpVisual/Appearance") as Node2D
+	var texture_scale := hero.get_node_or_null(
+		"Visual/JumpVisual/Appearance/TextureScale"
+	) as Node2D
 	var hero_sprite := hero.get_node_or_null(
-		"Visual/JumpVisual/Appearance/HeroSprite"
-	) as Sprite2D
+		"Visual/JumpVisual/Appearance/TextureScale/HeroSprite"
+	) as AnimatedSprite2D
 	_expect(visual != null, "HeroCharacter has a Visual group")
 	_expect(shadow != null, "HeroCharacter has a shadow")
 	_expect(jump_visual != null, "HeroCharacter has a separate jump visual")
 	_expect(appearance != null, "HeroCharacter has an Appearance group")
-	_expect(hero_sprite != null, "HeroCharacter has a HeroSprite under Appearance")
+	_expect(texture_scale != null, "Appearance has a texture-normalization group")
+	_expect(hero_sprite != null, "HeroCharacter has an animated HeroSprite")
 	if visual != null and jump_visual != null and appearance != null:
 		_expect(jump_visual.get_parent() == visual, "JumpVisual is directly under Visual")
 		_expect(appearance.get_parent() == jump_visual, "Appearance belongs to JumpVisual")
 		_expect(appearance.position == Vector2(0, 10), "Appearance origin is at the feet")
 		_expect(appearance.scale == Vector2.ONE, "Appearance uses its reference scale")
-	if appearance != null and hero_sprite != null:
-		_expect(hero_sprite.get_parent() == appearance, "HeroSprite is directly under Appearance")
-		_expect(appearance.get_child_count() == 1, "Appearance contains only HeroSprite")
-		_expect(hero_sprite.texture != null, "HeroSprite has a texture")
+	if appearance != null and texture_scale != null and hero_sprite != null:
+		_expect(texture_scale.get_parent() == appearance, "TextureScale belongs to Appearance")
+		_expect(hero_sprite.get_parent() == texture_scale, "HeroSprite belongs to TextureScale")
+		_expect(appearance.get_child_count() == 1, "Appearance contains only TextureScale")
+		_expect(texture_scale.get_child_count() == 1, "TextureScale contains only HeroSprite")
+		_expect(hero_sprite.sprite_frames != null, "HeroSprite has SpriteFrames")
 		_expect(hero_sprite.visible, "HeroSprite is visible")
 		_expect(
 			hero_sprite.texture_filter == CanvasItem.TEXTURE_FILTER_NEAREST,
@@ -111,14 +119,19 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 		_expect(hero_sprite.rotation == 0.0, "HeroSprite is not rotated")
 		_expect(
+			texture_scale.scale.is_equal_approx(Vector2.ONE * EXPECTED_TEXTURE_SCALE),
+			"TextureScale normalizes the audited 618-pixel reference pose",
+		)
+		_expect(hero_sprite.offset == Vector2(0, -305), "HeroSprite uses the audited foot anchor")
+		_expect(
 			is_equal_approx(
-				_measure_sprite_height(hero_sprite),
+				EXPECTED_TEXTURE_REFERENCE_HEIGHT * texture_scale.global_scale.y,
 				EXPECTED_APPEARANCE_REFERENCE_HEIGHT,
 			),
-			"unscaled HeroSprite is 80 world pixels high",
+			"unscaled reference pose is 80 world pixels high",
 		)
 		_expect(
-			is_equal_approx(_measure_sprite_bottom(hero_sprite), appearance.global_position.y),
+			hero_sprite.global_position.is_equal_approx(appearance.global_position),
 			"Appearance origin matches the visible foot position",
 		)
 		var reference_foot_position := appearance.global_position
@@ -155,6 +168,10 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"HeroCharacter starts without a nearby interaction target",
 	)
 	_expect(hero.facing_direction == Vector2.DOWN, "HeroCharacter initially faces down")
+	_expect(
+		hero.get_animation_direction_name() == &"s",
+		"HeroCharacter initially exposes the south animation direction",
+	)
 	_expect(hero.velocity.is_zero_approx(), "HeroCharacter remains still without input")
 
 	Input.action_press(&"gameplay_move_right")
@@ -258,31 +275,6 @@ func run(tree: SceneTree) -> PackedStringArray:
 func _release_movement_actions() -> void:
 	for action in MOVEMENT_ACTIONS:
 		Input.action_release(action)
-
-
-func _measure_sprite_height(sprite: Sprite2D) -> float:
-	var bounds := _sprite_alpha_vertical_bounds(sprite)
-	return bounds.y - bounds.x
-
-
-func _measure_sprite_bottom(sprite: Sprite2D) -> float:
-	return _sprite_alpha_vertical_bounds(sprite).y
-
-
-func _sprite_alpha_vertical_bounds(sprite: Sprite2D) -> Vector2:
-	if sprite.texture == null:
-		return Vector2.ZERO
-	var image := sprite.texture.get_image()
-	if image == null:
-		return Vector2.ZERO
-	var used_rect := image.get_used_rect()
-	var texture_rect := sprite.get_rect()
-	var local_top := texture_rect.position.y + used_rect.position.y
-	var local_bottom := texture_rect.position.y + used_rect.end.y
-	return Vector2(
-		sprite.to_global(Vector2(0.0, local_top)).y,
-		sprite.to_global(Vector2(0.0, local_bottom)).y,
-	)
 
 
 func _expect(condition: bool, description: String) -> void:

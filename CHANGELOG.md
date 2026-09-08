@@ -8,6 +8,8 @@ Bedeutende Änderungen an diesem Projekt werden in dieser Datei festgehalten.
 
 - `python tools/control.py godot4 import` führt einen expliziten kopflosen
   Godot-Ressourcenimport aus.
+- Der Green Hero besitzt Ultra-Stand- und Gehfolgen mit je 16 Frames in acht
+  Richtungen sowie einen reproduzierbaren, geprüften Ressourcen-Generator.
 
 ### Geändert
 
@@ -15,6 +17,8 @@ Bedeutende Änderungen an diesem Projekt werden in dieser Datei festgehalten.
   Zielprozess automatisch auf.
 - Frische Checkouts erzeugen ihren ignorierten Cache selbst, sodass fehlende
   `.ctex`-Dateien nicht mehr zu einer Kaskade irreführender Folgefehler führen.
+- Der spielbare Held verwendet `AnimatedSprite2D`, behält beim Anhalten seine
+  letzte Blickrichtung und bewahrt beim Richtungswechsel die Schrittphase.
 
 ## Forge2D-Template v0.1.0 - 2026-08-28
 
