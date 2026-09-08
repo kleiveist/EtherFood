@@ -124,10 +124,9 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 	var scale_tab := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Menu/ThemeTabs/ScaleTab"
 	) as Button
-	var candidate_a := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/"
-		+ "ProfileOptions/CandidateAButton"
-	) as Button
+	var removed_profile_options := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/ProfileOptions"
+	)
 	var medium_hero := visual_lab.get_node_or_null(
 		"InterfaceLayer/Interface/Menu/Pages/ScalePage/Content/"
 		+ "HeroOptions/MediumButton"
@@ -143,9 +142,19 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 		"InterfaceLayer/Interface/Menu/Pages/WorldPage/Content/"
 		+ "LightOptions/FirstButton"
 	) as Button
-	var confirmation := visual_lab.get_node_or_null(
-		"InterfaceLayer/Interface/BundleConfirmation"
-	) as ConfirmationDialog
+	var gameplay_tab := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/ThemeTabs/GameplayTab"
+	) as Button
+	var gameplay_page := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/GameplayPage"
+	) as ScrollContainer
+	var sneak_speed := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/GameplayPage/Content/SneakSpeed"
+	) as VBoxContainer
+	var standing_jump_attack := visual_lab.get_node_or_null(
+		"InterfaceLayer/Interface/Menu/Pages/GameplayPage/Content/"
+		+ "FutureOptions/StandingJumpAttack"
+	) as Button
 	var diagnostics_panel := visual_lab.get_node_or_null(
 		"InterfaceLayer/DiagnosticsPanel"
 	) as Panel
@@ -167,8 +176,9 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 			"Darstellung",
 			"Welt & Atmosphäre",
 			"Diagnose & Hilfe",
+			"Gameplay",
 		],
-		"menu has the five ordered theme tabs",
+		"menu has the six ordered theme tabs",
 	)
 	_expect(medium_zoom != null and near_zoom != null, "camera has three zoom options")
 	_expect(
@@ -181,14 +191,21 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 	_expect(wide_zoom != null, "camera exposes the wide zoom")
 	_expect(accept_button != null, "menu has a visible acceptance button")
 	_expect(
-		scale_tab != null and candidate_a != null and medium_hero != null,
-		"menu has scale candidates and individual values",
+		scale_tab != null and removed_profile_options == null and medium_hero != null,
+		"scale menu exposes only individual values",
 	)
 	_expect(
 		world_tab != null and high_fog != null and first_light != null,
 		"menu has world-state atmosphere values",
 	)
-	_expect(confirmation != null, "scale bundle has explicit confirmation")
+	_expect(
+		gameplay_tab != null
+		and gameplay_page != null
+		and sneak_speed != null
+		and standing_jump_attack != null
+		and standing_jump_attack.disabled,
+		"scrollable Gameplay tab exposes sliders and disabled future mechanics",
+	)
 	_expect(diagnostics_panel != null, "F3 diagnostics remain available")
 	_expect(collision_overlay != null, "F4 collision overlay remains available")
 	if (
@@ -205,12 +222,14 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 		or wide_zoom == null
 		or accept_button == null
 		or scale_tab == null
-		or candidate_a == null
 		or medium_hero == null
 		or world_tab == null
 		or high_fog == null
 		or first_light == null
-		or confirmation == null
+		or gameplay_tab == null
+		or gameplay_page == null
+		or sneak_speed == null
+		or standing_jump_attack == null
 		or diagnostics_panel == null
 		or collision_overlay == null
 	):
@@ -317,30 +336,6 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 	)
 
 	scale_tab.pressed.emit()
-	candidate_a.pressed.emit()
-	candidate_a.grab_focus()
-	visual_lab._unhandled_input(_pressed_action(ACCEPT_ACTION))
-	_expect(confirmation.visible, "scale bundle requires a confirmation dialog")
-	_expect(
-		confirmation.dialog_text.contains("Außenwelt-Zoom: 0,75×")
-		and confirmation.dialog_text.contains("Heldenhöhe: 64 px")
-		and confirmation.dialog_text.contains("Tilegröße: 32 × 32 px")
-		and confirmation.dialog_text.contains("Pixel-Snap: AN")
-		and confirmation.dialog_text.contains("Texturfilter: Nearest-Neighbor"),
-		"bundle confirmation lists every affected value",
-	)
-	confirmation.confirmed.emit()
-	_expect(
-		is_equal_approx(visual_lab._standards.scale_profile.hero_height, 64.0)
-		and visual_lab._standards.scale_profile.tile_size == 32
-		and is_equal_approx(
-			visual_lab._standards.world_camera_profile.base_zoom,
-			0.75,
-		),
-		"confirmed bundle writes all listed standards",
-	)
-	_expect(candidate_a.text.contains("★"), "accepted bundle receives the gold marker")
-
 	medium_hero.pressed.emit()
 	medium_hero.grab_focus()
 	accept_button.pressed.emit()
@@ -349,14 +344,9 @@ func _expect_menu_contract(tree: SceneTree, visual_lab: Control) -> void:
 		and visual_lab._standards.scale_profile.tile_size == 32
 		and is_equal_approx(
 			visual_lab._standards.world_camera_profile.base_zoom,
-			0.75,
+			1.0,
 		),
-		"single-value acceptance does not hide a bundle change",
-	)
-	candidate_a.grab_focus()
-	_expect(
-		accept_button.disabled,
-		"a free scale combination cannot be accepted as a hidden bundle",
+		"single-value scale acceptance leaves all other values unchanged",
 	)
 
 	world_tab.pressed.emit()
@@ -424,6 +414,11 @@ func _write_standard_fixture() -> bool:
 		if ResourceSaver.save(camera_profiles[profile_index], camera_paths[profile_index]) != OK:
 			_expect(false, "isolated camera standard %d can be written" % profile_index)
 			return false
+	scale_profile = load(SCALE_TEST_PATH) as VisualScaleProfileResource
+	world_camera = load(WORLD_CAMERA_TEST_PATH) as CameraProfileResource
+	village_camera = load(VILLAGE_CAMERA_TEST_PATH) as CameraProfileResource
+	dungeon_camera = load(DUNGEON_CAMERA_TEST_PATH) as CameraProfileResource
+	interior_camera = load(INTERIOR_CAMERA_TEST_PATH) as CameraProfileResource
 
 	var standards := VisualLabStandardsResource.new()
 	standards.scale_profile = scale_profile
@@ -459,13 +454,21 @@ func _button_texts(container: Container) -> Array[String]:
 
 func _expect_saved_standard_files() -> void:
 	var registry_text := FileAccess.get_file_as_string(STANDARDS_TEST_PATH)
-	var scale_text := FileAccess.get_file_as_string(SCALE_TEST_PATH)
-	var world_camera_text := FileAccess.get_file_as_string(
-		WORLD_CAMERA_TEST_PATH
-	)
-	var village_camera_text := FileAccess.get_file_as_string(
-		VILLAGE_CAMERA_TEST_PATH
-	)
+	var scale_profile := ResourceLoader.load(
+		SCALE_TEST_PATH,
+		"",
+		ResourceLoader.CACHE_MODE_IGNORE,
+	) as VisualScaleProfileResource
+	var world_camera := ResourceLoader.load(
+		WORLD_CAMERA_TEST_PATH,
+		"",
+		ResourceLoader.CACHE_MODE_IGNORE,
+	) as CameraProfileResource
+	var village_camera := ResourceLoader.load(
+		VILLAGE_CAMERA_TEST_PATH,
+		"",
+		ResourceLoader.CACHE_MODE_IGNORE,
+	) as CameraProfileResource
 	_expect(
 		registry_text.contains("village_inherits_world = false")
 		and registry_text.contains("damaged_fog_id = \"high\"")
@@ -473,14 +476,17 @@ func _expect_saved_standard_files() -> void:
 		"accepted registry values are written to the isolated resource",
 	)
 	_expect(
-		scale_text.contains("hero_height = 80.0")
-		and scale_text.contains("tile_size = 32")
-		and scale_text.contains("camera_zoom = 0.75"),
+		scale_profile != null
+		and is_equal_approx(scale_profile.hero_height, 80.0)
+		and scale_profile.tile_size == 32
+		and is_equal_approx(scale_profile.camera_zoom, 1.0),
 		"accepted scale values are written to the isolated resource",
 	)
 	_expect(
-		world_camera_text.contains("base_zoom = 0.75")
-		and village_camera_text.contains("base_zoom = 0.75"),
+		world_camera != null
+		and village_camera != null
+		and is_equal_approx(world_camera.base_zoom, 1.0)
+		and is_equal_approx(village_camera.base_zoom, 0.75),
 		"accepted contextual camera values are written to isolated resources",
 	)
 

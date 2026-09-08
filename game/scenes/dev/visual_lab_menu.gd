@@ -1,14 +1,17 @@
 extends MarginContainer
 
 signal option_selected(setting_id: StringName, option_index: int)
+signal numeric_value_changed(setting_id: StringName, value: float)
 signal setting_focused(setting_id: StringName)
 signal accept_requested
 signal close_requested
-signal bundle_confirmed
+
+const NumericSettingScript := preload(
+	"res://scenes/dev/visual_lab_numeric_setting.gd"
+)
 
 const SETTING_CAMERA_CONTEXT := &"camera_context"
 const SETTING_CAMERA_ZOOM := &"camera_zoom"
-const SETTING_SCALE_PROFILE := &"scale_profile"
 const SETTING_HERO_SIZE := &"hero_size"
 const SETTING_TILE_SIZE := &"tile_size"
 const SETTING_PIXEL_SNAP := &"pixel_snap"
@@ -18,6 +21,36 @@ const SETTING_FOG := &"fog"
 const SETTING_LIGHT := &"light"
 const SETTING_DIAGNOSTICS := &"diagnostics"
 const SETTING_COLLISION := &"collision"
+const SETTING_SNEAK_SPEED := &"sneak_speed"
+const SETTING_WALK_SPEED := &"walk_speed"
+const SETTING_JOG_SPEED := &"jog_speed"
+const SETTING_RUN_SPEED := &"run_speed"
+const SETTING_SPRINT_SPEED := &"sprint_speed"
+const SETTING_STANDING_JUMP_HEIGHT := &"standing_jump_height"
+const SETTING_WALK_JUMP_HEIGHT := &"walk_jump_height"
+const SETTING_WALK_JUMP_DISTANCE := &"walk_jump_distance"
+const SETTING_JOG_JUMP_HEIGHT := &"jog_jump_height"
+const SETTING_JOG_JUMP_DISTANCE := &"jog_jump_distance"
+const SETTING_RUN_JUMP_HEIGHT := &"run_jump_height"
+const SETTING_RUN_JUMP_DISTANCE := &"run_jump_distance"
+const SETTING_SPRINT_JUMP_HEIGHT := &"sprint_jump_height"
+const SETTING_SPRINT_JUMP_DISTANCE := &"sprint_jump_distance"
+const GAMEPLAY_SETTING_IDS: Array[StringName] = [
+	SETTING_SNEAK_SPEED,
+	SETTING_WALK_SPEED,
+	SETTING_JOG_SPEED,
+	SETTING_RUN_SPEED,
+	SETTING_SPRINT_SPEED,
+	SETTING_STANDING_JUMP_HEIGHT,
+	SETTING_WALK_JUMP_HEIGHT,
+	SETTING_WALK_JUMP_DISTANCE,
+	SETTING_JOG_JUMP_HEIGHT,
+	SETTING_JOG_JUMP_DISTANCE,
+	SETTING_RUN_JUMP_HEIGHT,
+	SETTING_RUN_JUMP_DISTANCE,
+	SETTING_SPRINT_JUMP_HEIGHT,
+	SETTING_SPRINT_JUMP_DISTANCE,
+]
 
 const TAB_TITLES: Array[String] = [
 	"Kamera",
@@ -25,21 +58,20 @@ const TAB_TITLES: Array[String] = [
 	"Darstellung",
 	"Welt & Atmosphäre",
 	"Diagnose & Hilfe",
+	"Gameplay",
 ]
 const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 	SETTING_CAMERA_ZOOM,
-	SETTING_SCALE_PROFILE,
+	SETTING_HERO_SIZE,
 	SETTING_PIXEL_SNAP,
 	SETTING_WORLD_STATE,
 	SETTING_DIAGNOSTICS,
+	SETTING_SNEAK_SPEED,
 ]
 
 @onready var camera_status: Label = $Menu/Pages/CameraPage/Content/CameraStatus
 @onready var hero_size_status: Label = $Menu/Pages/ScalePage/Content/HeroSizeStatus
 @onready var tile_size_status: Label = $Menu/Pages/ScalePage/Content/TileSizeStatus
-@onready var scale_profile_status: Label = (
-	$Menu/Pages/ScalePage/Content/ScaleProfileStatus
-)
 @onready var world_state_status: Label = (
 	$Menu/Pages/WorldPage/Content/WorldStateStatus
 )
@@ -55,6 +87,7 @@ const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 	$Menu/ThemeTabs/RenderingTab,
 	$Menu/ThemeTabs/WorldTab,
 	$Menu/ThemeTabs/DiagnosticsTab,
+	$Menu/ThemeTabs/GameplayTab,
 ]
 @onready var _pages: Array[ScrollContainer] = [
 	$Menu/Pages/CameraPage,
@@ -62,6 +95,7 @@ const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 	$Menu/Pages/RenderingPage,
 	$Menu/Pages/WorldPage,
 	$Menu/Pages/DiagnosticsPage,
+	$Menu/Pages/GameplayPage,
 ]
 @onready var _camera_context_buttons: Array[Button] = [
 	$Menu/Pages/CameraPage/Content/ContextOptions/WorldButton,
@@ -73,11 +107,6 @@ const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 	$Menu/Pages/CameraPage/Content/ZoomOptions/WideButton,
 	$Menu/Pages/CameraPage/Content/ZoomOptions/MediumButton,
 	$Menu/Pages/CameraPage/Content/ZoomOptions/NearButton,
-]
-@onready var _scale_profile_buttons: Array[Button] = [
-	$Menu/Pages/ScalePage/Content/ProfileOptions/CandidateAButton,
-	$Menu/Pages/ScalePage/Content/ProfileOptions/BaselineButton,
-	$Menu/Pages/ScalePage/Content/ProfileOptions/CandidateCButton,
 ]
 @onready var _hero_size_buttons: Array[Button] = [
 	$Menu/Pages/ScalePage/Content/HeroOptions/SmallButton,
@@ -118,13 +147,29 @@ const TAB_PRIMARY_SETTINGS: Array[StringName] = [
 	$Menu/Pages/DiagnosticsPage/Content/CollisionOptions/OffButton,
 	$Menu/Pages/DiagnosticsPage/Content/CollisionOptions/OnButton,
 ]
+@onready var _numeric_settings: Array[NumericSettingScript] = [
+	$Menu/Pages/GameplayPage/Content/SneakSpeed,
+	$Menu/Pages/GameplayPage/Content/WalkSpeed,
+	$Menu/Pages/GameplayPage/Content/JogSpeed,
+	$Menu/Pages/GameplayPage/Content/RunSpeed,
+	$Menu/Pages/GameplayPage/Content/SprintSpeed,
+	$Menu/Pages/GameplayPage/Content/StandingJumpHeight,
+	$Menu/Pages/GameplayPage/Content/WalkJumpHeight,
+	$Menu/Pages/GameplayPage/Content/WalkJumpDistance,
+	$Menu/Pages/GameplayPage/Content/JogJumpHeight,
+	$Menu/Pages/GameplayPage/Content/JogJumpDistance,
+	$Menu/Pages/GameplayPage/Content/RunJumpHeight,
+	$Menu/Pages/GameplayPage/Content/RunJumpDistance,
+	$Menu/Pages/GameplayPage/Content/SprintJumpHeight,
+	$Menu/Pages/GameplayPage/Content/SprintJumpDistance,
+]
 @onready var _accept_button: Button = $Menu/Acceptance/AcceptButton
 @onready var _focus_status: Label = $Menu/FocusStatus
 @onready var _feedback_status: Label = $Menu/FeedbackStatus
 @onready var _close_button: Button = $Menu/Header/CloseButton
-@onready var _bundle_confirmation: ConfirmationDialog = $BundleConfirmation
 
 var _buttons_by_setting: Dictionary = {}
+var _numeric_by_setting: Dictionary = {}
 var _labels_by_setting: Dictionary = {}
 var _status_by_setting: Dictionary = {}
 var _current_indices: Dictionary = {}
@@ -145,9 +190,9 @@ func _ready() -> void:
 	_create_styles()
 	_register_tabs()
 	_register_settings()
+	_register_numeric_settings()
 	_accept_button.pressed.connect(_on_accept_button_pressed)
 	_close_button.pressed.connect(_on_close_button_pressed)
-	_bundle_confirmation.confirmed.connect(_on_bundle_confirmation_confirmed)
 	_select_tab(0, false)
 	show_feedback("Wähle einen Testwert zum Vergleichen.")
 
@@ -181,6 +226,19 @@ func update_setting(
 	return OK
 
 
+## Updates one numeric preview and its accepted value without emitting an edit.
+func update_numeric_setting(
+		setting_id: StringName,
+		current_value: float,
+		accepted_value: float,
+) -> Error:
+	var numeric_setting := _numeric_by_setting.get(setting_id) as NumericSettingScript
+	if numeric_setting == null:
+		return ERR_INVALID_PARAMETER
+	numeric_setting.update_setting(current_value, accepted_value)
+	return OK
+
+
 ## Describes whether the focused setting can replace a versioned game default.
 func update_acceptance(
 		can_accept: bool,
@@ -205,21 +263,14 @@ func show_feedback(message: String, is_error: bool = false) -> void:
 	)
 
 
-## Opens the explicit confirmation required for a multi-value promotion.
-func show_bundle_confirmation(summary: String) -> void:
-	_bundle_confirmation.dialog_text = summary
-	_bundle_confirmation.popup_centered(Vector2i(720, 420))
-
-
 ## Gives focus to the primary camera setting whenever the menu opens.
 func focus_primary_setting() -> void:
 	_select_tab(0, false)
-	_focus_current_option(SETTING_CAMERA_ZOOM)
+	_focus_setting(SETTING_CAMERA_ZOOM)
 
 
 ## Releases retained UI focus when the menu closes.
 func release_menu_focus() -> void:
-	_bundle_confirmation.hide()
 	for control in find_children("*", "Control", true, false):
 		var focus_control := control as Control
 		if focus_control != null and focus_control.has_focus():
@@ -234,6 +285,14 @@ func get_focused_setting_id() -> StringName:
 ## Returns the selected option index for deterministic menu tests.
 func get_current_index(setting_id: StringName) -> int:
 	return int(_current_indices.get(setting_id, -1))
+
+
+## Returns the visible value for deterministic numeric-setting tests.
+func get_numeric_value(setting_id: StringName) -> float:
+	var numeric_setting := _numeric_by_setting.get(setting_id) as NumericSettingScript
+	if numeric_setting == null:
+		return NAN
+	return numeric_setting.get_current_value()
 
 
 func _register_tabs() -> void:
@@ -259,12 +318,6 @@ func _register_settings() -> void:
 		_camera_zoom_buttons,
 		["0,75×", "1,00×", "1,50×"],
 		$Menu/Pages/CameraPage/Content/ZoomStandardStatus,
-	)
-	_register_setting(
-		SETTING_SCALE_PROFILE,
-		_scale_profile_buttons,
-		["A · Weite Übersicht", "Maßstab V0", "C · Nah und groß"],
-		$Menu/Pages/ScalePage/Content/ProfileStandardStatus,
 	)
 	_register_setting(
 		SETTING_HERO_SIZE,
@@ -317,6 +370,13 @@ func _register_settings() -> void:
 		_collision_buttons,
 		["AUS", "AN"],
 	)
+
+
+func _register_numeric_settings() -> void:
+	for numeric_setting in _numeric_settings:
+		_numeric_by_setting[numeric_setting.setting_id] = numeric_setting
+		numeric_setting.value_changed.connect(_on_numeric_value_changed)
+		numeric_setting.focused.connect(_on_setting_focused)
 
 
 func _register_setting(
@@ -422,10 +482,14 @@ func _select_tab(tab_index: int, focus_page: bool = true) -> void:
 		_pages[page_index].visible = page_index == _active_tab
 		_tab_buttons[page_index].set_pressed_no_signal(page_index == _active_tab)
 	if focus_page:
-		_focus_current_option(TAB_PRIMARY_SETTINGS[_active_tab])
+		_focus_setting(TAB_PRIMARY_SETTINGS[_active_tab])
 
 
-func _focus_current_option(setting_id: StringName) -> void:
+func _focus_setting(setting_id: StringName) -> void:
+	var numeric_setting := _numeric_by_setting.get(setting_id) as NumericSettingScript
+	if numeric_setting != null:
+		numeric_setting.grab_slider_focus()
+		return
 	var buttons := _setting_buttons(setting_id)
 	if buttons.is_empty():
 		return
@@ -535,6 +599,13 @@ func _on_option_button_pressed(setting_id: StringName, option_index: int) -> voi
 	option_selected.emit(setting_id, option_index)
 
 
+func _on_numeric_value_changed(setting_id: StringName, value: float) -> void:
+	_focused_setting_id = setting_id
+	_focus_status.text = "Fokus: %s" % _setting_display_name(setting_id)
+	setting_focused.emit(setting_id)
+	numeric_value_changed.emit(setting_id, value)
+
+
 func _on_setting_focused(setting_id: StringName) -> void:
 	_focused_setting_id = setting_id
 	_focus_status.text = "Fokus: %s" % _setting_display_name(setting_id)
@@ -549,18 +620,12 @@ func _on_close_button_pressed() -> void:
 	close_requested.emit()
 
 
-func _on_bundle_confirmation_confirmed() -> void:
-	bundle_confirmed.emit()
-
-
 func _setting_display_name(setting_id: StringName) -> String:
 	match setting_id:
 		SETTING_CAMERA_CONTEXT:
 			return "Kamera-Zielbereich"
 		SETTING_CAMERA_ZOOM:
 			return "Kamera-Zoom"
-		SETTING_SCALE_PROFILE:
-			return "Maßstabsprofil"
 		SETTING_HERO_SIZE:
 			return "Heldenhöhe"
 		SETTING_TILE_SIZE:
@@ -579,4 +644,32 @@ func _setting_display_name(setting_id: StringName) -> String:
 			return "Diagnoseanzeige"
 		SETTING_COLLISION:
 			return "Kollisionsflächen"
+		SETTING_SNEAK_SPEED:
+			return "Schleichgeschwindigkeit"
+		SETTING_WALK_SPEED:
+			return "Gehgeschwindigkeit"
+		SETTING_JOG_SPEED:
+			return "Laufgeschwindigkeit"
+		SETTING_RUN_SPEED:
+			return "Renngeschwindigkeit"
+		SETTING_SPRINT_SPEED:
+			return "Sprintgeschwindigkeit"
+		SETTING_STANDING_JUMP_HEIGHT:
+			return "Stehsprunghöhe"
+		SETTING_WALK_JUMP_HEIGHT:
+			return "Gehsprunghöhe"
+		SETTING_WALK_JUMP_DISTANCE:
+			return "Gehsprungweite"
+		SETTING_JOG_JUMP_HEIGHT:
+			return "Laufsprunghöhe"
+		SETTING_JOG_JUMP_DISTANCE:
+			return "Laufsprungweite"
+		SETTING_RUN_JUMP_HEIGHT:
+			return "Rennsprunghöhe"
+		SETTING_RUN_JUMP_DISTANCE:
+			return "Rennsprungweite"
+		SETTING_SPRINT_JUMP_HEIGHT:
+			return "Sprintsprunghöhe"
+		SETTING_SPRINT_JUMP_DISTANCE:
+			return "Sprintsprungweite"
 	return "Testlabor"

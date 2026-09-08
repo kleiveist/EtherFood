@@ -4,6 +4,12 @@
 
 # Arbeitsplan: Bewegungssteuerung V0
 
+Status: historisch. Die damals umgesetzte Drei-Stufen-Fassung mit Boosttimer
+wurde am 8. September 2026 durch
+[Gameplay-Labor und Bewegungssteuerung](gameplay-labor-und-bewegungssteuerung.md)
+und [ADR-0012](../../concept/entscheidungen/ADR-0012-bewegungsstufen-und-spruenge.md)
+fortgeschrieben.
+
 ## Zweck und Gesamtbild
 
 Aufgabe 17.1 zieht eine klar begrenzte Tastatursteuerung vor die erneute

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scenes/dev/visual_lab_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://scenes/dev/visual_lab_numeric_setting.tscn" id="2_numeric"]
 
 [node name="VisualLabMenu" type="MarginContainer"]
 layout_mode = 3
@@ -66,6 +67,11 @@ mouse_default_cursor_shape = 2
 
 [node name="DiagnosticsTab" type="Button" parent="Menu/ThemeTabs"]
 custom_minimum_size = Vector2(166, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="GameplayTab" type="Button" parent="Menu/ThemeTabs"]
+custom_minimum_size = Vector2(132, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
@@ -198,43 +204,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.86, 0.9, 1)
 theme_override_font_sizes/font_size = 21
 text = "Maßstab und Raster"
-
-[node name="ProfileLabel" type="Label" parent="Menu/Pages/ScalePage/Content"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.76, 0.77, 1)
-theme_override_font_sizes/font_size = 17
-text = "Vergleichsprofil · gebündelte Auswahl"
-
-[node name="ProfileOptions" type="HBoxContainer" parent="Menu/Pages/ScalePage/Content"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="CandidateAButton" type="Button" parent="Menu/Pages/ScalePage/Content/ProfileOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-
-[node name="BaselineButton" type="Button" parent="Menu/Pages/ScalePage/Content/ProfileOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-
-[node name="CandidateCButton" type="Button" parent="Menu/Pages/ScalePage/Content/ProfileOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-
-[node name="ProfileStandardStatus" type="Label" parent="Menu/Pages/ScalePage/Content"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.73, 0.33, 1)
-theme_override_font_sizes/font_size = 14
-autowrap_mode = 2
-
-[node name="ScaleProfileStatus" type="Label" parent="Menu/Pages/ScalePage/Content"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.8, 0.82, 1)
-theme_override_font_sizes/font_size = 15
-text = "Aktives Vergleichsprofil: Maßstab V0"
 
 [node name="HeroLabel" type="Label" parent="Menu/Pages/ScalePage/Content"]
 layout_mode = 2
@@ -592,6 +561,250 @@ theme_override_colors/font_color = Color(0.62, 0.76, 0.86, 1)
 theme_override_font_sizes/font_size = 16
 text = "Fenster: 1280 × 720"
 
+[node name="GameplayPage" type="ScrollContainer" parent="Menu/Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="Menu/Pages/GameplayPage"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+
+[node name="Heading" type="Label" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.86, 0.9, 1)
+theme_override_font_sizes/font_size = 21
+text = "Gameplay"
+
+[node name="Intro" type="Label" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.68, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Regler wirken sofort auf die Laborfigur. Ihre Grenzen schützen vor unbrauchbaren Extremwerten."
+autowrap_mode = 2
+
+[node name="SpeedHeading" type="Label" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Geschwindigkeiten"
+
+[node name="SneakSpeed" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"sneak_speed"
+display_name = "Schleichen"
+unit = "px/s"
+minimum_value = 40.0
+maximum_value = 500.0
+step = 5.0
+initial_value = 60.0
+
+[node name="WalkSpeed" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"walk_speed"
+display_name = "Gehen"
+unit = "px/s"
+minimum_value = 40.0
+maximum_value = 500.0
+step = 5.0
+initial_value = 100.0
+
+[node name="JogSpeed" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"jog_speed"
+display_name = "Laufen"
+unit = "px/s"
+minimum_value = 40.0
+maximum_value = 500.0
+step = 5.0
+initial_value = 220.0
+
+[node name="RunSpeed" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"run_speed"
+display_name = "Rennen"
+unit = "px/s"
+minimum_value = 40.0
+maximum_value = 500.0
+step = 5.0
+initial_value = 310.0
+
+[node name="SprintSpeed" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"sprint_speed"
+display_name = "Sprinten"
+unit = "px/s"
+minimum_value = 40.0
+maximum_value = 500.0
+step = 5.0
+initial_value = 400.0
+
+[node name="JumpSeparator" type="HSeparator" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+
+[node name="JumpHeading" type="Label" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Sprunghöhen und -weiten"
+
+[node name="StandingJumpHeight" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"standing_jump_height"
+display_name = "Stehsprung · Höhe"
+unit = "px"
+minimum_value = 8.0
+maximum_value = 64.0
+initial_value = 24.0
+
+[node name="StandingJumpDistance" type="Label" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.72, 0.74, 1)
+theme_override_font_sizes/font_size = 14
+text = "Stehsprung · Weite: 0 px · fest senkrecht"
+
+[node name="WalkJumpHeight" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"walk_jump_height"
+display_name = "Gehsprung · Höhe"
+unit = "px"
+minimum_value = 8.0
+maximum_value = 64.0
+initial_value = 20.0
+
+[node name="WalkJumpDistance" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"walk_jump_distance"
+display_name = "Gehsprung · Weite"
+unit = "px"
+minimum_value = 16.0
+maximum_value = 160.0
+initial_value = 32.0
+
+[node name="JogJumpHeight" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"jog_jump_height"
+display_name = "Laufsprung · Höhe"
+unit = "px"
+minimum_value = 8.0
+maximum_value = 64.0
+initial_value = 24.0
+
+[node name="JogJumpDistance" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"jog_jump_distance"
+display_name = "Laufsprung · Weite"
+unit = "px"
+minimum_value = 16.0
+maximum_value = 160.0
+initial_value = 48.0
+
+[node name="RunJumpHeight" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"run_jump_height"
+display_name = "Rennsprung · Höhe"
+unit = "px"
+minimum_value = 8.0
+maximum_value = 64.0
+initial_value = 30.0
+
+[node name="RunJumpDistance" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"run_jump_distance"
+display_name = "Rennsprung · Weite"
+unit = "px"
+minimum_value = 16.0
+maximum_value = 160.0
+initial_value = 80.0
+
+[node name="SprintJumpHeight" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"sprint_jump_height"
+display_name = "Sprintsprung · Höhe"
+unit = "px"
+minimum_value = 8.0
+maximum_value = 64.0
+initial_value = 36.0
+
+[node name="SprintJumpDistance" parent="Menu/Pages/GameplayPage/Content" instance=ExtResource("2_numeric")]
+layout_mode = 2
+setting_id = &"sprint_jump_distance"
+display_name = "Sprintsprung · Weite"
+unit = "px"
+minimum_value = 16.0
+maximum_value = 160.0
+initial_value = 112.0
+
+[node name="FutureSeparator" type="HSeparator" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+
+[node name="FutureHeading" type="Label" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.54, 0.55, 1)
+theme_override_font_sizes/font_size = 18
+text = "Spätere Mechaniken · noch nicht verfügbar"
+
+[node name="FutureOptions" type="GridContainer" parent="Menu/Pages/GameplayPage/Content"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="StandingJumpAttack" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Stehsprungangriff"
+
+[node name="WalkJumpAttack" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Gehsprungangriff"
+
+[node name="JogJumpAttack" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Laufsprungangriff"
+
+[node name="RunJumpAttack" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Rennsprungangriff"
+
+[node name="SprintJumpAttack" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Sprintsprungangriff"
+
+[node name="Dodge" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Ausweichen"
+
+[node name="SneakRoll" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Schleichrolle"
+
+[node name="DodgeBackflip" type="Button" parent="Menu/Pages/GameplayPage/Content/FutureOptions"]
+layout_mode = 2
+disabled = true
+focus_mode = 0
+text = "Ausweich-Backflip"
+
 [node name="BottomSeparator" type="HSeparator" parent="Menu"]
 layout_mode = 2
 
@@ -602,6 +815,7 @@ theme_override_font_sizes/font_size = 15
 text = "Fokus: Kamera-Zoom"
 
 [node name="FeedbackStatus" type="Label" parent="Menu"]
+custom_minimum_size = Vector2(390, 22)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.79, 0.82, 1)
 theme_override_font_sizes/font_size = 15
@@ -631,9 +845,3 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.62, 0.7, 0.72, 1)
 theme_override_font_sizes/font_size = 14
 text = "F3 Diagnose · F4 Kollisionsflächen · F5 Menü schließen"
-
-[node name="BundleConfirmation" type="ConfirmationDialog" parent="."]
-title = "Maßstabsprofil als Spielstandard übernehmen"
-ok_button_text = "Alle aufgeführten Werte übernehmen"
-cancel_button_text = "Abbrechen"
-dialog_text = "Die betroffenen Werte werden vor der Übernahme angezeigt."

@@ -15,6 +15,7 @@
 - [Arbeitsplan: Erste Ratgeber-Interaktion](erste-ratgeber-interaktion.md)
 - [Historischer Arbeitsplan: erste Dokumentationsumstellung](etherfood-documentation-restructure.md)
 - [Historischer Arbeitsplan: Dokumentation des Spielablaufs](game-flow-documentation.md)
+- [Arbeitsplan: Gameplay-Labor und Bewegungssteuerung](gameplay-labor-und-bewegungssteuerung.md)
 - [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
 - [Arbeitsplan: Reproduzierbare Godot-Ressourcenimporte](godot-resource-import-pipeline.md)
 - [Arbeitsplan: Maßstab V0](massstab-v0.md)
@@ -36,12 +37,13 @@ Der technische Zielzustand für den aktuellen Importplan ist unter
 
 ## Aktive Pläne
 
-- [Bewegungssteuerung V0](bewegungssteuerung-v0.md)
 - [Vereinfachung der Dokumentation](dokumentationsvereinfachung.md)
 - [Reproduzierbare Godot-Ressourcenimporte](godot-resource-import-pipeline.md)
 
 ## Abgeschlossene historische Pläne
 
+- [Gameplay-Labor und Bewegungssteuerung](gameplay-labor-und-bewegungssteuerung.md)
+- [Bewegungssteuerung V0](bewegungssteuerung-v0.md)
 - [Themenmenü und Spielstandards im visuellen Testlabor](visual-lab-menue-und-spielstandards.md)
 - [Maßstab V0](massstab-v0.md)
 - [Nebel- und Lichtvergleich im visuellen Testlabor](visual-lab-nebel-und-licht.md)

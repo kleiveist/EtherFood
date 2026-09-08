@@ -39,9 +39,9 @@ abweichen. Kleine Räume verwenden zunächst `1,50×`; auch andere Settings
 dürfen später einen begründeten Profilwert erhalten. Temporäre
 Kameraüberlagerungen wie der Schleichzoom bleiben davon getrennt.
 
-Die Vergleichsvarianten A (`64 px`, `32 px`, `0,75×`) und C (`96 px`,
-`48 px`, `1,50×`) bleiben ausschließlich im Testlabor verfügbar. Sie sind
-keine Produktionsstandards.
+Die ursprünglichen Vergleichsvarianten A und C waren keine
+Produktionsstandards. Ihre spätere Entfernung als gebündelte Laborprofile ist
+in [ADR-0013](ADR-0013-massstabsbuendel-entfernen.md) festgehalten.
 
 ## Folgen
 

@@ -13,10 +13,10 @@ const EXPECTED_MAIN_MENU_BUTTONS := [
 ]
 const EXPECTED_HERO_ROOM_HINT := (
 	"HELDENRAUM · PROTOTYP\n"
-	+ "WASD / Pfeile: bewegen · Doppel-Tap: schnell\n"
-	+ "Shift beim 2. Tap: Boost · Strg: schleichen\n"
-	+ "Leertaste: springen · E / A: interagieren\n"
-	+ "Esc / B: Hauptmenü"
+	+ "WASD / Pfeile: laufen · Feststelltaste: gehen\n"
+	+ "Doppel-Tap: rennen · Shift halten: sprinten\n"
+	+ "Strg: schleichen · Leertaste: springen\n"
+	+ "E / A: interagieren · Esc / B: Hauptmenü"
 )
 const EXPECTED_GUIDE_PROMPT := "E / A: Ratgeber ansprechen"
 const EXPECTED_GUIDE_MESSAGE := (
@@ -59,7 +59,7 @@ const TEST_SUITES := [
 	"res://tests/runtime/visual_lab_pixel_snap_test.gd",
 	"res://tests/runtime/visual_lab_texture_filter_test.gd",
 	"res://tests/runtime/visual_lab_settings_test.gd",
-	"res://tests/runtime/visual_scale_candidates_test.gd",
+	"res://tests/runtime/visual_lab_gameplay_test.gd",
 	"res://tests/runtime/touch_action_adapter_test.gd",
 ]
 
@@ -751,8 +751,8 @@ func _test_bootstrap_contract() -> void:
 			"VisualLab displays its themed menu title",
 		)
 		_expect(
-			visual_lab_tabs != null and visual_lab_tabs.get_child_count() == 5,
-			"VisualLab provides five extensible theme tabs",
+			visual_lab_tabs != null and visual_lab_tabs.get_child_count() == 6,
+			"VisualLab provides six extensible theme tabs",
 		)
 		_expect(
 			visual_lab_camera_status != null
@@ -1030,8 +1030,8 @@ func _expect_saved_visual_lab_settings(
 		"leaving VisualLab saves its settings to the isolated test path",
 	)
 	_expect(
-		settings.get_value("meta", "version", 0) == 2,
-		"saved VisualLab settings use version 2",
+		settings.get_value("meta", "version", 0) == 3,
+		"saved VisualLab settings use version 3",
 	)
 	_expect(
 		settings.get_value("visual_lab", "camera_zoom_world", "") == camera_zoom_id,

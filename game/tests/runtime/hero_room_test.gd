@@ -182,10 +182,10 @@ func _test_room_contract(tree: SceneTree) -> void:
 			development_hint.text
 				== (
 					"HELDENRAUM · PROTOTYP\n"
-					+ "WASD / Pfeile: bewegen · Doppel-Tap: schnell\n"
-					+ "Shift beim 2. Tap: Boost · Strg: schleichen\n"
-					+ "Leertaste: springen · E / A: interagieren\n"
-					+ "Esc / B: Hauptmenü"
+					+ "WASD / Pfeile: laufen · Feststelltaste: gehen\n"
+					+ "Doppel-Tap: rennen · Shift halten: sprinten\n"
+					+ "Strg: schleichen · Leertaste: springen\n"
+					+ "E / A: interagieren · Esc / B: Hauptmenü"
 			),
 			"development hint lists the provisional controls",
 		)

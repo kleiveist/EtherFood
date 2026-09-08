@@ -138,7 +138,8 @@ func _expect_diagnostics_contract(tree: SceneTree, visual_lab: Control) -> void:
 	visual_lab._toggle_texture_filter()
 	_expect(values.text.contains("Kamera-Basis: 1,00×"), "diagnostics show base camera zoom")
 	_expect(values.text.contains("Kamera-Aktiv: 1,00×"), "diagnostics show active camera zoom")
-	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show normal movement")
+	_expect(values.text.contains("Bewegung: Laufen"), "diagnostics show running movement")
+	_expect(values.text.contains("Geschwindigkeit: 220 px/s"), "diagnostics show speed")
 	_expect(values.text.contains("Sprung: Boden"), "diagnostics show grounded jump state")
 	_expect(values.text.contains("Figur: 96 px"), "diagnostics show active hero size")
 	_expect(values.text.contains("Tiles: 48 × 48 px"), "diagnostics show active tile size")
@@ -260,15 +261,23 @@ func _expect_diagnostic_values(
 		values.text.contains("Kamera-Aktiv: 1,00×"),
 		"diagnostics show initial active camera zoom",
 	)
-	_expect(values.text.contains("Bewegung: Normal"), "diagnostics show movement state")
+	_expect(values.text.contains("Bewegung: Laufen"), "diagnostics show movement state")
+	_expect(
+		values.text.contains("Geschwindigkeit: 220 px/s"),
+		"diagnostics show the current movement speed",
+	)
+	_expect(
+		values.text.contains("Feststelltasten-Gehen: AUS"),
+		"diagnostics show the Caps Lock walking mode",
+	)
 	_expect(values.text.contains("Sprung: Boden"), "diagnostics show jump state")
 	_expect(
 		values.text.contains("Kamerabereich: Außenwelt"),
 		"diagnostics identify the normal world camera profile",
 	)
 	_expect(
-		values.text.contains("Maßstabsprofil: Maßstab V0"),
-		"diagnostics identify the selected visual baseline",
+		values.text.contains("Maßstab: manuelle Einzelwerte"),
+		"diagnostics identify manual scale controls",
 	)
 	_expect(
 		values.text.contains("Referenzauflösung: 1920 × 1080"),

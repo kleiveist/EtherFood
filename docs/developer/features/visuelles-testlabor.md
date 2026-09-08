@@ -17,7 +17,7 @@ bestätigten Entscheidungen hier fest, ohne offene Folgefragen vorwegzunehmen.
 
 ## Umsetzungsstand
 
-Stand: 7. September 2026.
+Stand: 8. September 2026.
 
 Die vorhandenen Testflächen und Testergebnisse bleiben bestehen. Die auf
 dieser Seite festgelegte Neufassung der `F5`-Steuerung ist umgesetzt. Das
@@ -70,17 +70,18 @@ einem Thema zugewiesen und erhalten kein neues globales Direktkürzel.
 | Thema | Inhalt |
 |---|---|
 | Kamera | Zielbereich und dessen Zoomstufe |
-| Maßstab | Vergleichsprofil, Heldenhöhe und Tilegröße |
+| Maßstab | Heldenhöhe und Tilegröße als unabhängige Einzelwerte |
 | Darstellung | Pixel-Snap, Texturfilter und spätere Grafikoptionen |
 | Welt und Atmosphäre | Vorschau des Weltzustands sowie zustandsbezogener Nebel und zustandsbezogenes Licht |
 | Diagnose und Hilfe | Diagnoseanzeige, Kollisionsflächen, Bewegung, Zurück und Bedienhinweise |
+| Gameplay | Geschwindigkeiten sowie Sprunghöhen und -weiten |
 
 Das grundsätzliche Layout lautet:
 
 ```text
 ┌ TESTLABOR ───────────────────────────┐   sichtbare Testwelt
 │ [Kamera] [Maßstab] [Darstellung]    │
-│ [Welt]   [Diagnose]                  │
+│ [Welt]   [Diagnose] [Gameplay]       │
 ├──────────────────────────────────────┤
 │ scrollbarer Themeninhalt             │
 │ [Wert A] [★ Standard] [Wert C]       │
@@ -125,10 +126,8 @@ Spielstandard-Markierung.
 
 Der Knopf `Als Spielstandard übernehmen` und `Strg + Alt + E` arbeiten immer
 auf dem aktuell fokussierten Eintrag und seinem sichtbaren Kontext. Eine
-Einzeleinstellung übernimmt nur diesen Wert. Ein gebündeltes
-Maßstabsvergleichsprofil darf mehrere Werte gemeinsam übernehmen, muss vor
-dem Schreiben aber alle betroffenen Werte in einer Bestätigung aufführen.
-Verdeckte Sammeländerungen sind nicht zulässig.
+Einzeleinstellung übernimmt nur diesen Wert. Verdeckte Sammeländerungen sind
+nicht zulässig.
 
 Das Übernahmekürzel reagiert nur bei geöffnetem `F5`-Menü und einem
 übernehmbaren fokussierten Eintrag. Außerhalb dieses Zustands verändert es
@@ -149,10 +148,9 @@ Nicht jede Laborfunktion stellt einen Spielstandard dar:
 | Heldenhöhe und Tilegröße | ja | Produktionsmaßstab |
 | Pixel-Snap und Texturfilter | ja | Darstellungsstandard beziehungsweise spätere Voreinstellung |
 | Nebel und Licht | ja, je Weltzustand | atmosphärischer Standard des jeweiligen Zustands |
-| Maßstabsvergleichsprofil | ja, als bestätigtes Bündel | mehrere einzeln sichtbare Produktionswerte |
+| Bewegungsgeschwindigkeiten und Sprungwerte | ja, je fokussiertem Regler | versionierte Bewegungsressource |
 | angezeigter Weltzustand | nein | gleichberechtigte Vorschau bestehender Spielzustände |
 | Diagnose, Kollision und Fensterwerte | nein | reine Entwicklungswerkzeuge und Messwerte |
-| Bewegung und Sprung | nein | Testeingaben, keine visuelle Voreinstellung |
 
 Wird eine Einstellung später als Spieleroption angeboten, ist der goldene
 Wert nur ihre ausgelieferte Voreinstellung. Eine im Spiel gespeicherte
@@ -179,12 +177,17 @@ Weltzustände. Das Dorfprofil bleibt zunächst als eigene Ressource vorbereitet,
 erbt aber über die Zuordnung den Außenweltwert. Erst die ausdrückliche
 Übernahme eines Dorfzooms löst diese Vererbung.
 
-Der lokale Arbeitsstand verwendet Speicherschema 2. Neben
+Der lokale Arbeitsstand verwendet Speicherschema 3. Neben
 `camera_context` werden `camera_zoom_world`, `camera_zoom_village`,
 `camera_zoom_dungeon` und `camera_zoom_small_interior` getrennt gespeichert.
-Gültige Version-1-Werte werden beim Laden übernommen und unmittelbar in das
-neue Schema geschrieben; fehlende oder ungültige Werte fallen auf den
+Die Gameplay-Regler werden als begrenzte Zahlenwerte gespeichert. Gültige
+Version-1- und Version-2-Werte werden beim Laden übernommen und unmittelbar
+in das neue Schema geschrieben; fehlende oder ungültige Werte fallen auf den
 jeweiligen Spielstandard zurück.
+
+Der Gameplay-Held erhält beim Öffnen eine tiefe Kopie von
+`hero_movement_v0.tres`. Änderungen an der lokalen Vorschau können die
+geladene Standardressource deshalb nicht versehentlich verändern.
 
 Eine Übernahme macht die gewählten Werte ohne erneute Mitteilung im
 Arbeitsbaum prüfbar. Sie ersetzt jedoch nicht die Repository-Regeln: Wenn ein
@@ -306,26 +309,14 @@ Setting-spezifische Profile bleiben möglich. Der Held kennt diese
 Szenenentscheidung nicht selbst. Die verbindliche Begründung steht in
 [ADR-0011](../../concept/entscheidungen/ADR-0011-massstab-v0.md).
 
-Für Regressionen bewahrt das Testlabor zwei abweichende Kombinationen auf:
+Die frühere Bündelauswahl `A → Maßstab V0 → C` ist entfernt. Heldenhöhe,
+Tilegröße, Kamerazoom, Pixel-Snap und Texturfilter bleiben als unabhängige
+Einzelwerte testbar. So verändert eine manuelle Auswahl keine weiteren Werte
+im Hintergrund. Diese Folgeentscheidung steht in
+[ADR-0013](../../concept/entscheidungen/ADR-0013-massstabsbuendel-entfernen.md).
 
-| Profil | Heldenhöhe | Tilegröße | Kamera | Schwerpunkt |
-|---|---:|---:|---:|---|
-| A · Weite Übersicht | 64 px | 32 × 32 px | 0,75× | größter sichtbarer Weltbereich |
-| Maßstab V0 | 80 px | 32 × 32 px | 1,00× | verbindliche normale Spielansicht |
-| C · Nah und groß | 96 px | 48 × 48 px | 1,50× | maximale Figuren- und Objektnähe |
-
-Alle drei Profile enthalten die Referenzauflösung `1920 × 1080`, 16:9,
-Pixel-Snap `AN` und Nearest-Neighbor. Die Auswahl `Maßstabsprofil` unter
-`Maßstab` schaltet `A → Maßstab V0 → C` als vollständige Bündel um. Eine
-manuelle Änderung von Heldenhöhe, Tilegröße, Zoom, Pixel-Snap oder Filter
-kennzeichnet den Zustand als `Freier Vergleich`. Die Auswahl eines Bündels
-ist zunächst nur ein Test; seine Produktionswerte werden erst durch die
-ausdrückliche Übernahme geändert.
-
-Eine frische oder unvollständige Testlabor-Konfiguration lädt `Maßstab V0`.
-Die vorhandene Datei `user://visual_lab_settings.cfg` speichert weiterhin die
-Einzelwerte; daraus wird beim Laden das passende Profil erkannt. Die
-verbindliche Ressourcenquelle ist
+Eine frische oder unvollständige Testlabor-Konfiguration lädt die einzelnen
+Werte aus Maßstab V0. Die verbindliche Ressourcenquelle ist
 `game/shared/resources/visual_baseline_v0.tres`, nicht die lokale
 Einstellungsdatei. Bestehende Karten wurden nicht großflächig umgebaut. Der
 Heldenraum liest die Heldenhöhe aus dem Maßstab und verwendet dasselbe 32er
@@ -336,6 +327,27 @@ Die verbindlichen Ergebnisse des gesamten Testlabors sind in der
 zusammengeführt. Diese Funktionsseite behält die ausführlichen historischen
 Vergleiche und die Bedienung des Labors bei.
 
+## Gameplay-Tab
+
+Der sechste Tab ist scrollbar und stellt alle derzeit aktiven
+Bewegungsparameter als numerische Regler dar:
+
+| Gruppe | Werte | Grenze |
+|---|---|---|
+| Geschwindigkeit | Schleichen, Gehen, Laufen, Rennen, Sprinten | 40–500 px/s in 5er-Schritten |
+| Sprunghöhe | Steh-, Geh-, Lauf-, Renn- und Sprintsprung | 8–64 px in 1er-Schritten |
+| Sprungweite | Geh-, Lauf-, Renn- und Sprintsprung | 16–160 px in 1er-Schritten |
+
+Die Stehsprungweite wird als fester Wert `0 px` angezeigt. Der Regler zeigt
+aktuellen Testwert und Spielstandard zugleich. Eine Änderung wirkt sofort auf
+den Laborhelden, bleibt lokal und wird erst nach ausdrücklicher Übernahme des
+fokussierten Reglers in `hero_movement_v0.tres` geschrieben.
+
+Stehsprungangriff, Gehsprungangriff, Laufsprungangriff, Rennsprungangriff,
+Sprintsprungangriff, Ausweichen, Schleichrolle und Ausweich-Backflip sind als
+ausgegraute, nicht fokussierbare Platzhalter sichtbar. Sie besitzen noch keine
+Laufzeitlogik.
+
 ## Inhalt des Testlabors
 
 ### 1. Helden-Testfläche
@@ -344,8 +356,8 @@ Die Helden-Testfläche ermöglicht:
 
 ```text
 - Spielfigur anzeigen
-- normale, schnelle, verstärkte und schleichende Bewegung in vier Richtungen
-- Standard-, Lauf- und Boostsprung
+- Schleichen, Gehen, Laufen, Rennen und Sprinten in vier Richtungen
+- Steh-, Geh-, Lauf-, Renn- und Sprintsprung
 - Idle- und Laufanimation testen
 - Figurengröße vergleichen
 - Schatten und Kollisionskörper anzeigen
@@ -609,7 +621,8 @@ Entwickler sollen folgende Anzeigen unabhängig voneinander umschalten können:
 - aktueller Bewegungs- und Sprungzustand
 - gewählte Tilegröße
 - gewählte Figurengröße
-- aktives Maßstabsprofil oder freier Vergleich
+- manuelle Maßstabseinstellung
+- aktuelle Geschwindigkeit und Feststelltasten-Gehmodus
 - Referenzauflösung und Seitenverhältnis
 - aktiver Weltzustand
 - aktive Nebelstärke
@@ -624,8 +637,9 @@ erkennbar und sind nicht für normale Spielbuilds bestimmt.
 `F3` schaltet ein kompaktes, halbtransparentes Diagnosepanel um. Es zeigt FPS,
 rohe Heldenposition, gerasterte Heldenanzeige, rohes und gerastertes
 Kameraziel, tatsächliches Kamerazentrum,
-Weltanker, Maßstabsprofil, Referenzauflösung, Seitenverhältnis, Kamerabereich,
-Basis- und Aktivzoom, Bewegungs- und Sprungzustand, Figuren-, Tile-,
+Weltanker, manuelle Maßstabseinstellung, Referenzauflösung, Seitenverhältnis,
+Kamerabereich, Basis- und Aktivzoom, Bewegungszustand, Geschwindigkeit,
+Feststelltasten-Gehmodus, Sprungzustand, Figuren-, Tile-,
 Weltzustands-, Nebel-, Lichtprofil-, Pixel-Snap-, Viewport-Transform-Snap-,
 Vertex-Snap-, Darstellungsraster-, Rasterphasen- und Texturfilterwerte sowie
 Fenstergröße und Skalierungsfaktor. In der Referenzansicht ist das Panel auf
@@ -660,7 +674,7 @@ Das visuelle Testlabor ist ausreichend festgelegt, wenn:
 
 - sein Zweck als unabhängige interne Entwicklungsszene eindeutig beschrieben
   ist,
-- alle fünf Testbereiche dokumentiert sind,
+- alle sechs Testbereiche dokumentiert sind,
 - `F5` ein nach Themen gegliedertes und bei `1280 × 720` bedienbares Menü
   öffnet, das nur einen kleinen Teil der Testwelt bedeckt,
 - die Testfigur bei geöffnetem `F5`-Menü beweglich bleibt,
@@ -672,7 +686,9 @@ Das visuelle Testlabor ist ausreichend festgelegt, wenn:
 - die Goldmarkierung auch beim weiteren Vergleichen eindeutig beim
   übernommenen Wert bleibt,
 - `Strg + Alt + E` und der sichtbare Übernahmeknopf nur den fokussierten Wert
-  oder ein ausdrücklich bestätigtes Bündel übernehmen,
+  übernehmen,
+- Gameplay-Regler die dokumentierten Grenzen erzwingen und nur eine tiefe
+  Laufzeitkopie verändern,
 - Außenwelt, Dorf, Dungeon und kleiner Innenraum unabhängige Zoomtests und
   Spielstandards besitzen,
 - Spielszenen ausschließlich versionierte Spielwerte und niemals lokale

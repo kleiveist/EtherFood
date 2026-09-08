@@ -35,8 +35,8 @@ const COLLISION_DEBUG_OVERLAY_SCRIPT := preload(
 	"res://scenes/dev/collision_debug_overlay.gd"
 )
 const CameraProfileResource := preload("res://shared/resources/camera_profile.gd")
-const VisualScaleProfileResource := preload(
-	"res://shared/resources/visual_scale_profile.gd"
+const HeroMovementConfigResource := preload(
+	"res://shared/resources/hero_movement_config.gd"
 )
 const VisualLabMenuScript := preload("res://scenes/dev/visual_lab_menu.gd")
 const VisualLabStandardsResource := preload(
@@ -45,16 +45,14 @@ const VisualLabStandardsResource := preload(
 const PlayerCameraControllerScript := preload(
 	"res://shared/camera/player_camera_controller.gd"
 )
-const SCALE_COMPARISON_PROFILES: Array[Resource] = [
-	preload("res://shared/resources/visual_scale_candidate_a.tres"),
-	preload("res://shared/resources/visual_scale_candidate_b.tres"),
-	preload("res://shared/resources/visual_scale_candidate_c.tres"),
-]
 const DEFAULT_STANDARDS: VisualLabStandardsResource = preload(
 	"res://shared/resources/visual_lab_standards_v0.tres"
 )
+const DEFAULT_MOVEMENT_STANDARD: HeroMovementConfigResource = preload(
+	"res://shared/resources/hero_movement_v0.tres"
+)
 const MAIN_MENU_ROUTE := &"main_menu"
-const SETTINGS_VERSION := 2
+const SETTINGS_VERSION := 3
 const DEFAULT_SETTINGS_PATH := "user://visual_lab_settings.cfg"
 const SETTINGS_PATH_PROJECT_KEY := "etherfood/development/visual_lab_settings_path"
 const DEFAULT_STANDARDS_PATH := (
@@ -62,6 +60,12 @@ const DEFAULT_STANDARDS_PATH := (
 )
 const STANDARDS_PATH_PROJECT_KEY := (
 	"etherfood/development/visual_lab_standards_path"
+)
+const DEFAULT_MOVEMENT_STANDARD_PATH := (
+	"res://shared/resources/hero_movement_v0.tres"
+)
+const MOVEMENT_STANDARD_PATH_PROJECT_KEY := (
+	"etherfood/development/hero_movement_standard_path"
 )
 const SETTINGS_META_SECTION := "meta"
 const SETTINGS_SECTION := "visual_lab"
@@ -112,8 +116,43 @@ const TEXTURE_FILTER_VALUES: Array[int] = [
 	CanvasItem.TEXTURE_FILTER_NEAREST,
 	CanvasItem.TEXTURE_FILTER_LINEAR,
 ]
-const FREE_SCALE_COMPARISON_NAME := "Freier Vergleich"
 const REFERENCE_ASPECT_RATIO := "16:9"
+const SPEED_SETTING_IDS: Array[StringName] = [
+	VisualLabMenuScript.SETTING_SNEAK_SPEED,
+	VisualLabMenuScript.SETTING_WALK_SPEED,
+	VisualLabMenuScript.SETTING_JOG_SPEED,
+	VisualLabMenuScript.SETTING_RUN_SPEED,
+	VisualLabMenuScript.SETTING_SPRINT_SPEED,
+]
+const JUMP_HEIGHT_SETTING_IDS: Array[StringName] = [
+	VisualLabMenuScript.SETTING_STANDING_JUMP_HEIGHT,
+	VisualLabMenuScript.SETTING_WALK_JUMP_HEIGHT,
+	VisualLabMenuScript.SETTING_JOG_JUMP_HEIGHT,
+	VisualLabMenuScript.SETTING_RUN_JUMP_HEIGHT,
+	VisualLabMenuScript.SETTING_SPRINT_JUMP_HEIGHT,
+]
+const JUMP_DISTANCE_SETTING_IDS: Array[StringName] = [
+	VisualLabMenuScript.SETTING_WALK_JUMP_DISTANCE,
+	VisualLabMenuScript.SETTING_JOG_JUMP_DISTANCE,
+	VisualLabMenuScript.SETTING_RUN_JUMP_DISTANCE,
+	VisualLabMenuScript.SETTING_SPRINT_JUMP_DISTANCE,
+]
+const GAMEPLAY_SETTING_SUBJECTS: Dictionary = {
+	VisualLabMenuScript.SETTING_SNEAK_SPEED: "Schleichgeschwindigkeit",
+	VisualLabMenuScript.SETTING_WALK_SPEED: "Gehgeschwindigkeit",
+	VisualLabMenuScript.SETTING_JOG_SPEED: "Laufgeschwindigkeit",
+	VisualLabMenuScript.SETTING_RUN_SPEED: "Renngeschwindigkeit",
+	VisualLabMenuScript.SETTING_SPRINT_SPEED: "Sprintgeschwindigkeit",
+	VisualLabMenuScript.SETTING_STANDING_JUMP_HEIGHT: "Stehsprunghöhe",
+	VisualLabMenuScript.SETTING_WALK_JUMP_HEIGHT: "Gehsprunghöhe",
+	VisualLabMenuScript.SETTING_WALK_JUMP_DISTANCE: "Gehsprungweite",
+	VisualLabMenuScript.SETTING_JOG_JUMP_HEIGHT: "Laufsprunghöhe",
+	VisualLabMenuScript.SETTING_JOG_JUMP_DISTANCE: "Laufsprungweite",
+	VisualLabMenuScript.SETTING_RUN_JUMP_HEIGHT: "Rennsprunghöhe",
+	VisualLabMenuScript.SETTING_RUN_JUMP_DISTANCE: "Rennsprungweite",
+	VisualLabMenuScript.SETTING_SPRINT_JUMP_HEIGHT: "Sprintsprunghöhe",
+	VisualLabMenuScript.SETTING_SPRINT_JUMP_DISTANCE: "Sprintsprungweite",
+}
 
 @onready var player_camera: PlayerCameraControllerScript = (
 	$TestWorld/HeroCharacter/PlayerCamera
@@ -163,6 +202,8 @@ var _selected_light_variants: Array[int] = [
 var _pixel_snap_enabled := true
 var _selected_texture_filter: int = TextureFilterPreset.NEAREST
 var _standards: VisualLabStandardsResource = DEFAULT_STANDARDS
+var _movement_standard: HeroMovementConfigResource = DEFAULT_MOVEMENT_STANDARD
+var _movement_preview: HeroMovementConfigResource
 var _active_camera_profile: CameraProfileResource = CameraProfileResource.new()
 var _pixel_snap_viewport: Viewport
 var _initial_viewport_pixel_snap := false
@@ -185,10 +226,10 @@ func _ready() -> void:
 	_initial_hero_visual_top_level = hero_visual.top_level
 	_collect_texture_filter_targets(test_world)
 	controls_interface.option_selected.connect(_on_menu_option_selected)
+	controls_interface.numeric_value_changed.connect(_on_menu_numeric_value_changed)
 	controls_interface.setting_focused.connect(_on_menu_setting_focused)
 	controls_interface.accept_requested.connect(_on_accept_requested)
 	controls_interface.close_requested.connect(_on_menu_close_requested)
-	controls_interface.bundle_confirmed.connect(_on_scale_bundle_confirmed)
 	player_camera.limit_left = WORLD_LEFT
 	player_camera.limit_top = WORLD_TOP
 	player_camera.limit_right = WORLD_RIGHT
@@ -201,6 +242,7 @@ func _ready() -> void:
 	resized.connect(_on_visual_lab_resized)
 	get_window().size_changed.connect(_on_main_window_size_changed)
 	_load_standards()
+	_load_movement_standard()
 	_load_settings()
 	_apply_camera_zoom()
 	_apply_hero_size()
@@ -208,7 +250,6 @@ func _ready() -> void:
 	_apply_world_state()
 	_apply_pixel_snap()
 	_apply_texture_filter()
-	_update_scale_profile_status()
 	_update_window_size_status()
 	_refresh_menu()
 	_set_controls_visible(false)
@@ -301,7 +342,6 @@ func _set_camera_zoom(zoom_index: int) -> void:
 	)
 	_selected_camera_zooms[_selected_camera_context] = _selected_camera_zoom
 	_apply_camera_zoom()
-	_update_scale_profile_status()
 	_save_settings()
 	_refresh_menu()
 
@@ -354,7 +394,6 @@ func _set_hero_size(size_index: int) -> void:
 		HeroSizePreset.LARGE,
 	)
 	_apply_hero_size()
-	_update_scale_profile_status()
 	_save_settings()
 	_refresh_menu()
 
@@ -387,7 +426,6 @@ func _set_tile_size(size_index: int) -> void:
 		TileSizePreset.LARGE,
 	)
 	_apply_tile_size()
-	_update_scale_profile_status()
 	_save_settings()
 	_refresh_menu()
 
@@ -497,7 +535,6 @@ func _set_pixel_snap_enabled(
 	_pixel_snap_enabled = pixel_snap_enabled
 	_apply_pixel_snap()
 	if persist_and_refresh:
-		_update_scale_profile_status()
 		_save_settings()
 		_refresh_menu()
 
@@ -516,52 +553,6 @@ func _toggle_texture_filter() -> void:
 	_set_texture_filter(next_filter, true)
 
 
-func get_scale_profile_count() -> int:
-	return SCALE_COMPARISON_PROFILES.size()
-
-
-func get_scale_profile(profile_index: int) -> VisualScaleProfileResource:
-	if profile_index < 0 or profile_index >= get_scale_profile_count():
-		return null
-	return SCALE_COMPARISON_PROFILES[profile_index] as VisualScaleProfileResource
-
-
-func apply_scale_profile(profile_index: int) -> Error:
-	var profile := get_scale_profile(profile_index)
-	if profile == null:
-		return ERR_INVALID_PARAMETER
-	var camera_index := CAMERA_ZOOM_VALUES.find(profile.camera_zoom)
-	var hero_index := HERO_SIZE_VALUES.find(profile.hero_height)
-	var tile_index := TILE_SIZE_VALUES.find(profile.tile_size)
-	var texture_filter_index := TEXTURE_FILTER_IDS.find(profile.texture_filter_id)
-	if (
-		camera_index < 0
-		or hero_index < 0
-		or tile_index < 0
-		or texture_filter_index < 0
-		or profile.reference_resolution != _reference_resolution()
-		or profile.aspect_ratio != REFERENCE_ASPECT_RATIO
-	):
-		return ERR_INVALID_DATA
-
-	_selected_camera_zooms[0] = camera_index
-	if _selected_camera_context == 0:
-		_selected_camera_zoom = camera_index
-	_selected_hero_size = hero_index
-	_selected_tile_size = tile_index
-	_pixel_snap_enabled = profile.pixel_snap_enabled
-	_selected_texture_filter = texture_filter_index
-	_apply_camera_zoom()
-	_apply_hero_size()
-	_apply_tile_size()
-	_apply_pixel_snap()
-	_apply_texture_filter()
-	_update_scale_profile_status()
-	_save_settings()
-	_refresh_menu()
-	return OK
-
-
 func _set_texture_filter(
 		texture_filter: int,
 		persist_and_refresh: bool = false,
@@ -573,9 +564,39 @@ func _set_texture_filter(
 	)
 	_apply_texture_filter()
 	if persist_and_refresh:
-		_update_scale_profile_status()
 		_save_settings()
 		_refresh_menu()
+
+
+func _set_gameplay_value(setting_id: StringName, value: float) -> Error:
+	if (
+		_movement_preview == null
+		or setting_id not in VisualLabMenuScript.GAMEPLAY_SETTING_IDS
+		or not is_finite(value)
+	):
+		return ERR_INVALID_PARAMETER
+	var bounds := _gameplay_setting_bounds(setting_id)
+	var setting_step := 5.0 if setting_id in SPEED_SETTING_IDS else 1.0
+	var clamped_value := clampf(
+		roundf(value / setting_step) * setting_step,
+		bounds.x,
+		bounds.y,
+	)
+	_movement_preview.set(setting_id, clamped_value)
+	_save_settings()
+	_refresh_menu()
+	_refresh_diagnostics_if_visible()
+	return OK
+
+
+func _gameplay_setting_bounds(setting_id: StringName) -> Vector2:
+	if setting_id in SPEED_SETTING_IDS:
+		return Vector2(40.0, 500.0)
+	if setting_id in JUMP_HEIGHT_SETTING_IDS:
+		return Vector2(8.0, 64.0)
+	if setting_id in JUMP_DISTANCE_SETTING_IDS:
+		return Vector2(16.0, 160.0)
+	return Vector2.ZERO
 
 
 func _apply_texture_filter() -> void:
@@ -650,7 +671,7 @@ func _update_diagnostics_values() -> void:
 			% _format_diagnostic_position(rendered_camera_position),
 			"Kamerazentrum: %s" % _format_diagnostic_position(camera_position),
 			"Weltanker: %s" % _format_diagnostic_position(world_position),
-			"Maßstabsprofil: %s" % _active_scale_profile_name(),
+			"Maßstab: manuelle Einzelwerte",
 			"Referenzauflösung: %d × %d"
 			% [_reference_resolution().x, _reference_resolution().y],
 			"Seitenverhältnis: %s" % REFERENCE_ASPECT_RATIO,
@@ -660,6 +681,9 @@ func _update_diagnostics_values() -> void:
 			"Kamera-Aktiv: %s×"
 			% _format_camera_zoom(player_camera.get_active_zoom()),
 			"Bewegung: %s" % hero_character.get_movement_diagnostic(),
+			"Geschwindigkeit: %d px/s" % roundi(hero_character.get_current_speed()),
+			"Feststelltasten-Gehen: %s"
+			% ("AN" if hero_character.is_walk_mode_active() else "AUS"),
 			"Sprung: %s" % hero_character.get_jump_diagnostic(),
 			"Figur: %d px" % roundi(hero_character.get_appearance_height()),
 			"Tiles: %d × %d px" % [tile_size, tile_size],
@@ -703,6 +727,15 @@ func _load_standards() -> void:
 	_standards = loaded
 
 
+func _load_movement_standard() -> void:
+	var loaded := load(_movement_standard_path()) as HeroMovementConfigResource
+	if not _movement_standard_is_valid(loaded):
+		push_error("VisualLab could not load a valid movement standard.")
+		_movement_standard = DEFAULT_MOVEMENT_STANDARD
+		return
+	_movement_standard = loaded
+
+
 func _standards_are_valid(standards: VisualLabStandardsResource) -> bool:
 	return (
 		standards != null
@@ -712,6 +745,23 @@ func _standards_are_valid(standards: VisualLabStandardsResource) -> bool:
 		and standards.village_camera_profile != null
 		and standards.dungeon_camera_profile != null
 		and standards.small_interior_camera_profile != null
+	)
+
+
+func _movement_standard_is_valid(config: HeroMovementConfigResource) -> bool:
+	if config == null:
+		return false
+	for setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+		var bounds := _gameplay_setting_bounds(setting_id)
+		var value := float(config.get(setting_id))
+		if not is_finite(value) or value < bounds.x or value > bounds.y:
+			return false
+	return (
+		config.standing_jump_duration > 0.0
+		and config.walk_jump_duration > 0.0
+		and config.jog_jump_duration > 0.0
+		and config.run_jump_duration > 0.0
+		and config.sprint_jump_duration > 0.0
 	)
 
 
@@ -731,9 +781,14 @@ func _load_settings() -> void:
 		_load_legacy_settings(settings)
 		_save_settings()
 		return
+	if stored_version == 2:
+		_load_current_settings(settings)
+		_save_settings()
+		return
 	if stored_version != SETTINGS_VERSION:
 		return
 	_load_current_settings(settings)
+	_load_gameplay_settings(settings)
 
 
 func _reset_preview_to_standards() -> void:
@@ -764,6 +819,12 @@ func _reset_preview_to_standards() -> void:
 		scale_profile.texture_filter_id,
 		TextureFilterPreset.NEAREST,
 	)
+	_movement_preview = _movement_standard.duplicate(true) as HeroMovementConfigResource
+	if _movement_preview == null:
+		_movement_preview = DEFAULT_MOVEMENT_STANDARD.duplicate(
+			true
+		) as HeroMovementConfigResource
+	hero_character.movement_config = _movement_preview
 
 
 func _load_legacy_settings(settings: ConfigFile) -> void:
@@ -850,6 +911,21 @@ func _load_shared_settings(settings: ConfigFile) -> void:
 	)
 
 
+func _load_gameplay_settings(settings: ConfigFile) -> void:
+	for setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+		var default_value := float(_movement_standard.get(setting_id))
+		var bounds := _gameplay_setting_bounds(setting_id)
+		var stored_value := _read_float_setting(
+			settings,
+			str(setting_id),
+			default_value,
+		)
+		_movement_preview.set(
+			setting_id,
+			clampf(stored_value, bounds.x, bounds.y),
+		)
+
+
 func _save_settings() -> void:
 	var settings := ConfigFile.new()
 	settings.set_value(SETTINGS_META_SECTION, "version", SETTINGS_VERSION)
@@ -902,6 +978,13 @@ func _save_settings() -> void:
 		"texture_filter",
 		TEXTURE_FILTER_IDS[_selected_texture_filter],
 	)
+	if _movement_preview != null:
+		for setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+			settings.set_value(
+				SETTINGS_SECTION,
+				str(setting_id),
+				float(_movement_preview.get(setting_id)),
+			)
 	var save_error := settings.save(_settings_path())
 	if save_error != OK:
 		push_warning("VisualLab could not save its settings (error %d)." % save_error)
@@ -935,6 +1018,22 @@ func _read_bool_setting(
 	return bool(stored_value)
 
 
+func _read_float_setting(
+		settings: ConfigFile,
+		setting_key: String,
+		default_value: float,
+) -> float:
+	var stored_value: Variant = settings.get_value(
+		SETTINGS_SECTION,
+		setting_key,
+		default_value,
+	)
+	if stored_value is float or stored_value is int:
+		var numeric_value := float(stored_value)
+		return numeric_value if is_finite(numeric_value) else default_value
+	return default_value
+
+
 func _settings_path() -> String:
 	return str(
 		ProjectSettings.get_setting(
@@ -949,6 +1048,15 @@ func _standards_path() -> String:
 		ProjectSettings.get_setting(
 			STANDARDS_PATH_PROJECT_KEY,
 			DEFAULT_STANDARDS_PATH,
+		)
+	)
+
+
+func _movement_standard_path() -> String:
+	return str(
+		ProjectSettings.get_setting(
+			MOVEMENT_STANDARD_PATH_PROJECT_KEY,
+			DEFAULT_MOVEMENT_STANDARD_PATH,
 		)
 	)
 
@@ -1024,45 +1132,6 @@ func _texture_filter_name() -> String:
 	return TEXTURE_FILTER_NAMES[_selected_texture_filter]
 
 
-func _active_scale_profile_name() -> String:
-	var profile_index := _matching_scale_profile_index()
-	if profile_index < 0:
-		return FREE_SCALE_COMPARISON_NAME
-	return get_scale_profile(profile_index).profile_name
-
-
-func _matching_scale_profile_index() -> int:
-	for profile_index in range(get_scale_profile_count()):
-		var profile := get_scale_profile(profile_index)
-		if (
-			is_equal_approx(
-				HERO_SIZE_VALUES[_selected_hero_size],
-				profile.hero_height,
-			)
-			and TILE_SIZE_VALUES[_selected_tile_size] == profile.tile_size
-			and is_equal_approx(
-				CAMERA_ZOOM_VALUES[_selected_camera_zooms[0]],
-				profile.camera_zoom,
-			)
-			and _pixel_snap_enabled == profile.pixel_snap_enabled
-			and TEXTURE_FILTER_IDS[_selected_texture_filter]
-			== profile.texture_filter_id
-			and profile.reference_resolution == _reference_resolution()
-			and profile.aspect_ratio == REFERENCE_ASPECT_RATIO
-		):
-			return profile_index
-	return -1
-
-
-func _update_scale_profile_status() -> void:
-	if controls_interface == null:
-		return
-	controls_interface.scale_profile_status.text = (
-		"Aktueller Vergleich: %s" % _active_scale_profile_name()
-	)
-	_refresh_diagnostics_if_visible()
-
-
 func _refresh_menu() -> void:
 	if controls_interface == null or not is_instance_valid(controls_interface):
 		return
@@ -1092,12 +1161,6 @@ func _refresh_menu() -> void:
 		_selected_camera_zoom,
 		accepted_zoom,
 		accepted_zoom_description,
-	)
-	controls_interface.update_setting(
-		VisualLabMenuScript.SETTING_SCALE_PROFILE,
-		_matching_scale_profile_index(),
-		_accepted_scale_profile_index(),
-		_accepted_scale_profile_name(),
 	)
 	controls_interface.update_setting(
 		VisualLabMenuScript.SETTING_HERO_SIZE,
@@ -1141,6 +1204,13 @@ func _refresh_menu() -> void:
 		VisualLabMenuScript.SETTING_COLLISION,
 		int(collision_debug_overlay.visible),
 	)
+	if _movement_preview != null and _movement_standard != null:
+		for setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+			controls_interface.update_numeric_setting(
+				setting_id,
+				float(_movement_preview.get(setting_id)),
+				float(_movement_standard.get(setting_id)),
+			)
 	_on_menu_setting_focused(controls_interface.get_focused_setting_id())
 
 
@@ -1224,50 +1294,12 @@ func _accepted_light_index(world_state: int) -> int:
 	)
 
 
-func _accepted_scale_profile_index() -> int:
-	for profile_index in range(get_scale_profile_count()):
-		var profile := get_scale_profile(profile_index)
-		if (
-			is_equal_approx(
-				_standards.scale_profile.hero_height,
-				profile.hero_height,
-			)
-			and _standards.scale_profile.tile_size == profile.tile_size
-			and is_equal_approx(
-				_standards.world_camera_profile.base_zoom,
-				profile.camera_zoom,
-			)
-			and _standards.scale_profile.pixel_snap_enabled
-			== profile.pixel_snap_enabled
-			and _standards.scale_profile.texture_filter_id
-			== profile.texture_filter_id
-			and profile.reference_resolution == _reference_resolution()
-			and profile.aspect_ratio == REFERENCE_ASPECT_RATIO
-		):
-			return profile_index
-	return -1
-
-
-func _accepted_scale_profile_name() -> String:
-	var profile_index := _accepted_scale_profile_index()
-	if profile_index < 0:
-		return "Individuelle Kombination"
-	return get_scale_profile(profile_index).profile_name
-
-
 func _on_menu_option_selected(setting_id: StringName, option_index: int) -> void:
 	match setting_id:
 		VisualLabMenuScript.SETTING_CAMERA_CONTEXT:
 			_set_camera_context(option_index)
 		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
 			_set_camera_zoom(option_index)
-		VisualLabMenuScript.SETTING_SCALE_PROFILE:
-			var apply_error := apply_scale_profile(option_index)
-			if apply_error != OK:
-				controls_interface.show_feedback(
-					"Maßstabsprofil konnte nicht angewendet werden.",
-					true,
-				)
 		VisualLabMenuScript.SETTING_HERO_SIZE:
 			_set_hero_size(option_index)
 		VisualLabMenuScript.SETTING_TILE_SIZE:
@@ -1286,6 +1318,18 @@ func _on_menu_option_selected(setting_id: StringName, option_index: int) -> void
 			_set_diagnostics_visible(option_index == 1)
 		VisualLabMenuScript.SETTING_COLLISION:
 			_set_collision_debug_visible(option_index == 1)
+
+
+func _on_menu_numeric_value_changed(
+		setting_id: StringName,
+		value: float,
+) -> void:
+	var setting_error := _set_gameplay_value(setting_id, value)
+	if setting_error != OK:
+		controls_interface.show_feedback(
+			"Gameplay-Testwert konnte nicht angewendet werden.",
+			true,
+		)
 
 
 func _set_diagnostics_visible(visible: bool) -> void:
@@ -1310,9 +1354,8 @@ func _on_menu_setting_focused(setting_id: StringName) -> void:
 
 
 func _setting_is_acceptable(setting_id: StringName) -> bool:
-	return setting_id in [
+	return setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS or setting_id in [
 		VisualLabMenuScript.SETTING_CAMERA_ZOOM,
-		VisualLabMenuScript.SETTING_SCALE_PROFILE,
 		VisualLabMenuScript.SETTING_HERO_SIZE,
 		VisualLabMenuScript.SETTING_TILE_SIZE,
 		VisualLabMenuScript.SETTING_PIXEL_SNAP,
@@ -1323,26 +1366,24 @@ func _setting_is_acceptable(setting_id: StringName) -> bool:
 
 
 func _focused_setting_can_be_accepted(setting_id: StringName) -> bool:
-	if not _setting_is_acceptable(setting_id):
-		return false
-	return (
-		setting_id != VisualLabMenuScript.SETTING_SCALE_PROFILE
-		or _matching_scale_profile_index() >= 0
-	)
+	return _setting_is_acceptable(setting_id)
 
 
 func _setting_matches_standard(setting_id: StringName) -> bool:
+	if setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+		return (
+			_movement_preview != null
+			and _movement_standard != null
+			and is_equal_approx(
+				float(_movement_preview.get(setting_id)),
+				float(_movement_standard.get(setting_id)),
+			)
+		)
 	match setting_id:
 		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
 			return (
 				_selected_camera_zoom
 				== _accepted_camera_zoom_index(_selected_camera_context)
-			)
-		VisualLabMenuScript.SETTING_SCALE_PROFILE:
-			var current_profile := _matching_scale_profile_index()
-			return (
-				current_profile >= 0
-				and current_profile == _accepted_scale_profile_index()
 			)
 		VisualLabMenuScript.SETTING_HERO_SIZE:
 			return _selected_hero_size == _accepted_hero_size_index()
@@ -1371,11 +1412,11 @@ func _setting_matches_standard(setting_id: StringName) -> bool:
 
 
 func _setting_subject(setting_id: StringName) -> String:
+	if setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+		return str(GAMEPLAY_SETTING_SUBJECTS.get(setting_id, "Gameplay-Testwert"))
 	match setting_id:
 		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
 			return "Zoom · %s" % CAMERA_CONTEXT_NAMES[_selected_camera_context]
-		VisualLabMenuScript.SETTING_SCALE_PROFILE:
-			return "Maßstabsprofil"
 		VisualLabMenuScript.SETTING_HERO_SIZE:
 			return "Heldenhöhe"
 		VisualLabMenuScript.SETTING_TILE_SIZE:
@@ -1404,67 +1445,41 @@ func _on_accept_requested() -> void:
 	if _setting_matches_standard(setting_id):
 		controls_interface.show_feedback("Der Wert ist bereits Spielstandard.")
 		return
-	if setting_id == VisualLabMenuScript.SETTING_SCALE_PROFILE:
-		_show_scale_bundle_confirmation()
-		return
 	_accept_single_setting(setting_id)
-
-
-func _show_scale_bundle_confirmation() -> void:
-	var profile_index := _matching_scale_profile_index()
-	if profile_index < 0:
-		controls_interface.show_feedback(
-			"Ein freier Vergleich kann nicht als Profilbündel übernommen werden.",
-			true,
-		)
-		return
-	var profile := get_scale_profile(profile_index)
-	controls_interface.show_bundle_confirmation(
-		"Folgende Werte als Spielstandard übernehmen?\n\n"
-		+ "Profil: %s\n" % profile.profile_name
-		+ "Außenwelt-Zoom: %s×\n" % _format_camera_zoom(profile.camera_zoom)
-		+ "Heldenhöhe: %d px\n" % roundi(profile.hero_height)
-		+ "Tilegröße: %d × %d px\n" % [profile.tile_size, profile.tile_size]
-		+ "Pixel-Snap: %s\n" % ("AN" if profile.pixel_snap_enabled else "AUS")
-		+ "Texturfilter: %s"
-		% TEXTURE_FILTER_NAMES[_selected_texture_filter]
-	)
-
-
-func _on_scale_bundle_confirmed() -> void:
-	var save_error := _accept_scale_bundle()
-	_finish_acceptance("Maßstabsprofil", save_error)
 
 
 func _accept_single_setting(setting_id: StringName) -> void:
 	var save_error := ERR_INVALID_PARAMETER
-	match setting_id:
-		VisualLabMenuScript.SETTING_CAMERA_ZOOM:
-			save_error = _accept_camera_zoom()
-		VisualLabMenuScript.SETTING_HERO_SIZE:
-			save_error = _accept_scale_property(
-				&"hero_height",
-				HERO_SIZE_VALUES[_selected_hero_size],
-			)
-		VisualLabMenuScript.SETTING_TILE_SIZE:
-			save_error = _accept_scale_property(
-				&"tile_size",
-				TILE_SIZE_VALUES[_selected_tile_size],
-			)
-		VisualLabMenuScript.SETTING_PIXEL_SNAP:
-			save_error = _accept_scale_property(
-				&"pixel_snap_enabled",
-				_pixel_snap_enabled,
-			)
-		VisualLabMenuScript.SETTING_TEXTURE_FILTER:
-			save_error = _accept_scale_property(
-				&"texture_filter_id",
-				TEXTURE_FILTER_IDS[_selected_texture_filter],
-			)
-		VisualLabMenuScript.SETTING_FOG:
-			save_error = _accept_atmosphere(true)
-		VisualLabMenuScript.SETTING_LIGHT:
-			save_error = _accept_atmosphere(false)
+	if setting_id in VisualLabMenuScript.GAMEPLAY_SETTING_IDS:
+		save_error = _accept_movement_property(setting_id)
+	else:
+		match setting_id:
+			VisualLabMenuScript.SETTING_CAMERA_ZOOM:
+				save_error = _accept_camera_zoom()
+			VisualLabMenuScript.SETTING_HERO_SIZE:
+				save_error = _accept_scale_property(
+					&"hero_height",
+					HERO_SIZE_VALUES[_selected_hero_size],
+				)
+			VisualLabMenuScript.SETTING_TILE_SIZE:
+				save_error = _accept_scale_property(
+					&"tile_size",
+					TILE_SIZE_VALUES[_selected_tile_size],
+				)
+			VisualLabMenuScript.SETTING_PIXEL_SNAP:
+				save_error = _accept_scale_property(
+					&"pixel_snap_enabled",
+					_pixel_snap_enabled,
+				)
+			VisualLabMenuScript.SETTING_TEXTURE_FILTER:
+				save_error = _accept_scale_property(
+					&"texture_filter_id",
+					TEXTURE_FILTER_IDS[_selected_texture_filter],
+				)
+			VisualLabMenuScript.SETTING_FOG:
+				save_error = _accept_atmosphere(true)
+			VisualLabMenuScript.SETTING_LIGHT:
+				save_error = _accept_atmosphere(false)
 	_finish_acceptance(_setting_subject(setting_id), save_error)
 
 
@@ -1519,6 +1534,21 @@ func _accept_scale_property(property_name: StringName, value: Variant) -> Error:
 	return save_error
 
 
+func _accept_movement_property(setting_id: StringName) -> Error:
+	if (
+		_movement_standard == null
+		or _movement_preview == null
+		or setting_id not in VisualLabMenuScript.GAMEPLAY_SETTING_IDS
+	):
+		return ERR_INVALID_PARAMETER
+	var old_value := float(_movement_standard.get(setting_id))
+	_movement_standard.set(setting_id, float(_movement_preview.get(setting_id)))
+	var save_error := _save_standard_resource(_movement_standard)
+	if save_error != OK:
+		_movement_standard.set(setting_id, old_value)
+	return save_error
+
+
 func _accept_atmosphere(is_fog: bool) -> Error:
 	var world_state_id := StringName(WORLD_STATE_IDS[_selected_world_state])
 	var old_id := (
@@ -1548,43 +1578,6 @@ func _accept_atmosphere(is_fog: bool) -> Error:
 		_standards.set_fog_id(world_state_id, old_id)
 	else:
 		_standards.set_light_id(world_state_id, old_id)
-	return save_error
-
-
-func _accept_scale_bundle() -> Error:
-	var profile_index := _matching_scale_profile_index()
-	if profile_index < 0:
-		return ERR_INVALID_DATA
-	var selected_profile := get_scale_profile(profile_index)
-	var scale_profile := _standards.scale_profile
-	var camera_profile := _standards.world_camera_profile
-	var old_values := {
-		"hero_height": scale_profile.hero_height,
-		"tile_size": scale_profile.tile_size,
-		"camera_zoom": scale_profile.camera_zoom,
-		"pixel_snap_enabled": scale_profile.pixel_snap_enabled,
-		"texture_filter_id": scale_profile.texture_filter_id,
-		"world_camera_zoom": camera_profile.base_zoom,
-	}
-	scale_profile.hero_height = selected_profile.hero_height
-	scale_profile.tile_size = selected_profile.tile_size
-	scale_profile.camera_zoom = selected_profile.camera_zoom
-	scale_profile.pixel_snap_enabled = selected_profile.pixel_snap_enabled
-	scale_profile.texture_filter_id = selected_profile.texture_filter_id
-	camera_profile.base_zoom = selected_profile.camera_zoom
-	var save_error := _save_standard_resource(scale_profile)
-	if save_error == OK:
-		save_error = _save_standard_resource(camera_profile)
-	if save_error == OK:
-		return OK
-	scale_profile.hero_height = float(old_values["hero_height"])
-	scale_profile.tile_size = int(old_values["tile_size"])
-	scale_profile.camera_zoom = float(old_values["camera_zoom"])
-	scale_profile.pixel_snap_enabled = bool(old_values["pixel_snap_enabled"])
-	scale_profile.texture_filter_id = str(old_values["texture_filter_id"])
-	camera_profile.base_zoom = float(old_values["world_camera_zoom"])
-	_save_standard_resource(scale_profile)
-	_save_standard_resource(camera_profile)
 	return save_error
 
 

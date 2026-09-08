@@ -4,17 +4,20 @@ signal interaction_target_changed(target: Area2D)
 signal sneak_state_changed(active: bool)
 
 enum MovementState {
-	WALK,
-	RUN,
-	BOOST,
 	SNEAK,
+	WALK,
+	JOG,
+	RUN,
+	SPRINT,
 }
 
 enum JumpState {
 	GROUND,
-	NORMAL,
+	STAND,
+	WALK,
+	JOG,
 	RUN,
-	BOOST,
+	SPRINT,
 }
 
 const APPEARANCE_REFERENCE_HEIGHT := 80.0
@@ -25,7 +28,8 @@ const MOVE_UP_ACTION := &"gameplay_move_up"
 const MOVE_DOWN_ACTION := &"gameplay_move_down"
 const JUMP_ACTION := &"gameplay_jump"
 const SNEAK_ACTION := &"gameplay_sneak"
-const BOOST_ACTION := &"gameplay_boost"
+const SPRINT_ACTION := &"gameplay_sprint"
+const WALK_TOGGLE_ACTION := &"gameplay_walk_toggle"
 const MOVEMENT_ACTIONS: Array[StringName] = [
 	MOVE_UP_ACTION,
 	MOVE_DOWN_ACTION,
@@ -44,11 +48,11 @@ const DEFAULT_MOVEMENT_CONFIG := preload(
 var facing_direction: Vector2 = Vector2.DOWN
 var _movement_enabled := true
 var _interaction_target: Area2D = null
-var _movement_state: MovementState = MovementState.WALK
+var _movement_state: MovementState = MovementState.JOG
 var _jump_state: JumpState = JumpState.GROUND
-var _run_active := false
+var _race_active := false
 var _sneak_active := false
-var _boost_time_remaining := 0.0
+var _walk_mode_active := false
 var _direction_change_time_remaining := 0.0
 var _tap_time_remaining: Dictionary[StringName, float] = {}
 var _tap_released: Dictionary[StringName, bool] = {}
@@ -75,6 +79,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not _movement_enabled or event.device != InputEvent.DEVICE_ID_KEYBOARD:
 		return
+	if event.is_action_pressed(WALK_TOGGLE_ACTION):
+		_walk_mode_active = not _walk_mode_active
+		_update_movement_state()
+		return
 	for action in MOVEMENT_ACTIONS:
 		if event.is_action_pressed(action):
 			_handle_direction_press(action)
@@ -83,11 +91,19 @@ func _input(event: InputEvent) -> void:
 			_handle_direction_release(action)
 			return
 	if event.is_action_pressed(SNEAK_ACTION):
-		_set_sneak_active(true)
-		_update_movement_state()
+		if not is_jumping():
+			_set_sneak_active(true)
+			_update_movement_state()
 		return
 	if event.is_action_released(SNEAK_ACTION):
-		_set_sneak_active(false)
+		if not is_jumping():
+			_set_sneak_active(false)
+			_update_movement_state()
+		return
+	if (
+		event.is_action_pressed(SPRINT_ACTION)
+		or event.is_action_released(SPRINT_ACTION)
+	):
 		_update_movement_state()
 		return
 	if event.is_action_pressed(JUMP_ACTION):
@@ -99,13 +115,16 @@ func _physics_process(delta: float) -> void:
 	if not _movement_enabled:
 		velocity = Vector2.ZERO
 		_set_sneak_active(false)
-		_movement_state = MovementState.WALK
+		_movement_state = (
+			MovementState.WALK if _walk_mode_active else MovementState.JOG
+		)
 		return
 
 	_advance_timers(delta)
 	var direction := _movement_direction()
-	_update_run_release_grace(direction, delta)
-	_set_sneak_active(Input.is_action_pressed(SNEAK_ACTION))
+	_update_race_release_grace(direction, delta)
+	if not is_jumping():
+		_set_sneak_active(Input.is_action_pressed(SNEAK_ACTION))
 	_update_movement_state()
 	if not direction.is_zero_approx():
 		_update_facing_direction(direction)
@@ -144,9 +163,9 @@ func is_jumping() -> bool:
 	return _jump_state != JumpState.GROUND
 
 
-## Returns the current boost lifetime in seconds without exposing its timer.
-func get_boost_time_remaining() -> float:
-	return _boost_time_remaining
+## Reports whether Caps Lock selected the persistent walking mode.
+func is_walk_mode_active() -> bool:
+	return _walk_mode_active
 
 
 ## Returns the speed selected by movement priority, or zero while disabled.
@@ -156,12 +175,15 @@ func get_current_speed() -> float:
 	match _movement_state:
 		MovementState.SNEAK:
 			return movement_config.sneak_speed
-		MovementState.BOOST:
-			return movement_config.boost_speed
+		MovementState.WALK:
+			return movement_config.walk_speed
+		MovementState.JOG:
+			return movement_config.jog_speed
 		MovementState.RUN:
 			return movement_config.run_speed
-		_:
-			return movement_config.walk_speed
+		MovementState.SPRINT:
+			return movement_config.sprint_speed
+	return 0.0
 
 
 ## Returns the German movement label used by the visual diagnostics.
@@ -169,23 +191,30 @@ func get_movement_diagnostic() -> String:
 	match _movement_state:
 		MovementState.SNEAK:
 			return "Schleichen"
-		MovementState.BOOST:
-			return "Boostlauf · %s s" % _format_seconds(_boost_time_remaining)
+		MovementState.WALK:
+			return "Gehen"
+		MovementState.JOG:
+			return "Laufen"
 		MovementState.RUN:
-			return "Schnelllauf"
-		_:
-			return "Normal"
+			return "Rennen"
+		MovementState.SPRINT:
+			return "Sprinten"
+	return "Laufen"
 
 
 ## Returns the German jump label used by the visual diagnostics.
 func get_jump_diagnostic() -> String:
 	match _jump_state:
-		JumpState.NORMAL:
-			return "Standard"
+		JumpState.STAND:
+			return "Stehsprung"
+		JumpState.WALK:
+			return "Gehsprung"
+		JumpState.JOG:
+			return "Laufsprung"
 		JumpState.RUN:
-			return "Lauf"
-		JumpState.BOOST:
-			return "Boost"
+			return "Rennsprung"
+		JumpState.SPRINT:
+			return "Sprintsprung"
 		_:
 			return "Boden"
 
@@ -233,13 +262,8 @@ func _handle_direction_press(action: StringName) -> void:
 		_tap_time_remaining[action] > 0.0
 		and _tap_released[action]
 	):
-		_run_active = true
+		_race_active = true
 		_direction_change_time_remaining = movement_config.direction_change_grace
-		if (
-			Input.is_action_pressed(BOOST_ACTION)
-			and _boost_time_remaining <= 0.0
-		):
-			_boost_time_remaining = movement_config.boost_duration
 		_tap_time_remaining[action] = 0.0
 		_tap_released[action] = false
 		_update_movement_state()
@@ -264,12 +288,10 @@ func _advance_timers(delta: float) -> void:
 		)
 		if _tap_time_remaining[action] <= 0.0:
 			_tap_released[action] = false
-	if _boost_time_remaining > 0.0:
-		_boost_time_remaining = maxf(0.0, _boost_time_remaining - delta)
 
 
-func _update_run_release_grace(direction: Vector2, delta: float) -> void:
-	if not _run_active:
+func _update_race_release_grace(direction: Vector2, delta: float) -> void:
+	if not _race_active:
 		return
 	if not direction.is_zero_approx():
 		_direction_change_time_remaining = movement_config.direction_change_grace
@@ -279,7 +301,7 @@ func _update_run_release_grace(direction: Vector2, delta: float) -> void:
 		_direction_change_time_remaining - delta,
 	)
 	if _direction_change_time_remaining <= 0.0:
-		_run_active = false
+		_race_active = false
 
 
 func _set_sneak_active(active: bool) -> void:
@@ -292,53 +314,78 @@ func _set_sneak_active(active: bool) -> void:
 func _update_movement_state() -> void:
 	if _sneak_active:
 		_movement_state = MovementState.SNEAK
-	elif _boost_time_remaining > 0.0:
-		_movement_state = MovementState.BOOST
-	elif _run_active:
+	elif _race_active and Input.is_action_pressed(SPRINT_ACTION):
+		_movement_state = MovementState.SPRINT
+	elif _race_active:
 		_movement_state = MovementState.RUN
-	else:
+	elif _walk_mode_active:
 		_movement_state = MovementState.WALK
+	else:
+		_movement_state = MovementState.JOG
 
 
 func _start_jump() -> void:
 	if is_jumping():
 		return
-	_jump_state = _jump_state_for_movement()
+	var movement_direction := _movement_direction()
+	var jumps_from_sneak := (
+		_sneak_active or Input.is_action_pressed(SNEAK_ACTION)
+	)
+	_jump_state = _jump_state_for_movement(movement_direction, jumps_from_sneak)
 	_jump_elapsed = 0.0
-	_jump_direction = _movement_direction()
-	if _jump_direction.is_zero_approx():
+	_jump_direction = movement_direction
+	if _jump_state == JumpState.STAND:
+		_jump_direction = Vector2.ZERO
+	elif _jump_direction.is_zero_approx():
 		_jump_direction = facing_direction
 	else:
 		_jump_direction = _jump_direction.normalized()
+	if jumps_from_sneak:
+		_set_sneak_active(false)
+		_update_movement_state()
 	_apply_jump_profile()
 
 
-func _jump_state_for_movement() -> JumpState:
-	if Input.is_action_pressed(SNEAK_ACTION):
-		return JumpState.NORMAL
+func _jump_state_for_movement(
+		movement_direction: Vector2,
+		jumps_from_sneak: bool,
+) -> JumpState:
+	if jumps_from_sneak or movement_direction.is_zero_approx():
+		return JumpState.STAND
 	match _movement_state:
-		MovementState.BOOST:
-			return JumpState.BOOST
+		MovementState.WALK:
+			return JumpState.WALK
+		MovementState.JOG:
+			return JumpState.JOG
 		MovementState.RUN:
 			return JumpState.RUN
-		_:
-			return JumpState.NORMAL
+		MovementState.SPRINT:
+			return JumpState.SPRINT
+	return JumpState.JOG
 
 
 func _apply_jump_profile() -> void:
 	match _jump_state:
+		JumpState.WALK:
+			_jump_duration = movement_config.walk_jump_duration
+			_jump_distance = movement_config.walk_jump_distance
+			_jump_height = movement_config.walk_jump_height
+		JumpState.JOG:
+			_jump_duration = movement_config.jog_jump_duration
+			_jump_distance = movement_config.jog_jump_distance
+			_jump_height = movement_config.jog_jump_height
 		JumpState.RUN:
 			_jump_duration = movement_config.run_jump_duration
 			_jump_distance = movement_config.run_jump_distance
 			_jump_height = movement_config.run_jump_height
-		JumpState.BOOST:
-			_jump_duration = movement_config.boost_jump_duration
-			_jump_distance = movement_config.boost_jump_distance
-			_jump_height = movement_config.boost_jump_height
+		JumpState.SPRINT:
+			_jump_duration = movement_config.sprint_jump_duration
+			_jump_distance = movement_config.sprint_jump_distance
+			_jump_height = movement_config.sprint_jump_height
 		_:
-			_jump_duration = movement_config.normal_jump_duration
-			_jump_distance = movement_config.normal_jump_distance
-			_jump_height = movement_config.normal_jump_height
+			_jump_duration = movement_config.standing_jump_duration
+			_jump_distance = 0.0
+			_jump_height = movement_config.standing_jump_height
 	_jump_duration = maxf(_jump_duration, 0.01)
 
 
@@ -366,25 +413,30 @@ func _advance_jump(delta: float, input_direction: Vector2) -> void:
 		_finish_jump()
 
 
-func _finish_jump() -> void:
+func _finish_jump(restore_sneak: bool = true) -> void:
 	_jump_state = JumpState.GROUND
 	_jump_elapsed = 0.0
 	velocity = Vector2.ZERO
 	if is_instance_valid(jump_visual):
 		jump_visual.position = _jump_visual_base_position
+	_set_sneak_active(
+		restore_sneak and Input.is_action_pressed(SNEAK_ACTION)
+	)
+	_update_movement_state()
 
 
 func _reset_transient_movement() -> void:
-	_run_active = false
-	_boost_time_remaining = 0.0
+	_race_active = false
 	_direction_change_time_remaining = 0.0
 	_set_sneak_active(false)
-	_movement_state = MovementState.WALK
+	_movement_state = (
+		MovementState.WALK if _walk_mode_active else MovementState.JOG
+	)
 	for action in MOVEMENT_ACTIONS:
 		_tap_time_remaining[action] = 0.0
 		_tap_released[action] = false
 	if is_jumping():
-		_finish_jump()
+		_finish_jump(false)
 
 
 func _update_facing_direction(direction: Vector2) -> void:
@@ -425,7 +477,3 @@ func _is_valid_interaction_target(candidate: Area2D) -> bool:
 		and candidate.has_method(&"get_interaction_prompt")
 		and bool(candidate.call(&"is_interactable", self))
 	)
-
-
-func _format_seconds(seconds: float) -> String:
-	return ("%.1f" % maxf(seconds, 0.0)).replace(".", ",")

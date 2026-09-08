@@ -14,7 +14,8 @@ const REQUIRED_ACTIONS: Dictionary[StringName, float] = {
 	&"gameplay_interact": 0.5,
 	&"gameplay_jump": 0.5,
 	&"gameplay_sneak": 0.5,
-	&"gameplay_boost": 0.5,
+	&"gameplay_sprint": 0.5,
+	&"gameplay_walk_toggle": 0.5,
 	&"app_pause": 0.5,
 	&"dev_diagnostics_toggle": 0.5,
 	&"dev_collision_debug_toggle": 0.5,
@@ -81,7 +82,15 @@ func run(_tree: SceneTree) -> PackedStringArray:
 		"gameplay_jump uses Space",
 	)
 	_expect_modifier_pair(&"gameplay_sneak", KEY_CTRL, "gameplay_sneak uses both Ctrl keys")
-	_expect_modifier_pair(&"gameplay_boost", KEY_SHIFT, "gameplay_boost uses both Shift keys")
+	_expect_modifier_pair(&"gameplay_sprint", KEY_SHIFT, "gameplay_sprint uses both Shift keys")
+	_expect(
+		_has_key_mapping(
+			&"gameplay_walk_toggle",
+			KEY_CAPSLOCK,
+			KEY_LOCATION_UNSPECIFIED,
+		),
+		"gameplay_walk_toggle uses Caps Lock",
+	)
 	_expect(
 		_has_accept_standard_mapping(),
 		"dev_accept_visual_standard uses Ctrl + Alt + physical E",
@@ -91,7 +100,12 @@ func run(_tree: SceneTree) -> PackedStringArray:
 			not InputMap.has_action(action),
 			"obsolete direct Visual Lab action '%s' is absent" % action,
 		)
-	for action in [&"gameplay_jump", &"gameplay_sneak", &"gameplay_boost"]:
+	for action in [
+		&"gameplay_jump",
+		&"gameplay_sneak",
+		&"gameplay_sprint",
+		&"gameplay_walk_toggle",
+	]:
 		_expect(
 			not _has_button_event(action) and not _has_axis_event(action),
 			"'%s' remains keyboard-only in movement V0" % action,

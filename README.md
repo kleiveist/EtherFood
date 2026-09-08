@@ -25,6 +25,9 @@ Kanon, Handlung, Welt und Spielmechanik. Die übrige Projektdokumentation wird
 ebenfalls auf Deutsch geführt. Nur die unverändert bewahrte Forge2D-Vorlage
 bleibt als englische technische und historische Referenz erhalten.
 
+Direkte Einstiege: [Deutsches Spielkonzept](docs/concept/index.md) und
+[Geerbte Forge2D-Grundlage](docs/.forge2d-template/index.md).
+
 ## Technischer Einstieg
 
 Das Repository verwendet Godot 4 und die geerbten Forge2D-Werkzeuge. Die

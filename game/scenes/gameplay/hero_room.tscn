@@ -261,7 +261,7 @@ theme_override_colors/font_outline_color = Color(0.018, 0.025, 0.029, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_development_hint")
-text = "HELDENRAUM · PROTOTYP\nWASD / Pfeile: bewegen · Doppel-Tap: schnell\nShift beim 2. Tap: Boost · Strg: schleichen\nLeertaste: springen · E / A: interagieren\nEsc / B: Hauptmenü"
+text = "HELDENRAUM · PROTOTYP\nWASD / Pfeile: laufen · Feststelltaste: gehen\nDoppel-Tap: rennen · Shift halten: sprinten\nStrg: schleichen · Leertaste: springen\nE / A: interagieren · Esc / B: Hauptmenü"
 
 [node name="InteractionPrompt" type="Label" parent="InterfaceLayer"]
 visible = false

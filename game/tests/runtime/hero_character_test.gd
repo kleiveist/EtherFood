@@ -148,7 +148,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 			"Facing marker belongs to JumpVisual",
 		)
 	_expect(hero.movement_config != null, "HeroCharacter has a movement configuration")
-	_expect(hero.get_current_speed() > 0.0, "HeroCharacter walk speed is positive")
+	_expect(hero.get_current_speed() > 0.0, "HeroCharacter running speed is positive")
 	_expect(hero.is_movement_enabled(), "HeroCharacter movement starts enabled")
 	_expect(
 		hero.get_nearest_interactable() == null,
@@ -196,7 +196,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 	await tree.physics_frame
 	_expect(hero.velocity.x > 0.0, "analog-strength input produces movement")
 	_expect(
-		hero.velocity.length() < hero.movement_config.walk_speed,
+		hero.velocity.length() < hero.movement_config.jog_speed,
 		"analog-strength input preserves partial movement speed",
 	)
 	Input.action_release(&"gameplay_move_right")
@@ -210,7 +210,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		"diagonal input produces diagonal velocity",
 	)
 	_expect(
-		hero.velocity.length() <= hero.movement_config.walk_speed + 0.001,
+		hero.velocity.length() <= hero.movement_config.jog_speed + 0.001,
 		"diagonal velocity does not exceed move speed",
 	)
 	Input.action_release(&"gameplay_move_right")

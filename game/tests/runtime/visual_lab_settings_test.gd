@@ -131,7 +131,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		_expect(
 			contextual_visual_lab._selected_camera_context == 2
 			and contextual_visual_lab._selected_camera_zooms == [0, 2, 0, 1],
-			"version 2 restores four independent contextual zooms",
+			"version 2 migration restores four independent contextual zooms",
 		)
 		_expect(
 			contextual_camera != null and contextual_camera.zoom == Vector2(0.75, 0.75),
@@ -178,7 +178,7 @@ func run(tree: SceneTree) -> PackedStringArray:
 		)
 		await _close_visual_lab(tree, invalid_visual_lab)
 
-	_write_settings(3, "wide", "large", "large", "restored")
+	_write_settings(4, "wide", "large", "large", "restored")
 	var future_version_visual_lab := await _open_visual_lab(tree, visual_lab_scene)
 	if future_version_visual_lab != null:
 		_expect_visual_lab_state(
@@ -336,7 +336,7 @@ func _expect_saved_settings(
 	var settings := ConfigFile.new()
 	_expect(settings.load(SETTINGS_TEST_PATH) == OK, "%s: file loads" % description)
 	_expect(
-		settings.get_value("meta", "version", 0) == 2,
+		settings.get_value("meta", "version", 0) == 3,
 		"%s: version is stored" % description,
 	)
 	_expect(

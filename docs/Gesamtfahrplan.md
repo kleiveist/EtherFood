@@ -94,7 +94,7 @@ In dieser Phase wird noch kein vollständiger Grasland-Abschnitt gebaut. Zuerst 
 |    Nr. | Aufgabe                        | Ziel und Abschlusskriterium                                                                                                                | Status |
 | -----: | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | :----: |
 | **16** | **🔍 Diagnoseanzeige**         | FPS, Spielerposition, Kameraposition, Tilegröße, Figurengröße, Zoom, Kollisionsflächen und aktive Testeinstellungen werden live angezeigt. |   ✅   |
-|   17.1 | 🎮 Bewegungssteuerung V0       | Lauf-, Boost-, Schleich- und Sprungzustände für die Tastatur technisch absichern.                                                          |    🟡   |
+|   17.1 | 🎮 Bewegungssteuerung V0       | Schleich-, Geh-, Lauf-, Renn-, Sprint- und Sprungzustände für die Tastatur technisch absichern.                                             |    🟡   |
 |   17.2 | 📐 Pixel-Snap vollständig testen | Darstellung und Bewegung mit allen V0-Bewegungszuständen bei 1,00× und 1,50× vergleichen.                                                |    ✅   |
 |     18 | 🖼️ Texturfilter testen        | Nearest-Neighbor und weiche Filterung vergleichen; geeignete Variante bestimmen.                                                           |    ✅   |
 |     19 | 🌫️ Nebel und Licht testen     | Varianten für beschädigten und wiederhergestellten Weltzustand auf großer Haus-, Wald- und Sägewerkfläche vergleichen.                      |    ✅   |

@@ -193,9 +193,9 @@ kleine und große Gegnerreferenzen. Diese Maße sind geprüfte
 Prototypvergleiche, aber keine allgemeinen Produktionsstandards.
 
 Weltobjekte dürfen die 32er Tilegröße überschreiten. Ihre Bodenanker und
-Kollisionsflächen müssen optisch nachvollziehbar bleiben. Ein Wechsel des
-Maßstabsprofils darf weder Bewegung noch Kollision oder Interaktionslogik
-verändern.
+Kollisionsflächen müssen optisch nachvollziehbar bleiben. Eine Änderung
+visueller Einzelwerte darf weder Bewegung noch Kollision oder
+Interaktionslogik verändern.
 
 ## 8. Referenzauflösung und Seitenverhältnis
 
@@ -238,27 +238,31 @@ Maßstabsressource `visual_baseline_v0.tres`, die vier Zielbereichsprofile
 zustandsbezogenen Nebel- und Licht-IDs. Der Heldenraum liest Heldenhöhe,
 Tilegröße und sein kleines Innenraumprofil über diese Zuordnung.
 
-Im `F5`-Menü schaltet `Maßstabsprofil` die unveränderlichen
-Vergleichsbündel `A → Maßstab V0 → C`; eine manuelle Abweichung erscheint als
-`Freier Vergleich`. Die mittlere Vergleichsressource bleibt dabei vom
-beschreibbaren Produktionsstandard getrennt, damit eine spätere Übernahme die
-Vergleichsreihe nicht unbemerkt verändert.
+Im `F5`-Menü werden Heldenhöhe, Tilegröße, Kamera-Zoom, Pixel-Snap und
+Texturfilter ausschließlich einzeln eingestellt. Die frühere Auswahl der
+Vergleichsbündel `A → Maßstab V0 → C` ist entfernt; eine Übernahme schreibt
+nur den fokussierten Einzelwert.
 
 `user://visual_lab_settings.cfg` speichert ausschließlich lokale Testwerte im
-Schema 2. Diese Datei überlebt einen Programmneustart, ist aber keine Quelle
+Schema 3. Diese Datei überlebt einen Programmneustart, ist aber keine Quelle
 für Produktionsregeln. Ein Wert wird erst durch den sichtbaren
 Übernahmeknopf oder `Strg + Alt + E` in die versionierten Ressourcen
 geschrieben. Diagnose, Kollisionsanzeige und Weltzustandsvorschau werden nie
 als Spielstandard gespeichert.
+
+Der sechste, scrollbar aufgebaute Bereich `Gameplay` verändert eine tiefe
+Laufzeitkopie von `hero_movement_v0.tres`. Begrenzte Regler steuern die fünf
+Geschwindigkeiten, fünf Sprunghöhen und vier Bewegungssprungweiten. Nur eine
+ausdrückliche Einzelwertübernahme schreibt in die Bewegungsressource.
 
 Das `F5`-Menü bleibt als kompaktes Werkzeugfenster über der Testwelt. Es hält
 die Bewegung der Figur nicht an. Das getrennte `F3`-Diagnosepanel ist kleiner
 und halbtransparent, damit Kamera- und Bewegungstests hinter beiden
 Werkzeugen sichtbar bleiben.
 
-Die Profile A und C, alternative Einzelwerte sowie `Freier Vergleich` bleiben
-reine Testvarianten. Eine frische oder unvollständige Konfiguration verwendet
-`Maßstab V0`.
+Alternative Einzelwerte bleiben reine Testvarianten. Eine frische oder
+unvollständige Konfiguration verwendet die Werte aus `Maßstab V0` und der
+versionierten Bewegungsressource.
 
 ## 10. Diagnoseanzeige
 
@@ -269,9 +273,10 @@ Werte zeigen:
 - rohe Spielerposition und gerastertes Heldenbild,
 - rohes und gerastertes Kameraziel sowie Kamerazentrum,
 - Weltanker,
-- Maßstabsprofil, Referenzauflösung und Seitenverhältnis,
+- manuelle Maßstabseinstellung, Referenzauflösung und Seitenverhältnis,
 - Kamerabereich, Kamera-Basis und aktiven Zoom,
-- Bewegungs- und Sprungzustand,
+- Bewegungszustand, Geschwindigkeit, Feststelltasten-Gehmodus und
+  Sprungzustand,
 - Figuren- und Tilegröße,
 - Weltzustand, Nebel- und Lichtprofil,
 - Pixel-Snap, Viewport-Transform-Snap und Vertex-Snap,

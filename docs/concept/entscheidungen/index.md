@@ -19,6 +19,8 @@
 - [ADR-0009 – Kor als Ether-Entität und ihre Welten](ADR-0009-kor-als-ether-entitaet-und-ihre-welten.md)
 - [ADR-0010 – Bewegungssteuerung V0 vorziehen](ADR-0010-bewegungssteuerung-v0-vorziehen.md)
 - [ADR-0011 – Maßstab V0](ADR-0011-massstab-v0.md)
+- [ADR-0012 – Bewegungsstufen und Sprünge erweitern](ADR-0012-bewegungsstufen-und-spruenge.md)
+- [ADR-0013 – Maßstabsbündel aus dem Testlabor entfernen](ADR-0013-massstabsbuendel-entfernen.md)
 <!-- PYGINDEX:INDEX END -->
 
 | ADR | Thema | Status |
@@ -34,3 +36,5 @@
 | [ADR-0009](ADR-0009-kor-als-ether-entitaet-und-ihre-welten.md) | Kor als Ether-Entität und ihre Welten | angenommen |
 | [ADR-0010](ADR-0010-bewegungssteuerung-v0-vorziehen.md) | Bewegungssteuerung V0 vorziehen | angenommen |
 | [ADR-0011](ADR-0011-massstab-v0.md) | Maßstab V0 | angenommen |
+| [ADR-0012](ADR-0012-bewegungsstufen-und-spruenge.md) | Bewegungsstufen und Sprünge erweitern | angenommen |
+| [ADR-0013](ADR-0013-massstabsbuendel-entfernen.md) | Maßstabsbündel aus dem Testlabor entfernen | angenommen |

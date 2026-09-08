@@ -104,12 +104,13 @@ class GodotProjectTests(unittest.TestCase):
                 for fragment in fragments:
                     self.assertIn(fragment, body)
 
-    def test_movement_v0_actions_have_reviewed_keyboard_bindings(self) -> None:
+    def test_movement_actions_have_reviewed_keyboard_bindings(self) -> None:
         project = (GODOT_ROOT / "project.godot").read_text(encoding="utf-8")
         mappings = {
             "gameplay_jump": ('"keycode":32', '"location":0'),
             "gameplay_sneak": ('"physical_keycode":4194326',),
-            "gameplay_boost": ('"physical_keycode":4194325',),
+            "gameplay_sprint": ('"physical_keycode":4194325',),
+            "gameplay_walk_toggle": ('"physical_keycode":4194329',),
         }
 
         for action, fragments in mappings.items():
@@ -120,7 +121,7 @@ class GodotProjectTests(unittest.TestCase):
                     self.assertIn(fragment, body)
                 self.assertNotIn("InputEventJoypad", body)
 
-        for action in ("gameplay_sneak", "gameplay_boost"):
+        for action in ("gameplay_sneak", "gameplay_sprint"):
             with self.subTest(action=action):
                 body = self._input_action(project, action)
                 self.assertEqual(body.count("InputEventKey"), 2)
