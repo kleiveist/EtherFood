@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 import subprocess
 import unittest
+from urllib.parse import unquote
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
@@ -145,7 +146,8 @@ class SourceHygieneTests(unittest.TestCase):
     def test_documentation_relative_links_resolve(self) -> None:
         violations: list[str] = []
         docs_root = REPOSITORY_ROOT / "docs"
-        link_pattern = re.compile(r"(?<!!)\[[^]]+\]\(([^)]+)\)")
+        markdown_link_pattern = re.compile(r"!?\[[^]]+\]\(([^)]+)\)")
+        html_source_pattern = re.compile(r"<(?:img|source)\b[^>]*\bsrc=\"([^\"]+)\"")
         paths = sorted(
             path
             for path in docs_root.rglob("*.md")
@@ -154,59 +156,69 @@ class SourceHygieneTests(unittest.TestCase):
             path for path in DOCUMENTATION_ENTRY_POINTS if path.exists()
         ]
         for path in paths:
-            for target in link_pattern.findall(path.read_text(encoding="utf-8")):
+            contents = path.read_text(encoding="utf-8")
+            targets = markdown_link_pattern.findall(contents)
+            targets.extend(html_source_pattern.findall(contents))
+            for target in targets:
                 target = target.strip().strip("<>").split("#", 1)[0]
                 if not target or "://" in target or target.startswith("mailto:"):
                     continue
-                resolved = (path.parent / target).resolve()
+                resolved = (path.parent / unquote(target)).resolve()
                 if not resolved.exists():
                     relative_path = path.relative_to(REPOSITORY_ROOT).as_posix()
                     violations.append(f"{relative_path} -> {target}")
         self.assertEqual(violations, [])
 
-    def test_documentation_architecture_has_one_german_concept(self) -> None:
+    def test_documentation_architecture_has_three_top_level_areas(self) -> None:
         required_paths = (
             "docs/index.md",
-            "docs/README.md",
-            "docs/assets/README.md",
-            "docs/assets/diagrams/README.md",
-            "docs/assets/images/README.md",
-            "docs/assets/source/README.md",
-            "docs/assets/videos/README.md",
-            "docs/concept/index.md",
-            "docs/concept/00-grundlagen/spielvision.md",
-            "docs/concept/10-welt/00-zeitdarstellung/zeitrechnung-auf-era.md",
-            "docs/concept/10-welt/00-zeitdarstellung/zeitdarstellung-im-spiel.md",
-            "docs/concept/10-welt/00-zeitdarstellung/zeitzyklen-und-konvektion.md",
-            "docs/concept/20-handlung/ratgeber-im-heldenraum.md",
-            "docs/concept/20-handlung/talisman.md",
-            "docs/concept/20-handlung/spielablauf-und-abschnittsstruktur.md",
-            "docs/concept/entscheidungen/ADR-0008-achtteiliger-spielablauf.md",
-            "docs/.forge2d-template/index.md",
-            "docs/.forge2d-template/forge2d-template.md",
-            "docs/.forge2d-template/tooling/installation.md",
-            "docs/.forge2d-template/tooling/gdscript-style-guide.md",
-            "docs/.forge2d-template/tooling/python-style-guide.md",
-            "docs/.forge2d-template/architecture/runtime-overview.md",
-            "docs/developer/index.md",
-            "docs/developer/documentation-architecture.md",
-            "docs/developer/project-identity.md",
-            "docs/developer/plans/dokumentationsvereinfachung.md",
-            "docs/developer/plans/godot-resource-import-pipeline.md",
-            "docs/developer/features/_feature-template.md",
-            "docs/developer/decisions/_adr-template.md",
-            "docs/developer/plans/_execplan-template.md",
-            "docs/developer/tooling/index.md",
-            "docs/developer/tooling/godot-resource-imports.md",
-            "docs/player-guide/index.md",
-            "docs/player-guide/_topic-template.md",
+            "docs/system/index.md",
+            "docs/system/.forge2d-template/index.md",
+            "docs/system/.forge2d-template/forge2d-template.md",
+            "docs/system/.forge2d-template/tooling/installation.md",
+            "docs/system/.forge2d-template/tooling/gdscript-style-guide.md",
+            "docs/system/.forge2d-template/tooling/python-style-guide.md",
+            "docs/system/.forge2d-template/architecture/runtime-overview.md",
+            "docs/system/development/index.md",
+            "docs/system/development/documentation-architecture.md",
+            "docs/system/development/project-identity.md",
+            "docs/system/development/plans/dokumentationsstruktur-system-game-release.md",
+            "docs/system/development/plans/godot-resource-import-pipeline.md",
+            "docs/system/development/features/_feature-template.md",
+            "docs/system/development/decisions/_adr-template.md",
+            "docs/system/development/plans/_execplan-template.md",
+            "docs/system/development/tooling/index.md",
+            "docs/system/development/tooling/godot-resource-imports.md",
+            "docs/game/index.md",
+            "docs/game/canon/index.md",
+            "docs/game/canon/grundlagen/kanon-und-offene-fragen.md",
+            "docs/game/canon/welt/zeit/zeitrechnung-auf-era.md",
+            "docs/game/canon/welt/zeit/zeitzyklen-und-konvektion.md",
+            "docs/game/canon/handlung/ratgeber-im-heldenraum.md",
+            "docs/game/canon/handlung/talisman.md",
+            "docs/game/design/index.md",
+            "docs/game/design/spielvision.md",
+            "docs/game/design/zeitdarstellung-im-spiel.md",
+            "docs/game/design/inhalte/spielablauf-und-abschnittsstruktur.md",
+            "docs/game/concept/index.md",
+            "docs/game/decisions/index.md",
+            "docs/game/decisions/ADR-0008-achtteiliger-spielablauf.md",
+            "docs/game/reference/index.md",
+            "docs/game/reference/animations/index.md",
+            "docs/release/index.md",
+            "docs/release/roadmap.md",
+            "docs/release/player-guide/index.md",
+            "docs/release/player-guide/_topic-template.md",
+            "docs/release/studies/index.md",
         )
         missing = [
             path for path in required_paths if not (REPOSITORY_ROOT / path).is_file()
         ]
         self.assertEqual(missing, [])
 
-        developer_index = (REPOSITORY_ROOT / "docs" / "developer" / "index.md")
+        developer_index = (
+            REPOSITORY_ROOT / "docs" / "system" / "development" / "index.md"
+        )
         self.assertIn(
             "../.forge2d-template/index.md",
             developer_index.read_text(encoding="utf-8"),
@@ -216,30 +228,44 @@ class SourceHygieneTests(unittest.TestCase):
             developer_index.read_text(encoding="utf-8"),
         )
 
-        root_readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("[Deutsches Spielkonzept](docs/concept/index.md)", root_readme)
-        self.assertIn("[Geerbte Forge2D-Grundlage]", root_readme)
+        root_readme = (REPOSITORY_ROOT / "README.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(
+            "[System – Technik und Entwicklung](docs/system/index.md)",
+            root_readme,
+        )
+        self.assertIn("[EtherFood – Spiel](docs/game/index.md)", root_readme)
+        self.assertIn("[Release](docs/release/index.md)", root_readme)
 
-        self.assertFalse((REPOSITORY_ROOT / "docs" / "content").exists())
-        self.assertFalse((REPOSITORY_ROOT / "docs" / "concept" / "game(de)").exists())
-        self.assertFalse((REPOSITORY_ROOT / "docs" / "concept" / "game(en)").exists())
+        docs_root = REPOSITORY_ROOT / "docs"
+        top_level_directories = {
+            path.name for path in docs_root.iterdir() if path.is_dir()
+        }
+        self.assertEqual(top_level_directories, {"game", "release", "system"})
+
+        legacy_areas = (
+            "assets",
+            "concept",
+            "developer",
+            "player-guide",
+            "reference",
+            ".case-studies",
+            ".forge2d-template",
+        )
+        self.assertFalse(any((docs_root / name).exists() for name in legacy_areas))
 
         legacy_entry_points = (
-            REPOSITORY_ROOT / "docs" / "developer" / "developer.md",
-            REPOSITORY_ROOT / "docs" / "player-guide" / "player-guide.md",
-            (
-                REPOSITORY_ROOT
-                / "docs"
-                / "concept"
-                / "10-welt"
-                / "00-kosmologie"
-                / "zeitrechnung-auf-era.md"
-            ),
+            docs_root / "README.md",
+            docs_root / "system" / "development" / "developer.md",
+            docs_root / "release" / "player-guide" / "player-guide.md",
         )
         self.assertFalse(any(path.exists() for path in legacy_entry_points))
 
     def test_active_tooling_area_has_one_index_entry_point(self) -> None:
-        tooling_root = REPOSITORY_ROOT / "docs" / "developer" / "tooling"
+        tooling_root = (
+            REPOSITORY_ROOT / "docs" / "system" / "development" / "tooling"
+        )
         index_pages = sorted(
             path.relative_to(tooling_root) for path in tooling_root.rglob("index.md")
         )
@@ -250,18 +276,18 @@ class SourceHygieneTests(unittest.TestCase):
         self.assertEqual(contents.count("<!-- PYGINDEX:NAVIGATION START -->"), 1)
         self.assertEqual(contents.count("<!-- PYGINDEX:NAVIGATION END -->"), 1)
 
-    def test_concept_directories_have_pygindex_pages(self) -> None:
-        concept_root = REPOSITORY_ROOT / "docs" / "concept"
-        directories = [concept_root]
-        directories.extend(
-            sorted(
-                path
-                for path in concept_root.rglob("*")
-                if path.is_dir() and ".summary" not in path.parts
-            )
-        )
+    def test_game_directories_with_markdown_have_pygindex_pages(self) -> None:
+        game_root = REPOSITORY_ROOT / "docs" / "game"
+        directories = {game_root}
+        for markdown_path in game_root.rglob("*.md"):
+            directory = markdown_path.parent
+            while directory == game_root or game_root in directory.parents:
+                directories.add(directory)
+                if directory == game_root:
+                    break
+                directory = directory.parent
 
-        for directory in directories:
+        for directory in sorted(directories):
             with self.subTest(directory=directory.relative_to(REPOSITORY_ROOT)):
                 overview = directory / "index.md"
                 self.assertTrue(overview.is_file())
@@ -277,27 +303,41 @@ class SourceHygieneTests(unittest.TestCase):
                 legacy_overview = directory / f"{directory.name}.md"
                 self.assertFalse(legacy_overview.exists())
 
-    def test_concept_declares_single_german_source(self) -> None:
+    def test_game_declares_binding_sources_and_nonbinding_concepts(self) -> None:
+        game_index = (
+            REPOSITORY_ROOT / "docs" / "game" / "index.md"
+        ).read_text(encoding="utf-8")
         concept_index = (
-            REPOSITORY_ROOT / "docs" / "concept" / "index.md"
+            REPOSITORY_ROOT / "docs" / "game" / "concept" / "index.md"
         ).read_text(encoding="utf-8")
         architecture = (
-            REPOSITORY_ROOT / "docs" / "developer" / "documentation-architecture.md"
+            REPOSITORY_ROOT
+            / "docs"
+            / "system"
+            / "development"
+            / "documentation-architecture.md"
         ).read_text(encoding="utf-8")
 
-        self.assertIn("einzige aktuelle Konzeptdokumentation", concept_index)
-        self.assertIn("Alle aktive Projektdokumentation wird auf Deutsch", architecture)
-        self.assertNotIn("translation_status", concept_index)
-        self.assertFalse((REPOSITORY_ROOT / "docs" / "content").exists())
+        self.assertIn("einzigen aktuellen Quellen", game_index)
+        self.assertIn("weder Kanon noch geltendes Gamedesign", concept_index)
+        self.assertIn("aktive Projektdokumentation ist deutsch", architecture)
+        self.assertNotIn("translation_status", game_index)
 
     def test_installer_completion_report_is_indexed_and_traceable(self) -> None:
-        reports_root = REPOSITORY_ROOT / "docs" / ".forge2d-template" / "reports"
+        reports_root = (
+            REPOSITORY_ROOT
+            / "docs"
+            / "system"
+            / ".forge2d-template"
+            / "reports"
+        )
         report_path = reports_root / "M06_cross_platform_installer.md"
         report = report_path.read_text(encoding="utf-8")
         reports_index = (reports_root / "reports.md").read_text(encoding="utf-8")
         template_index = (
             REPOSITORY_ROOT
             / "docs"
+            / "system"
             / ".forge2d-template"
             / "forge2d-template.md"
         ).read_text(encoding="utf-8")

@@ -3,11 +3,9 @@
 <!-- PYGINDEX:README START -->
 ## Dokumentation
 - [Dokumentationsübersicht](docs/index.md)
-- [Dokumentationsmedien](docs/assets/README.md)
-- [EtherFood – Spielkonzept](docs/concept/index.md)
-- [Entwicklungsdokumentation](docs/developer/index.md)
-- [Spielerhandbuch](docs/player-guide/index.md)
-- [Spiel- und Assetreferenz](docs/reference/index.md)
+- [EtherFood – Spiel](docs/game/index.md)
+- [Release](docs/release/index.md)
+- [System – Technik und Entwicklung](docs/system/index.md)
 
 ## Projektdateien
 - [Repository-Regeln für EtherFood](AGENTS.md)
@@ -20,13 +18,14 @@ Ein Top-down-Action-RPG über den Wiederaufbau einer verlorenen Welt, die
 Rückkehr ihrer Zivilisationen und vergessene Erinnerungen. `EtherFood`
 befindet sich in der Konzept- und Vorproduktionsphase.
 
-Das Spielkonzept unter `docs/concept/` ist die einzige aktuelle Quelle für
-Kanon, Handlung, Welt und Spielmechanik. Die übrige Projektdokumentation wird
-ebenfalls auf Deutsch geführt. Nur die unverändert bewahrte Forge2D-Vorlage
-bleibt als englische technische und historische Referenz erhalten.
-
-Direkte Einstiege: [Deutsches Spielkonzept](docs/concept/index.md) und
-[Geerbte Forge2D-Grundlage](docs/.forge2d-template/index.md).
+Die Dokumentation ist in
+[System und Entwicklung](docs/system/index.md),
+[Spiel](docs/game/index.md) und
+[Release](docs/release/index.md) gegliedert. Kanon, Gamedesign, unfertige
+Konzepte und Referenzen besitzen im Spielbereich getrennte Aufgaben. Die
+übrige Projektdokumentation wird ebenfalls auf Deutsch geführt. Nur die
+unverändert bewahrte Forge2D-Vorlage bleibt als englische technische und
+historische Referenz erhalten.
 
 ## Technischer Einstieg
 
@@ -50,7 +49,7 @@ python tools/control.py godot4 test
 getrackten Quell-Assets. `run`, `test` und `check` führen diese Vorbereitung
 automatisch aus; ein frischer Checkout benötigt deshalb keinen eingecheckten
 `game/.godot`-Ordner. Details und Fehlerdiagnose stehen unter
-[Godot-Ressourcenimporte](docs/developer/tooling/godot-resource-imports.md).
+[Godot-Ressourcenimporte](docs/system/development/tooling/godot-resource-imports.md).
 
 Auf Systemen ohne `python` kann `python3` beziehungsweise unter Windows
 `py -3.11` verwendet werden. Abhängigkeiten gehören in die lokale `.venv` und

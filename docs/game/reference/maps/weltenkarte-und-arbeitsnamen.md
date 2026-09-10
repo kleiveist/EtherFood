@@ -1,0 +1,64 @@
+---
+title: Konzeptkarte – Die Welten des Ether
+type: reference
+status: working
+updated: 2026-09-01
+---
+
+<!-- PYGINDEX:NAVIGATION START -->
+[Zur Übersicht](index.md)
+<!-- PYGINDEX:NAVIGATION END -->
+
+# Konzeptkarte – Die Welten des Ether
+
+![Konzeptkarte der Welten des Ether](die-welten-des-ether.png)
+
+## Sichtbare Beschriftungen
+
+Die Grafik enthält folgende Namen:
+
+- Xexis
+- Tenteros
+- Zulie's Star
+- Ithos
+- Telz
+- Sen
+- Loop Hive 42
+- Sol
+- The Meridian
+- Yol
+- Kor
+- Kraa
+- Kor's Shard
+- Splinterwelten
+- Schuk
+- Tatok
+
+## Aktuelle Auswertung
+
+| Karteneintrag | Arbeitsdeutung | Status |
+|---|---|---|
+| Sol | Lebens- und Wärmequelle Eras | bestätigt |
+| Yol | Kälte- und Magiepol Eras | bestätigt |
+| The Meridian | Von Gelehrten mehrerer Kulturen mehrdeutig verwendet: das zentrale System aus Era, Sol und Yol oder verkürzt nur Era | bestätigt |
+| Tatok | Tators Sphärenreich | bestätigt |
+| Splinterwelten | Gruppe frei treibender oder zerbrochener Wirklichkeitsfragmente | Arbeitsfassung |
+| Xexis | Sphäre oder Manifestation der Entität Xexis | wahrscheinlich |
+| Tenteros | Sphäre oder Manifestation der Entität Tenteros | wahrscheinlich |
+| Loop Hive 42 | Bereich, Kolonie oder Produktionssphäre von Loop | wahrscheinlich |
+| Schuk | Große befestigte Splitterstadt oder Domäne; Beziehung zu Schuy offen | offen |
+| [Kor / Kor's Shard](../../canon/welt/kosmologie/kor-und-kors-shard.md) | Zwei geborstene Welten der Ether-Entität Kor auf eigenständigen polaxialen Läufen; Ursprung von Kor’s Shard offen | Zugehörigkeit bestätigt, Ursprung offen |
+| Ithos, Telz, Sen, Kraa | Weitere Splitterräume oder Machtzentren | offen |
+| Zulie's Star | Sternartiger Orientierungspunkt oder eigenständiges Wesen | offen |
+
+## Kanonregel für die Grafik
+
+Die Karte ist eine starke visuelle Grundlage, aber ihre Beschriftungen gelten
+erst dann als verbindlich, wenn sie in den Textdokumenten bestätigt werden.
+Die von Gelehrten überlieferte Mehrdeutigkeit von `The Meridian` ist
+ausdrücklich bestätigt und kein offener Platzhalter. Kor und Kor’s Shard sind
+als eigenständige geborstene Welten der Ether-Entität Kor bestätigt. Kor ist
+die Entität des Krieges, des Blutes und des Mordes; nur der Ursprung von Kor’s
+Shard bleibt offen. `Schuk`, `Ithos`, `Telz`, `Sen`, `Kraa` und `Zulie's Star`
+benötigen weiterhin eine eindeutige redaktionelle Funktion. Diese offenen
+Zuordnungen sind noch kein kanonischer Gelehrtenstreit.

@@ -4,7 +4,8 @@ Arbeitspläne sind fortlaufend gepflegte Dokumente für komplexe Änderungen am
 Repository. Sie sollen knapp, aktuell und für jemanden verständlich sein, der
 die Arbeit nur anhand des Arbeitsbaums übernimmt.
 
-Jeder technische Plan unter `docs/developer/plans/` enthält sinngemäß:
+Jeder technische Plan unter `docs/system/development/plans/` enthält
+sinngemäß:
 
 - Zweck und Gesamtbild
 - Ausgangslage

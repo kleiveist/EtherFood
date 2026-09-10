@@ -7,35 +7,28 @@
 <!-- PYGINDEX:INDEX START -->
 ## Inhalt
 
-### Seiten
-- [EtherFood – Übersichtlicher Gesamtfahrplan bis zum fertigen Spiel](Gesamtfahrplan.md)
-- [Dokumentation](README.md)
-
 ### Bereiche
-- [Dokumentationsmedien](assets/README.md)
-- [EtherFood – Spielkonzept](concept/index.md)
-- [Entwicklungsdokumentation](developer/index.md)
-- [Spielerhandbuch](player-guide/index.md)
-- [Spiel- und Assetreferenz](reference/index.md)
+- [EtherFood – Spiel](game/index.md)
+- [Release](release/index.md)
+- [System – Technik und Entwicklung](system/index.md)
 <!-- PYGINDEX:INDEX END -->
 
-Die Projektdokumentation ist nach ihrem Zweck gegliedert:
+Die EtherFood-Dokumentation besitzt drei Oberbereiche. Jede Information wird
+nach ihrem Zweck genau einem Bereich zugeordnet.
 
-| Bereich | Inhalt |
-|---|---|
-| [Konzept](concept/index.md) | Verbindlicher deutscher Kanon, Handlung, Welt und Spielmechanik |
-| [Entwicklung](developer/index.md) | Architektur, technische Entscheidungen, Funktionen und Arbeitspläne |
-| [Spielerhandbuch](player-guide/index.md) | Spätere öffentliche Hilfe für Spielerinnen und Spieler |
-| [Medien](assets/README.md) | Bilder, Diagramme, Karten, Videos und bearbeitbare Quellen |
-| [Referenz](reference/index.md) | Tatsächlich vorhandene Spielinhalte, Figuren, Animationen und releasefähige Assetübersichten |
-| [Forge2D-Grundlage](.forge2d-template/index.md) | Unveränderte englische Referenz der geerbten Vorlage |
+| Bereich | Inhalt | Direkter Einstieg |
+|---|---|---|
+| System | Technik, Godot, Architektur, Werkzeuge, Arbeitspläne und Forge2D-Grundlage | [System und Entwicklung](system/index.md) |
+| Game | Kanon, Gamedesign, Ideen, Entscheidungen und Spielreferenzen | [Spiel](game/index.md) |
+| Release | Roadmap, Spielerhandbuch, Studien und spätere Versionsinformationen | [Release](release/index.md) |
 
-Es gibt keine zweite Content-Hierarchie und keinen englischen Konzeptspiegel.
-Neue Spielentscheidungen werden direkt in den passenden Konzeptseiten
-festgehalten.
+Kanon und Design sind die verbindlichen Spielquellen. Dokumente unter
+`game/concept/` bleiben Vorschläge, bis ihr Ergebnis bewusst übernommen und
+bei bereits angenommenen Festlegungen unter `game/decisions/` begründet wurde.
 
 Verbindliche Angaben zu Repositoryname, Kurzbeschreibung und GitHub-Metadaten
-stehen unter [Projektidentität](developer/project-identity.md).
+stehen unter
+[Projektidentität](system/development/project-identity.md).
 
 Das Repository steht unter der [MIT-Lizenz](../LICENSE). Hinweise zur Mitarbeit
 und Sicherheit stehen in [CONTRIBUTING.md](../CONTRIBUTING.md) und

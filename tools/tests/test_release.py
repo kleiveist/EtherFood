@@ -43,6 +43,7 @@ class ReleaseRepositoryContractTests(unittest.TestCase):
         guide = (
             REPOSITORY_ROOT
             / "docs"
+            / "system"
             / ".forge2d-template"
             / "tooling"
             / "releasing.md"
@@ -65,6 +66,7 @@ class ReleaseRepositoryContractTests(unittest.TestCase):
         notes = (
             REPOSITORY_ROOT
             / "docs"
+            / "system"
             / ".forge2d-template"
             / "releases"
             / "v0.1.0.md"

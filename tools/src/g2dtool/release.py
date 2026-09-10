@@ -178,7 +178,15 @@ def validate_release_metadata(layout: RepositoryLayout) -> ReleaseMetadata:
             f"CHANGELOG.md has an invalid release date: {release_date}.",
             ("Use a real calendar date in YYYY-MM-DD format.",),
         ) from exc
-    hidden_notes_path = (
+    current_notes_path = (
+        layout.repository_root
+        / "docs"
+        / "system"
+        / ".forge2d-template"
+        / "releases"
+        / f"v{version}.md"
+    )
+    previous_notes_path = (
         layout.repository_root
         / "docs"
         / ".forge2d-template"
@@ -192,8 +200,17 @@ def validate_release_metadata(layout: RepositoryLayout) -> ReleaseMetadata:
         / "releases"
         / f"v{version}.md"
     )
-    notes_path = (
-        hidden_notes_path if hidden_notes_path.exists() else legacy_notes_path
+    notes_path = next(
+        (
+            path
+            for path in (
+                current_notes_path,
+                previous_notes_path,
+                legacy_notes_path,
+            )
+            if path.exists()
+        ),
+        current_notes_path,
     )
     notes = _read_text(notes_path, "release notes")
     expected_title = f"# Forge2D Template v{version}"

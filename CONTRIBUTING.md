@@ -11,7 +11,7 @@ Danke, dass du `EtherFood` verbesserst. Änderungen sollen nachvollziehbar,
   den vertraulichen Weg aus [SECURITY.md](SECURITY.md).
 - Suche vor einem neuen Issue nach vorhandenen Meldungen.
 - Größere Architekturänderungen beginnen mit einem abgestimmten Arbeitsplan
-  unter `docs/developer/plans/`.
+  unter `docs/system/development/plans/`.
 
 ## Arbeitsumgebung vorbereiten
 
@@ -31,7 +31,7 @@ Import erzeugt den ignorierten Godot-Ressourcen-Cache aus den getrackten
 Quellen. Nach einem frischen Checkout oder dem bewussten Entfernen lokaler
 Caches darf `game/.godot/` nicht aus einer anderen Arbeitsumgebung kopiert oder
 committed werden. Weitere Hinweise stehen unter
-[Godot-Ressourcenimporte](docs/developer/tooling/godot-resource-imports.md).
+[Godot-Ressourcenimporte](docs/system/development/tooling/godot-resource-imports.md).
 
 ## Änderungen durchführen
 
@@ -44,8 +44,8 @@ committed werden. Weitere Hinweise stehen unter
    Caches, Exporte, lokalen Binärdateien, Zugangsdaten, Token oder
    rechnerspezifischen Pfade.
 4. Beachte die geerbten
-   [Python-Regeln](docs/.forge2d-template/tooling/python-style-guide.md) und
-   [GDScript-Regeln](docs/.forge2d-template/tooling/gdscript-style-guide.md).
+   [Python-Regeln](docs/system/.forge2d-template/tooling/python-style-guide.md) und
+   [GDScript-Regeln](docs/system/.forge2d-template/tooling/gdscript-style-guide.md).
 5. Aktualisiere passende Tests und Dokumentation, wenn sich Verhalten ändert.
 6. Beginne jede Commit-Zeile mit einem passenden Emoji; der anschließende
    kurze Text wird weiterhin auf Englisch und im Imperativ geschrieben.

@@ -134,8 +134,8 @@ class CommunityHealthTests(unittest.TestCase):
             "python tools/control.py install --dry-run",
             "python tools/control.py install --yes",
             "lokale `.venv`",
-            "docs/.forge2d-template/tooling/python-style-guide.md",
-            "docs/.forge2d-template/tooling/gdscript-style-guide.md",
+            "docs/system/.forge2d-template/tooling/python-style-guide.md",
+            "docs/system/.forge2d-template/tooling/gdscript-style-guide.md",
             "python tools/control.py style",
             "python tools/control.py check",
             "direkt auf `main`",
@@ -184,7 +184,6 @@ class CommunityHealthTests(unittest.TestCase):
     def test_entry_points_link_contribution_and_security_policies(self) -> None:
         entry_points = (
             REPOSITORY_ROOT / "README.md",
-            REPOSITORY_ROOT / "docs" / "README.md",
             REPOSITORY_ROOT / "docs" / "index.md",
         )
         for path in entry_points:
