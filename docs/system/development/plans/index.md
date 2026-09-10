@@ -17,9 +17,9 @@
 - [Historischer Arbeitsplan: erste Dokumentationsumstellung](etherfood-documentation-restructure.md)
 - [Historischer Arbeitsplan: Dokumentation des Spielablaufs](game-flow-documentation.md)
 - [Arbeitsplan: Gameplay-Labor und Bewegungssteuerung](gameplay-labor-und-bewegungssteuerung.md)
-- [Arbeitsplan: Green-Hero-Pixelart im visuellen Testlabor](green-hero-pixelart-testlabor.md)
 - [Historischer Arbeitsplan: Konsolidierung des deutschen Kanons](german-canon-release-consolidation.md)
 - [Arbeitsplan: Reproduzierbare Godot-Ressourcenimporte](godot-resource-import-pipeline.md)
+- [Arbeitsplan: Green-Hero-Pixelart im visuellen Testlabor](green-hero-pixelart-testlabor.md)
 - [Arbeitsplan: Green Hero mit Stehen und Gehen in acht Richtungen](green-hero-stand-und-gehen.md)
 - [Arbeitsplan: Maßstab V0](massstab-v0.md)
 - [Historischer Arbeitsplan: Talisman als Handlungsobjekt](talisman-story-object-documentation.md)
@@ -33,14 +33,10 @@
 <!-- PYGINDEX:INDEX END -->
 
 Fortlaufende Pläne für komplexe Arbeiten am Spiel liegen hier. Verwende die
-[Arbeitsplanvorlage](_execplan-template.md) und beachte den
+Vorlage `_execplan-template.md` und beachte den
 [allgemeinen Standard](../../../../.agent/PLANS.md).
 Der technische Zielzustand für den aktuellen Importplan ist unter
 [Godot-Ressourcenimporte](../tooling/godot-resource-imports.md) dokumentiert.
-
-## Aktive Pläne
-
-- [Dokumentationsstruktur System, Game und Release](dokumentationsstruktur-system-game-release.md)
 
 ## Planarchiv
 

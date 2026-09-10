@@ -26,9 +26,7 @@ Hier liegt die maßgebliche Quelle für Begriffe, Welt und Handlung von
 angenommene Festlegungen werden nur mit einer nachvollziehbaren
 [Spielentscheidung](../decisions/index.md) geändert.
 
-## Einstieg
+## Empfohlener Einstieg
 
 1. [Begriffe und Namen](grundlagen/begriffe-und-namen.md)
 2. [Kanon und offene Fragen](grundlagen/kanon-und-offene-fragen.md)
-3. [Welt](welt/index.md)
-4. [Handlung](handlung/index.md)

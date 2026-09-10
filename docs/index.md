@@ -16,11 +16,11 @@
 Die EtherFood-Dokumentation besitzt drei Oberbereiche. Jede Information wird
 nach ihrem Zweck genau einem Bereich zugeordnet.
 
-| Bereich | Inhalt | Direkter Einstieg |
-|---|---|---|
-| System | Technik, Godot, Architektur, Werkzeuge, Arbeitspläne und Forge2D-Grundlage | [System und Entwicklung](system/index.md) |
-| Game | Kanon, Gamedesign, Ideen, Entscheidungen und Spielreferenzen | [Spiel](game/index.md) |
-| Release | Roadmap, Spielerhandbuch, Studien und spätere Versionsinformationen | [Release](release/index.md) |
+| Bereich | Inhalt |
+|---|---|
+| System | Technik, Godot, Architektur, Werkzeuge, Arbeitspläne und Forge2D-Grundlage |
+| Game | Kanon, Gamedesign, Ideen, Entscheidungen und Spielreferenzen |
+| Release | Roadmap, Spielerhandbuch, Studien und spätere Versionsinformationen |
 
 Kanon und Design sind die verbindlichen Spielquellen. Dokumente unter
 `game/concept/` bleiben Vorschläge, bis ihr Ergebnis bewusst übernommen und

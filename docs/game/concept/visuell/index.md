@@ -8,6 +8,7 @@
 ## Inhalt
 
 ### Seiten
+- [Green Hero – Pixelart-Bilddaten](green-hero-pixelart-bilddaten.md)
 - [Ratgeber: beibehaltener Pixel-Art-Entwurf](guide-companion-variants.md)
 - [Talisman: beibehaltener Pixel-Art-Entwurf](soul-talisman-variants.md)
 <!-- PYGINDEX:INDEX END -->

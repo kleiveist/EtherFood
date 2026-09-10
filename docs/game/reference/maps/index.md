@@ -14,5 +14,4 @@
 - [Die Welten des Ether](die-welten-des-ether.png)
 
 Beschriftungen einer Konzeptgrafik sind nicht automatisch Kanon. Die aktuelle
-Auswertung steht unter
-[Weltenkarte und Arbeitsnamen](weltenkarte-und-arbeitsnamen.md).
+Auswertung steht auf der oben aufgeführten Konzeptkartenseite.

@@ -28,11 +28,11 @@ haben klar getrennte Aufgaben:
 
 | Bereich | Bedeutung |
 |---|---|
-| [Kanon](canon/index.md) | Welt, Begriffe und Handlung |
-| [Gamedesign](design/index.md) | Spielregeln, Systeme, Inhalte und Gestaltung |
-| [Konzepte](concept/index.md) | Unverbindliche Ideen und offene Vorschläge |
-| [Entscheidungen](decisions/index.md) | Nachvollziehbare Änderungen angenommener Festlegungen |
-| [Referenzen](reference/index.md) | Vorhandene Assets, Vorschauen, Karten und Inspirationsmaterial |
+| Kanon | Welt, Begriffe und Handlung |
+| Gamedesign | Spielregeln, Systeme, Inhalte und Gestaltung |
+| Konzepte | Unverbindliche Ideen und offene Vorschläge |
+| Entscheidungen | Nachvollziehbare Änderungen angenommener Festlegungen |
+| Referenzen | Vorhandene Assets, Vorschauen, Karten und Inspirationsmaterial |
 
 Kanon und Gamedesign sind die einzigen aktuellen Quellen für verbindliche
 Spielaussagen. Konzepte und Referenzen dürfen diese Aussagen nicht still

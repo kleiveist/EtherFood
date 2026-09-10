@@ -13,6 +13,6 @@
 
 Dieser Bereich sammelt abgeschlossene, veröffentlichbare Erkenntnisse aus der
 Spielentwicklung. Eine neue Rückschau beginnt mit der
-[Fallstudienvorlage](_case-study-template.md). Laufende technische Notizen und
+Datei `_case-study-template.md`. Laufende technische Notizen und
 Arbeitsprotokolle bleiben unter
 [System und Entwicklung](../../system/development/index.md).

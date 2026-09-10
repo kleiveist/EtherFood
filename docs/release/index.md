@@ -15,11 +15,8 @@
 - [Studien und Rückblicke](studies/index.md)
 <!-- PYGINDEX:INDEX END -->
 
-Dieser Bereich bündelt veröffentlichungsnahe Informationen zu `EtherFood`:
-
-- die [Projektroadmap](roadmap.md),
-- das spätere [Spielerhandbuch](player-guide/index.md),
-- veröffentlichbare [Studien und Rückblicke](studies/index.md).
+Dieser Bereich bündelt die Projektroadmap, das spätere Spielerhandbuch sowie
+veröffentlichbare Studien und Rückblicke zu `EtherFood`.
 
 Versionsseiten werden ergänzt, sobald eine eigenständige EtherFood-Version
 veröffentlicht wird. Technische Export- und Veröffentlichungsabläufe bleiben

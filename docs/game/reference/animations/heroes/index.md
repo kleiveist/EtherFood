@@ -11,9 +11,9 @@
 - [Green Hero – Animationen](green-hero/index.md)
 <!-- PYGINDEX:INDEX END -->
 
-| Figur | Kurzbeschreibung | Dokumentierte Animationen | Detailseite |
-|---|---|---:|---|
-| Green Hero | Spielbarer grüner Held | 7 / 25 (6 vollständig) | [Green Hero](green-hero/index.md) |
+| Figur | Kurzbeschreibung | Dokumentierte Animationen |
+|---|---|---:|
+| Green Hero | Spielbarer grüner Held | 7 / 25 (6 vollständig) |
 
 Jede Heldenseite verwendet denselben Richtungsstandard und weist vorhandene
 sowie noch nicht dokumentierte GIF-Vorschauen eindeutig aus.

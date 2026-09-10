@@ -14,10 +14,11 @@
 Dieser Bereich enthält alles rund um Repository, Implementierung, Godot,
 Architektur, Werkzeuge, Tests und technische Arbeitsabläufe.
 
-- Die [aktive Entwicklungsdokumentation](development/index.md) beschreibt
-  EtherFood.
-- Die [geerbte Forge2D-Grundlage](.forge2d-template/index.md) bleibt als
-  unveränderte englische und historische Referenz erhalten.
+Die aktive Entwicklungsdokumentation unter `development/` beschreibt
+EtherFood.
+
+Die [geerbte Forge2D-Grundlage](.forge2d-template/index.md) bleibt als
+unveränderte englische und historische Referenz erhalten.
 
 Spielwelt, Handlung und Spielregeln werden im
 [Spielbereich](../game/index.md) gepflegt. Veröffentlichungsnahe Informationen
